@@ -3193,8 +3193,8 @@
     },
     {
       "caminho": "README.md",
-      "bytes": 4771,
-      "sha256": "715475badf5c7f165a5d72f316017b088cdab638cc5301efd2041da77dd4fef1"
+      "bytes": 4763,
+      "sha256": "2499ed74d247d2ed863962452d447130aeb94300d48b23512ca84ba4d13d52dc"
     },
     {
       "caminho": "relatorios-sast/bandit.json",

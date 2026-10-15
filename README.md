@@ -57,4 +57,4 @@ Os dois últimos comandos executam código gerado. Leia antes a política e os l
 
 ## Compartilhamento
 
-Recomendação inicial: repositório privado no GitHub, compartilhado com o orientador pela interface de colaboradores. A publicação depende de autenticação do titular. Esta cópia ainda não está publicada. Não foi atribuída uma licença de redistribuição; essa decisão fica pendente antes de uma abertura pública.
+Repositório público para consulta e conferência das evidências do piloto: https://github.com/Andre-PI/tcc-requisitos-seguranca-llms. O acesso não exige convite de colaborador. Não foi atribuída uma licença de redistribuição; a disponibilidade pública não implica autorização irrestrita de reutilização.
