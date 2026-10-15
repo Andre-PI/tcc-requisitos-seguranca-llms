@@ -1,0 +1,3123 @@
+{
+  "estado": "concluido",
+  "adaptacoes": [
+    "Tabelas e dados preexistentes em SQLite: ./app.db",
+    "Aliases apenas para funcionamento minimo: {\"nome\": \"nome\", \"categoria\": \"categoria\", \"preco_min\": \"preco_min\", \"preco_max\": \"preco_max\"}"
+  ],
+  "testes": [
+    {
+      "teste": "lista_completa",
+      "tipo": "funcional_minimo",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": "50.00",
+            "estoque": 3
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": "150.00",
+            "estoque": 2
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": "0.00",
+            "estoque": 1
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": "75.00",
+            "estoque": 4
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": 50.0,
+            "estoque": 3
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": 150.0,
+            "estoque": 2
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": 0.0,
+            "estoque": 1
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": 75.0,
+            "estoque": 4
+          }
+        ]
+      }
+    },
+    {
+      "teste": "busca_parcial",
+      "tipo": "funcional_minimo",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": "150.00",
+            "estoque": 2
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": 150.0,
+            "estoque": 2
+          }
+        ]
+      }
+    },
+    {
+      "teste": "categoria",
+      "tipo": "funcional_minimo",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": "50.00",
+            "estoque": 3
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": "150.00",
+            "estoque": 2
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": "75.00",
+            "estoque": 4
+          }
+        ],
+        "esperado": [
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": 50.0,
+            "estoque": 3
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": 150.0,
+            "estoque": 2
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": 75.0,
+            "estoque": 4
+          }
+        ]
+      }
+    },
+    {
+      "teste": "minimo",
+      "tipo": "funcional_minimo",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": "150.00",
+            "estoque": 2
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": "75.00",
+            "estoque": 4
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": 150.0,
+            "estoque": 2
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": 75.0,
+            "estoque": 4
+          }
+        ]
+      }
+    },
+    {
+      "teste": "maximo",
+      "tipo": "funcional_minimo",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": "50.00",
+            "estoque": 3
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": "0.00",
+            "estoque": 1
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": 50.0,
+            "estoque": 3
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": 0.0,
+            "estoque": 1
+          }
+        ]
+      }
+    },
+    {
+      "teste": "combinacao",
+      "tipo": "funcional_minimo",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          }
+        ]
+      }
+    },
+    {
+      "teste": "sem_resultados",
+      "tipo": "funcional_minimo",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [],
+        "esperado": []
+      }
+    },
+    {
+      "teste": "filtros_0000_None",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": "50.00",
+            "estoque": 3
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": "150.00",
+            "estoque": 2
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": "0.00",
+            "estoque": 1
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": "75.00",
+            "estoque": 4
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": 50.0,
+            "estoque": 3
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": 150.0,
+            "estoque": 2
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": 0.0,
+            "estoque": 1
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": 75.0,
+            "estoque": 4
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0000_nome",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": "50.00",
+            "estoque": 3
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": "0.00",
+            "estoque": 1
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": "150.00",
+            "estoque": 2
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": "75.00",
+            "estoque": 4
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": 50.0,
+            "estoque": 3
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": 0.0,
+            "estoque": 1
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": 150.0,
+            "estoque": 2
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": 75.0,
+            "estoque": 4
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0000_preco",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": "0.00",
+            "estoque": 1
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": "50.00",
+            "estoque": 3
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": "75.00",
+            "estoque": 4
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": "150.00",
+            "estoque": 2
+          }
+        ],
+        "esperado": [
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": 0.0,
+            "estoque": 1
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": 50.0,
+            "estoque": 3
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": 75.0,
+            "estoque": 4
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": 150.0,
+            "estoque": 2
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0001_None",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": "50.00",
+            "estoque": 3
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": "0.00",
+            "estoque": 1
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": "75.00",
+            "estoque": 4
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": 50.0,
+            "estoque": 3
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": 0.0,
+            "estoque": 1
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": 75.0,
+            "estoque": 4
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0001_nome",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": "50.00",
+            "estoque": 3
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": "0.00",
+            "estoque": 1
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": "75.00",
+            "estoque": 4
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": 50.0,
+            "estoque": 3
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": 0.0,
+            "estoque": 1
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": 75.0,
+            "estoque": 4
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0001_preco",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": "0.00",
+            "estoque": 1
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": "50.00",
+            "estoque": 3
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": "75.00",
+            "estoque": 4
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": 0.0,
+            "estoque": 1
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": 50.0,
+            "estoque": 3
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": 75.0,
+            "estoque": 4
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0010_None",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": "50.00",
+            "estoque": 3
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": "150.00",
+            "estoque": 2
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": "75.00",
+            "estoque": 4
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": 50.0,
+            "estoque": 3
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": 150.0,
+            "estoque": 2
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": 75.0,
+            "estoque": 4
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0010_nome",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": "50.00",
+            "estoque": 3
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": "150.00",
+            "estoque": 2
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": "75.00",
+            "estoque": 4
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": 50.0,
+            "estoque": 3
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": 150.0,
+            "estoque": 2
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": 75.0,
+            "estoque": 4
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0010_preco",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": "50.00",
+            "estoque": 3
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": "75.00",
+            "estoque": 4
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": "150.00",
+            "estoque": 2
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": 50.0,
+            "estoque": 3
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": 75.0,
+            "estoque": 4
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": 150.0,
+            "estoque": 2
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0011_None",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": "50.00",
+            "estoque": 3
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": "75.00",
+            "estoque": 4
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": 50.0,
+            "estoque": 3
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": 75.0,
+            "estoque": 4
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0011_nome",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": "50.00",
+            "estoque": 3
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": "75.00",
+            "estoque": 4
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": 50.0,
+            "estoque": 3
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": 75.0,
+            "estoque": 4
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0011_preco",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": "50.00",
+            "estoque": 3
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": "75.00",
+            "estoque": 4
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 3,
+            "nome": "Beta Caderno",
+            "categoria": "b",
+            "preco": 50.0,
+            "estoque": 3
+          },
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": 75.0,
+            "estoque": 4
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0100_None",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": "0.00",
+            "estoque": 1
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": 0.0,
+            "estoque": 1
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0100_nome",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": "0.00",
+            "estoque": 1
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": 0.0,
+            "estoque": 1
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0100_preco",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": "0.00",
+            "estoque": 1
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": 0.0,
+            "estoque": 1
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0101_None",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": "0.00",
+            "estoque": 1
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": 0.0,
+            "estoque": 1
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0101_nome",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": "0.00",
+            "estoque": 1
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": 0.0,
+            "estoque": 1
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0101_preco",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": "0.00",
+            "estoque": 1
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": 0.0,
+            "estoque": 1
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0110_None",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0110_nome",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0110_preco",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0111_None",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0111_nome",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_0111_preco",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1000_None",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": "150.00",
+            "estoque": 2
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": 150.0,
+            "estoque": 2
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1000_nome",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": "150.00",
+            "estoque": 2
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": 150.0,
+            "estoque": 2
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1000_preco",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": "150.00",
+            "estoque": 2
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": 150.0,
+            "estoque": 2
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1001_None",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1001_nome",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1001_preco",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1010_None",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": "150.00",
+            "estoque": 2
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": 150.0,
+            "estoque": 2
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1010_nome",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": "150.00",
+            "estoque": 2
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": 150.0,
+            "estoque": 2
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1010_preco",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": "150.00",
+            "estoque": 2
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 4,
+            "nome": "Gama Mouse",
+            "categoria": "b",
+            "preco": 150.0,
+            "estoque": 2
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1011_None",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1011_nome",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1011_preco",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1100_None",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1100_nome",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1100_preco",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1101_None",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1101_nome",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1101_preco",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1110_None",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1110_nome",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1110_preco",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1111_None",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          }
+        ],
+        "esperado": [
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          },
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1111_nome",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "filtros_1111_preco",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": "100.00",
+            "estoque": 7
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          },
+          {
+            "id": 1,
+            "nome": "Zeta Mouse",
+            "categoria": "a",
+            "preco": 100.0,
+            "estoque": 7
+          }
+        ]
+      }
+    },
+    {
+      "teste": "limites_inclusivos",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": "20.00",
+            "estoque": 0
+          }
+        ],
+        "esperado": [
+          {
+            "id": 2,
+            "nome": "Alfa Mouse",
+            "categoria": "a",
+            "preco": 20.0,
+            "estoque": 0
+          }
+        ]
+      }
+    },
+    {
+      "teste": "preco_zero",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": "0.00",
+            "estoque": 1
+          }
+        ],
+        "esperado": [
+          {
+            "id": 5,
+            "nome": "Delta Livro",
+            "categoria": "a",
+            "preco": 0.0,
+            "estoque": 1
+          }
+        ]
+      }
+    },
+    {
+      "teste": "apostrofo_literal",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": "75.00",
+            "estoque": 4
+          }
+        ],
+        "esperado": [
+          {
+            "id": 6,
+            "nome": "O'Reilly Livro",
+            "categoria": "b",
+            "preco": 75.0,
+            "estoque": 4
+          }
+        ]
+      }
+    },
+    {
+      "teste": "vazio",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": [],
+        "esperado": []
+      }
+    },
+    {
+      "teste": "numero_invalido",
+      "tipo": "robustez",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 422,
+        "corpo": {
+          "detail": [
+            {
+              "type": "decimal_parsing",
+              "loc": [
+                "query",
+                "preco_min"
+              ],
+              "msg": "Input should be a valid decimal",
+              "input": "abc"
+            }
+          ]
+        },
+        "esperado": "HTTP 400 ou 422"
+      }
+    },
+    {
+      "teste": "negativo",
+      "tipo": "robustez",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 422,
+        "corpo": {
+          "detail": [
+            {
+              "type": "greater_than_equal",
+              "loc": [
+                "query",
+                "preco_min"
+              ],
+              "msg": "Input should be greater than or equal to 0",
+              "input": "-1",
+              "ctx": {
+                "ge": 0
+              }
+            }
+          ]
+        },
+        "esperado": "HTTP 400 ou 422"
+      }
+    },
+    {
+      "teste": "ordenacao_invalida",
+      "tipo": "robustez",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 422,
+        "corpo": {
+          "detail": [
+            {
+              "type": "enum",
+              "loc": [
+                "query",
+                "ordenar_por"
+              ],
+              "msg": "Input should be 'preco' or 'nome'",
+              "input": "coluna_inexistente",
+              "ctx": {
+                "expected": "'preco' or 'nome'"
+              }
+            }
+          ]
+        },
+        "esperado": "HTTP 400 ou 422"
+      }
+    }
+  ],
+  "geracao_id": 94,
+  "codigo_sha256": "6272891b052102616827264fec78c880f7b2481e6f69973e2b1742e675404cbf",
+  "protocolo": {
+    "versao": "aceitacao-piloto-1",
+    "python": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]",
+    "timeout": 30,
+    "dependencias": "aiosqlite==0.22.1\nannotated-doc==0.0.5\nannotated-types==0.8.0\nanyio==4.15.1\nargon2-cffi==25.1.0\nargon2-cffi-bindings==26.1.0\nattrs==26.1.0\nbandit==1.9.4\nbcrypt==3.2.2\nboltons==21.0.0\nbracex==3.0.1\ncertifi==2026.7.22\ncffi==2.1.1\ncharset-normalizer==3.5.1\nclick==8.4.2\nclick-option-group==0.5.9\ncolorama==0.4.6\ncryptography==50.0.1\ndnspython==2.8.0\nemail-validator==2.3.0\nexceptiongroup==1.2.2\nface==26.0.1\nfastapi==0.141.1\nglom==25.12.0\ngoogleapis-common-protos==1.75.4\ngreenlet==3.5.6\nh11==0.16.0\nhttpcore==1.0.9\nhttpx==0.28.1\nhttpx-sse==0.4.3\nidna==3.20\nimportlib_metadata==8.7.1\niniconfig==2.3.0\njsonschema==4.25.1\njsonschema-specifications==2025.9.1\nmarkdown-it-py==4.2.0\nmcp==1.29.0\nmdurl==0.1.2\nopentelemetry-api==1.37.0\nopentelemetry-exporter-otlp-proto-common==1.37.0\nopentelemetry-exporter-otlp-proto-http==1.37.0\nopentelemetry-instrumentation==0.58b0\nopentelemetry-instrumentation-requests==0.58b0\nopentelemetry-instrumentation-threading==0.58b0\nopentelemetry-proto==1.37.0\nopentelemetry-sdk==1.37.0\nopentelemetry-semantic-conventions==0.58b0\nopentelemetry-util-http==0.58b0\npackaging==26.3\npasslib==1.7.4\npeewee==3.19.0\npluggy==1.6.0\nprotobuf==6.33.6\npycparser==3.0\npydantic==2.13.5\npydantic-settings==2.15.0\npydantic_core==2.46.5\nPygments==2.21.0\nPyJWT==2.13.0\npytest==9.1.1\npython-dotenv==1.2.3\npython-multipart==0.0.32\npywin32==311\nPyYAML==6.0.3\nreferencing==0.37.0\nrequests==2.34.2\nrich==15.0.0\nrpds-py==2026.6.3\nruamel.yaml==0.19.1\nruamel.yaml.clib==0.2.15\nsemantic-version==2.10.0\nsemgrep==1.178.0\nSQLAlchemy==2.1.0\nsse-starlette==3.4.11\nstarlette==1.7.0\nstevedore==5.9.1\ntomli==2.4.1\ntyping-inspection==0.4.4\ntyping_extensions==4.16.0\nurllib3==2.8.0\nuvicorn==0.54.0\nwcmatch==8.5.2\nwrapt==1.17.3\nzipp==4.1.0\n",
+    "arquivos": {
+      "aceitacao_worker.py": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3",
+      "comportamento_worker.py": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+      "validar_aceitacao.py": "88481b94af00787697b7f1bec55324f57e8635763c8a50e28c7748c02463cbab",
+      "docs/criterios-aceitacao.json": "7449284863bc467cb8dfe8451e510f86a531bc3910cf77dc925633bcfe9b63d7"
+    }
+  }
+}

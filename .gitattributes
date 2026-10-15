@@ -1,0 +1,7 @@
+# Preserva bytes e finais de linha para a conferência do manifesto.
+* -text
+codigos/*.py -text
+execucoes/**/amostra.py -text
+*.db binary
+*.docx binary
+*.pdf binary

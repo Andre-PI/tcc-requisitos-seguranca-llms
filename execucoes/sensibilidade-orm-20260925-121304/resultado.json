@@ -1,0 +1,130 @@
+{
+  "condicao": "complementacao_orm_fora_da_analise_principal",
+  "adaptacoes": [
+    "APIRouter montado em FastAPI sem middleware adicional",
+    "CONDICAO EXTRA: classes placeholder Pedido/ItemPedido substituidas em memoria por modelos ORM do contrato. Nenhuma condicao SQL ou de autorizacao alterada. Nao equivale a execucao direta da amostra.",
+    "Dependencia get_current_user substituida por identidades A/B; autenticador original nao avaliado",
+    "SQLite com pedidos 1/2 de usuarios 10/20 e um item por pedido; sem filtro no adapter"
+  ],
+  "testes": [
+    {
+      "teste": "recurso_proprio",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": [
+        {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01T00:00:00",
+            "status": "pago",
+            "valor_total": 10.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_1",
+                "quantidade": 1,
+                "preco_unitario": 10.0
+              }
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_2",
+            "data": "2026-01-01T00:00:00",
+            "status": "pago",
+            "valor_total": 20.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_2",
+                "quantidade": 1,
+                "preco_unitario": 20.0
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "teste": "inexistente_404",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 404,
+        "corpo": {
+          "detail": "Pedido não encontrado"
+        }
+      }
+    },
+    {
+      "teste": "contrato_detalhado_resposta",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": "Campos de resposta e itens; contrato comum, nao exigido no prompt N0"
+    },
+    {
+      "teste": "idor_A_acessa_B",
+      "tipo": "seguranca",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 404,
+        "corpo": {
+          "detail": "Pedido não encontrado"
+        }
+      }
+    },
+    {
+      "teste": "idor_A_acessa_B_oculta_existencia",
+      "tipo": "requisito_N3",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 404,
+        "corpo": {
+          "detail": "Pedido não encontrado"
+        }
+      }
+    },
+    {
+      "teste": "idor_B_acessa_A",
+      "tipo": "seguranca",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 404,
+        "corpo": {
+          "detail": "Pedido não encontrado"
+        }
+      }
+    },
+    {
+      "teste": "idor_B_acessa_A_oculta_existencia",
+      "tipo": "requisito_N3",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 404,
+        "corpo": {
+          "detail": "Pedido não encontrado"
+        }
+      }
+    },
+    {
+      "teste": "sem_token",
+      "tipo": "contrato_auth",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 401,
+        "corpo": {
+          "detail": "Nao autenticado"
+        }
+      }
+    },
+    {
+      "teste": "autenticacao_original",
+      "tipo": "seguranca",
+      "status": "inconclusivo",
+      "evidencia": "Fora do escopo: autenticador fornecido/substituido pela fixture"
+    }
+  ],
+  "codigo_sha256": "6de7c20b7e2c459321e9d79e7b0de5b4764453397c54d022b356349b31b46e7a",
+  "worker_sha256": "cde092c5b0243423108d7a7f43cd241e57a7c56b147579522d523e1d9ffaa689"
+}

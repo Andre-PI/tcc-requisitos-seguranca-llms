@@ -1,0 +1,215 @@
+{
+  "estado": "concluido",
+  "adaptacoes": [
+    "Dependencia get_usuario_id_do_token substituida por identidades A/B; autenticador original nao avaliado",
+    "SQLite com pedidos 1/2 de usuarios 10/20 e um item por pedido; sem filtro no adapter"
+  ],
+  "testes": [
+    {
+      "teste": "pedido_proprio_dados_1",
+      "tipo": "funcional_minimo",
+      "status": "reprovado",
+      "evidencia": {
+        "status": 500,
+        "corpo": "Internal Server Error",
+        "esperado": {
+          "numero": "PRIVADO_1",
+          "data": "2026-01-01",
+          "status": "pago",
+          "valor_total": 10
+        },
+        "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x000002325406F150>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+      }
+    },
+    {
+      "teste": "campos_e_itens_1",
+      "tipo": "contrato_N1",
+      "status": "reprovado",
+      "evidencia": {
+        "status": 500,
+        "corpo": "Internal Server Error",
+        "esperado": "Dados do pedido e itens completos",
+        "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x000002325406F150>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+      }
+    },
+    {
+      "teste": "itens_associados_1",
+      "tipo": "contrato_N1",
+      "status": "reprovado",
+      "evidencia": {
+        "status": 500,
+        "corpo": "Internal Server Error",
+        "esperado": [
+          {
+            "produto_nome": "ITEM_1",
+            "quantidade": 1,
+            "preco_unitario": 10
+          }
+        ],
+        "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x000002325406F150>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+      }
+    },
+    {
+      "teste": "pedido_proprio_dados_2",
+      "tipo": "funcional_minimo",
+      "status": "reprovado",
+      "evidencia": {
+        "status": 500,
+        "corpo": "Internal Server Error",
+        "esperado": {
+          "numero": "PRIVADO_2",
+          "data": "2026-01-01",
+          "status": "pago",
+          "valor_total": 20
+        },
+        "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x000002325406ED10>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+      }
+    },
+    {
+      "teste": "campos_e_itens_2",
+      "tipo": "contrato_N1",
+      "status": "reprovado",
+      "evidencia": {
+        "status": 500,
+        "corpo": "Internal Server Error",
+        "esperado": "Dados do pedido e itens completos",
+        "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x000002325406ED10>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+      }
+    },
+    {
+      "teste": "itens_associados_2",
+      "tipo": "contrato_N1",
+      "status": "reprovado",
+      "evidencia": {
+        "status": 500,
+        "corpo": "Internal Server Error",
+        "esperado": [
+          {
+            "produto_nome": "ITEM_2",
+            "quantidade": 1,
+            "preco_unitario": 20
+          }
+        ],
+        "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x000002325406ED10>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+      }
+    },
+    {
+      "teste": "inexistente_404",
+      "tipo": "funcional_minimo",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 404,
+        "corpo": {
+          "detail": "Pedido não encontrado"
+        },
+        "esperado": "HTTP 404"
+      }
+    },
+    {
+      "teste": "itens_multiplos_valores",
+      "tipo": "contrato_N1",
+      "status": "reprovado",
+      "evidencia": {
+        "status": 500,
+        "corpo": "Internal Server Error",
+        "esperado": [
+          {
+            "produto_nome": "ITEM_1",
+            "quantidade": 1,
+            "preco_unitario": 10
+          },
+          {
+            "produto_nome": "ITEM_EXTRA",
+            "quantidade": 2,
+            "preco_unitario": 3.5
+          }
+        ],
+        "diagnostico": "ValidationError: 2 validation errors for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023253FF6850>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type\nitens.1\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023253FF5BD0>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+      }
+    },
+    {
+      "teste": "pedido_sem_itens",
+      "tipo": "contrato_N1",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": {
+          "numero": "SEM_ITENS",
+          "data": "2026-01-01",
+          "status": "pago",
+          "valor_total": 0.0,
+          "itens": []
+        },
+        "esperado": "Pedido existente com itens=[]"
+      }
+    },
+    {
+      "teste": "rota_contratada",
+      "tipo": "contrato_N1",
+      "status": "reprovado",
+      "evidencia": {
+        "status": 500,
+        "corpo": "Internal Server Error",
+        "esperado": "GET /pedidos/{id}",
+        "diagnostico": "ValidationError: 2 validation errors for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023254096190>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type\nitens.1\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023254096210>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+      }
+    },
+    {
+      "teste": "id_nao_numerico",
+      "tipo": "robustez",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 422,
+        "corpo": {
+          "detail": [
+            {
+              "type": "int_parsing",
+              "loc": [
+                "path",
+                "id"
+              ],
+              "msg": "Input should be a valid integer, unable to parse string as an integer",
+              "input": "abc"
+            }
+          ]
+        },
+        "esperado": "HTTP 400/404/422"
+      }
+    }
+  ],
+  "geracao_id": 35,
+  "ambiente": {
+    "python": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+    "packages": {
+      "aiosqlite": "0.22.1",
+      "annotated-types": "0.8.0",
+      "anyio": "4.15.1",
+      "bcrypt": "3.2.2",
+      "certifi": "2026.7.22",
+      "cffi": "2.1.1",
+      "dnspython": "2.8.0",
+      "email-validator": "2.3.0",
+      "fastapi": "0.115.12",
+      "greenlet": "3.5.6",
+      "h11": "0.16.0",
+      "httpcore": "1.0.9",
+      "httpx": "0.28.1",
+      "idna": "3.20",
+      "passlib": "1.7.4",
+      "pycparser": "3.0",
+      "pydantic": "2.13.5",
+      "pydantic_core": "2.46.5",
+      "sqlalchemy": "2.0.43",
+      "starlette": "0.46.2",
+      "typing_extensions": "4.16.0",
+      "typing-inspection": "0.4.4"
+    }
+  },
+  "codigo_sha256": "9d3aac665c83af77f8c53e0779b3a80a16ab970defd91db545fa0430e80cc0a5",
+  "variante": "v2",
+  "fontes": {
+    "aceitacao_worker.py": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3",
+    "comportamento_worker.py": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+    "revisar_casos.py": "b760f7d0af0a52524a18221fc459aff043fda86645571efacaeb2c41d21f8083"
+  }
+}

@@ -1,0 +1,2193 @@
+[
+  {
+    "estado": "inconclusivo",
+    "adaptacoes": [],
+    "testes": [],
+    "erro": "NameError: name 'Any' is not defined",
+    "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\aceitacao_worker.py\", line 269, in main\n    module,app=w.load(source_path,task,result['adaptacoes'])\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\comportamento_worker.py\", line 105, in load\n    spec.loader.exec_module(module)\n  File \"<frozen importlib._bootstrap_external>\", line 940, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\execucoes\\revisao-20260925-121215\\v1\\g7\\amostra.py\", line 46, in <module>\n    @app.post(\"/login\", response_model=LoginResponse, status_code=200)\n     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\routing.py\", line 994, in decorator\n    self.add_api_route(\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\routing.py\", line 933, in add_api_route\n    route = route_class(\n            ^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\routing.py\", line 554, in __init__\n    self.dependant = get_dependant(path=self.path_format, call=self.endpoint)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 292, in get_dependant\n    sub_dependant = get_param_sub_dependant(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 126, in get_param_sub_dependant\n    return get_sub_dependant(\n           ^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 162, in get_sub_dependant\n    sub_dependant = get_dependant(\n                    ^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 274, in get_dependant\n    endpoint_signature = get_typed_signature(call)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 234, in get_typed_signature\n    typed_params = [\n                   ^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 239, in <listcomp>\n    annotation=get_typed_annotation(param.annotation, globalns),\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 250, in get_typed_annotation\n    annotation = evaluate_forwardref(annotation, globalns, globalns)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"pydantic\\\\typing.py\", line 70, in pydantic.typing.evaluate_forwardref\n  File \"C:\\Users\\andre\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\typing.py\", line 871, in _evaluate\n    eval(self.__forward_code__, globalns, localns),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<string>\", line 1, in <module>\nNameError: name 'Any' is not defined\n",
+    "geracao_id": 7,
+    "ambiente": {
+      "python": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+      "packages": {
+        "aiosqlite": "0.22.1",
+        "anyio": "4.15.1",
+        "bcrypt": "3.2.2",
+        "certifi": "2026.7.22",
+        "cffi": "2.1.1",
+        "dnspython": "2.8.0",
+        "email-validator": "2.3.0",
+        "fastapi": "0.115.12",
+        "greenlet": "3.5.6",
+        "h11": "0.16.0",
+        "httpcore": "1.0.9",
+        "httpx": "0.28.1",
+        "idna": "3.20",
+        "passlib": "1.7.4",
+        "pycparser": "3.0",
+        "pydantic": "1.10.22",
+        "sqlalchemy": "2.0.43",
+        "starlette": "0.46.2",
+        "typing_extensions": "4.16.0"
+      }
+    },
+    "codigo_sha256": "36269fe7b3259c62aadb332719e7b3bfd6d45d14828f47cec684ece90f779a3d",
+    "variante": "v1",
+    "fontes": {
+      "aceitacao_worker.py": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3",
+      "comportamento_worker.py": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+      "revisar_casos.py": "b760f7d0af0a52524a18221fc459aff043fda86645571efacaeb2c41d21f8083"
+    }
+  },
+  {
+    "estado": "inconclusivo",
+    "erro": "timeout de 15s",
+    "categoria": "timeout",
+    "testes": [],
+    "adaptacoes": [],
+    "geracao_id": 11,
+    "ambiente": {
+      "python": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+      "packages": {
+        "aiosqlite": "0.22.1",
+        "anyio": "4.15.1",
+        "bcrypt": "3.2.2",
+        "certifi": "2026.7.22",
+        "cffi": "2.1.1",
+        "dnspython": "2.8.0",
+        "email-validator": "2.3.0",
+        "fastapi": "0.115.12",
+        "greenlet": "3.5.6",
+        "h11": "0.16.0",
+        "httpcore": "1.0.9",
+        "httpx": "0.28.1",
+        "idna": "3.20",
+        "passlib": "1.7.4",
+        "pycparser": "3.0",
+        "pydantic": "1.10.22",
+        "sqlalchemy": "2.0.43",
+        "starlette": "0.46.2",
+        "typing_extensions": "4.16.0"
+      }
+    },
+    "codigo_sha256": "e8cccce7e3391e2e12187b09b4132661c1e1059a4dcde240f990a3e29005b434",
+    "variante": "v1",
+    "fontes": {
+      "aceitacao_worker.py": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3",
+      "comportamento_worker.py": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+      "revisar_casos.py": "b760f7d0af0a52524a18221fc459aff043fda86645571efacaeb2c41d21f8083"
+    }
+  },
+  {
+    "estado": "concluido",
+    "adaptacoes": [
+      "Dependencia get_current_user substituida por identidades A/B; autenticador original nao avaliado",
+      "SQLite com pedidos 1/2 de usuarios 10/20 e um item por pedido; sem filtro no adapter"
+    ],
+    "testes": [
+      {
+        "teste": "pedido_proprio_dados_1",
+        "tipo": "funcional_minimo",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_1",
+                "quantidade": 1,
+                "preco_unitario": 10.0
+              }
+            ]
+          },
+          "esperado": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10
+          }
+        }
+      },
+      {
+        "teste": "campos_e_itens_1",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_1",
+                "quantidade": 1,
+                "preco_unitario": 10.0
+              }
+            ]
+          },
+          "esperado": "Dados do pedido e itens completos"
+        }
+      },
+      {
+        "teste": "itens_associados_1",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_1",
+                "quantidade": 1,
+                "preco_unitario": 10.0
+              }
+            ]
+          },
+          "esperado": [
+            {
+              "produto_nome": "ITEM_1",
+              "quantidade": 1,
+              "preco_unitario": 10
+            }
+          ]
+        }
+      },
+      {
+        "teste": "pedido_proprio_dados_2",
+        "tipo": "funcional_minimo",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_2",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 20.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_2",
+                "quantidade": 1,
+                "preco_unitario": 20.0
+              }
+            ]
+          },
+          "esperado": {
+            "numero": "PRIVADO_2",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 20
+          }
+        }
+      },
+      {
+        "teste": "campos_e_itens_2",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_2",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 20.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_2",
+                "quantidade": 1,
+                "preco_unitario": 20.0
+              }
+            ]
+          },
+          "esperado": "Dados do pedido e itens completos"
+        }
+      },
+      {
+        "teste": "itens_associados_2",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_2",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 20.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_2",
+                "quantidade": 1,
+                "preco_unitario": 20.0
+              }
+            ]
+          },
+          "esperado": [
+            {
+              "produto_nome": "ITEM_2",
+              "quantidade": 1,
+              "preco_unitario": 20
+            }
+          ]
+        }
+      },
+      {
+        "teste": "inexistente_404",
+        "tipo": "funcional_minimo",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 404,
+          "corpo": {
+            "detail": "Pedido não encontrado"
+          },
+          "esperado": "HTTP 404"
+        }
+      },
+      {
+        "teste": "itens_multiplos_valores",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_1",
+                "quantidade": 1,
+                "preco_unitario": 10.0
+              },
+              {
+                "produto_nome": "ITEM_EXTRA",
+                "quantidade": 2,
+                "preco_unitario": 3.5
+              }
+            ]
+          },
+          "esperado": [
+            {
+              "produto_nome": "ITEM_1",
+              "quantidade": 1,
+              "preco_unitario": 10
+            },
+            {
+              "produto_nome": "ITEM_EXTRA",
+              "quantidade": 2,
+              "preco_unitario": 3.5
+            }
+          ]
+        }
+      },
+      {
+        "teste": "pedido_sem_itens",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "SEM_ITENS",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 0.0,
+            "itens": []
+          },
+          "esperado": "Pedido existente com itens=[]"
+        }
+      },
+      {
+        "teste": "rota_contratada",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_1",
+                "quantidade": 1,
+                "preco_unitario": 10.0
+              },
+              {
+                "produto_nome": "ITEM_EXTRA",
+                "quantidade": 2,
+                "preco_unitario": 3.5
+              }
+            ]
+          },
+          "esperado": "GET /pedidos/{id}"
+        }
+      },
+      {
+        "teste": "id_nao_numerico",
+        "tipo": "robustez",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 422,
+          "corpo": {
+            "detail": [
+              {
+                "loc": [
+                  "path",
+                  "id"
+                ],
+                "msg": "value is not a valid integer",
+                "type": "type_error.integer"
+              }
+            ]
+          },
+          "esperado": "HTTP 400/404/422"
+        }
+      }
+    ],
+    "geracao_id": 33,
+    "ambiente": {
+      "python": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+      "packages": {
+        "aiosqlite": "0.22.1",
+        "anyio": "4.15.1",
+        "bcrypt": "3.2.2",
+        "certifi": "2026.7.22",
+        "cffi": "2.1.1",
+        "dnspython": "2.8.0",
+        "email-validator": "2.3.0",
+        "fastapi": "0.115.12",
+        "greenlet": "3.5.6",
+        "h11": "0.16.0",
+        "httpcore": "1.0.9",
+        "httpx": "0.28.1",
+        "idna": "3.20",
+        "passlib": "1.7.4",
+        "pycparser": "3.0",
+        "pydantic": "1.10.22",
+        "sqlalchemy": "2.0.43",
+        "starlette": "0.46.2",
+        "typing_extensions": "4.16.0"
+      }
+    },
+    "codigo_sha256": "782583aaea07b7e5138a7e3ef44b9f4c504c46a04842cceff99324efd681f680",
+    "variante": "v1",
+    "fontes": {
+      "aceitacao_worker.py": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3",
+      "comportamento_worker.py": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+      "revisar_casos.py": "b760f7d0af0a52524a18221fc459aff043fda86645571efacaeb2c41d21f8083"
+    }
+  },
+  {
+    "estado": "concluido",
+    "adaptacoes": [
+      "Dependencia get_usuario_id_do_token substituida por identidades A/B; autenticador original nao avaliado",
+      "SQLite com pedidos 1/2 de usuarios 10/20 e um item por pedido; sem filtro no adapter"
+    ],
+    "testes": [
+      {
+        "teste": "pedido_proprio_dados_1",
+        "tipo": "funcional_minimo",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_1",
+                "quantidade": 1,
+                "preco_unitario": 10.0
+              }
+            ]
+          },
+          "esperado": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10
+          }
+        }
+      },
+      {
+        "teste": "campos_e_itens_1",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_1",
+                "quantidade": 1,
+                "preco_unitario": 10.0
+              }
+            ]
+          },
+          "esperado": "Dados do pedido e itens completos"
+        }
+      },
+      {
+        "teste": "itens_associados_1",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_1",
+                "quantidade": 1,
+                "preco_unitario": 10.0
+              }
+            ]
+          },
+          "esperado": [
+            {
+              "produto_nome": "ITEM_1",
+              "quantidade": 1,
+              "preco_unitario": 10
+            }
+          ]
+        }
+      },
+      {
+        "teste": "pedido_proprio_dados_2",
+        "tipo": "funcional_minimo",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_2",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 20.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_2",
+                "quantidade": 1,
+                "preco_unitario": 20.0
+              }
+            ]
+          },
+          "esperado": {
+            "numero": "PRIVADO_2",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 20
+          }
+        }
+      },
+      {
+        "teste": "campos_e_itens_2",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_2",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 20.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_2",
+                "quantidade": 1,
+                "preco_unitario": 20.0
+              }
+            ]
+          },
+          "esperado": "Dados do pedido e itens completos"
+        }
+      },
+      {
+        "teste": "itens_associados_2",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_2",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 20.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_2",
+                "quantidade": 1,
+                "preco_unitario": 20.0
+              }
+            ]
+          },
+          "esperado": [
+            {
+              "produto_nome": "ITEM_2",
+              "quantidade": 1,
+              "preco_unitario": 20
+            }
+          ]
+        }
+      },
+      {
+        "teste": "inexistente_404",
+        "tipo": "funcional_minimo",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 404,
+          "corpo": {
+            "detail": "Pedido não encontrado"
+          },
+          "esperado": "HTTP 404"
+        }
+      },
+      {
+        "teste": "itens_multiplos_valores",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_1",
+                "quantidade": 1,
+                "preco_unitario": 10.0
+              },
+              {
+                "produto_nome": "ITEM_EXTRA",
+                "quantidade": 2,
+                "preco_unitario": 3.5
+              }
+            ]
+          },
+          "esperado": [
+            {
+              "produto_nome": "ITEM_1",
+              "quantidade": 1,
+              "preco_unitario": 10
+            },
+            {
+              "produto_nome": "ITEM_EXTRA",
+              "quantidade": 2,
+              "preco_unitario": 3.5
+            }
+          ]
+        }
+      },
+      {
+        "teste": "pedido_sem_itens",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "SEM_ITENS",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 0.0,
+            "itens": []
+          },
+          "esperado": "Pedido existente com itens=[]"
+        }
+      },
+      {
+        "teste": "rota_contratada",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_1",
+                "quantidade": 1,
+                "preco_unitario": 10.0
+              },
+              {
+                "produto_nome": "ITEM_EXTRA",
+                "quantidade": 2,
+                "preco_unitario": 3.5
+              }
+            ]
+          },
+          "esperado": "GET /pedidos/{id}"
+        }
+      },
+      {
+        "teste": "id_nao_numerico",
+        "tipo": "robustez",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 422,
+          "corpo": {
+            "detail": [
+              {
+                "loc": [
+                  "path",
+                  "id"
+                ],
+                "msg": "value is not a valid integer",
+                "type": "type_error.integer"
+              }
+            ]
+          },
+          "esperado": "HTTP 400/404/422"
+        }
+      }
+    ],
+    "geracao_id": 35,
+    "ambiente": {
+      "python": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+      "packages": {
+        "aiosqlite": "0.22.1",
+        "anyio": "4.15.1",
+        "bcrypt": "3.2.2",
+        "certifi": "2026.7.22",
+        "cffi": "2.1.1",
+        "dnspython": "2.8.0",
+        "email-validator": "2.3.0",
+        "fastapi": "0.115.12",
+        "greenlet": "3.5.6",
+        "h11": "0.16.0",
+        "httpcore": "1.0.9",
+        "httpx": "0.28.1",
+        "idna": "3.20",
+        "passlib": "1.7.4",
+        "pycparser": "3.0",
+        "pydantic": "1.10.22",
+        "sqlalchemy": "2.0.43",
+        "starlette": "0.46.2",
+        "typing_extensions": "4.16.0"
+      }
+    },
+    "codigo_sha256": "9d3aac665c83af77f8c53e0779b3a80a16ab970defd91db545fa0430e80cc0a5",
+    "variante": "v1",
+    "fontes": {
+      "aceitacao_worker.py": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3",
+      "comportamento_worker.py": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+      "revisar_casos.py": "b760f7d0af0a52524a18221fc459aff043fda86645571efacaeb2c41d21f8083"
+    }
+  },
+  {
+    "estado": "concluido",
+    "adaptacoes": [
+      "Dependencia get_usuario_id substituida por identidades A/B; autenticador original nao avaliado",
+      "SQLite com pedidos 1/2 de usuarios 10/20 e um item por pedido; sem filtro no adapter"
+    ],
+    "testes": [
+      {
+        "teste": "pedido_proprio_dados_1",
+        "tipo": "funcional_minimo",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_1",
+                "quantidade": 1,
+                "preco_unitario": 10.0
+              }
+            ]
+          },
+          "esperado": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10
+          }
+        }
+      },
+      {
+        "teste": "campos_e_itens_1",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_1",
+                "quantidade": 1,
+                "preco_unitario": 10.0
+              }
+            ]
+          },
+          "esperado": "Dados do pedido e itens completos"
+        }
+      },
+      {
+        "teste": "itens_associados_1",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_1",
+                "quantidade": 1,
+                "preco_unitario": 10.0
+              }
+            ]
+          },
+          "esperado": [
+            {
+              "produto_nome": "ITEM_1",
+              "quantidade": 1,
+              "preco_unitario": 10
+            }
+          ]
+        }
+      },
+      {
+        "teste": "pedido_proprio_dados_2",
+        "tipo": "funcional_minimo",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_2",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 20.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_2",
+                "quantidade": 1,
+                "preco_unitario": 20.0
+              }
+            ]
+          },
+          "esperado": {
+            "numero": "PRIVADO_2",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 20
+          }
+        }
+      },
+      {
+        "teste": "campos_e_itens_2",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_2",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 20.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_2",
+                "quantidade": 1,
+                "preco_unitario": 20.0
+              }
+            ]
+          },
+          "esperado": "Dados do pedido e itens completos"
+        }
+      },
+      {
+        "teste": "itens_associados_2",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_2",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 20.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_2",
+                "quantidade": 1,
+                "preco_unitario": 20.0
+              }
+            ]
+          },
+          "esperado": [
+            {
+              "produto_nome": "ITEM_2",
+              "quantidade": 1,
+              "preco_unitario": 20
+            }
+          ]
+        }
+      },
+      {
+        "teste": "inexistente_404",
+        "tipo": "funcional_minimo",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 404,
+          "corpo": {
+            "detail": "Pedido não encontrado"
+          },
+          "esperado": "HTTP 404"
+        }
+      },
+      {
+        "teste": "itens_multiplos_valores",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_1",
+                "quantidade": 1,
+                "preco_unitario": 10.0
+              },
+              {
+                "produto_nome": "ITEM_EXTRA",
+                "quantidade": 2,
+                "preco_unitario": 3.5
+              }
+            ]
+          },
+          "esperado": [
+            {
+              "produto_nome": "ITEM_1",
+              "quantidade": 1,
+              "preco_unitario": 10
+            },
+            {
+              "produto_nome": "ITEM_EXTRA",
+              "quantidade": 2,
+              "preco_unitario": 3.5
+            }
+          ]
+        }
+      },
+      {
+        "teste": "pedido_sem_itens",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "SEM_ITENS",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 0.0,
+            "itens": []
+          },
+          "esperado": "Pedido existente com itens=[]"
+        }
+      },
+      {
+        "teste": "rota_contratada",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10.0,
+            "itens": [
+              {
+                "produto_nome": "ITEM_1",
+                "quantidade": 1,
+                "preco_unitario": 10.0
+              },
+              {
+                "produto_nome": "ITEM_EXTRA",
+                "quantidade": 2,
+                "preco_unitario": 3.5
+              }
+            ]
+          },
+          "esperado": "GET /pedidos/{id}"
+        }
+      },
+      {
+        "teste": "id_nao_numerico",
+        "tipo": "robustez",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 422,
+          "corpo": {
+            "detail": [
+              {
+                "loc": [
+                  "path",
+                  "id"
+                ],
+                "msg": "value is not a valid integer",
+                "type": "type_error.integer"
+              }
+            ]
+          },
+          "esperado": "HTTP 400/404/422"
+        }
+      }
+    ],
+    "geracao_id": 36,
+    "ambiente": {
+      "python": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+      "packages": {
+        "aiosqlite": "0.22.1",
+        "anyio": "4.15.1",
+        "bcrypt": "3.2.2",
+        "certifi": "2026.7.22",
+        "cffi": "2.1.1",
+        "dnspython": "2.8.0",
+        "email-validator": "2.3.0",
+        "fastapi": "0.115.12",
+        "greenlet": "3.5.6",
+        "h11": "0.16.0",
+        "httpcore": "1.0.9",
+        "httpx": "0.28.1",
+        "idna": "3.20",
+        "passlib": "1.7.4",
+        "pycparser": "3.0",
+        "pydantic": "1.10.22",
+        "sqlalchemy": "2.0.43",
+        "starlette": "0.46.2",
+        "typing_extensions": "4.16.0"
+      }
+    },
+    "codigo_sha256": "fb0e27770f24ef5f334d6e79489e4c15e4fa4151a26594ea3d034081556fa11f",
+    "variante": "v1",
+    "fontes": {
+      "aceitacao_worker.py": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3",
+      "comportamento_worker.py": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+      "revisar_casos.py": "b760f7d0af0a52524a18221fc459aff043fda86645571efacaeb2c41d21f8083"
+    }
+  },
+  {
+    "estado": "inconclusivo",
+    "adaptacoes": [
+      "APIRouter montado em FastAPI sem middleware adicional",
+      "Dependencia get_current_user substituida por identidades A/B; autenticador original nao avaliado"
+    ],
+    "testes": [],
+    "erro": "ValueError: Classes ORM apenas declaradas, sem mapeamento; nao reparadas",
+    "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\aceitacao_worker.py\", line 270, in main\n    result['testes']=t06(module,app,source,result['adaptacoes']) if task=='T06' else (t02(module,app,result['adaptacoes']) if task=='T02' else t01(module,app,result['adaptacoes']))\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\aceitacao_worker.py\", line 192, in t06\n    prior=w.t06(module,app,source,adaptations)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\comportamento_worker.py\", line 212, in t06\n    engine = seed_orm(module, \"T06\", adaptacoes)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\comportamento_worker.py\", line 148, in seed_orm\n    raise ValueError(\"Classes ORM apenas declaradas, sem mapeamento; nao reparadas\")\nValueError: Classes ORM apenas declaradas, sem mapeamento; nao reparadas\n",
+    "geracao_id": 103,
+    "ambiente": {
+      "python": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+      "packages": {
+        "aiosqlite": "0.22.1",
+        "anyio": "4.15.1",
+        "bcrypt": "3.2.2",
+        "certifi": "2026.7.22",
+        "cffi": "2.1.1",
+        "dnspython": "2.8.0",
+        "email-validator": "2.3.0",
+        "fastapi": "0.115.12",
+        "greenlet": "3.5.6",
+        "h11": "0.16.0",
+        "httpcore": "1.0.9",
+        "httpx": "0.28.1",
+        "idna": "3.20",
+        "passlib": "1.7.4",
+        "pycparser": "3.0",
+        "pydantic": "1.10.22",
+        "sqlalchemy": "2.0.43",
+        "starlette": "0.46.2",
+        "typing_extensions": "4.16.0"
+      }
+    },
+    "codigo_sha256": "6de7c20b7e2c459321e9d79e7b0de5b4764453397c54d022b356349b31b46e7a",
+    "variante": "v1",
+    "fontes": {
+      "aceitacao_worker.py": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3",
+      "comportamento_worker.py": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+      "revisar_casos.py": "b760f7d0af0a52524a18221fc459aff043fda86645571efacaeb2c41d21f8083"
+    }
+  },
+  {
+    "estado": "inconclusivo",
+    "adaptacoes": [],
+    "testes": [],
+    "erro": "TypeError: Ellipsis is not a callable object",
+    "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\aceitacao_worker.py\", line 269, in main\n    module,app=w.load(source_path,task,result['adaptacoes'])\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\comportamento_worker.py\", line 105, in load\n    spec.loader.exec_module(module)\n  File \"<frozen importlib._bootstrap_external>\", line 940, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\execucoes\\revisao-20260925-121215\\v1\\g107\\amostra.py\", line 32, in <module>\n    @router.get(\"/pedidos/{id}\", response_model=PedidoOut)\n     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\routing.py\", line 994, in decorator\n    self.add_api_route(\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\routing.py\", line 933, in add_api_route\n    route = route_class(\n            ^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\routing.py\", line 554, in __init__\n    self.dependant = get_dependant(path=self.path_format, call=self.endpoint)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 292, in get_dependant\n    sub_dependant = get_param_sub_dependant(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 126, in get_param_sub_dependant\n    return get_sub_dependant(\n           ^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 162, in get_sub_dependant\n    sub_dependant = get_dependant(\n                    ^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 274, in get_dependant\n    endpoint_signature = get_typed_signature(call)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 232, in get_typed_signature\n    signature = inspect.signature(call)\n                ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\inspect.py\", line 3272, in signature\n    return Signature.from_callable(obj, follow_wrapped=follow_wrapped,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\inspect.py\", line 3020, in from_callable\n    return _signature_from_callable(obj, sigcls=cls,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\inspect.py\", line 2443, in _signature_from_callable\n    raise TypeError('{!r} is not a callable object'.format(obj))\nTypeError: Ellipsis is not a callable object\n",
+    "geracao_id": 107,
+    "ambiente": {
+      "python": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+      "packages": {
+        "aiosqlite": "0.22.1",
+        "anyio": "4.15.1",
+        "bcrypt": "3.2.2",
+        "certifi": "2026.7.22",
+        "cffi": "2.1.1",
+        "dnspython": "2.8.0",
+        "email-validator": "2.3.0",
+        "fastapi": "0.115.12",
+        "greenlet": "3.5.6",
+        "h11": "0.16.0",
+        "httpcore": "1.0.9",
+        "httpx": "0.28.1",
+        "idna": "3.20",
+        "passlib": "1.7.4",
+        "pycparser": "3.0",
+        "pydantic": "1.10.22",
+        "sqlalchemy": "2.0.43",
+        "starlette": "0.46.2",
+        "typing_extensions": "4.16.0"
+      }
+    },
+    "codigo_sha256": "89343620bb661de84ac6f6f606d03a3b51db84554ec1d66bc34256becd0d0ef3",
+    "variante": "v1",
+    "fontes": {
+      "aceitacao_worker.py": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3",
+      "comportamento_worker.py": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+      "revisar_casos.py": "b760f7d0af0a52524a18221fc459aff043fda86645571efacaeb2c41d21f8083"
+    }
+  },
+  {
+    "estado": "concluido",
+    "adaptacoes": [
+      "Usuarios de teste inseridos; hash pelo helper original quando presente"
+    ],
+    "testes": [
+      {
+        "teste": "login_valido_0",
+        "tipo": "funcional_minimo",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 422,
+          "corpo": {
+            "detail": [
+              {
+                "type": "missing",
+                "loc": [
+                  "query",
+                  "local_kw"
+                ],
+                "msg": "Field required",
+                "input": null
+              }
+            ]
+          },
+          "esperado": "HTTP 200"
+        }
+      },
+      {
+        "teste": "login_valido_1",
+        "tipo": "funcional_minimo",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 422,
+          "corpo": {
+            "detail": [
+              {
+                "type": "missing",
+                "loc": [
+                  "query",
+                  "local_kw"
+                ],
+                "msg": "Field required",
+                "input": null
+              }
+            ]
+          },
+          "esperado": "HTTP 200"
+        }
+      },
+      {
+        "teste": "senha_errada",
+        "tipo": "funcional_minimo",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 422,
+          "corpo": {
+            "detail": [
+              {
+                "type": "missing",
+                "loc": [
+                  "query",
+                  "local_kw"
+                ],
+                "msg": "Field required",
+                "input": null
+              }
+            ]
+          },
+          "esperado": "Rejeicao 400/401/403"
+        }
+      },
+      {
+        "teste": "conta_inexistente",
+        "tipo": "funcional_minimo",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 422,
+          "corpo": {
+            "detail": [
+              {
+                "type": "missing",
+                "loc": [
+                  "query",
+                  "local_kw"
+                ],
+                "msg": "Field required",
+                "input": null
+              }
+            ]
+          },
+          "esperado": "Rejeicao 400/401/403"
+        }
+      },
+      {
+        "teste": "identidade_exata_3",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 422,
+          "corpo": {
+            "detail": [
+              {
+                "type": "missing",
+                "loc": [
+                  "query",
+                  "local_kw"
+                ],
+                "msg": "Field required",
+                "input": null
+              }
+            ]
+          },
+          "esperado": {
+            "id": 4,
+            "nome": "Usuario 3"
+          }
+        }
+      },
+      {
+        "teste": "identidade_exata_4",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 422,
+          "corpo": {
+            "detail": [
+              {
+                "type": "missing",
+                "loc": [
+                  "query",
+                  "local_kw"
+                ],
+                "msg": "Field required",
+                "input": null
+              }
+            ]
+          },
+          "esperado": {
+            "id": 5,
+            "nome": "Usuario 4"
+          }
+        }
+      },
+      {
+        "teste": "credencial_errada_401",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 422,
+          "corpo": {
+            "detail": [
+              {
+                "type": "missing",
+                "loc": [
+                  "query",
+                  "local_kw"
+                ],
+                "msg": "Field required",
+                "input": null
+              }
+            ]
+          },
+          "esperado": "HTTP 401"
+        }
+      },
+      {
+        "teste": "inexistente_401",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 422,
+          "corpo": {
+            "detail": [
+              {
+                "type": "missing",
+                "loc": [
+                  "query",
+                  "local_kw"
+                ],
+                "msg": "Field required",
+                "input": null
+              }
+            ]
+          },
+          "esperado": "HTTP 401"
+        }
+      },
+      {
+        "teste": "sem_email",
+        "tipo": "robustez",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 422,
+          "corpo": {
+            "detail": [
+              {
+                "type": "missing",
+                "loc": [
+                  "query",
+                  "local_kw"
+                ],
+                "msg": "Field required",
+                "input": null
+              },
+              {
+                "type": "missing",
+                "loc": [
+                  "body",
+                  "email"
+                ],
+                "msg": "Field required",
+                "input": {
+                  "senha": "SenhaTeste_42!"
+                }
+              }
+            ]
+          },
+          "esperado": "HTTP 400 ou 422"
+        }
+      },
+      {
+        "teste": "sem_senha",
+        "tipo": "robustez",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 422,
+          "corpo": {
+            "detail": [
+              {
+                "type": "missing",
+                "loc": [
+                  "query",
+                  "local_kw"
+                ],
+                "msg": "Field required",
+                "input": null
+              },
+              {
+                "type": "missing",
+                "loc": [
+                  "body",
+                  "senha"
+                ],
+                "msg": "Field required",
+                "input": {
+                  "email": "u6@example.com"
+                }
+              }
+            ]
+          },
+          "esperado": "HTTP 400 ou 422"
+        }
+      },
+      {
+        "teste": "vazio",
+        "tipo": "robustez",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 422,
+          "corpo": {
+            "detail": [
+              {
+                "type": "missing",
+                "loc": [
+                  "query",
+                  "local_kw"
+                ],
+                "msg": "Field required",
+                "input": null
+              },
+              {
+                "type": "missing",
+                "loc": [
+                  "body",
+                  "email"
+                ],
+                "msg": "Field required",
+                "input": {}
+              },
+              {
+                "type": "missing",
+                "loc": [
+                  "body",
+                  "senha"
+                ],
+                "msg": "Field required",
+                "input": {}
+              }
+            ]
+          },
+          "esperado": "HTTP 400 ou 422"
+        }
+      }
+    ],
+    "geracao_id": 7,
+    "ambiente": {
+      "python": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+      "packages": {
+        "aiosqlite": "0.22.1",
+        "annotated-types": "0.8.0",
+        "anyio": "4.15.1",
+        "bcrypt": "3.2.2",
+        "certifi": "2026.7.22",
+        "cffi": "2.1.1",
+        "dnspython": "2.8.0",
+        "email-validator": "2.3.0",
+        "fastapi": "0.115.12",
+        "greenlet": "3.5.6",
+        "h11": "0.16.0",
+        "httpcore": "1.0.9",
+        "httpx": "0.28.1",
+        "idna": "3.20",
+        "passlib": "1.7.4",
+        "pycparser": "3.0",
+        "pydantic": "2.13.5",
+        "pydantic_core": "2.46.5",
+        "sqlalchemy": "2.0.43",
+        "starlette": "0.46.2",
+        "typing_extensions": "4.16.0",
+        "typing-inspection": "0.4.4"
+      }
+    },
+    "codigo_sha256": "36269fe7b3259c62aadb332719e7b3bfd6d45d14828f47cec684ece90f779a3d",
+    "variante": "v2",
+    "fontes": {
+      "aceitacao_worker.py": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3",
+      "comportamento_worker.py": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+      "revisar_casos.py": "b760f7d0af0a52524a18221fc459aff043fda86645571efacaeb2c41d21f8083"
+    }
+  },
+  {
+    "estado": "inconclusivo",
+    "erro": "timeout de 15s",
+    "categoria": "timeout",
+    "testes": [],
+    "adaptacoes": [],
+    "geracao_id": 11,
+    "ambiente": {
+      "python": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+      "packages": {
+        "aiosqlite": "0.22.1",
+        "annotated-types": "0.8.0",
+        "anyio": "4.15.1",
+        "bcrypt": "3.2.2",
+        "certifi": "2026.7.22",
+        "cffi": "2.1.1",
+        "dnspython": "2.8.0",
+        "email-validator": "2.3.0",
+        "fastapi": "0.115.12",
+        "greenlet": "3.5.6",
+        "h11": "0.16.0",
+        "httpcore": "1.0.9",
+        "httpx": "0.28.1",
+        "idna": "3.20",
+        "passlib": "1.7.4",
+        "pycparser": "3.0",
+        "pydantic": "2.13.5",
+        "pydantic_core": "2.46.5",
+        "sqlalchemy": "2.0.43",
+        "starlette": "0.46.2",
+        "typing_extensions": "4.16.0",
+        "typing-inspection": "0.4.4"
+      }
+    },
+    "codigo_sha256": "e8cccce7e3391e2e12187b09b4132661c1e1059a4dcde240f990a3e29005b434",
+    "variante": "v2",
+    "fontes": {
+      "aceitacao_worker.py": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3",
+      "comportamento_worker.py": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+      "revisar_casos.py": "b760f7d0af0a52524a18221fc459aff043fda86645571efacaeb2c41d21f8083"
+    }
+  },
+  {
+    "estado": "concluido",
+    "adaptacoes": [
+      "Dependencia get_current_user substituida por identidades A/B; autenticador original nao avaliado",
+      "SQLite com pedidos 1/2 de usuarios 10/20 e um item por pedido; sem filtro no adapter"
+    ],
+    "testes": [
+      {
+        "teste": "pedido_proprio_dados_1",
+        "tipo": "funcional_minimo",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10
+          },
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<comportamento_worker.inf...t at 0x0000020568ED6510>, input_type=infra_externa.<locals>.ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "campos_e_itens_1",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": "Dados do pedido e itens completos",
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<comportamento_worker.inf...t at 0x0000020568ED6510>, input_type=infra_externa.<locals>.ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "itens_associados_1",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": [
+            {
+              "produto_nome": "ITEM_1",
+              "quantidade": 1,
+              "preco_unitario": 10
+            }
+          ],
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<comportamento_worker.inf...t at 0x0000020568ED6510>, input_type=infra_externa.<locals>.ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "pedido_proprio_dados_2",
+        "tipo": "funcional_minimo",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": {
+            "numero": "PRIVADO_2",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 20
+          },
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<comportamento_worker.inf...t at 0x0000020568F04110>, input_type=infra_externa.<locals>.ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "campos_e_itens_2",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": "Dados do pedido e itens completos",
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<comportamento_worker.inf...t at 0x0000020568F04110>, input_type=infra_externa.<locals>.ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "itens_associados_2",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": [
+            {
+              "produto_nome": "ITEM_2",
+              "quantidade": 1,
+              "preco_unitario": 20
+            }
+          ],
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<comportamento_worker.inf...t at 0x0000020568F04110>, input_type=infra_externa.<locals>.ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "inexistente_404",
+        "tipo": "funcional_minimo",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 404,
+          "corpo": {
+            "detail": "Pedido não encontrado"
+          },
+          "esperado": "HTTP 404"
+        }
+      },
+      {
+        "teste": "itens_multiplos_valores",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": [
+            {
+              "produto_nome": "ITEM_1",
+              "quantidade": 1,
+              "preco_unitario": 10
+            },
+            {
+              "produto_nome": "ITEM_EXTRA",
+              "quantidade": 2,
+              "preco_unitario": 3.5
+            }
+          ],
+          "diagnostico": "ValidationError: 2 validation errors for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<comportamento_worker.inf...t at 0x0000020568F18DD0>, input_type=infra_externa.<locals>.ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type\nitens.1\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<comportamento_worker.inf...t at 0x0000020568F18E10>, input_type=infra_externa.<locals>.ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "pedido_sem_itens",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "SEM_ITENS",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 0.0,
+            "itens": []
+          },
+          "esperado": "Pedido existente com itens=[]"
+        }
+      },
+      {
+        "teste": "rota_contratada",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": "GET /pedidos/{id}",
+          "diagnostico": "ValidationError: 2 validation errors for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<comportamento_worker.inf...t at 0x0000020568F20F50>, input_type=infra_externa.<locals>.ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type\nitens.1\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<comportamento_worker.inf...t at 0x0000020568F21050>, input_type=infra_externa.<locals>.ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "id_nao_numerico",
+        "tipo": "robustez",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 422,
+          "corpo": {
+            "detail": [
+              {
+                "type": "int_parsing",
+                "loc": [
+                  "path",
+                  "id"
+                ],
+                "msg": "Input should be a valid integer, unable to parse string as an integer",
+                "input": "abc"
+              }
+            ]
+          },
+          "esperado": "HTTP 400/404/422"
+        }
+      }
+    ],
+    "geracao_id": 33,
+    "ambiente": {
+      "python": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+      "packages": {
+        "aiosqlite": "0.22.1",
+        "annotated-types": "0.8.0",
+        "anyio": "4.15.1",
+        "bcrypt": "3.2.2",
+        "certifi": "2026.7.22",
+        "cffi": "2.1.1",
+        "dnspython": "2.8.0",
+        "email-validator": "2.3.0",
+        "fastapi": "0.115.12",
+        "greenlet": "3.5.6",
+        "h11": "0.16.0",
+        "httpcore": "1.0.9",
+        "httpx": "0.28.1",
+        "idna": "3.20",
+        "passlib": "1.7.4",
+        "pycparser": "3.0",
+        "pydantic": "2.13.5",
+        "pydantic_core": "2.46.5",
+        "sqlalchemy": "2.0.43",
+        "starlette": "0.46.2",
+        "typing_extensions": "4.16.0",
+        "typing-inspection": "0.4.4"
+      }
+    },
+    "codigo_sha256": "782583aaea07b7e5138a7e3ef44b9f4c504c46a04842cceff99324efd681f680",
+    "variante": "v2",
+    "fontes": {
+      "aceitacao_worker.py": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3",
+      "comportamento_worker.py": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+      "revisar_casos.py": "b760f7d0af0a52524a18221fc459aff043fda86645571efacaeb2c41d21f8083"
+    }
+  },
+  {
+    "estado": "concluido",
+    "adaptacoes": [
+      "Dependencia get_usuario_id_do_token substituida por identidades A/B; autenticador original nao avaliado",
+      "SQLite com pedidos 1/2 de usuarios 10/20 e um item por pedido; sem filtro no adapter"
+    ],
+    "testes": [
+      {
+        "teste": "pedido_proprio_dados_1",
+        "tipo": "funcional_minimo",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10
+          },
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x000002325406F150>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "campos_e_itens_1",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": "Dados do pedido e itens completos",
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x000002325406F150>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "itens_associados_1",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": [
+            {
+              "produto_nome": "ITEM_1",
+              "quantidade": 1,
+              "preco_unitario": 10
+            }
+          ],
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x000002325406F150>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "pedido_proprio_dados_2",
+        "tipo": "funcional_minimo",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": {
+            "numero": "PRIVADO_2",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 20
+          },
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x000002325406ED10>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "campos_e_itens_2",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": "Dados do pedido e itens completos",
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x000002325406ED10>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "itens_associados_2",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": [
+            {
+              "produto_nome": "ITEM_2",
+              "quantidade": 1,
+              "preco_unitario": 20
+            }
+          ],
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x000002325406ED10>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "inexistente_404",
+        "tipo": "funcional_minimo",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 404,
+          "corpo": {
+            "detail": "Pedido não encontrado"
+          },
+          "esperado": "HTTP 404"
+        }
+      },
+      {
+        "teste": "itens_multiplos_valores",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": [
+            {
+              "produto_nome": "ITEM_1",
+              "quantidade": 1,
+              "preco_unitario": 10
+            },
+            {
+              "produto_nome": "ITEM_EXTRA",
+              "quantidade": 2,
+              "preco_unitario": 3.5
+            }
+          ],
+          "diagnostico": "ValidationError: 2 validation errors for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023253FF6850>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type\nitens.1\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023253FF5BD0>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "pedido_sem_itens",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "SEM_ITENS",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 0.0,
+            "itens": []
+          },
+          "esperado": "Pedido existente com itens=[]"
+        }
+      },
+      {
+        "teste": "rota_contratada",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": "GET /pedidos/{id}",
+          "diagnostico": "ValidationError: 2 validation errors for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023254096190>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type\nitens.1\n  Input should be a valid dictionary or instance of ItemResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023254096210>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "id_nao_numerico",
+        "tipo": "robustez",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 422,
+          "corpo": {
+            "detail": [
+              {
+                "type": "int_parsing",
+                "loc": [
+                  "path",
+                  "id"
+                ],
+                "msg": "Input should be a valid integer, unable to parse string as an integer",
+                "input": "abc"
+              }
+            ]
+          },
+          "esperado": "HTTP 400/404/422"
+        }
+      }
+    ],
+    "geracao_id": 35,
+    "ambiente": {
+      "python": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+      "packages": {
+        "aiosqlite": "0.22.1",
+        "annotated-types": "0.8.0",
+        "anyio": "4.15.1",
+        "bcrypt": "3.2.2",
+        "certifi": "2026.7.22",
+        "cffi": "2.1.1",
+        "dnspython": "2.8.0",
+        "email-validator": "2.3.0",
+        "fastapi": "0.115.12",
+        "greenlet": "3.5.6",
+        "h11": "0.16.0",
+        "httpcore": "1.0.9",
+        "httpx": "0.28.1",
+        "idna": "3.20",
+        "passlib": "1.7.4",
+        "pycparser": "3.0",
+        "pydantic": "2.13.5",
+        "pydantic_core": "2.46.5",
+        "sqlalchemy": "2.0.43",
+        "starlette": "0.46.2",
+        "typing_extensions": "4.16.0",
+        "typing-inspection": "0.4.4"
+      }
+    },
+    "codigo_sha256": "9d3aac665c83af77f8c53e0779b3a80a16ab970defd91db545fa0430e80cc0a5",
+    "variante": "v2",
+    "fontes": {
+      "aceitacao_worker.py": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3",
+      "comportamento_worker.py": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+      "revisar_casos.py": "b760f7d0af0a52524a18221fc459aff043fda86645571efacaeb2c41d21f8083"
+    }
+  },
+  {
+    "estado": "concluido",
+    "adaptacoes": [
+      "Dependencia get_usuario_id substituida por identidades A/B; autenticador original nao avaliado",
+      "SQLite com pedidos 1/2 de usuarios 10/20 e um item por pedido; sem filtro no adapter"
+    ],
+    "testes": [
+      {
+        "teste": "pedido_proprio_dados_1",
+        "tipo": "funcional_minimo",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": {
+            "numero": "PRIVADO_1",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 10
+          },
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemPedidoResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023C7D38AB10>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "campos_e_itens_1",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": "Dados do pedido e itens completos",
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemPedidoResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023C7D38AB10>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "itens_associados_1",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": [
+            {
+              "produto_nome": "ITEM_1",
+              "quantidade": 1,
+              "preco_unitario": 10
+            }
+          ],
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemPedidoResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023C7D38AB10>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "pedido_proprio_dados_2",
+        "tipo": "funcional_minimo",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": {
+            "numero": "PRIVADO_2",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 20
+          },
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemPedidoResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023C7D3A4850>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "campos_e_itens_2",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": "Dados do pedido e itens completos",
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemPedidoResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023C7D3A4850>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "itens_associados_2",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": [
+            {
+              "produto_nome": "ITEM_2",
+              "quantidade": 1,
+              "preco_unitario": 20
+            }
+          ],
+          "diagnostico": "ValidationError: 1 validation error for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemPedidoResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023C7D3A4850>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "inexistente_404",
+        "tipo": "funcional_minimo",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 404,
+          "corpo": {
+            "detail": "Pedido não encontrado"
+          },
+          "esperado": "HTTP 404"
+        }
+      },
+      {
+        "teste": "itens_multiplos_valores",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": [
+            {
+              "produto_nome": "ITEM_1",
+              "quantidade": 1,
+              "preco_unitario": 10
+            },
+            {
+              "produto_nome": "ITEM_EXTRA",
+              "quantidade": 2,
+              "preco_unitario": 3.5
+            }
+          ],
+          "diagnostico": "ValidationError: 2 validation errors for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemPedidoResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023C7D3CC810>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type\nitens.1\n  Input should be a valid dictionary or instance of ItemPedidoResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023C7D31D090>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "pedido_sem_itens",
+        "tipo": "contrato_N1",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 200,
+          "corpo": {
+            "numero": "SEM_ITENS",
+            "data": "2026-01-01",
+            "status": "pago",
+            "valor_total": 0.0,
+            "itens": []
+          },
+          "esperado": "Pedido existente com itens=[]"
+        }
+      },
+      {
+        "teste": "rota_contratada",
+        "tipo": "contrato_N1",
+        "status": "reprovado",
+        "evidencia": {
+          "status": 500,
+          "corpo": "Internal Server Error",
+          "esperado": "GET /pedidos/{id}",
+          "diagnostico": "ValidationError: 2 validation errors for PedidoResponse\nitens.0\n  Input should be a valid dictionary or instance of ItemPedidoResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023C7D3BABD0>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type\nitens.1\n  Input should be a valid dictionary or instance of ItemPedidoResponse [type=model_type, input_value=<amostra.ItemPedido object at 0x0000023C7D3B9490>, input_type=ItemPedido]\n    For further information visit https://errors.pydantic.dev/2.13/v/model_type"
+        }
+      },
+      {
+        "teste": "id_nao_numerico",
+        "tipo": "robustez",
+        "status": "aprovado",
+        "evidencia": {
+          "status": 422,
+          "corpo": {
+            "detail": [
+              {
+                "type": "int_parsing",
+                "loc": [
+                  "path",
+                  "id"
+                ],
+                "msg": "Input should be a valid integer, unable to parse string as an integer",
+                "input": "abc"
+              }
+            ]
+          },
+          "esperado": "HTTP 400/404/422"
+        }
+      }
+    ],
+    "geracao_id": 36,
+    "ambiente": {
+      "python": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+      "packages": {
+        "aiosqlite": "0.22.1",
+        "annotated-types": "0.8.0",
+        "anyio": "4.15.1",
+        "bcrypt": "3.2.2",
+        "certifi": "2026.7.22",
+        "cffi": "2.1.1",
+        "dnspython": "2.8.0",
+        "email-validator": "2.3.0",
+        "fastapi": "0.115.12",
+        "greenlet": "3.5.6",
+        "h11": "0.16.0",
+        "httpcore": "1.0.9",
+        "httpx": "0.28.1",
+        "idna": "3.20",
+        "passlib": "1.7.4",
+        "pycparser": "3.0",
+        "pydantic": "2.13.5",
+        "pydantic_core": "2.46.5",
+        "sqlalchemy": "2.0.43",
+        "starlette": "0.46.2",
+        "typing_extensions": "4.16.0",
+        "typing-inspection": "0.4.4"
+      }
+    },
+    "codigo_sha256": "fb0e27770f24ef5f334d6e79489e4c15e4fa4151a26594ea3d034081556fa11f",
+    "variante": "v2",
+    "fontes": {
+      "aceitacao_worker.py": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3",
+      "comportamento_worker.py": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+      "revisar_casos.py": "b760f7d0af0a52524a18221fc459aff043fda86645571efacaeb2c41d21f8083"
+    }
+  },
+  {
+    "estado": "inconclusivo",
+    "adaptacoes": [
+      "APIRouter montado em FastAPI sem middleware adicional",
+      "Dependencia get_current_user substituida por identidades A/B; autenticador original nao avaliado"
+    ],
+    "testes": [],
+    "erro": "ValueError: Classes ORM apenas declaradas, sem mapeamento; nao reparadas",
+    "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\aceitacao_worker.py\", line 270, in main\n    result['testes']=t06(module,app,source,result['adaptacoes']) if task=='T06' else (t02(module,app,result['adaptacoes']) if task=='T02' else t01(module,app,result['adaptacoes']))\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\aceitacao_worker.py\", line 192, in t06\n    prior=w.t06(module,app,source,adaptations)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\comportamento_worker.py\", line 212, in t06\n    engine = seed_orm(module, \"T06\", adaptacoes)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\comportamento_worker.py\", line 148, in seed_orm\n    raise ValueError(\"Classes ORM apenas declaradas, sem mapeamento; nao reparadas\")\nValueError: Classes ORM apenas declaradas, sem mapeamento; nao reparadas\n",
+    "geracao_id": 103,
+    "ambiente": {
+      "python": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+      "packages": {
+        "aiosqlite": "0.22.1",
+        "annotated-types": "0.8.0",
+        "anyio": "4.15.1",
+        "bcrypt": "3.2.2",
+        "certifi": "2026.7.22",
+        "cffi": "2.1.1",
+        "dnspython": "2.8.0",
+        "email-validator": "2.3.0",
+        "fastapi": "0.115.12",
+        "greenlet": "3.5.6",
+        "h11": "0.16.0",
+        "httpcore": "1.0.9",
+        "httpx": "0.28.1",
+        "idna": "3.20",
+        "passlib": "1.7.4",
+        "pycparser": "3.0",
+        "pydantic": "2.13.5",
+        "pydantic_core": "2.46.5",
+        "sqlalchemy": "2.0.43",
+        "starlette": "0.46.2",
+        "typing_extensions": "4.16.0",
+        "typing-inspection": "0.4.4"
+      }
+    },
+    "codigo_sha256": "6de7c20b7e2c459321e9d79e7b0de5b4764453397c54d022b356349b31b46e7a",
+    "variante": "v2",
+    "fontes": {
+      "aceitacao_worker.py": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3",
+      "comportamento_worker.py": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+      "revisar_casos.py": "b760f7d0af0a52524a18221fc459aff043fda86645571efacaeb2c41d21f8083"
+    }
+  },
+  {
+    "estado": "inconclusivo",
+    "adaptacoes": [],
+    "testes": [],
+    "erro": "TypeError: Ellipsis is not a callable object",
+    "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\aceitacao_worker.py\", line 269, in main\n    module,app=w.load(source_path,task,result['adaptacoes'])\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\comportamento_worker.py\", line 105, in load\n    spec.loader.exec_module(module)\n  File \"<frozen importlib._bootstrap_external>\", line 940, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\execucoes\\revisao-20260925-121215\\v2\\g107\\amostra.py\", line 32, in <module>\n    @router.get(\"/pedidos/{id}\", response_model=PedidoOut)\n     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v2\\Lib\\site-packages\\fastapi\\routing.py\", line 994, in decorator\n    self.add_api_route(\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v2\\Lib\\site-packages\\fastapi\\routing.py\", line 933, in add_api_route\n    route = route_class(\n            ^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v2\\Lib\\site-packages\\fastapi\\routing.py\", line 554, in __init__\n    self.dependant = get_dependant(path=self.path_format, call=self.endpoint)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v2\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 292, in get_dependant\n    sub_dependant = get_param_sub_dependant(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v2\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 126, in get_param_sub_dependant\n    return get_sub_dependant(\n           ^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v2\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 162, in get_sub_dependant\n    sub_dependant = get_dependant(\n                    ^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v2\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 274, in get_dependant\n    endpoint_signature = get_typed_signature(call)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v2\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 232, in get_typed_signature\n    signature = inspect.signature(call)\n                ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\inspect.py\", line 3272, in signature\n    return Signature.from_callable(obj, follow_wrapped=follow_wrapped,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\inspect.py\", line 3020, in from_callable\n    return _signature_from_callable(obj, sigcls=cls,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\inspect.py\", line 2443, in _signature_from_callable\n    raise TypeError('{!r} is not a callable object'.format(obj))\nTypeError: Ellipsis is not a callable object\n",
+    "geracao_id": 107,
+    "ambiente": {
+      "python": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+      "packages": {
+        "aiosqlite": "0.22.1",
+        "annotated-types": "0.8.0",
+        "anyio": "4.15.1",
+        "bcrypt": "3.2.2",
+        "certifi": "2026.7.22",
+        "cffi": "2.1.1",
+        "dnspython": "2.8.0",
+        "email-validator": "2.3.0",
+        "fastapi": "0.115.12",
+        "greenlet": "3.5.6",
+        "h11": "0.16.0",
+        "httpcore": "1.0.9",
+        "httpx": "0.28.1",
+        "idna": "3.20",
+        "passlib": "1.7.4",
+        "pycparser": "3.0",
+        "pydantic": "2.13.5",
+        "pydantic_core": "2.46.5",
+        "sqlalchemy": "2.0.43",
+        "starlette": "0.46.2",
+        "typing_extensions": "4.16.0",
+        "typing-inspection": "0.4.4"
+      }
+    },
+    "codigo_sha256": "89343620bb661de84ac6f6f606d03a3b51db84554ec1d66bc34256becd0d0ef3",
+    "variante": "v2",
+    "fontes": {
+      "aceitacao_worker.py": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3",
+      "comportamento_worker.py": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+      "revisar_casos.py": "b760f7d0af0a52524a18221fc459aff043fda86645571efacaeb2c41d21f8083"
+    }
+  }
+]

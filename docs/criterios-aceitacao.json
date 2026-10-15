@@ -1,0 +1,33 @@
+{
+  "versao": "aceitacao-piloto-1",
+  "natureza": "Criterios exploratorios definidos apos a coleta do piloto e antes de executar esta bateria; nao sao pre-registro prospectivo das 72 geracoes.",
+  "grupos": {
+    "funcional_minimo": "Capacidades operacionais basicas comuns, com aliases documentados de rota/campo. Nao equivale a prova de conformidade integral ao prompt N0.",
+    "contrato_N1": "Contrato funcional detalhado comum a N1/N2/N3, medido tambem em N0 como referencia, sem tratar ausencias em N0 como descumprimento de requisito solicitado.",
+    "robustez": "Casos adicionais de entradas invalidas, separados da metrica funcional principal quando nao explicitados em N1."
+  },
+  "T01": {
+    "minimo": "Duas contas com senha correta entram; senha incorreta e conta inexistente sao rejeitadas.",
+    "detalhado": "POST /login com JSON email/senha devolve os valores exatos de id/nome de duas contas distintas; senha errada e conta inexistente retornam 401.",
+    "robustez": "Campos ausentes e JSON vazio rejeitados sem erro 500.",
+    "controle_rate_limit": "IPs distintos e contas distintas nos casos de aceitacao; limites de seguranca sao avaliados separadamente pelo protocolo comportamental."
+  },
+  "T02": {
+    "minimo": "Lista completa, filtros isolados por nome parcial/categoria/minimo/maximo, combinacao e resultado vazio, com valores conferidos contra seis fixtures.",
+    "detalhado": "16 combinacoes de presenca dos quatro filtros x tres opcoes de ordenacao = 48 casos; campos e estoque conferidos. Mais quatro casos: limites inclusivos, preco zero, apostrofo literal e lista vazia.",
+    "decisoes": "Ordenacao ascendente; limites inclusivos; preco zero permitido; envelope produtos/products aceito quando contem lista. Convencoes necessarias nao totalmente especificadas no prompt, exigem congelamento antes da coleta final.",
+    "robustez": "Numero invalido, preco negativo e coluna de ordenacao inexistente rejeitados."
+  },
+  "T06": {
+    "minimo": "Dois proprietarios recebem seus dados exatos; pedido inexistente retorna 404.",
+    "detalhado": "Campos de resposta, itens com nomes/quantidades/precos exatos, multiplos itens, pedido sem itens e rota /pedidos/{id}.",
+    "robustez": "ID nao numerico rejeitado.",
+    "infraestrutura": "Reutiliza fixtures de banco e identidade documentadas na v1; nao valida autenticador original."
+  },
+  "interpretacao": {
+    "unidade": "geracao; aprovado no grupo somente se todos os casos do grupo passarem",
+    "denominador": "todas as geracoes elegiveis; sem execucao em categoria separada, nunca excluido silenciosamente",
+    "sem_execucao": "erro de importacao, infraestrutura sem adaptador ou timeout; causa revisada separadamente",
+    "nao_coberto": "Nem a bateria funcional nem a comportamental esgotam todos os requisitos de seguranca; nao demonstram causalidade nem originalidade bibliografica."
+  }
+}

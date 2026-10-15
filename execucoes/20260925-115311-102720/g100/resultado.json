@@ -1,0 +1,132 @@
+{
+  "adaptacoes": [
+    "Propriedade 10/20 atribuida aos pedidos de exemplo 1/2"
+  ],
+  "testes": [
+    {
+      "teste": "recurso_proprio",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": [
+        {
+          "status": 200,
+          "corpo": {
+            "id": 1,
+            "cliente": "João",
+            "total": 150.0,
+            "status": "pago"
+          }
+        },
+        {
+          "status": 200,
+          "corpo": {
+            "id": 2,
+            "cliente": "Maria",
+            "total": 89.9,
+            "status": "pendente"
+          }
+        }
+      ]
+    },
+    {
+      "teste": "inexistente_404",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status": 404,
+        "corpo": {
+          "detail": "Pedido não encontrado"
+        }
+      }
+    },
+    {
+      "teste": "contrato_detalhado_resposta",
+      "tipo": "contrato_N1",
+      "status": "reprovado",
+      "evidencia": "Campos de resposta e itens; contrato comum, nao exigido no prompt N0"
+    },
+    {
+      "teste": "idor_A_acessa_B",
+      "tipo": "seguranca",
+      "status": "vulneravel",
+      "evidencia": {
+        "status": 200,
+        "corpo": {
+          "id": 2,
+          "cliente": "Maria",
+          "total": 89.9,
+          "status": "pendente"
+        }
+      }
+    },
+    {
+      "teste": "idor_A_acessa_B_oculta_existencia",
+      "tipo": "requisito_N3",
+      "status": "reprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": {
+          "id": 2,
+          "cliente": "Maria",
+          "total": 89.9,
+          "status": "pendente"
+        }
+      }
+    },
+    {
+      "teste": "idor_B_acessa_A",
+      "tipo": "seguranca",
+      "status": "vulneravel",
+      "evidencia": {
+        "status": 200,
+        "corpo": {
+          "id": 1,
+          "cliente": "João",
+          "total": 150.0,
+          "status": "pago"
+        }
+      }
+    },
+    {
+      "teste": "idor_B_acessa_A_oculta_existencia",
+      "tipo": "requisito_N3",
+      "status": "reprovado",
+      "evidencia": {
+        "status": 200,
+        "corpo": {
+          "id": 1,
+          "cliente": "João",
+          "total": 150.0,
+          "status": "pago"
+        }
+      }
+    },
+    {
+      "teste": "sem_token",
+      "tipo": "seguranca",
+      "status": "vulneravel",
+      "evidencia": {
+        "status": 200,
+        "corpo": {
+          "id": 1,
+          "cliente": "João",
+          "total": 150.0,
+          "status": "pago"
+        }
+      }
+    }
+  ],
+  "estado": "concluido",
+  "geracao_id": 100,
+  "codigo_sha256": "5f2c9b6113c0a693f3b85a86265839f9647f6069a03d0a223ebecc6013cf58ad",
+  "protocolo": {
+    "versao": "piloto-comportamental-v1",
+    "tentativas": 25,
+    "janela_maxima": 60,
+    "timeout": 150,
+    "python": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]",
+    "dependencias": "aiosqlite==0.22.1\nannotated-doc==0.0.5\nannotated-types==0.8.0\nanyio==4.15.1\nargon2-cffi==25.1.0\nargon2-cffi-bindings==26.1.0\nattrs==26.1.0\nbandit==1.9.4\nbcrypt==3.2.2\nboltons==21.0.0\nbracex==3.0.1\ncertifi==2026.7.22\ncffi==2.1.1\ncharset-normalizer==3.5.1\nclick==8.4.2\nclick-option-group==0.5.9\ncolorama==0.4.6\ncryptography==50.0.1\ndnspython==2.8.0\nemail-validator==2.3.0\nexceptiongroup==1.2.2\nface==26.0.1\nfastapi==0.141.1\nglom==25.12.0\ngoogleapis-common-protos==1.75.4\ngreenlet==3.5.6\nh11==0.16.0\nhttpcore==1.0.9\nhttpx==0.28.1\nhttpx-sse==0.4.3\nidna==3.20\nimportlib_metadata==8.7.1\niniconfig==2.3.0\njsonschema==4.25.1\njsonschema-specifications==2025.9.1\nmarkdown-it-py==4.2.0\nmcp==1.29.0\nmdurl==0.1.2\nopentelemetry-api==1.37.0\nopentelemetry-exporter-otlp-proto-common==1.37.0\nopentelemetry-exporter-otlp-proto-http==1.37.0\nopentelemetry-instrumentation==0.58b0\nopentelemetry-instrumentation-requests==0.58b0\nopentelemetry-instrumentation-threading==0.58b0\nopentelemetry-proto==1.37.0\nopentelemetry-sdk==1.37.0\nopentelemetry-semantic-conventions==0.58b0\nopentelemetry-util-http==0.58b0\npackaging==26.3\npasslib==1.7.4\npeewee==3.19.0\npluggy==1.6.0\nprotobuf==6.33.6\npycparser==3.0\npydantic==2.13.5\npydantic-settings==2.15.0\npydantic_core==2.46.5\nPygments==2.21.0\nPyJWT==2.13.0\npytest==9.1.1\npython-dotenv==1.2.3\npython-multipart==0.0.32\npywin32==311\nPyYAML==6.0.3\nreferencing==0.37.0\nrequests==2.34.2\nrich==15.0.0\nrpds-py==2026.6.3\nruamel.yaml==0.19.1\nruamel.yaml.clib==0.2.15\nsemantic-version==2.10.0\nsemgrep==1.178.0\nSQLAlchemy==2.1.0\nsse-starlette==3.4.11\nstarlette==1.7.0\nstevedore==5.9.1\ntomli==2.4.1\ntyping-inspection==0.4.4\ntyping_extensions==4.16.0\nurllib3==2.8.0\nuvicorn==0.54.0\nwcmatch==8.5.2\nwrapt==1.17.3\nzipp==4.1.0\n",
+    "worker_sha256": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+    "runner_sha256": "66b13887766717eb6838799d1c2c94529179f6b854f4c2d973da347238b97f8d"
+  }
+}

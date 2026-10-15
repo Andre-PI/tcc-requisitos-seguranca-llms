@@ -1,0 +1,5 @@
+﻿id,geracao_id,ferramenta,regra,cwe,severidade,linha,mensagem
+1,34,bandit,B105,CWE-259,LOW,47,Possible hardcoded password: 'token_usuario_10'
+2,34,bandit,B105,CWE-259,LOW,49,Possible hardcoded password: 'token_usuario_20'
+3,36,bandit,B105,CWE-259,LOW,61,Possible hardcoded password: 'token_usuario_1'
+4,36,bandit,B105,CWE-259,LOW,63,Possible hardcoded password: 'token_usuario_2'

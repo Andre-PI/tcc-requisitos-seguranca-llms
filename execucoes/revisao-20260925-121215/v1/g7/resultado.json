@@ -1,0 +1,39 @@
+{
+  "estado": "inconclusivo",
+  "adaptacoes": [],
+  "testes": [],
+  "erro": "NameError: name 'Any' is not defined",
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\aceitacao_worker.py\", line 269, in main\n    module,app=w.load(source_path,task,result['adaptacoes'])\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\comportamento_worker.py\", line 105, in load\n    spec.loader.exec_module(module)\n  File \"<frozen importlib._bootstrap_external>\", line 940, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\execucoes\\revisao-20260925-121215\\v1\\g7\\amostra.py\", line 46, in <module>\n    @app.post(\"/login\", response_model=LoginResponse, status_code=200)\n     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\routing.py\", line 994, in decorator\n    self.add_api_route(\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\routing.py\", line 933, in add_api_route\n    route = route_class(\n            ^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\routing.py\", line 554, in __init__\n    self.dependant = get_dependant(path=self.path_format, call=self.endpoint)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 292, in get_dependant\n    sub_dependant = get_param_sub_dependant(\n                    ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 126, in get_param_sub_dependant\n    return get_sub_dependant(\n           ^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 162, in get_sub_dependant\n    sub_dependant = get_dependant(\n                    ^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 274, in get_dependant\n    endpoint_signature = get_typed_signature(call)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 234, in get_typed_signature\n    typed_params = [\n                   ^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 239, in <listcomp>\n    annotation=get_typed_annotation(param.annotation, globalns),\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\andre\\OneDrive\\Documentos\\tcc\\.venv-revisao-v1\\Lib\\site-packages\\fastapi\\dependencies\\utils.py\", line 250, in get_typed_annotation\n    annotation = evaluate_forwardref(annotation, globalns, globalns)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"pydantic\\\\typing.py\", line 70, in pydantic.typing.evaluate_forwardref\n  File \"C:\\Users\\andre\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\typing.py\", line 871, in _evaluate\n    eval(self.__forward_code__, globalns, localns),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<string>\", line 1, in <module>\nNameError: name 'Any' is not defined\n",
+  "geracao_id": 7,
+  "ambiente": {
+    "python": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+    "packages": {
+      "aiosqlite": "0.22.1",
+      "anyio": "4.15.1",
+      "bcrypt": "3.2.2",
+      "certifi": "2026.7.22",
+      "cffi": "2.1.1",
+      "dnspython": "2.8.0",
+      "email-validator": "2.3.0",
+      "fastapi": "0.115.12",
+      "greenlet": "3.5.6",
+      "h11": "0.16.0",
+      "httpcore": "1.0.9",
+      "httpx": "0.28.1",
+      "idna": "3.20",
+      "passlib": "1.7.4",
+      "pycparser": "3.0",
+      "pydantic": "1.10.22",
+      "sqlalchemy": "2.0.43",
+      "starlette": "0.46.2",
+      "typing_extensions": "4.16.0"
+    }
+  },
+  "codigo_sha256": "36269fe7b3259c62aadb332719e7b3bfd6d45d14828f47cec684ece90f779a3d",
+  "variante": "v1",
+  "fontes": {
+    "aceitacao_worker.py": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3",
+    "comportamento_worker.py": "1ad303a40dd6bf6981cd251a4ec0d31f98e8891d7b74a0fda8836e71c8bc84e6",
+    "revisar_casos.py": "b760f7d0af0a52524a18221fc459aff043fda86645571efacaeb2c41d21f8083"
+  }
+}

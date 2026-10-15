@@ -1,0 +1,73 @@
+﻿geracao_id,modelo,tarefa,nivel,repeticao,funcional_minimo,contrato_N1,robustez,estado,erro,protocolo_sha256,artefatos
+1,gpt-4.1-mini-2025-04-14,T01,N0,1,aprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g1
+2,gpt-4.1-mini-2025-04-14,T01,N0,2,aprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g2
+3,gpt-4.1-mini-2025-04-14,T01,N0,3,aprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g3
+4,gpt-4.1-mini-2025-04-14,T01,N1,1,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g4
+5,gpt-4.1-mini-2025-04-14,T01,N1,2,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g5
+6,gpt-4.1-mini-2025-04-14,T01,N1,3,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g6
+7,gpt-4.1-mini-2025-04-14,T01,N2,1,reprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g7
+8,gpt-4.1-mini-2025-04-14,T01,N2,2,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g8
+9,gpt-4.1-mini-2025-04-14,T01,N2,3,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g9
+10,gpt-4.1-mini-2025-04-14,T01,N3,1,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g10
+11,gpt-4.1-mini-2025-04-14,T01,N3,2,sem_execucao,sem_execucao,sem_execucao,inconclusivo,timeout de 30s,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g11
+12,gpt-4.1-mini-2025-04-14,T01,N3,3,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g12
+13,gpt-4.1-mini-2025-04-14,T02,N0,1,aprovado,reprovado,reprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g13
+14,gpt-4.1-mini-2025-04-14,T02,N0,2,aprovado,reprovado,reprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g14
+15,gpt-4.1-mini-2025-04-14,T02,N0,3,aprovado,reprovado,reprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g15
+16,gpt-4.1-mini-2025-04-14,T02,N1,1,aprovado,aprovado,reprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g16
+17,gpt-4.1-mini-2025-04-14,T02,N1,2,reprovado,reprovado,reprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g17
+18,gpt-4.1-mini-2025-04-14,T02,N1,3,reprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g18
+19,gpt-4.1-mini-2025-04-14,T02,N2,1,reprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g19
+20,gpt-4.1-mini-2025-04-14,T02,N2,2,reprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g20
+21,gpt-4.1-mini-2025-04-14,T02,N2,3,reprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g21
+22,gpt-4.1-mini-2025-04-14,T02,N3,1,sem_execucao,sem_execucao,sem_execucao,inconclusivo,NameError: name 'BaseModel' is not defined,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g22
+23,gpt-4.1-mini-2025-04-14,T02,N3,2,aprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g23
+24,gpt-4.1-mini-2025-04-14,T02,N3,3,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g24
+25,gpt-4.1-mini-2025-04-14,T06,N0,1,aprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g25
+26,gpt-4.1-mini-2025-04-14,T06,N0,2,aprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g26
+27,gpt-4.1-mini-2025-04-14,T06,N0,3,aprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g27
+28,gpt-4.1-mini-2025-04-14,T06,N1,1,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g28
+29,gpt-4.1-mini-2025-04-14,T06,N1,2,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g29
+30,gpt-4.1-mini-2025-04-14,T06,N1,3,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g30
+31,gpt-4.1-mini-2025-04-14,T06,N2,1,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g31
+32,gpt-4.1-mini-2025-04-14,T06,N2,2,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g32
+33,gpt-4.1-mini-2025-04-14,T06,N2,3,reprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g33
+34,gpt-4.1-mini-2025-04-14,T06,N3,1,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g34
+35,gpt-4.1-mini-2025-04-14,T06,N3,2,reprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g35
+36,gpt-4.1-mini-2025-04-14,T06,N3,3,reprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g36
+74,gpt-5.4-mini-2026-03-17,T01,N0,1,aprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g74
+75,gpt-5.4-mini-2026-03-17,T01,N0,2,aprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g75
+76,gpt-5.4-mini-2026-03-17,T01,N0,3,aprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g76
+77,gpt-5.4-mini-2026-03-17,T01,N1,1,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g77
+78,gpt-5.4-mini-2026-03-17,T01,N1,2,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g78
+79,gpt-5.4-mini-2026-03-17,T01,N1,3,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g79
+80,gpt-5.4-mini-2026-03-17,T01,N2,1,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g80
+81,gpt-5.4-mini-2026-03-17,T01,N2,2,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g81
+82,gpt-5.4-mini-2026-03-17,T01,N2,3,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g82
+83,gpt-5.4-mini-2026-03-17,T01,N3,1,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g83
+84,gpt-5.4-mini-2026-03-17,T01,N3,2,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g84
+85,gpt-5.4-mini-2026-03-17,T01,N3,3,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g85
+86,gpt-5.4-mini-2026-03-17,T02,N0,1,aprovado,reprovado,reprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g86
+87,gpt-5.4-mini-2026-03-17,T02,N0,2,aprovado,reprovado,reprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g87
+88,gpt-5.4-mini-2026-03-17,T02,N0,3,aprovado,reprovado,reprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g88
+89,gpt-5.4-mini-2026-03-17,T02,N1,1,aprovado,aprovado,reprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g89
+90,gpt-5.4-mini-2026-03-17,T02,N1,2,aprovado,aprovado,reprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g90
+91,gpt-5.4-mini-2026-03-17,T02,N1,3,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g91
+92,gpt-5.4-mini-2026-03-17,T02,N2,1,sem_execucao,sem_execucao,sem_execucao,inconclusivo,AssertionError: `Query` default value cannot be set in `Annotated` for 'nome'. Set the default value with `=` instead.,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g92
+93,gpt-5.4-mini-2026-03-17,T02,N2,2,sem_execucao,sem_execucao,sem_execucao,inconclusivo,AssertionError: `Query` default value cannot be set in `Annotated` for 'nome'. Set the default value with `=` instead.,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g93
+94,gpt-5.4-mini-2026-03-17,T02,N2,3,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g94
+95,gpt-5.4-mini-2026-03-17,T02,N3,1,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g95
+96,gpt-5.4-mini-2026-03-17,T02,N3,2,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g96
+97,gpt-5.4-mini-2026-03-17,T02,N3,3,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g97
+98,gpt-5.4-mini-2026-03-17,T06,N0,1,aprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g98
+99,gpt-5.4-mini-2026-03-17,T06,N0,2,aprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g99
+100,gpt-5.4-mini-2026-03-17,T06,N0,3,aprovado,reprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g100
+101,gpt-5.4-mini-2026-03-17,T06,N1,1,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g101
+102,gpt-5.4-mini-2026-03-17,T06,N1,2,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g102
+103,gpt-5.4-mini-2026-03-17,T06,N1,3,sem_execucao,sem_execucao,sem_execucao,inconclusivo,"ValueError: Classes ORM apenas declaradas, sem mapeamento; nao reparadas",aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g103
+104,gpt-5.4-mini-2026-03-17,T06,N2,1,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g104
+105,gpt-5.4-mini-2026-03-17,T06,N2,2,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g105
+106,gpt-5.4-mini-2026-03-17,T06,N2,3,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g106
+107,gpt-5.4-mini-2026-03-17,T06,N3,1,sem_execucao,sem_execucao,sem_execucao,inconclusivo,TypeError: Ellipsis is not a callable object,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g107
+108,gpt-5.4-mini-2026-03-17,T06,N3,2,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g108
+109,gpt-5.4-mini-2026-03-17,T06,N3,3,aprovado,aprovado,aprovado,concluido,,aa23f98cbf48ad8ef9e1e1a7429675ff069e291c6b75021cb48471a2eee3ecb7,execucoes\aceitacao-20260925-121206-923793\g109
