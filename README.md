@@ -1,60 +1,71 @@
-# Especificação de requisitos, segurança e correção funcional
+# Requisitos, segurança e correção funcional de código gerado por LLMs
 
-Material do estudo piloto do TCC de Engenharia de Software do iCEV, de Andre Lucas Francino Castelo Branco, orientado por Mauro José Araújo de Melo.
+Este repositório reúne os códigos, dados e procedimentos do meu TCC em Engenharia de Software no iCEV, sob orientação do professor Mauro José Araújo de Melo.
 
-**Estado do estudo:** piloto com 72 gerações realizado. O experimento principal de 800 gerações permanece planejado. Esta versão é um pacote para orientação e auditoria do piloto.
+A pesquisa investiga como o detalhamento dos requisitos influencia a segurança do código gerado por modelos de linguagem e se há perda de funcionalidade associada. As tarefas utilizam Python e FastAPI.
 
-## Roteiro para o orientador
+## Estudo piloto
 
-1. Leia [a metodologia](orientacao/Metodologia-v03.pdf); há também um [Word editável](orientacao/Metodologia-v03.docx).
-2. Consulte [o exemplo de acesso a pedidos](exemplos/acesso-a-pedidos.md), que relaciona prompt, código e resposta do teste.
-3. Confira [a aceitação funcional](docs/resultado-aceitacao.md) e [os testes comportamentais](docs/resultado-comportamental.md).
-4. Examine os CSV em `dados/` e `docs/`. O arquivo `resultados.db` conserva os registros detalhados, inclusive versões anteriores das verificações.
-5. Execute `python conferir_pacote.py` para conferir integridade, contagens e correspondência dos códigos, sem chamar a API nem executar as aplicações geradas.
+O piloto foi realizado com 72 gerações: três tarefas, quatro níveis de especificação, dois modelos e três repetições por condição. As tarefas são login, busca de produtos e consulta de pedidos. Os modelos utilizados foram `gpt-4.1-mini-2025-04-14` e `gpt-5.4-mini-2026-03-17`.
 
-O referencial foi entregue anteriormente e não está duplicado nesta entrega. A metodologia é uma versão parcial para avaliação do desenho e dos critérios.
+| Nível | Especificação |
+|---|---|
+| N0 | Descrição funcional mínima |
+| N1 | Descrição funcional detalhada |
+| N2 | N1 com orientação genérica de segurança |
+| N3 | N1 com requisitos específicos de segurança |
 
-## Conteúdo
+A avaliação combina Bandit e Semgrep, testes de aceitação e verificações de autorização e bloqueio de tentativas de login. No conjunto funcional mínimo, 57 gerações foram aprovadas, nove reprovadas e seis ficaram sem execução conclusiva.
 
-- `codigos/`: 72 códigos originais, sem reparo.
-- `dados/geracoes.jsonl`: prompts, respostas e código em formato aberto; `geracoes.csv`: índice.
-- `dados/achados.csv` e `relatorios-sast/`: achados e relatórios originais dos analisadores.
-- `dados/*-mais-recentes.json`: verificações selecionadas pela maior identificação por geração, conforme os resumos do piloto.
-- `execucoes/`: código, resultados, saídas e erros das execuções selecionadas; os caminhos históricos foram conservados. Bancos temporários dos testes foram omitidos.
-- `docs/`: critérios, protocolos, resultados e análise dos sete casos.
-- Scripts Python e `tests/`: coleta, análise, verificadores e controles do próprio instrumento.
-- `manifesto-pacote.json`: SHA-256 dos arquivos desta cópia. Os hashes detectam alterações posteriores; não comprovam, por si só, autenticidade da coleta.
+Os resultados são preliminares. Os testes ampliados foram definidos após a coleta, e algumas falhas dependem das versões das bibliotecas. O experimento principal, previsto para 800 gerações, ainda não foi executado.
 
-Os hashes do manifesto cobrem os bytes dos arquivos. A comparação entre as exportações Python e o banco normaliza apenas finais de linha CRLF/LF, devido à gravação dos arquivos no Windows; o conteúdo do código é preservado.
+## Documentos e resultados
 
-## Resultados que podem ser conferidos
+- **Metodologia:** [PDF](orientacao/Metodologia-v03.pdf) e [Word](orientacao/Metodologia-v03.docx).
+- [Exemplo de análise de acesso a pedidos](exemplos/acesso-a-pedidos.md), com prompt, código e resultado do teste.
+- [Resultados funcionais](docs/resultado-aceitacao.md).
+- [Resultados comportamentais](docs/resultado-comportamental.md).
+- [Protocolo dos testes e limitações](docs/protocolo-comportamental.md).
 
-72 gerações, 36 por modelo; 72 análises estáticas; quatro alertas Bandit em duas gerações. Na aceitação mínima: 57 aprovadas, nove reprovadas e seis sem execução conclusiva. A bateria registrou 1.797 resultados de casos; a unidade de análise continua sendo a geração. Há 48 gerações T01/T06 na avaliação comportamental.
+## Arquivos
 
-Os critérios ampliados de aceitação foram definidos depois da coleta. Identidades e infraestrutura foram fornecidas conforme a política documentada. Aprovação nos testes não comprova segurança completa; falhas de compatibilidade não demonstram custo funcional causado por requisitos de segurança.
+| Caminho | Conteúdo |
+|---|---|
+| `codigos/` | As 72 implementações geradas, preservadas sem reparos |
+| `dados/` | Exportações dos prompts, respostas, achados e resultados |
+| `resultados.db` | Banco SQLite com os registros e o histórico das verificações |
+| `relatorios-sast/` | Relatórios do Bandit e do Semgrep |
+| `execucoes/` | Códigos, respostas e erros das execuções selecionadas |
+| `docs/` | Critérios, protocolos e relatórios |
+| `tests/` | Testes dos verificadores |
 
-## Reprodução
+## Conferência dos dados
 
-A conferência do pacote usa somente a biblioteca padrão do Python 3.11 ou posterior:
+Com Python 3.11 ou posterior:
 
 ```powershell
 python conferir_pacote.py
 ```
 
-Para reproduzir os testes, trabalhe em uma cópia deste repositório, pois os scripts gravam novos registros no banco. O ambiente original era Python 3.14.2, com versões em `requirements-lock.txt`. No PowerShell:
+O comando confere os hashes dos arquivos, as contagens e a correspondência entre os códigos e o banco. Não chama a API nem executa os programas gerados. Os hashes permitem detectar alterações nos arquivos; não comprovam a autenticidade da coleta.
+
+## Execução dos testes
+
+O ambiente do piloto utiliza Python 3.14.2. As dependências estão em `requirements-lock.txt`. Execute em uma cópia do repositório, pois os verificadores acrescentam registros ao banco.
 
 ```powershell
 py -3.14 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements-lock.txt
 .\.venv\Scripts\python.exe -m pytest tests -q
+```
+
+Para repetir os testes das duas amostras apresentadas no exemplo:
+
+```powershell
 .\.venv\Scripts\python.exe validar_aceitacao.py --ids 25 34
 .\.venv\Scripts\python.exe verificar.py --ids 25 34
 ```
 
-Os dois últimos comandos executam código gerado. Leia antes a política e os limites de isolamento em `docs/protocolo-comportamental.md`. Os registros incluem diretórios e versões históricas da máquina de coleta; outra máquina terá caminhos diferentes. Repetir geração em API não garante os mesmos programas. As regras remotas `p/python` do Semgrep podem mudar.
+Esses comandos executam as aplicações geradas sob as condições descritas no protocolo. Os diretórios históricos dos registros se referem à máquina de coleta. A análise estática utilizou as regras `p/python` do Semgrep, cujo conteúdo remoto pode mudar.
 
-`piloto.py` realiza chamadas pagas à API quando invocado para geração. Nenhuma chave é necessária para consultar os dados ou executar a conferência do pacote. Não execute uma nova coleta para tentar reproduzir os códigos arquivados.
-
-## Compartilhamento
-
-Repositório público para consulta e conferência das evidências do piloto: https://github.com/Andre-PI/tcc-requisitos-seguranca-llms. O acesso não exige convite de colaborador. Não foi atribuída uma licença de redistribuição; a disponibilidade pública não implica autorização irrestrita de reutilização.
+Consultar os dados e executar os testes não exige chave de API. O script `piloto.py` é usado para novas gerações e realiza chamadas pagas quando executado nessa modalidade.
