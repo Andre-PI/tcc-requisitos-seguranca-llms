@@ -18,8 +18,8 @@
     },
     {
       "caminho": "README.md",
-      "bytes": 4872,
-      "sha256": "c5d2c935893ccb8be53e36263bb978f7692d4dbe18e0eb217d754da688a48051"
+      "bytes": 5256,
+      "sha256": "dcb3948f652df469b61a2c46e775658f398b98235288866f1e6e6b1756550e71"
     },
     {
       "caminho": "aceitacao_worker.py",
@@ -398,8 +398,8 @@
     },
     {
       "caminho": "conferir_pacote.py",
-      "bytes": 5963,
-      "sha256": "d0f0e41b528313e816ee07dcb7f714bc600070faef7394e4945ec236ea6d9784"
+      "bytes": 6650,
+      "sha256": "d748c807845dbdb9dd4b910f74a77ff27fe9d9e04120f1556e82fa5523b16030"
     },
     {
       "caminho": "dados/aceitacoes-mais-recentes.json",
@@ -757,6 +757,36 @@
       "sha256": "f272561ad9342f286237fd9828150408f60cadce5a022c5ec3fea25de5809407"
     },
     {
+      "caminho": "docker/t05/Dockerfile",
+      "bytes": 448,
+      "sha256": "b29324e7294cec782de520f3ccbdb1ed0aa8af28041dd5fed91a281088c3e263"
+    },
+    {
+      "caminho": "docker/t05/requirements.txt",
+      "bytes": 255,
+      "sha256": "92db3ce3b3f144cc976ee8156161afa5f56fac24d76538f192439a082883ad53"
+    },
+    {
+      "caminho": "docker/t05/t05_infra.py",
+      "bytes": 1115,
+      "sha256": "7b8978904f7aee8632b0816728b2b490557437c76d3b0f641ca8419ed5e1cd26"
+    },
+    {
+      "caminho": "docker/t05/t05_referencias.py",
+      "bytes": 2285,
+      "sha256": "2dc9f7fe1c7c2330794f72997e583f9c0a779897ece6df6f5a8f14b39bbb7c01"
+    },
+    {
+      "caminho": "docker/t05/t05_verificador.py",
+      "bytes": 6603,
+      "sha256": "c2fd091482cace61fa5780c42e1b3533354a1c48ed0ed38f38995fb0bbcb09da"
+    },
+    {
+      "caminho": "docker/t05/t05_worker_linux.py",
+      "bytes": 3113,
+      "sha256": "4f37479f2b6641a4907afcf3bb19d72263989c089ce3dffffca873ccb293b72d"
+    },
+    {
       "caminho": "docs/T03-exploratoria.md",
       "bytes": 1165,
       "sha256": "59591d021fbac254381139109e94613ba64d90fbe6df5e6472a32719cfee4fad"
@@ -810,6 +840,16 @@
       "caminho": "docs/T04-validacao.md",
       "bytes": 987,
       "sha256": "184432cfbf036fcdad6d7a6664d30b8ed77c990c53b6a722f96eb64c431af918"
+    },
+    {
+      "caminho": "docs/T05-protocolo.md",
+      "bytes": 6486,
+      "sha256": "a6409ae728f67bbc84f8360d98ee6c8934c2939a4ce40b71315caac28a5aae7b"
+    },
+    {
+      "caminho": "docs/T05-validacao-linux.json",
+      "bytes": 81308,
+      "sha256": "759ed4b4a61bfdf9d1870fe3a62d721bf8ce1686f651a2c57e96e1c5c9fcae10"
     },
     {
       "caminho": "docs/aceitacao-por-caso.csv",
@@ -3762,6 +3802,31 @@
       "sha256": "f272561ad9342f286237fd9828150408f60cadce5a022c5ec3fea25de5809407"
     },
     {
+      "caminho": "t05_docker.py",
+      "bytes": 2451,
+      "sha256": "e026a05fa05e73819f7da32e1ac26f1cafe557f53b1793aa7aba765000106ee9"
+    },
+    {
+      "caminho": "t05_infra.py",
+      "bytes": 1115,
+      "sha256": "7b8978904f7aee8632b0816728b2b490557437c76d3b0f641ca8419ed5e1cd26"
+    },
+    {
+      "caminho": "t05_referencias.py",
+      "bytes": 2285,
+      "sha256": "2dc9f7fe1c7c2330794f72997e583f9c0a779897ece6df6f5a8f14b39bbb7c01"
+    },
+    {
+      "caminho": "t05_verificador.py",
+      "bytes": 6603,
+      "sha256": "c2fd091482cace61fa5780c42e1b3533354a1c48ed0ed38f38995fb0bbcb09da"
+    },
+    {
+      "caminho": "t05_worker_linux.py",
+      "bytes": 3113,
+      "sha256": "4f37479f2b6641a4907afcf3bb19d72263989c089ce3dffffca873ccb293b72d"
+    },
+    {
       "caminho": "tarefas/T03.json",
       "bytes": 2901,
       "sha256": "dd21ca4aa8ec687a98dc5d5e85b78859f31a6e5ade85884b5f63dd2b0ed145c4"
@@ -3770,6 +3835,11 @@
       "caminho": "tarefas/T04.json",
       "bytes": 2852,
       "sha256": "074a50cba63252ff588fa4fc0b4745e126060affd36ad7a76e787895322a16a2"
+    },
+    {
+      "caminho": "tarefas/T05.json",
+      "bytes": 3394,
+      "sha256": "55888dec370c9d23979f65dd3103eee6e41560828bf0251f1a7a44753e35d885"
     },
     {
       "caminho": "tests/test_aceitacao.py",
@@ -3807,6 +3877,11 @@
       "sha256": "8bd48cb5baf27fcc7a9f570c929786b861121442757e35ca983d1caaac571cf0"
     },
     {
+      "caminho": "tests/test_t05.py",
+      "bytes": 3213,
+      "sha256": "7bda319eebdd9190c05103825fb7961ae7efa88d67c91f8634f0c24d449c654a"
+    },
+    {
       "caminho": "validar_aceitacao.py",
       "bytes": 4122,
       "sha256": "88481b94af00787697b7f1bec55324f57e8635763c8a50e28c7748c02463cbab"
@@ -3825,5 +3900,6 @@
   "revisao_documental": "2026-11-03; metodologia e referencial v04; dados do piloto preservados",
   "ampliacao_T04": "Linux validado com links; 8 geracoes exploratorias, 8 requisicoes; fora do banco do piloto e da coleta principal",
   "redacao_piloto": "Resultados-piloto-v01: quatro paginas, contagens extraidas dos registros; estudo exploratorio.",
-  "ampliacao_T03": "9 referencias validadas, 18 casos por referencia; coleta exploratoria de 8 respostas em 8 chamadas, 6 aprovadas nos uploads legitimos, 1 reprovada e 1 sem importacao; fora do piloto e da coleta principal."
+  "ampliacao_T03": "9 referencias validadas, 18 casos por referencia; coleta exploratoria de 8 respostas em 8 chamadas, 6 aprovadas nos uploads legitimos, 1 reprovada e 1 sem importacao; fora do piloto e da coleta principal.",
+  "ampliacao_T05": "Instrumento validado em Linux com 11 referencias e 12 cenarios por referencia; 35 testes locais aprovados; nenhuma geracao de LLM nesta tarefa."
 }

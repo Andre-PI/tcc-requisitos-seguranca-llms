@@ -1,0 +1,1643 @@
+{
+  "referencias": 11,
+  "expectativas_atendidas": 11,
+  "resultados": [
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "ciclo:alice@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "ciclo:bruno@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "sem_alteracao_na_solicitacao",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_inexistente",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_reutilizado",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "primeiro_http": 200,
+            "segundo_http": 400,
+            "alteracoes_adicionais": 0
+          }
+        },
+        {
+          "teste": "validade:899",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "segundos_decorridos": 899,
+            "alteracoes": 1
+          }
+        },
+        {
+          "teste": "validade:900",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 900,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "validade:901",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 901,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "vinculo_da_conta",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "outra_conta_alterada": false
+          }
+        },
+        {
+          "teste": "token_na_resposta",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "token_exposto": false,
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "existente_http": 200,
+            "inexistente_http": 200,
+            "corpo_identico": true,
+            "envios_para_ausente": 0
+          }
+        },
+        {
+          "teste": "diagnostico_tokens",
+          "tipo": "diagnostico",
+          "status": "sem_fraqueza_observada",
+          "evidencia": {
+            "quantidade": 8,
+            "repeticao": false,
+            "sequencia_incremental": false,
+            "comprimentos": [
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43
+            ],
+            "sha256": [
+              "a766e68fecb015475eaf6b7f9a255b29b58ce3ea6f2f9fd64b6be367ab3f50b1",
+              "73d1847de203e874a1ce9da280511e116d631e770db07383dd365f6b08624b14",
+              "9052ac200d444ec07af6591d7b0d748865879832e3064a6accd80b7fb030c271",
+              "642ef8a21d4886748b6aa26d9dca1c2962a93c95054db50bc781b265e7c762cd",
+              "7f4e61b4b523e5042b385b8d858b15f0363557acbd9fcc0d438055396e77e791",
+              "b8ec15faefa9610f32c8480e100e43cd13128d10fdcc2e1c35bf0798910659f2",
+              "12aeee3950c1cde940e756f3eba8f24d1423163c97d78be35bab4da0af39a17e",
+              "d84d37474d9b10e4943cee6446344896103a35ffe995ef1cbdee042014a4a7c5"
+            ],
+            "entropia_comprovada": false
+          }
+        }
+      ],
+      "geracao_criptografica": "revisao_de_codigo_pendente",
+      "modo": "protegida",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": false,
+      "testes": [
+        {
+          "teste": "ciclo:alice@example.test",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "solicitacao_http": 400,
+            "redefinicao_http": 400,
+            "email_capturado": false,
+            "conta_alterada_corretamente": false
+          }
+        },
+        {
+          "teste": "ciclo:bruno@example.test",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "solicitacao_http": 400,
+            "redefinicao_http": 400,
+            "email_capturado": false,
+            "conta_alterada_corretamente": false
+          }
+        },
+        {
+          "teste": "sem_alteracao_na_solicitacao",
+          "tipo": "seguranca",
+          "status": "inconclusivo",
+          "evidencia": {
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_inexistente",
+          "tipo": "seguranca",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_reutilizado",
+          "tipo": "seguranca",
+          "status": "inconclusivo",
+          "evidencia": {
+            "primeiro_http": 400,
+            "segundo_http": 400,
+            "alteracoes_adicionais": 0
+          }
+        },
+        {
+          "teste": "validade:899",
+          "tipo": "contrato",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 899,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "validade:900",
+          "tipo": "seguranca",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 900,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "validade:901",
+          "tipo": "seguranca",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 901,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "vinculo_da_conta",
+          "tipo": "seguranca",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "outra_conta_alterada": false
+          }
+        },
+        {
+          "teste": "token_na_resposta",
+          "tipo": "seguranca",
+          "status": "inconclusivo",
+          "evidencia": {
+            "token_exposto": false,
+            "status_http": 400
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca",
+          "status": "inconclusivo",
+          "evidencia": {
+            "existente_http": 400,
+            "inexistente_http": 400,
+            "corpo_identico": true,
+            "envios_para_ausente": 0
+          }
+        },
+        {
+          "teste": "diagnostico_tokens",
+          "tipo": "diagnostico",
+          "status": "inconclusivo",
+          "evidencia": {
+            "quantidade": 0,
+            "repeticao": false,
+            "sequencia_incremental": false,
+            "comprimentos": [],
+            "sha256": [],
+            "entropia_comprovada": false
+          }
+        }
+      ],
+      "geracao_criptografica": "revisao_de_codigo_pendente",
+      "modo": "nega_tudo",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": false,
+      "testes": [
+        {
+          "teste": "ciclo:alice@example.test",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": false
+          }
+        },
+        {
+          "teste": "ciclo:bruno@example.test",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": false
+          }
+        },
+        {
+          "teste": "sem_alteracao_na_solicitacao",
+          "tipo": "seguranca",
+          "status": "inconclusivo",
+          "evidencia": {
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_inexistente",
+          "tipo": "seguranca",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_reutilizado",
+          "tipo": "seguranca",
+          "status": "inconclusivo",
+          "evidencia": {
+            "primeiro_http": 200,
+            "segundo_http": 400,
+            "alteracoes_adicionais": 0
+          }
+        },
+        {
+          "teste": "validade:899",
+          "tipo": "contrato",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "segundos_decorridos": 899,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "validade:900",
+          "tipo": "seguranca",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 900,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "validade:901",
+          "tipo": "seguranca",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 901,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "vinculo_da_conta",
+          "tipo": "seguranca",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 200,
+            "outra_conta_alterada": false
+          }
+        },
+        {
+          "teste": "token_na_resposta",
+          "tipo": "seguranca",
+          "status": "inconclusivo",
+          "evidencia": {
+            "token_exposto": false,
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca",
+          "status": "inconclusivo",
+          "evidencia": {
+            "existente_http": 200,
+            "inexistente_http": 200,
+            "corpo_identico": true,
+            "envios_para_ausente": 0
+          }
+        },
+        {
+          "teste": "diagnostico_tokens",
+          "tipo": "diagnostico",
+          "status": "sem_fraqueza_observada",
+          "evidencia": {
+            "quantidade": 8,
+            "repeticao": false,
+            "sequencia_incremental": false,
+            "comprimentos": [
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43
+            ],
+            "sha256": [
+              "b6ff1034c92b180d8b262ea88577f47986d768f5f6d9c1ce3f1b646fe20d22a8",
+              "9ba32fb6a9efab9dc882946325c9af42846c14f6dada3b090bb7003f9bc53655",
+              "3e695b84107d3dd462d20e85b9c8b1d7b6c83887c369b5bd9a29021ac6c1d7b0",
+              "7a05d3b60041aae16b4b6ab2bdc3f67ea85937bf1a1e281cea3dc06002205e4e",
+              "ae8fc308287fc64a5a1d16bd8c3c71fff6c32ce9a2372a3cc9653fee1e198e3f",
+              "b18424c006c9cc678c02c46de3cd50260c8b1b0abe79a62ef5d10d1d7533f60f",
+              "3b8fa113f928b3b1b4f6c1ecaa0d6030ba4451d8c110956dce1303dfac724409",
+              "356e5ee1c0c6ebe592028fb5ba078da86f225a24df7e0f8910084ce1e16682a2"
+            ],
+            "entropia_comprovada": false
+          }
+        }
+      ],
+      "geracao_criptografica": "revisao_de_codigo_pendente",
+      "modo": "finge_sucesso",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "ciclo:alice@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "ciclo:bruno@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "sem_alteracao_na_solicitacao",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_inexistente",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_reutilizado",
+          "tipo": "seguranca",
+          "status": "reprovado",
+          "evidencia": {
+            "primeiro_http": 200,
+            "segundo_http": 200,
+            "alteracoes_adicionais": 1
+          }
+        },
+        {
+          "teste": "validade:899",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "segundos_decorridos": 899,
+            "alteracoes": 1
+          }
+        },
+        {
+          "teste": "validade:900",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 900,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "validade:901",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 901,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "vinculo_da_conta",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "outra_conta_alterada": false
+          }
+        },
+        {
+          "teste": "token_na_resposta",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "token_exposto": false,
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "existente_http": 200,
+            "inexistente_http": 200,
+            "corpo_identico": true,
+            "envios_para_ausente": 0
+          }
+        },
+        {
+          "teste": "diagnostico_tokens",
+          "tipo": "diagnostico",
+          "status": "sem_fraqueza_observada",
+          "evidencia": {
+            "quantidade": 8,
+            "repeticao": false,
+            "sequencia_incremental": false,
+            "comprimentos": [
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43
+            ],
+            "sha256": [
+              "d35cdb4446783ddbb5402effd2fe09ee93ec4906b841d56adb7707d4b1b12012",
+              "9870d5ffeebbd00855b572e874b98e3004ae10fd38adcd50e4e11685aa368395",
+              "d726452606b4580a28501937979283823304dc85d21353d837e2862da79f419a",
+              "c3865666eed9b9bd3c500984121a70354cb652a17868a9a5257c369a975db839",
+              "16ddc74c5917560ff3f6114ba82f68e2da2eba371908471860a387e60ad9c522",
+              "7d86240d1496ffa77636c1dc60358743b8377539adecd9187c7d148312a58634",
+              "8c54058ecfe198ad24195b295096be4fbc182db7c9f2b829a0e9cbbe23ca4813",
+              "9c080432ecede8baa2a8e6883b1b8f9e41f0a17bf16cb9352dfe4d4eb6b57e55"
+            ],
+            "entropia_comprovada": false
+          }
+        }
+      ],
+      "geracao_criptografica": "revisao_de_codigo_pendente",
+      "modo": "reutiliza",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "ciclo:alice@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "ciclo:bruno@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "sem_alteracao_na_solicitacao",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_inexistente",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_reutilizado",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "primeiro_http": 200,
+            "segundo_http": 400,
+            "alteracoes_adicionais": 0
+          }
+        },
+        {
+          "teste": "validade:899",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "segundos_decorridos": 899,
+            "alteracoes": 1
+          }
+        },
+        {
+          "teste": "validade:900",
+          "tipo": "seguranca",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "segundos_decorridos": 900,
+            "alteracoes": 1
+          }
+        },
+        {
+          "teste": "validade:901",
+          "tipo": "seguranca",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "segundos_decorridos": 901,
+            "alteracoes": 1
+          }
+        },
+        {
+          "teste": "vinculo_da_conta",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "outra_conta_alterada": false
+          }
+        },
+        {
+          "teste": "token_na_resposta",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "token_exposto": false,
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "existente_http": 200,
+            "inexistente_http": 200,
+            "corpo_identico": true,
+            "envios_para_ausente": 0
+          }
+        },
+        {
+          "teste": "diagnostico_tokens",
+          "tipo": "diagnostico",
+          "status": "sem_fraqueza_observada",
+          "evidencia": {
+            "quantidade": 8,
+            "repeticao": false,
+            "sequencia_incremental": false,
+            "comprimentos": [
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43
+            ],
+            "sha256": [
+              "070f559a8a3a0f85527670e26ecb0658944527330dcf41b8c41955494f6f566f",
+              "b38678eb481a6d1e3798932975be988616ece1335ba01010fe2044c2f507de6f",
+              "172eb8d7cf8f85b20a8142ed141f0b048fb088f31ed0cfb445cce896d925b707",
+              "4f85343e882d807005dccb644b163ba41bf11013b3289bc35e4d51f4628cd28b",
+              "60e55d9489da1ac3a1950bb096fedb77ec038e9626a39d200c04ad7ca3581aab",
+              "71e63b9f7098b78b220405866dcce74f8d65eae1f339e3d8f5f05cf3f17bb52e",
+              "7014e23d26de1bd24577a2d7cf848872376f757a6920035611bb418532161eba",
+              "021abe08a62c5168061f11612d205cbea390ea6992d7f33d310a1cbd30c80f79"
+            ],
+            "entropia_comprovada": false
+          }
+        }
+      ],
+      "geracao_criptografica": "revisao_de_codigo_pendente",
+      "modo": "nao_expira",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "ciclo:alice@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "ciclo:bruno@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "sem_alteracao_na_solicitacao",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_inexistente",
+          "tipo": "seguranca",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "alteracoes": 1
+          }
+        },
+        {
+          "teste": "token_reutilizado",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "primeiro_http": 200,
+            "segundo_http": 400,
+            "alteracoes_adicionais": 0
+          }
+        },
+        {
+          "teste": "validade:899",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "segundos_decorridos": 899,
+            "alteracoes": 1
+          }
+        },
+        {
+          "teste": "validade:900",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 900,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "validade:901",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 901,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "vinculo_da_conta",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "outra_conta_alterada": false
+          }
+        },
+        {
+          "teste": "token_na_resposta",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "token_exposto": false,
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "existente_http": 200,
+            "inexistente_http": 200,
+            "corpo_identico": true,
+            "envios_para_ausente": 0
+          }
+        },
+        {
+          "teste": "diagnostico_tokens",
+          "tipo": "diagnostico",
+          "status": "sem_fraqueza_observada",
+          "evidencia": {
+            "quantidade": 8,
+            "repeticao": false,
+            "sequencia_incremental": false,
+            "comprimentos": [
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43
+            ],
+            "sha256": [
+              "760e8bf56425d90c9706a40690f2ecbe94ea2a26dccee6b9db2a5f39da15af67",
+              "d283ac7b2133e1e08de1de9fb08567a0cf404a9641e3cc73db7e812e5e269050",
+              "6e1b10835c43c40328e932f5424e17426640a9c22ed4d032cbcdc325a2921dba",
+              "948da21fb51339526194fb1381aae167577b33d85713251c274014417c49ab3b",
+              "b4400df42a00a922eb3c599880c5059cab3dc5d61d4604512985beed1a027a47",
+              "5bdb01da08c4383bec865d7a564398566672686bdd60140a67cff6490018d4c7",
+              "2b3d9db34b22a910e6ece9b5bd57753e6b49457aca65c0d91dfe7b3e92cd95f2",
+              "845fd44fda1e3a36cfdccf1c35d3b75c5e567ad73769d32aeb0c8e5685976b9d"
+            ],
+            "entropia_comprovada": false
+          }
+        }
+      ],
+      "geracao_criptografica": "revisao_de_codigo_pendente",
+      "modo": "ignora_token",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "ciclo:alice@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "ciclo:bruno@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "sem_alteracao_na_solicitacao",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_inexistente",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_reutilizado",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "primeiro_http": 200,
+            "segundo_http": 400,
+            "alteracoes_adicionais": 0
+          }
+        },
+        {
+          "teste": "validade:899",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "segundos_decorridos": 899,
+            "alteracoes": 1
+          }
+        },
+        {
+          "teste": "validade:900",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 900,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "validade:901",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 901,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "vinculo_da_conta",
+          "tipo": "seguranca",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "outra_conta_alterada": true
+          }
+        },
+        {
+          "teste": "token_na_resposta",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "token_exposto": false,
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "existente_http": 200,
+            "inexistente_http": 200,
+            "corpo_identico": true,
+            "envios_para_ausente": 0
+          }
+        },
+        {
+          "teste": "diagnostico_tokens",
+          "tipo": "diagnostico",
+          "status": "sem_fraqueza_observada",
+          "evidencia": {
+            "quantidade": 8,
+            "repeticao": false,
+            "sequencia_incremental": false,
+            "comprimentos": [
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43
+            ],
+            "sha256": [
+              "a49ffaa6cc39d79131610fe4ed29d45f7f393fa887af7418d5d2b1c966741462",
+              "a7131e3d9f90f655595ebc8b10e235780aa2869efbea7681968fe654032b02d4",
+              "e4113fec8cbbc56f021427dde75838aad81df6786a8174bdad788d820d73bce9",
+              "3fabad071b4f768f198e60ba91d84bbf605e126c9b3d3143bafc30f8e25c50b5",
+              "99f00fd29f4a45c5b5923555d3f1506beaa1970fb88437c087d788c696ab64b4",
+              "0aa42ef4aaa53aa35f2ea8ba083467f5a2a4c308f89df328b52e822a2ee4100a",
+              "53b9125a813205e5582505f291eb0de364937a954e4d47787b1b939266f16ab8",
+              "7ad33582b807a25c935d12e5163b495b3dca67ff9667b494714780e05e232b80"
+            ],
+            "entropia_comprovada": false
+          }
+        }
+      ],
+      "geracao_criptografica": "revisao_de_codigo_pendente",
+      "modo": "troca_conta",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "ciclo:alice@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "ciclo:bruno@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "sem_alteracao_na_solicitacao",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_inexistente",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_reutilizado",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "primeiro_http": 200,
+            "segundo_http": 400,
+            "alteracoes_adicionais": 0
+          }
+        },
+        {
+          "teste": "validade:899",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "segundos_decorridos": 899,
+            "alteracoes": 1
+          }
+        },
+        {
+          "teste": "validade:900",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 900,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "validade:901",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 901,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "vinculo_da_conta",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "outra_conta_alterada": false
+          }
+        },
+        {
+          "teste": "token_na_resposta",
+          "tipo": "seguranca",
+          "status": "reprovado",
+          "evidencia": {
+            "token_exposto": true,
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca",
+          "status": "reprovado",
+          "evidencia": {
+            "existente_http": 200,
+            "inexistente_http": 200,
+            "corpo_identico": false,
+            "envios_para_ausente": 0
+          }
+        },
+        {
+          "teste": "diagnostico_tokens",
+          "tipo": "diagnostico",
+          "status": "sem_fraqueza_observada",
+          "evidencia": {
+            "quantidade": 8,
+            "repeticao": false,
+            "sequencia_incremental": false,
+            "comprimentos": [
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43
+            ],
+            "sha256": [
+              "57289f771205e5268aa8024e4e7d192389d80142c6e6417b4d32f676610eba3d",
+              "32c685aaf74094d4001498b1a865820e86929eec15cf5ce9e215821ee74f2467",
+              "71ad74a66a754611398f0ae4df3fca8dc658cbfa8c2ae8e2c5a5969ce447f42a",
+              "c8f7b019733bbc9353c57aec2868a4f76a0b35d7789992f6aa2c54f1cdd83efa",
+              "72de720f815bb13cb8fd906e5179f03761cd34ced217ff3a67c6378159c65dd2",
+              "6454f246c8a131873a6828416fa2b3014dead6c32ab9003a36484d45c44fe6f2",
+              "24df11367939b99e4df0caf6afd5df69e5a6d65d04bef0f314737d0755afc6ff",
+              "877bfc39340245fb52c8206419b20e66a10c2ca6c98301a0c42f4cf3b072513c"
+            ],
+            "entropia_comprovada": false
+          }
+        }
+      ],
+      "geracao_criptografica": "revisao_de_codigo_pendente",
+      "modo": "vaza_token",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "ciclo:alice@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "ciclo:bruno@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "sem_alteracao_na_solicitacao",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_inexistente",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_reutilizado",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "primeiro_http": 200,
+            "segundo_http": 400,
+            "alteracoes_adicionais": 0
+          }
+        },
+        {
+          "teste": "validade:899",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "segundos_decorridos": 899,
+            "alteracoes": 1
+          }
+        },
+        {
+          "teste": "validade:900",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 900,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "validade:901",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 901,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "vinculo_da_conta",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "outra_conta_alterada": false
+          }
+        },
+        {
+          "teste": "token_na_resposta",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "token_exposto": false,
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca",
+          "status": "reprovado",
+          "evidencia": {
+            "existente_http": 200,
+            "inexistente_http": 404,
+            "corpo_identico": false,
+            "envios_para_ausente": 0
+          }
+        },
+        {
+          "teste": "diagnostico_tokens",
+          "tipo": "diagnostico",
+          "status": "sem_fraqueza_observada",
+          "evidencia": {
+            "quantidade": 8,
+            "repeticao": false,
+            "sequencia_incremental": false,
+            "comprimentos": [
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43
+            ],
+            "sha256": [
+              "e00f554bbd9499b2e9ccb943279090d48c1c6abc5176f336a6c217cd2745f1be",
+              "53ccb432ee2550f284df3c205471b8e5a0be903bdc73fbf555341a38607c568b",
+              "0ef307c70e231f56a4f4b269eeca25c99ba5ea69b6b79bf907ea5269926137fa",
+              "200a069c0a1fa1a2c7dd504ae9504760ab71cfc8c565972b27ad9c6a9d6afab4",
+              "088b4ed4a69a7c1aafa56b2042077f20924a45943c2eaf9507b97ff15811b071",
+              "0b3f0ff3d4b78cd5c8c2fc2353fa873089b118d699b48b3486ec7fcd0d94f5c8",
+              "58b997a2975c6b8f66eaae9fddd5dde867c060f34b23555b5ace50b87b95f3ae",
+              "91f30ad85207b5abec1b212638ae569cf4185a0c83ca9735682cbb41fb3a1104"
+            ],
+            "entropia_comprovada": false
+          }
+        }
+      ],
+      "geracao_criptografica": "revisao_de_codigo_pendente",
+      "modo": "enumera",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "ciclo:alice@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "ciclo:bruno@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "sem_alteracao_na_solicitacao",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_inexistente",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_reutilizado",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "primeiro_http": 200,
+            "segundo_http": 400,
+            "alteracoes_adicionais": 0
+          }
+        },
+        {
+          "teste": "validade:899",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "segundos_decorridos": 899,
+            "alteracoes": 1
+          }
+        },
+        {
+          "teste": "validade:900",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 900,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "validade:901",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 901,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "vinculo_da_conta",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "outra_conta_alterada": false
+          }
+        },
+        {
+          "teste": "token_na_resposta",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "token_exposto": false,
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "existente_http": 200,
+            "inexistente_http": 200,
+            "corpo_identico": true,
+            "envios_para_ausente": 0
+          }
+        },
+        {
+          "teste": "diagnostico_tokens",
+          "tipo": "diagnostico",
+          "status": "fraqueza_observada",
+          "evidencia": {
+            "quantidade": 8,
+            "repeticao": false,
+            "sequencia_incremental": true,
+            "comprimentos": [
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8,
+              8
+            ],
+            "sha256": [
+              "ae5ce162888ee3ebe974976cac5ab94a3f55049f8515884883d579fb3fa378d2",
+              "5c6bed0d94b9be8afbc5c8cac1e9d4be03f556917c2611ec56f4e6f341ef60d9",
+              "50a9b9163ebb829080aecf9a7a5990715de9fd63d48e3ea3734f6bd77aa3df07",
+              "cfb51ebe5fc1cd1482a9a65716dad756b1374b3bc507a712e416947eeb51a058",
+              "9294ef4a2f92785dd933c51b99f2aabd0f8da54a2536349b46c708039eff4c9b",
+              "405391cdcba508299713f0df3491fc39ee8044c599aac506de3456b6b3dd79e6",
+              "db36d895a408ea6c0440b0e316a85253a0aefdf21788c54d49652dd7dafdaf41",
+              "f3e7abbeb6ac146724ce867c5b83e093f2059910f3293d8daca0ddc2e0ec7493"
+            ],
+            "entropia_comprovada": false
+          }
+        }
+      ],
+      "geracao_criptografica": "revisao_de_codigo_pendente",
+      "modo": "token_sequencial",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "ciclo:alice@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "ciclo:bruno@example.test",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "solicitacao_http": 200,
+            "redefinicao_http": 200,
+            "email_capturado": true,
+            "conta_alterada_corretamente": true
+          }
+        },
+        {
+          "teste": "sem_alteracao_na_solicitacao",
+          "tipo": "seguranca",
+          "status": "reprovado",
+          "evidencia": {
+            "alteracoes": 1
+          }
+        },
+        {
+          "teste": "token_inexistente",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "token_reutilizado",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "primeiro_http": 200,
+            "segundo_http": 400,
+            "alteracoes_adicionais": 0
+          }
+        },
+        {
+          "teste": "validade:899",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "segundos_decorridos": 899,
+            "alteracoes": 1
+          }
+        },
+        {
+          "teste": "validade:900",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 900,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "validade:901",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "segundos_decorridos": 901,
+            "alteracoes": 0
+          }
+        },
+        {
+          "teste": "vinculo_da_conta",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "outra_conta_alterada": false
+          }
+        },
+        {
+          "teste": "token_na_resposta",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "token_exposto": false,
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca",
+          "status": "aprovado",
+          "evidencia": {
+            "existente_http": 200,
+            "inexistente_http": 200,
+            "corpo_identico": true,
+            "envios_para_ausente": 0
+          }
+        },
+        {
+          "teste": "diagnostico_tokens",
+          "tipo": "diagnostico",
+          "status": "sem_fraqueza_observada",
+          "evidencia": {
+            "quantidade": 8,
+            "repeticao": false,
+            "sequencia_incremental": false,
+            "comprimentos": [
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43,
+              43
+            ],
+            "sha256": [
+              "99e46c970f5f200939d755c7b9169cdaab6052ffc3fd7e8dddf3caa11890b9af",
+              "e27ffe6b0a6c4ab6b173f74e1cb5cb5f2804a64283669a781dac5666d7a6455d",
+              "0688c5ebb74909fd29bb22a40b7cfa19f1f21566dfa8617b29b473cdae8fecf5",
+              "ef6629026839edfebe090d654ead0aab33500496fc805c378d3ac30f28e4150c",
+              "91030f88b9825c595822bc4034bd04ab58a0c8fd4c8e20016dad3295b06e806c",
+              "308aac8baf2bd1acdff1744ee9831fe1b5540b605b9fc6f7e36d5abc3b64162c",
+              "65f485e6f0d68dd67ac5daade652640161acbaa5532c82afe71c43e89ea59dba",
+              "aaa7bac2959f712ca511f9f4817e14531e1464255e65fb8c247b1dde31386559"
+            ],
+            "entropia_comprovada": false
+          }
+        }
+      ],
+      "geracao_criptografica": "revisao_de_codigo_pendente",
+      "modo": "muda_ao_solicitar",
+      "expectativa_atendida": true
+    }
+  ],
+  "imagem": "sha256:95794833974ff9e27aa49b99a7dcc011be03529e8ba52d31882e565ac8449128",
+  "container_exit": 0,
+  "stdout": "TCC_RESULTADO_JSON:{\"referencias\": 11, \"expectativas_atendidas\": 11, \"resultados\": [{\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"ciclo:alice@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"ciclo:bruno@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"sem_alteracao_na_solicitacao\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"alteracoes\": 0}}, {\"teste\": \"token_inexistente\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"alteracoes\": 0}}, {\"teste\": \"token_reutilizado\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"primeiro_http\": 200, \"segundo_http\": 400, \"alteracoes_adicionais\": 0}}, {\"teste\": \"validade:899\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"segundos_decorridos\": 899, \"alteracoes\": 1}}, {\"teste\": \"validade:900\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 900, \"alteracoes\": 0}}, {\"teste\": \"validade:901\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 901, \"alteracoes\": 0}}, {\"teste\": \"vinculo_da_conta\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"outra_conta_alterada\": false}}, {\"teste\": \"token_na_resposta\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"token_exposto\": false, \"status_http\": 200}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"existente_http\": 200, \"inexistente_http\": 200, \"corpo_identico\": true, \"envios_para_ausente\": 0}}, {\"teste\": \"diagnostico_tokens\", \"tipo\": \"diagnostico\", \"status\": \"sem_fraqueza_observada\", \"evidencia\": {\"quantidade\": 8, \"repeticao\": false, \"sequencia_incremental\": false, \"comprimentos\": [43, 43, 43, 43, 43, 43, 43, 43], \"sha256\": [\"a766e68fecb015475eaf6b7f9a255b29b58ce3ea6f2f9fd64b6be367ab3f50b1\", \"73d1847de203e874a1ce9da280511e116d631e770db07383dd365f6b08624b14\", \"9052ac200d444ec07af6591d7b0d748865879832e3064a6accd80b7fb030c271\", \"642ef8a21d4886748b6aa26d9dca1c2962a93c95054db50bc781b265e7c762cd\", \"7f4e61b4b523e5042b385b8d858b15f0363557acbd9fcc0d438055396e77e791\", \"b8ec15faefa9610f32c8480e100e43cd13128d10fdcc2e1c35bf0798910659f2\", \"12aeee3950c1cde940e756f3eba8f24d1423163c97d78be35bab4da0af39a17e\", \"d84d37474d9b10e4943cee6446344896103a35ffe995ef1cbdee042014a4a7c5\"], \"entropia_comprovada\": false}}], \"geracao_criptografica\": \"revisao_de_codigo_pendente\", \"modo\": \"protegida\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": false, \"testes\": [{\"teste\": \"ciclo:alice@example.test\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"solicitacao_http\": 400, \"redefinicao_http\": 400, \"email_capturado\": false, \"conta_alterada_corretamente\": false}}, {\"teste\": \"ciclo:bruno@example.test\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"solicitacao_http\": 400, \"redefinicao_http\": 400, \"email_capturado\": false, \"conta_alterada_corretamente\": false}}, {\"teste\": \"sem_alteracao_na_solicitacao\", \"tipo\": \"seguranca\", \"status\": \"inconclusivo\", \"evidencia\": {\"alteracoes\": 0}}, {\"teste\": \"token_inexistente\", \"tipo\": \"seguranca\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"alteracoes\": 0}}, {\"teste\": \"token_reutilizado\", \"tipo\": \"seguranca\", \"status\": \"inconclusivo\", \"evidencia\": {\"primeiro_http\": 400, \"segundo_http\": 400, \"alteracoes_adicionais\": 0}}, {\"teste\": \"validade:899\", \"tipo\": \"contrato\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 899, \"alteracoes\": 0}}, {\"teste\": \"validade:900\", \"tipo\": \"seguranca\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 900, \"alteracoes\": 0}}, {\"teste\": \"validade:901\", \"tipo\": \"seguranca\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 901, \"alteracoes\": 0}}, {\"teste\": \"vinculo_da_conta\", \"tipo\": \"seguranca\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"outra_conta_alterada\": false}}, {\"teste\": \"token_na_resposta\", \"tipo\": \"seguranca\", \"status\": \"inconclusivo\", \"evidencia\": {\"token_exposto\": false, \"status_http\": 400}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca\", \"status\": \"inconclusivo\", \"evidencia\": {\"existente_http\": 400, \"inexistente_http\": 400, \"corpo_identico\": true, \"envios_para_ausente\": 0}}, {\"teste\": \"diagnostico_tokens\", \"tipo\": \"diagnostico\", \"status\": \"inconclusivo\", \"evidencia\": {\"quantidade\": 0, \"repeticao\": false, \"sequencia_incremental\": false, \"comprimentos\": [], \"sha256\": [], \"entropia_comprovada\": false}}], \"geracao_criptografica\": \"revisao_de_codigo_pendente\", \"modo\": \"nega_tudo\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": false, \"testes\": [{\"teste\": \"ciclo:alice@example.test\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": false}}, {\"teste\": \"ciclo:bruno@example.test\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": false}}, {\"teste\": \"sem_alteracao_na_solicitacao\", \"tipo\": \"seguranca\", \"status\": \"inconclusivo\", \"evidencia\": {\"alteracoes\": 0}}, {\"teste\": \"token_inexistente\", \"tipo\": \"seguranca\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"alteracoes\": 0}}, {\"teste\": \"token_reutilizado\", \"tipo\": \"seguranca\", \"status\": \"inconclusivo\", \"evidencia\": {\"primeiro_http\": 200, \"segundo_http\": 400, \"alteracoes_adicionais\": 0}}, {\"teste\": \"validade:899\", \"tipo\": \"contrato\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"segundos_decorridos\": 899, \"alteracoes\": 0}}, {\"teste\": \"validade:900\", \"tipo\": \"seguranca\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 900, \"alteracoes\": 0}}, {\"teste\": \"validade:901\", \"tipo\": \"seguranca\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 901, \"alteracoes\": 0}}, {\"teste\": \"vinculo_da_conta\", \"tipo\": \"seguranca\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 200, \"outra_conta_alterada\": false}}, {\"teste\": \"token_na_resposta\", \"tipo\": \"seguranca\", \"status\": \"inconclusivo\", \"evidencia\": {\"token_exposto\": false, \"status_http\": 200}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca\", \"status\": \"inconclusivo\", \"evidencia\": {\"existente_http\": 200, \"inexistente_http\": 200, \"corpo_identico\": true, \"envios_para_ausente\": 0}}, {\"teste\": \"diagnostico_tokens\", \"tipo\": \"diagnostico\", \"status\": \"sem_fraqueza_observada\", \"evidencia\": {\"quantidade\": 8, \"repeticao\": false, \"sequencia_incremental\": false, \"comprimentos\": [43, 43, 43, 43, 43, 43, 43, 43], \"sha256\": [\"b6ff1034c92b180d8b262ea88577f47986d768f5f6d9c1ce3f1b646fe20d22a8\", \"9ba32fb6a9efab9dc882946325c9af42846c14f6dada3b090bb7003f9bc53655\", \"3e695b84107d3dd462d20e85b9c8b1d7b6c83887c369b5bd9a29021ac6c1d7b0\", \"7a05d3b60041aae16b4b6ab2bdc3f67ea85937bf1a1e281cea3dc06002205e4e\", \"ae8fc308287fc64a5a1d16bd8c3c71fff6c32ce9a2372a3cc9653fee1e198e3f\", \"b18424c006c9cc678c02c46de3cd50260c8b1b0abe79a62ef5d10d1d7533f60f\", \"3b8fa113f928b3b1b4f6c1ecaa0d6030ba4451d8c110956dce1303dfac724409\", \"356e5ee1c0c6ebe592028fb5ba078da86f225a24df7e0f8910084ce1e16682a2\"], \"entropia_comprovada\": false}}], \"geracao_criptografica\": \"revisao_de_codigo_pendente\", \"modo\": \"finge_sucesso\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"ciclo:alice@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"ciclo:bruno@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"sem_alteracao_na_solicitacao\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"alteracoes\": 0}}, {\"teste\": \"token_inexistente\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"alteracoes\": 0}}, {\"teste\": \"token_reutilizado\", \"tipo\": \"seguranca\", \"status\": \"reprovado\", \"evidencia\": {\"primeiro_http\": 200, \"segundo_http\": 200, \"alteracoes_adicionais\": 1}}, {\"teste\": \"validade:899\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"segundos_decorridos\": 899, \"alteracoes\": 1}}, {\"teste\": \"validade:900\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 900, \"alteracoes\": 0}}, {\"teste\": \"validade:901\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 901, \"alteracoes\": 0}}, {\"teste\": \"vinculo_da_conta\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"outra_conta_alterada\": false}}, {\"teste\": \"token_na_resposta\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"token_exposto\": false, \"status_http\": 200}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"existente_http\": 200, \"inexistente_http\": 200, \"corpo_identico\": true, \"envios_para_ausente\": 0}}, {\"teste\": \"diagnostico_tokens\", \"tipo\": \"diagnostico\", \"status\": \"sem_fraqueza_observada\", \"evidencia\": {\"quantidade\": 8, \"repeticao\": false, \"sequencia_incremental\": false, \"comprimentos\": [43, 43, 43, 43, 43, 43, 43, 43], \"sha256\": [\"d35cdb4446783ddbb5402effd2fe09ee93ec4906b841d56adb7707d4b1b12012\", \"9870d5ffeebbd00855b572e874b98e3004ae10fd38adcd50e4e11685aa368395\", \"d726452606b4580a28501937979283823304dc85d21353d837e2862da79f419a\", \"c3865666eed9b9bd3c500984121a70354cb652a17868a9a5257c369a975db839\", \"16ddc74c5917560ff3f6114ba82f68e2da2eba371908471860a387e60ad9c522\", \"7d86240d1496ffa77636c1dc60358743b8377539adecd9187c7d148312a58634\", \"8c54058ecfe198ad24195b295096be4fbc182db7c9f2b829a0e9cbbe23ca4813\", \"9c080432ecede8baa2a8e6883b1b8f9e41f0a17bf16cb9352dfe4d4eb6b57e55\"], \"entropia_comprovada\": false}}], \"geracao_criptografica\": \"revisao_de_codigo_pendente\", \"modo\": \"reutiliza\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"ciclo:alice@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"ciclo:bruno@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"sem_alteracao_na_solicitacao\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"alteracoes\": 0}}, {\"teste\": \"token_inexistente\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"alteracoes\": 0}}, {\"teste\": \"token_reutilizado\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"primeiro_http\": 200, \"segundo_http\": 400, \"alteracoes_adicionais\": 0}}, {\"teste\": \"validade:899\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"segundos_decorridos\": 899, \"alteracoes\": 1}}, {\"teste\": \"validade:900\", \"tipo\": \"seguranca\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"segundos_decorridos\": 900, \"alteracoes\": 1}}, {\"teste\": \"validade:901\", \"tipo\": \"seguranca\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"segundos_decorridos\": 901, \"alteracoes\": 1}}, {\"teste\": \"vinculo_da_conta\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"outra_conta_alterada\": false}}, {\"teste\": \"token_na_resposta\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"token_exposto\": false, \"status_http\": 200}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"existente_http\": 200, \"inexistente_http\": 200, \"corpo_identico\": true, \"envios_para_ausente\": 0}}, {\"teste\": \"diagnostico_tokens\", \"tipo\": \"diagnostico\", \"status\": \"sem_fraqueza_observada\", \"evidencia\": {\"quantidade\": 8, \"repeticao\": false, \"sequencia_incremental\": false, \"comprimentos\": [43, 43, 43, 43, 43, 43, 43, 43], \"sha256\": [\"070f559a8a3a0f85527670e26ecb0658944527330dcf41b8c41955494f6f566f\", \"b38678eb481a6d1e3798932975be988616ece1335ba01010fe2044c2f507de6f\", \"172eb8d7cf8f85b20a8142ed141f0b048fb088f31ed0cfb445cce896d925b707\", \"4f85343e882d807005dccb644b163ba41bf11013b3289bc35e4d51f4628cd28b\", \"60e55d9489da1ac3a1950bb096fedb77ec038e9626a39d200c04ad7ca3581aab\", \"71e63b9f7098b78b220405866dcce74f8d65eae1f339e3d8f5f05cf3f17bb52e\", \"7014e23d26de1bd24577a2d7cf848872376f757a6920035611bb418532161eba\", \"021abe08a62c5168061f11612d205cbea390ea6992d7f33d310a1cbd30c80f79\"], \"entropia_comprovada\": false}}], \"geracao_criptografica\": \"revisao_de_codigo_pendente\", \"modo\": \"nao_expira\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"ciclo:alice@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"ciclo:bruno@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"sem_alteracao_na_solicitacao\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"alteracoes\": 0}}, {\"teste\": \"token_inexistente\", \"tipo\": \"seguranca\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"alteracoes\": 1}}, {\"teste\": \"token_reutilizado\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"primeiro_http\": 200, \"segundo_http\": 400, \"alteracoes_adicionais\": 0}}, {\"teste\": \"validade:899\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"segundos_decorridos\": 899, \"alteracoes\": 1}}, {\"teste\": \"validade:900\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 900, \"alteracoes\": 0}}, {\"teste\": \"validade:901\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 901, \"alteracoes\": 0}}, {\"teste\": \"vinculo_da_conta\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"outra_conta_alterada\": false}}, {\"teste\": \"token_na_resposta\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"token_exposto\": false, \"status_http\": 200}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"existente_http\": 200, \"inexistente_http\": 200, \"corpo_identico\": true, \"envios_para_ausente\": 0}}, {\"teste\": \"diagnostico_tokens\", \"tipo\": \"diagnostico\", \"status\": \"sem_fraqueza_observada\", \"evidencia\": {\"quantidade\": 8, \"repeticao\": false, \"sequencia_incremental\": false, \"comprimentos\": [43, 43, 43, 43, 43, 43, 43, 43], \"sha256\": [\"760e8bf56425d90c9706a40690f2ecbe94ea2a26dccee6b9db2a5f39da15af67\", \"d283ac7b2133e1e08de1de9fb08567a0cf404a9641e3cc73db7e812e5e269050\", \"6e1b10835c43c40328e932f5424e17426640a9c22ed4d032cbcdc325a2921dba\", \"948da21fb51339526194fb1381aae167577b33d85713251c274014417c49ab3b\", \"b4400df42a00a922eb3c599880c5059cab3dc5d61d4604512985beed1a027a47\", \"5bdb01da08c4383bec865d7a564398566672686bdd60140a67cff6490018d4c7\", \"2b3d9db34b22a910e6ece9b5bd57753e6b49457aca65c0d91dfe7b3e92cd95f2\", \"845fd44fda1e3a36cfdccf1c35d3b75c5e567ad73769d32aeb0c8e5685976b9d\"], \"entropia_comprovada\": false}}], \"geracao_criptografica\": \"revisao_de_codigo_pendente\", \"modo\": \"ignora_token\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"ciclo:alice@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"ciclo:bruno@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"sem_alteracao_na_solicitacao\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"alteracoes\": 0}}, {\"teste\": \"token_inexistente\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"alteracoes\": 0}}, {\"teste\": \"token_reutilizado\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"primeiro_http\": 200, \"segundo_http\": 400, \"alteracoes_adicionais\": 0}}, {\"teste\": \"validade:899\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"segundos_decorridos\": 899, \"alteracoes\": 1}}, {\"teste\": \"validade:900\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 900, \"alteracoes\": 0}}, {\"teste\": \"validade:901\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 901, \"alteracoes\": 0}}, {\"teste\": \"vinculo_da_conta\", \"tipo\": \"seguranca\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"outra_conta_alterada\": true}}, {\"teste\": \"token_na_resposta\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"token_exposto\": false, \"status_http\": 200}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"existente_http\": 200, \"inexistente_http\": 200, \"corpo_identico\": true, \"envios_para_ausente\": 0}}, {\"teste\": \"diagnostico_tokens\", \"tipo\": \"diagnostico\", \"status\": \"sem_fraqueza_observada\", \"evidencia\": {\"quantidade\": 8, \"repeticao\": false, \"sequencia_incremental\": false, \"comprimentos\": [43, 43, 43, 43, 43, 43, 43, 43], \"sha256\": [\"a49ffaa6cc39d79131610fe4ed29d45f7f393fa887af7418d5d2b1c966741462\", \"a7131e3d9f90f655595ebc8b10e235780aa2869efbea7681968fe654032b02d4\", \"e4113fec8cbbc56f021427dde75838aad81df6786a8174bdad788d820d73bce9\", \"3fabad071b4f768f198e60ba91d84bbf605e126c9b3d3143bafc30f8e25c50b5\", \"99f00fd29f4a45c5b5923555d3f1506beaa1970fb88437c087d788c696ab64b4\", \"0aa42ef4aaa53aa35f2ea8ba083467f5a2a4c308f89df328b52e822a2ee4100a\", \"53b9125a813205e5582505f291eb0de364937a954e4d47787b1b939266f16ab8\", \"7ad33582b807a25c935d12e5163b495b3dca67ff9667b494714780e05e232b80\"], \"entropia_comprovada\": false}}], \"geracao_criptografica\": \"revisao_de_codigo_pendente\", \"modo\": \"troca_conta\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"ciclo:alice@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"ciclo:bruno@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"sem_alteracao_na_solicitacao\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"alteracoes\": 0}}, {\"teste\": \"token_inexistente\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"alteracoes\": 0}}, {\"teste\": \"token_reutilizado\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"primeiro_http\": 200, \"segundo_http\": 400, \"alteracoes_adicionais\": 0}}, {\"teste\": \"validade:899\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"segundos_decorridos\": 899, \"alteracoes\": 1}}, {\"teste\": \"validade:900\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 900, \"alteracoes\": 0}}, {\"teste\": \"validade:901\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 901, \"alteracoes\": 0}}, {\"teste\": \"vinculo_da_conta\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"outra_conta_alterada\": false}}, {\"teste\": \"token_na_resposta\", \"tipo\": \"seguranca\", \"status\": \"reprovado\", \"evidencia\": {\"token_exposto\": true, \"status_http\": 200}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca\", \"status\": \"reprovado\", \"evidencia\": {\"existente_http\": 200, \"inexistente_http\": 200, \"corpo_identico\": false, \"envios_para_ausente\": 0}}, {\"teste\": \"diagnostico_tokens\", \"tipo\": \"diagnostico\", \"status\": \"sem_fraqueza_observada\", \"evidencia\": {\"quantidade\": 8, \"repeticao\": false, \"sequencia_incremental\": false, \"comprimentos\": [43, 43, 43, 43, 43, 43, 43, 43], \"sha256\": [\"57289f771205e5268aa8024e4e7d192389d80142c6e6417b4d32f676610eba3d\", \"32c685aaf74094d4001498b1a865820e86929eec15cf5ce9e215821ee74f2467\", \"71ad74a66a754611398f0ae4df3fca8dc658cbfa8c2ae8e2c5a5969ce447f42a\", \"c8f7b019733bbc9353c57aec2868a4f76a0b35d7789992f6aa2c54f1cdd83efa\", \"72de720f815bb13cb8fd906e5179f03761cd34ced217ff3a67c6378159c65dd2\", \"6454f246c8a131873a6828416fa2b3014dead6c32ab9003a36484d45c44fe6f2\", \"24df11367939b99e4df0caf6afd5df69e5a6d65d04bef0f314737d0755afc6ff\", \"877bfc39340245fb52c8206419b20e66a10c2ca6c98301a0c42f4cf3b072513c\"], \"entropia_comprovada\": false}}], \"geracao_criptografica\": \"revisao_de_codigo_pendente\", \"modo\": \"vaza_token\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"ciclo:alice@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"ciclo:bruno@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"sem_alteracao_na_solicitacao\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"alteracoes\": 0}}, {\"teste\": \"token_inexistente\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"alteracoes\": 0}}, {\"teste\": \"token_reutilizado\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"primeiro_http\": 200, \"segundo_http\": 400, \"alteracoes_adicionais\": 0}}, {\"teste\": \"validade:899\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"segundos_decorridos\": 899, \"alteracoes\": 1}}, {\"teste\": \"validade:900\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 900, \"alteracoes\": 0}}, {\"teste\": \"validade:901\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 901, \"alteracoes\": 0}}, {\"teste\": \"vinculo_da_conta\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"outra_conta_alterada\": false}}, {\"teste\": \"token_na_resposta\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"token_exposto\": false, \"status_http\": 200}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca\", \"status\": \"reprovado\", \"evidencia\": {\"existente_http\": 200, \"inexistente_http\": 404, \"corpo_identico\": false, \"envios_para_ausente\": 0}}, {\"teste\": \"diagnostico_tokens\", \"tipo\": \"diagnostico\", \"status\": \"sem_fraqueza_observada\", \"evidencia\": {\"quantidade\": 8, \"repeticao\": false, \"sequencia_incremental\": false, \"comprimentos\": [43, 43, 43, 43, 43, 43, 43, 43], \"sha256\": [\"e00f554bbd9499b2e9ccb943279090d48c1c6abc5176f336a6c217cd2745f1be\", \"53ccb432ee2550f284df3c205471b8e5a0be903bdc73fbf555341a38607c568b\", \"0ef307c70e231f56a4f4b269eeca25c99ba5ea69b6b79bf907ea5269926137fa\", \"200a069c0a1fa1a2c7dd504ae9504760ab71cfc8c565972b27ad9c6a9d6afab4\", \"088b4ed4a69a7c1aafa56b2042077f20924a45943c2eaf9507b97ff15811b071\", \"0b3f0ff3d4b78cd5c8c2fc2353fa873089b118d699b48b3486ec7fcd0d94f5c8\", \"58b997a2975c6b8f66eaae9fddd5dde867c060f34b23555b5ace50b87b95f3ae\", \"91f30ad85207b5abec1b212638ae569cf4185a0c83ca9735682cbb41fb3a1104\"], \"entropia_comprovada\": false}}], \"geracao_criptografica\": \"revisao_de_codigo_pendente\", \"modo\": \"enumera\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"ciclo:alice@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"ciclo:bruno@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"sem_alteracao_na_solicitacao\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"alteracoes\": 0}}, {\"teste\": \"token_inexistente\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"alteracoes\": 0}}, {\"teste\": \"token_reutilizado\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"primeiro_http\": 200, \"segundo_http\": 400, \"alteracoes_adicionais\": 0}}, {\"teste\": \"validade:899\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"segundos_decorridos\": 899, \"alteracoes\": 1}}, {\"teste\": \"validade:900\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 900, \"alteracoes\": 0}}, {\"teste\": \"validade:901\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 901, \"alteracoes\": 0}}, {\"teste\": \"vinculo_da_conta\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"outra_conta_alterada\": false}}, {\"teste\": \"token_na_resposta\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"token_exposto\": false, \"status_http\": 200}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"existente_http\": 200, \"inexistente_http\": 200, \"corpo_identico\": true, \"envios_para_ausente\": 0}}, {\"teste\": \"diagnostico_tokens\", \"tipo\": \"diagnostico\", \"status\": \"fraqueza_observada\", \"evidencia\": {\"quantidade\": 8, \"repeticao\": false, \"sequencia_incremental\": true, \"comprimentos\": [8, 8, 8, 8, 8, 8, 8, 8], \"sha256\": [\"ae5ce162888ee3ebe974976cac5ab94a3f55049f8515884883d579fb3fa378d2\", \"5c6bed0d94b9be8afbc5c8cac1e9d4be03f556917c2611ec56f4e6f341ef60d9\", \"50a9b9163ebb829080aecf9a7a5990715de9fd63d48e3ea3734f6bd77aa3df07\", \"cfb51ebe5fc1cd1482a9a65716dad756b1374b3bc507a712e416947eeb51a058\", \"9294ef4a2f92785dd933c51b99f2aabd0f8da54a2536349b46c708039eff4c9b\", \"405391cdcba508299713f0df3491fc39ee8044c599aac506de3456b6b3dd79e6\", \"db36d895a408ea6c0440b0e316a85253a0aefdf21788c54d49652dd7dafdaf41\", \"f3e7abbeb6ac146724ce867c5b83e093f2059910f3293d8daca0ddc2e0ec7493\"], \"entropia_comprovada\": false}}], \"geracao_criptografica\": \"revisao_de_codigo_pendente\", \"modo\": \"token_sequencial\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"ciclo:alice@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"ciclo:bruno@example.test\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"solicitacao_http\": 200, \"redefinicao_http\": 200, \"email_capturado\": true, \"conta_alterada_corretamente\": true}}, {\"teste\": \"sem_alteracao_na_solicitacao\", \"tipo\": \"seguranca\", \"status\": \"reprovado\", \"evidencia\": {\"alteracoes\": 1}}, {\"teste\": \"token_inexistente\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"alteracoes\": 0}}, {\"teste\": \"token_reutilizado\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"primeiro_http\": 200, \"segundo_http\": 400, \"alteracoes_adicionais\": 0}}, {\"teste\": \"validade:899\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"segundos_decorridos\": 899, \"alteracoes\": 1}}, {\"teste\": \"validade:900\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 900, \"alteracoes\": 0}}, {\"teste\": \"validade:901\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"segundos_decorridos\": 901, \"alteracoes\": 0}}, {\"teste\": \"vinculo_da_conta\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"outra_conta_alterada\": false}}, {\"teste\": \"token_na_resposta\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"token_exposto\": false, \"status_http\": 200}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"evidencia\": {\"existente_http\": 200, \"inexistente_http\": 200, \"corpo_identico\": true, \"envios_para_ausente\": 0}}, {\"teste\": \"diagnostico_tokens\", \"tipo\": \"diagnostico\", \"status\": \"sem_fraqueza_observada\", \"evidencia\": {\"quantidade\": 8, \"repeticao\": false, \"sequencia_incremental\": false, \"comprimentos\": [43, 43, 43, 43, 43, 43, 43, 43], \"sha256\": [\"99e46c970f5f200939d755c7b9169cdaab6052ffc3fd7e8dddf3caa11890b9af\", \"e27ffe6b0a6c4ab6b173f74e1cb5cb5f2804a64283669a781dac5666d7a6455d\", \"0688c5ebb74909fd29bb22a40b7cfa19f1f21566dfa8617b29b473cdae8fecf5\", \"ef6629026839edfebe090d654ead0aab33500496fc805c378d3ac30f28e4150c\", \"91030f88b9825c595822bc4034bd04ab58a0c8fd4c8e20016dad3295b06e806c\", \"308aac8baf2bd1acdff1744ee9831fe1b5540b605b9fc6f7e36d5abc3b64162c\", \"65f485e6f0d68dd67ac5daade652640161acbaa5532c82afe71c43e89ea59dba\", \"aaa7bac2959f712ca511f9f4817e14531e1464255e65fb8c247b1dde31386559\"], \"entropia_comprovada\": false}}], \"geracao_criptografica\": \"revisao_de_codigo_pendente\", \"modo\": \"muda_ao_solicitar\", \"expectativa_atendida\": true}]}\n",
+  "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n",
+  "probe": {
+    "confinamento": {
+      "usuario_sem_privilegios": true,
+      "sem_chave_api": true,
+      "raiz_somente_leitura": true,
+      "rede_bloqueada": true
+    },
+    "python": "3.14.2 (main, Feb  3 2026, 03:06:17) [GCC 14.2.0]",
+    "imagem": "sha256:95794833974ff9e27aa49b99a7dcc011be03529e8ba52d31882e565ac8449128",
+    "container_exit": 0,
+    "stdout": "TCC_RESULTADO_JSON:{\"confinamento\": {\"usuario_sem_privilegios\": true, \"sem_chave_api\": true, \"raiz_somente_leitura\": true, \"rede_bloqueada\": true}, \"python\": \"3.14.2 (main, Feb  3 2026, 03:06:17) [GCC 14.2.0]\"}\n",
+    "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+  },
+  "arquivos": {
+    "tarefas/T05.json": "55888dec370c9d23979f65dd3103eee6e41560828bf0251f1a7a44753e35d885",
+    "t05_infra.py": "7b8978904f7aee8632b0816728b2b490557437c76d3b0f641ca8419ed5e1cd26",
+    "t05_referencias.py": "2dc9f7fe1c7c2330794f72997e583f9c0a779897ece6df6f5a8f14b39bbb7c01",
+    "t05_verificador.py": "c2fd091482cace61fa5780c42e1b3533354a1c48ed0ed38f38995fb0bbcb09da",
+    "t05_worker_linux.py": "4f37479f2b6641a4907afcf3bb19d72263989c089ce3dffffca873ccb293b72d",
+    "t05_docker.py": "e026a05fa05e73819f7da32e1ac26f1cafe557f53b1793aa7aba765000106ee9",
+    "docker/t05/Dockerfile": "b29324e7294cec782de520f3ccbdb1ed0aa8af28041dd5fed91a281088c3e263",
+    "docker/t05/requirements.txt": "92db3ce3b3f144cc976ee8156161afa5f56fac24d76538f192439a082883ad53"
+  }
+}

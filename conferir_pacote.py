@@ -100,3 +100,13 @@ if (t03/'resumo.json').exists():
         if 'imagem' in result:assert result['imagem']==plan['imagem']
     assert len(ids)==8 and calls==8
     print('T03 exploratoria: 8 respostas em 8 requisicoes; plano anterior as chamadas, prompts, parametros, fontes e imagem conferidos.')
+
+t05_report=ROOT/'docs'/'T05-validacao-linux.json'
+if t05_report.exists():
+    report=json.loads(t05_report.read_text(encoding='utf-8'))
+    assert report['referencias']==report['expectativas_atendidas']==11 and report['container_exit']==0
+    assert len(report['probe']['confinamento'])==4 and all(report['probe']['confinamento'].values())
+    assert all(r['expectativa_atendida'] and len(r['testes'])==12 for r in report['resultados'])
+    for name,sha in report['arquivos'].items():
+        assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
+    print('T05: 11 referencias, 12 cenarios por referencia; isolamento e hashes registrados. Sem geracoes de LLM nesta etapa.')
