@@ -158,4 +158,31 @@ if t07_report.exists():
     assert all(r['expectativa_atendida'] and len(r['testes'])==15 for r in report['resultados'])
     for name,sha in report['arquivos'].items():
         assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
-    print('T07: 10 referencias, 15 cenarios por referencia; hashes e isolamento registrados. Sem geracoes de LLM nesta etapa.')
+    print('T07: 10 referencias, 15 cenarios por referencia; hashes e isolamento dos instrumentos conferidos.')
+
+t07=ROOT/'dados/t07-exploratoria'
+if (t07/'resumo.json').exists():
+    plan=json.loads((t07/'plano.json').read_text(encoding='utf-8'))
+    assert len(plan['jobs'])==8
+    for name,sha in plan['fontes_sha256'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
+    calls=0;ids=set()
+    for job in plan['jobs']:
+        folder=t07/job['id'];g=json.loads((folder/'geracao.json').read_text(encoding='utf-8'))
+        assert plan['registrado_em']<=g['iniciado_em']<=g['concluida_em']
+        assert g['prompt']==job['prompt'] and g['payload']['messages']==[{'role':'user','content':job['prompt']}]
+        assert g['payload']['model']==job['modelo']
+        assert all(g['payload'][k]==v for k,v in plan['parametros'].items())
+        assert hashlib.sha256((folder/'amostra.py').read_bytes()).hexdigest()==g['codigo_sha256']
+        calls+=len(g['tentativas']);ids.add(g['resposta']['id'])
+        result=json.loads((folder/'avaliacao.json').read_text(encoding='utf-8'))
+        assert result['imagem']==plan['imagem']
+    assert calls==len(ids)==8
+    review=json.loads((ROOT/'docs/T07-revisao-processos.json').read_text(encoding='utf-8'))
+    assert len(review['observacoes'])==8
+    for row in review['observacoes']:
+        code=(t07/row['id']/'amostra.py').read_bytes()
+        assert hashlib.sha256(code).hexdigest()==row['codigo_sha256']
+        assert row['revisao_humana_independente']=='pendente'
+        lines=code.decode('utf-8').splitlines()
+        for point in row['evidencias'].values():assert lines[point['linha']-1].strip()==point['trecho']
+    print('T07 exploratoria: 8 respostas em 8 chamadas; plano, fontes, imagem e evidencias da revisao conferidos.')

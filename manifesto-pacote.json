@@ -18,8 +18,8 @@
     },
     {
       "caminho": "README.md",
-      "bytes": 5809,
-      "sha256": "68008139851bc593f180828a815c767f37e12267419cc8fe79cd87c4f88e2531"
+      "bytes": 6048,
+      "sha256": "f5fdeb938a6a6f6ac8f76118ea7aaf4e9c4f07ac3f306b7e3b025bba22de1f62"
     },
     {
       "caminho": "aceitacao_worker.py",
@@ -398,8 +398,8 @@
     },
     {
       "caminho": "conferir_pacote.py",
-      "bytes": 9884,
-      "sha256": "3e4745c4ee3f0434b9386253a0b27211ce72df81b68b8bebc5951fa840e22fa0"
+      "bytes": 11561,
+      "sha256": "14b4ca49ef413aa3411f6c0978af6ca99f6481b3516cd45ea2670402d9375db4"
     },
     {
       "caminho": "dados/aceitacoes-mais-recentes.json",
@@ -1032,6 +1032,136 @@
       "sha256": "75c7bc2707cfbb4388610b15695f6a9368fb9f1f3ef7f76970b70b6431c5bb64"
     },
     {
+      "caminho": "dados/t07-exploratoria/plano.json",
+      "bytes": 14844,
+      "sha256": "d31a5968c65e6fb19d13a808a553b923b21915324d90e885b7b6b1a55cd3f2a7"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/resumo.json",
+      "bytes": 6571,
+      "sha256": "f018fb65bbedb55df8660620075ec5c489f67913715866900db89f8118a81f64"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-01/amostra.py",
+      "bytes": 1205,
+      "sha256": "62f1db44ac52c03e951b9655d905916be14639de6c56e6897c05b47d704f61ed"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-01/avaliacao.json",
+      "bytes": 12875,
+      "sha256": "4172e71a0ad7f7bba36df43175c865c24110531d4eacb55bcafade7fe1866c7a"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-01/geracao.json",
+      "bytes": 5029,
+      "sha256": "c856a182a5d75a4f514afe115ffce73ede844faf5aef00f9260b20f829134bc3"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-02/amostra.py",
+      "bytes": 2203,
+      "sha256": "04e1a81a7f605452c02b37bd3c709116c790492ed6ac665d39627830c75a3c03"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-02/avaliacao.json",
+      "bytes": 12877,
+      "sha256": "d2192ccc916f8fb341f03789e96ebbbcffca7a3f8778ce002abc1eaf3a85a804"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-02/geracao.json",
+      "bytes": 7020,
+      "sha256": "cf8d994d9803fe31aa3be628871daba25bc0650c1a880f5adf05a8fbcb7775cb"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-03/amostra.py",
+      "bytes": 1068,
+      "sha256": "6209152aa49f9696aa8522e88e203e601e3e83b67e11161cda699ea388acc51d"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-03/avaliacao.json",
+      "bytes": 12875,
+      "sha256": "21a1908a8a8975ed7c4e1c499f302fafa61c024a0fafb220a2b230eca1f22179"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-03/geracao.json",
+      "bytes": 5638,
+      "sha256": "4f082bbd2fd58f09f46ce2e9c967a088243b8b7fd45670b36a7daf113144810f"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-04/amostra.py",
+      "bytes": 1414,
+      "sha256": "255535678dd33bbc4d1a84d0844eb0dd77b2c60fd5d4a79b07c9a24523f396a6"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-04/avaliacao.json",
+      "bytes": 12875,
+      "sha256": "e6e9ab805e1c0c50c7ce8c60e7034db4554987e921e75c7aa70c415842935a3d"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-04/geracao.json",
+      "bytes": 6147,
+      "sha256": "863b8f64a0df69a4e833e4f0b07b9351037f71c699f765c4c95427a8970e7a78"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-05/amostra.py",
+      "bytes": 1679,
+      "sha256": "599f8cf0ccbafc61494b1353f9c8c02825f390dab10f25dde15139bec30e6574"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-05/avaliacao.json",
+      "bytes": 12877,
+      "sha256": "2a5738224738dbfa7702a54f1432d53acfcfe1dca0cdb0816cb0a6c051d5e454"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-05/geracao.json",
+      "bytes": 6312,
+      "sha256": "3a0fa0bcb4dec1f43c629d4c025a16511ca11529e4323e0d868c1ccd956e2b47"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-06/amostra.py",
+      "bytes": 1545,
+      "sha256": "10679410789cc4029afdaeffea3b9d4b04a4251577acc145059eb10850c46f80"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-06/avaliacao.json",
+      "bytes": 821,
+      "sha256": "eb072cfe23b8fe69b7696258192afbe6e1d9ade496ac8fa662e1d5088fbe2ce2"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-06/geracao.json",
+      "bytes": 5432,
+      "sha256": "da2b1ac05da722e5bb07e38b20b9b67f6e109916ed060f39b408b6362f062839"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-07/amostra.py",
+      "bytes": 1666,
+      "sha256": "6cf90dba6094d96224bc3105af913f6eaed9d47eefd0a49938002c342e23563b"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-07/avaliacao.json",
+      "bytes": 12875,
+      "sha256": "6b8a9975f7d9f8362fba2a48bdefc9c6b3201eab12bf67a9d69d1852f4750c58"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-07/geracao.json",
+      "bytes": 7404,
+      "sha256": "6ade0fad127bc10fddd97364d6a8aacdf24d7e0d284eb2afb24dfb4ba6121126"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-08/amostra.py",
+      "bytes": 1341,
+      "sha256": "2d0486610c154ae9d2258ef67188acc9401be1a2d69b7e70753be9a2846be7c7"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-08/avaliacao.json",
+      "bytes": 12875,
+      "sha256": "d48616fede2c88a2bc8e1a959fdfb0516e7c74c8051b52e9b7755acfc024d7a5"
+    },
+    {
+      "caminho": "dados/t07-exploratoria/t07-08/geracao.json",
+      "bytes": 7026,
+      "sha256": "627442b4a23dfde215eea6c03053dd42a21b7f6ee43870ef8f56f6154447ca0b"
+    },
+    {
       "caminho": "dados/verificacoes_comportamentais-mais-recentes.json",
       "bytes": 299811,
       "sha256": "d008e736a0b7d16fc14b4c24c1d559d4d6ee4e12ca95e663c86959ae464a8293"
@@ -1257,9 +1387,29 @@
       "sha256": "759ed4b4a61bfdf9d1870fe3a62d721bf8ce1686f651a2c57e96e1c5c9fcae10"
     },
     {
+      "caminho": "docs/T07-coleta-protocolo.md",
+      "bytes": 2372,
+      "sha256": "6a9cef51a0593cf5ddab6dd7bf7ed1d51955e16fd5a26510d8498907ce0e9393"
+    },
+    {
+      "caminho": "docs/T07-exploratoria.md",
+      "bytes": 1390,
+      "sha256": "9871279391d9756b8d2393a042c6fd083bea9542355758e98355fda6915b2e2b"
+    },
+    {
+      "caminho": "docs/T07-leitura-resultados.md",
+      "bytes": 6434,
+      "sha256": "c4bfa4abcf43b7af22e2c6439715b4f475bba012711703c7b142079ca8be80f4"
+    },
+    {
       "caminho": "docs/T07-protocolo.md",
       "bytes": 6487,
       "sha256": "8edc039de3527fc366d6d7e2bd714414556c35f4c27952ca9dbbec4cd91ddd1e"
+    },
+    {
+      "caminho": "docs/T07-revisao-processos.json",
+      "bytes": 11053,
+      "sha256": "f5900b712063ba353744ef389b37858f7cebcd9c20e0473748380c713f08f304"
     },
     {
       "caminho": "docs/T07-validacao-linux.json",
@@ -1330,6 +1480,11 @@
       "caminho": "docs/redigir-resultados-T05.py",
       "bytes": 10551,
       "sha256": "efb418e929a3603202a15727d6d1a966f8cf633f95408ce2bab6998b4723638e"
+    },
+    {
+      "caminho": "docs/redigir-resultados-T07.py",
+      "bytes": 9129,
+      "sha256": "617ee5187a0bf39f63ff53ae54bf2c09d986ce8473acca51f632f0bcc4f9acce"
     },
     {
       "caminho": "docs/referencial-v04.md",
@@ -4272,6 +4427,11 @@
       "sha256": "4f37479f2b6641a4907afcf3bb19d72263989c089ce3dffffca873ccb293b72d"
     },
     {
+      "caminho": "t07_coleta.py",
+      "bytes": 5740,
+      "sha256": "2e0718f5f4c19d77c0d234ef561f065549136ef0cb75115b70466c3bea575d01"
+    },
+    {
       "caminho": "t07_docker.py",
       "bytes": 2515,
       "sha256": "8c8036c20346613d801ba8a9f6ce7ab7dd7c0693f2f62f17ca79488479f398a6"
@@ -4367,6 +4527,11 @@
       "sha256": "a4705796caae768482d8ab8a07ad760c21dc8b67eff7fb481688dccc344fb7dc"
     },
     {
+      "caminho": "tests/test_t07_coleta.py",
+      "bytes": 912,
+      "sha256": "1eb9a7bd74f25065e27cc0d6dd3d5301c336ff36548219cb2fd65e3472865a39"
+    },
+    {
       "caminho": "validar_aceitacao.py",
       "bytes": 4122,
       "sha256": "88481b94af00787697b7f1bec55324f57e8635763c8a50e28c7748c02463cbab"
@@ -4387,5 +4552,5 @@
   "redacao_piloto": "Resultados-piloto-v01: quatro paginas, contagens extraidas dos registros; estudo exploratorio.",
   "ampliacao_T03": "9 referencias validadas, 18 casos por referencia; coleta exploratoria de 8 respostas em 8 chamadas, 6 aprovadas nos uploads legitimos, 1 reprovada e 1 sem importacao; fora do piloto e da coleta principal.",
   "ampliacao_T05": "8 respostas em 8 chamadas, 7697 tokens; ambiente original com 1 ciclo aprovado e 7 impedimentos; diagnostico v2 com dependencia e dominio: 7 ciclos aprovados e 1 impedimento; revisao de tokens assistida por IA, confer?ncia humana independente pendente.",
-  "ampliacao_T07": "Instrumento validado em Linux: 10 referencias, 15 cenarios por referencia; 41 testes locais aprovados; sem novas geracoes de LLM."
+  "ampliacao_T07": "8 respostas em 8 chamadas, 5725 tokens; 7 geracoes aprovadas nos relatorios legitimos e 1 impedimento de importacao; sem marcadores em 7 vetores de comandos e 1 de argumentos nas sete executaveis; 5 reprovacoes de robustez; revisao assistida por IA pendente de conferencia humana independente."
 }

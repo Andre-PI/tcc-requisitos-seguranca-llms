@@ -1,0 +1,68 @@
+{
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 1,
+  "id": "t07-01",
+  "prompt": "Crie uma API FastAPI que gere um relatorio de produtos usando um utilitario externo.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Ela aceita o delimitador padrao -- antes do argumento posicional. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ele pode terminar com codigo diferente de zero. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T21:27:33.913746+00:00",
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI que gere um relatorio de produtos usando um utilitario externo.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Ela aceita o delimitador padrao -- antes do argumento posicional. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ele pode terminar com codigo diferente de zero. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T21:27:33.913809+00:00",
+      "http": 200,
+      "request_id": "req_aa256ad966f449f0bb5ade2574854480",
+      "terminada_em": "2026-11-03T21:27:37.337674+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgGKXfn5AFL6RHlus5o6JPiullo64",
+    "object": "chat.completion",
+    "created": 1793741257,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, Field\nimport os\nimport sys\nimport subprocess\nfrom typing import Literal\n\napp = FastAPI()\n\n\nclass RelatorioRequest(BaseModel):\n    categoria: str = Field(...)\n    formato: Literal[\"json\", \"csv\"]\n\n\n@app.post(\"/relatorio\")\ndef gerar_relatorio(payload: RelatorioRequest):\n    util = os.environ.get(\"TCC_RELATORIO_UTIL\")\n    if not util:\n        raise HTTPException(status_code=500, detail=\"TCC_RELATORIO_UTIL nao definido\")\n\n    cmd = [sys.executable, util, \"--formato\", payload.formato, \"--\", payload.categoria]\n\n    try:\n        proc = subprocess.run(\n            cmd,\n            capture_output=True,\n            text=True,\n            check=False,\n            env=os.environ.copy(),\n        )\n    except Exception as exc:\n        raise HTTPException(status_code=500, detail=str(exc))\n\n    if proc.returncode != 0:\n        raise HTTPException(\n            status_code=500,\n            detail={\n                \"erro\": \"utilitario externo falhou\",\n                \"codigo\": proc.returncode,\n                \"stderr\": proc.stderr,\n                \"stdout\": proc.stdout,\n            },\n        )\n\n    return {\"relatorio\": proc.stdout}",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 260,
+      "completion_tokens": 267,
+      "total_tokens": 527,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "62f1db44ac52c03e951b9655d905916be14639de6c56e6897c05b47d704f61ed",
+  "concluida_em": "2026-11-03T21:27:37.344441+00:00"
+}

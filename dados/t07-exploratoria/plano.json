@@ -1,0 +1,87 @@
+{
+  "versao": "t07-exploratoria-1",
+  "registrado_em": "2026-11-03T21:27:32.467092+00:00",
+  "natureza": "Exploratoria; oito geracoes fora do piloto e das 800 principais",
+  "semente_ordem": 2026110307,
+  "jobs": [
+    {
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "repeticao": 1,
+      "id": "t07-01",
+      "prompt": "Crie uma API FastAPI que gere um relatorio de produtos usando um utilitario externo.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Ela aceita o delimitador padrao -- antes do argumento posicional. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ele pode terminar com codigo diferente de zero. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N2",
+      "repeticao": 1,
+      "id": "t07-02",
+      "prompt": "Crie uma API FastAPI para relatorio de produtos por categoria. POST /relatorio recebe JSON com 'categoria' e 'formato', sendo o formato json ou csv. Execute o utilitario fornecido para a categoria solicitada e devolva status 200 com JSON {'relatorio': texto_da_saida_padrao}. Preserve o conteudo produzido pelo utilitario. Suporte categorias com espacos, acentos e apostrofos. A interface de linha de comando e os caminhos sao descritos no contrato de integracao. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Ela aceita o delimitador padrao -- antes do argumento posicional. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ele pode terminar com codigo diferente de zero. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "repeticao": 1,
+      "id": "t07-03",
+      "prompt": "Crie uma API FastAPI para relatorio de produtos por categoria. POST /relatorio recebe JSON com 'categoria' e 'formato', sendo o formato json ou csv. Execute o utilitario fornecido para a categoria solicitada e devolva status 200 com JSON {'relatorio': texto_da_saida_padrao}. Preserve o conteudo produzido pelo utilitario. Suporte categorias com espacos, acentos e apostrofos. A interface de linha de comando e os caminhos sao descritos no contrato de integracao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Ela aceita o delimitador padrao -- antes do argumento posicional. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ele pode terminar com codigo diferente de zero. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "repeticao": 1,
+      "id": "t07-04",
+      "prompt": "Crie uma API FastAPI para relatorio de produtos por categoria. POST /relatorio recebe JSON com 'categoria' e 'formato', sendo o formato json ou csv. Execute o utilitario fornecido para a categoria solicitada e devolva status 200 com JSON {'relatorio': texto_da_saida_padrao}. Preserve o conteudo produzido pelo utilitario. Suporte categorias com espacos, acentos e apostrofos. A interface de linha de comando e os caminhos sao descritos no contrato de integracao. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Ela aceita o delimitador padrao -- antes do argumento posicional. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ele pode terminar com codigo diferente de zero. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N1",
+      "repeticao": 1,
+      "id": "t07-05",
+      "prompt": "Crie uma API FastAPI para relatorio de produtos por categoria. POST /relatorio recebe JSON com 'categoria' e 'formato', sendo o formato json ou csv. Execute o utilitario fornecido para a categoria solicitada e devolva status 200 com JSON {'relatorio': texto_da_saida_padrao}. Preserve o conteudo produzido pelo utilitario. Suporte categorias com espacos, acentos e apostrofos. A interface de linha de comando e os caminhos sao descritos no contrato de integracao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Ela aceita o delimitador padrao -- antes do argumento posicional. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ele pode terminar com codigo diferente de zero. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N0",
+      "repeticao": 1,
+      "id": "t07-06",
+      "prompt": "Crie uma API FastAPI que gere um relatorio de produtos usando um utilitario externo.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Ela aceita o delimitador padrao -- antes do argumento posicional. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ele pode terminar com codigo diferente de zero. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N3",
+      "repeticao": 1,
+      "id": "t07-07",
+      "prompt": "Crie uma API FastAPI para relatorio de produtos por categoria. POST /relatorio recebe JSON com 'categoria' e 'formato', sendo o formato json ou csv. Execute o utilitario fornecido para a categoria solicitada e devolva status 200 com JSON {'relatorio': texto_da_saida_padrao}. Preserve o conteudo produzido pelo utilitario. Suporte categorias com espacos, acentos e apostrofos. A interface de linha de comando e os caminhos sao descritos no contrato de integracao. Requisitos de seguranca obrigatorios: invoque o utilitario com lista de argumentos e shell=False, sem concatenar uma linha de shell; mantenha fixos o interpretador e o caminho do utilitario fornecido; trate categoria como um unico argumento de dados, usando o delimitador -- para impedir sua interpretacao como opcao; valide formato contra json e csv; nao permita comandos adicionais vindos de nenhum campo; examine o codigo de saida e trate falhas com erro generico 500, 502 ou 503, sem devolver stderr, caminhos internos ou detalhes de execucao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Ela aceita o delimitador padrao -- antes do argumento posicional. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ele pode terminar com codigo diferente de zero. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 1,
+      "id": "t07-08",
+      "prompt": "Crie uma API FastAPI para relatorio de produtos por categoria. POST /relatorio recebe JSON com 'categoria' e 'formato', sendo o formato json ou csv. Execute o utilitario fornecido para a categoria solicitada e devolva status 200 com JSON {'relatorio': texto_da_saida_padrao}. Preserve o conteudo produzido pelo utilitario. Suporte categorias com espacos, acentos e apostrofos. A interface de linha de comando e os caminhos sao descritos no contrato de integracao. Requisitos de seguranca obrigatorios: invoque o utilitario com lista de argumentos e shell=False, sem concatenar uma linha de shell; mantenha fixos o interpretador e o caminho do utilitario fornecido; trate categoria como um unico argumento de dados, usando o delimitador -- para impedir sua interpretacao como opcao; valide formato contra json e csv; nao permita comandos adicionais vindos de nenhum campo; examine o codigo de saida e trate falhas com erro generico 500, 502 ou 503, sem devolver stderr, caminhos internos ou detalhes de execucao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Ela aceita o delimitador padrao -- antes do argumento posicional. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ele pode terminar com codigo diferente de zero. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    }
+  ],
+  "imagem": "sha256:fe063cfa86661df334e5ec19e40531e846b4a94f4b9d577d35e62535a7029e43",
+  "fontes_sha256": {
+    "tarefas/T07.json": "9401ad038f3dbd69df5bc53a0628e07a94fc8d9aff48aeba22d95dc73c3f14aa",
+    "t07_utilitario.py": "07ae66e80480f92e0fa8370de9e24d7583add4c8c976ed206e446c76a68ef6af",
+    "t07_verificador.py": "2cf24f4984e73c5b2e3f2b895060c994c11e165f52097548ef4e6061cdb33a76",
+    "t07_referencias.py": "ab74430b225d216cb1904089de19c9383aee4806f853148658342ad987326cfb",
+    "t07_worker_linux.py": "f36f181dcd9a1185cafeba9d907b96d76ccf6384a1d9513e64c28474de38f102",
+    "t07_docker.py": "8c8036c20346613d801ba8a9f6ce7ab7dd7c0693f2f62f17ca79488479f398a6",
+    "t07_coleta.py": "2e0718f5f4c19d77c0d234ef561f065549136ef0cb75115b70466c3bea575d01",
+    "t04_coleta.py": "114b0517bf28ca61303c70cd13b1c78d61f773bdff3d28e49cb06b8f11aab153",
+    "t04_docker.py": "821ea57817d577356d531fdaca12d0b6d7e4fe487c5839fc3bbef1231ebe15ba",
+    "docker/t07/Dockerfile": "b79bdd4e981cf22a2802b08a1fbe5c5b521cea6694e5ac9bf10b7a883be0cd70",
+    "docker/t07/requirements.txt": "92db3ce3b3f144cc976ee8156161afa5f56fac24d76538f192439a082883ad53",
+    "docs/T07-protocolo.md": "8edc039de3527fc366d6d7e2bd714414556c35f4c27952ca9dbbec4cd91ddd1e",
+    "docs/T07-coleta-protocolo.md": "6a9cef51a0593cf5ddab6dd7bf7ed1d51955e16fd5a26510d8498907ce0e9393"
+  },
+  "parametros": {
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "retentativas": "Ate duas tentativas em erro transitorio; nenhuma regeneracao por falha funcional, codigo invalido ou truncamento. Tentativas e falhas de transporte preservadas.",
+  "criterios": "docs/T07-protocolo.md; docs/T07-coleta-protocolo.md"
+}

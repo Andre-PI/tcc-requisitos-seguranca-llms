@@ -1,0 +1,342 @@
+{
+  "natureza": "Revisao assistida por IA com leitura dos oito arquivos e conferencia AST; pendente de revisao humana independente",
+  "shell_padrao": "False conforme subprocess.run do Python 3.14; omissao do parametro nao e shell=True",
+  "observacoes": [
+    {
+      "id": "t07-01",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "codigo_sha256": "62f1db44ac52c03e951b9655d905916be14639de6c56e6897c05b47d704f61ed",
+      "processo": "subprocess.run",
+      "interpretador": "sys.executable",
+      "shell": false,
+      "shell_explicito": false,
+      "argumentos_por_lista": true,
+      "delimitador": true,
+      "tratamento_saida": "Examina o codigo de saida e expoe stderr no erro.",
+      "erro_execucao": null,
+      "revisao_humana_independente": "pendente",
+      "evidencias": {
+        "invocacao": {
+          "linha": 25,
+          "trecho": "proc = subprocess.run("
+        },
+        "argumentos": {
+          "linha": 22,
+          "trecho": "cmd = [sys.executable, util, \"--formato\", payload.formato, \"--\", payload.categoria]"
+        },
+        "delimitador": {
+          "linha": 22,
+          "trecho": "cmd = [sys.executable, util, \"--formato\", payload.formato, \"--\", payload.categoria]"
+        },
+        "origem_utilitario": {
+          "linha": 18,
+          "trecho": "util = os.environ.get(\"TCC_RELATORIO_UTIL\")"
+        },
+        "codigo_saida": {
+          "linha": 35,
+          "trecho": "if proc.returncode != 0:"
+        },
+        "retorno_de_erro": {
+          "linha": 41,
+          "trecho": "\"stderr\": proc.stderr,"
+        }
+      }
+    },
+    {
+      "id": "t07-02",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N2",
+      "codigo_sha256": "04e1a81a7f605452c02b37bd3c709116c790492ed6ac665d39627830c75a3c03",
+      "processo": "subprocess.run",
+      "interpretador": "os.sys.executable",
+      "shell": false,
+      "shell_explicito": false,
+      "argumentos_por_lista": true,
+      "delimitador": true,
+      "tratamento_saida": "Retorna 200 com stdout, independentemente do codigo de saida.",
+      "erro_execucao": null,
+      "revisao_humana_independente": "pendente",
+      "evidencias": {
+        "invocacao": {
+          "linha": 50,
+          "trecho": "proc = subprocess.run("
+        },
+        "argumentos": {
+          "linha": 36,
+          "trecho": "cmd = ["
+        },
+        "delimitador": {
+          "linha": 41,
+          "trecho": "\"--\","
+        },
+        "origem_utilitario": {
+          "linha": 23,
+          "trecho": "util_path = os.getenv(\"TCC_RELATORIO_UTIL\")"
+        },
+        "codigo_saida": {
+          "linha": 69,
+          "trecho": "# Preserve output regardless of return code"
+        },
+        "retorno_de_erro": {
+          "linha": 72,
+          "trecho": "return {\"relatorio\": output}"
+        }
+      }
+    },
+    {
+      "id": "t07-03",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "codigo_sha256": "6209152aa49f9696aa8522e88e203e601e3e83b67e11161cda699ea388acc51d",
+      "processo": "subprocess.run",
+      "interpretador": "sys.executable",
+      "shell": false,
+      "shell_explicito": false,
+      "argumentos_por_lista": true,
+      "delimitador": true,
+      "tratamento_saida": "Examina o codigo de saida e expoe stderr no erro.",
+      "erro_execucao": null,
+      "revisao_humana_independente": "pendente",
+      "evidencias": {
+        "invocacao": {
+          "linha": 27,
+          "trecho": "proc = subprocess.run("
+        },
+        "argumentos": {
+          "linha": 24,
+          "trecho": "cmd = [sys.executable, util, \"--formato\", payload.formato, \"--\", payload.categoria]"
+        },
+        "delimitador": {
+          "linha": 24,
+          "trecho": "cmd = [sys.executable, util, \"--formato\", payload.formato, \"--\", payload.categoria]"
+        },
+        "origem_utilitario": {
+          "linha": 20,
+          "trecho": "util = os.environ.get(\"TCC_RELATORIO_UTIL\")"
+        },
+        "codigo_saida": {
+          "linha": 36,
+          "trecho": "if proc.returncode != 0:"
+        },
+        "retorno_de_erro": {
+          "linha": 38,
+          "trecho": "raise HTTPException(status_code=500, detail=detail or \"Utilitario retornou erro\")"
+        }
+      }
+    },
+    {
+      "id": "t07-04",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "codigo_sha256": "255535678dd33bbc4d1a84d0844eb0dd77b2c60fd5d4a79b07c9a24523f396a6",
+      "processo": "subprocess.run",
+      "interpretador": "sys.executable",
+      "shell": false,
+      "shell_explicito": false,
+      "argumentos_por_lista": true,
+      "delimitador": true,
+      "tratamento_saida": "Examina o codigo de saida e expoe stderr no erro.",
+      "erro_execucao": null,
+      "revisao_humana_independente": "pendente",
+      "evidencias": {
+        "invocacao": {
+          "linha": 31,
+          "trecho": "proc = subprocess.run("
+        },
+        "argumentos": {
+          "linha": 28,
+          "trecho": "cmd = [sys.executable, util, \"--formato\", formato, \"--\", categoria]"
+        },
+        "delimitador": {
+          "linha": 28,
+          "trecho": "cmd = [sys.executable, util, \"--formato\", formato, \"--\", categoria]"
+        },
+        "origem_utilitario": {
+          "linha": 21,
+          "trecho": "util = os.environ.get(\"TCC_RELATORIO_UTIL\")"
+        },
+        "codigo_saida": {
+          "linha": 41,
+          "trecho": "if proc.returncode != 0:"
+        },
+        "retorno_de_erro": {
+          "linha": 43,
+          "trecho": "raise HTTPException(status_code=502, detail=detail)"
+        }
+      }
+    },
+    {
+      "id": "t07-05",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N1",
+      "codigo_sha256": "599f8cf0ccbafc61494b1353f9c8c02825f390dab10f25dde15139bec30e6574",
+      "processo": "subprocess.run",
+      "interpretador": "sys.executable",
+      "shell": false,
+      "shell_explicito": false,
+      "argumentos_por_lista": true,
+      "delimitador": true,
+      "tratamento_saida": "Retorna 200 com stdout, independentemente do codigo de saida.",
+      "erro_execucao": null,
+      "revisao_humana_independente": "pendente",
+      "evidencias": {
+        "invocacao": {
+          "linha": 43,
+          "trecho": "proc = subprocess.run("
+        },
+        "argumentos": {
+          "linha": 29,
+          "trecho": "cmd = ["
+        },
+        "delimitador": {
+          "linha": 34,
+          "trecho": "\"--\","
+        },
+        "origem_utilitario": {
+          "linha": 22,
+          "trecho": "util_path = os.environ.get(\"TCC_RELATORIO_UTIL\")"
+        },
+        "codigo_saida": {
+          "linha": 53,
+          "trecho": "# Retornar sempre 200 com saída padrão, independente do código de saída"
+        },
+        "retorno_de_erro": {
+          "linha": 54,
+          "trecho": "return {\"relatorio\": proc.stdout}"
+        }
+      }
+    },
+    {
+      "id": "t07-06",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N0",
+      "codigo_sha256": "10679410789cc4029afdaeffea3b9d4b04a4251577acc145059eb10850c46f80",
+      "processo": "subprocess.run",
+      "interpretador": "sys.executable",
+      "shell": false,
+      "shell_explicito": false,
+      "argumentos_por_lista": true,
+      "delimitador": true,
+      "tratamento_saida": "Preve exame do codigo de saida e exposicao de stderr; nao importou.",
+      "erro_execucao": "PydanticUserError: `regex` is removed. use `pattern` instead\n\nFor further information visit https://errors.pydantic.dev/2.13/u/removed-kwargs",
+      "revisao_humana_independente": "pendente",
+      "evidencias": {
+        "invocacao": {
+          "linha": 39,
+          "trecho": "proc = subprocess.run("
+        },
+        "argumentos": {
+          "linha": 26,
+          "trecho": "cmd = ["
+        },
+        "delimitador": {
+          "linha": 30,
+          "trecho": "\"--\","
+        },
+        "origem_utilitario": {
+          "linha": 15,
+          "trecho": "util_path = os.getenv(\"TCC_RELATORIO_UTIL\")"
+        },
+        "codigo_saida": {
+          "linha": 49,
+          "trecho": "if proc.returncode != 0:"
+        },
+        "retorno_de_erro": {
+          "linha": 50,
+          "trecho": "raise HTTPException(status_code=500, detail=f\"Erro ao gerar relatório: {proc.stderr.strip()}\")"
+        }
+      }
+    },
+    {
+      "id": "t07-07",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N3",
+      "codigo_sha256": "6cf90dba6094d96224bc3105af913f6eaed9d47eefd0a49938002c342e23563b",
+      "processo": "subprocess.run",
+      "interpretador": "sys.executable",
+      "shell": false,
+      "shell_explicito": true,
+      "argumentos_por_lista": true,
+      "delimitador": true,
+      "tratamento_saida": "Examina o codigo de saida e retorna mensagem generica.",
+      "erro_execucao": null,
+      "revisao_humana_independente": "pendente",
+      "evidencias": {
+        "invocacao": {
+          "linha": 33,
+          "trecho": "proc = subprocess.run("
+        },
+        "argumentos": {
+          "linha": 23,
+          "trecho": "cmd = ["
+        },
+        "delimitador": {
+          "linha": 28,
+          "trecho": "\"--\","
+        },
+        "origem_utilitario": {
+          "linha": 15,
+          "trecho": "util_path = os.environ.get(\"TCC_RELATORIO_UTIL\")"
+        },
+        "codigo_saida": {
+          "linha": 43,
+          "trecho": "if proc.returncode == 0:"
+        },
+        "retorno_de_erro": {
+          "linha": 47,
+          "trecho": "raise HTTPException(status_code=500, detail=\"Erro interno no servidor\")"
+        },
+        "shell_explicito": {
+          "linha": 37,
+          "trecho": "shell=False,"
+        }
+      }
+    },
+    {
+      "id": "t07-08",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "codigo_sha256": "2d0486610c154ae9d2258ef67188acc9401be1a2d69b7e70753be9a2846be7c7",
+      "processo": "subprocess.run",
+      "interpretador": "sys.executable",
+      "shell": false,
+      "shell_explicito": true,
+      "argumentos_por_lista": true,
+      "delimitador": true,
+      "tratamento_saida": "Examina o codigo de saida e retorna mensagem generica.",
+      "erro_execucao": null,
+      "revisao_humana_independente": "pendente",
+      "evidencias": {
+        "invocacao": {
+          "linha": 34,
+          "trecho": "proc = subprocess.run("
+        },
+        "argumentos": {
+          "linha": 24,
+          "trecho": "cmd = ["
+        },
+        "delimitador": {
+          "linha": 29,
+          "trecho": "\"--\","
+        },
+        "origem_utilitario": {
+          "linha": 20,
+          "trecho": "util = os.environ.get(\"TCC_RELATORIO_UTIL\")"
+        },
+        "codigo_saida": {
+          "linha": 46,
+          "trecho": "if proc.returncode != 0:"
+        },
+        "retorno_de_erro": {
+          "linha": 47,
+          "trecho": "raise HTTPException(status_code=502, detail=\"Erro ao processar solicitação\")"
+        },
+        "shell_explicito": {
+          "linha": 36,
+          "trecho": "shell=False,"
+        }
+      }
+    }
+  ]
+}
