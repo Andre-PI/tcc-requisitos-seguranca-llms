@@ -18,8 +18,8 @@
     },
     {
       "caminho": "README.md",
-      "bytes": 3901,
-      "sha256": "5ae46df0fc6a2ce445dfd6d4bb7ac019b17209933b4535b60cbbded6f00e7597"
+      "bytes": 4174,
+      "sha256": "4cd1c53ad5f10eec5b3d785f585ee121e16ec659ba52397e2e2d424b020478f0"
     },
     {
       "caminho": "aceitacao_worker.py",
@@ -430,6 +430,26 @@
       "caminho": "dados/verificacoes_comportamentais-mais-recentes.json",
       "bytes": 299811,
       "sha256": "d008e736a0b7d16fc14b4c24c1d559d4d6ee4e12ca95e663c86959ae464a8293"
+    },
+    {
+      "caminho": "docs/T04-prompts.json",
+      "bytes": 5081,
+      "sha256": "674cb09fd5c8922cb52dfd340c7aec0202dc94eb71e597cb450f7e2b6a06d381"
+    },
+    {
+      "caminho": "docs/T04-protocolo.md",
+      "bytes": 6610,
+      "sha256": "e31be8b4f479fdb46ff9ca395d6916cf551899c00312f842225fcee83390e784"
+    },
+    {
+      "caminho": "docs/T04-validacao.json",
+      "bytes": 59592,
+      "sha256": "fa87fcbbeae4c707cccc860a74f66d9aa3af0007f388578c67eaafea4e2e8aed"
+    },
+    {
+      "caminho": "docs/T04-validacao.md",
+      "bytes": 987,
+      "sha256": "184432cfbf036fcdad6d7a6664d30b8ed77c990c53b6a722f96eb64c431af918"
     },
     {
       "caminho": "docs/aceitacao-por-caso.csv",
@@ -3307,6 +3327,21 @@
       "sha256": "cde092c5b0243423108d7a7f43cd241e57a7c56b147579522d523e1d9ffaa689"
     },
     {
+      "caminho": "t04_referencias.py",
+      "bytes": 1812,
+      "sha256": "9b7adb7773f9af4b28d3c6e960f47c2e9c54787e2326705fb82d912e99b61d4b"
+    },
+    {
+      "caminho": "t04_verificador.py",
+      "bytes": 6952,
+      "sha256": "5e908ebf9301b860c9452e02e7e1341d4f4a64d55f1d041ee8d24a468e8fb362"
+    },
+    {
+      "caminho": "tarefas/T04.json",
+      "bytes": 2685,
+      "sha256": "d7286fbd8a36339217b54b6eeef2044703765285e31dc26cdb16485df783a6c0"
+    },
+    {
       "caminho": "tests/test_aceitacao.py",
       "bytes": 5162,
       "sha256": "9b2a54f938c012c7cbe85e9bc5a568b6e0814e5e85518028dbbdba9ed90d3519"
@@ -3317,9 +3352,19 @@
       "sha256": "ec2b6c7f24b075184482b5d0bcacae467eb9c9fceda1a2d5d59081392a06277e"
     },
     {
+      "caminho": "tests/test_t04.py",
+      "bytes": 3128,
+      "sha256": "847c53a2d5d5dda1a32f9fa9dd8a63f11a1096f05ad8845ed5c5b5492bdf3248"
+    },
+    {
       "caminho": "validar_aceitacao.py",
       "bytes": 4122,
       "sha256": "88481b94af00787697b7f1bec55324f57e8635763c8a50e28c7748c02463cbab"
+    },
+    {
+      "caminho": "validar_t04.py",
+      "bytes": 6336,
+      "sha256": "9ac0f4add39f70232f28d0ed749d497f411f6d7ce5180d805056bf9accc2a0ae"
     },
     {
       "caminho": "verificar.py",
@@ -3327,5 +3372,6 @@
       "sha256": "66b13887766717eb6838799d1c2c94529179f6b854f4c2d973da347238b97f8d"
     }
   ],
-  "revisao_documental": "2026-11-03; metodologia e referencial v04; dados do piloto preservados"
+  "revisao_documental": "2026-11-03; metodologia e referencial v04; dados do piloto preservados",
+  "ampliacao_T04": "Somente contrato, referencias e validacao do instrumento; sem geracoes de LLM"
 }

@@ -28,6 +28,10 @@ Os resultados são preliminares. Os testes ampliados foram definidos após a col
 - [Resultados comportamentais](docs/resultado-comportamental.md).
 - [Protocolo dos testes e limitações](docs/protocolo-comportamental.md).
 
+## Ampliacao das tarefas
+
+A T04, download de arquivos, tem prompts e um verificador em validacao com aplicacoes de referencia. [Protocolo](docs/T04-protocolo.md) e [resultado dos controles](docs/T04-validacao.md). Esses dados nao sao geracoes de LLM nem alteram o piloto.
+
 ## Arquivos
 
 | Caminho | Conteúdo |
