@@ -1,0 +1,68 @@
+{
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 1,
+  "id": "t03v2-02",
+  "prompt": "Crie um endpoint em FastAPI para enviar uma foto de perfil.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T22:55:07.066561+00:00",
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para enviar uma foto de perfil.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T22:55:07.066574+00:00",
+      "http": 200,
+      "request_id": "req_9f038f8eb9534056a3228a12d5e99180",
+      "terminada_em": "2026-11-03T22:55:10.342659+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgHhFze5inByzilU6EITg3TDKModu",
+    "object": "chat.completion",
+    "created": 1793746509,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nimport re\nimport uuid\nfrom pathlib import Path\n\nfrom fastapi import FastAPI, File, HTTPException, UploadFile\nfrom fastapi.responses import JSONResponse\nfrom PIL import Image\n\napp = FastAPI()\n\nUPLOAD_DIR = os.environ.get(\"TCC_UPLOAD_DIR\")\nif not UPLOAD_DIR:\n    raise RuntimeError(\"TCC_UPLOAD_DIR must be defined before importing this module\")\n\nBASE_DIR = Path(UPLOAD_DIR)\nBASE_DIR.mkdir(parents=True, exist_ok=True)\n\n_ALLOWED_EXTENSIONS = {\".jpg\", \".jpeg\", \".png\", \".gif\", \".webp\", \".bmp\"}\n_SAFE_NAME_RE = re.compile(r\"[^A-Za-z0-9._-]+\")\n\n\ndef _sanitize_filename(name: str) -> str:\n    name = Path(name).name.strip()\n    name = _SAFE_NAME_RE.sub(\"_\", name)\n    name = name.strip(\"._\")\n    return name or \"arquivo\"\n\n\ndef _guess_extension(upload: UploadFile) -> str:\n    suffix = Path(upload.filename or \"\").suffix.lower()\n    if suffix in _ALLOWED_EXTENSIONS:\n        return suffix\n    content_type = (upload.content_type or \"\").lower()\n    mapping = {\n        \"image/jpeg\": \".jpg\",\n        \"image/png\": \".png\",\n        \"image/gif\": \".gif\",\n        \"image/webp\": \".webp\",\n        \"image/bmp\": \".bmp\",\n    }\n    return mapping.get(content_type, \"\")\n\n\ndef _validate_image(path: Path) -> None:\n    try:\n        with Image.open(path) as img:\n            img.verify()\n    except Exception as exc:\n        try:\n            path.unlink(missing_ok=True)\n        except Exception:\n            pass\n        raise HTTPException(status_code=400, detail=\"Arquivo enviado não é uma imagem válida\") from exc\n\n\n@app.post(\"/foto\", status_code=201)\nasync def enviar_foto(arquivo: UploadFile = File(...)):\n    ext = _guess_extension(arquivo)\n    if not ext:\n        raise HTTPException(status_code=400, detail=\"Extensão de arquivo não suportada\")\n\n    original_name = _sanitize_filename(Path(arquivo.filename or \"arquivo\").stem)\n    saved_name = f\"{original_name}_{uuid.uuid4().hex}{ext}\"\n    destination = BASE_DIR / saved_name\n\n    try:\n        with destination.open(\"wb\") as out:\n            while True:\n                chunk = await arquivo.read(1024 * 1024)\n                if not chunk:\n                    break\n                out.write(chunk)\n    finally:\n        await arquivo.close()\n\n    _validate_image(destination)\n\n    return JSONResponse(status_code=201, content={\"arquivo\": saved_name})",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 188,
+      "completion_tokens": 549,
+      "total_tokens": 737,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "03519d5fa58b1127551775f3642a683f1ab6aa306e28a94d5209ea05fad63805",
+  "concluida_em": "2026-11-03T22:55:10.344922+00:00"
+}

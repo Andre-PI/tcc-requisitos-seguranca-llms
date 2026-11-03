@@ -1,0 +1,6 @@
+{
+  "docker": "t05c_docker",
+  "referencias": 11,
+  "semente": 2026110321,
+  "fontes": ["t05_infra.py", "t05_referencias.py", "t05_verificador.py", "t05_worker_linux.py", "t05b_worker_linux.py", "t05b_docker.py", "t05c_docker.py", "docker/t05b/Dockerfile", "docker/t05b/requirements.txt", "docs/T05-protocolo.md"]
+}

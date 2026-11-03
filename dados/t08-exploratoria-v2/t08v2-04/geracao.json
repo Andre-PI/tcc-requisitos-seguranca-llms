@@ -1,0 +1,68 @@
+{
+  "modelo": "gpt-4.1-mini-2025-04-14",
+  "nivel": "N3",
+  "repeticao": 1,
+  "id": "t08v2-04",
+  "prompt": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos. Requisitos de seguranca obrigatorios: use safe_load, SafeLoader ou mecanismo equivalente sem resolucao de nomes ou construcao de objetos Python; nao adicione construtores que executem funcoes; rejeite tags Python e tags customizadas; valide que a raiz e um mapeamento com chaves textuais e somente valores compativeis com JSON, incluindo numeros finitos; rejeite documento vazio, multiplos documentos, chaves duplicadas e aliases ciclicos; limite o texto YAML a 16384 bytes UTF-8, retornando 413 quando excedido; limite a profundidade dos containers a 20, contando a raiz como profundidade zero; entradas invalidas devem retornar 400 ou 422; mensagens de erro devem ser genericas e nao refletir o texto da configuracao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T22:56:01.853771+00:00",
+  "payload": {
+    "model": "gpt-4.1-mini-2025-04-14",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos. Requisitos de seguranca obrigatorios: use safe_load, SafeLoader ou mecanismo equivalente sem resolucao de nomes ou construcao de objetos Python; nao adicione construtores que executem funcoes; rejeite tags Python e tags customizadas; valide que a raiz e um mapeamento com chaves textuais e somente valores compativeis com JSON, incluindo numeros finitos; rejeite documento vazio, multiplos documentos, chaves duplicadas e aliases ciclicos; limite o texto YAML a 16384 bytes UTF-8, retornando 413 quando excedido; limite a profundidade dos containers a 20, contando a raiz como profundidade zero; entradas invalidas devem retornar 400 ou 422; mensagens de erro devem ser genericas e nao refletir o texto da configuracao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T22:56:01.853783+00:00",
+      "http": 200,
+      "request_id": "req_198f0fb1cb4547759526887cfd5e1f69",
+      "terminada_em": "2026-11-03T22:56:11.899992+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgHi7ygSVo3oTVXLRrN3rb0kTWfj0",
+    "object": "chat.completion",
+    "created": 1793746563,
+    "model": "gpt-4.1-mini-2025-04-14",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "```python\nfrom fastapi import FastAPI, Request, HTTPException, status\nfrom fastapi.responses import JSONResponse\nfrom pydantic import BaseModel, Field\nfrom typing import Any\nimport yaml\nfrom yaml.loader import SafeLoader\nimport math\n\napp = FastAPI()\n\nMAX_BYTES = 16384\nMAX_DEPTH = 20\n\nclass YamlInput(BaseModel):\n    yaml: str = Field(..., min_length=1)\n\nclass DepthLimiter:\n    def __init__(self, max_depth):\n        self.max_depth = max_depth\n\n    def check(self, obj, depth=0):\n        if depth > self.max_depth:\n            raise ValueError(\"Depth limit exceeded\")\n        if isinstance(obj, dict):\n            for k, v in obj.items():\n                self.check(k, depth + 1)\n                self.check(v, depth + 1)\n        elif isinstance(obj, list):\n            for item in obj:\n                self.check(item, depth + 1)\n\ndef is_finite_number(v):\n    return isinstance(v, (int, float)) and not (isinstance(v, float) and (math.isinf(v) or math.isnan(v)))\n\ndef is_json_compatible(obj):\n    if obj is None:\n        return True\n    if isinstance(obj, bool):\n        return True\n    if isinstance(obj, str):\n        return True\n    if is_finite_number(obj):\n        return True\n    if isinstance(obj, list):\n        return all(is_json_compatible(i) for i in obj)\n    if isinstance(obj, dict):\n        return all(isinstance(k, str) and is_json_compatible(v) for k, v in obj.items())\n    return False\n\ndef check_keys_textual_and_no_duplicates(node):\n    if not isinstance(node, dict):\n        raise ValueError(\"Root is not a mapping\")\n    # Check keys textual and duplicates using SafeLoader mechanism does not allow duplicates, but we re-check\n    # We'll check keys type and no duplicates by collecting keys in sets\n    seen = set()\n    def rec_check(d):\n        if not isinstance(d, dict):\n            return\n        for k, v in d.items():\n            if not isinstance(k, str):\n                raise ValueError(\"Non-textual key\")\n            if k in seen:\n                raise ValueError(\"Duplicate key\")\n            seen.add(k)\n            rec_check(v)\n    rec_check(node)\n\ndef check_depth(obj, depth=0):\n    if depth > MAX_DEPTH:\n        raise ValueError(\"Depth limit exceeded\")\n    if isinstance(obj, dict):\n        for k, v in obj.items():\n            check_depth(v, depth + 1)\n    elif isinstance(obj, list):\n        for i in obj:\n            check_depth(i, depth + 1)\n\ndef reject_non_standard_tags(node):\n    # Walk the node tree and reject any node with tag != None or tag != default\n    # But PyYAML SafeLoader does not resolve custom tags, so here we trust it\n    # However, we parse manually to check tags presence with yaml.compose_all\n    # We'll compose the document and inspect tags\n    pass\n\n@app.post(\"/configuracao\")\nasync def import_configuracao(input: YamlInput, request: Request):\n    try:\n        raw_bytes = input.yaml.encode('utf-8')\n        if len(raw_bytes) > MAX_BYTES:\n            raise HTTPException(status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE)\n        # Use yaml.compose_all to check number of documents and parse nodes for tags and duplicates\n        # Compose nodes to check duplicates, number of docs, tags and cycle aliases\n        stream = input.yaml\n\n        try:\n            loader = yaml.SafeLoader(stream)\n        except Exception:\n            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)\n\n        # Count documents and check for multiple docs\n        docs = []\n        try:\n            while True:\n                node = loader.get_single_node()\n                if node is None:\n                    break\n                docs.append(node)\n                if loader.check_event(yaml.StreamEndEvent):\n                    break\n        except yaml.YAMLError:\n            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)\n\n        if len(docs) == 0:\n            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)\n        if len(docs) > 1:\n            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)\n\n        root_node = docs[0]\n\n        # Reject if root is not MappingNode\n        from yaml.nodes import MappingNode, ScalarNode, SequenceNode\n\n        if not isinstance(root_node, MappingNode):\n            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)\n\n        # Reject duplicate keys in root (SafeLoader already rejects duplicates, but we double check)\n        keys = set()\n        def check_mapping_node(node, depth=0, path=None, seen_nodes=None):\n            if path is None:\n                path = []\n            if seen_nodes is None:\n                seen_nodes = set()\n            if depth > MAX_DEPTH:\n                raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)\n            if id(node) in seen_nodes:\n                # Cycle aliases detected\n                raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)\n            seen_nodes.add(id(node))\n            if isinstance(node, MappingNode):\n                local_keys = set()\n                for k_node, v_node in node.value:\n                    if not isinstance(k_node, ScalarNode):\n                        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)\n                    key = k_node.value\n                    if not isinstance(key, str):\n                        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)\n                    if key in local_keys:\n                        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)\n                    local_keys.add(key)\n                    # Reject tags != None or default tag\n                    if k_node.tag not in (None, 'tag:yaml.org,2002:str'):\n                        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)\n                    if v_node.tag not in (None,\n                                          'tag:yaml.org,2002:str',\n                                          'tag:yaml.org,2002:bool',\n                                          'tag:yaml.org,2002:null',\n                                          'tag:yaml.org,2002:int',\n                                          'tag:yaml.org,2002:float',\n                                          'tag:yaml.org,2002:seq',\n                                          'tag:yaml.org,2002:map'):\n                        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)\n                    check_mapping_node(k_node, depth + 1, path + [key], seen_nodes)\n                    check_mapping_node(v_node, depth + 1, path + [key], seen_nodes)\n            elif isinstance(node, SequenceNode):\n                for item in node.value:\n                    if item.tag not in (None,\n                                        'tag:yaml.org,2002:str',\n                                        'tag:yaml.org,2002:bool',\n                                        'tag:yaml.org,2002:null',\n                                        'tag:yaml.org,2002:int',\n                                        'tag:yaml.org,2002:float',\n                                        'tag:yaml.org,2002:seq',\n                                        'tag:yaml.org,2002:map'):\n                        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)\n                    check_mapping_node(item, depth + 1, path, seen_nodes)\n            elif isinstance(node, ScalarNode):\n",
+          "refusal": null,
+          "annotations": []
+        },
+        "logprobs": null,
+        "finish_reason": "length"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 416,
+      "completion_tokens": 1500,
+      "total_tokens": 1916,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": "fp_f26cc340c5"
+  },
+  "erro": "Resposta vazia ou incompleta; nao sera reexecutada para selecionar uma melhor",
+  "finish_reason": "length",
+  "concluida_em": "2026-11-03T22:56:11.901635+00:00"
+}

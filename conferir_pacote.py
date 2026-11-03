@@ -207,6 +207,29 @@ if (t07v2/'resumo.json').exists():
     assert calls==len(ids)==8
     print('T07 exploratoria v2: 8 respostas em 8 chamadas; plano, fontes, imagem e prompts conferidos.')
 
+for folder_name,total_refs,report_name in [('t03-exploratoria-v2',9,'T03'),('t08-exploratoria-v2',11,'T08'),('t05b-exploratoria-v2',11,'T05b'),('t05c-exploratoria-v2',11,'T05c')]:
+    base=ROOT/'dados'/folder_name
+    if not (base/'resumo.json').exists():continue
+    plan=json.loads((base/'plano.json').read_text(encoding='utf-8'))
+    assert len(plan['jobs'])==8
+    for name,sha in plan['fontes_sha256'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
+    report=json.loads((ROOT/f'docs/{report_name}-validacao-linux.json').read_text(encoding='utf-8'))
+    assert report['referencias']==report['expectativas_atendidas']==total_refs and report['imagem']==plan['imagem']
+    calls=0;ids=set()
+    for job in plan['jobs']:
+        folder=base/job['id'];g=json.loads((folder/'geracao.json').read_text(encoding='utf-8'))
+        assert plan['registrado_em']<=g['iniciado_em']<=g['concluida_em']
+        assert g['prompt']==job['prompt'] and g['payload']['messages']==[{'role':'user','content':job['prompt']}]
+        assert g['payload']['model']==job['modelo']
+        assert all(g['payload'][k]==v for k,v in plan['parametros'].items())
+        if g.get('codigo_sha256'):assert hashlib.sha256((folder/'amostra.py').read_bytes()).hexdigest()==g['codigo_sha256']
+        else:assert g['erro'] and not (folder/'amostra.py').exists()
+        calls+=len(g['tentativas']);ids.add(g['resposta']['id'])
+        result=json.loads((folder/'avaliacao.json').read_text(encoding='utf-8'))
+        if not g['erro']:assert result['imagem']==plan['imagem']
+    assert calls==len(ids)==8
+    print(folder_name+': 8 respostas em 8 chamadas; plano, fontes, imagem e validacao conferidos.')
+
 t08_report=ROOT/'docs/T08-validacao-linux.json'
 if t08_report.exists():
     report=json.loads(t08_report.read_text(encoding='utf-8'))

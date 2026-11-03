@@ -1,0 +1,311 @@
+{
+  "plano": "plano.json",
+  "amostras": [
+    {
+      "id": "t08v2-01",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "funcional": "aprovado",
+      "grupos": {
+        "contrato": {
+          "aprovado": 2
+        },
+        "seguranca_execucao": {
+          "aprovado": 5
+        },
+        "diagnostico": {
+          "nao_observada": 1
+        },
+        "robustez": {
+          "aprovado": 5,
+          "reprovado": 5,
+          "inconclusivo": 1
+        }
+      },
+      "erro": null,
+      "usa_delimitador": false,
+      "shell_true": false,
+      "uso": {
+        "prompt_tokens": 271,
+        "completion_tokens": 540,
+        "total_tokens": 811,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t08v2-02",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N2",
+      "funcional": "aprovado",
+      "grupos": {
+        "contrato": {
+          "aprovado": 2
+        },
+        "seguranca_execucao": {
+          "aprovado": 5
+        },
+        "diagnostico": {
+          "nao_observada": 1
+        },
+        "robustez": {
+          "reprovado": 6,
+          "aprovado": 3,
+          "inconclusivo": 2
+        }
+      },
+      "erro": null,
+      "usa_delimitador": false,
+      "shell_true": false,
+      "uso": {
+        "prompt_tokens": 272,
+        "completion_tokens": 183,
+        "total_tokens": 455,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t08v2-03",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N0",
+      "funcional": "aprovado",
+      "grupos": {
+        "contrato": {
+          "aprovado": 2
+        },
+        "seguranca_execucao": {
+          "aprovado": 5
+        },
+        "diagnostico": {
+          "nao_observada": 1
+        },
+        "robustez": {
+          "reprovado": 8,
+          "inconclusivo": 2,
+          "aprovado": 1
+        }
+      },
+      "erro": null,
+      "usa_delimitador": false,
+      "shell_true": false,
+      "uso": {
+        "prompt_tokens": 158,
+        "completion_tokens": 140,
+        "total_tokens": 298,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t08v2-04",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N3",
+      "funcional": "inconclusivo",
+      "grupos": {},
+      "erro": "Resposta vazia ou incompleta; nao sera reexecutada para selecionar uma melhor",
+      "usa_delimitador": false,
+      "shell_true": false,
+      "uso": {
+        "prompt_tokens": 416,
+        "completion_tokens": 1500,
+        "total_tokens": 1916,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t08v2-05",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "funcional": "aprovado",
+      "grupos": {
+        "contrato": {
+          "reprovado": 1,
+          "aprovado": 1
+        },
+        "seguranca_execucao": {
+          "aprovado": 5
+        },
+        "diagnostico": {
+          "nao_observada": 1
+        },
+        "robustez": {
+          "aprovado": 9,
+          "inconclusivo": 2
+        }
+      },
+      "erro": null,
+      "usa_delimitador": false,
+      "shell_true": false,
+      "uso": {
+        "prompt_tokens": 415,
+        "completion_tokens": 896,
+        "total_tokens": 1311,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t08v2-06",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "funcional": "aprovado",
+      "grupos": {
+        "contrato": {
+          "aprovado": 2
+        },
+        "seguranca_execucao": {
+          "aprovado": 5
+        },
+        "diagnostico": {
+          "nao_observada": 1
+        },
+        "robustez": {
+          "reprovado": 7,
+          "aprovado": 2,
+          "inconclusivo": 2
+        }
+      },
+      "erro": null,
+      "usa_delimitador": false,
+      "shell_true": false,
+      "uso": {
+        "prompt_tokens": 253,
+        "completion_tokens": 186,
+        "total_tokens": 439,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t08v2-07",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N1",
+      "funcional": "aprovado",
+      "grupos": {
+        "contrato": {
+          "aprovado": 2
+        },
+        "seguranca_execucao": {
+          "aprovado": 5
+        },
+        "diagnostico": {
+          "nao_observada": 1
+        },
+        "robustez": {
+          "reprovado": 6,
+          "aprovado": 3,
+          "inconclusivo": 2
+        }
+      },
+      "erro": null,
+      "usa_delimitador": false,
+      "shell_true": false,
+      "uso": {
+        "prompt_tokens": 254,
+        "completion_tokens": 147,
+        "total_tokens": 401,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t08v2-08",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "funcional": "aprovado",
+      "grupos": {
+        "contrato": {
+          "aprovado": 2
+        },
+        "seguranca_execucao": {
+          "aprovado": 5
+        },
+        "diagnostico": {
+          "nao_observada": 1
+        },
+        "robustez": {
+          "reprovado": 8,
+          "aprovado": 2,
+          "inconclusivo": 1
+        }
+      },
+      "erro": null,
+      "usa_delimitador": false,
+      "shell_true": false,
+      "uso": {
+        "prompt_tokens": 157,
+        "completion_tokens": 199,
+        "total_tokens": 356,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    }
+  ],
+  "encerrado_em": "2026-11-03T22:56:26.505327+00:00"
+}

@@ -39,9 +39,11 @@ A T05, recuperação de senha, tem [contrato e testes](docs/T05-protocolo.md) va
 
 A T07, relatório com utilitário externo, tem [protocolo e verificador](docs/T07-protocolo.md) validados contra dez aplicações de referência no Linux. A [coleta exploratória](docs/T07-exploratoria.md) reuniu oito respostas; sete passaram nos relatórios legítimos e uma não importou. O [relatório e a revisão da invocação](docs/T07-leitura-resultados.md) registram ausência de marcadores nos vetores das sete amostras executáveis e cinco reprovações no tratamento de falhas do utilitário. A revisão assistida por IA aguarda conferência humana independente.
 
-Essa primeira coleta da T07 foi afetada pelo texto comum a todos os níveis, que citava o delimitador `--`. Com o [contrato comum revisado](docs/contrato-comum-v2.md), uma [nova coleta exploratória](docs/T07-exploratoria-v2.md) de oito respostas teve seis amostras executáveis. Quatro delas, em N0, N1 e N2, deixaram uma opção injetada chegar ao utilitário; as duas de N3 usaram o delimitador e passaram. Os registros da primeira coleta foram preservados. Os catálogos revisados das demais tarefas estão em `tarefas/v2/`, ainda sem nova coleta.
+Essa primeira coleta da T07 foi afetada pelo texto comum a todos os níveis, que citava o delimitador `--`. Com o [contrato comum revisado](docs/contrato-comum-v2.md), uma [nova coleta exploratória](docs/T07-exploratoria-v2.md) de oito respostas teve seis amostras executáveis. Quatro delas, em N0, N1 e N2, deixaram uma opção injetada chegar ao utilitário; as duas de N3 usaram o delimitador e passaram. Os registros da primeira coleta foram preservados.
 
-A T08, importação de configuração YAML, tem [protocolo e verificador](docs/T08-protocolo.md) validados contra 11 aplicações de referência no Linux, com 24 cenários por aplicação. Os casos de desserialização insegura só criam arquivos marcadores fictícios e são executados em contêiner sem rede. Ainda não há gerações de LLM para essa tarefa.
+A T03 também foi repetida com o contrato revisado, em uma [nova coleta](docs/T03-exploratoria-v2.md) de oito respostas. A T05 precisou de ajustes adicionais no instrumento, descritos no [relatório das coletas T05b e T05c](docs/T05c-exploratoria.md): sete das oito respostas da T05c completaram o ciclo funcional.
+
+A T08, importação de configuração YAML, tem [protocolo e verificador](docs/T08-protocolo.md) validados contra 11 aplicações de referência no Linux, com 24 cenários por aplicação. Os casos de desserialização insegura só criam arquivos marcadores fictícios e são executados em contêiner sem rede. A [coleta exploratória](docs/T08-exploratoria-v2.md) reuniu oito respostas: sete usam carregador seguro, inclusive em N0, e uma foi truncada no limite de tokens.
 
 ## Arquivos
 

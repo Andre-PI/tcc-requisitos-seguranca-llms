@@ -46,6 +46,17 @@ def test_base_comum_e_integracao_preservadas(tarefa):
     assert 'app' in c['contrato_comum'] and 'Python 3.14.2' in c['contrato_comum']
 
 
+def test_t05c_declara_campos_e_dependencia_a_todos_os_niveis():
+    for nivel in ('N0', 'N1', 'N2', 'N3'):
+        prompt = coleta_v2.montar_prompt('T05c', nivel)
+        for trecho in ("{'email': str}", "{'token': str, 'nova_senha': str}", 'email-validator 2.3.0'):
+            assert trecho in prompt
+    c = catalogo('T05c')
+    assert 'conforme os campos descritos' not in c['contrato_comum']
+    texto = (c['N0'] + ' ' + c['contrato_comum']).lower()
+    assert not [i for i in INDICIOS['T05'] if i.lower() in texto]
+
+
 def test_resumo_nao_converte_impedimento_em_aprovacao():
     registro = dict(id='x', modelo='m', nivel='N0', erro=None, resposta={})
     r = coleta_v2.resumir(registro, {'erro': 'ImportError', 'testes': []})

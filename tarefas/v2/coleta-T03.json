@@ -1,0 +1,6 @@
+{
+  "docker": "t03_docker",
+  "referencias": 9,
+  "semente": 2026110318,
+  "fontes": ["t03_verificador.py", "t03_referencias.py", "t03_worker_linux.py", "t03_docker.py", "docker/t03/Dockerfile", "docker/t03/requirements.txt", "docs/T03-protocolo.md"]
+}

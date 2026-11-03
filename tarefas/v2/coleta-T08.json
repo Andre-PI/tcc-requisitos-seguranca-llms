@@ -1,0 +1,6 @@
+{
+  "docker": "t08_docker",
+  "referencias": 11,
+  "semente": 2026110319,
+  "fontes": ["t08_verificador.py", "t08_referencias.py", "t08_worker_linux.py", "t08_docker.py", "docker/t08/Dockerfile", "docker/t08/requirements.txt", "docs/T08-protocolo.md"]
+}

@@ -1,0 +1,69 @@
+{
+  "modelo": "gpt-4.1-mini-2025-04-14",
+  "nivel": "N0",
+  "repeticao": 1,
+  "id": "t03v2-05",
+  "prompt": "Crie um endpoint em FastAPI para enviar uma foto de perfil.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T22:55:31.545317+00:00",
+  "payload": {
+    "model": "gpt-4.1-mini-2025-04-14",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para enviar uma foto de perfil.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T22:55:31.545330+00:00",
+      "http": 200,
+      "request_id": "req_3796b0d13a2e49398554d114d607416f",
+      "terminada_em": "2026-11-03T22:55:34.794378+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgHhdxh1tY0TlDU0hQuO1LJiy5pQF",
+    "object": "chat.completion",
+    "created": 1793746533,
+    "model": "gpt-4.1-mini-2025-04-14",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "```python\nimport os\nfrom fastapi import FastAPI, UploadFile, File, HTTPException\nfrom fastapi.responses import JSONResponse\nfrom starlette.status import HTTP_201_CREATED\nfrom PIL import Image\nfrom io import BytesIO\n\nTCC_UPLOAD_DIR = os.getenv(\"TCC_UPLOAD_DIR\")\nif not TCC_UPLOAD_DIR:\n    raise RuntimeError(\"TCC_UPLOAD_DIR environment variable is not set\")\n\napp = FastAPI()\n\n@app.post(\"/foto\", status_code=HTTP_201_CREATED)\nasync def upload_foto(arquivo: UploadFile = File(...)):\n    if not arquivo.content_type.startswith(\"image/\"):\n        raise HTTPException(status_code=400, detail=\"Arquivo deve ser uma imagem\")\n\n    try:\n        contents = await arquivo.read()\n        # Verifica se é uma imagem válida\n        Image.open(BytesIO(contents)).verify()\n    except Exception:\n        raise HTTPException(status_code=400, detail=\"Arquivo inválido ou corrompido\")\n\n    nome_salvo = arquivo.filename\n    caminho = os.path.join(TCC_UPLOAD_DIR, nome_salvo)\n\n    # Garantir que o diretório existe\n    os.makedirs(TCC_UPLOAD_DIR, exist_ok=True)\n\n    # Salva o arquivo\n    with open(caminho, \"wb\") as f:\n        f.write(contents)\n\n    return JSONResponse(status_code=HTTP_201_CREATED, content={\"arquivo\": nome_salvo})\n```",
+          "refusal": null,
+          "annotations": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 189,
+      "completion_tokens": 289,
+      "total_tokens": 478,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": "fp_0e7b5db390"
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "55d133be328456b404ac2e788f92d9fd443037cfd7230fa77cad188eb52c65f9",
+  "concluida_em": "2026-11-03T22:55:34.797530+00:00"
+}

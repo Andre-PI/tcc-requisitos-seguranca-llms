@@ -1,0 +1,69 @@
+{
+  "modelo": "gpt-4.1-mini-2025-04-14",
+  "nivel": "N2",
+  "repeticao": 1,
+  "id": "t03v2-03",
+  "prompt": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T22:55:11.710399+00:00",
+  "payload": {
+    "model": "gpt-4.1-mini-2025-04-14",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T22:55:11.710412+00:00",
+      "http": 200,
+      "request_id": "req_2121eea6fd2746aab5b84fd9d988f653",
+      "terminada_em": "2026-11-03T22:55:18.601214+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgHhKdK9ajnVEme9atyotFRfJwHwk",
+    "object": "chat.completion",
+    "created": 1793746514,
+    "model": "gpt-4.1-mini-2025-04-14",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "```python\nimport os\nimport uuid\nimport imghdr\nfrom pathlib import Path\nfrom fastapi import FastAPI, File, UploadFile, HTTPException, status\nfrom fastapi.responses import JSONResponse\nfrom PIL import Image\nfrom typing import Literal\n\napp = FastAPI()\n\nUPLOAD_DIR = os.getenv(\"TCC_UPLOAD_DIR\")\nif not UPLOAD_DIR:\n    raise RuntimeError(\"TCC_UPLOAD_DIR environment variable is not set\")\n\nupload_path = Path(UPLOAD_DIR)\nif not upload_path.is_dir():\n    raise RuntimeError(f\"TCC_UPLOAD_DIR path does not exist or is not a directory: {UPLOAD_DIR}\")\n\n\ndef validate_image_type(data: bytes) -> Literal[\"jpeg\", \"png\"]:\n    kind = imghdr.what(None, h=data)\n    if kind == \"jpeg\":\n        return \"jpeg\"\n    if kind == \"png\":\n        return \"png\"\n    raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=\"Arquivo deve ser imagem PNG ou JPEG válida\")\n\n\ndef secure_filename(filename: str) -> str:\n    keepcharacters = (\" \", \".\", \"_\", \"-\")\n    filename = filename.strip().replace(\"\\0\", \"\")\n    return \"\".join(c for c in filename if c.isalnum() or c in keepcharacters)\n\n\n@app.post(\"/foto\", status_code=status.HTTP_201_CREATED)\nasync def upload_foto(arquivo: UploadFile = File(...)):\n    contents = await arquivo.read()\n    if not contents:\n        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=\"Arquivo vazio\")\n\n    img_type = validate_image_type(contents)\n\n    # Verify image can be opened and is valid\n    try:\n        image = Image.open(arquivo.file)\n        image.verify()\n    except Exception:\n        # fallback: try opening from bytes\n        try:\n            image = Image.open(io.BytesIO(contents))\n            image.verify()\n        except Exception:\n            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=\"Imagem inválida ou corrompida\")\n\n    # Reset file pointer for potential reuse\n    await arquivo.seek(0)\n\n    original_name = arquivo.filename or \"arquivo\"\n    original_name = secure_filename(original_name)\n\n    ext = \".jpg\" if img_type == \"jpeg\" else \".png\"\n    unique_name = f\"{uuid.uuid4().hex}{ext}\"\n    save_path = upload_path / unique_name\n\n    # Save file preserving content and dimensions\n    try:\n        with open(save_path, \"wb\") as f:\n            f.write(contents)\n    except Exception:\n        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=\"Erro ao salvar arquivo\")\n\n    return JSONResponse(status_code=status.HTTP_201_CREATED, content={\"arquivo\": unique_name})\n```",
+          "refusal": null,
+          "annotations": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 301,
+      "completion_tokens": 560,
+      "total_tokens": 861,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": "fp_d6c29e5320"
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "a809a16e62efc9e9d320f30fd52c2658f4e7b76dd0356c673cd1a159aeb35654",
+  "concluida_em": "2026-11-03T22:55:18.603198+00:00"
+}

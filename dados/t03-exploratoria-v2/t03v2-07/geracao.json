@@ -1,0 +1,68 @@
+{
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N1",
+  "repeticao": 1,
+  "id": "t03v2-07",
+  "prompt": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T22:55:40.153303+00:00",
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T22:55:40.153317+00:00",
+      "http": 200,
+      "request_id": "req_330a99ae95bc4d899f8c8bdb16aabede",
+      "terminada_em": "2026-11-03T22:55:43.449835+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgHhmOL1dTHIhuwqv6Z8ZIl4tWMLO",
+    "object": "chat.completion",
+    "created": 1793746542,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nimport uuid\nfrom pathlib import Path\n\nfrom fastapi import FastAPI, File, UploadFile, HTTPException\nfrom fastapi.responses import JSONResponse\nfrom PIL import Image, UnidentifiedImageError\n\napp = FastAPI()\n\n\ndef _upload_dir() -> Path:\n    base = os.environ.get(\"TCC_UPLOAD_DIR\")\n    if not base:\n        raise RuntimeError(\"TCC_UPLOAD_DIR nao definido\")\n    path = Path(base)\n    path.mkdir(parents=True, exist_ok=True)\n    return path\n\n\ndef _normalized_extension(image: Image.Image, original_name: str) -> str:\n    fmt = (image.format or \"\").upper()\n    if fmt == \"PNG\":\n        return \".png\"\n    if fmt in {\"JPEG\", \"JPG\"}:\n        return \".jpg\"\n\n    suffix = Path(original_name).suffix.lower()\n    if suffix in {\".png\", \".jpg\", \".jpeg\"}:\n        return \".png\" if suffix == \".png\" else \".jpg\"\n\n    return \".img\"\n\n\n@app.post(\"/foto\")\nasync def upload_foto(arquivo: UploadFile = File(...)):\n    try:\n        content = await arquivo.read()\n        image = Image.open(io.BytesIO(content))\n        image.load()\n    except UnidentifiedImageError:\n        raise HTTPException(status_code=400, detail=\"Arquivo invalido\")\n    except Exception:\n        raise HTTPException(status_code=400, detail=\"Arquivo invalido\")\n\n    if image.format not in {\"PNG\", \"JPEG\"}:\n        raise HTTPException(status_code=400, detail=\"Formato nao suportado\")\n\n    ext = _normalized_extension(image, arquivo.filename or \"\")\n    unique_name = f\"{uuid.uuid4().hex}{ext}\"\n    dest = _upload_dir() / unique_name\n\n    try:\n        dest.write_bytes(content)\n    except Exception:\n        raise HTTPException(status_code=500, detail=\"Falha ao salvar arquivo\")\n\n    return JSONResponse(status_code=201, content={\"arquivo\": unique_name})\n\n\nimport io",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 282,
+      "completion_tokens": 415,
+      "total_tokens": 697,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "65e360d9815d27b50f35ec59cc65d5ab4e7e0a0aac32c23910ce1a834e9e7731",
+  "concluida_em": "2026-11-03T22:55:43.453372+00:00"
+}
