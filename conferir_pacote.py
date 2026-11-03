@@ -68,3 +68,13 @@ if (t04/'resumo.json').exists():
         assert evaluation.get('imagem',plan['imagem'])==plan['imagem']
     assert len(ids)==8 and calls==8
     print('T04 exploratoria: 8 geracoes, 8 requisicoes; prompts, parametros, imagem e hashes conferidos separadamente do piloto.')
+
+# Validacao T03 de instrumentos: nao acrescenta geracoes ao piloto.
+t03_report=ROOT/'docs'/'T03-validacao-linux.json'
+if t03_report.exists():
+    report=json.loads(t03_report.read_text(encoding='utf-8'))
+    assert report['referencias']==9 and report['expectativas_atendidas']==9 and report['container_exit']==0
+    assert all(r['expectativa_atendida'] and r['link_disponivel'] and len(r['testes'])==18 for r in report['resultados'])
+    for name,sha in report['arquivos'].items():
+        assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
+    print('T03: 9 referencias e 18 casos por referencia; hashes dos instrumentos conferidos. Sem geracoes de LLM nesta tarefa.')

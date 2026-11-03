@@ -23,6 +23,7 @@ Os resultados são preliminares. Os testes ampliados foram definidos após a col
 
 - **Referencial teórico:** [PDF](orientacao/Referencial-teorico-v04.pdf) e [Word](orientacao/Referencial-teorico-v04.docx).
 - **Metodologia:** [PDF](orientacao/Metodologia-v04.pdf) e [Word](orientacao/Metodologia-v04.docx).
+- **Resultados do piloto:** [PDF](orientacao/Resultados-piloto-v01.pdf) e [Word](orientacao/Resultados-piloto-v01.docx), versão parcial para orientação.
 - [Exemplo de análise de acesso a pedidos](exemplos/acesso-a-pedidos.md), com prompt, código e resultado do teste.
 - [Resultados funcionais](docs/resultado-aceitacao.md).
 - [Resultados comportamentais](docs/resultado-comportamental.md).
@@ -31,6 +32,8 @@ Os resultados são preliminares. Os testes ampliados foram definidos após a col
 ## Ampliação das tarefas
 
 A T04, download de arquivos, foi validada em Linux com links simbólicos e sete aplicações de referência. Uma coleta exploratória separada reuniu oito gerações, executadas em contêineres sem rede. Consulte o [procedimento](docs/T04-execucao-linux.md) e os [resultados](docs/T04-exploratoria.md). O piloto e a coleta principal permanecem separados dessa etapa.
+
+A T03, upload de fotos, tem [protocolo e verificador](docs/T03-protocolo.md) validados contra nove aplicações de referência em Linux. Ainda não foram coletadas respostas de LLM para essa tarefa.
 
 ## Arquivos
 

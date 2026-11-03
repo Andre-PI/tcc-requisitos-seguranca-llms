@@ -1,0 +1,78 @@
+{
+  "geracoes": 72,
+  "aceitacao": {
+    "T01": {
+      "aprovado": 22,
+      "reprovado": 1,
+      "sem_execucao": 1
+    },
+    "T02": {
+      "aprovado": 16,
+      "reprovado": 5,
+      "sem_execucao": 3
+    },
+    "T06": {
+      "aprovado": 19,
+      "reprovado": 3,
+      "sem_execucao": 2
+    }
+  },
+  "casos": 1797,
+  "idor": {
+    "N0": {
+      "exposicao": 6
+    },
+    "N1": {
+      "aprovado": 5,
+      "inconclusivo": 1
+    },
+    "N2": {
+      "aprovado": 5,
+      "inconclusivo": 1
+    },
+    "N3": {
+      "aprovado": 3,
+      "inconclusivo": 3
+    }
+  },
+  "rate": {
+    "('N0', 'limite_conta')": {
+      "vulneravel": 6
+    },
+    "('N0', 'limite_ip')": {
+      "vulneravel": 6
+    },
+    "('N1', 'limite_conta')": {
+      "vulneravel": 6
+    },
+    "('N1', 'limite_ip')": {
+      "vulneravel": 6
+    },
+    "('N2', 'limite_conta')": {
+      "inconclusivo": 1,
+      "vulneravel": 5
+    },
+    "('N2', 'limite_ip')": {
+      "inconclusivo": 1,
+      "vulneravel": 5
+    },
+    "('N3', 'limite_conta')": {
+      "aprovado": 5,
+      "inconclusivo": 1
+    },
+    "('N3', 'limite_ip')": {
+      "aprovado": 5,
+      "inconclusivo": 1
+    }
+  },
+  "sast": [
+    {
+      "ferramenta": "bandit",
+      "regra": "B105",
+      "cwe": "CWE-259",
+      "ocorrencias": 4,
+      "geracoes": 2
+    }
+  ],
+  "t04_amostras": 8
+}
