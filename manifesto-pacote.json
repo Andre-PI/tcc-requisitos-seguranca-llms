@@ -18,8 +18,8 @@
     },
     {
       "caminho": "README.md",
-      "bytes": 3776,
-      "sha256": "1afeee9f985ee81e9a8e46feda222dfb109143c88c29a990162c1df7a2b113cd"
+      "bytes": 3901,
+      "sha256": "5ae46df0fc6a2ce445dfd6d4bb7ac019b17209933b4535b60cbbded6f00e7597"
     },
     {
       "caminho": "aceitacao_worker.py",
@@ -452,9 +452,19 @@
       "sha256": "ba5be5d70a40660654baf5899400573a6c66121c3d2e82068aa2449a2d8a52ee"
     },
     {
+      "caminho": "docs/conferencia-referencial-v04.md",
+      "bytes": 5903,
+      "sha256": "a9bd698ce43af4e097609ca17cb95c18109d99778f746f95242da54c138b048e"
+    },
+    {
       "caminho": "docs/criterios-aceitacao.json",
       "bytes": 2886,
       "sha256": "7449284863bc467cb8dfe8451e510f86a531bc3910cf77dc925633bcfe9b63d7"
+    },
+    {
+      "caminho": "docs/metadados-referencias-verificados.json",
+      "bytes": 9412,
+      "sha256": "6be38afaf7997630f4e199ce919eac21226dca3d4e33e7cab3a1e838f377bf46"
     },
     {
       "caminho": "docs/metodologia-v04.md",
@@ -470,6 +480,11 @@
       "caminho": "docs/protocolo-comportamental.md",
       "bytes": 6608,
       "sha256": "2355e6f31a2b8e8d8f796211a36e8f7e8f81a73603195bf412bb0d76a3143ea5"
+    },
+    {
+      "caminho": "docs/referencial-v04.md",
+      "bytes": 16894,
+      "sha256": "ac6259a8b4a9889f633de02ec6fbcf44ea0e77056341bc336840765c4424edaa"
     },
     {
       "caminho": "docs/requirements-revisao-v1.txt",
@@ -3217,6 +3232,16 @@
       "sha256": "5e934a7046323b82d5a195ae9cf66c2d2756666b326ac6c218f65c3c0f1adc25"
     },
     {
+      "caminho": "orientacao/Referencial-teorico-v04.docx",
+      "bytes": 43009,
+      "sha256": "7ecae4795bf9d13ca85dbdaa14f29f624934be5481cf4b021fe5e22441b24ffb"
+    },
+    {
+      "caminho": "orientacao/Referencial-teorico-v04.pdf",
+      "bytes": 109551,
+      "sha256": "01c8c5e6e1a90c0d4cc44a9f685e8a6f70bb35b3766bfd9d38e42e3518685b35"
+    },
+    {
       "caminho": "piloto.py",
       "bytes": 17558,
       "sha256": "9a77216344d386faecf3b75c3e125e91970b7677deae44832c538e01da122362"
@@ -3302,5 +3327,5 @@
       "sha256": "66b13887766717eb6838799d1c2c94529179f6b854f4c2d973da347238b97f8d"
     }
   ],
-  "revisao_documental": "2026-11-03; metodologia v04; dados do piloto preservados"
+  "revisao_documental": "2026-11-03; metodologia e referencial v04; dados do piloto preservados"
 }

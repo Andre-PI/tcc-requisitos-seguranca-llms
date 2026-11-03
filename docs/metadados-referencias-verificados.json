@@ -1,0 +1,407 @@
+[
+  {
+    "DOI": "10.1145/3722108",
+    "title": [
+      "Prompting Techniques for Secure Code Generation: A Systematic Investigation"
+    ],
+    "container-title": [
+      "ACM Transactions on Software Engineering and Methodology"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2025,
+          10,
+          4
+        ]
+      ]
+    },
+    "volume": "34",
+    "issue": "8",
+    "page": "1-53",
+    "article-number": null,
+    "author": [
+      {
+        "ORCID": "https://orcid.org/0000-0002-9916-4456",
+        "authenticated-orcid": false,
+        "given": "Catherine",
+        "family": "Tony",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Hamburg University of Technology, Hamburg, Germany"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0001-6304-771X",
+        "authenticated-orcid": false,
+        "given": "Nicolás E.",
+        "family": "Díaz Ferreyra",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Hamburg University of Technology, Hamburg, Germany"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0009-0004-7633-0409",
+        "authenticated-orcid": false,
+        "given": "Markus",
+        "family": "Mutas",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Hamburg University of Technology, Hamburg, Germany"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0009-0009-4157-8582",
+        "authenticated-orcid": false,
+        "given": "Salem",
+        "family": "Dhif",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Hamburg University of Technology, Hamburg, Germany"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0003-3591-7671",
+        "authenticated-orcid": false,
+        "given": "Riccardo",
+        "family": "Scandariato",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Hamburg University of Technology, Hamburg, Germany"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "publisher": "Association for Computing Machinery (ACM)"
+  },
+  {
+    "DOI": "10.1109/sp46214.2022.9833571",
+    "title": [
+      "Asleep at the Keyboard? Assessing the Security of GitHub Copilot’s Code Contributions"
+    ],
+    "container-title": [
+      "2022 IEEE Symposium on Security and Privacy (SP)"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2022,
+          5
+        ]
+      ]
+    },
+    "volume": null,
+    "issue": null,
+    "page": "754-768",
+    "article-number": null,
+    "author": [
+      {
+        "given": "Hammond",
+        "family": "Pearce",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "New York University,Department of ECE,Brooklyn,NY,USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Baleegh",
+        "family": "Ahmad",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "New York University,Department of ECE,Brooklyn,NY,USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Benjamin",
+        "family": "Tan",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "University of Calgary,Department of ESE,Calgary,CA,Alberta"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Brendan",
+        "family": "Dolan-Gavitt",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "New York University,Department of CSE,Brooklyn,NY,USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Ramesh",
+        "family": "Karri",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "New York University,Department of ECE,Brooklyn,NY,USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "publisher": "IEEE"
+  },
+  {
+    "DOI": "10.1109/smc53992.2023.10394237",
+    "title": [
+      "How Secure is Code Generated by ChatGPT?"
+    ],
+    "container-title": [
+      "2023 IEEE International Conference on Systems, Man, and Cybernetics (SMC)"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2023,
+          10,
+          1
+        ]
+      ]
+    },
+    "volume": null,
+    "issue": null,
+    "page": "2445-2451",
+    "article-number": null,
+    "author": [
+      {
+        "given": "Raphaël",
+        "family": "Khoury",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Universit&#x00E9; du Qu&#x00E9;bec en Outaouais,Gatineau,Canada"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Anderson R.",
+        "family": "Avila",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Institut National de Recherche Scientifique,Gatineau,Canada"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Jacob",
+        "family": "Brunelle",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Universit&#x00E9; du Qu&#x00E9;bec en Outaouais,Gatineau,Canada"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Baba Mamadou",
+        "family": "Camara",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Universit&#x00E9; du Qu&#x00E9;bec en Outaouais,Gatineau,Canada"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "publisher": "IEEE"
+  },
+  {
+    "DOI": "10.1145/3576915.3623157",
+    "title": [
+      "Do Users Write More Insecure Code with AI Assistants?"
+    ],
+    "container-title": [
+      "Proceedings of the 2023 ACM SIGSAC Conference on Computer and Communications Security"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2023,
+          11,
+          15
+        ]
+      ]
+    },
+    "volume": null,
+    "issue": null,
+    "page": "2785-2799",
+    "article-number": null,
+    "author": [
+      {
+        "ORCID": "https://orcid.org/0009-0009-4254-4712",
+        "authenticated-orcid": false,
+        "given": "Neil",
+        "family": "Perry",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Stanford University, Stanford, CA, USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0009-0002-7816-8391",
+        "authenticated-orcid": false,
+        "given": "Megha",
+        "family": "Srivastava",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Stanford University, Stanford, CA, USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-0224-5031",
+        "authenticated-orcid": false,
+        "given": "Deepak",
+        "family": "Kumar",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Stanford University &amp; UC San Diego, Stanford &amp; La Jolla, CA, USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0003-0820-0421",
+        "authenticated-orcid": false,
+        "given": "Dan",
+        "family": "Boneh",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Stanford University, Stanford, CA, USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "publisher": "ACM"
+  }
+]

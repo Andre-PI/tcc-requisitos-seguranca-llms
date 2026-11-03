@@ -21,6 +21,7 @@ Os resultados são preliminares. Os testes ampliados foram definidos após a col
 
 ## Documentos e resultados
 
+- **Referencial teórico:** [PDF](orientacao/Referencial-teorico-v04.pdf) e [Word](orientacao/Referencial-teorico-v04.docx).
 - **Metodologia:** [PDF](orientacao/Metodologia-v04.pdf) e [Word](orientacao/Metodologia-v04.docx).
 - [Exemplo de análise de acesso a pedidos](exemplos/acesso-a-pedidos.md), com prompt, código e resultado do teste.
 - [Resultados funcionais](docs/resultado-aceitacao.md).
