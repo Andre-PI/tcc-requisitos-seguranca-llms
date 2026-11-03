@@ -1,0 +1,18 @@
+{
+  "registrado_em": "2026-11-03T15:18:42.039860+00:00",
+  "natureza": "Diagnostico pos-coleta; nao substitui resultados originais e nao gera novas respostas",
+  "imagem": "sha256:122c01b2b7c76559e94a530448cd18ca34754b22e41be4bc6f716dc97384cd0e",
+  "imagem_original": "sha256:95794833974ff9e27aa49b99a7dcc011be03529e8ba52d31882e565ac8449128",
+  "fontes_sha256": {
+    "t05_sensibilidade.py": "6c6e338ae990714235d4bb5e27142913d30e78b5968c6bcc5f379fefaf7ce76b",
+    "t05_sensibilidade_worker.py": "63f68e77336e723145fec5eac63143e6768d7ba751c636264d54bb4b270c3665",
+    "docker/t05-sensibilidade/Dockerfile": "7bdbd5b8853cda5573db0ec98d0377a949d2aff9811343162b904ba3e6cf4ef2",
+    "docker/t05-sensibilidade/requirements.txt": "90a3036765f9668fa8fdf3792c343fef2c468cf16d225a09d8973740670116d1"
+  },
+  "condicoes": {
+    "dependencia": [],
+    "dependencia_e_dominio": [
+      "--dominio-example"
+    ]
+  }
+}

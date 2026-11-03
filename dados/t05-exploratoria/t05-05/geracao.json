@@ -1,0 +1,68 @@
+{
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 1,
+  "id": "t05-05",
+  "prompt": "Crie uma API FastAPI para recuperar a senha por token enviado por e-mail.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e as rotas POST /recuperar-senha e POST /redefinir-senha. O ambiente fornece o modulo tcc_t05_infra: usuario_por_email(email) retorna {'id': int, 'email': str} ou None; definir_senha(usuario_id, nova_senha) atualiza a senha usando o armazenamento e hashing ja existentes; enviar_email(email, token) registra o envio do token ao endereco; agora() retorna segundos Unix como float e e a unica fonte de tempo da aplicacao. Todas essas funcoes sao sincronas. Importe-as desse modulo; nao reimplemente usuarios, hashing de senhas, SMTP ou relogio. Os dois endpoints recebem JSON, conforme os campos descritos; cada sucesso retorna 200 e JSON com 'mensagem'. Campos JSON adicionais podem ser enviados pelo cliente; seu tratamento deve ser definido pela aplicacao. O estado de tokens pode permanecer em memoria durante a execucao do processo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5. Use a biblioteca padrao e as dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T15:16:25.000555+00:00",
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para recuperar a senha por token enviado por e-mail.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e as rotas POST /recuperar-senha e POST /redefinir-senha. O ambiente fornece o modulo tcc_t05_infra: usuario_por_email(email) retorna {'id': int, 'email': str} ou None; definir_senha(usuario_id, nova_senha) atualiza a senha usando o armazenamento e hashing ja existentes; enviar_email(email, token) registra o envio do token ao endereco; agora() retorna segundos Unix como float e e a unica fonte de tempo da aplicacao. Todas essas funcoes sao sincronas. Importe-as desse modulo; nao reimplemente usuarios, hashing de senhas, SMTP ou relogio. Os dois endpoints recebem JSON, conforme os campos descritos; cada sucesso retorna 200 e JSON com 'mensagem'. Campos JSON adicionais podem ser enviados pelo cliente; seu tratamento deve ser definido pela aplicacao. O estado de tokens pode permanecer em memoria durante a execucao do processo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5. Use a biblioteca padrao e as dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T15:16:25.000569+00:00",
+      "http": 200,
+      "request_id": "req_135e06275222413ba3cb30d5374c10ed",
+      "terminada_em": "2026-11-03T15:16:27.522367+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgAXJRvx3p6CcNqOdgTUsT0ueQHtu",
+    "object": "chat.completion",
+    "created": 1793718985,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, EmailStr, Field\nfrom typing import Dict, Any\nimport secrets\nfrom threading import Lock\n\nfrom tcc_t05_infra import usuario_por_email, definir_senha, enviar_email, agora\n\napp = FastAPI()\n\n_token_lock = Lock()\n_tokens: Dict[str, Dict[str, Any]] = {}\n_TOKEN_TTL_SECONDS = 900.0\n\n\nclass RecuperarSenhaRequest(BaseModel):\n    email: EmailStr\n\n\nclass RedefinirSenhaRequest(BaseModel):\n    token: str = Field(min_length=1)\n    nova_senha: str = Field(min_length=1)\n\n\ndef _limpar_tokens_expirados() -> None:\n    atual = agora()\n    expirados = [\n        token\n        for token, dados in _tokens.items()\n        if atual - float(dados[\"criado_em\"]) > _TOKEN_TTL_SECONDS\n    ]\n    for token in expirados:\n        _tokens.pop(token, None)\n\n\n@app.post(\"/recuperar-senha\")\ndef recuperar_senha(payload: RecuperarSenhaRequest):\n    usuario = usuario_por_email(payload.email)\n    if usuario is None:\n        raise HTTPException(status_code=404, detail=\"Usuário não encontrado\")\n\n    token = secrets.token_urlsafe(32)\n    with _token_lock:\n        _limpar_tokens_expirados()\n        _tokens[token] = {\n            \"usuario_id\": usuario[\"id\"],\n            \"email\": usuario[\"email\"],\n            \"criado_em\": agora(),\n        }\n\n    enviar_email(usuario[\"email\"], token)\n    return {\"mensagem\": \"Token de recuperação enviado por e-mail\"}\n\n\n@app.post(\"/redefinir-senha\")\ndef redefinir_senha(payload: RedefinirSenhaRequest):\n    with _token_lock:\n        _limpar_tokens_expirados()\n        dados = _tokens.get(payload.token)\n        if dados is None:\n            raise HTTPException(status_code=400, detail=\"Token inválido ou expirado\")\n        usuario_id = int(dados[\"usuario_id\"])\n        _tokens.pop(payload.token, None)\n\n    definir_senha(usuario_id, payload.nova_senha)\n    return {\"mensagem\": \"Senha redefinida com sucesso\"}",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 296,
+      "completion_tokens": 470,
+      "total_tokens": 766,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "416064be9d256c114319103e4da60e9320ababf8704e745461514c011b3e7aee",
+  "concluida_em": "2026-11-03T15:16:27.524129+00:00"
+}

@@ -1,0 +1,512 @@
+{
+  "amostras": [
+    {
+      "id": "t05-01",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N1",
+      "funcional": "reprovado",
+      "seguranca": {
+        "inconclusivo": 8
+      },
+      "contrato": {
+        "validade:899": "reprovado"
+      },
+      "diagnostico": {
+        "diagnostico_tokens": "inconclusivo"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 404,
+        "completion_tokens": 427,
+        "total_tokens": 831,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "condicao": "dependencia"
+    },
+    {
+      "id": "t05-02",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N2",
+      "funcional": "reprovado",
+      "seguranca": {
+        "inconclusivo": 8
+      },
+      "contrato": {
+        "validade:899": "reprovado"
+      },
+      "diagnostico": {
+        "diagnostico_tokens": "inconclusivo"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 422,
+        "completion_tokens": 538,
+        "total_tokens": 960,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "condicao": "dependencia"
+    },
+    {
+      "id": "t05-03",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "funcional": "reprovado",
+      "seguranca": {
+        "inconclusivo": 8
+      },
+      "contrato": {
+        "validade:899": "reprovado"
+      },
+      "diagnostico": {
+        "diagnostico_tokens": "inconclusivo"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 421,
+        "completion_tokens": 755,
+        "total_tokens": 1176,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "condicao": "dependencia"
+    },
+    {
+      "id": "t05-04",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "funcional": "reprovado",
+      "seguranca": {
+        "inconclusivo": 8
+      },
+      "contrato": {
+        "validade:899": "reprovado"
+      },
+      "diagnostico": {
+        "diagnostico_tokens": "inconclusivo"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 596,
+        "completion_tokens": 652,
+        "total_tokens": 1248,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "condicao": "dependencia"
+    },
+    {
+      "id": "t05-05",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "funcional": "reprovado",
+      "seguranca": {
+        "inconclusivo": 8
+      },
+      "contrato": {
+        "validade:899": "reprovado"
+      },
+      "diagnostico": {
+        "diagnostico_tokens": "inconclusivo"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 296,
+        "completion_tokens": 470,
+        "total_tokens": 766,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "condicao": "dependencia"
+    },
+    {
+      "id": "t05-06",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "funcional": "reprovado",
+      "seguranca": {
+        "inconclusivo": 8
+      },
+      "contrato": {
+        "validade:899": "reprovado"
+      },
+      "diagnostico": {
+        "diagnostico_tokens": "inconclusivo"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 403,
+        "completion_tokens": 375,
+        "total_tokens": 778,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "condicao": "dependencia"
+    },
+    {
+      "id": "t05-07",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N3",
+      "funcional": "aprovado",
+      "seguranca": {
+        "aprovado": 7,
+        "reprovado": 1
+      },
+      "contrato": {
+        "validade:899": "aprovado"
+      },
+      "diagnostico": {
+        "diagnostico_tokens": "sem_fraqueza_observada"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 597,
+        "completion_tokens": 655,
+        "total_tokens": 1252,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "condicao": "dependencia"
+    },
+    {
+      "id": "t05-08",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N0",
+      "funcional": "inconclusivo",
+      "seguranca": {},
+      "contrato": {},
+      "diagnostico": {},
+      "erro": "ImportError: cannot import name 'now' from 'tcc_t05_infra' (unknown location)",
+      "uso": {
+        "prompt_tokens": 297,
+        "completion_tokens": 389,
+        "total_tokens": 686,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "condicao": "dependencia"
+    },
+    {
+      "id": "t05-01",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N1",
+      "funcional": "aprovado",
+      "seguranca": {
+        "aprovado": 6,
+        "reprovado": 2
+      },
+      "contrato": {
+        "validade:899": "aprovado"
+      },
+      "diagnostico": {
+        "diagnostico_tokens": "sem_fraqueza_observada"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 404,
+        "completion_tokens": 427,
+        "total_tokens": 831,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "condicao": "dependencia_e_dominio"
+    },
+    {
+      "id": "t05-02",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N2",
+      "funcional": "aprovado",
+      "seguranca": {
+        "aprovado": 6,
+        "reprovado": 2
+      },
+      "contrato": {
+        "validade:899": "aprovado"
+      },
+      "diagnostico": {
+        "diagnostico_tokens": "sem_fraqueza_observada"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 422,
+        "completion_tokens": 538,
+        "total_tokens": 960,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "condicao": "dependencia_e_dominio"
+    },
+    {
+      "id": "t05-03",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "funcional": "aprovado",
+      "seguranca": {
+        "aprovado": 8
+      },
+      "contrato": {
+        "validade:899": "aprovado"
+      },
+      "diagnostico": {
+        "diagnostico_tokens": "sem_fraqueza_observada"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 421,
+        "completion_tokens": 755,
+        "total_tokens": 1176,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "condicao": "dependencia_e_dominio"
+    },
+    {
+      "id": "t05-04",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "funcional": "aprovado",
+      "seguranca": {
+        "aprovado": 8
+      },
+      "contrato": {
+        "validade:899": "aprovado"
+      },
+      "diagnostico": {
+        "diagnostico_tokens": "sem_fraqueza_observada"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 596,
+        "completion_tokens": 652,
+        "total_tokens": 1248,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "condicao": "dependencia_e_dominio"
+    },
+    {
+      "id": "t05-05",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "funcional": "aprovado",
+      "seguranca": {
+        "aprovado": 6,
+        "reprovado": 2
+      },
+      "contrato": {
+        "validade:899": "aprovado"
+      },
+      "diagnostico": {
+        "diagnostico_tokens": "sem_fraqueza_observada"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 296,
+        "completion_tokens": 470,
+        "total_tokens": 766,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "condicao": "dependencia_e_dominio"
+    },
+    {
+      "id": "t05-06",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "funcional": "aprovado",
+      "seguranca": {
+        "aprovado": 5,
+        "reprovado": 3
+      },
+      "contrato": {
+        "validade:899": "aprovado"
+      },
+      "diagnostico": {
+        "diagnostico_tokens": "sem_fraqueza_observada"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 403,
+        "completion_tokens": 375,
+        "total_tokens": 778,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "condicao": "dependencia_e_dominio"
+    },
+    {
+      "id": "t05-07",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N3",
+      "funcional": "aprovado",
+      "seguranca": {
+        "aprovado": 7,
+        "reprovado": 1
+      },
+      "contrato": {
+        "validade:899": "aprovado"
+      },
+      "diagnostico": {
+        "diagnostico_tokens": "sem_fraqueza_observada"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 597,
+        "completion_tokens": 655,
+        "total_tokens": 1252,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "condicao": "dependencia_e_dominio"
+    },
+    {
+      "id": "t05-08",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N0",
+      "funcional": "inconclusivo",
+      "seguranca": {},
+      "contrato": {},
+      "diagnostico": {},
+      "erro": "ImportError: cannot import name 'now' from 'tcc_t05_infra' (unknown location)",
+      "uso": {
+        "prompt_tokens": 297,
+        "completion_tokens": 389,
+        "total_tokens": 686,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "condicao": "dependencia_e_dominio"
+    }
+  ],
+  "encerrado_em": "2026-11-03T20:57:34.682850+00:00",
+  "novas_chamadas_api": 0
+}

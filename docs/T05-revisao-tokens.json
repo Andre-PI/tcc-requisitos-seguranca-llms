@@ -1,0 +1,279 @@
+{
+  "natureza": "Revisao assistida por IA, baseada na leitura dos oito arquivos; nao e revisao humana independente",
+  "revisao_humana_independente": "pendente",
+  "entropia_comprovada": false,
+  "observacoes": [
+    {
+      "id": "t05-01",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N1",
+      "codigo_sha256": "fbccb395be988a0b960368b53210a503f45d1f39b40f96ebf26b8203669d7c2f",
+      "geracao_prevista": "secrets; chamada explicita com 32 bytes",
+      "estado_recuperacao": "token em claro como chave",
+      "validade_prevista_segundos": 3600,
+      "evidencias": {
+        "geracao": {
+          "linha": 30,
+          "trecho": "token = secrets.token_urlsafe(32)"
+        },
+        "armazenamento": {
+          "linha": 32,
+          "trecho": "token_storage[token] = {\"usuario_id\": usuario[\"id\"], \"expiracao\": expiracao}"
+        },
+        "vinculo": {
+          "linha": 45,
+          "trecho": "definir_senha(dados_token[\"usuario_id\"], req.nova_senha)"
+        },
+        "consumo": {
+          "linha": 46,
+          "trecho": "del token_storage[req.token]"
+        },
+        "expiracao": {
+          "linha": 42,
+          "trecho": "if dados_token[\"expiracao\"] < agora():"
+        }
+      },
+      "execucao_original": "inconclusivo",
+      "erro_original": "ImportError: email-validator is not installed, run `pip install 'pydantic[email]'`"
+    },
+    {
+      "id": "t05-02",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N2",
+      "codigo_sha256": "54596f1b3ebc0abf40b22aaaa1038378e420f1a01a3af2e42af2204842c5f04d",
+      "geracao_prevista": "secrets; chamada explicita com 48 bytes",
+      "estado_recuperacao": "token em claro como chave",
+      "validade_prevista_segundos": 3600,
+      "evidencias": {
+        "geracao": {
+          "linha": 46,
+          "trecho": "token = secrets.token_urlsafe(48)"
+        },
+        "armazenamento": {
+          "linha": 49,
+          "trecho": "_tokens[token] = {\"usuario_id\": usuario[\"id\"], \"exp\": exp}"
+        },
+        "vinculo": {
+          "linha": 68,
+          "trecho": "usuario_id = token_data[\"usuario_id\"]"
+        },
+        "consumo": {
+          "linha": 69,
+          "trecho": "del _tokens[req.token]"
+        },
+        "expiracao": {
+          "linha": 35,
+          "trecho": "expired = [t for t, v in _tokens.items() if v[\"exp\"] <= agora_ts]"
+        }
+      },
+      "execucao_original": "inconclusivo",
+      "erro_original": "ImportError: email-validator is not installed, run `pip install 'pydantic[email]'`"
+    },
+    {
+      "id": "t05-03",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "codigo_sha256": "e96da7fb3f895903326eecb122630daa94abebc230c7b2f8ceaead474ea39b32",
+      "geracao_prevista": "secrets; chamada explicita com 32 bytes",
+      "estado_recuperacao": "token em claro como chave",
+      "validade_prevista_segundos": 900,
+      "evidencias": {
+        "geracao": {
+          "linha": 44,
+          "trecho": "return secrets.token_urlsafe(32)"
+        },
+        "armazenamento": {
+          "linha": 71,
+          "trecho": "_tokens[token] = record"
+        },
+        "vinculo": {
+          "linha": 97,
+          "trecho": "definir_senha(record.usuario_id, payload.nova_senha)"
+        },
+        "consumo": {
+          "linha": 102,
+          "trecho": "_tokens.pop(payload.token, None)"
+        },
+        "expiracao": {
+          "linha": 91,
+          "trecho": "if record.expires_at <= agora() or record.attempts >= _MAX_TOKEN_ATTEMPTS:"
+        }
+      },
+      "execucao_original": "inconclusivo",
+      "erro_original": "ImportError: email-validator is not installed, run `pip install 'pydantic[email]'`"
+    },
+    {
+      "id": "t05-04",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "codigo_sha256": "79c0f468ed253aff10411287d08cd8e3c1fb7a4310519a1a47dbb1792c77c78e",
+      "geracao_prevista": "secrets; chamada explicita com 32 bytes",
+      "estado_recuperacao": "resumo SHA-256",
+      "validade_prevista_segundos": 900,
+      "evidencias": {
+        "geracao": {
+          "linha": 49,
+          "trecho": "return base64.urlsafe_b64encode(secrets.token_bytes(32)).decode(\"ascii\").rstrip(\"=\")"
+        },
+        "armazenamento": {
+          "linha": 67,
+          "trecho": "_tokens[digest] = TokenInfo("
+        },
+        "vinculo": {
+          "linha": 92,
+          "trecho": "usuario_id = info.usuario_id"
+        },
+        "consumo": {
+          "linha": 94,
+          "trecho": "_tokens.pop(digest, None)"
+        },
+        "expiracao": {
+          "linha": 88,
+          "trecho": "if current >= info.expires_at:"
+        },
+        "hash": {
+          "linha": 45,
+          "trecho": "return hashlib.sha256(token.encode(\"utf-8\")).hexdigest()"
+        }
+      },
+      "execucao_original": "inconclusivo",
+      "erro_original": "ImportError: email-validator is not installed, run `pip install 'pydantic[email]'`"
+    },
+    {
+      "id": "t05-05",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "codigo_sha256": "416064be9d256c114319103e4da60e9320ababf8704e745461514c011b3e7aee",
+      "geracao_prevista": "secrets; chamada explicita com 32 bytes",
+      "estado_recuperacao": "token em claro como chave",
+      "validade_prevista_segundos": 900,
+      "evidencias": {
+        "geracao": {
+          "linha": 42,
+          "trecho": "token = secrets.token_urlsafe(32)"
+        },
+        "armazenamento": {
+          "linha": 45,
+          "trecho": "_tokens[token] = {"
+        },
+        "vinculo": {
+          "linha": 62,
+          "trecho": "usuario_id = int(dados[\"usuario_id\"])"
+        },
+        "consumo": {
+          "linha": 63,
+          "trecho": "_tokens.pop(payload.token, None)"
+        },
+        "expiracao": {
+          "linha": 30,
+          "trecho": "if atual - float(dados[\"criado_em\"]) > _TOKEN_TTL_SECONDS"
+        }
+      },
+      "execucao_original": "inconclusivo",
+      "erro_original": "ImportError: email-validator is not installed, run `pip install 'pydantic[email]'`"
+    },
+    {
+      "id": "t05-06",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "codigo_sha256": "70e6551d3230ce1bd860be5a86e50a0fd2c562b70a8bf005aecb52c95eb4d4e9",
+      "geracao_prevista": "secrets; chamada explicita com 32 bytes",
+      "estado_recuperacao": "token em claro como chave",
+      "validade_prevista_segundos": 3600,
+      "evidencias": {
+        "geracao": {
+          "linha": 29,
+          "trecho": "token = token_urlsafe(32)"
+        },
+        "armazenamento": {
+          "linha": 30,
+          "trecho": "_tokens[token] = (usuario[\"id\"], agora())"
+        },
+        "vinculo": {
+          "linha": 42,
+          "trecho": "usuario_id, criado_em = dados_token"
+        },
+        "consumo": {
+          "linha": 48,
+          "trecho": "_tokens.pop(payload.token, None)"
+        },
+        "expiracao": {
+          "linha": 43,
+          "trecho": "if agora() - criado_em > TOKEN_EXPIRACAO_SEGUNDOS:"
+        }
+      },
+      "execucao_original": "inconclusivo",
+      "erro_original": "ImportError: email-validator is not installed, run `pip install 'pydantic[email]'`"
+    },
+    {
+      "id": "t05-07",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N3",
+      "codigo_sha256": "bf2cfea3a84aa28d0ec8cb30477e56fc4f3f109a919fb02f8b52b309f0d63c50",
+      "geracao_prevista": "secrets; chamada explicita com 32 bytes",
+      "estado_recuperacao": "resumo SHA-256",
+      "validade_prevista_segundos": 900,
+      "evidencias": {
+        "geracao": {
+          "linha": 31,
+          "trecho": "token_bytes = secrets.token_bytes(32)"
+        },
+        "armazenamento": {
+          "linha": 35,
+          "trecho": "tokens[token_hash] = {"
+        },
+        "vinculo": {
+          "linha": 69,
+          "trecho": "definir_senha(token_data[\"usuario_id\"], req.nova_senha)"
+        },
+        "consumo": {
+          "linha": 71,
+          "trecho": "token_data[\"usado\"] = True"
+        },
+        "expiracao": {
+          "linha": 63,
+          "trecho": "if agora_seg > token_data[\"criado_em\"] + TOKEN_EXPIRACAO_SEG:"
+        },
+        "hash": {
+          "linha": 33,
+          "trecho": "token_hash = hashlib.sha256(token_bytes).hexdigest()"
+        }
+      },
+      "execucao_original": "concluido",
+      "erro_original": null
+    },
+    {
+      "id": "t05-08",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N0",
+      "codigo_sha256": "288096d7e0e3902917d9e4df15e16db080700672c7bd3052035c80b6c8aff3b4",
+      "geracao_prevista": "secrets; chamada explicita com 32 bytes",
+      "estado_recuperacao": "token em claro como chave",
+      "validade_prevista_segundos": 3600,
+      "evidencias": {
+        "geracao": {
+          "linha": 28,
+          "trecho": "token = secrets.token_urlsafe(32)"
+        },
+        "armazenamento": {
+          "linha": 30,
+          "trecho": "_tokens[token] = {\"usuario_id\": usuario['id'], \"expira_em\": expira_em}"
+        },
+        "vinculo": {
+          "linha": 40,
+          "trecho": "definir_senha(data['usuario_id'], req.nova_senha)"
+        },
+        "consumo": {
+          "linha": 41,
+          "trecho": "del _tokens[req.token]"
+        },
+        "expiracao": {
+          "linha": 38,
+          "trecho": "if not data or data['expira_em'] < now():"
+        }
+      },
+      "execucao_original": "inconclusivo",
+      "erro_original": "ImportError: cannot import name 'now' from 'tcc_t05_infra' (unknown location)"
+    }
+  ]
+}

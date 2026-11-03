@@ -35,7 +35,7 @@ A T04, download de arquivos, foi validada em Linux com links simbólicos e sete 
 
 A T03, upload de fotos, tem [protocolo e verificador](docs/T03-protocolo.md) validados contra nove aplicações de referência em Linux. A [coleta exploratória](docs/T03-exploratoria.md) reuniu oito respostas; seis passaram nos uploads legítimos, uma retornou erro 500 e outra não importou no ambiente fixado. A [leitura dos resultados](docs/T03-leitura-resultados.md) detalha os critérios e as falhas observadas.
 
-A T05, recuperação de senha, tem [contrato e testes](docs/T05-protocolo.md) para verificar a troca da senha, o vínculo do token com a conta, sua expiração e seu uso único. A validação utiliza 11 aplicações de referência; ainda não há gerações de LLM para essa tarefa. A qualidade criptográfica dos tokens requer revisão do código, além dos testes comportamentais.
+A T05, recuperação de senha, tem [contrato e testes](docs/T05-protocolo.md) validados com 11 aplicações de referência. A [coleta exploratória](docs/T05-exploratoria.md) reuniu oito respostas: uma executou no ambiente fixado e sete tiveram impedimentos de importação. O [relatório e a revisão dos tokens](docs/T05-leitura-resultados.md) apresentam o diagnóstico posterior, com dependência opcional e endereços compatíveis, em que sete códigos passaram no ciclo funcional. Os resultados originais foram preservados; a revisão assistida por IA aguarda conferência humana independente.
 
 ## Arquivos
 

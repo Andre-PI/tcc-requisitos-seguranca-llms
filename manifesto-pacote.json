@@ -18,8 +18,8 @@
     },
     {
       "caminho": "README.md",
-      "bytes": 5256,
-      "sha256": "dcb3948f652df469b61a2c46e775658f398b98235288866f1e6e6b1756550e71"
+      "bytes": 5472,
+      "sha256": "a29fd81ff47d4a9fd62c5cc00c6e5724dfdafcbc35177678eed6d9e4028245e0"
     },
     {
       "caminho": "aceitacao_worker.py",
@@ -398,8 +398,8 @@
     },
     {
       "caminho": "conferir_pacote.py",
-      "bytes": 6650,
-      "sha256": "d748c807845dbdb9dd4b910f74a77ff27fe9d9e04120f1556e82fa5523b16030"
+      "bytes": 9199,
+      "sha256": "d773619f5fe70a63e932e2fd2594a55f392485fa6494d0d48b6feedf15135429"
     },
     {
       "caminho": "dados/aceitacoes-mais-recentes.json",
@@ -702,6 +702,336 @@
       "sha256": "5d1e5ff7ac2e0093cc5118b355c735586909bae59aa5c5a43942e3f89592159f"
     },
     {
+      "caminho": "dados/t05-exploratoria/plano.json",
+      "bytes": 17195,
+      "sha256": "d6b635945346c9f5aebebfb37d4d673585427b02cbde0b53c5c9adecefb4b805"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/resumo.json",
+      "bytes": 5933,
+      "sha256": "1f86191eb4e955d25ba8aa6e265fd2de89989a63444cc64fd940eb1777ba15c1"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-01/amostra.py",
+      "bytes": 1720,
+      "sha256": "fbccb395be988a0b960368b53210a503f45d1f39b40f96ebf26b8203669d7c2f"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-01/avaliacao.json",
+      "bytes": 697,
+      "sha256": "f88803133d40b045f2c9717bcf8971054d95356e16bac4f0e2085e64165757c6"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-01/geracao.json",
+      "bytes": 6842,
+      "sha256": "f027e5361938da42a22935beb299101614c3c9a457a59d2ef36a7e5477ce793a"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-02/amostra.py",
+      "bytes": 2216,
+      "sha256": "54596f1b3ebc0abf40b22aaaa1038378e420f1a01a3af2e42af2204842c5f04d"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-02/avaliacao.json",
+      "bytes": 697,
+      "sha256": "f88803133d40b045f2c9717bcf8971054d95356e16bac4f0e2085e64165757c6"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-02/geracao.json",
+      "bytes": 7515,
+      "sha256": "d76d6de9b415541c8bbf07054a68383086de8647a32d3f4e344bd174c19cf5c2"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-03/amostra.py",
+      "bytes": 3064,
+      "sha256": "e96da7fb3f895903326eecb122630daa94abebc230c7b2f8ceaead474ea39b32"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-03/avaliacao.json",
+      "bytes": 697,
+      "sha256": "f88803133d40b045f2c9717bcf8971054d95356e16bac4f0e2085e64165757c6"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-03/geracao.json",
+      "bytes": 8339,
+      "sha256": "31da42f1a30a3f4b1100f9cc129e05554a0e4c6752d2ad2e8e7c5025e4a3aa98"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-04/amostra.py",
+      "bytes": 2679,
+      "sha256": "79c0f468ed253aff10411287d08cd8e3c1fb7a4310519a1a47dbb1792c77c78e"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-04/avaliacao.json",
+      "bytes": 697,
+      "sha256": "f88803133d40b045f2c9717bcf8971054d95356e16bac4f0e2085e64165757c6"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-04/geracao.json",
+      "bytes": 9383,
+      "sha256": "c4fcf2621b76654bdbec09478d5cd00e55a16b97b378c2405619da2706876196"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-05/amostra.py",
+      "bytes": 1889,
+      "sha256": "416064be9d256c114319103e4da60e9320ababf8704e745461514c011b3e7aee"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-05/avaliacao.json",
+      "bytes": 697,
+      "sha256": "f88803133d40b045f2c9717bcf8971054d95356e16bac4f0e2085e64165757c6"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-05/geracao.json",
+      "bytes": 6107,
+      "sha256": "024dcae2a9f14d5ba21c351f9e834a6a471a83a1cffe74f4513435ed1f264deb"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-06/amostra.py",
+      "bytes": 1493,
+      "sha256": "70e6551d3230ce1bd860be5a86e50a0fd2c562b70a8bf005aecb52c95eb4d4e9"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-06/avaliacao.json",
+      "bytes": 697,
+      "sha256": "f88803133d40b045f2c9717bcf8971054d95356e16bac4f0e2085e64165757c6"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-06/geracao.json",
+      "bytes": 6555,
+      "sha256": "4f7aa18a792103df3527163b719dbc889097a79bc121d7e4f4e310e5e2d73fa3"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-07/amostra.py",
+      "bytes": 2647,
+      "sha256": "bf2cfea3a84aa28d0ec8cb30477e56fc4f3f109a919fb02f8b52b309f0d63c50"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-07/avaliacao.json",
+      "bytes": 7009,
+      "sha256": "80ed7f5b459e77da35e2000ffd0ce827cb0350c860edfcc238590a3004c16c09"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-07/geracao.json",
+      "bytes": 9389,
+      "sha256": "44cca6450a812e74f3d796cf3b8d77af2f673f73e124df3e3105ffdb23ee11de"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-08/amostra.py",
+      "bytes": 1476,
+      "sha256": "288096d7e0e3902917d9e4df15e16db080700672c7bd3052035c80b6c8aff3b4"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-08/avaliacao.json",
+      "bytes": 687,
+      "sha256": "d3df8b2989dd04fd145c11f531805f4a24711b149ff31f4365dab2f9ae0c268b"
+    },
+    {
+      "caminho": "dados/t05-exploratoria/t05-08/geracao.json",
+      "bytes": 5713,
+      "sha256": "0cb622e9fed49bee3e78b6b0c74093a000b9de70f6e9b532e7a7b04ca96fdce5"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/dependencia/t05-01/avaliacao.json",
+      "bytes": 5729,
+      "sha256": "c5836ce63d8273fb1a95a288cd8cbea7287f5a280c235c523faee7444d854a61"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/dependencia/t05-02/avaliacao.json",
+      "bytes": 5729,
+      "sha256": "2fb350b83e106a36bf9b5e2e29e56ea4a4efb052586592030a735975e1066687"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/dependencia/t05-03/avaliacao.json",
+      "bytes": 5729,
+      "sha256": "c5836ce63d8273fb1a95a288cd8cbea7287f5a280c235c523faee7444d854a61"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/dependencia/t05-04/avaliacao.json",
+      "bytes": 5729,
+      "sha256": "05580da8f27ad1b54813466b55959018cf192eea37784db7516ad8e953ac6db6"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/dependencia/t05-05/avaliacao.json",
+      "bytes": 5729,
+      "sha256": "c5836ce63d8273fb1a95a288cd8cbea7287f5a280c235c523faee7444d854a61"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/dependencia/t05-06/avaliacao.json",
+      "bytes": 5729,
+      "sha256": "e35ea64e047b134ac2f57eb53790e0dddb791da9cd046c14b59e271aad937a45"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/dependencia/t05-07/avaliacao.json",
+      "bytes": 7009,
+      "sha256": "ff33cb62edd8382121bb32f3f1198a4a6ab033351544f723d01dbc08eb2619c8"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/dependencia/t05-08/avaliacao.json",
+      "bytes": 687,
+      "sha256": "f4680b62453253444491a69b290309ee9c36123470ffbe9d750b45bdfddf65e1"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/dependencia_e_dominio/t05-01/avaliacao.json",
+      "bytes": 7007,
+      "sha256": "b377bd8711a50e32e421e18b3ea5fa71cea65572f461d927afa6cff6845837f5"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/dependencia_e_dominio/t05-02/avaliacao.json",
+      "bytes": 7007,
+      "sha256": "7da209c7f060b121e999ce6132f993bedfc3c13babe9bf7df90909204b903492"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/dependencia_e_dominio/t05-03/avaliacao.json",
+      "bytes": 7003,
+      "sha256": "634a228578942409f8ff6a78a9137ac999d52060405a5c16cc5e450f62e9ec9a"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/dependencia_e_dominio/t05-04/avaliacao.json",
+      "bytes": 7003,
+      "sha256": "bca9a55bf8cee0048bbb54f5a35861bafbcb774147e398c56e577c2ec806adcf"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/dependencia_e_dominio/t05-05/avaliacao.json",
+      "bytes": 7009,
+      "sha256": "98ef5d357747275d4102ca8c580d262e34b9a0840a06a571b7e80fa2ff41293d"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/dependencia_e_dominio/t05-06/avaliacao.json",
+      "bytes": 7011,
+      "sha256": "10916c733ffc754cb7c8d151f3d4740dc44555f9770eb06d5fc5605f6a3fd2df"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/dependencia_e_dominio/t05-07/avaliacao.json",
+      "bytes": 7005,
+      "sha256": "23e210ae7be8ef0e983594640ffb52ed44cdd9300e7d51ee7c0e6333d3b90471"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/dependencia_e_dominio/t05-08/avaliacao.json",
+      "bytes": 687,
+      "sha256": "f4680b62453253444491a69b290309ee9c36123470ffbe9d750b45bdfddf65e1"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/plano.json",
+      "bytes": 1040,
+      "sha256": "2a514231e43dc89ce6771981a973103552890f2dbdd9105527d945a526b855aa"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/probe.json",
+      "bytes": 1472,
+      "sha256": "09e61204ea5f817e37a1a939e66ac04c7058b2ccbed948db90e1097b4708329c"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/referencias.json",
+      "bytes": 79667,
+      "sha256": "b1354606d9ad4975b5ad63ebc48d907184f285bd680f2f9d2f721ad6259d34de"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade-v2/resumo.json",
+      "bytes": 13034,
+      "sha256": "c2b402d1c5b098e12689fb2e155d618f06b9bef06693655b92970cdb0a93dd9b"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/dependencia/t05-01/avaliacao.json",
+      "bytes": 5729,
+      "sha256": "6663745277f35e4e912ba5541b55ca883beaf6e4da5e68c820bc967561b9e5d9"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/dependencia/t05-02/avaliacao.json",
+      "bytes": 5729,
+      "sha256": "371c698ebc08e94f8fbc7e9c18cdc28201ba90735a5cce8e831c0f3c24528bef"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/dependencia/t05-03/avaliacao.json",
+      "bytes": 5729,
+      "sha256": "6663745277f35e4e912ba5541b55ca883beaf6e4da5e68c820bc967561b9e5d9"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/dependencia/t05-04/avaliacao.json",
+      "bytes": 5729,
+      "sha256": "8a8156436861152a5c2fe003ea7f7d37311ab9e8982211b4fb625edb67e21ef5"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/dependencia/t05-05/avaliacao.json",
+      "bytes": 5729,
+      "sha256": "6663745277f35e4e912ba5541b55ca883beaf6e4da5e68c820bc967561b9e5d9"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/dependencia/t05-06/avaliacao.json",
+      "bytes": 5729,
+      "sha256": "c1674b893fa62dd15c97837905f6e3964296b8a47ad843109207215bf87c902c"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/dependencia/t05-07/avaliacao.json",
+      "bytes": 7009,
+      "sha256": "dec7d98802d33cb2489fa2c0cb286d80cb90489e28bedabea1e8bb7a812086b1"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/dependencia/t05-08/avaliacao.json",
+      "bytes": 687,
+      "sha256": "2f0290a257c23e27d5ca2b0659762977f70abf11c6f54a6d8574392f8cf411d8"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/dependencia_e_dominio/t05-01/avaliacao.json",
+      "bytes": 5697,
+      "sha256": "82934a0bcff922f9fc0d93e1aca531809c91106625e86422ff2c9d94f0c6551c"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/dependencia_e_dominio/t05-02/avaliacao.json",
+      "bytes": 5697,
+      "sha256": "fba6f797c452271f52b3ad975fda65e1adf8acaa78648601aa6f24c62c8a2211"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/dependencia_e_dominio/t05-03/avaliacao.json",
+      "bytes": 5697,
+      "sha256": "82934a0bcff922f9fc0d93e1aca531809c91106625e86422ff2c9d94f0c6551c"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/dependencia_e_dominio/t05-04/avaliacao.json",
+      "bytes": 5697,
+      "sha256": "59c8b2a71bfbc632dcedc900b71bb9628043c1f5c87d452f18556f52211df88a"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/dependencia_e_dominio/t05-05/avaliacao.json",
+      "bytes": 5697,
+      "sha256": "90a1f393d9d01cdd93996c3f4c031c4c1ba8b4864fe1576669c07473b31de400"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/dependencia_e_dominio/t05-06/avaliacao.json",
+      "bytes": 5697,
+      "sha256": "305888c9c5116a6ddc1852e5448c67fe3a2398c6ca00eee0ee13b0cef0ae29d3"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/dependencia_e_dominio/t05-07/avaliacao.json",
+      "bytes": 5685,
+      "sha256": "a58500dff2e3282b44e6bef6731c27273de4f7c92ce4e219d187051b7da4281f"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/dependencia_e_dominio/t05-08/avaliacao.json",
+      "bytes": 687,
+      "sha256": "2f0290a257c23e27d5ca2b0659762977f70abf11c6f54a6d8574392f8cf411d8"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/plano.json",
+      "bytes": 904,
+      "sha256": "9dd2054a519feff7b06295d2cf2be006db2dfebf9bd053648d2a53bd5bcd92f4"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/probe.json",
+      "bytes": 1472,
+      "sha256": "8b76043b5da2c84c2e372ac44e735991e6d36d156dd7c32b2a2b39374b6a968f"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/referencias.json",
+      "bytes": 79667,
+      "sha256": "f1fb21acf74359bc4c475ead0caf1dc470dfe8caf31c635bbbf95a5cb0bc3037"
+    },
+    {
+      "caminho": "dados/t05-sensibilidade/resumo.json",
+      "bytes": 13184,
+      "sha256": "75c7bc2707cfbb4388610b15695f6a9368fb9f1f3ef7f76970b70b6431c5bb64"
+    },
+    {
       "caminho": "dados/verificacoes_comportamentais-mais-recentes.json",
       "bytes": 299811,
       "sha256": "d008e736a0b7d16fc14b4c24c1d559d4d6ee4e12ca95e663c86959ae464a8293"
@@ -755,6 +1085,31 @@
       "caminho": "docker/t04/t04_worker_linux.py",
       "bytes": 2285,
       "sha256": "f272561ad9342f286237fd9828150408f60cadce5a022c5ec3fea25de5809407"
+    },
+    {
+      "caminho": "docker/t05-sensibilidade-v2/Dockerfile",
+      "bytes": 138,
+      "sha256": "b5bded6ae9b81671c9fc449c1f4d315569e887aed566c3bd0b03a210f403a74d"
+    },
+    {
+      "caminho": "docker/t05-sensibilidade-v2/t05_sensibilidade_worker_v2.py",
+      "bytes": 1143,
+      "sha256": "cea8ebd55c1d9ac1b7b0b976e27aa59299de3da0a09eb12b9669f5dd3faa73d5"
+    },
+    {
+      "caminho": "docker/t05-sensibilidade/Dockerfile",
+      "bytes": 309,
+      "sha256": "7bdbd5b8853cda5573db0ec98d0377a949d2aff9811343162b904ba3e6cf4ef2"
+    },
+    {
+      "caminho": "docker/t05-sensibilidade/requirements.txt",
+      "bytes": 40,
+      "sha256": "90a3036765f9668fa8fdf3792c343fef2c468cf16d225a09d8973740670116d1"
+    },
+    {
+      "caminho": "docker/t05-sensibilidade/t05_sensibilidade_worker.py",
+      "bytes": 1077,
+      "sha256": "63f68e77336e723145fec5eac63143e6768d7ba751c636264d54bb4b270c3665"
     },
     {
       "caminho": "docker/t05/Dockerfile",
@@ -842,9 +1197,29 @@
       "sha256": "184432cfbf036fcdad6d7a6664d30b8ed77c990c53b6a722f96eb64c431af918"
     },
     {
+      "caminho": "docs/T05-coleta-protocolo.md",
+      "bytes": 2857,
+      "sha256": "330aed959dad03c062d266820c8db1f7fa22e9869e596c46939acf975fa8f4b7"
+    },
+    {
+      "caminho": "docs/T05-exploratoria.md",
+      "bytes": 1187,
+      "sha256": "b227f500e66b7018f111f9dc095af64bb31c28d7b7072750b787ab9ec78d013a"
+    },
+    {
+      "caminho": "docs/T05-leitura-resultados.md",
+      "bytes": 7566,
+      "sha256": "46fe4ab67bde54b04d88125c5e42b60d0445d51e474f7333761d9e3c5d9b5652"
+    },
+    {
       "caminho": "docs/T05-protocolo.md",
       "bytes": 6486,
       "sha256": "a6409ae728f67bbc84f8360d98ee6c8934c2939a4ce40b71315caac28a5aae7b"
+    },
+    {
+      "caminho": "docs/T05-revisao-tokens.json",
+      "bytes": 9531,
+      "sha256": "ec77623eecdc690db1f5029489ba087b2d1887973483ca78a7406601103e754e"
     },
     {
       "caminho": "docs/T05-validacao-linux.json",
@@ -910,6 +1285,11 @@
       "caminho": "docs/redigir-piloto.py",
       "bytes": 11546,
       "sha256": "fafca6c01d3a59c236c5c6ea57f201fe0e6018e7c6e7a29b0cbe168773639309"
+    },
+    {
+      "caminho": "docs/redigir-resultados-T05.py",
+      "bytes": 10551,
+      "sha256": "efb418e929a3603202a15727d6d1a966f8cf633f95408ce2bab6998b4723638e"
     },
     {
       "caminho": "docs/referencial-v04.md",
@@ -3802,6 +4182,11 @@
       "sha256": "f272561ad9342f286237fd9828150408f60cadce5a022c5ec3fea25de5809407"
     },
     {
+      "caminho": "t05_coleta.py",
+      "bytes": 5529,
+      "sha256": "db94e5115d50cf542ce24de98231bdc4f4a6f20539cacb294128eb5b4b4c1758"
+    },
+    {
       "caminho": "t05_docker.py",
       "bytes": 2451,
       "sha256": "e026a05fa05e73819f7da32e1ac26f1cafe557f53b1793aa7aba765000106ee9"
@@ -3815,6 +4200,26 @@
       "caminho": "t05_referencias.py",
       "bytes": 2285,
       "sha256": "2dc9f7fe1c7c2330794f72997e583f9c0a779897ece6df6f5a8f14b39bbb7c01"
+    },
+    {
+      "caminho": "t05_sensibilidade.py",
+      "bytes": 3946,
+      "sha256": "6c6e338ae990714235d4bb5e27142913d30e78b5968c6bcc5f379fefaf7ce76b"
+    },
+    {
+      "caminho": "t05_sensibilidade_v2.py",
+      "bytes": 4353,
+      "sha256": "66d6a1745268a9d4a2522e0a88db724fcfab78d367b29c94f4527547831740d8"
+    },
+    {
+      "caminho": "t05_sensibilidade_worker.py",
+      "bytes": 1077,
+      "sha256": "63f68e77336e723145fec5eac63143e6768d7ba751c636264d54bb4b270c3665"
+    },
+    {
+      "caminho": "t05_sensibilidade_worker_v2.py",
+      "bytes": 1143,
+      "sha256": "cea8ebd55c1d9ac1b7b0b976e27aa59299de3da0a09eb12b9669f5dd3faa73d5"
     },
     {
       "caminho": "t05_verificador.py",
@@ -3882,6 +4287,11 @@
       "sha256": "7bda319eebdd9190c05103825fb7961ae7efa88d67c91f8634f0c24d449c654a"
     },
     {
+      "caminho": "tests/test_t05_coleta.py",
+      "bytes": 978,
+      "sha256": "bd4e078fc8c23d132b09aa75db33a04fd2b453a906d991a6dfb1add207c30b3c"
+    },
+    {
       "caminho": "validar_aceitacao.py",
       "bytes": 4122,
       "sha256": "88481b94af00787697b7f1bec55324f57e8635763c8a50e28c7748c02463cbab"
@@ -3901,5 +4311,5 @@
   "ampliacao_T04": "Linux validado com links; 8 geracoes exploratorias, 8 requisicoes; fora do banco do piloto e da coleta principal",
   "redacao_piloto": "Resultados-piloto-v01: quatro paginas, contagens extraidas dos registros; estudo exploratorio.",
   "ampliacao_T03": "9 referencias validadas, 18 casos por referencia; coleta exploratoria de 8 respostas em 8 chamadas, 6 aprovadas nos uploads legitimos, 1 reprovada e 1 sem importacao; fora do piloto e da coleta principal.",
-  "ampliacao_T05": "Instrumento validado em Linux com 11 referencias e 12 cenarios por referencia; 35 testes locais aprovados; nenhuma geracao de LLM nesta tarefa."
+  "ampliacao_T05": "8 respostas em 8 chamadas, 7697 tokens; ambiente original com 1 ciclo aprovado e 7 impedimentos; diagnostico v2 com dependencia e dominio: 7 ciclos aprovados e 1 impedimento; revisao de tokens assistida por IA, confer?ncia humana independente pendente."
 }

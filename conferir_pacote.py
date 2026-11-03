@@ -109,4 +109,43 @@ if t05_report.exists():
     assert all(r['expectativa_atendida'] and len(r['testes'])==12 for r in report['resultados'])
     for name,sha in report['arquivos'].items():
         assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
-    print('T05: 11 referencias, 12 cenarios por referencia; isolamento e hashes registrados. Sem geracoes de LLM nesta etapa.')
+    print('T05: 11 referencias, 12 cenarios por referencia; isolamento e hashes dos instrumentos conferidos.')
+
+t05=ROOT/'dados/t05-exploratoria'
+if (t05/'resumo.json').exists():
+    plan=json.loads((t05/'plano.json').read_text(encoding='utf-8'))
+    assert len(plan['jobs'])==8
+    for name,sha in plan['fontes_sha256'].items():
+        assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
+    calls=0;ids=set();end_times=[]
+    for job in plan['jobs']:
+        folder=t05/job['id'];g=json.loads((folder/'geracao.json').read_text(encoding='utf-8'))
+        assert plan['registrado_em']<=g['iniciado_em']<=g['concluida_em']
+        assert g['prompt']==job['prompt'] and g['payload']['messages']==[{'role':'user','content':job['prompt']}]
+        assert g['payload']['model']==job['modelo']
+        assert all(g['payload'][k]==v for k,v in plan['parametros'].items())
+        assert hashlib.sha256((folder/'amostra.py').read_bytes()).hexdigest()==g['codigo_sha256']
+        calls+=len(g['tentativas']);ids.add(g['resposta']['id']);end_times.append(g['concluida_em'])
+        result=json.loads((folder/'avaliacao.json').read_text(encoding='utf-8'))
+        assert result['imagem']==plan['imagem']
+    assert len(ids)==8 and calls==8
+    for diagnostic in ['t05-sensibilidade','t05-sensibilidade-v2']:
+        folder=ROOT/'dados'/diagnostic
+        dp=json.loads((folder/'plano.json').read_text(encoding='utf-8'))
+        assert dp['registrado_em']>=max(end_times) and dp['imagem_original']==plan['imagem']
+        for name,sha in dp['fontes_sha256'].items():
+            assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
+        summary=json.loads((folder/'resumo.json').read_text(encoding='utf-8'))
+        assert summary['novas_chamadas_api']==0 and len(summary['amostras'])==16
+        for condition in dp['condicoes']:
+            for job in plan['jobs']:
+                result=json.loads((folder/condition/job['id']/'avaliacao.json').read_text(encoding='utf-8'))
+                assert result['imagem']==dp['imagem']
+    review=json.loads((ROOT/'docs/T05-revisao-tokens.json').read_text(encoding='utf-8'))
+    assert len(review['observacoes'])==8 and review['revisao_humana_independente']=='pendente'
+    for row in review['observacoes']:
+        code=(t05/row['id']/'amostra.py').read_bytes()
+        assert hashlib.sha256(code).hexdigest()==row['codigo_sha256']
+        lines=code.decode('utf-8').splitlines()
+        for evidence in row['evidencias'].values():assert lines[evidence['linha']-1].strip()==evidence['trecho']
+    print('T05 exploratoria: 8 respostas em 8 chamadas; diagnosticos separados, fontes e revisao por linha conferidos.')

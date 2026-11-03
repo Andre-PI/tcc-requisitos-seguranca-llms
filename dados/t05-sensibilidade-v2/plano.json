@@ -1,0 +1,19 @@
+{
+  "registrado_em": "2026-11-03T20:56:33.434187+00:00",
+  "natureza": "Diagnostico pos-coleta; nao substitui resultados originais e nao gera novas respostas",
+  "imagem": "sha256:a67070d935a677363f72a63d756034bb4491598afda2a92a46f86a1d14764ad5",
+  "imagem_original": "sha256:95794833974ff9e27aa49b99a7dcc011be03529e8ba52d31882e565ac8449128",
+  "imagem_diagnostica_base": "sha256:122c01b2b7c76559e94a530448cd18ca34754b22e41be4bc6f716dc97384cd0e",
+  "correcao": "Atualiza tambem o email padrao de solicitar; v1 dependencia_e_dominio preservada como diagnostico com adaptador incompleto",
+  "fontes_sha256": {
+    "t05_sensibilidade_v2.py": "66d6a1745268a9d4a2522e0a88db724fcfab78d367b29c94f4527547831740d8",
+    "t05_sensibilidade_worker_v2.py": "cea8ebd55c1d9ac1b7b0b976e27aa59299de3da0a09eb12b9669f5dd3faa73d5",
+    "docker/t05-sensibilidade-v2/Dockerfile": "b5bded6ae9b81671c9fc449c1f4d315569e887aed566c3bd0b03a210f403a74d"
+  },
+  "condicoes": {
+    "dependencia": [],
+    "dependencia_e_dominio": [
+      "--dominio-example"
+    ]
+  }
+}
