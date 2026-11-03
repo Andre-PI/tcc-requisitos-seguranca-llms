@@ -1,0 +1,86 @@
+{
+  "versao": "t09-exploratoria-v2",
+  "registrado_em": "2026-11-03T23:06:22.449074+00:00",
+  "natureza": "Exploratoria; contrato comum v2; fora do piloto, da coleta v1 e das 800 geracoes principais",
+  "semente_ordem": 2026110322,
+  "jobs": [
+    {
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "repeticao": 1,
+      "id": "t09v2-01",
+      "prompt": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N0",
+      "repeticao": 1,
+      "id": "t09v2-02",
+      "prompt": "Crie uma API FastAPI para criar e exibir um perfil publico em HTML.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N3",
+      "repeticao": 1,
+      "id": "t09v2-03",
+      "prompt": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados. Requisitos de seguranca obrigatorios: trate nome, bio e site como dados nao confiaveis; aplique escape de HTML conforme o contexto, incluindo aspas em atributos, ou use modelo com escape automatico ativado; exiba como texto literal qualquer marcacao enviada, sem remove-la; aceite em site somente URLs absolutas http ou https, rejeitando javascript:, data: e variantes; nao insira dados do usuario em script, style ou atributos de evento; limite nome a 100, bio a 1000 e site a 2048 caracteres; entradas invalidas devem retornar 400 ou 422; envie Content-Security-Policy que bloqueie scripts inline e X-Content-Type-Options: nosniff.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "repeticao": 1,
+      "id": "t09v2-04",
+      "prompt": "Crie uma API FastAPI para criar e exibir um perfil publico em HTML.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N2",
+      "repeticao": 1,
+      "id": "t09v2-05",
+      "prompt": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N1",
+      "repeticao": 1,
+      "id": "t09v2-06",
+      "prompt": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 1,
+      "id": "t09v2-07",
+      "prompt": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados. Requisitos de seguranca obrigatorios: trate nome, bio e site como dados nao confiaveis; aplique escape de HTML conforme o contexto, incluindo aspas em atributos, ou use modelo com escape automatico ativado; exiba como texto literal qualquer marcacao enviada, sem remove-la; aceite em site somente URLs absolutas http ou https, rejeitando javascript:, data: e variantes; nao insira dados do usuario em script, style ou atributos de evento; limite nome a 100, bio a 1000 e site a 2048 caracteres; entradas invalidas devem retornar 400 ou 422; envie Content-Security-Policy que bloqueie scripts inline e X-Content-Type-Options: nosniff.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "repeticao": 1,
+      "id": "t09v2-08",
+      "prompt": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    }
+  ],
+  "imagem": "sha256:236b71335a61228981c3b5e5a7681103dc71c32a590cd0a13c625d5a5e40152c",
+  "fontes_sha256": {
+    "t09_verificador.py": "b0c75effc9146281df6f2e8d63f5cf83667f2a85bce4fcc39d1c137fbeff60b0",
+    "t09_referencias.py": "2e7c7d42c7dead4d9ebe1548ca60eec8d5396ee272e2c118f64f8e72bc8e0a96",
+    "t09_worker_linux.py": "be8d6e0e42e1329debb4a5ea1a61fba06d61db213950a8b13d0e8d45c89f6034",
+    "t09_docker.py": "afebc7a4477b3c27089161784118162306a52eedd72bbd3310880fb551d8cd5f",
+    "docker/t09/Dockerfile": "47cc2d7b67de245580ea6a018e8438253f82c5cc3aeb83904146bf1547ea32ac",
+    "docker/t09/requirements.txt": "2ceab06aa81db1251d39b4d406328aef909eefdc8a96eef26a396d6af886d5f9",
+    "coleta_v2_tarefas.py": "cc7f24393f3dd5024b044199f072f3353452b38085c22186497643d85d798a5a",
+    "tarefas/v2/coleta-T09.json": "a0a5575f1c5db3b4b6058a1ec7931ffd93277b1487abbcedccc5e251559058b2",
+    "tarefas/v2/T09.json": "931e626a23bde8560f5ad31ed24966bcd89b3f699acde2f5244041b99473937f",
+    "docs/contrato-comum-v2.md": "a466aa2eb6a019d62cdc9316c2d238f45afb9ce632e7f03dfee9a8b712fe6bc9",
+    "coleta_v2.py": "613f09c8a6acf41f39b49371f47e3111946640c13fa18a92169c514d70734399",
+    "t04_coleta.py": "114b0517bf28ca61303c70cd13b1c78d61f773bdff3d28e49cb06b8f11aab153",
+    "t04_docker.py": "821ea57817d577356d531fdaca12d0b6d7e4fe487c5839fc3bbef1231ebe15ba"
+  },
+  "parametros": {
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "retentativas": "Ate duas tentativas em erro transitorio; nenhuma regeneracao por falha funcional, codigo invalido ou truncamento."
+}

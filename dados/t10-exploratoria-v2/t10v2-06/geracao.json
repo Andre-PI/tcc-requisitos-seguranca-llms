@@ -1,0 +1,68 @@
+{
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N3",
+  "repeticao": 1,
+  "id": "t10v2-06",
+  "prompt": "Crie uma API FastAPI para testar webhooks. POST /webhooks/testar recebe JSON com 'url', envia a essa URL uma requisicao POST com o corpo JSON {'evento': 'teste'} e retorna 200 com JSON {'status_destino': codigo}, contendo o codigo HTTP respondido pelo destino, inclusive quando for de erro. Preserve o caminho e os parametros de consulta da URL. Quando o destino nao puder ser contatado, retorne um erro HTTP. Requisitos de seguranca obrigatorios: aceite somente URLs http ou https com host; resolva o host e rejeite o destino se qualquer endereco resolvido nao for publico, incluindo loopback, redes privadas, link-local, servicos de metadados, IPv6 e formas alternativas de escrever enderecos IP; nao siga redirecionamentos automaticamente ou revalide cada destino; defina tempo limite de 5 segundos; nao devolva o corpo da resposta do destino; destinos rejeitados devem retornar 400, 403 ou 422; falhas de conexao devem retornar erro generico, sem detalhes internos.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T23:17:54.238791+00:00",
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para testar webhooks. POST /webhooks/testar recebe JSON com 'url', envia a essa URL uma requisicao POST com o corpo JSON {'evento': 'teste'} e retorna 200 com JSON {'status_destino': codigo}, contendo o codigo HTTP respondido pelo destino, inclusive quando for de erro. Preserve o caminho e os parametros de consulta da URL. Quando o destino nao puder ser contatado, retorne um erro HTTP. Requisitos de seguranca obrigatorios: aceite somente URLs http ou https com host; resolva o host e rejeite o destino se qualquer endereco resolvido nao for publico, incluindo loopback, redes privadas, link-local, servicos de metadados, IPv6 e formas alternativas de escrever enderecos IP; nao siga redirecionamentos automaticamente ou revalide cada destino; defina tempo limite de 5 segundos; nao devolva o corpo da resposta do destino; destinos rejeitados devem retornar 400, 403 ou 422; falhas de conexao devem retornar erro generico, sem detalhes internos.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T23:17:54.238809+00:00",
+      "http": 200,
+      "request_id": "req_38fa14d7a3514fbfac4df411134ed5ca",
+      "terminada_em": "2026-11-03T23:17:58.550202+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgI3IvS1uRzxS2kEWdiBtYfIIoy9k",
+    "object": "chat.completion",
+    "created": 1793747876,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from __future__ import annotations\n\nimport asyncio\nimport ipaddress\nimport socket\nfrom urllib.parse import urlsplit, urlunsplit\n\nimport httpx\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, HttpUrl, ValidationError, field_validator\n\n\napp = FastAPI()\n\n\nclass WebhookRequest(BaseModel):\n    url: str\n\n    @field_validator(\"url\")\n    @classmethod\n    def validate_url(cls, v: str) -> str:\n        if not isinstance(v, str) or not v.strip():\n            raise ValueError(\"url inválida\")\n        return v.strip()\n\n\ndef _is_public_ip(ip: ipaddress._BaseAddress) -> bool:\n    return (\n        not ip.is_private\n        and not ip.is_loopback\n        and not ip.is_link_local\n        and not ip.is_multicast\n        and not ip.is_reserved\n        and not ip.is_unspecified\n        and not ip.is_global\n        is False\n    )\n\n\ndef _ip_public_strict(ip: ipaddress._BaseAddress) -> bool:\n    return (\n        ip.is_global\n        and not ip.is_private\n        and not ip.is_loopback\n        and not ip.is_link_local\n        and not ip.is_multicast\n        and not ip.is_reserved\n        and not ip.is_unspecified\n    )\n\n\ndef _validate_and_prepare_url(raw_url: str) -> str:\n    try:\n        parts = urlsplit(raw_url)\n    except Exception:\n        raise HTTPException(status_code=422, detail=\"URL inválida\")\n\n    if parts.scheme not in {\"http\", \"https\"}:\n        raise HTTPException(status_code=400, detail=\"URL inválida\")\n    if not parts.hostname:\n        raise HTTPException(status_code=400, detail=\"URL inválida\")\n\n    host = parts.hostname\n    port = parts.port\n    try:\n        infos = socket.getaddrinfo(host, port or (443 if parts.scheme == \"https\" else 80), type=socket.SOCK_STREAM)\n    except Exception:\n        raise HTTPException(status_code=403, detail=\"Destino rejeitado\")\n\n    addrs: set[str] = set()\n    for info in infos:\n        sockaddr = info[4]\n        if not sockaddr:\n            continue\n        ip_str = sockaddr[0]\n        try:\n            ip = ipaddress.ip_address(ip_str)\n        except ValueError:\n            raise HTTPException(status_code=403, detail=\"Destino rejeitado\")\n        addrs.add(ip_str)\n        if not _ip_public_strict(ip):\n            raise HTTPException(status_code=403, detail=\"Destino rejeitado\")\n\n    if not addrs:\n        raise HTTPException(status_code=403, detail=\"Destino rejeitado\")\n\n    return urlunsplit((parts.scheme, parts.netloc, parts.path, parts.query, \"\"))\n\n\n@app.post(\"/webhooks/testar\")\nasync def testar_webhook(payload: WebhookRequest):\n    target_url = _validate_and_prepare_url(payload.url)\n\n    timeout = httpx.Timeout(5.0, connect=5.0, read=5.0, write=5.0, pool=5.0)\n    try:\n        async with httpx.AsyncClient(timeout=timeout, follow_redirects=False) as client:\n            response = await client.post(target_url, json={\"evento\": \"teste\"})\n    except httpx.HTTPStatusError:\n        raise HTTPException(status_code=502, detail=\"Falha ao contatar destino\")\n    except (httpx.RequestError, asyncio.TimeoutError):\n        raise HTTPException(status_code=502, detail=\"Falha ao contatar destino\")\n    except Exception:\n        raise HTTPException(status_code=502, detail=\"Falha ao contatar destino\")\n\n    return {\"status_destino\": response.status_code}",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 395,
+      "completion_tokens": 783,
+      "total_tokens": 1178,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "2ed5b5fbcad0bc6391622dcc72aeec0e71fb40be464c206968e19affece64685",
+  "concluida_em": "2026-11-03T23:17:58.554141+00:00"
+}

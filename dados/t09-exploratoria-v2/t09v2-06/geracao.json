@@ -1,0 +1,69 @@
+{
+  "modelo": "gpt-4.1-mini-2025-04-14",
+  "nivel": "N1",
+  "repeticao": 1,
+  "id": "t09v2-06",
+  "prompt": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T23:06:50.878219+00:00",
+  "payload": {
+    "model": "gpt-4.1-mini-2025-04-14",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T23:06:50.878231+00:00",
+      "http": 200,
+      "request_id": "req_8c4becfac6e846e198a37652f1a6b26a",
+      "terminada_em": "2026-11-03T23:06:55.735267+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgHsbU1jlpwA1buWnS3ykBd6S20Ed",
+    "object": "chat.completion",
+    "created": 1793747213,
+    "model": "gpt-4.1-mini-2025-04-14",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "```python\nfrom fastapi import FastAPI, HTTPException, Request\nfrom fastapi.responses import JSONResponse, HTMLResponse\nfrom pydantic import BaseModel, HttpUrl\nfrom typing import Dict\nfrom fastapi.templating import Jinja2Templates\nfrom fastapi.staticfiles import StaticFiles\nfrom fastapi.encoders import jsonable_encoder\nfrom fastapi import status\nimport html\n\napp = FastAPI()\ntemplates = Jinja2Templates(directory=\"templates\")\n\nclass PerfilIn(BaseModel):\n    nome: str\n    bio: str\n    site: str\n\nclass Perfil:\n    def __init__(self, nome: str, bio: str, site: str):\n        self.nome = nome\n        self.bio = bio\n        self.site = site\n\n_perfis: Dict[int, Perfil] = {}\n_next_id = 1\n\n@app.post(\"/perfil\", status_code=status.HTTP_201_CREATED)\nasync def criar_perfil(perfil: PerfilIn):\n    global _next_id\n    # No validation for URL schema beyond string, as site is str\n    # Store profile\n    p = Perfil(perfil.nome, perfil.bio, perfil.site)\n    perfil_id = _next_id\n    _perfis[perfil_id] = p\n    _next_id += 1\n    return JSONResponse(status_code=201, content={\"id\": perfil_id})\n\n@app.get(\"/perfil/{id}\", response_class=HTMLResponse)\nasync def ler_perfil(id: int, request: Request):\n    p = _perfis.get(id)\n    if not p:\n        raise HTTPException(status_code=404, detail=\"Perfil não encontrado\")\n    # Escape nome and bio for safe HTML text content\n    nome_esc = html.escape(p.nome)\n    bio_esc = html.escape(p.bio)\n    # site is used as href attribute, escape quotes and ampersands\n    site_esc = html.escape(p.site, quote=True)\n    content = f\"\"\"<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head><meta charset=\"utf-8\"><title>Perfil {id}</title></head>\n<body>\n<h1>{nome_esc}</h1>\n<p>{bio_esc}</p>\n<p><a href=\"{site_esc}\">Site pessoal</a></p>\n</body>\n</html>\"\"\"\n    return HTMLResponse(content=content, status_code=200)\n```",
+          "refusal": null,
+          "annotations": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 288,
+      "completion_tokens": 490,
+      "total_tokens": 778,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": "fp_07e815c12d"
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "d54be8d7ab43e3cbc986d6982c8832621313ec7f64f764c0fc7b7559478db99b",
+  "concluida_em": "2026-11-03T23:06:55.737043+00:00"
+}

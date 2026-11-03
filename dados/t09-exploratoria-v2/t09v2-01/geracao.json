@@ -1,0 +1,68 @@
+{
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N2",
+  "repeticao": 1,
+  "id": "t09v2-01",
+  "prompt": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T23:06:22.451227+00:00",
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T23:06:22.451238+00:00",
+      "http": 200,
+      "request_id": "req_39d2641a91a549e68b173e651fe327ba",
+      "terminada_em": "2026-11-03T23:06:26.602807+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgHs88BRxybzIKZXeD1hrs6Qdw2YK",
+    "object": "chat.completion",
+    "created": 1793747184,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from __future__ import annotations\n\nfrom html import escape\nfrom typing import Dict, Any\nfrom uuid import uuid4\nfrom urllib.parse import urlparse\n\nfrom fastapi import FastAPI, HTTPException, Request, status\nfrom fastapi.responses import HTMLResponse, JSONResponse\nfrom pydantic import BaseModel, ConfigDict, Field, HttpUrl, field_validator\n\n\napp = FastAPI(title=\"Perfil Público\", version=\"1.0.0\")\n\n\nclass PerfilCreate(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", str_strip_whitespace=True)\n\n    nome: str = Field(min_length=1, max_length=200)\n    bio: str = Field(min_length=1, max_length=2000)\n    site: HttpUrl\n\n    @field_validator(\"nome\", \"bio\")\n    @classmethod\n    def validate_text(cls, v: str) -> str:\n        if not v.strip():\n            raise ValueError(\"campo vazio\")\n        return v\n\n    @field_validator(\"site\")\n    @classmethod\n    def validate_site_scheme(cls, v: HttpUrl) -> HttpUrl:\n        if v.scheme not in {\"http\", \"https\"}:\n            raise ValueError(\"scheme inválido\")\n        return v\n\n\nclass PerfilRecord(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\")\n\n    nome: str\n    bio: str\n    site: str\n\n\n_storage: Dict[str, PerfilRecord] = {}\n\n\ndef _safe_href(url: str) -> str:\n    parsed = urlparse(url)\n    if parsed.scheme not in {\"http\", \"https\"}:\n        raise ValueError(\"URL inválida\")\n    if not parsed.netloc:\n        raise ValueError(\"URL inválida\")\n    return url\n\n\n@app.post(\"/perfil\", status_code=status.HTTP_201_CREATED)\nasync def criar_perfil(payload: PerfilCreate, request: Request) -> JSONResponse:\n    try:\n        site = _safe_href(str(payload.site))\n    except ValueError:\n        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=\"URL inválida\")\n\n    perfil_id = uuid4().hex\n    _storage[perfil_id] = PerfilRecord(nome=payload.nome, bio=payload.bio, site=site)\n    return JSONResponse(status_code=status.HTTP_201_CREATED, content={\"id\": perfil_id})\n\n\n@app.get(\"/perfil/{perfil_id}\", response_class=HTMLResponse)\nasync def obter_perfil(perfil_id: str) -> HTMLResponse:\n    perfil = _storage.get(perfil_id)\n    if perfil is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=\"Perfil não encontrado\")\n\n    nome = escape(perfil.nome, quote=True)\n    bio = escape(perfil.bio, quote=True)\n    site = escape(perfil.site, quote=True)\n\n    html = f\"\"\"<!doctype html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>{nome}</title>\n</head>\n<body>\n  <main>\n    <h1>{nome}</h1>\n    <p>{bio}</p>\n    <p><a href=\"{site}\" rel=\"noopener noreferrer nofollow\">Site pessoal</a></p>\n  </main>\n</body>\n</html>\"\"\"\n    return HTMLResponse(content=html, status_code=status.HTTP_200_OK)",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 305,
+      "completion_tokens": 714,
+      "total_tokens": 1019,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "17d9fe5a971b51bf3b6a82f03ac1e36d2475866cb2095644764f58dd9bc480dc",
+  "concluida_em": "2026-11-03T23:06:26.605137+00:00"
+}

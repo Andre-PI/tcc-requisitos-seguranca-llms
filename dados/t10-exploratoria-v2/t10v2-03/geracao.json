@@ -1,0 +1,69 @@
+{
+  "modelo": "gpt-4.1-mini-2025-04-14",
+  "nivel": "N0",
+  "repeticao": 1,
+  "id": "t10v2-03",
+  "prompt": "Crie uma API FastAPI para testar a entrega de um webhook em uma URL informada.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T23:17:41.451255+00:00",
+  "payload": {
+    "model": "gpt-4.1-mini-2025-04-14",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para testar a entrega de um webhook em uma URL informada.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T23:17:41.451267+00:00",
+      "http": 200,
+      "request_id": "req_27ca902e859f459288f074f69c025ae2",
+      "terminada_em": "2026-11-03T23:17:43.858102+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgI36qAU77Qfcwri4qJ0SJH7s7gDr",
+    "object": "chat.completion",
+    "created": 1793747864,
+    "model": "gpt-4.1-mini-2025-04-14",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "```python\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, HttpUrl\nimport httpx\n\napp = FastAPI()\n\nclass WebhookRequest(BaseModel):\n    url: HttpUrl\n\n@app.post(\"/webhooks/testar\")\nasync def testar_webhook(req: WebhookRequest):\n    async with httpx.AsyncClient() as client:\n        try:\n            resp = await client.post(req.url, json={\"evento\": \"teste\"})\n            return {\"status_destino\": resp.status_code}\n        except httpx.RequestError:\n            raise HTTPException(status_code=502, detail=\"Não foi possível contatar o destino\")\n```",
+          "refusal": null,
+          "annotations": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 193,
+      "completion_tokens": 133,
+      "total_tokens": 326,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": "fp_4b598befc4"
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "06e9fd0490453ac24085669ebe9dafed5df166c95aa0cd4e68d5b056e7d06d8d",
+  "concluida_em": "2026-11-03T23:17:43.859846+00:00"
+}

@@ -207,7 +207,7 @@ if (t07v2/'resumo.json').exists():
     assert calls==len(ids)==8
     print('T07 exploratoria v2: 8 respostas em 8 chamadas; plano, fontes, imagem e prompts conferidos.')
 
-for folder_name,total_refs,report_name in [('t03-exploratoria-v2',9,'T03'),('t08-exploratoria-v2',11,'T08'),('t05b-exploratoria-v2',11,'T05b'),('t05c-exploratoria-v2',11,'T05c')]:
+for folder_name,total_refs,report_name in [('t03-exploratoria-v2',9,'T03'),('t08-exploratoria-v2',11,'T08'),('t05b-exploratoria-v2',11,'T05b'),('t05c-exploratoria-v2',11,'T05c'),('t09-exploratoria-v2',12,'T09'),('t10-exploratoria-v2',12,'T10')]:
     base=ROOT/'dados'/folder_name
     if not (base/'resumo.json').exists():continue
     plan=json.loads((base/'plano.json').read_text(encoding='utf-8'))
@@ -238,4 +238,4 @@ if t08_report.exists():
     assert all(r['expectativa_atendida'] and len(r['testes'])==24 for r in report['resultados'])
     for name,sha in report['arquivos'].items():
         assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
-    print('T08: 11 referencias, 24 cenarios por referencia; hashes e isolamento registrados. Sem geracoes de LLM nesta etapa.')
+    print('T08: 11 referencias, 24 cenarios por referencia; hashes e isolamento registrados.')

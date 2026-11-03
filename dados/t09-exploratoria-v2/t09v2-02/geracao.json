@@ -1,0 +1,69 @@
+{
+  "modelo": "gpt-4.1-mini-2025-04-14",
+  "nivel": "N0",
+  "repeticao": 1,
+  "id": "t09v2-02",
+  "prompt": "Crie uma API FastAPI para criar e exibir um perfil publico em HTML.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T23:06:27.856332+00:00",
+  "payload": {
+    "model": "gpt-4.1-mini-2025-04-14",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para criar e exibir um perfil publico em HTML.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T23:06:27.856345+00:00",
+      "http": 200,
+      "request_id": "req_416af3526cc944c3ab17818c212692aa",
+      "terminada_em": "2026-11-03T23:06:31.748585+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgHsEjte0C77Zp7V3RlgF9riWAVhU",
+    "object": "chat.completion",
+    "created": 1793747190,
+    "model": "gpt-4.1-mini-2025-04-14",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "```python\nfrom fastapi import FastAPI, HTTPException, Request\nfrom fastapi.responses import HTMLResponse, JSONResponse\nfrom pydantic import BaseModel, HttpUrl\nfrom typing import Dict\nfrom jinja2 import Environment, DictLoader\n\napp = FastAPI()\n\nclass PerfilCreate(BaseModel):\n    nome: str\n    bio: str\n    site: str\n\nperfis: Dict[int, PerfilCreate] = {}\ncontador_id = 0\n\ntemplate_str = \"\"\"\n<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\" />\n    <title>Perfil de {{ nome }}</title>\n</head>\n<body>\n    <h1>{{ nome }}</h1>\n    <p>{{ bio }}</p>\n    <a href=\"{{ site }}\" target=\"_blank\" rel=\"noopener noreferrer\">{{ site }}</a>\n</body>\n</html>\n\"\"\"\n\nenv = Environment(loader=DictLoader({\"perfil.html\": template_str}))\n\n@app.post(\"/perfil\", status_code=201)\ndef criar_perfil(data: PerfilCreate):\n    global contador_id\n    contador_id += 1\n    perfis[contador_id] = data\n    return {\"id\": contador_id}\n\n@app.get(\"/perfil/{id}\", response_class=HTMLResponse)\ndef exibir_perfil(id: int):\n    perfil = perfis.get(id)\n    if not perfil:\n        raise HTTPException(status_code=404, detail=\"Perfil não encontrado\")\n    template = env.get_template(\"perfil.html\")\n    html = template.render(nome=perfil.nome, bio=perfil.bio, site=perfil.site)\n    return HTMLResponse(content=html, status_code=200, media_type=\"text/html\")\n```",
+          "refusal": null,
+          "annotations": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 189,
+      "completion_tokens": 347,
+      "total_tokens": 536,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": "fp_89baadaeb8"
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "8af01cb25456e9ad1b39975481432343da0d0243825b2ea4da317576d240ba68",
+  "concluida_em": "2026-11-03T23:06:31.750322+00:00"
+}

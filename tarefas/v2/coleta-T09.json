@@ -1,0 +1,6 @@
+{
+  "docker": "t09_docker",
+  "referencias": 12,
+  "semente": 2026110322,
+  "fontes": ["t09_verificador.py", "t09_referencias.py", "t09_worker_linux.py", "t09_docker.py", "docker/t09/Dockerfile", "docker/t09/requirements.txt"]
+}
