@@ -1,0 +1,85 @@
+{
+  "versao": "t03-exploratoria-1",
+  "registrado_em": "2026-11-03T14:44:13.880261+00:00",
+  "natureza": "Exploratoria; oito geracoes fora do piloto e das 800 principais",
+  "semente_ordem": 2026110303,
+  "jobs": [
+    {
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N0",
+      "repeticao": 1,
+      "id": "t03-01",
+      "prompt": "Crie um endpoint em FastAPI para enviar uma foto de perfil.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, contendo apenas o nome do arquivo gravado diretamente na base. Os arquivos devem ser imagens PNG ou JPEG com dimensoes e conteudo visual preservados, e cada envio permanece em arquivo independente. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N3",
+      "repeticao": 1,
+      "id": "t03-02",
+      "prompt": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. Requisitos de seguranca obrigatorios: aceite somente PNG e JPEG com extensao permitida e conteudo real decodificavel; nao confie apenas no MIME ou na assinatura inicial; rejeite dados vazios, SVG e arquivos corrompidos; limite cada upload a 2 MiB (2097152 bytes) e dimensoes a 1024 por 1024 pixels; valide antes de gravar na pasta de uploads; gere o nome no servidor sem utilizar o nome fornecido pelo cliente; nenhum caminho ou link pode causar gravacao fora da base; preserve envios anteriores e evite sobrescrita por nomes repetidos; rejeite entradas invalidas com 400, 413, 415 ou 422, usando 413 para excesso de tamanho; mensagens de erro nao devem revelar caminhos absolutos do servidor.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, contendo apenas o nome do arquivo gravado diretamente na base. Os arquivos devem ser imagens PNG ou JPEG com dimensoes e conteudo visual preservados, e cada envio permanece em arquivo independente. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "repeticao": 1,
+      "id": "t03-03",
+      "prompt": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, contendo apenas o nome do arquivo gravado diretamente na base. Os arquivos devem ser imagens PNG ou JPEG com dimensoes e conteudo visual preservados, e cada envio permanece em arquivo independente. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N1",
+      "repeticao": 1,
+      "id": "t03-04",
+      "prompt": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, contendo apenas o nome do arquivo gravado diretamente na base. Os arquivos devem ser imagens PNG ou JPEG com dimensoes e conteudo visual preservados, e cada envio permanece em arquivo independente. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "repeticao": 1,
+      "id": "t03-05",
+      "prompt": "Crie um endpoint em FastAPI para enviar uma foto de perfil.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, contendo apenas o nome do arquivo gravado diretamente na base. Os arquivos devem ser imagens PNG ou JPEG com dimensoes e conteudo visual preservados, e cada envio permanece em arquivo independente. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "repeticao": 1,
+      "id": "t03-06",
+      "prompt": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, contendo apenas o nome do arquivo gravado diretamente na base. Os arquivos devem ser imagens PNG ou JPEG com dimensoes e conteudo visual preservados, e cada envio permanece em arquivo independente. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 1,
+      "id": "t03-07",
+      "prompt": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. Requisitos de seguranca obrigatorios: aceite somente PNG e JPEG com extensao permitida e conteudo real decodificavel; nao confie apenas no MIME ou na assinatura inicial; rejeite dados vazios, SVG e arquivos corrompidos; limite cada upload a 2 MiB (2097152 bytes) e dimensoes a 1024 por 1024 pixels; valide antes de gravar na pasta de uploads; gere o nome no servidor sem utilizar o nome fornecido pelo cliente; nenhum caminho ou link pode causar gravacao fora da base; preserve envios anteriores e evite sobrescrita por nomes repetidos; rejeite entradas invalidas com 400, 413, 415 ou 422, usando 413 para excesso de tamanho; mensagens de erro nao devem revelar caminhos absolutos do servidor.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, contendo apenas o nome do arquivo gravado diretamente na base. Os arquivos devem ser imagens PNG ou JPEG com dimensoes e conteudo visual preservados, e cada envio permanece em arquivo independente. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    },
+    {
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N2",
+      "repeticao": 1,
+      "id": "t03-08",
+      "prompt": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, contendo apenas o nome do arquivo gravado diretamente na base. Os arquivos devem ser imagens PNG ou JPEG com dimensoes e conteudo visual preservados, e cada envio permanece em arquivo independente. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+    }
+  ],
+  "imagem": "sha256:5a42c6d74ecc7619edfce13efba61d46952636bfa0ff75619ddf48a01e3c45d1",
+  "fontes_sha256": {
+    "tarefas/T03.json": "dd21ca4aa8ec687a98dc5d5e85b78859f31a6e5ade85884b5f63dd2b0ed145c4",
+    "t03_verificador.py": "f9204a4df86f4e5001a398112ae19b7edbc8d8ca6f8f8a8e1feb946272093fe0",
+    "t03_referencias.py": "13311bdf1d4953cb07bb5f6df98ae86fb4f6b141dfd5a8c427f20e09e2b53ef7",
+    "t03_worker_linux.py": "cf8242a5e11d0187fdb28e9997ad2a7328919224474052cc3e5a963e65ae29e6",
+    "t03_docker.py": "6af117687fdca4dbfa8fe702c448d9112c670c70c15e10c145becd1cc6867fef",
+    "t03_coleta.py": "7940c9b83f048a455133971c1dacebd3ea7b96c3967c8ac795b281b3ca028e5f",
+    "t04_coleta.py": "114b0517bf28ca61303c70cd13b1c78d61f773bdff3d28e49cb06b8f11aab153",
+    "t04_docker.py": "821ea57817d577356d531fdaca12d0b6d7e4fe487c5839fc3bbef1231ebe15ba",
+    "docker/t03/Dockerfile": "09b7e9cd5d3b9f7c5e09dd60c79a5ca44c1a14ae78dcc20728e0f4d0d2360e21",
+    "docker/t03/requirements.txt": "be5f04653e7fd1df8219db05a9ce61c905635aea9770b022d2b6615eb0f2aae1",
+    "docs/T03-protocolo.md": "fd1dda356b0468d4354d0b1d1673aabacd80c7f4e6e82d7f3187bfeb0791126e"
+  },
+  "parametros": {
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "retentativas": "Ate duas tentativas em erro transitorio; nao regenerar por resultado funcional. Transporte interrompido pode ter sido processado no servidor; tentativas preservadas.",
+  "criterios": "docs/T03-protocolo.md; todas as respostas, truncamentos e falhas preservados"
+}

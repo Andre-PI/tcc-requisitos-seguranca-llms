@@ -1,0 +1,238 @@
+{
+  "plano": "plano.json",
+  "amostras": [
+    {
+      "id": "t03-01",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N0",
+      "funcional": "aprovado",
+      "seguranca": {
+        "aprovado": 9,
+        "reprovado": 4
+      },
+      "contrato": {
+        "arquivo_ausente": "aprovado",
+        "nome_repetido": "aprovado"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 216,
+        "completion_tokens": 330,
+        "total_tokens": 546,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t03-02",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N3",
+      "funcional": "reprovado",
+      "seguranca": {
+        "inconclusivo": 13
+      },
+      "contrato": {
+        "arquivo_ausente": "aprovado",
+        "nome_repetido": "reprovado"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 478,
+        "completion_tokens": 786,
+        "total_tokens": 1264,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t03-03",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "funcional": "aprovado",
+      "seguranca": {
+        "aprovado": 9,
+        "reprovado": 4
+      },
+      "contrato": {
+        "arquivo_ausente": "aprovado",
+        "nome_repetido": "aprovado"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 327,
+        "completion_tokens": 707,
+        "total_tokens": 1034,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t03-04",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N1",
+      "funcional": "inconclusivo",
+      "seguranca": {},
+      "contrato": {},
+      "erro": "ModuleNotFoundError: No module named 'imghdr'",
+      "uso": {
+        "prompt_tokens": 310,
+        "completion_tokens": 517,
+        "total_tokens": 827,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t03-05",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "funcional": "aprovado",
+      "seguranca": {
+        "aprovado": 9,
+        "reprovado": 4
+      },
+      "contrato": {
+        "arquivo_ausente": "aprovado",
+        "nome_repetido": "aprovado"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 215,
+        "completion_tokens": 355,
+        "total_tokens": 570,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t03-06",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "funcional": "aprovado",
+      "seguranca": {
+        "aprovado": 9,
+        "reprovado": 4
+      },
+      "contrato": {
+        "arquivo_ausente": "aprovado",
+        "nome_repetido": "aprovado"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 309,
+        "completion_tokens": 561,
+        "total_tokens": 870,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t03-07",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "funcional": "aprovado",
+      "seguranca": {
+        "aprovado": 13
+      },
+      "contrato": {
+        "arquivo_ausente": "aprovado",
+        "nome_repetido": "reprovado"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 477,
+        "completion_tokens": 697,
+        "total_tokens": 1174,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t03-08",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N2",
+      "funcional": "aprovado",
+      "seguranca": {
+        "aprovado": 9,
+        "reprovado": 4
+      },
+      "contrato": {
+        "arquivo_ausente": "aprovado",
+        "nome_repetido": "aprovado"
+      },
+      "erro": null,
+      "uso": {
+        "prompt_tokens": 328,
+        "completion_tokens": 661,
+        "total_tokens": 989,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    }
+  ],
+  "encerrado_em": "2026-11-03T14:45:06.773654+00:00"
+}

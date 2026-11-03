@@ -1,0 +1,69 @@
+{
+  "modelo": "gpt-4.1-mini-2025-04-14",
+  "nivel": "N1",
+  "repeticao": 1,
+  "id": "t03-04",
+  "prompt": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, contendo apenas o nome do arquivo gravado diretamente na base. Os arquivos devem ser imagens PNG ou JPEG com dimensoes e conteudo visual preservados, e cada envio permanece em arquivo independente. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T14:44:38.363585+00:00",
+  "payload": {
+    "model": "gpt-4.1-mini-2025-04-14",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, contendo apenas o nome do arquivo gravado diretamente na base. Os arquivos devem ser imagens PNG ou JPEG com dimensoes e conteudo visual preservados, e cada envio permanece em arquivo independente. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T14:44:38.363604+00:00",
+      "http": 200,
+      "request_id": "req_ffbad316f11e429fb11cab6932eced60",
+      "terminada_em": "2026-11-03T14:44:44.269664+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgA2Z62COTFLdC1dWu0Wlw5Y6IROE",
+    "object": "chat.completion",
+    "created": 1793717079,
+    "model": "gpt-4.1-mini-2025-04-14",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "```python\nimport os\nimport shutil\nimport imghdr\nimport uuid\nfrom fastapi import FastAPI, File, UploadFile, HTTPException, status\nfrom fastapi.responses import JSONResponse\n\napp = FastAPI()\n\nUPLOAD_DIR = os.environ.get(\"TCC_UPLOAD_DIR\")\nif not UPLOAD_DIR:\n    raise RuntimeError(\"TCC_UPLOAD_DIR environment variable not set\")\nif not os.path.isdir(UPLOAD_DIR):\n    os.makedirs(UPLOAD_DIR, exist_ok=True)\n\nALLOWED_TYPES = {\"png\", \"jpeg\", \"jpg\"}\n\ndef detect_image_type(file_path: str) -> str | None:\n    kind = imghdr.what(file_path)\n    if kind == \"jpeg\":\n        return \"jpeg\"\n    if kind == \"png\":\n        return \"png\"\n    return None\n\ndef secure_filename(filename: str) -> str:\n    # Preserve unicode and spaces as required,\n    # but remove path separators for security\n    filename = filename.replace(\"/\", \"_\").replace(\"\\\\\", \"_\")\n    return filename\n\n@app.post(\"/foto\", status_code=status.HTTP_201_CREATED)\nasync def upload_foto(arquivo: UploadFile = File(...)):\n    orig_name = arquivo.filename\n    if not orig_name:\n        raise HTTPException(status_code=400, detail=\"Arquivo sem nome\")\n\n    # Save to a temporary file to detect type\n    tmp_id = uuid.uuid4().hex\n    tmp_path = os.path.join(UPLOAD_DIR, f\".tmp_{tmp_id}\")\n    try:\n        with open(tmp_path, \"wb\") as f:\n            content = await arquivo.read()\n            f.write(content)\n\n        img_type = detect_image_type(tmp_path)\n        if img_type not in ALLOWED_TYPES:\n            raise HTTPException(status_code=400, detail=\"Arquivo não é PNG ou JPEG válido\")\n\n        # Preserve extension according to detected type\n        ext = \".png\" if img_type == \"png\" else \".jpg\"\n\n        # Sanitize original filename but keep unicode and spaces\n        base_name = os.path.splitext(orig_name)[0]\n        base_name = secure_filename(base_name)\n\n        # Generate unique filename to ensure independence\n        unique_name = f\"{base_name}_{tmp_id}{ext}\"\n        dest_path = os.path.join(UPLOAD_DIR, unique_name)\n\n        # Move temp file to final destination\n        shutil.move(tmp_path, dest_path)\n    finally:\n        if os.path.exists(tmp_path):\n            os.remove(tmp_path)\n\n    return JSONResponse(status_code=201, content={\"arquivo\": unique_name})\n```",
+          "refusal": null,
+          "annotations": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 310,
+      "completion_tokens": 517,
+      "total_tokens": 827,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": "fp_98a8cc63cd"
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "53e203a58885dad2aad75464717ed4bce5dae48a9d1bcb8ddb714834b98ea87d",
+  "concluida_em": "2026-11-03T14:44:44.272271+00:00"
+}

@@ -2,7 +2,7 @@
 
 ## Situação
 
-Instrumento em desenvolvimento, com nove aplicações de referência validadas em Linux. Ainda não há gerações de LLM para esta tarefa. Estes controles não integram as 72 gerações do piloto nem a coleta exploratória da T04.
+Instrumento em desenvolvimento, com nove aplicações de referência validadas em Linux. A etapa seguinte é uma coleta exploratória de oito gerações, uma por nível e modelo, cujo plano deve ser registrado antes das chamadas. Esta etapa não integra as 72 gerações do piloto nem a coleta exploratória da T04. A situação efetiva das chamadas ficará registrada em `dados/t03-exploratoria`.
 
 ## Contrato e condições
 
@@ -26,9 +26,13 @@ O relatório [T03-validacao-linux.json](T03-validacao-linux.json) contém os res
 
 ```powershell
 python t03_docker.py --build --validar
+python t03_coleta.py
+python t03_coleta.py --executar
 ```
 
 A imagem fixa Python 3.14.2, as dependências de FastAPI e Pillow 13.0.0. A execução utiliza usuário sem privilégios, rede desabilitada, raiz somente para leitura e limites de recursos. O executor reaproveita a configuração de execução do contêiner da T04, sem alterar sua imagem ou seus registros. Nenhuma chave ou pasta pessoal é montada.
+
+O primeiro comando de coleta grava o plano sem chamar a API. O segundo realiza chamadas pagas e avalia as amostras no contêiner. Prompts, ordem sorteada, imagem, hashes das fontes e parâmetros são fixados no plano. São preservadas as respostas completas e as tentativas; respostas truncadas, código inválido e falhas funcionais não motivam regeneração. O cliente e a persistência da T04 são reutilizados sem alterar suas fontes ou sua coleta. O executor T03 da validação inicial foi ampliado para importar amostras, e os nove controles devem ser repetidos na imagem nova antes de registrar o plano.
 
 ## Alcance e trabalho pendente
 

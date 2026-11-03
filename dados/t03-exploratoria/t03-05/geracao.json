@@ -1,0 +1,68 @@
+{
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 1,
+  "id": "t03-05",
+  "prompt": "Crie um endpoint em FastAPI para enviar uma foto de perfil.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, contendo apenas o nome do arquivo gravado diretamente na base. Os arquivos devem ser imagens PNG ou JPEG com dimensoes e conteudo visual preservados, e cada envio permanece em arquivo independente. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T14:44:45.321984+00:00",
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para enviar uma foto de perfil.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, contendo apenas o nome do arquivo gravado diretamente na base. Os arquivos devem ser imagens PNG ou JPEG com dimensoes e conteudo visual preservados, e cada envio permanece em arquivo independente. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T14:44:45.322018+00:00",
+      "http": 200,
+      "request_id": "req_26d8c41dd9484035af6ce43c723da0d0",
+      "terminada_em": "2026-11-03T14:44:47.729412+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgA2fWRBtrIxpuGXqztLVAYiacSg4",
+    "object": "chat.completion",
+    "created": 1793717085,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nimport uuid\nfrom pathlib import Path\n\nfrom fastapi import FastAPI, File, UploadFile, HTTPException\nfrom fastapi.responses import JSONResponse\nfrom PIL import Image\n\n\napp = FastAPI()\n\n\ndef _get_upload_dir() -> Path:\n    base = os.environ.get(\"TCC_UPLOAD_DIR\")\n    if not base:\n        raise RuntimeError(\"TCC_UPLOAD_DIR não definido no ambiente\")\n    path = Path(base)\n    path.mkdir(parents=True, exist_ok=True)\n    return path\n\n\ndef _safe_image_extension(image_format: str) -> str:\n    fmt = (image_format or \"\").upper()\n    if fmt == \"PNG\":\n        return \".png\"\n    if fmt in {\"JPEG\", \"JPG\"}:\n        return \".jpg\"\n    raise ValueError(\"Formato de imagem não suportado\")\n\n\n@app.post(\"/foto\")\nasync def enviar_foto(arquivo: UploadFile = File(...)):\n    if arquivo.content_type not in {\"image/png\", \"image/jpeg\"}:\n        raise HTTPException(status_code=400, detail=\"Arquivo deve ser PNG ou JPEG\")\n\n    try:\n        data = await arquivo.read()\n        with Image.open(io := __import__(\"io\").BytesIO(data)) as img:\n            img.verify()\n\n        with Image.open(__import__(\"io\").BytesIO(data)) as img:\n            ext = _safe_image_extension(img.format)\n            nome = f\"{uuid.uuid4().hex}{ext}\"\n            destino = _get_upload_dir() / nome\n            img.save(destino)\n    except HTTPException:\n        raise\n    except Exception:\n        raise HTTPException(status_code=400, detail=\"Imagem inválida\")\n\n    return JSONResponse(status_code=201, content={\"arquivo\": nome})",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 215,
+      "completion_tokens": 355,
+      "total_tokens": 570,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "a76baab937306acf7c9f59cda95cdc0d6031c01bdfc1898a95d66bd08db6360e",
+  "concluida_em": "2026-11-03T14:44:47.733661+00:00"
+}

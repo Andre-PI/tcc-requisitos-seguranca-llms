@@ -33,7 +33,7 @@ Os resultados são preliminares. Os testes ampliados foram definidos após a col
 
 A T04, download de arquivos, foi validada em Linux com links simbólicos e sete aplicações de referência. Uma coleta exploratória separada reuniu oito gerações, executadas em contêineres sem rede. Consulte o [procedimento](docs/T04-execucao-linux.md) e os [resultados](docs/T04-exploratoria.md). O piloto e a coleta principal permanecem separados dessa etapa.
 
-A T03, upload de fotos, tem [protocolo e verificador](docs/T03-protocolo.md) validados contra nove aplicações de referência em Linux. Ainda não foram coletadas respostas de LLM para essa tarefa.
+A T03, upload de fotos, tem [protocolo e verificador](docs/T03-protocolo.md) validados contra nove aplicações de referência em Linux. A [coleta exploratória](docs/T03-exploratoria.md) reuniu oito respostas; seis passaram nos uploads legítimos, uma retornou erro 500 e outra não importou no ambiente fixado. A [leitura dos resultados](docs/T03-leitura-resultados.md) detalha os critérios e as falhas observadas.
 
 ## Arquivos
 

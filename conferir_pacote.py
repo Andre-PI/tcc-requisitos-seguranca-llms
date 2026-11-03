@@ -77,4 +77,26 @@ if t03_report.exists():
     assert all(r['expectativa_atendida'] and r['link_disponivel'] and len(r['testes'])==18 for r in report['resultados'])
     for name,sha in report['arquivos'].items():
         assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
-    print('T03: 9 referencias e 18 casos por referencia; hashes dos instrumentos conferidos. Sem geracoes de LLM nesta tarefa.')
+    print('T03: 9 referencias e 18 casos por referencia; hashes dos instrumentos conferidos.')
+
+t03=ROOT/'dados'/'t03-exploratoria'
+if (t03/'resumo.json').exists():
+    plan=json.loads((t03/'plano.json').read_text(encoding='utf-8'))
+    assert len(plan['jobs'])==8
+    for name,sha in plan['fontes_sha256'].items():
+        assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
+    calls=0;ids=set()
+    for job in plan['jobs']:
+        folder=t03/job['id'];g=json.loads((folder/'geracao.json').read_text(encoding='utf-8'))
+        assert plan['registrado_em']<=g['iniciado_em']<=g['concluida_em']
+        assert g['prompt']==job['prompt'] and g['payload']['messages']==[{'role':'user','content':job['prompt']}]
+        assert g['payload']['model']==job['modelo']
+        assert all(g['payload'][k]==v for k,v in plan['parametros'].items())
+        calls+=len(g['tentativas'])
+        if g['resposta']:ids.add(g['resposta']['id'])
+        if 'codigo_sha256' in g:
+            assert hashlib.sha256((folder/'amostra.py').read_bytes()).hexdigest()==g['codigo_sha256']
+        result=json.loads((folder/'avaliacao.json').read_text(encoding='utf-8'))
+        if 'imagem' in result:assert result['imagem']==plan['imagem']
+    assert len(ids)==8 and calls==8
+    print('T03 exploratoria: 8 respostas em 8 requisicoes; plano anterior as chamadas, prompts, parametros, fontes e imagem conferidos.')
