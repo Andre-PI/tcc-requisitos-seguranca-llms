@@ -21,7 +21,7 @@ Os resultados são preliminares. Os testes ampliados foram definidos após a col
 
 ## Documentos e resultados
 
-- **Metodologia:** [PDF](orientacao/Metodologia-v03.pdf) e [Word](orientacao/Metodologia-v03.docx).
+- **Metodologia:** [PDF](orientacao/Metodologia-v04.pdf) e [Word](orientacao/Metodologia-v04.docx).
 - [Exemplo de análise de acesso a pedidos](exemplos/acesso-a-pedidos.md), com prompt, código e resultado do teste.
 - [Resultados funcionais](docs/resultado-aceitacao.md).
 - [Resultados comportamentais](docs/resultado-comportamental.md).

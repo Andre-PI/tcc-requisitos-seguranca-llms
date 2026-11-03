@@ -17,6 +17,11 @@
       "sha256": "baae1e11e50acac0b75434108bf1792ad5abfb068f07d0ffa7acba2540062197"
     },
     {
+      "caminho": "README.md",
+      "bytes": 3776,
+      "sha256": "1afeee9f985ee81e9a8e46feda222dfb109143c88c29a990162c1df7a2b113cd"
+    },
+    {
       "caminho": "aceitacao_worker.py",
       "bytes": 16748,
       "sha256": "09e854f6d16af2d5ab3e5479b18e6953b8afb40c4aa7515ef3f4801103baa1e3"
@@ -437,6 +442,11 @@
       "sha256": "c3ec16127193db64d8034fc5cccff0b7b6429e4167466f753d73aa85d87ec176"
     },
     {
+      "caminho": "docs/adequacao-icev-wazlawick-2026-11-03.md",
+      "bytes": 3929,
+      "sha256": "1bb033e3055f3c8152d99af8312482bfa276fc0fd99863e108c4adaad688c22c"
+    },
+    {
       "caminho": "docs/casos-comportamentais.csv",
       "bytes": 78531,
       "sha256": "ba5be5d70a40660654baf5899400573a6c66121c3d2e82068aa2449a2d8a52ee"
@@ -445,6 +455,16 @@
       "caminho": "docs/criterios-aceitacao.json",
       "bytes": 2886,
       "sha256": "7449284863bc467cb8dfe8451e510f86a531bc3910cf77dc925633bcfe9b63d7"
+    },
+    {
+      "caminho": "docs/metodologia-v04.md",
+      "bytes": 14112,
+      "sha256": "eadd48b25708fc00348e2fd9328cc18eb4d3583eeeb1e8b3601e10e65d1e070c"
+    },
+    {
+      "caminho": "docs/origem-orientacoes-2026-11-03.json",
+      "bytes": 245,
+      "sha256": "1df60c04d0187ea9e4ec76ce84703e6c1d115b9b4a172009272f846c5023da1a"
     },
     {
       "caminho": "docs/protocolo-comportamental.md",
@@ -3187,14 +3207,19 @@
       "sha256": "9bb522d5ca49d8941cacce984a2ad386620902cd7ea792204f207bf8c90d26b6"
     },
     {
+      "caminho": "orientacao/Metodologia-v04.docx",
+      "bytes": 42139,
+      "sha256": "9dacb01f1319e5e5d4fc97862c678cf8e4c088c486fb0a6045c1b13738f80468"
+    },
+    {
+      "caminho": "orientacao/Metodologia-v04.pdf",
+      "bytes": 107788,
+      "sha256": "5e934a7046323b82d5a195ae9cf66c2d2756666b326ac6c218f65c3c0f1adc25"
+    },
+    {
       "caminho": "piloto.py",
       "bytes": 17558,
       "sha256": "9a77216344d386faecf3b75c3e125e91970b7677deae44832c538e01da122362"
-    },
-    {
-      "caminho": "README.md",
-      "bytes": 3776,
-      "sha256": "432b892469772ac15c618659b3fdcaf7ad29baa8949e51eda676861ac47df004"
     },
     {
       "caminho": "relatorios-sast/bandit.json",
@@ -3276,5 +3301,6 @@
       "bytes": 6353,
       "sha256": "66b13887766717eb6838799d1c2c94529179f6b854f4c2d973da347238b97f8d"
     }
-  ]
+  ],
+  "revisao_documental": "2026-11-03; metodologia v04; dados do piloto preservados"
 }
