@@ -149,3 +149,13 @@ if (t05/'resumo.json').exists():
         lines=code.decode('utf-8').splitlines()
         for evidence in row['evidencias'].values():assert lines[evidence['linha']-1].strip()==evidence['trecho']
     print('T05 exploratoria: 8 respostas em 8 chamadas; diagnosticos separados, fontes e revisao por linha conferidos.')
+
+t07_report=ROOT/'docs/T07-validacao-linux.json'
+if t07_report.exists():
+    report=json.loads(t07_report.read_text(encoding='utf-8'))
+    assert report['referencias']==report['expectativas_atendidas']==10 and report['container_exit']==0
+    assert len(report['probe']['confinamento'])==4 and all(report['probe']['confinamento'].values())
+    assert all(r['expectativa_atendida'] and len(r['testes'])==15 for r in report['resultados'])
+    for name,sha in report['arquivos'].items():
+        assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
+    print('T07: 10 referencias, 15 cenarios por referencia; hashes e isolamento registrados. Sem geracoes de LLM nesta etapa.')
