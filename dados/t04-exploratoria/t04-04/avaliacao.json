@@ -1,0 +1,235 @@
+{
+  "controles_positivos": true,
+  "testes": [
+    {
+      "teste": "download:texto.txt",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 200,
+        "bytes_resposta": 21,
+        "sha256_resposta": "97d1e82dfc1529edc4b53ad975c6d2fcbd0bd0dd61fefaedb764058765a15ff9",
+        "marcador_externo": false,
+        "eventos_externos": []
+      }
+    },
+    {
+      "teste": "download:binario.dat",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 200,
+        "bytes_resposta": 256,
+        "sha256_resposta": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+        "marcador_externo": false,
+        "eventos_externos": []
+      }
+    },
+    {
+      "teste": "download:vazio.txt",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 200,
+        "bytes_resposta": 0,
+        "sha256_resposta": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "marcador_externo": false,
+        "eventos_externos": []
+      }
+    },
+    {
+      "teste": "download:relatorios/mes.txt",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 200,
+        "bytes_resposta": 22,
+        "sha256_resposta": "2a2676b55dbeb869882d2d7359e8007b5a89179d06802efdb27959884f92c37c",
+        "marcador_externo": false,
+        "eventos_externos": []
+      }
+    },
+    {
+      "teste": "download:relatorio com acento ç.txt",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 200,
+        "bytes_resposta": 19,
+        "sha256_resposta": "d31b7e5ba0f0bfb335e8ea8451e3863a429551e1ba8f6732af0f3f34c06d2e83",
+        "marcador_externo": false,
+        "eventos_externos": []
+      }
+    },
+    {
+      "teste": "inexistente",
+      "tipo": "contrato",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 404,
+        "bytes_resposta": 35,
+        "sha256_resposta": "ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968",
+        "marcador_externo": false,
+        "eventos_externos": []
+      }
+    },
+    {
+      "teste": "nome_ausente",
+      "tipo": "contrato",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 422,
+        "bytes_resposta": 90,
+        "sha256_resposta": "e282e7de2e5f7c19c64b22be4be4462cef0c4ff036384fa9ec5647e0adb8ed20",
+        "marcador_externo": false,
+        "eventos_externos": []
+      }
+    },
+    {
+      "teste": "subida_simples",
+      "tipo": "seguranca",
+      "status": "aprovado",
+      "contrato_N3": "aprovado",
+      "evidencia": {
+        "status_http": 404,
+        "bytes_resposta": 35,
+        "sha256_resposta": "ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968",
+        "marcador_externo": false,
+        "eventos_externos": [],
+        "caminho_servidor_na_resposta": false,
+        "entrada": "../externo/segredo.txt"
+      }
+    },
+    {
+      "teste": "subida_de_subpasta",
+      "tipo": "seguranca",
+      "status": "aprovado",
+      "contrato_N3": "aprovado",
+      "evidencia": {
+        "status_http": 404,
+        "bytes_resposta": 35,
+        "sha256_resposta": "ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968",
+        "marcador_externo": false,
+        "eventos_externos": [],
+        "caminho_servidor_na_resposta": false,
+        "entrada": "relatorios/../../externo/segredo.txt"
+      }
+    },
+    {
+      "teste": "diretorio_com_prefixo",
+      "tipo": "seguranca",
+      "status": "aprovado",
+      "contrato_N3": "aprovado",
+      "evidencia": {
+        "status_http": 404,
+        "bytes_resposta": 35,
+        "sha256_resposta": "ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968",
+        "marcador_externo": false,
+        "eventos_externos": [],
+        "caminho_servidor_na_resposta": false,
+        "entrada": "../arquivos_extra/segredo.txt"
+      }
+    },
+    {
+      "teste": "caminho_absoluto",
+      "tipo": "seguranca",
+      "status": "aprovado",
+      "contrato_N3": "aprovado",
+      "evidencia": {
+        "status_http": 404,
+        "bytes_resposta": 35,
+        "sha256_resposta": "ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968",
+        "marcador_externo": false,
+        "eventos_externos": [],
+        "caminho_servidor_na_resposta": false,
+        "entrada": "/tmp/fixtures/externo/segredo.txt"
+      }
+    },
+    {
+      "teste": "separadores_windows",
+      "tipo": "seguranca",
+      "status": "aprovado",
+      "contrato_N3": "aprovado",
+      "evidencia": {
+        "status_http": 404,
+        "bytes_resposta": 35,
+        "sha256_resposta": "ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968",
+        "marcador_externo": false,
+        "eventos_externos": [],
+        "caminho_servidor_na_resposta": false,
+        "entrada": "..\\externo\\segredo.txt"
+      }
+    },
+    {
+      "teste": "codificacao_url",
+      "tipo": "seguranca",
+      "status": "aprovado",
+      "contrato_N3": "aprovado",
+      "evidencia": {
+        "status_http": 404,
+        "bytes_resposta": 35,
+        "sha256_resposta": "ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968",
+        "marcador_externo": false,
+        "eventos_externos": [],
+        "caminho_servidor_na_resposta": false,
+        "entrada": "nome=%2e%2e%2fexterno%2fsegredo.txt"
+      }
+    },
+    {
+      "teste": "dupla_codificacao",
+      "tipo": "seguranca",
+      "status": "aprovado",
+      "contrato_N3": "aprovado",
+      "evidencia": {
+        "status_http": 404,
+        "bytes_resposta": 35,
+        "sha256_resposta": "ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968",
+        "marcador_externo": false,
+        "eventos_externos": [],
+        "caminho_servidor_na_resposta": false,
+        "entrada": "nome=%252e%252e%252fexterno%252fsegredo.txt"
+      }
+    },
+    {
+      "teste": "byte_nulo",
+      "tipo": "seguranca",
+      "status": "inconclusivo",
+      "contrato_N3": "reprovado",
+      "evidencia": {
+        "status_http": 500,
+        "bytes_resposta": 21,
+        "sha256_resposta": "e41656eb2ba6c6293bf6dd928e5a88cdbc50535cab661c1969e0f598e497ed62",
+        "marcador_externo": false,
+        "eventos_externos": [],
+        "caminho_servidor_na_resposta": false,
+        "entrada": "../externo/segredo.txt\u0000.txt"
+      }
+    },
+    {
+      "teste": "link_simbolico",
+      "tipo": "seguranca",
+      "status": "aprovado",
+      "contrato_N3": "aprovado",
+      "evidencia": {
+        "status_http": 404,
+        "bytes_resposta": 35,
+        "sha256_resposta": "ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968",
+        "marcador_externo": false,
+        "eventos_externos": [],
+        "caminho_servidor_na_resposta": false,
+        "entrada": "atalho/segredo.txt"
+      }
+    }
+  ],
+  "limites": [
+    "Somente arquivos externos ficticios cadastrados sao observados pelo hook.",
+    "Eventos open indicam tentativa de abertura; nao provam leitura concluida.",
+    "Hook Python nao e sandbox e pode ser contornado por codigo hostil.",
+    "Sem simulacao universal das regras de caminhos de outros sistemas operacionais."
+  ],
+  "link_disponivel": true,
+  "container_exit": 0,
+  "imagem": "sha256:4933bcbc1baf42ac6a12397524cb5d3cd3bc8eaa1c470464ec979572c3366816",
+  "stdout": "TCC_RESULTADO_JSON:{\"controles_positivos\": true, \"testes\": [{\"teste\": \"download:texto.txt\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"bytes_resposta\": 21, \"sha256_resposta\": \"97d1e82dfc1529edc4b53ad975c6d2fcbd0bd0dd61fefaedb764058765a15ff9\", \"marcador_externo\": false, \"eventos_externos\": []}}, {\"teste\": \"download:binario.dat\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"bytes_resposta\": 256, \"sha256_resposta\": \"40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880\", \"marcador_externo\": false, \"eventos_externos\": []}}, {\"teste\": \"download:vazio.txt\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"bytes_resposta\": 0, \"sha256_resposta\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"marcador_externo\": false, \"eventos_externos\": []}}, {\"teste\": \"download:relatorios/mes.txt\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"bytes_resposta\": 22, \"sha256_resposta\": \"2a2676b55dbeb869882d2d7359e8007b5a89179d06802efdb27959884f92c37c\", \"marcador_externo\": false, \"eventos_externos\": []}}, {\"teste\": \"download:relatorio com acento ç.txt\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"bytes_resposta\": 19, \"sha256_resposta\": \"d31b7e5ba0f0bfb335e8ea8451e3863a429551e1ba8f6732af0f3f34c06d2e83\", \"marcador_externo\": false, \"eventos_externos\": []}}, {\"teste\": \"inexistente\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 404, \"bytes_resposta\": 35, \"sha256_resposta\": \"ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968\", \"marcador_externo\": false, \"eventos_externos\": []}}, {\"teste\": \"nome_ausente\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 422, \"bytes_resposta\": 90, \"sha256_resposta\": \"e282e7de2e5f7c19c64b22be4be4462cef0c4ff036384fa9ec5647e0adb8ed20\", \"marcador_externo\": false, \"eventos_externos\": []}}, {\"teste\": \"subida_simples\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"contrato_N3\": \"aprovado\", \"evidencia\": {\"status_http\": 404, \"bytes_resposta\": 35, \"sha256_resposta\": \"ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968\", \"marcador_externo\": false, \"eventos_externos\": [], \"caminho_servidor_na_resposta\": false, \"entrada\": \"../externo/segredo.txt\"}}, {\"teste\": \"subida_de_subpasta\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"contrato_N3\": \"aprovado\", \"evidencia\": {\"status_http\": 404, \"bytes_resposta\": 35, \"sha256_resposta\": \"ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968\", \"marcador_externo\": false, \"eventos_externos\": [], \"caminho_servidor_na_resposta\": false, \"entrada\": \"relatorios/../../externo/segredo.txt\"}}, {\"teste\": \"diretorio_com_prefixo\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"contrato_N3\": \"aprovado\", \"evidencia\": {\"status_http\": 404, \"bytes_resposta\": 35, \"sha256_resposta\": \"ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968\", \"marcador_externo\": false, \"eventos_externos\": [], \"caminho_servidor_na_resposta\": false, \"entrada\": \"../arquivos_extra/segredo.txt\"}}, {\"teste\": \"caminho_absoluto\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"contrato_N3\": \"aprovado\", \"evidencia\": {\"status_http\": 404, \"bytes_resposta\": 35, \"sha256_resposta\": \"ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968\", \"marcador_externo\": false, \"eventos_externos\": [], \"caminho_servidor_na_resposta\": false, \"entrada\": \"/tmp/fixtures/externo/segredo.txt\"}}, {\"teste\": \"separadores_windows\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"contrato_N3\": \"aprovado\", \"evidencia\": {\"status_http\": 404, \"bytes_resposta\": 35, \"sha256_resposta\": \"ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968\", \"marcador_externo\": false, \"eventos_externos\": [], \"caminho_servidor_na_resposta\": false, \"entrada\": \"..\\\\externo\\\\segredo.txt\"}}, {\"teste\": \"codificacao_url\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"contrato_N3\": \"aprovado\", \"evidencia\": {\"status_http\": 404, \"bytes_resposta\": 35, \"sha256_resposta\": \"ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968\", \"marcador_externo\": false, \"eventos_externos\": [], \"caminho_servidor_na_resposta\": false, \"entrada\": \"nome=%2e%2e%2fexterno%2fsegredo.txt\"}}, {\"teste\": \"dupla_codificacao\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"contrato_N3\": \"aprovado\", \"evidencia\": {\"status_http\": 404, \"bytes_resposta\": 35, \"sha256_resposta\": \"ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968\", \"marcador_externo\": false, \"eventos_externos\": [], \"caminho_servidor_na_resposta\": false, \"entrada\": \"nome=%252e%252e%252fexterno%252fsegredo.txt\"}}, {\"teste\": \"byte_nulo\", \"tipo\": \"seguranca\", \"status\": \"inconclusivo\", \"contrato_N3\": \"reprovado\", \"evidencia\": {\"status_http\": 500, \"bytes_resposta\": 21, \"sha256_resposta\": \"e41656eb2ba6c6293bf6dd928e5a88cdbc50535cab661c1969e0f598e497ed62\", \"marcador_externo\": false, \"eventos_externos\": [], \"caminho_servidor_na_resposta\": false, \"entrada\": \"../externo/segredo.txt\\u0000.txt\"}}, {\"teste\": \"link_simbolico\", \"tipo\": \"seguranca\", \"status\": \"aprovado\", \"contrato_N3\": \"aprovado\", \"evidencia\": {\"status_http\": 404, \"bytes_resposta\": 35, \"sha256_resposta\": \"ec0c36381b432ef5576d0a96b17df9b900d18630f368eb76c583b7196a320968\", \"marcador_externo\": false, \"eventos_externos\": [], \"caminho_servidor_na_resposta\": false, \"entrada\": \"atalho/segredo.txt\"}}], \"limites\": [\"Somente arquivos externos ficticios cadastrados sao observados pelo hook.\", \"Eventos open indicam tentativa de abertura; nao provam leitura concluida.\", \"Hook Python nao e sandbox e pode ser contornado por codigo hostil.\", \"Sem simulacao universal das regras de caminhos de outros sistemas operacionais.\"], \"link_disponivel\": true}\n",
+  "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+}

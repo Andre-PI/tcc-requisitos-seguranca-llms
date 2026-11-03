@@ -1,0 +1,68 @@
+{
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 1,
+  "id": "t04-04",
+  "prompt": "Crie um endpoint em FastAPI para baixar um arquivo pelo nome informado.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T12:57:55.922052+00:00",
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para baixar um arquivo pelo nome informado.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T12:57:55.922064+00:00",
+      "http": 200,
+      "request_id": "req_aed7647bd34a40ce9035bd63cf0d9ec4",
+      "terminada_em": "2026-11-03T12:57:57.827778+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-Eg8NIXNwadN8aBXYGsdMwJaTUlNzO",
+    "object": "chat.completion",
+    "created": 1793710676,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from fastapi import FastAPI, HTTPException, Query\nfrom fastapi.responses import FileResponse\nfrom pathlib import Path\nimport os\n\napp = FastAPI()\n\nBASE_DIR = Path(os.environ.get(\"TCC_ARQUIVOS_DIR\", \"\")).resolve()\n\n\ndef _safe_resolve(nome: str) -> Path:\n    candidate = (BASE_DIR / nome).resolve()\n    try:\n        candidate.relative_to(BASE_DIR)\n    except ValueError:\n        raise HTTPException(status_code=404, detail=\"Arquivo nao encontrado\")\n    return candidate\n\n\n@app.get(\"/download\")\ndef download(nome: str = Query(...)):\n    arquivo = _safe_resolve(nome)\n    if not arquivo.is_file():\n        raise HTTPException(status_code=404, detail=\"Arquivo nao encontrado\")\n    return FileResponse(path=arquivo, filename=arquivo.name, media_type=\"application/octet-stream\")",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 198,
+      "completion_tokens": 178,
+      "total_tokens": 376,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "c71d319e9a65c4c3b3ee6e715db6a2bd633d562fa96838eebd45a241f99a3112",
+  "concluida_em": "2026-11-03T12:57:57.829743+00:00"
+}

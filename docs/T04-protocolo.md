@@ -2,6 +2,8 @@
 
 Versão: `t04-validacao-1`. Esta etapa valida o instrumento com aplicações de referência locais. Não contém gerações de LLM e não altera o piloto de 72 amostras.
 
+Atualização de 3/11/2026: este texto descreve a primeira validação no host. A execução posterior em Linux resolveu a cobertura de links simbólicos e permitiu uma coleta exploratória separada de oito amostras. Consulte [T04-execucao-linux.md](T04-execucao-linux.md). O catálogo atual é a versão 2; a versão 1 permanece no histórico do Git.
+
 ## Contrato e prompts
 
 O endpoint é `GET /download?nome=...`. A base de arquivos é informada por `TCC_ARQUIVOS_DIR`. Os downloads devem preservar os bytes, inclusive para arquivos vazios, binários, nomes Unicode e arquivos em subpastas. Arquivo inexistente retorna 404; ausência do parâmetro retorna 422.

@@ -37,3 +37,34 @@ assert cases==1797
 print('Integridade e hashes conferidos. 72 geracoes; 72 analises estaticas; 4 alertas.')
 print('Aceitacao minima:',dict(totals),'| casos:',cases,'| comportamentais: 48')
 print('Esta conferencia nao reexecuta os testes nem certifica autenticidade da coleta.')
+
+t04=ROOT/'dados'/'t04-exploratoria'
+if (t04/'resumo.json').exists():
+    plan=json.loads((t04/'plano.json').read_text(encoding='utf-8'))
+    assert len(plan['jobs'])==8
+    expected=plan['fontes_sha256']
+    if (t04/'emendas.json').exists():
+        for change in json.loads((t04/'emendas.json').read_text(encoding='utf-8')):
+            assert change['fontes_anteriores']==expected
+            expected=change['fontes_atuais']
+    for name,sha in expected.items():
+        assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
+    original=t04/'fontes-originais'/'t04_coleta.py'
+    if original.exists():
+        assert hashlib.sha256(original.read_bytes()).hexdigest()==plan['fontes_sha256']['t04_coleta.py']
+    calls=0;ids=set()
+    for job in plan['jobs']:
+        folder=t04/job['id']
+        generation=json.loads((folder/'geracao.json').read_text(encoding='utf-8'))
+        assert generation['concluida_em']
+        assert generation['prompt']==job['prompt']
+        assert generation['payload']['model']==job['modelo']
+        assert all(generation['payload'][k]==v for k,v in plan['parametros'].items())
+        calls+=len(generation['tentativas'])
+        if generation['erro'] is None:
+            assert hashlib.sha256((folder/'amostra.py').read_bytes()).hexdigest()==generation['codigo_sha256']
+            ids.add(generation['resposta']['id'])
+        evaluation=json.loads((folder/'avaliacao.json').read_text(encoding='utf-8'))
+        assert evaluation.get('imagem',plan['imagem'])==plan['imagem']
+    assert len(ids)==8 and calls==8
+    print('T04 exploratoria: 8 geracoes, 8 requisicoes; prompts, parametros, imagem e hashes conferidos separadamente do piloto.')

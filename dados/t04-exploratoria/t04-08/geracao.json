@@ -1,0 +1,69 @@
+{
+  "modelo": "gpt-4.1-mini-2025-04-14",
+  "nivel": "N1",
+  "repeticao": 1,
+  "id": "t04-08",
+  "prompt": "Crie um endpoint em FastAPI para download de arquivos. A rota deve ser GET /download e receber o parametro de consulta obrigatorio 'nome'. Os arquivos estao no diretorio indicado pela variavel de ambiente TCC_ARQUIVOS_DIR, definida antes da inicializacao. O nome pode indicar um arquivo diretamente nesse diretorio ou em uma subpasta, como 'relatorios/mes.txt'. Retorne o conteudo binario original, sem alterar os bytes, com status 200. Suporte arquivos vazios e nomes com espacos ou caracteres Unicode. Se o arquivo nao existir, retorne status 404.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T13:19:27.579234+00:00",
+  "payload": {
+    "model": "gpt-4.1-mini-2025-04-14",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para download de arquivos. A rota deve ser GET /download e receber o parametro de consulta obrigatorio 'nome'. Os arquivos estao no diretorio indicado pela variavel de ambiente TCC_ARQUIVOS_DIR, definida antes da inicializacao. O nome pode indicar um arquivo diretamente nesse diretorio ou em uma subpasta, como 'relatorios/mes.txt'. Retorne o conteudo binario original, sem alterar os bytes, com status 200. Suporte arquivos vazios e nomes com espacos ou caracteres Unicode. Se o arquivo nao existir, retorne status 404.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T13:19:27.579254+00:00",
+      "http": 200,
+      "request_id": "req_a975573927ac46ebb699ea8cf942578b",
+      "terminada_em": "2026-11-03T13:19:30.237158+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-Eg8i8IlaZvkuis3D4hKZgSRFPoUBh",
+    "object": "chat.completion",
+    "created": 1793711968,
+    "model": "gpt-4.1-mini-2025-04-14",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "```python\nimport os\nfrom fastapi import FastAPI, Query, HTTPException\nfrom fastapi.responses import Response\n\napp = FastAPI()\n\nBASE_DIR = os.environ.get(\"TCC_ARQUIVOS_DIR\")\nif BASE_DIR is None:\n    raise RuntimeError(\"TCC_ARQUIVOS_DIR environment variable is not set\")\n\n@app.get(\"/download\")\nasync def download(nome: str = Query(...)):\n    # Caminho absoluto do arquivo solicitado\n    caminho = os.path.normpath(os.path.join(BASE_DIR, nome))\n\n    # Garante que o caminho está dentro do diretório base para evitar path traversal\n    if not caminho.startswith(os.path.abspath(BASE_DIR) + os.sep):\n        raise HTTPException(status_code=404)\n\n    if not os.path.isfile(caminho):\n        raise HTTPException(status_code=404)\n\n    try:\n        with open(caminho, \"rb\") as f:\n            conteudo = f.read()\n    except Exception:\n        raise HTTPException(status_code=404)\n\n    return Response(content=conteudo, status_code=200, media_type=\"application/octet-stream\")\n```",
+          "refusal": null,
+          "annotations": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 311,
+      "completion_tokens": 226,
+      "total_tokens": 537,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": "fp_534465864a"
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "1f62964ed902b906b250d6877d67d3d8ddf1057d30da732530ac8309dc1e9db0",
+  "concluida_em": "2026-11-03T13:19:30.239502+00:00"
+}

@@ -1,0 +1,33 @@
+[
+  {
+    "registrada_em": "2026-11-03T13:00:20.293579+00:00",
+    "motivo": "PermissionError transitorio na substituicao atomica no OneDrive; retentativas somente de E/S, sem repetir geracoes",
+    "fontes_anteriores": {
+      "tarefas/T04.json": "074a50cba63252ff588fa4fc0b4745e126060affd36ad7a76e787895322a16a2",
+      "t04_verificador.py": "5e908ebf9301b860c9452e02e7e1341d4f4a64d55f1d041ee8d24a468e8fb362",
+      "t04_referencias.py": "9b7adb7773f9af4b28d3c6e960f47c2e9c54787e2326705fb82d912e99b61d4b",
+      "t04_worker_linux.py": "f272561ad9342f286237fd9828150408f60cadce5a022c5ec3fea25de5809407",
+      "t04_docker.py": "821ea57817d577356d531fdaca12d0b6d7e4fe487c5839fc3bbef1231ebe15ba",
+      "t04_coleta.py": "b5ef33170632a27decf92b6d14b2c21b600b3930993d20cadb88b0cb9b9a2eec",
+      "docker/t04/Dockerfile": "e2c575a35f3532b3dc2262438b37c8dc6357edd5c556abb4dfc732b324f3af01",
+      "docker/t04/requirements.txt": "92db3ce3b3f144cc976ee8156161afa5f56fac24d76538f192439a082883ad53"
+    },
+    "fontes_atuais": {
+      "tarefas/T04.json": "074a50cba63252ff588fa4fc0b4745e126060affd36ad7a76e787895322a16a2",
+      "t04_verificador.py": "5e908ebf9301b860c9452e02e7e1341d4f4a64d55f1d041ee8d24a468e8fb362",
+      "t04_referencias.py": "9b7adb7773f9af4b28d3c6e960f47c2e9c54787e2326705fb82d912e99b61d4b",
+      "t04_worker_linux.py": "f272561ad9342f286237fd9828150408f60cadce5a022c5ec3fea25de5809407",
+      "t04_docker.py": "821ea57817d577356d531fdaca12d0b6d7e4fe487c5839fc3bbef1231ebe15ba",
+      "t04_coleta.py": "114b0517bf28ca61303c70cd13b1c78d61f773bdff3d28e49cb06b8f11aab153",
+      "docker/t04/Dockerfile": "e2c575a35f3532b3dc2262438b37c8dc6357edd5c556abb4dfc732b324f3af01",
+      "docker/t04/requirements.txt": "92db3ce3b3f144cc976ee8156161afa5f56fac24d76538f192439a082883ad53"
+    },
+    "amostras_ja_solicitadas": [
+      "t04-01",
+      "t04-02",
+      "t04-03",
+      "t04-04"
+    ],
+    "preservacao": "Script anterior em fontes-originais/t04_coleta.py; prompts, parametros, ordem, imagem e verificadores inalterados"
+  }
+]

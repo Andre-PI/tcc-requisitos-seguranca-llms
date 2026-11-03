@@ -28,9 +28,9 @@ Os resultados são preliminares. Os testes ampliados foram definidos após a col
 - [Resultados comportamentais](docs/resultado-comportamental.md).
 - [Protocolo dos testes e limitações](docs/protocolo-comportamental.md).
 
-## Ampliacao das tarefas
+## Ampliação das tarefas
 
-A T04, download de arquivos, tem prompts e um verificador em validacao com aplicacoes de referencia. [Protocolo](docs/T04-protocolo.md) e [resultado dos controles](docs/T04-validacao.md). Esses dados nao sao geracoes de LLM nem alteram o piloto.
+A T04, download de arquivos, foi validada em Linux com links simbólicos e sete aplicações de referência. Uma coleta exploratória separada reuniu oito gerações, executadas em contêineres sem rede. Consulte o [procedimento](docs/T04-execucao-linux.md) e os [resultados](docs/T04-exploratoria.md). O piloto e a coleta principal permanecem separados dessa etapa.
 
 ## Arquivos
 

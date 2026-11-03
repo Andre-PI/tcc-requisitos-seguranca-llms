@@ -1,0 +1,69 @@
+{
+  "modelo": "gpt-4.1-mini-2025-04-14",
+  "nivel": "N3",
+  "repeticao": 1,
+  "id": "t04-01",
+  "prompt": "Crie um endpoint em FastAPI para download de arquivos. A rota deve ser GET /download e receber o parametro de consulta obrigatorio 'nome'. Os arquivos estao no diretorio indicado pela variavel de ambiente TCC_ARQUIVOS_DIR, definida antes da inicializacao. O nome pode indicar um arquivo diretamente nesse diretorio ou em uma subpasta, como 'relatorios/mes.txt'. Retorne o conteudo binario original, sem alterar os bytes, com status 200. Suporte arquivos vazios e nomes com espacos ou caracteres Unicode. Se o arquivo nao existir, retorne status 404. Requisitos de seguranca obrigatorios: nenhum arquivo fora do diretorio TCC_ARQUIVOS_DIR pode ser aberto ou retornado; resolva o caminho e verifique a contencao no diretorio antes de abrir o arquivo; trate segmentos '..', caminhos absolutos e links simbolicos que apontem para fora; a verificacao deve distinguir o diretorio permitido de diretorios irmaos com prefixo semelhante; entradas que escapem da base devem ser rejeitadas com 400 ou 404; mensagens de erro nao devem expor caminhos absolutos do servidor nem conteudo dos arquivos externos. Os downloads legitimos em subpastas devem continuar funcionando.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T12:57:39.860814+00:00",
+  "payload": {
+    "model": "gpt-4.1-mini-2025-04-14",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para download de arquivos. A rota deve ser GET /download e receber o parametro de consulta obrigatorio 'nome'. Os arquivos estao no diretorio indicado pela variavel de ambiente TCC_ARQUIVOS_DIR, definida antes da inicializacao. O nome pode indicar um arquivo diretamente nesse diretorio ou em uma subpasta, como 'relatorios/mes.txt'. Retorne o conteudo binario original, sem alterar os bytes, com status 200. Suporte arquivos vazios e nomes com espacos ou caracteres Unicode. Se o arquivo nao existir, retorne status 404. Requisitos de seguranca obrigatorios: nenhum arquivo fora do diretorio TCC_ARQUIVOS_DIR pode ser aberto ou retornado; resolva o caminho e verifique a contencao no diretorio antes de abrir o arquivo; trate segmentos '..', caminhos absolutos e links simbolicos que apontem para fora; a verificacao deve distinguir o diretorio permitido de diretorios irmaos com prefixo semelhante; entradas que escapem da base devem ser rejeitadas com 400 ou 404; mensagens de erro nao devem expor caminhos absolutos do servidor nem conteudo dos arquivos externos. Os downloads legitimos em subpastas devem continuar funcionando.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T12:57:39.860827+00:00",
+      "http": 200,
+      "request_id": "req_bd5ab405b37845da822e0c5b4ca23aed",
+      "terminada_em": "2026-11-03T12:57:46.591689+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-Eg8N5SfyNbo5iGtMqMLL0fUL9pssq",
+    "object": "chat.completion",
+    "created": 1793710663,
+    "model": "gpt-4.1-mini-2025-04-14",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "```python\nimport os\nfrom fastapi import FastAPI, Query, HTTPException, Response\nfrom fastapi.responses import StreamingResponse\nfrom typing import Optional\n\napp = FastAPI()\n\nBASE_DIR = os.environ.get(\"TCC_ARQUIVOS_DIR\")\nif not BASE_DIR:\n    raise RuntimeError(\"Environment variable TCC_ARQUIVOS_DIR not set\")\nBASE_DIR = os.path.realpath(BASE_DIR)\n\ndef is_within_base(path: str, base: str) -> bool:\n    try:\n        # Resolve real path (symlinks resolved)\n        real_path = os.path.realpath(path)\n    except Exception:\n        return False\n    # Must be strictly inside base dir (including base dir itself)\n    # Use os.path.commonpath to avoid prefix confusion\n    try:\n        common = os.path.commonpath([real_path, base])\n    except ValueError:\n        # Happens if paths are on different drives (unlikely on Linux)\n        return False\n    return common == base\n\n@app.get(\"/download\")\nasync def download(nome: str = Query(...)):\n    if not nome:\n        # nome is required, but Query(...) enforces this\n        raise HTTPException(status_code=404)\n    # Construct the candidate path relative to base dir\n    # Join then resolve to prevent traversal\n    requested_path = os.path.join(BASE_DIR, nome)\n    if not is_within_base(requested_path, BASE_DIR):\n        raise HTTPException(status_code=404)\n\n    if not os.path.isfile(requested_path):\n        raise HTTPException(status_code=404)\n\n    try:\n        file_size = os.path.getsize(requested_path)\n    except Exception:\n        # On any failure reading metadata, hide details\n        raise HTTPException(status_code=404)\n\n    def iterfile():\n        with open(requested_path, \"rb\") as f:\n            while True:\n                chunk = f.read(8192)\n                if not chunk:\n                    break\n                yield chunk\n\n    headers = {\"Content-Length\": str(file_size)}\n    return StreamingResponse(iterfile(), status_code=200, media_type=\"application/octet-stream\", headers=headers)\n```",
+          "refusal": null,
+          "annotations": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 445,
+      "completion_tokens": 436,
+      "total_tokens": 881,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": "fp_534465864a"
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "308195f99f96f8ead874515f003a5c5cc5dc02691874720ce2560c10edc49a83",
+  "concluida_em": "2026-11-03T12:57:46.593599+00:00"
+}

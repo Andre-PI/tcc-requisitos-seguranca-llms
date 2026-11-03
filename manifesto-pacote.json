@@ -13,13 +13,13 @@
     },
     {
       "caminho": ".gitignore",
-      "bytes": 112,
-      "sha256": "baae1e11e50acac0b75434108bf1792ad5abfb068f07d0ffa7acba2540062197"
+      "bytes": 119,
+      "sha256": "64fb5c6efb4720a715ab18d3240c78eb9cb7408a233f16743e04954a7a9c7002"
     },
     {
       "caminho": "README.md",
-      "bytes": 4174,
-      "sha256": "4cd1c53ad5f10eec5b3d785f585ee121e16ec659ba52397e2e2d424b020478f0"
+      "bytes": 4297,
+      "sha256": "c2d59a1ed02572b1d23d014b7d9acfd60636f1c248f5bd2f5c7bdbd347fe1a7f"
     },
     {
       "caminho": "aceitacao_worker.py",
@@ -398,8 +398,8 @@
     },
     {
       "caminho": "conferir_pacote.py",
-      "bytes": 2350,
-      "sha256": "77c06d27fff332fc9177dba1e0a96d2f385332810ca17b471c879f19506fe1fc"
+      "bytes": 4075,
+      "sha256": "fe73a4a83e5be90293de1f198167375d9ba3234027241332470368f2b503afb3"
     },
     {
       "caminho": "dados/aceitacoes-mais-recentes.json",
@@ -427,19 +427,204 @@
       "sha256": "fc327e5aa2fc5479babea9d6e26cfdd9e43fd9c68412a0c0ec53db9c5ec937c1"
     },
     {
+      "caminho": "dados/t04-exploratoria/emendas.json",
+      "bytes": 2039,
+      "sha256": "3f86cad3d4d5080a891787ab892b55674f791ac3ae885bea8beaed9bc753389f"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/fontes-originais/t04_coleta.py",
+      "bytes": 8489,
+      "sha256": "b5ef33170632a27decf92b6d14b2c21b600b3930993d20cadb88b0cb9b9a2eec"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/plano.json",
+      "bytes": 12876,
+      "sha256": "6cd7d4f422ddc44d4552d713c7a1ee88a37e542ae33ca7f2dadebf58118c0c1f"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/resumo.json",
+      "bytes": 5129,
+      "sha256": "bf23a4803c8b0698eed2e0604a3086ac7afe0e9925fef7be3b3f2126746794da"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-01/amostra.py",
+      "bytes": 1942,
+      "sha256": "308195f99f96f8ead874515f003a5c5cc5dc02691874720ce2560c10edc49a83"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-01/avaliacao.json",
+      "bytes": 13918,
+      "sha256": "cb588c19b138dd61711de21dc496ccb046cf3df024ea3b3451fc42fa3138d64d"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-01/geracao.json",
+      "bytes": 7440,
+      "sha256": "cebc38e4176888a2182b265af1a01062a27051e3b609757299a163334bdcffae"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-02/amostra.py",
+      "bytes": 748,
+      "sha256": "6469123ccba3d7e518a62330c07750de1e9638ffaaa43e8bc484ab1202f4d571"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-02/avaliacao.json",
+      "bytes": 14022,
+      "sha256": "d9a9944f441dffea086c0c4f92a5dab66f5567fffb601d4eb5a51e104985de33"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-02/geracao.json",
+      "bytes": 4024,
+      "sha256": "1accaf37c10f945aa2bb2c44970d68331019e0469a9f5783df2f4c68ffdcc331"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-03/amostra.py",
+      "bytes": 1206,
+      "sha256": "95830437865f8e31bde0f204d0f5445e19fb9056cae7f01f5be3fff88b8957ff"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-03/avaliacao.json",
+      "bytes": 13928,
+      "sha256": "fe8347d2a01d4a44184aff9bae00a4d10def38de339cdf386c25b7eff83bb749"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-03/geracao.json",
+      "bytes": 5610,
+      "sha256": "6b60da94ad6bc44c4881796bff4a0d0e6035702997f5771377bfc6ad8896ea49"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-04/amostra.py",
+      "bytes": 770,
+      "sha256": "c71d319e9a65c4c3b3ee6e715db6a2bd633d562fa96838eebd45a241f99a3112"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-04/avaliacao.json",
+      "bytes": 13928,
+      "sha256": "f177ab4bce6e963e872064ca2c888e8a9fe299a2407f05cb3eb2aa0d3f853539"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-04/geracao-recuperada-original.json",
+      "bytes": 4005,
+      "sha256": "f44fb5134413792af3734f8eedb58b0a7d1a6cebae26bc986b2648a815da790c"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-04/geracao.json",
+      "bytes": 4096,
+      "sha256": "9aeb427dc573d57b3c612c1e0ccfaa51093fceb9eebf8c88bd11552f7000bab4"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-05/amostra.py",
+      "bytes": 1103,
+      "sha256": "cf22f7f12a2467908cbeee5d294e346fcb909c6bb53354ef8c54887c5eed2c49"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-05/avaliacao.json",
+      "bytes": 13918,
+      "sha256": "83c8a0a1efc990da82bce2a4584a1f8ec3b388e618248608d477d071c05878ba"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-05/geracao.json",
+      "bytes": 5308,
+      "sha256": "882a40aa16e79fccd3293b468cf6da7607bdf7e708caca7bacd75f65fd4cc94c"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-06/amostra.py",
+      "bytes": 1511,
+      "sha256": "6910b7618f1b472e8af620a1cd1b09388169936a32bd46496cf4bdbf892468a8"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-06/avaliacao.json",
+      "bytes": 13918,
+      "sha256": "83c8a0a1efc990da82bce2a4584a1f8ec3b388e618248608d477d071c05878ba"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-06/geracao.json",
+      "bytes": 5886,
+      "sha256": "036e9a399e7be6f758e6b12cfe14fac7bb9ce48e75af9d48889774c4dc2fcae9"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-07/amostra.py",
+      "bytes": 1447,
+      "sha256": "a219d112529074d8451888fa4862d863d6a661895b8ab478a7680d8f52ab1ad7"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-07/avaliacao.json",
+      "bytes": 13918,
+      "sha256": "94f08fffa97f44e3ea6773cc9e295645bcf1c6c5bb5a3c1b6fd08f883b06e5d5"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-07/geracao.json",
+      "bytes": 6898,
+      "sha256": "a32f13e736f52e527d4dac721d15eedcf14aab7e07fee9e99efdd98d6cdbb609"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-08/amostra.py",
+      "bytes": 956,
+      "sha256": "1f62964ed902b906b250d6877d67d3d8ddf1057d30da732530ac8309dc1e9db0"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-08/avaliacao.json",
+      "bytes": 14058,
+      "sha256": "db412ef9949c8dc34fc1c3253e34c599bf9ae7b321e9da4ed5f98c7a2fff7598"
+    },
+    {
+      "caminho": "dados/t04-exploratoria/t04-08/geracao.json",
+      "bytes": 5202,
+      "sha256": "5d1e5ff7ac2e0093cc5118b355c735586909bae59aa5c5a43942e3f89592159f"
+    },
+    {
       "caminho": "dados/verificacoes_comportamentais-mais-recentes.json",
       "bytes": 299811,
       "sha256": "d008e736a0b7d16fc14b4c24c1d559d4d6ee4e12ca95e663c86959ae464a8293"
     },
     {
+      "caminho": "docker/t04/Dockerfile",
+      "bytes": 435,
+      "sha256": "e2c575a35f3532b3dc2262438b37c8dc6357edd5c556abb4dfc732b324f3af01"
+    },
+    {
+      "caminho": "docker/t04/requirements.txt",
+      "bytes": 255,
+      "sha256": "92db3ce3b3f144cc976ee8156161afa5f56fac24d76538f192439a082883ad53"
+    },
+    {
+      "caminho": "docker/t04/t04_referencias.py",
+      "bytes": 1812,
+      "sha256": "9b7adb7773f9af4b28d3c6e960f47c2e9c54787e2326705fb82d912e99b61d4b"
+    },
+    {
+      "caminho": "docker/t04/t04_verificador.py",
+      "bytes": 6952,
+      "sha256": "5e908ebf9301b860c9452e02e7e1341d4f4a64d55f1d041ee8d24a468e8fb362"
+    },
+    {
+      "caminho": "docker/t04/t04_worker_linux.py",
+      "bytes": 2285,
+      "sha256": "f272561ad9342f286237fd9828150408f60cadce5a022c5ec3fea25de5809407"
+    },
+    {
+      "caminho": "docs/T04-execucao-linux.md",
+      "bytes": 5962,
+      "sha256": "cdf3c051d20031a19bdc12560731ea27bcd7dc64c8a5f57a57c3caffe15b6e2b"
+    },
+    {
+      "caminho": "docs/T04-exploratoria.md",
+      "bytes": 1210,
+      "sha256": "f944ad477805e4089cdcedd507728db9ac9786bb7abcdee19d4dbc8ab372daed"
+    },
+    {
       "caminho": "docs/T04-prompts.json",
-      "bytes": 5081,
-      "sha256": "674cb09fd5c8922cb52dfd340c7aec0202dc94eb71e597cb450f7e2b6a06d381"
+      "bytes": 5713,
+      "sha256": "7933e4c0ae8d312430f56633ea5cb328e23acf43013f238140f0750e7415da87"
     },
     {
       "caminho": "docs/T04-protocolo.md",
-      "bytes": 6610,
-      "sha256": "e31be8b4f479fdb46ff9ca395d6916cf551899c00312f842225fcee83390e784"
+      "bytes": 6963,
+      "sha256": "6893a99173758ec5e72cd6386edeb068f22137b24aa32c743c5db7813226d19d"
+    },
+    {
+      "caminho": "docs/T04-validacao-linux.json",
+      "bytes": 110079,
+      "sha256": "6e30df52f17c575aa5a99e9e7bf6dc49076cb5bed7281f3a1991c6eb63ac778c"
     },
     {
       "caminho": "docs/T04-validacao.json",
@@ -3327,6 +3512,16 @@
       "sha256": "cde092c5b0243423108d7a7f43cd241e57a7c56b147579522d523e1d9ffaa689"
     },
     {
+      "caminho": "t04_coleta.py",
+      "bytes": 8975,
+      "sha256": "114b0517bf28ca61303c70cd13b1c78d61f773bdff3d28e49cb06b8f11aab153"
+    },
+    {
+      "caminho": "t04_docker.py",
+      "bytes": 3886,
+      "sha256": "821ea57817d577356d531fdaca12d0b6d7e4fe487c5839fc3bbef1231ebe15ba"
+    },
+    {
       "caminho": "t04_referencias.py",
       "bytes": 1812,
       "sha256": "9b7adb7773f9af4b28d3c6e960f47c2e9c54787e2326705fb82d912e99b61d4b"
@@ -3337,9 +3532,14 @@
       "sha256": "5e908ebf9301b860c9452e02e7e1341d4f4a64d55f1d041ee8d24a468e8fb362"
     },
     {
+      "caminho": "t04_worker_linux.py",
+      "bytes": 2285,
+      "sha256": "f272561ad9342f286237fd9828150408f60cadce5a022c5ec3fea25de5809407"
+    },
+    {
       "caminho": "tarefas/T04.json",
-      "bytes": 2685,
-      "sha256": "d7286fbd8a36339217b54b6eeef2044703765285e31dc26cdb16485df783a6c0"
+      "bytes": 2852,
+      "sha256": "074a50cba63252ff588fa4fc0b4745e126060affd36ad7a76e787895322a16a2"
     },
     {
       "caminho": "tests/test_aceitacao.py",
@@ -3355,6 +3555,21 @@
       "caminho": "tests/test_t04.py",
       "bytes": 3128,
       "sha256": "847c53a2d5d5dda1a32f9fa9dd8a63f11a1096f05ad8845ed5c5b5492bdf3248"
+    },
+    {
+      "caminho": "tests/test_t04_coleta.py",
+      "bytes": 2096,
+      "sha256": "a5b365e06ee01c6d1e806fe17085a92ea884a943d41a8fcd9c66958147bda696"
+    },
+    {
+      "caminho": "tests/test_t04_docker.py",
+      "bytes": 964,
+      "sha256": "3e13187547c13ed626704cb363bf5b8222c153ec3419e6c3619990448f976ca5"
+    },
+    {
+      "caminho": "tests/test_t04_persistencia.py",
+      "bytes": 733,
+      "sha256": "8bd48cb5baf27fcc7a9f570c929786b861121442757e35ca983d1caaac571cf0"
     },
     {
       "caminho": "validar_aceitacao.py",
@@ -3373,5 +3588,5 @@
     }
   ],
   "revisao_documental": "2026-11-03; metodologia e referencial v04; dados do piloto preservados",
-  "ampliacao_T04": "Somente contrato, referencias e validacao do instrumento; sem geracoes de LLM"
+  "ampliacao_T04": "Linux validado com links; 8 geracoes exploratorias, 8 requisicoes; fora do banco do piloto e da coleta principal"
 }
