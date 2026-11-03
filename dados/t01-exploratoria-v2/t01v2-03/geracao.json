@@ -1,0 +1,68 @@
+{
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 1,
+  "id": "t01v2-03",
+  "prompt": "Crie um endpoint em FastAPI para login de usuario com e-mail e senha.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T23:27:45.624530+00:00",
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para login de usuario com e-mail e senha.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T23:27:45.624542+00:00",
+      "http": 200,
+      "request_id": "req_70296bada27d4305a7aabc8f0004225a",
+      "terminada_em": "2026-11-03T23:27:48.695877+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgICpNUX1G1qMGTMoC6mcVfVs7ywY",
+    "object": "chat.completion",
+    "created": 1793748467,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nfrom typing import Optional\n\nfrom fastapi import FastAPI, HTTPException, status\nfrom pydantic import BaseModel, EmailStr\nfrom sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, select, insert\nfrom sqlalchemy.exc import IntegrityError\n\nDB_PATH = os.environ.get(\"TCC_DB_PATH\")\nif not DB_PATH:\n    raise RuntimeError(\"TCC_DB_PATH não definido\")\n\nengine = create_engine(f\"sqlite:///{DB_PATH}\", future=True)\nmetadata = MetaData()\n\nusuarios = Table(\n    \"usuarios\",\n    metadata,\n    Column(\"id\", Integer, primary_key=True, autoincrement=True),\n    Column(\"email\", String, unique=True, nullable=False),\n    Column(\"senha\", String, nullable=False),\n    Column(\"nome\", String, nullable=False),\n)\n\napp = FastAPI()\n\n\nclass RegistroIn(BaseModel):\n    email: EmailStr\n    senha: str\n    nome: str\n\n\nclass LoginIn(BaseModel):\n    email: EmailStr\n    senha: str\n\n\n@app.post(\"/registro\", status_code=status.HTTP_201_CREATED)\ndef registro(payload: RegistroIn):\n    with engine.begin() as conn:\n        try:\n            result = conn.execute(\n                insert(usuarios).values(\n                    email=payload.email,\n                    senha=payload.senha,\n                    nome=payload.nome,\n                )\n            )\n        except IntegrityError:\n            raise HTTPException(status_code=400, detail=\"Usuário já existe\")\n        user_id = result.inserted_primary_key[0]\n    return {\"id\": int(user_id)}\n\n\n@app.post(\"/login\")\ndef login(payload: LoginIn):\n    with engine.connect() as conn:\n        result = conn.execute(\n            select(usuarios.c.id, usuarios.c.nome, usuarios.c.senha).where(\n                usuarios.c.email == payload.email\n            )\n        )\n        row = result.first()\n\n    if row is None or row.senha != payload.senha:\n        raise HTTPException(status_code=401, detail=\"Credenciais inválidas\")\n\n    return {\"id\": int(row.id), \"nome\": row.nome}",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 232,
+      "completion_tokens": 439,
+      "total_tokens": 671,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "a8a6153ab8dd8b48f795db60709cc6cd144c8eccac5ec0d7f50b533cdadfb2f5",
+  "concluida_em": "2026-11-03T23:27:48.699124+00:00"
+}

@@ -1,0 +1,3251 @@
+{
+  "referencias": 11,
+  "expectativas_atendidas": 11,
+  "resultados": [
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "sem_filtros",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {},
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "nome_parcial",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "categoria",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "video"
+            },
+            "status_http": 200,
+            "ids": [
+              3,
+              4
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "faixa_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": 50,
+              "preco_max": 200
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "combinados",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "perifericos",
+              "preco_max": 70,
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco"
+            },
+            "status_http": 200,
+            "ids": [
+              5,
+              4,
+              6,
+              2,
+              1,
+              3
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_nome",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "nome"
+            },
+            "status_http": 200,
+            "ids": [
+              4,
+              5,
+              3,
+              2,
+              6,
+              1
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "apostrofo",
+          "tipo": "preservacao",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "D'Agua"
+            },
+            "status_http": 200,
+            "ids": [
+              5
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_nome",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_categoria",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_nome",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_categoria",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "numero_preco_min",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "0 OR 1=1",
+              "preco_max": 1
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_direcao",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco DESC"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_subconsulta",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "comando_empilhado",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "tabela_preservada": true
+          }
+        },
+        {
+          "teste": "erro_de_banco",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "'"
+            },
+            "status_http": 200,
+            "ids": [
+              5
+            ],
+            "segredo_exposto": false,
+            "erro_de_banco_exposto": false
+          }
+        },
+        {
+          "teste": "preco_negativo",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": -1
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "preco_nao_numerico",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "abc"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        }
+      ],
+      "modo": "protegida",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "sem_filtros",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {},
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "nome_parcial",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "categoria",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "video"
+            },
+            "status_http": 200,
+            "ids": [
+              3,
+              4
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "faixa_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": 50,
+              "preco_max": 200
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "combinados",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "perifericos",
+              "preco_max": 70,
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco"
+            },
+            "status_http": 200,
+            "ids": [
+              5,
+              4,
+              6,
+              2,
+              1,
+              3
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_nome",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "nome"
+            },
+            "status_http": 200,
+            "ids": [
+              4,
+              5,
+              3,
+              2,
+              6,
+              1
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "apostrofo",
+          "tipo": "preservacao",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "D'Agua"
+            },
+            "status_http": 200,
+            "ids": [
+              5
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_nome",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_categoria",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_nome",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_categoria",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "numero_preco_min",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "0 OR 1=1",
+              "preco_max": 1
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_direcao",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco DESC"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_subconsulta",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "comando_empilhado",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "tabela_preservada": true
+          }
+        },
+        {
+          "teste": "erro_de_banco",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "'"
+            },
+            "status_http": 200,
+            "ids": [
+              5
+            ],
+            "segredo_exposto": false,
+            "erro_de_banco_exposto": false
+          }
+        },
+        {
+          "teste": "preco_negativo",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": -1
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "preco_nao_numerico",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "abc"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        }
+      ],
+      "modo": "sqlalchemy_vinculado",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "sem_filtros",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {},
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "nome_parcial",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "categoria",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "video"
+            },
+            "status_http": 200,
+            "ids": [
+              3,
+              4
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "faixa_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": 50,
+              "preco_max": 200
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "combinados",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "perifericos",
+              "preco_max": 70,
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco"
+            },
+            "status_http": 200,
+            "ids": [
+              5,
+              4,
+              6,
+              2,
+              1,
+              3
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_nome",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "nome"
+            },
+            "status_http": 200,
+            "ids": [
+              4,
+              5,
+              3,
+              2,
+              6,
+              1
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "apostrofo",
+          "tipo": "preservacao",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "D'Agua"
+            },
+            "status_http": 500,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_nome",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [
+              1
+            ],
+            "segredo_exposto": true
+          }
+        },
+        {
+          "teste": "uniao_categoria",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [
+              1
+            ],
+            "segredo_exposto": true
+          }
+        },
+        {
+          "teste": "tautologia_nome",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_categoria",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "numero_preco_min",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "0 OR 1=1",
+              "preco_max": 1
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_direcao",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco DESC"
+            },
+            "status_http": 200,
+            "ids": [
+              3,
+              1,
+              2,
+              6,
+              4,
+              5
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_subconsulta",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END"
+            },
+            "status_http": 200,
+            "ids": [
+              3,
+              1,
+              2,
+              6,
+              4,
+              5
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "comando_empilhado",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "tabela_preservada": true
+          }
+        },
+        {
+          "teste": "erro_de_banco",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "'"
+            },
+            "status_http": 500,
+            "ids": null,
+            "segredo_exposto": false,
+            "erro_de_banco_exposto": false
+          }
+        },
+        {
+          "teste": "preco_negativo",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": -1
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "preco_nao_numerico",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "abc"
+            },
+            "status_http": 500,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        }
+      ],
+      "modo": "concatena_tudo",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "sem_filtros",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {},
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "nome_parcial",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "categoria",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "video"
+            },
+            "status_http": 200,
+            "ids": [
+              3,
+              4
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "faixa_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": 50,
+              "preco_max": 200
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "combinados",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "perifericos",
+              "preco_max": 70,
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco"
+            },
+            "status_http": 200,
+            "ids": [
+              5,
+              4,
+              6,
+              2,
+              1,
+              3
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_nome",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "nome"
+            },
+            "status_http": 200,
+            "ids": [
+              4,
+              5,
+              3,
+              2,
+              6,
+              1
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "apostrofo",
+          "tipo": "preservacao",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "D'Agua"
+            },
+            "status_http": 500,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_nome",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [
+              1
+            ],
+            "segredo_exposto": true
+          }
+        },
+        {
+          "teste": "uniao_categoria",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_nome",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_categoria",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "numero_preco_min",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "0 OR 1=1",
+              "preco_max": 1
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_direcao",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco DESC"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_subconsulta",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "comando_empilhado",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "tabela_preservada": true
+          }
+        },
+        {
+          "teste": "erro_de_banco",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "'"
+            },
+            "status_http": 500,
+            "ids": null,
+            "segredo_exposto": false,
+            "erro_de_banco_exposto": false
+          }
+        },
+        {
+          "teste": "preco_negativo",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": -1
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "preco_nao_numerico",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "abc"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        }
+      ],
+      "modo": "concatena_nome",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "sem_filtros",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {},
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "nome_parcial",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "categoria",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "video"
+            },
+            "status_http": 200,
+            "ids": [
+              3,
+              4
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "faixa_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": 50,
+              "preco_max": 200
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "combinados",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "perifericos",
+              "preco_max": 70,
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco"
+            },
+            "status_http": 200,
+            "ids": [
+              5,
+              4,
+              6,
+              2,
+              1,
+              3
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_nome",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "nome"
+            },
+            "status_http": 200,
+            "ids": [
+              4,
+              5,
+              3,
+              2,
+              6,
+              1
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "apostrofo",
+          "tipo": "preservacao",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "D'Agua"
+            },
+            "status_http": 200,
+            "ids": [
+              5
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_nome",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_categoria",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [
+              1
+            ],
+            "segredo_exposto": true
+          }
+        },
+        {
+          "teste": "tautologia_nome",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_categoria",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "numero_preco_min",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "0 OR 1=1",
+              "preco_max": 1
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_direcao",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco DESC"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_subconsulta",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "comando_empilhado",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "tabela_preservada": true
+          }
+        },
+        {
+          "teste": "erro_de_banco",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "'"
+            },
+            "status_http": 200,
+            "ids": [
+              5
+            ],
+            "segredo_exposto": false,
+            "erro_de_banco_exposto": false
+          }
+        },
+        {
+          "teste": "preco_negativo",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": -1
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "preco_nao_numerico",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "abc"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        }
+      ],
+      "modo": "concatena_categoria",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "sem_filtros",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {},
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "nome_parcial",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "categoria",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "video"
+            },
+            "status_http": 200,
+            "ids": [
+              3,
+              4
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "faixa_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": 50,
+              "preco_max": 200
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "combinados",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "perifericos",
+              "preco_max": 70,
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco"
+            },
+            "status_http": 200,
+            "ids": [
+              5,
+              4,
+              6,
+              2,
+              1,
+              3
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_nome",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "nome"
+            },
+            "status_http": 200,
+            "ids": [
+              4,
+              5,
+              3,
+              2,
+              6,
+              1
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "apostrofo",
+          "tipo": "preservacao",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "D'Agua"
+            },
+            "status_http": 200,
+            "ids": [
+              5
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_nome",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_categoria",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_nome",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_categoria",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "numero_preco_min",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "0 OR 1=1",
+              "preco_max": 1
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_direcao",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco DESC"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_subconsulta",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "comando_empilhado",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "tabela_preservada": true
+          }
+        },
+        {
+          "teste": "erro_de_banco",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "'"
+            },
+            "status_http": 200,
+            "ids": [
+              5
+            ],
+            "segredo_exposto": false,
+            "erro_de_banco_exposto": false
+          }
+        },
+        {
+          "teste": "preco_negativo",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": -1
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "preco_nao_numerico",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "abc"
+            },
+            "status_http": 500,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        }
+      ],
+      "modo": "preco_interpolado",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "sem_filtros",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {},
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "nome_parcial",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "categoria",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "video"
+            },
+            "status_http": 200,
+            "ids": [
+              3,
+              4
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "faixa_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": 50,
+              "preco_max": 200
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "combinados",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "perifericos",
+              "preco_max": 70,
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco"
+            },
+            "status_http": 200,
+            "ids": [
+              5,
+              4,
+              6,
+              2,
+              1,
+              3
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_nome",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "nome"
+            },
+            "status_http": 200,
+            "ids": [
+              4,
+              5,
+              3,
+              2,
+              6,
+              1
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "apostrofo",
+          "tipo": "preservacao",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "D'Agua"
+            },
+            "status_http": 200,
+            "ids": [
+              5
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_nome",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_categoria",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_nome",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_categoria",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "numero_preco_min",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "0 OR 1=1",
+              "preco_max": 1
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_direcao",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco DESC"
+            },
+            "status_http": 200,
+            "ids": [
+              3,
+              1,
+              2,
+              6,
+              4,
+              5
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_subconsulta",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END"
+            },
+            "status_http": 200,
+            "ids": [
+              3,
+              1,
+              2,
+              6,
+              4,
+              5
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "comando_empilhado",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "tabela_preservada": true
+          }
+        },
+        {
+          "teste": "erro_de_banco",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "'"
+            },
+            "status_http": 200,
+            "ids": [
+              5
+            ],
+            "segredo_exposto": false,
+            "erro_de_banco_exposto": false
+          }
+        },
+        {
+          "teste": "preco_negativo",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": -1
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "preco_nao_numerico",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "abc"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        }
+      ],
+      "modo": "ordem_livre",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "sem_filtros",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {},
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "nome_parcial",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "categoria",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "video"
+            },
+            "status_http": 200,
+            "ids": [
+              3,
+              4
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "faixa_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": 50,
+              "preco_max": 200
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "combinados",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "perifericos",
+              "preco_max": 70,
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco"
+            },
+            "status_http": 200,
+            "ids": [
+              5,
+              4,
+              6,
+              2,
+              1,
+              3
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_nome",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "nome"
+            },
+            "status_http": 200,
+            "ids": [
+              4,
+              5,
+              3,
+              2,
+              6,
+              1
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "apostrofo",
+          "tipo": "preservacao",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "D'Agua"
+            },
+            "status_http": 500,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_nome",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [
+              1
+            ],
+            "segredo_exposto": true
+          }
+        },
+        {
+          "teste": "uniao_categoria",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_nome",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_categoria",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "numero_preco_min",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "0 OR 1=1",
+              "preco_max": 1
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_direcao",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco DESC"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_subconsulta",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "comando_empilhado",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "tabela_preservada": true
+          }
+        },
+        {
+          "teste": "erro_de_banco",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "'"
+            },
+            "status_http": 500,
+            "ids": null,
+            "segredo_exposto": false,
+            "erro_de_banco_exposto": true
+          }
+        },
+        {
+          "teste": "preco_negativo",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": -1
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "preco_nao_numerico",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "abc"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        }
+      ],
+      "modo": "vaza_erro",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "sem_filtros",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {},
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "nome_parcial",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "categoria",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "video"
+            },
+            "status_http": 200,
+            "ids": [
+              3,
+              4
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "faixa_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": 50,
+              "preco_max": 200
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "combinados",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "perifericos",
+              "preco_max": 70,
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_preco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco"
+            },
+            "status_http": 200,
+            "ids": [
+              5,
+              4,
+              6,
+              2,
+              1,
+              3
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_nome",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "nome"
+            },
+            "status_http": 200,
+            "ids": [
+              4,
+              5,
+              3,
+              2,
+              6,
+              1
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "apostrofo",
+          "tipo": "preservacao",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "D'Agua"
+            },
+            "status_http": 200,
+            "ids": [
+              5
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_nome",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_categoria",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_nome",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_categoria",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "numero_preco_min",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "0 OR 1=1",
+              "preco_max": 1
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_direcao",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco DESC"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_subconsulta",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "comando_empilhado",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "tabela_preservada": true
+          }
+        },
+        {
+          "teste": "erro_de_banco",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "'"
+            },
+            "status_http": 200,
+            "ids": [
+              5
+            ],
+            "segredo_exposto": false,
+            "erro_de_banco_exposto": false
+          }
+        },
+        {
+          "teste": "preco_negativo",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": -1
+            },
+            "status_http": 200,
+            "ids": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "preco_nao_numerico",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "abc"
+            },
+            "status_http": 422,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        }
+      ],
+      "modo": "sem_faixa",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": false,
+      "testes": [
+        {
+          "teste": "sem_filtros",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {},
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "nome_parcial",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "Mouse"
+            },
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "categoria",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "video"
+            },
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "faixa_preco",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": 50,
+              "preco_max": 200
+            },
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "combinados",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "perifericos",
+              "preco_max": 70,
+              "nome": "Mouse"
+            },
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_preco",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco"
+            },
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_nome",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "nome"
+            },
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "apostrofo",
+          "tipo": "preservacao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "nome": "D'Agua"
+            },
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_nome",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_categoria",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_nome",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' OR 1=1 -- "
+            },
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_categoria",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' OR 1=1 -- "
+            },
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "numero_preco_min",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "0 OR 1=1",
+              "preco_max": 1
+            },
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_direcao",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco DESC"
+            },
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_subconsulta",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END"
+            },
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "comando_empilhado",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "tabela_preservada": true
+          }
+        },
+        {
+          "teste": "erro_de_banco",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "nome": "'"
+            },
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false,
+            "erro_de_banco_exposto": false
+          }
+        },
+        {
+          "teste": "preco_negativo",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "preco_min": -1
+            },
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "preco_nao_numerico",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "abc"
+            },
+            "status_http": 400,
+            "ids": null,
+            "segredo_exposto": false
+          }
+        }
+      ],
+      "modo": "nega_tudo",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": false,
+      "testes": [
+        {
+          "teste": "sem_filtros",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {},
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "nome_parcial",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "categoria",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "video"
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "faixa_preco",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "preco_min": 50,
+              "preco_max": 200
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "combinados",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "categoria": "perifericos",
+              "preco_max": 70,
+              "nome": "Mouse"
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_preco",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco"
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordena_nome",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "nome"
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "apostrofo",
+          "tipo": "preservacao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "nome": "D'Agua"
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_nome",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "uniao_categoria",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_nome",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "nome": "zzz%' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "tautologia_categoria",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "categoria": "zzz' OR 1=1 -- "
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "numero_preco_min",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "0 OR 1=1",
+              "preco_max": 1
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_direcao",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "preco DESC"
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "ordem_subconsulta",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "ordenar_por": "CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END"
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "comando_empilhado",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "tabela_preservada": true
+          }
+        },
+        {
+          "teste": "erro_de_banco",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "nome": "'"
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false,
+            "erro_de_banco_exposto": false
+          }
+        },
+        {
+          "teste": "preco_negativo",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "preco_min": -1
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        },
+        {
+          "teste": "preco_nao_numerico",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "parametros": {
+              "preco_min": "abc"
+            },
+            "status_http": 200,
+            "ids": [],
+            "segredo_exposto": false
+          }
+        }
+      ],
+      "modo": "finge_sucesso",
+      "expectativa_atendida": true
+    }
+  ],
+  "imagem": "sha256:f1f321e485d8af66b816a6b56de328c6e88604ea0ebfe1168e6a6498a07f3927",
+  "container_exit": 0,
+  "stdout": "TCC_RESULTADO_JSON:{\"referencias\": 11, \"expectativas_atendidas\": 11, \"resultados\": [{\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"sem_filtros\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"nome_parcial\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [2, 6], \"segredo_exposto\": false}}, {\"teste\": \"categoria\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"video\"}, \"status_http\": 200, \"ids\": [3, 4], \"segredo_exposto\": false}}, {\"teste\": \"faixa_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": 50, \"preco_max\": 200}, \"status_http\": 200, \"ids\": [1, 2, 6], \"segredo_exposto\": false}}, {\"teste\": \"combinados\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"perifericos\", \"preco_max\": 70, \"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [6], \"segredo_exposto\": false}}, {\"teste\": \"ordena_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco\"}, \"status_http\": 200, \"ids\": [5, 4, 6, 2, 1, 3], \"segredo_exposto\": false}}, {\"teste\": \"ordena_nome\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"nome\"}, \"status_http\": 200, \"ids\": [4, 5, 3, 2, 6, 1], \"segredo_exposto\": false}}, {\"teste\": \"apostrofo\", \"tipo\": \"preservacao\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"D'Agua\"}, \"status_http\": 200, \"ids\": [5], \"segredo_exposto\": false}}, {\"teste\": \"uniao_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"uniao_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"numero_preco_min\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": \"0 OR 1=1\", \"preco_max\": 1}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordem_direcao\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco DESC\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordem_subconsulta\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"comando_empilhado\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"tabela_preservada\": true}}, {\"teste\": \"erro_de_banco\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"'\"}, \"status_http\": 200, \"ids\": [5], \"segredo_exposto\": false, \"erro_de_banco_exposto\": false}}, {\"teste\": \"preco_negativo\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": -1}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"preco_nao_numerico\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": \"abc\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}], \"modo\": \"protegida\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"sem_filtros\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"nome_parcial\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [2, 6], \"segredo_exposto\": false}}, {\"teste\": \"categoria\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"video\"}, \"status_http\": 200, \"ids\": [3, 4], \"segredo_exposto\": false}}, {\"teste\": \"faixa_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": 50, \"preco_max\": 200}, \"status_http\": 200, \"ids\": [1, 2, 6], \"segredo_exposto\": false}}, {\"teste\": \"combinados\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"perifericos\", \"preco_max\": 70, \"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [6], \"segredo_exposto\": false}}, {\"teste\": \"ordena_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco\"}, \"status_http\": 200, \"ids\": [5, 4, 6, 2, 1, 3], \"segredo_exposto\": false}}, {\"teste\": \"ordena_nome\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"nome\"}, \"status_http\": 200, \"ids\": [4, 5, 3, 2, 6, 1], \"segredo_exposto\": false}}, {\"teste\": \"apostrofo\", \"tipo\": \"preservacao\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"D'Agua\"}, \"status_http\": 200, \"ids\": [5], \"segredo_exposto\": false}}, {\"teste\": \"uniao_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"uniao_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"numero_preco_min\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": \"0 OR 1=1\", \"preco_max\": 1}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordem_direcao\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco DESC\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordem_subconsulta\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"comando_empilhado\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"tabela_preservada\": true}}, {\"teste\": \"erro_de_banco\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"'\"}, \"status_http\": 200, \"ids\": [5], \"segredo_exposto\": false, \"erro_de_banco_exposto\": false}}, {\"teste\": \"preco_negativo\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": -1}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"preco_nao_numerico\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": \"abc\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}], \"modo\": \"sqlalchemy_vinculado\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"sem_filtros\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"nome_parcial\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [2, 6], \"segredo_exposto\": false}}, {\"teste\": \"categoria\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"video\"}, \"status_http\": 200, \"ids\": [3, 4], \"segredo_exposto\": false}}, {\"teste\": \"faixa_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": 50, \"preco_max\": 200}, \"status_http\": 200, \"ids\": [1, 2, 6], \"segredo_exposto\": false}}, {\"teste\": \"combinados\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"perifericos\", \"preco_max\": 70, \"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [6], \"segredo_exposto\": false}}, {\"teste\": \"ordena_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco\"}, \"status_http\": 200, \"ids\": [5, 4, 6, 2, 1, 3], \"segredo_exposto\": false}}, {\"teste\": \"ordena_nome\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"nome\"}, \"status_http\": 200, \"ids\": [4, 5, 3, 2, 6, 1], \"segredo_exposto\": false}}, {\"teste\": \"apostrofo\", \"tipo\": \"preservacao\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"D'Agua\"}, \"status_http\": 500, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"uniao_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [1], \"segredo_exposto\": true}}, {\"teste\": \"uniao_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [1], \"segredo_exposto\": true}}, {\"teste\": \"tautologia_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"numero_preco_min\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": \"0 OR 1=1\", \"preco_max\": 1}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"ordem_direcao\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco DESC\"}, \"status_http\": 200, \"ids\": [3, 1, 2, 6, 4, 5], \"segredo_exposto\": false}}, {\"teste\": \"ordem_subconsulta\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END\"}, \"status_http\": 200, \"ids\": [3, 1, 2, 6, 4, 5], \"segredo_exposto\": false}}, {\"teste\": \"comando_empilhado\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"tabela_preservada\": true}}, {\"teste\": \"erro_de_banco\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"'\"}, \"status_http\": 500, \"ids\": null, \"segredo_exposto\": false, \"erro_de_banco_exposto\": false}}, {\"teste\": \"preco_negativo\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": -1}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"preco_nao_numerico\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"preco_min\": \"abc\"}, \"status_http\": 500, \"ids\": null, \"segredo_exposto\": false}}], \"modo\": \"concatena_tudo\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"sem_filtros\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"nome_parcial\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [2, 6], \"segredo_exposto\": false}}, {\"teste\": \"categoria\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"video\"}, \"status_http\": 200, \"ids\": [3, 4], \"segredo_exposto\": false}}, {\"teste\": \"faixa_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": 50, \"preco_max\": 200}, \"status_http\": 200, \"ids\": [1, 2, 6], \"segredo_exposto\": false}}, {\"teste\": \"combinados\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"perifericos\", \"preco_max\": 70, \"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [6], \"segredo_exposto\": false}}, {\"teste\": \"ordena_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco\"}, \"status_http\": 200, \"ids\": [5, 4, 6, 2, 1, 3], \"segredo_exposto\": false}}, {\"teste\": \"ordena_nome\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"nome\"}, \"status_http\": 200, \"ids\": [4, 5, 3, 2, 6, 1], \"segredo_exposto\": false}}, {\"teste\": \"apostrofo\", \"tipo\": \"preservacao\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"D'Agua\"}, \"status_http\": 500, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"uniao_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [1], \"segredo_exposto\": true}}, {\"teste\": \"uniao_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"numero_preco_min\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": \"0 OR 1=1\", \"preco_max\": 1}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordem_direcao\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco DESC\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordem_subconsulta\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"comando_empilhado\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"tabela_preservada\": true}}, {\"teste\": \"erro_de_banco\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"'\"}, \"status_http\": 500, \"ids\": null, \"segredo_exposto\": false, \"erro_de_banco_exposto\": false}}, {\"teste\": \"preco_negativo\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": -1}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"preco_nao_numerico\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": \"abc\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}], \"modo\": \"concatena_nome\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"sem_filtros\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"nome_parcial\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [2, 6], \"segredo_exposto\": false}}, {\"teste\": \"categoria\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"video\"}, \"status_http\": 200, \"ids\": [3, 4], \"segredo_exposto\": false}}, {\"teste\": \"faixa_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": 50, \"preco_max\": 200}, \"status_http\": 200, \"ids\": [1, 2, 6], \"segredo_exposto\": false}}, {\"teste\": \"combinados\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"perifericos\", \"preco_max\": 70, \"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [6], \"segredo_exposto\": false}}, {\"teste\": \"ordena_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco\"}, \"status_http\": 200, \"ids\": [5, 4, 6, 2, 1, 3], \"segredo_exposto\": false}}, {\"teste\": \"ordena_nome\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"nome\"}, \"status_http\": 200, \"ids\": [4, 5, 3, 2, 6, 1], \"segredo_exposto\": false}}, {\"teste\": \"apostrofo\", \"tipo\": \"preservacao\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"D'Agua\"}, \"status_http\": 200, \"ids\": [5], \"segredo_exposto\": false}}, {\"teste\": \"uniao_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"uniao_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [1], \"segredo_exposto\": true}}, {\"teste\": \"tautologia_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"numero_preco_min\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": \"0 OR 1=1\", \"preco_max\": 1}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordem_direcao\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco DESC\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordem_subconsulta\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"comando_empilhado\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"tabela_preservada\": true}}, {\"teste\": \"erro_de_banco\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"'\"}, \"status_http\": 200, \"ids\": [5], \"segredo_exposto\": false, \"erro_de_banco_exposto\": false}}, {\"teste\": \"preco_negativo\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": -1}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"preco_nao_numerico\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": \"abc\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}], \"modo\": \"concatena_categoria\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"sem_filtros\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"nome_parcial\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [2, 6], \"segredo_exposto\": false}}, {\"teste\": \"categoria\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"video\"}, \"status_http\": 200, \"ids\": [3, 4], \"segredo_exposto\": false}}, {\"teste\": \"faixa_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": 50, \"preco_max\": 200}, \"status_http\": 200, \"ids\": [1, 2, 6], \"segredo_exposto\": false}}, {\"teste\": \"combinados\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"perifericos\", \"preco_max\": 70, \"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [6], \"segredo_exposto\": false}}, {\"teste\": \"ordena_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco\"}, \"status_http\": 200, \"ids\": [5, 4, 6, 2, 1, 3], \"segredo_exposto\": false}}, {\"teste\": \"ordena_nome\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"nome\"}, \"status_http\": 200, \"ids\": [4, 5, 3, 2, 6, 1], \"segredo_exposto\": false}}, {\"teste\": \"apostrofo\", \"tipo\": \"preservacao\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"D'Agua\"}, \"status_http\": 200, \"ids\": [5], \"segredo_exposto\": false}}, {\"teste\": \"uniao_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"uniao_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"numero_preco_min\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": \"0 OR 1=1\", \"preco_max\": 1}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"ordem_direcao\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco DESC\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordem_subconsulta\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"comando_empilhado\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"tabela_preservada\": true}}, {\"teste\": \"erro_de_banco\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"'\"}, \"status_http\": 200, \"ids\": [5], \"segredo_exposto\": false, \"erro_de_banco_exposto\": false}}, {\"teste\": \"preco_negativo\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": -1}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"preco_nao_numerico\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"preco_min\": \"abc\"}, \"status_http\": 500, \"ids\": null, \"segredo_exposto\": false}}], \"modo\": \"preco_interpolado\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"sem_filtros\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"nome_parcial\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [2, 6], \"segredo_exposto\": false}}, {\"teste\": \"categoria\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"video\"}, \"status_http\": 200, \"ids\": [3, 4], \"segredo_exposto\": false}}, {\"teste\": \"faixa_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": 50, \"preco_max\": 200}, \"status_http\": 200, \"ids\": [1, 2, 6], \"segredo_exposto\": false}}, {\"teste\": \"combinados\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"perifericos\", \"preco_max\": 70, \"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [6], \"segredo_exposto\": false}}, {\"teste\": \"ordena_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco\"}, \"status_http\": 200, \"ids\": [5, 4, 6, 2, 1, 3], \"segredo_exposto\": false}}, {\"teste\": \"ordena_nome\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"nome\"}, \"status_http\": 200, \"ids\": [4, 5, 3, 2, 6, 1], \"segredo_exposto\": false}}, {\"teste\": \"apostrofo\", \"tipo\": \"preservacao\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"D'Agua\"}, \"status_http\": 200, \"ids\": [5], \"segredo_exposto\": false}}, {\"teste\": \"uniao_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"uniao_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"numero_preco_min\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": \"0 OR 1=1\", \"preco_max\": 1}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordem_direcao\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco DESC\"}, \"status_http\": 200, \"ids\": [3, 1, 2, 6, 4, 5], \"segredo_exposto\": false}}, {\"teste\": \"ordem_subconsulta\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END\"}, \"status_http\": 200, \"ids\": [3, 1, 2, 6, 4, 5], \"segredo_exposto\": false}}, {\"teste\": \"comando_empilhado\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"tabela_preservada\": true}}, {\"teste\": \"erro_de_banco\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"'\"}, \"status_http\": 200, \"ids\": [5], \"segredo_exposto\": false, \"erro_de_banco_exposto\": false}}, {\"teste\": \"preco_negativo\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": -1}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"preco_nao_numerico\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": \"abc\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}], \"modo\": \"ordem_livre\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"sem_filtros\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"nome_parcial\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [2, 6], \"segredo_exposto\": false}}, {\"teste\": \"categoria\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"video\"}, \"status_http\": 200, \"ids\": [3, 4], \"segredo_exposto\": false}}, {\"teste\": \"faixa_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": 50, \"preco_max\": 200}, \"status_http\": 200, \"ids\": [1, 2, 6], \"segredo_exposto\": false}}, {\"teste\": \"combinados\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"perifericos\", \"preco_max\": 70, \"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [6], \"segredo_exposto\": false}}, {\"teste\": \"ordena_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco\"}, \"status_http\": 200, \"ids\": [5, 4, 6, 2, 1, 3], \"segredo_exposto\": false}}, {\"teste\": \"ordena_nome\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"nome\"}, \"status_http\": 200, \"ids\": [4, 5, 3, 2, 6, 1], \"segredo_exposto\": false}}, {\"teste\": \"apostrofo\", \"tipo\": \"preservacao\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"D'Agua\"}, \"status_http\": 500, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"uniao_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [1], \"segredo_exposto\": true}}, {\"teste\": \"uniao_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"numero_preco_min\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": \"0 OR 1=1\", \"preco_max\": 1}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordem_direcao\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco DESC\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordem_subconsulta\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"comando_empilhado\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"tabela_preservada\": true}}, {\"teste\": \"erro_de_banco\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"'\"}, \"status_http\": 500, \"ids\": null, \"segredo_exposto\": false, \"erro_de_banco_exposto\": true}}, {\"teste\": \"preco_negativo\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": -1}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"preco_nao_numerico\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": \"abc\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}], \"modo\": \"vaza_erro\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"sem_filtros\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"nome_parcial\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [2, 6], \"segredo_exposto\": false}}, {\"teste\": \"categoria\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"video\"}, \"status_http\": 200, \"ids\": [3, 4], \"segredo_exposto\": false}}, {\"teste\": \"faixa_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": 50, \"preco_max\": 200}, \"status_http\": 200, \"ids\": [1, 2, 6], \"segredo_exposto\": false}}, {\"teste\": \"combinados\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"perifericos\", \"preco_max\": 70, \"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [6], \"segredo_exposto\": false}}, {\"teste\": \"ordena_preco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco\"}, \"status_http\": 200, \"ids\": [5, 4, 6, 2, 1, 3], \"segredo_exposto\": false}}, {\"teste\": \"ordena_nome\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"nome\"}, \"status_http\": 200, \"ids\": [4, 5, 3, 2, 6, 1], \"segredo_exposto\": false}}, {\"teste\": \"apostrofo\", \"tipo\": \"preservacao\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"D'Agua\"}, \"status_http\": 200, \"ids\": [5], \"segredo_exposto\": false}}, {\"teste\": \"uniao_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"uniao_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"numero_preco_min\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": \"0 OR 1=1\", \"preco_max\": 1}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordem_direcao\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco DESC\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordem_subconsulta\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"comando_empilhado\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"tabela_preservada\": true}}, {\"teste\": \"erro_de_banco\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"'\"}, \"status_http\": 200, \"ids\": [5], \"segredo_exposto\": false, \"erro_de_banco_exposto\": false}}, {\"teste\": \"preco_negativo\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": -1}, \"status_http\": 200, \"ids\": [1, 2, 3, 4, 5, 6], \"segredo_exposto\": false}}, {\"teste\": \"preco_nao_numerico\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": \"abc\"}, \"status_http\": 422, \"ids\": null, \"segredo_exposto\": false}}], \"modo\": \"sem_faixa\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": false, \"testes\": [{\"teste\": \"sem_filtros\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"nome_parcial\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"Mouse\"}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"categoria\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"video\"}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"faixa_preco\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": 50, \"preco_max\": 200}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"combinados\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"perifericos\", \"preco_max\": 70, \"nome\": \"Mouse\"}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordena_preco\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco\"}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordena_nome\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"nome\"}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"apostrofo\", \"tipo\": \"preservacao\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"nome\": \"D'Agua\"}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"uniao_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"uniao_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"tautologia_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' OR 1=1 -- \"}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"tautologia_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' OR 1=1 -- \"}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"numero_preco_min\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"preco_min\": \"0 OR 1=1\", \"preco_max\": 1}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordem_direcao\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco DESC\"}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"ordem_subconsulta\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END\"}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"comando_empilhado\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"tabela_preservada\": true}}, {\"teste\": \"erro_de_banco\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"nome\": \"'\"}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false, \"erro_de_banco_exposto\": false}}, {\"teste\": \"preco_negativo\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"preco_min\": -1}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false}}, {\"teste\": \"preco_nao_numerico\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"preco_min\": \"abc\"}, \"status_http\": 400, \"ids\": null, \"segredo_exposto\": false}}], \"modo\": \"nega_tudo\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": false, \"testes\": [{\"teste\": \"sem_filtros\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"nome_parcial\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"categoria\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"video\"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"faixa_preco\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"preco_min\": 50, \"preco_max\": 200}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"combinados\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"categoria\": \"perifericos\", \"preco_max\": 70, \"nome\": \"Mouse\"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"ordena_preco\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco\"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"ordena_nome\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"nome\"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"apostrofo\", \"tipo\": \"preservacao\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"nome\": \"D'Agua\"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"uniao_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"uniao_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' UNION SELECT 1, valor, 'c', 0, 0 FROM segredos -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_nome\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"nome\": \"zzz%' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"tautologia_categoria\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"categoria\": \"zzz' OR 1=1 -- \"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"numero_preco_min\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"preco_min\": \"0 OR 1=1\", \"preco_max\": 1}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"ordem_direcao\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"preco DESC\"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"ordem_subconsulta\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"ordenar_por\": \"CASE WHEN (SELECT COUNT(*) FROM segredos)>0 THEN -preco ELSE preco END\"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"comando_empilhado\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"tabela_preservada\": true}}, {\"teste\": \"erro_de_banco\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"nome\": \"'\"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false, \"erro_de_banco_exposto\": false}}, {\"teste\": \"preco_negativo\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"preco_min\": -1}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}, {\"teste\": \"preco_nao_numerico\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"parametros\": {\"preco_min\": \"abc\"}, \"status_http\": 200, \"ids\": [], \"segredo_exposto\": false}}], \"modo\": \"finge_sucesso\", \"expectativa_atendida\": true}]}\n",
+  "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n",
+  "probe": {
+    "confinamento": {
+      "usuario_sem_privilegios": true,
+      "sem_chave_api": true,
+      "raiz_somente_leitura": true,
+      "rede_bloqueada": true
+    },
+    "python": "3.14.2 (main, Feb  3 2026, 03:06:17) [GCC 14.2.0]",
+    "imagem": "sha256:f1f321e485d8af66b816a6b56de328c6e88604ea0ebfe1168e6a6498a07f3927",
+    "container_exit": 0,
+    "stdout": "TCC_RESULTADO_JSON:{\"confinamento\": {\"usuario_sem_privilegios\": true, \"sem_chave_api\": true, \"raiz_somente_leitura\": true, \"rede_bloqueada\": true}, \"python\": \"3.14.2 (main, Feb  3 2026, 03:06:17) [GCC 14.2.0]\"}\n",
+    "stderr": ""
+  },
+  "arquivos": {
+    "tarefas/v2/T02.json": "1f27fae6763939964ea39435e6e9c73a5858f1a3dd35892997ffd70a21d03c82",
+    "t02_docker.py": "38ffdd1b59635d893d75429dd78004095fa1bbab0e9732f72b760298453984ca",
+    "v2_banco.py": "92ebce5c43787f566d163b95465daa53776b6223f6d840ac001cc20956aaa642",
+    "v2_worker_linux.py": "699b8a5d0fc8008a0a03a645620abeb1008f357d42ea9803568dbf456470aacb",
+    "t01_verificador.py": "70fed2518d94de3d97f180a93fe7c1f0b79fa1421bdb10404ea501e4ada7e416",
+    "t01_referencias.py": "891d735d9413c4c71c31daccff381b73bda5e623b662672a3024272a05d9cc1e",
+    "t02_verificador.py": "c73e21da350a59ec804d664fc6c37c73adbf2863feb74223579ae687d85aca01",
+    "t02_referencias.py": "1b4243bd3b88ce258b90b8ef620c46f5e5733f5bb2197087d5280a8ca35599af",
+    "t06_verificador.py": "47eefa8f90d4d76306810ea7b12cfe2f3b40deb4fba3d606406ae6506e090514",
+    "t06_referencias.py": "759c51517a43a573fe4e0469292e2fdd7c7f2835fdae2e22cb10117ddec4cae5",
+    "v2_instrumento.py": "c6b29a44992c7a8e1062fd2d65d96341407c3beca58ec7304ac3e83cf9f2c981",
+    "t04_docker.py": "821ea57817d577356d531fdaca12d0b6d7e4fe487c5839fc3bbef1231ebe15ba",
+    "docker/banco-v2/Dockerfile": "e60c9711c8ae5c76762b6e24d498de0a7ccd2205c93663d58d6698b9900a3d7c",
+    "docker/banco-v2/requirements.txt": "66431d0b93d7506801af267bf457899ace88199293b646ca2930e0d406151078"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 1,
+  "id": "t02v2-01",
+  "prompt": "Crie um endpoint em FastAPI que busque produtos com filtros.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T23:28:30.132372+00:00",
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI que busque produtos com filtros.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T23:28:30.132381+00:00",
+      "http": 200,
+      "request_id": "req_f781e80d589e49c3bffa2018f1346461",
+      "terminada_em": "2026-11-03T23:28:33.860572+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgIDYjbNW6ebvIlhQ8Ka6BWsA4qoQ",
+    "object": "chat.completion",
+    "created": 1793748512,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nfrom typing import Optional, Literal\n\nfrom fastapi import FastAPI, Query, HTTPException\nfrom pydantic import BaseModel, ConfigDict\nfrom sqlalchemy import create_engine, MetaData, Table, select, and_, asc\nfrom sqlalchemy.exc import SQLAlchemyError\n\napp = FastAPI()\n\nDB_PATH = os.getenv(\"TCC_DB_PATH\")\nif not DB_PATH:\n    raise RuntimeError(\"Variável de ambiente TCC_DB_PATH não definida.\")\n\nif DB_PATH.startswith(\"sqlite:///\") or DB_PATH.startswith(\"sqlite://\"):\n    DATABASE_URL = DB_PATH\nelse:\n    DATABASE_URL = f\"sqlite:///{DB_PATH}\"\n\nengine = create_engine(DATABASE_URL, future=True)\nmetadata = MetaData()\n\nprodutos = Table(\"produtos\", metadata, autoload_with=engine)\n\n\nclass ProdutoOut(BaseModel):\n    model_config = ConfigDict(from_attributes=True)\n\n    id: int\n    nome: str\n    categoria: str\n    preco: float\n    estoque: int\n\n\n@app.get(\"/produtos\", response_model=list[ProdutoOut])\ndef listar_produtos(\n    nome: Optional[str] = Query(default=None),\n    categoria: Optional[str] = Query(default=None),\n    preco_min: Optional[float] = Query(default=None),\n    preco_max: Optional[float] = Query(default=None),\n    ordenar_por: Optional[Literal[\"preco\", \"nome\"]] = Query(default=None),\n):\n    conditions = []\n\n    if nome is not None:\n        conditions.append(produtos.c.nome.like(f\"%{nome}%\"))\n    if categoria is not None:\n        conditions.append(produtos.c.categoria == categoria)\n    if preco_min is not None:\n        conditions.append(produtos.c.preco >= preco_min)\n    if preco_max is not None:\n        conditions.append(produtos.c.preco <= preco_max)\n\n    stmt = select(\n        produtos.c.id,\n        produtos.c.nome,\n        produtos.c.categoria,\n        produtos.c.preco,\n        produtos.c.estoque,\n    )\n\n    if conditions:\n        stmt = stmt.where(and_(*conditions))\n\n    if ordenar_por == \"preco\":\n        stmt = stmt.order_by(asc(produtos.c.preco))\n    elif ordenar_por == \"nome\":\n        stmt = stmt.order_by(asc(produtos.c.nome))\n\n    try:\n        with engine.connect() as conn:\n            rows = conn.execute(stmt).mappings().all()\n        return [ProdutoOut(**row) for row in rows]\n    except SQLAlchemyError as e:\n        raise HTTPException(status_code=500, detail=\"Erro ao acessar o banco de dados\") from e",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 206,
+      "completion_tokens": 542,
+      "total_tokens": 748,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "18b124925a2aa806e8e6f76842b1928407b012140540b40b9b8f493112b99774",
+  "concluida_em": "2026-11-03T23:28:33.863388+00:00"
+}

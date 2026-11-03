@@ -45,7 +45,11 @@ A T03 também foi repetida com o contrato revisado, em uma [nova coleta](docs/T0
 
 A T08, importação de configuração YAML, tem [protocolo e verificador](docs/T08-protocolo.md) validados contra 11 aplicações de referência no Linux, com 24 cenários por aplicação. Os casos de desserialização insegura só criam arquivos marcadores fictícios e são executados em contêiner sem rede. A [coleta exploratória](docs/T08-exploratoria-v2.md) reuniu oito respostas: sete usam carregador seguro, inclusive em N0, e uma foi truncada no limite de tokens.
 
-A T09, perfil público com HTML, e a T10, teste de webhook, foram escritas com o contrato revisado e validadas contra 12 aplicações de referência cada. Consulte os protocolos ([T09](docs/T09-protocolo.md) e [T10](docs/T10-protocolo.md)) e as coletas exploratórias de oito respostas ([T09](docs/T09-exploratoria-v2.md) e [T10](docs/T10-exploratoria-v2.md)). Todas essas coletas têm uma geração por condição e servem para validar o procedimento, não para comparar níveis ou modelos.
+A T09, perfil público com HTML, e a T10, teste de webhook, foram escritas com o contrato revisado e validadas contra 12 aplicações de referência cada. Consulte os protocolos ([T09](docs/T09-protocolo.md) e [T10](docs/T10-protocolo.md)) e as coletas exploratórias de oito respostas ([T09](docs/T09-exploratoria-v2.md) e [T10](docs/T10-exploratoria-v2.md)). 
+
+As tarefas do piloto (T01, T02 e T06) foram refeitas no mesmo formato, com banco SQLite e contrato declarado, e validadas contra 32 referências no total. Consulte o [protocolo](docs/T01-T02-T06-protocolo.md) e as [coletas exploratórias](docs/T01-T02-T06-exploratoria-v2.md). As 72 gerações do piloto permanecem como registro próprio.
+
+Todas essas coletas têm uma geração por condição e servem para validar o procedimento, não para comparar níveis ou modelos. As decisões já tomadas para a coleta principal estão em [decisões](docs/decisoes-coleta-principal.md).
 
 ## Arquivos
 

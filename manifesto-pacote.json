@@ -18,8 +18,8 @@
     },
     {
       "caminho": "README.md",
-      "bytes": 7794,
-      "sha256": "c55657a25d6e10d2bba8229799950858461fd25e00026fdd77bc7bf0896ba386"
+      "bytes": 8243,
+      "sha256": "0f36e17a3a99563bf1b37b98970215b27a5ce15198f71bc67220eee50b26fd52"
     },
     {
       "caminho": "aceitacao_worker.py",
@@ -408,8 +408,8 @@
     },
     {
       "caminho": "conferir_pacote.py",
-      "bytes": 15224,
-      "sha256": "267abedcde11b13d0c15f3c31d0d6afd9ac913629dda701c9e632219556b7cb7"
+      "bytes": 15323,
+      "sha256": "fff0069b1d7e5d445d1fa87b9a666fde97a181bcbd7a7d0306d6869ee74ccf9b"
     },
     {
       "caminho": "dados/aceitacoes-mais-recentes.json",
@@ -435,6 +435,261 @@
       "caminho": "dados/geracoes.jsonl",
       "bytes": 393187,
       "sha256": "fc327e5aa2fc5479babea9d6e26cfdd9e43fd9c68412a0c0ec53db9c5ec937c1"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/plano.json",
+      "bytes": 13080,
+      "sha256": "16d7b56cc9ba227070df85edabc09214788e54010f33c4f29998a08390f9794f"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/resumo.json",
+      "bytes": 7295,
+      "sha256": "e5a545493411fd7e27cc1cebc26f55db6c5a0edc499b01f59e2189b2e83bafa7"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-01/amostra.py",
+      "bytes": 2679,
+      "sha256": "179150314cf7f84dbad3a1b387a1599409ff78a2c094b50b297bc2cb336a0db1"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-01/avaliacao.json",
+      "bytes": 4047,
+      "sha256": "36588d2eb0acd23c761e13301cb2ca9582b5ecae78bfbf0e5184cc72fa47f2a9"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-01/geracao.json",
+      "bytes": 7030,
+      "sha256": "e4ecdb68f56183883e3cf9b549e6fb25d14ab6e4139126ae73802d8dac8d2158"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-02/amostra.py",
+      "bytes": 2251,
+      "sha256": "958d31885dc7eb08e6d854d973b56ac9034d6151b91644f11fefb59101a407c7"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-02/avaliacao.json",
+      "bytes": 4061,
+      "sha256": "45f91d7c403bf3ac8b00790c3f39f22126364336f22b37f5748d4e9477bb629e"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-02/geracao.json",
+      "bytes": 6416,
+      "sha256": "48b5be4dfb358224eacd0c29dee3364d77f32c8705999b8d2b40dca1156bb5ad"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-03/amostra.py",
+      "bytes": 1920,
+      "sha256": "a8a6153ab8dd8b48f795db60709cc6cd144c8eccac5ec0d7f50b533cdadfb2f5"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-03/avaliacao.json",
+      "bytes": 4061,
+      "sha256": "45f91d7c403bf3ac8b00790c3f39f22126364336f22b37f5748d4e9477bb629e"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-03/geracao.json",
+      "bytes": 5425,
+      "sha256": "86e291d41c448bde8ba7c97906e16869f53d26537842f45b0ed4f01ba86b77cd"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-04/amostra.py",
+      "bytes": 2418,
+      "sha256": "56a0fac0d1bf6277ff8a05c06e3b6b359a91301e6e845da644f8465ed9196287"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-04/avaliacao.json",
+      "bytes": 4047,
+      "sha256": "694ed5f6f59990fdc02219b1ff9ee201bec906f6f81d2ae0864cca09c3e4c2e0"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-04/geracao.json",
+      "bytes": 5980,
+      "sha256": "e1bb89359ce2672492ca0646eb7be9d760ab8951889ae2ba144a83b0b4e920f9"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-05/amostra.py",
+      "bytes": 4217,
+      "sha256": "e0361c41a8953efecb99b5f5f6fdcb56bb0c1988197373c5a79bfd5351264ed5"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-05/avaliacao.json",
+      "bytes": 4099,
+      "sha256": "10697ae9fb8926bbbb96e71f24a9c6716717f6ec290d9120f21e69d1f3b17fb6"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-05/geracao.json",
+      "bytes": 8623,
+      "sha256": "5478ce3af1114b5077e75ee760ac34cc62af0959d08e1cca4698d929fe46ad8e"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-06/amostra.py",
+      "bytes": 2121,
+      "sha256": "51ee112881b115055d880ba18f2bf33461928373dc7d9c68abfd72c0e326af29"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-06/avaliacao.json",
+      "bytes": 4061,
+      "sha256": "ce81bdbdc36fa272e50c7bcbb9ed4fa8d7b7e63fcbe192d474b26303438cdca0"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-06/geracao.json",
+      "bytes": 6323,
+      "sha256": "94f8061f03c6d650be5454fcf9a00786b0903d5b5661f9550605fb3617dbe149"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-07/avaliacao.json",
+      "bytes": 138,
+      "sha256": "763e41ff6b5c2d073dee77b521105107b5b0b864c99c7a0d42897bee88c711d5"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-07/geracao.json",
+      "bytes": 11439,
+      "sha256": "48ce1409b22f6803bbdf3351c266c988ee2061013b05f52570eed800eb2c6aaa"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-08/amostra.py",
+      "bytes": 5288,
+      "sha256": "ed52a457455c6dc227ac088fcef2fbad75dc68ac20368508a9335522d13fd98b"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-08/avaliacao.json",
+      "bytes": 4045,
+      "sha256": "c6c80b5b202d0b08590563d13caeb815eec3a684636d11b60a18bdd4cdd7f033"
+    },
+    {
+      "caminho": "dados/t01-exploratoria-v2/t01v2-08/geracao.json",
+      "bytes": 10528,
+      "sha256": "278b747eed1fb8d38809d89418610ed27f98893f3dd6666b2381f0c4d12138a5"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/plano.json",
+      "bytes": 12568,
+      "sha256": "9e75576f3ee645eba74b88331d4c2e33f8f97c0d0f3fa6e5da6d02f8f6db0400"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/resumo.json",
+      "bytes": 6813,
+      "sha256": "4e814366cc732a6d8bb91d4d09154bc0d3d8d8e7316980a1d04eefb2f357c4a9"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-01/amostra.py",
+      "bytes": 2254,
+      "sha256": "18b124925a2aa806e8e6f76842b1928407b012140540b40b9b8f493112b99774"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-01/avaliacao.json",
+      "bytes": 10751,
+      "sha256": "36d414ac8bad95af71665d80dd84913b49d99dac8696ce1ee403347b4411267e"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-01/geracao.json",
+      "bytes": 5652,
+      "sha256": "9e75903eb517b0ae2ce6b61f2d0fd9059081a4622275f201389e8c1d6c350e12"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-02/amostra.py",
+      "bytes": 1897,
+      "sha256": "a20f9cabc1c56cf07d1b212a24563f8111244662b22673176c1a835e2ea133ac"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-02/avaliacao.json",
+      "bytes": 10751,
+      "sha256": "36d414ac8bad95af71665d80dd84913b49d99dac8696ce1ee403347b4411267e"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-02/geracao.json",
+      "bytes": 5990,
+      "sha256": "9adc2e5d6c76af12ef15bd2fef97ac94aeb75ad3829e53016c7de6dbd88b5d1a"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-03/amostra.py",
+      "bytes": 1831,
+      "sha256": "50ffac0153c43620f529effa60124d1a3de15a03220b850789f1b92eb4489aed"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-03/avaliacao.json",
+      "bytes": 10933,
+      "sha256": "170b6b4d73fa6b7b582388b779766e862e9b2fe33c2cfef7004c5cacbe4f7513"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-03/geracao.json",
+      "bytes": 5262,
+      "sha256": "b1255e08cc8a5afc908ede572ac31b6300a0b2c8e7f209a4c6678222ad2354e8"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-04/amostra.py",
+      "bytes": 1790,
+      "sha256": "9112d6ac20e0a045a5919f4bd97ef43de3a3d01cdc514a075b42200463a24c45"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-04/avaliacao.json",
+      "bytes": 10751,
+      "sha256": "36d414ac8bad95af71665d80dd84913b49d99dac8696ce1ee403347b4411267e"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-04/geracao.json",
+      "bytes": 5847,
+      "sha256": "0ff81759bc7b7b5e192339201d5f29267976e7fb0996c84e71caa90408292152"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-05/amostra.py",
+      "bytes": 2475,
+      "sha256": "b675ef2ea5a02593b1b31f6cf59e9173db440be55f7d79b61fbd074e0e53c457"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-05/avaliacao.json",
+      "bytes": 10301,
+      "sha256": "b92e22a9ac7a37ab3a6c735485a565448824b16af55120ea9cb8d7f70c3b41df"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-05/geracao.json",
+      "bytes": 6739,
+      "sha256": "551cf045597befc806badf571a2e23d5d8155cc46b00ae9b367d8818393862cc"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-06/amostra.py",
+      "bytes": 3390,
+      "sha256": "73a99d7f0a149ddba3c2693d66c0dc306a78e560769d0ddbe82b5c9679f56260"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-06/avaliacao.json",
+      "bytes": 10651,
+      "sha256": "57bb15fe42524b53dcda0c7c8776699fb5ea54fa70b2df9bc97b877b6485432f"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-06/geracao.json",
+      "bytes": 8358,
+      "sha256": "d6caa3eda3b0fae281a66ee01437f764c439f3542017841bee90ac74c29f5390"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-07/amostra.py",
+      "bytes": 3880,
+      "sha256": "6a2cd8585622f105e051c11ef68aa6412166920d33c89864155467bb986c7ab9"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-07/avaliacao.json",
+      "bytes": 769,
+      "sha256": "e6c64c44184b8cf90ea2eb82c5c2a2f9fb97e8d00b0a8484d02e9ccc2be1beff"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-07/geracao.json",
+      "bytes": 8217,
+      "sha256": "13d0218230ebaadcd817fb7afc05f831a013cdefdf490f2bb43cd5551c9bb6c9"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-08/amostra.py",
+      "bytes": 3426,
+      "sha256": "e8b852b2743449446f1623b3984d27c25bdcd0e14aeb87098e8b60b508769215"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-08/avaliacao.json",
+      "bytes": 10651,
+      "sha256": "57bb15fe42524b53dcda0c7c8776699fb5ea54fa70b2df9bc97b877b6485432f"
+    },
+    {
+      "caminho": "dados/t02-exploratoria-v2/t02v2-08/geracao.json",
+      "bytes": 8434,
+      "sha256": "bb6c9fc2ebb01d8c1aaf4d381f4cfd25300107be9871bbc9845d3cf46302c491"
     },
     {
       "caminho": "dados/t03-exploratoria-v2/plano.json",
@@ -1432,6 +1687,136 @@
       "sha256": "7144e009325e32e5b5e327afed80ace2c6ef9b90b00640a9c76530ac51f40ae3"
     },
     {
+      "caminho": "dados/t06-exploratoria-v2/plano.json",
+      "bytes": 15066,
+      "sha256": "b0f429b05ee01af4889660204f69f758b95525841c49751642cfcfeab52d03dc"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/resumo.json",
+      "bytes": 6913,
+      "sha256": "dc0a6197d19a3250a42d94c34bde2be95a158cde7ed574934ea01b29f307f5c4"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-01/amostra.py",
+      "bytes": 2227,
+      "sha256": "9dcff5853f39ef17a760edfeee64a507333b8e8b35fc4eba4f35dc0b8e1472d3"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-01/avaliacao.json",
+      "bytes": 3883,
+      "sha256": "7444f4cd3740bcbae454bec5ca5d06dfe099c6c6f775e5837cc11d80029332fd"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-01/geracao.json",
+      "bytes": 7164,
+      "sha256": "a72dd0385bf3fb10f0def62e7546e6f0c02f599197da8a1536a2344e9361394f"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-02/amostra.py",
+      "bytes": 2084,
+      "sha256": "e004ecbf557e7be47c24f9a409cd5a0b30f2fb1e39c691b9033a8197413e579b"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-02/avaliacao.json",
+      "bytes": 3883,
+      "sha256": "7444f4cd3740bcbae454bec5ca5d06dfe099c6c6f775e5837cc11d80029332fd"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-02/geracao.json",
+      "bytes": 5964,
+      "sha256": "bd24fc2b0f6da8619d3acbe839c7ba6021e6b3ce0400273468ba43f7765f9313"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-03/amostra.py",
+      "bytes": 1956,
+      "sha256": "dd4d865f30def47095134643f21520e09c50d0138a4c06ec6b36bcbdfcb9f2a6"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-03/avaliacao.json",
+      "bytes": 3885,
+      "sha256": "0a439a0bdf35a954fbb51aa5eb45851ac70ab61527df9440c29ea6df01123f26"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-03/geracao.json",
+      "bytes": 5892,
+      "sha256": "1b302c60ce9901cadeae22a25a8b9dd404432e5d0acf9b4fb56a9dbc7416bd31"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-04/amostra.py",
+      "bytes": 2157,
+      "sha256": "c8424daca61b19606d40058a330a7edd92ce0a5ee744f3560f5f4c62f478b53d"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-04/avaliacao.json",
+      "bytes": 3883,
+      "sha256": "7444f4cd3740bcbae454bec5ca5d06dfe099c6c6f775e5837cc11d80029332fd"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-04/geracao.json",
+      "bytes": 6932,
+      "sha256": "be215cafda6d2926625ef5e7b3b34da0f40e89adf2decfa3b23af67928d2770e"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-05/amostra.py",
+      "bytes": 1996,
+      "sha256": "9d344fc4cb0f48712f315e481610203bdae304425c2441dd182ca16aedd3dc17"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-05/avaliacao.json",
+      "bytes": 3883,
+      "sha256": "7444f4cd3740bcbae454bec5ca5d06dfe099c6c6f775e5837cc11d80029332fd"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-05/geracao.json",
+      "bytes": 7672,
+      "sha256": "ea3d7dfcf9f5671543b77af76a8d3b118635c2e3e60160400b8abb16bed6035a"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-06/amostra.py",
+      "bytes": 2139,
+      "sha256": "3622f95a6d3f7d6d6bbb05a266abe6183158a1ede279e3df4dc05609cddef3aa"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-06/avaliacao.json",
+      "bytes": 3883,
+      "sha256": "7444f4cd3740bcbae454bec5ca5d06dfe099c6c6f775e5837cc11d80029332fd"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-06/geracao.json",
+      "bytes": 6881,
+      "sha256": "6b2f177afd73c66f1ebf7fd01ebd09f482a84cf52ab413d6ee24ad66d0386b6e"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-07/amostra.py",
+      "bytes": 2127,
+      "sha256": "0001c03888f2134e6f61347756afc621bb84aa9b8496edf6169d40b8736c5bc9"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-07/avaliacao.json",
+      "bytes": 3883,
+      "sha256": "7444f4cd3740bcbae454bec5ca5d06dfe099c6c6f775e5837cc11d80029332fd"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-07/geracao.json",
+      "bytes": 7784,
+      "sha256": "79325083f3db22078ba62bfafb4902413085e183db6e8409e58bcf99c7326073"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-08/amostra.py",
+      "bytes": 3049,
+      "sha256": "f1b811ae22d75cb579d090040c38e1ad1f9d7767a8e305bd16fd1bfc859b3a10"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-08/avaliacao.json",
+      "bytes": 3883,
+      "sha256": "7444f4cd3740bcbae454bec5ca5d06dfe099c6c6f775e5837cc11d80029332fd"
+    },
+    {
+      "caminho": "dados/t06-exploratoria-v2/t06v2-08/geracao.json",
+      "bytes": 7968,
+      "sha256": "acc72a04e3cd9a1ffb805210ac6a09b18cbb61402a3dbda1b4feecfeb426440c"
+    },
+    {
       "caminho": "dados/t07-exploratoria-v2/plano.json",
       "bytes": 13859,
       "sha256": "04d8be2506563e70ed6e66b65fabc99eba0b0b99c4993300fe70eff9815543ae"
@@ -2082,6 +2467,56 @@
       "sha256": "d008e736a0b7d16fc14b4c24c1d559d4d6ee4e12ca95e663c86959ae464a8293"
     },
     {
+      "caminho": "docker/banco-v2/Dockerfile",
+      "bytes": 541,
+      "sha256": "e60c9711c8ae5c76762b6e24d498de0a7ccd2205c93663d58d6698b9900a3d7c"
+    },
+    {
+      "caminho": "docker/banco-v2/requirements.txt",
+      "bytes": 452,
+      "sha256": "66431d0b93d7506801af267bf457899ace88199293b646ca2930e0d406151078"
+    },
+    {
+      "caminho": "docker/banco-v2/t01_referencias.py",
+      "bytes": 5087,
+      "sha256": "891d735d9413c4c71c31daccff381b73bda5e623b662672a3024272a05d9cc1e"
+    },
+    {
+      "caminho": "docker/banco-v2/t01_verificador.py",
+      "bytes": 5630,
+      "sha256": "70fed2518d94de3d97f180a93fe7c1f0b79fa1421bdb10404ea501e4ada7e416"
+    },
+    {
+      "caminho": "docker/banco-v2/t02_referencias.py",
+      "bytes": 5651,
+      "sha256": "1b4243bd3b88ce258b90b8ef620c46f5e5733f5bb2197087d5280a8ca35599af"
+    },
+    {
+      "caminho": "docker/banco-v2/t02_verificador.py",
+      "bytes": 4793,
+      "sha256": "c73e21da350a59ec804d664fc6c37c73adbf2863feb74223579ae687d85aca01"
+    },
+    {
+      "caminho": "docker/banco-v2/t06_referencias.py",
+      "bytes": 3962,
+      "sha256": "759c51517a43a573fe4e0469292e2fdd7c7f2835fdae2e22cb10117ddec4cae5"
+    },
+    {
+      "caminho": "docker/banco-v2/t06_verificador.py",
+      "bytes": 4185,
+      "sha256": "47eefa8f90d4d76306810ea7b12cfe2f3b40deb4fba3d606406ae6506e090514"
+    },
+    {
+      "caminho": "docker/banco-v2/v2_banco.py",
+      "bytes": 912,
+      "sha256": "92ebce5c43787f566d163b95465daa53776b6223f6d840ac001cc20956aaa642"
+    },
+    {
+      "caminho": "docker/banco-v2/v2_worker_linux.py",
+      "bytes": 2824,
+      "sha256": "699b8a5d0fc8008a0a03a645620abeb1008f357d42ea9803568dbf456470aacb"
+    },
+    {
       "caminho": "docker/t03/Dockerfile",
       "bytes": 435,
       "sha256": "09b7e9cd5d3b9f7c5e09dd60c79a5ca44c1a14ae78dcc20728e0f4d0d2360e21"
@@ -2327,6 +2762,26 @@
       "sha256": "207d01cfce93f7f521af07f0fcf785bb90002d29c395629b4a6106dc0d3b601c"
     },
     {
+      "caminho": "docs/T01-T02-T06-exploratoria-v2.md",
+      "bytes": 4128,
+      "sha256": "8f1984ff2b98ebbb9678bd0bcf82e684b5978525d8123367e5ef0ebf74070717"
+    },
+    {
+      "caminho": "docs/T01-T02-T06-protocolo.md",
+      "bytes": 3732,
+      "sha256": "ae2172add18d66adb4bd7db468a1820f8036b0898603169ea056a2735c219bd9"
+    },
+    {
+      "caminho": "docs/T01-validacao-linux.json",
+      "bytes": 48492,
+      "sha256": "5a2bc7cfb1f9ee0650d0951a363543c738f60183b1642dc3ac17082c4d437d8e"
+    },
+    {
+      "caminho": "docs/T02-validacao-linux.json",
+      "bytes": 130072,
+      "sha256": "77442bf1c23005e85e9f60c1c0b60384f2ee56ee80962b086394503e95c2ff8b"
+    },
+    {
       "caminho": "docs/T03-exploratoria-v2.md",
       "bytes": 2425,
       "sha256": "ae4f1f78936e599cc760501c3c1f6c9d5d9218fd92e650ea83159d564743368f"
@@ -2430,6 +2885,11 @@
       "caminho": "docs/T05c-validacao-linux.json",
       "bytes": 81546,
       "sha256": "1d16cca0ae52e949dcbf5feb0f225ae1cc44081e357c4eceeeffa7ee628fe067"
+    },
+    {
+      "caminho": "docs/T06-validacao-linux.json",
+      "bytes": 42416,
+      "sha256": "212af03cc0855dd6a30058d4882a826f271c240944f42a701cf2ad004c216f7e"
     },
     {
       "caminho": "docs/T07-coleta-protocolo.md",
@@ -2545,6 +3005,11 @@
       "caminho": "docs/criterios-aceitacao.json",
       "bytes": 2886,
       "sha256": "7449284863bc467cb8dfe8451e510f86a531bc3910cf77dc925633bcfe9b63d7"
+    },
+    {
+      "caminho": "docs/decisoes-coleta-principal.md",
+      "bytes": 1620,
+      "sha256": "ffc778383440cff370f40f8d7e09517724853b098d150ac610ed03074500a50b"
     },
     {
       "caminho": "docs/evidencias-texto-piloto.json",
@@ -5427,6 +5892,36 @@
       "sha256": "cde092c5b0243423108d7a7f43cd241e57a7c56b147579522d523e1d9ffaa689"
     },
     {
+      "caminho": "t01_docker.py",
+      "bytes": 252,
+      "sha256": "737a28193d13e23c6f973f0ddc6fefc4a75b850b8f1c7bbabf2febf175f73001"
+    },
+    {
+      "caminho": "t01_referencias.py",
+      "bytes": 5087,
+      "sha256": "891d735d9413c4c71c31daccff381b73bda5e623b662672a3024272a05d9cc1e"
+    },
+    {
+      "caminho": "t01_verificador.py",
+      "bytes": 5630,
+      "sha256": "70fed2518d94de3d97f180a93fe7c1f0b79fa1421bdb10404ea501e4ada7e416"
+    },
+    {
+      "caminho": "t02_docker.py",
+      "bytes": 252,
+      "sha256": "38ffdd1b59635d893d75429dd78004095fa1bbab0e9732f72b760298453984ca"
+    },
+    {
+      "caminho": "t02_referencias.py",
+      "bytes": 5651,
+      "sha256": "1b4243bd3b88ce258b90b8ef620c46f5e5733f5bb2197087d5280a8ca35599af"
+    },
+    {
+      "caminho": "t02_verificador.py",
+      "bytes": 4793,
+      "sha256": "c73e21da350a59ec804d664fc6c37c73adbf2863feb74223579ae687d85aca01"
+    },
+    {
       "caminho": "t03_coleta.py",
       "bytes": 5385,
       "sha256": "7940c9b83f048a455133971c1dacebd3ea7b96c3967c8ac795b281b3ca028e5f"
@@ -5540,6 +6035,21 @@
       "caminho": "t05c_docker.py",
       "bytes": 999,
       "sha256": "bdd9bfd4b4386d079de6817f3579c8a51ed5f3f9dff86c43227261ea9eb94967"
+    },
+    {
+      "caminho": "t06_docker.py",
+      "bytes": 252,
+      "sha256": "358a77a73ba255113ef7b41da79f3942638aaa430efeb9dfa96491bd5e976c58"
+    },
+    {
+      "caminho": "t06_referencias.py",
+      "bytes": 3962,
+      "sha256": "759c51517a43a573fe4e0469292e2fdd7c7f2835fdae2e22cb10117ddec4cae5"
+    },
+    {
+      "caminho": "t06_verificador.py",
+      "bytes": 4185,
+      "sha256": "47eefa8f90d4d76306810ea7b12cfe2f3b40deb4fba3d606406ae6506e090514"
     },
     {
       "caminho": "t07_coleta.py",
@@ -5657,6 +6167,16 @@
       "sha256": "b375639d2e7d6decf33bfab0121eb3b5e6faa655e4f243b82b1fffd35c4eccb4"
     },
     {
+      "caminho": "tarefas/v2/T01.json",
+      "bytes": 2429,
+      "sha256": "407114f3cf93d9c0d66692ff2d8c9744c3256f3db1bee416d00a06c3ba9f6621"
+    },
+    {
+      "caminho": "tarefas/v2/T02.json",
+      "bytes": 1997,
+      "sha256": "1f27fae6763939964ea39435e6e9c73a5858f1a3dd35892997ffd70a21d03c82"
+    },
+    {
       "caminho": "tarefas/v2/T03.json",
       "bytes": 2824,
       "sha256": "190f9ce751ca55456e28d7d77888c9f2d8521909b063722f0d6831620c086b71"
@@ -5675,6 +6195,11 @@
       "caminho": "tarefas/v2/T05c.json",
       "bytes": 3412,
       "sha256": "79e8f4d1e2f0c46be7c233a5f6567a6c24f09231cec77a3dac1b53becc52af46"
+    },
+    {
+      "caminho": "tarefas/v2/T06.json",
+      "bytes": 2359,
+      "sha256": "e076d2fd81ce85e0d2f3d543322ffa32dbf7ad8b6fc6b22cad4405fe006893b1"
     },
     {
       "caminho": "tarefas/v2/T07.json",
@@ -5697,6 +6222,16 @@
       "sha256": "971dadd777b20f67e01ab068c1febe59fd27308744162bf1fa848d5a085f55b7"
     },
     {
+      "caminho": "tarefas/v2/coleta-T01.json",
+      "bytes": 274,
+      "sha256": "79c07c8db5292fe2f2fecf9ec29b8f501e63d7e5104c17955a0fcdcdc4c917bd"
+    },
+    {
+      "caminho": "tarefas/v2/coleta-T02.json",
+      "bytes": 274,
+      "sha256": "1dddc488a50424875a82a1f9bccba00f5944311e996677d1aff24f6b6951f7ac"
+    },
+    {
       "caminho": "tarefas/v2/coleta-T03.json",
       "bytes": 253,
       "sha256": "8ecd66e4b511195e80c204d3b4a6aff0eced4677f0a31ac2436a54430e59ea6a"
@@ -5710,6 +6245,11 @@
       "caminho": "tarefas/v2/coleta-T05c.json",
       "bytes": 316,
       "sha256": "e369be3f2569d4ffbff2db8cee035dc9e1930946b5ac10a7fea78391d20b7a31"
+    },
+    {
+      "caminho": "tarefas/v2/coleta-T06.json",
+      "bytes": 274,
+      "sha256": "b9decd36953ec3e9b7429dbacb5249f733cad3934454f4577d8b4976a95e5322"
     },
     {
       "caminho": "tarefas/v2/coleta-T08.json",
@@ -5730,6 +6270,11 @@
       "caminho": "tests/test_aceitacao.py",
       "bytes": 5162,
       "sha256": "9b2a54f938c012c7cbe85e9bc5a568b6e0814e5e85518028dbbdba9ed90d3519"
+    },
+    {
+      "caminho": "tests/test_banco_v2.py",
+      "bytes": 1720,
+      "sha256": "5f9aeefdfbb084c031731567d69990f738426bce92de5c54d85210152c65becd"
     },
     {
       "caminho": "tests/test_comportamento.py",
@@ -5802,6 +6347,21 @@
       "sha256": "00171179cbb6a067ca95ead83469dd56fbe28feaa96140b9f725cd25737642e8"
     },
     {
+      "caminho": "v2_banco.py",
+      "bytes": 912,
+      "sha256": "92ebce5c43787f566d163b95465daa53776b6223f6d840ac001cc20956aaa642"
+    },
+    {
+      "caminho": "v2_instrumento.py",
+      "bytes": 2947,
+      "sha256": "c6b29a44992c7a8e1062fd2d65d96341407c3beca58ec7304ac3e83cf9f2c981"
+    },
+    {
+      "caminho": "v2_worker_linux.py",
+      "bytes": 2824,
+      "sha256": "699b8a5d0fc8008a0a03a645620abeb1008f357d42ea9803568dbf456470aacb"
+    },
+    {
       "caminho": "validar_aceitacao.py",
       "bytes": 4122,
       "sha256": "88481b94af00787697b7f1bec55324f57e8635763c8a50e28c7748c02463cbab"
@@ -5824,5 +6384,5 @@
   "ampliacao_T05": "8 respostas em 8 chamadas, 7697 tokens; ambiente original com 1 ciclo aprovado e 7 impedimentos; diagnostico v2 com dependencia e dominio: 7 ciclos aprovados e 1 impedimento; revisao de tokens assistida por IA, confer?ncia humana independente pendente.",
   "ampliacao_T07": "8 respostas em 8 chamadas, 5725 tokens; 7 geracoes aprovadas nos relatorios legitimos e 1 impedimento de importacao; sem marcadores em 7 vetores de comandos e 1 de argumentos nas sete executaveis; 5 reprovacoes de robustez; revisao assistida por IA pendente de conferencia humana independente.",
   "ampliacao_T08": "Instrumento validado em Linux: 11 referencias, 24 cenarios por referencia; 47 testes locais aprovados; sem geracoes de LLM.",
-  "ampliacao_contrato_v2": "Contrato comum revisado em tarefas/v2; coletas exploratorias T07, T03, T08, T05b, T05c, T09 e T10 com 8 geracoes cada; coletas v1 preservadas."
+  "ampliacao_contrato_v2": "Contrato comum revisado em tarefas/v2; coletas exploratorias T01, T02, T03, T05b, T05c, T06, T07, T08, T09 e T10 com 8 geracoes cada; coletas anteriores preservadas."
 }

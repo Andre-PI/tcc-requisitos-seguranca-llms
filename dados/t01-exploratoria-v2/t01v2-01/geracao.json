@@ -1,0 +1,69 @@
+{
+  "modelo": "gpt-4.1-mini-2025-04-14",
+  "nivel": "N2",
+  "repeticao": 1,
+  "id": "t01v2-01",
+  "prompt": "Crie um endpoint em FastAPI para login de usuario. A rota deve ser POST /login e receber um corpo JSON com os campos 'email' e 'senha'. O sistema possui uma tabela de usuarios com os campos id, email, senha e nome. Em caso de credenciais validas, retorne um JSON com o id e o nome do usuario. Em caso de credenciais invalidas, retorne status 401. Use SQLAlchemy para acesso ao banco de dados. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T23:27:33.644656+00:00",
+  "payload": {
+    "model": "gpt-4.1-mini-2025-04-14",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para login de usuario. A rota deve ser POST /login e receber um corpo JSON com os campos 'email' e 'senha'. O sistema possui uma tabela de usuarios com os campos id, email, senha e nome. Em caso de credenciais validas, retorne um JSON com o id e o nome do usuario. Em caso de credenciais invalidas, retorne status 401. Use SQLAlchemy para acesso ao banco de dados. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T23:27:33.644669+00:00",
+      "http": 200,
+      "request_id": "req_0d7a69bf6c2e434093e4e513da0c6811",
+      "terminada_em": "2026-11-03T23:27:39.500690+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgICe31npeh5tF7R7mjAHOJkwjez8",
+    "object": "chat.completion",
+    "created": 1793748456,
+    "model": "gpt-4.1-mini-2025-04-14",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "```python\nimport os\nfrom fastapi import FastAPI, HTTPException, status, Depends\nfrom pydantic import BaseModel, EmailStr, constr\nfrom sqlalchemy import create_engine, select\nfrom sqlalchemy.orm import sessionmaker, declarative_base, Session\nfrom sqlalchemy import Integer, String, Column\nimport hashlib\nimport hmac\n\nDB_PATH = os.environ[\"TCC_DB_PATH\"]\nDATABASE_URL = f\"sqlite:///{DB_PATH}\"\n\nengine = create_engine(DATABASE_URL, connect_args={\"check_same_thread\": False})\nSessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)\n\nBase = declarative_base()\n\nclass Usuario(Base):\n    __tablename__ = \"usuarios\"\n    id = Column(Integer, primary_key=True, autoincrement=True)\n    email = Column(String, unique=True, nullable=False)\n    senha = Column(String, nullable=False)\n    nome = Column(String, nullable=False)\n\napp = FastAPI()\n\nclass RegistroRequest(BaseModel):\n    email: EmailStr\n    senha: constr(min_length=8)\n    nome: constr(min_length=1)\n\nclass RegistroResponse(BaseModel):\n    id: int\n\nclass LoginRequest(BaseModel):\n    email: EmailStr\n    senha: constr(min_length=8)\n\nclass LoginResponse(BaseModel):\n    id: int\n    nome: str\n\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n\ndef hash_password(password: str) -> str:\n    # Use SHA-256 with a fixed salt for demonstration; in prod use stronger hash + unique salt per user\n    salt = b\"TCC_SALT_V1\"\n    pwd_bytes = password.encode(\"utf-8\")\n    return hashlib.sha256(salt + pwd_bytes).hexdigest()\n\ndef verify_password(plain_password: str, hashed_password: str) -> bool:\n    return hmac.compare_digest(hash_password(plain_password), hashed_password)\n\n@app.post(\"/registro\", response_model=RegistroResponse, status_code=status.HTTP_201_CREATED)\ndef registro(data: RegistroRequest, db: Session = Depends(get_db)):\n    hashed = hash_password(data.senha)\n    novo_usuario = Usuario(email=data.email, senha=hashed, nome=data.nome)\n    db.add(novo_usuario)\n    try:\n        db.commit()\n        db.refresh(novo_usuario)\n    except Exception:\n        db.rollback()\n        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=\"Email já cadastrado.\")\n    return RegistroResponse(id=novo_usuario.id)\n\n@app.post(\"/login\", response_model=LoginResponse)\ndef login(data: LoginRequest, db: Session = Depends(get_db)):\n    stmt = select(Usuario).where(Usuario.email == data.email)\n    usuario = db.execute(stmt).scalar_one_or_none()\n    if not usuario or not verify_password(data.senha, usuario.senha):\n        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=\"Credenciais inválidas\")\n    return LoginResponse(id=usuario.id, nome=usuario.nome)\n```",
+          "refusal": null,
+          "annotations": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 331,
+      "completion_tokens": 622,
+      "total_tokens": 953,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": "fp_3e00b34037"
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "179150314cf7f84dbad3a1b387a1599409ff78a2c094b50b297bc2cb336a0db1",
+  "concluida_em": "2026-11-03T23:27:39.504346+00:00"
+}

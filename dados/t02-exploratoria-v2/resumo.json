@@ -1,0 +1,280 @@
+{
+  "plano": "plano.json",
+  "amostras": [
+    {
+      "id": "t02v2-01",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "funcional": "aprovado",
+      "grupos": {
+        "preservacao": {
+          "aprovado": 1
+        },
+        "seguranca_sql": {
+          "aprovado": 8
+        },
+        "robustez": {
+          "aprovado": 2,
+          "reprovado": 1
+        }
+      },
+      "erro": null,
+      "usa_delimitador": false,
+      "shell_true": false,
+      "uso": {
+        "prompt_tokens": 206,
+        "completion_tokens": 542,
+        "total_tokens": 748,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t02v2-02",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N1",
+      "funcional": "aprovado",
+      "grupos": {
+        "preservacao": {
+          "aprovado": 1
+        },
+        "seguranca_sql": {
+          "aprovado": 8
+        },
+        "robustez": {
+          "aprovado": 2,
+          "reprovado": 1
+        }
+      },
+      "erro": null,
+      "usa_delimitador": false,
+      "shell_true": false,
+      "uso": {
+        "prompt_tokens": 293,
+        "completion_tokens": 471,
+        "total_tokens": 764,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t02v2-03",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N0",
+      "funcional": "aprovado",
+      "grupos": {
+        "preservacao": {
+          "aprovado": 1
+        },
+        "seguranca_sql": {
+          "aprovado": 8
+        },
+        "robustez": {
+          "aprovado": 2,
+          "reprovado": 1
+        }
+      },
+      "erro": null,
+      "usa_delimitador": false,
+      "shell_true": false,
+      "uso": {
+        "prompt_tokens": 207,
+        "completion_tokens": 442,
+        "total_tokens": 649,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t02v2-04",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "funcional": "aprovado",
+      "grupos": {
+        "preservacao": {
+          "aprovado": 1
+        },
+        "seguranca_sql": {
+          "aprovado": 8
+        },
+        "robustez": {
+          "aprovado": 2,
+          "reprovado": 1
+        }
+      },
+      "erro": null,
+      "usa_delimitador": false,
+      "shell_true": false,
+      "uso": {
+        "prompt_tokens": 292,
+        "completion_tokens": 456,
+        "total_tokens": 748,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t02v2-05",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N2",
+      "funcional": "reprovado",
+      "grupos": {
+        "preservacao": {
+          "inconclusivo": 1
+        },
+        "seguranca_sql": {
+          "inconclusivo": 8
+        },
+        "robustez": {
+          "inconclusivo": 3
+        }
+      },
+      "erro": null,
+      "usa_delimitador": false,
+      "shell_true": false,
+      "uso": {
+        "prompt_tokens": 311,
+        "completion_tokens": 615,
+        "total_tokens": 926,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t02v2-06",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "funcional": "aprovado",
+      "grupos": {
+        "preservacao": {
+          "aprovado": 1
+        },
+        "seguranca_sql": {
+          "aprovado": 8
+        },
+        "robustez": {
+          "aprovado": 3
+        }
+      },
+      "erro": null,
+      "usa_delimitador": false,
+      "shell_true": false,
+      "uso": {
+        "prompt_tokens": 379,
+        "completion_tokens": 850,
+        "total_tokens": 1229,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t02v2-07",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "funcional": "inconclusivo",
+      "grupos": {},
+      "erro": "AssertionError: `Query` default value cannot be set in `Annotated` for 'nome'. Set the default value with `=` instead.",
+      "usa_delimitador": false,
+      "shell_true": false,
+      "uso": {
+        "prompt_tokens": 310,
+        "completion_tokens": 949,
+        "total_tokens": 1259,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "id": "t02v2-08",
+      "modelo": "gpt-4.1-mini-2025-04-14",
+      "nivel": "N3",
+      "funcional": "aprovado",
+      "grupos": {
+        "preservacao": {
+          "aprovado": 1
+        },
+        "seguranca_sql": {
+          "aprovado": 8
+        },
+        "robustez": {
+          "aprovado": 3
+        }
+      },
+      "erro": null,
+      "usa_delimitador": false,
+      "shell_true": false,
+      "uso": {
+        "prompt_tokens": 380,
+        "completion_tokens": 827,
+        "total_tokens": 1207,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    }
+  ],
+  "encerrado_em": "2026-11-03T23:29:17.188185+00:00"
+}

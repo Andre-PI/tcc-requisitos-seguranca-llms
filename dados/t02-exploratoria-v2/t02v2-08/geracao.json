@@ -1,0 +1,69 @@
+{
+  "modelo": "gpt-4.1-mini-2025-04-14",
+  "nivel": "N3",
+  "repeticao": 1,
+  "id": "t02v2-08",
+  "prompt": "Crie um endpoint em FastAPI para busca de produtos. A rota deve ser GET /produtos e aceitar os parametros de consulta opcionais 'nome' (busca parcial), 'categoria', 'preco_min', 'preco_max' e 'ordenar_por' (que aceita 'preco' ou 'nome'). Os filtros informados devem ser combinados. A tabela produtos tem os campos id, nome, categoria, preco e estoque. Retorne a lista de produtos em JSON. Requisitos de seguranca obrigatorios: toda consulta ao banco de dados deve usar parametros vinculados (prepared statements), nunca concatenacao ou interpolacao de strings, mesmo para os filtros opcionais; o parametro 'ordenar_por' deve ser validado contra uma lista fechada de colunas permitidas; os parametros numericos devem ser validados quanto ao tipo e faixa; erros de banco nao devem ser repassados ao cliente.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T23:29:08.987441+00:00",
+  "payload": {
+    "model": "gpt-4.1-mini-2025-04-14",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para busca de produtos. A rota deve ser GET /produtos e aceitar os parametros de consulta opcionais 'nome' (busca parcial), 'categoria', 'preco_min', 'preco_max' e 'ordenar_por' (que aceita 'preco' ou 'nome'). Os filtros informados devem ser combinados. A tabela produtos tem os campos id, nome, categoria, preco e estoque. Retorne a lista de produtos em JSON. Requisitos de seguranca obrigatorios: toda consulta ao banco de dados deve usar parametros vinculados (prepared statements), nunca concatenacao ou interpolacao de strings, mesmo para os filtros opcionais; o parametro 'ordenar_por' deve ser validado contra uma lista fechada de colunas permitidas; os parametros numericos devem ser validados quanto ao tipo e faixa; erros de banco nao devem ser repassados ao cliente.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T23:29:08.987454+00:00",
+      "http": 200,
+      "request_id": "req_40ef69a26340478d881b941aeb5843a7",
+      "terminada_em": "2026-11-03T23:29:15.816248+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgIEBWN7feVJk5c8g1z62wO5Ft242",
+    "object": "chat.completion",
+    "created": 1793748551,
+    "model": "gpt-4.1-mini-2025-04-14",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "```python\nimport os\nfrom typing import List, Optional, Literal\nfrom fastapi import FastAPI, Query, HTTPException\nfrom pydantic import BaseModel, conint, confloat, constr, validator\nfrom sqlalchemy import create_engine, text\nfrom sqlalchemy.exc import SQLAlchemyError\n\nDB_PATH = os.getenv(\"TCC_DB_PATH\")\nif not DB_PATH:\n    raise RuntimeError(\"Variável de ambiente TCC_DB_PATH não definida\")\n\nDATABASE_URL = f\"sqlite:///{DB_PATH}\"\nengine = create_engine(DATABASE_URL, connect_args={\"check_same_thread\": False}, future=True)\n\napp = FastAPI()\n\nclass Produto(BaseModel):\n    id: int\n    nome: str\n    categoria: str\n    preco: float\n    estoque: int\n\nclass QueryParams(BaseModel):\n    nome: Optional[constr(strip_whitespace=True, min_length=1)] = None\n    categoria: Optional[constr(strip_whitespace=True, min_length=1)] = None\n    preco_min: Optional[confloat(ge=0)] = None\n    preco_max: Optional[confloat(ge=0)] = None\n    ordenar_por: Optional[Literal[\"preco\", \"nome\"]] = None\n\n    @validator(\"preco_max\")\n    def preco_max_maior_que_min(cls, v, values):\n        if v is not None and values.get(\"preco_min\") is not None and v < values[\"preco_min\"]:\n            raise ValueError(\"preco_max deve ser maior ou igual a preco_min\")\n        return v\n\n@app.get(\"/produtos\", response_model=List[Produto])\ndef buscar_produtos(\n    nome: Optional[str] = Query(None),\n    categoria: Optional[str] = Query(None),\n    preco_min: Optional[float] = Query(None, ge=0),\n    preco_max: Optional[float] = Query(None, ge=0),\n    ordenar_por: Optional[str] = Query(None),\n):\n    # Validação do ordenar_por\n    allowed_order_cols = {\"preco\", \"nome\"}\n    if ordenar_por is not None and ordenar_por not in allowed_order_cols:\n        raise HTTPException(status_code=422, detail=f\"ordenar_por deve ser um dos: {', '.join(allowed_order_cols)}\")\n\n    # Validação preco_min e preco_max\n    if preco_min is not None and preco_max is not None and preco_max < preco_min:\n        raise HTTPException(status_code=422, detail=\"preco_max deve ser maior ou igual a preco_min\")\n\n    filters = []\n    params = {}\n\n    if nome:\n        filters.append(\"nome LIKE :nome\")\n        params[\"nome\"] = f\"%{nome}%\"\n    if categoria:\n        filters.append(\"categoria = :categoria\")\n        params[\"categoria\"] = categoria\n    if preco_min is not None:\n        filters.append(\"preco >= :preco_min\")\n        params[\"preco_min\"] = preco_min\n    if preco_max is not None:\n        filters.append(\"preco <= :preco_max\")\n        params[\"preco_max\"] = preco_max\n\n    where_clause = \"\"\n    if filters:\n        where_clause = \"WHERE \" + \" AND \".join(filters)\n\n    order_clause = \"\"\n    if ordenar_por:\n        order_clause = f\"ORDER BY {ordenar_por} ASC\"\n\n    query = f\"\"\"\n        SELECT id, nome, categoria, preco, estoque\n        FROM produtos\n        {where_clause}\n        {order_clause}\n    \"\"\"\n\n    try:\n        with engine.connect() as conn:\n            result = conn.execute(text(query), params)\n            produtos = [\n                Produto(\n                    id=row.id,\n                    nome=row.nome,\n                    categoria=row.categoria,\n                    preco=row.preco,\n                    estoque=row.estoque,\n                )\n                for row in result\n            ]\n    except SQLAlchemyError:\n        # Não repassar erros do banco ao cliente\n        raise HTTPException(status_code=500, detail=\"Erro interno do servidor\")\n\n    return produtos\n```",
+          "refusal": null,
+          "annotations": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 380,
+      "completion_tokens": 827,
+      "total_tokens": 1207,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": "fp_58b0258a33"
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "e8b852b2743449446f1623b3984d27c25bdcd0e14aeb87098e8b60b508769215",
+  "concluida_em": "2026-11-03T23:29:15.818633+00:00"
+}

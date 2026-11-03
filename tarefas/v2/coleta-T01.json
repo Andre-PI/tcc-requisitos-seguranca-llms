@@ -1,0 +1,6 @@
+{
+  "docker": "t01_docker",
+  "referencias": 11,
+  "semente": 2026110324,
+  "fontes": ["v2_banco.py", "v2_worker_linux.py", "v2_instrumento.py", "t01_verificador.py", "t01_referencias.py", "t01_docker.py", "docker/banco-v2/Dockerfile", "docker/banco-v2/requirements.txt"]
+}

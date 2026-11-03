@@ -1,0 +1,1172 @@
+{
+  "referencias": 11,
+  "expectativas_atendidas": 11,
+  "resultados": [
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "registro",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 201
+          }
+        },
+        {
+          "teste": "login_valido",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "senha_incorreta",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "conta_inexistente",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "senha_nao_em_texto",
+          "tipo": "seguranca_hash",
+          "status": "aprovado",
+          "evidencia": {
+            "linha_encontrada": true,
+            "formato": "scrypt:"
+          }
+        },
+        {
+          "teste": "hash_de_senha",
+          "tipo": "seguranca_hash",
+          "status": "aprovado",
+          "evidencia": {
+            "valores_distintos": true,
+            "algoritmo_no_codigo": true
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca_enumeracao",
+          "status": "aprovado",
+          "evidencia": {
+            "status": [
+              401,
+              401
+            ]
+          }
+        },
+        {
+          "teste": "tautologia_email",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "tautologia_senha",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "limite_por_conta",
+          "tipo": "seguranca_limite",
+          "status": "aprovado",
+          "evidencia": {
+            "status_final": 429,
+            "status_controle": 200
+          }
+        },
+        {
+          "teste": "limite_por_ip",
+          "tipo": "seguranca_limite",
+          "status": "aprovado",
+          "evidencia": {
+            "status_final": 429,
+            "status_controle": 200
+          }
+        }
+      ],
+      "modo": "protegida",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "registro",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 201
+          }
+        },
+        {
+          "teste": "login_valido",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "senha_incorreta",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "conta_inexistente",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "senha_nao_em_texto",
+          "tipo": "seguranca_hash",
+          "status": "reprovado",
+          "evidencia": {
+            "linha_encontrada": true,
+            "formato": "texto_puro"
+          }
+        },
+        {
+          "teste": "hash_de_senha",
+          "tipo": "seguranca_hash",
+          "status": "reprovado",
+          "evidencia": {
+            "valores_distintos": false,
+            "algoritmo_no_codigo": false
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca_enumeracao",
+          "status": "aprovado",
+          "evidencia": {
+            "status": [
+              401,
+              401
+            ]
+          }
+        },
+        {
+          "teste": "tautologia_email",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "tautologia_senha",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "limite_por_conta",
+          "tipo": "seguranca_limite",
+          "status": "aprovado",
+          "evidencia": {
+            "status_final": 429,
+            "status_controle": 200
+          }
+        },
+        {
+          "teste": "limite_por_ip",
+          "tipo": "seguranca_limite",
+          "status": "aprovado",
+          "evidencia": {
+            "status_final": 429,
+            "status_controle": 200
+          }
+        }
+      ],
+      "modo": "texto_puro",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "registro",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 201
+          }
+        },
+        {
+          "teste": "login_valido",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "senha_incorreta",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "conta_inexistente",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "senha_nao_em_texto",
+          "tipo": "seguranca_hash",
+          "status": "aprovado",
+          "evidencia": {
+            "linha_encontrada": true,
+            "formato": "fede"
+          }
+        },
+        {
+          "teste": "hash_de_senha",
+          "tipo": "seguranca_hash",
+          "status": "reprovado",
+          "evidencia": {
+            "valores_distintos": false,
+            "algoritmo_no_codigo": false
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca_enumeracao",
+          "status": "aprovado",
+          "evidencia": {
+            "status": [
+              401,
+              401
+            ]
+          }
+        },
+        {
+          "teste": "tautologia_email",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "tautologia_senha",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "limite_por_conta",
+          "tipo": "seguranca_limite",
+          "status": "aprovado",
+          "evidencia": {
+            "status_final": 429,
+            "status_controle": 200
+          }
+        },
+        {
+          "teste": "limite_por_ip",
+          "tipo": "seguranca_limite",
+          "status": "aprovado",
+          "evidencia": {
+            "status_final": 429,
+            "status_controle": 200
+          }
+        }
+      ],
+      "modo": "sha256_sem_sal",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "registro",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 201
+          }
+        },
+        {
+          "teste": "login_valido",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "senha_incorreta",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "conta_inexistente",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "senha_nao_em_texto",
+          "tipo": "seguranca_hash",
+          "status": "aprovado",
+          "evidencia": {
+            "linha_encontrada": true,
+            "formato": "badfb"
+          }
+        },
+        {
+          "teste": "hash_de_senha",
+          "tipo": "seguranca_hash",
+          "status": "reprovado",
+          "evidencia": {
+            "valores_distintos": true,
+            "algoritmo_no_codigo": false
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca_enumeracao",
+          "status": "aprovado",
+          "evidencia": {
+            "status": [
+              401,
+              401
+            ]
+          }
+        },
+        {
+          "teste": "tautologia_email",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "tautologia_senha",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "limite_por_conta",
+          "tipo": "seguranca_limite",
+          "status": "aprovado",
+          "evidencia": {
+            "status_final": 429,
+            "status_controle": 200
+          }
+        },
+        {
+          "teste": "limite_por_ip",
+          "tipo": "seguranca_limite",
+          "status": "aprovado",
+          "evidencia": {
+            "status_final": 429,
+            "status_controle": 200
+          }
+        }
+      ],
+      "modo": "sha256_com_sal",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "registro",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 201
+          }
+        },
+        {
+          "teste": "login_valido",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "senha_incorreta",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "conta_inexistente",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "senha_nao_em_texto",
+          "tipo": "seguranca_hash",
+          "status": "aprovado",
+          "evidencia": {
+            "linha_encontrada": true,
+            "formato": "scrypt:bf"
+          }
+        },
+        {
+          "teste": "hash_de_senha",
+          "tipo": "seguranca_hash",
+          "status": "aprovado",
+          "evidencia": {
+            "valores_distintos": true,
+            "algoritmo_no_codigo": true
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca_enumeracao",
+          "status": "reprovado",
+          "evidencia": {
+            "status": [
+              401,
+              401
+            ]
+          }
+        },
+        {
+          "teste": "tautologia_email",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "tautologia_senha",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "limite_por_conta",
+          "tipo": "seguranca_limite",
+          "status": "aprovado",
+          "evidencia": {
+            "status_final": 429,
+            "status_controle": 200
+          }
+        },
+        {
+          "teste": "limite_por_ip",
+          "tipo": "seguranca_limite",
+          "status": "aprovado",
+          "evidencia": {
+            "status_final": 429,
+            "status_controle": 200
+          }
+        }
+      ],
+      "modo": "enumera",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "registro",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 201
+          }
+        },
+        {
+          "teste": "login_valido",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "senha_incorreta",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "conta_inexistente",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "senha_nao_em_texto",
+          "tipo": "seguranca_hash",
+          "status": "aprovado",
+          "evidencia": {
+            "linha_encontrada": true,
+            "formato": "scrypt:c"
+          }
+        },
+        {
+          "teste": "hash_de_senha",
+          "tipo": "seguranca_hash",
+          "status": "aprovado",
+          "evidencia": {
+            "valores_distintos": true,
+            "algoritmo_no_codigo": true
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca_enumeracao",
+          "status": "aprovado",
+          "evidencia": {
+            "status": [
+              401,
+              401
+            ]
+          }
+        },
+        {
+          "teste": "tautologia_email",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "tautologia_senha",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "limite_por_conta",
+          "tipo": "seguranca_limite",
+          "status": "reprovado",
+          "evidencia": {
+            "status_final": 200,
+            "status_controle": 200
+          }
+        },
+        {
+          "teste": "limite_por_ip",
+          "tipo": "seguranca_limite",
+          "status": "reprovado",
+          "evidencia": {
+            "status_final": 200,
+            "status_controle": 200
+          }
+        }
+      ],
+      "modo": "sem_limite",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "registro",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 201
+          }
+        },
+        {
+          "teste": "login_valido",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "senha_incorreta",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "conta_inexistente",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "senha_nao_em_texto",
+          "tipo": "seguranca_hash",
+          "status": "aprovado",
+          "evidencia": {
+            "linha_encontrada": true,
+            "formato": "scrypt:e"
+          }
+        },
+        {
+          "teste": "hash_de_senha",
+          "tipo": "seguranca_hash",
+          "status": "aprovado",
+          "evidencia": {
+            "valores_distintos": true,
+            "algoritmo_no_codigo": true
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca_enumeracao",
+          "status": "aprovado",
+          "evidencia": {
+            "status": [
+              401,
+              401
+            ]
+          }
+        },
+        {
+          "teste": "tautologia_email",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "tautologia_senha",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "limite_por_conta",
+          "tipo": "seguranca_limite",
+          "status": "aprovado",
+          "evidencia": {
+            "status_final": 429,
+            "status_controle": 200
+          }
+        },
+        {
+          "teste": "limite_por_ip",
+          "tipo": "seguranca_limite",
+          "status": "reprovado",
+          "evidencia": {
+            "status_final": 200,
+            "status_controle": 200
+          }
+        }
+      ],
+      "modo": "limite_so_conta",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "registro",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 201
+          }
+        },
+        {
+          "teste": "login_valido",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "senha_incorreta",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "conta_inexistente",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "senha_nao_em_texto",
+          "tipo": "seguranca_hash",
+          "status": "aprovado",
+          "evidencia": {
+            "linha_encontrada": true,
+            "formato": "scrypt:efe"
+          }
+        },
+        {
+          "teste": "hash_de_senha",
+          "tipo": "seguranca_hash",
+          "status": "aprovado",
+          "evidencia": {
+            "valores_distintos": true,
+            "algoritmo_no_codigo": true
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca_enumeracao",
+          "status": "aprovado",
+          "evidencia": {
+            "status": [
+              401,
+              401
+            ]
+          }
+        },
+        {
+          "teste": "tautologia_email",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "tautologia_senha",
+          "tipo": "seguranca_sql",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "limite_por_conta",
+          "tipo": "seguranca_limite",
+          "status": "reprovado",
+          "evidencia": {
+            "status_final": 200,
+            "status_controle": 200
+          }
+        },
+        {
+          "teste": "limite_por_ip",
+          "tipo": "seguranca_limite",
+          "status": "aprovado",
+          "evidencia": {
+            "status_final": 429,
+            "status_controle": 200
+          }
+        }
+      ],
+      "modo": "limite_so_ip",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "registro",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 201
+          }
+        },
+        {
+          "teste": "login_valido",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "senha_incorreta",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "conta_inexistente",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "senha_nao_em_texto",
+          "tipo": "seguranca_hash",
+          "status": "reprovado",
+          "evidencia": {
+            "linha_encontrada": true,
+            "formato": "texto_puro"
+          }
+        },
+        {
+          "teste": "hash_de_senha",
+          "tipo": "seguranca_hash",
+          "status": "reprovado",
+          "evidencia": {
+            "valores_distintos": false,
+            "algoritmo_no_codigo": false
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca_enumeracao",
+          "status": "aprovado",
+          "evidencia": {
+            "status": [
+              401,
+              401
+            ]
+          }
+        },
+        {
+          "teste": "tautologia_email",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "tautologia_senha",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "limite_por_conta",
+          "tipo": "seguranca_limite",
+          "status": "reprovado",
+          "evidencia": {
+            "status_final": 200,
+            "status_controle": 200
+          }
+        },
+        {
+          "teste": "limite_por_ip",
+          "tipo": "seguranca_limite",
+          "status": "reprovado",
+          "evidencia": {
+            "status_final": 200,
+            "status_controle": 200
+          }
+        }
+      ],
+      "modo": "sql_concatenado",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": false,
+      "testes": [
+        {
+          "teste": "registro",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400
+          }
+        },
+        {
+          "teste": "login_valido",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "senha_incorreta",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "conta_inexistente",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "senha_nao_em_texto",
+          "tipo": "seguranca_hash",
+          "status": "inconclusivo",
+          "evidencia": {
+            "linha_encontrada": false,
+            "formato": ""
+          }
+        },
+        {
+          "teste": "hash_de_senha",
+          "tipo": "seguranca_hash",
+          "status": "inconclusivo",
+          "evidencia": {
+            "valores_distintos": false,
+            "algoritmo_no_codigo": true
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca_enumeracao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status": [
+              401,
+              401
+            ]
+          }
+        },
+        {
+          "teste": "tautologia_email",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "tautologia_senha",
+          "tipo": "seguranca_sql",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 401
+          }
+        },
+        {
+          "teste": "limite_por_conta",
+          "tipo": "seguranca_limite",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_final": 401,
+            "status_controle": 401
+          }
+        },
+        {
+          "teste": "limite_por_ip",
+          "tipo": "seguranca_limite",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_final": 401,
+            "status_controle": 401
+          }
+        }
+      ],
+      "modo": "nega_tudo",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": false,
+      "testes": [
+        {
+          "teste": "registro",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 201
+          }
+        },
+        {
+          "teste": "login_valido",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "senha_incorreta",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "conta_inexistente",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "senha_nao_em_texto",
+          "tipo": "seguranca_hash",
+          "status": "inconclusivo",
+          "evidencia": {
+            "linha_encontrada": false,
+            "formato": ""
+          }
+        },
+        {
+          "teste": "hash_de_senha",
+          "tipo": "seguranca_hash",
+          "status": "inconclusivo",
+          "evidencia": {
+            "valores_distintos": false,
+            "algoritmo_no_codigo": true
+          }
+        },
+        {
+          "teste": "resposta_uniforme",
+          "tipo": "seguranca_enumeracao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status": [
+              200,
+              200
+            ]
+          }
+        },
+        {
+          "teste": "tautologia_email",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "tautologia_senha",
+          "tipo": "seguranca_sql",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200
+          }
+        },
+        {
+          "teste": "limite_por_conta",
+          "tipo": "seguranca_limite",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_final": 200,
+            "status_controle": 200
+          }
+        },
+        {
+          "teste": "limite_por_ip",
+          "tipo": "seguranca_limite",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_final": 200,
+            "status_controle": 200
+          }
+        }
+      ],
+      "modo": "finge_sucesso",
+      "expectativa_atendida": true
+    }
+  ],
+  "imagem": "sha256:f1f321e485d8af66b816a6b56de328c6e88604ea0ebfe1168e6a6498a07f3927",
+  "container_exit": 0,
+  "stdout": "TCC_RESULTADO_JSON:{\"referencias\": 11, \"expectativas_atendidas\": 11, \"resultados\": [{\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"registro\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 201}}, {\"teste\": \"login_valido\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200}}, {\"teste\": \"senha_incorreta\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"conta_inexistente\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"senha_nao_em_texto\", \"tipo\": \"seguranca_hash\", \"status\": \"aprovado\", \"evidencia\": {\"linha_encontrada\": true, \"formato\": \"scrypt:\"}}, {\"teste\": \"hash_de_senha\", \"tipo\": \"seguranca_hash\", \"status\": \"aprovado\", \"evidencia\": {\"valores_distintos\": true, \"algoritmo_no_codigo\": true}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca_enumeracao\", \"status\": \"aprovado\", \"evidencia\": {\"status\": [401, 401]}}, {\"teste\": \"tautologia_email\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"tautologia_senha\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"limite_por_conta\", \"tipo\": \"seguranca_limite\", \"status\": \"aprovado\", \"evidencia\": {\"status_final\": 429, \"status_controle\": 200}}, {\"teste\": \"limite_por_ip\", \"tipo\": \"seguranca_limite\", \"status\": \"aprovado\", \"evidencia\": {\"status_final\": 429, \"status_controle\": 200}}], \"modo\": \"protegida\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"registro\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 201}}, {\"teste\": \"login_valido\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200}}, {\"teste\": \"senha_incorreta\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"conta_inexistente\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"senha_nao_em_texto\", \"tipo\": \"seguranca_hash\", \"status\": \"reprovado\", \"evidencia\": {\"linha_encontrada\": true, \"formato\": \"texto_puro\"}}, {\"teste\": \"hash_de_senha\", \"tipo\": \"seguranca_hash\", \"status\": \"reprovado\", \"evidencia\": {\"valores_distintos\": false, \"algoritmo_no_codigo\": false}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca_enumeracao\", \"status\": \"aprovado\", \"evidencia\": {\"status\": [401, 401]}}, {\"teste\": \"tautologia_email\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"tautologia_senha\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"limite_por_conta\", \"tipo\": \"seguranca_limite\", \"status\": \"aprovado\", \"evidencia\": {\"status_final\": 429, \"status_controle\": 200}}, {\"teste\": \"limite_por_ip\", \"tipo\": \"seguranca_limite\", \"status\": \"aprovado\", \"evidencia\": {\"status_final\": 429, \"status_controle\": 200}}], \"modo\": \"texto_puro\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"registro\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 201}}, {\"teste\": \"login_valido\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200}}, {\"teste\": \"senha_incorreta\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"conta_inexistente\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"senha_nao_em_texto\", \"tipo\": \"seguranca_hash\", \"status\": \"aprovado\", \"evidencia\": {\"linha_encontrada\": true, \"formato\": \"fede\"}}, {\"teste\": \"hash_de_senha\", \"tipo\": \"seguranca_hash\", \"status\": \"reprovado\", \"evidencia\": {\"valores_distintos\": false, \"algoritmo_no_codigo\": false}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca_enumeracao\", \"status\": \"aprovado\", \"evidencia\": {\"status\": [401, 401]}}, {\"teste\": \"tautologia_email\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"tautologia_senha\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"limite_por_conta\", \"tipo\": \"seguranca_limite\", \"status\": \"aprovado\", \"evidencia\": {\"status_final\": 429, \"status_controle\": 200}}, {\"teste\": \"limite_por_ip\", \"tipo\": \"seguranca_limite\", \"status\": \"aprovado\", \"evidencia\": {\"status_final\": 429, \"status_controle\": 200}}], \"modo\": \"sha256_sem_sal\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"registro\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 201}}, {\"teste\": \"login_valido\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200}}, {\"teste\": \"senha_incorreta\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"conta_inexistente\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"senha_nao_em_texto\", \"tipo\": \"seguranca_hash\", \"status\": \"aprovado\", \"evidencia\": {\"linha_encontrada\": true, \"formato\": \"badfb\"}}, {\"teste\": \"hash_de_senha\", \"tipo\": \"seguranca_hash\", \"status\": \"reprovado\", \"evidencia\": {\"valores_distintos\": true, \"algoritmo_no_codigo\": false}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca_enumeracao\", \"status\": \"aprovado\", \"evidencia\": {\"status\": [401, 401]}}, {\"teste\": \"tautologia_email\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"tautologia_senha\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"limite_por_conta\", \"tipo\": \"seguranca_limite\", \"status\": \"aprovado\", \"evidencia\": {\"status_final\": 429, \"status_controle\": 200}}, {\"teste\": \"limite_por_ip\", \"tipo\": \"seguranca_limite\", \"status\": \"aprovado\", \"evidencia\": {\"status_final\": 429, \"status_controle\": 200}}], \"modo\": \"sha256_com_sal\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"registro\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 201}}, {\"teste\": \"login_valido\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200}}, {\"teste\": \"senha_incorreta\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"conta_inexistente\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"senha_nao_em_texto\", \"tipo\": \"seguranca_hash\", \"status\": \"aprovado\", \"evidencia\": {\"linha_encontrada\": true, \"formato\": \"scrypt:bf\"}}, {\"teste\": \"hash_de_senha\", \"tipo\": \"seguranca_hash\", \"status\": \"aprovado\", \"evidencia\": {\"valores_distintos\": true, \"algoritmo_no_codigo\": true}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca_enumeracao\", \"status\": \"reprovado\", \"evidencia\": {\"status\": [401, 401]}}, {\"teste\": \"tautologia_email\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"tautologia_senha\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"limite_por_conta\", \"tipo\": \"seguranca_limite\", \"status\": \"aprovado\", \"evidencia\": {\"status_final\": 429, \"status_controle\": 200}}, {\"teste\": \"limite_por_ip\", \"tipo\": \"seguranca_limite\", \"status\": \"aprovado\", \"evidencia\": {\"status_final\": 429, \"status_controle\": 200}}], \"modo\": \"enumera\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"registro\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 201}}, {\"teste\": \"login_valido\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200}}, {\"teste\": \"senha_incorreta\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"conta_inexistente\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"senha_nao_em_texto\", \"tipo\": \"seguranca_hash\", \"status\": \"aprovado\", \"evidencia\": {\"linha_encontrada\": true, \"formato\": \"scrypt:c\"}}, {\"teste\": \"hash_de_senha\", \"tipo\": \"seguranca_hash\", \"status\": \"aprovado\", \"evidencia\": {\"valores_distintos\": true, \"algoritmo_no_codigo\": true}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca_enumeracao\", \"status\": \"aprovado\", \"evidencia\": {\"status\": [401, 401]}}, {\"teste\": \"tautologia_email\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"tautologia_senha\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"limite_por_conta\", \"tipo\": \"seguranca_limite\", \"status\": \"reprovado\", \"evidencia\": {\"status_final\": 200, \"status_controle\": 200}}, {\"teste\": \"limite_por_ip\", \"tipo\": \"seguranca_limite\", \"status\": \"reprovado\", \"evidencia\": {\"status_final\": 200, \"status_controle\": 200}}], \"modo\": \"sem_limite\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"registro\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 201}}, {\"teste\": \"login_valido\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200}}, {\"teste\": \"senha_incorreta\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"conta_inexistente\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"senha_nao_em_texto\", \"tipo\": \"seguranca_hash\", \"status\": \"aprovado\", \"evidencia\": {\"linha_encontrada\": true, \"formato\": \"scrypt:e\"}}, {\"teste\": \"hash_de_senha\", \"tipo\": \"seguranca_hash\", \"status\": \"aprovado\", \"evidencia\": {\"valores_distintos\": true, \"algoritmo_no_codigo\": true}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca_enumeracao\", \"status\": \"aprovado\", \"evidencia\": {\"status\": [401, 401]}}, {\"teste\": \"tautologia_email\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"tautologia_senha\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"limite_por_conta\", \"tipo\": \"seguranca_limite\", \"status\": \"aprovado\", \"evidencia\": {\"status_final\": 429, \"status_controle\": 200}}, {\"teste\": \"limite_por_ip\", \"tipo\": \"seguranca_limite\", \"status\": \"reprovado\", \"evidencia\": {\"status_final\": 200, \"status_controle\": 200}}], \"modo\": \"limite_so_conta\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"registro\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 201}}, {\"teste\": \"login_valido\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200}}, {\"teste\": \"senha_incorreta\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"conta_inexistente\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"senha_nao_em_texto\", \"tipo\": \"seguranca_hash\", \"status\": \"aprovado\", \"evidencia\": {\"linha_encontrada\": true, \"formato\": \"scrypt:efe\"}}, {\"teste\": \"hash_de_senha\", \"tipo\": \"seguranca_hash\", \"status\": \"aprovado\", \"evidencia\": {\"valores_distintos\": true, \"algoritmo_no_codigo\": true}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca_enumeracao\", \"status\": \"aprovado\", \"evidencia\": {\"status\": [401, 401]}}, {\"teste\": \"tautologia_email\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"tautologia_senha\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"limite_por_conta\", \"tipo\": \"seguranca_limite\", \"status\": \"reprovado\", \"evidencia\": {\"status_final\": 200, \"status_controle\": 200}}, {\"teste\": \"limite_por_ip\", \"tipo\": \"seguranca_limite\", \"status\": \"aprovado\", \"evidencia\": {\"status_final\": 429, \"status_controle\": 200}}], \"modo\": \"limite_so_ip\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"registro\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 201}}, {\"teste\": \"login_valido\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200}}, {\"teste\": \"senha_incorreta\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"conta_inexistente\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"senha_nao_em_texto\", \"tipo\": \"seguranca_hash\", \"status\": \"reprovado\", \"evidencia\": {\"linha_encontrada\": true, \"formato\": \"texto_puro\"}}, {\"teste\": \"hash_de_senha\", \"tipo\": \"seguranca_hash\", \"status\": \"reprovado\", \"evidencia\": {\"valores_distintos\": false, \"algoritmo_no_codigo\": false}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca_enumeracao\", \"status\": \"aprovado\", \"evidencia\": {\"status\": [401, 401]}}, {\"teste\": \"tautologia_email\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200}}, {\"teste\": \"tautologia_senha\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200}}, {\"teste\": \"limite_por_conta\", \"tipo\": \"seguranca_limite\", \"status\": \"reprovado\", \"evidencia\": {\"status_final\": 200, \"status_controle\": 200}}, {\"teste\": \"limite_por_ip\", \"tipo\": \"seguranca_limite\", \"status\": \"reprovado\", \"evidencia\": {\"status_final\": 200, \"status_controle\": 200}}], \"modo\": \"sql_concatenado\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": false, \"testes\": [{\"teste\": \"registro\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400}}, {\"teste\": \"login_valido\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"senha_incorreta\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"conta_inexistente\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"senha_nao_em_texto\", \"tipo\": \"seguranca_hash\", \"status\": \"inconclusivo\", \"evidencia\": {\"linha_encontrada\": false, \"formato\": \"\"}}, {\"teste\": \"hash_de_senha\", \"tipo\": \"seguranca_hash\", \"status\": \"inconclusivo\", \"evidencia\": {\"valores_distintos\": false, \"algoritmo_no_codigo\": true}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca_enumeracao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status\": [401, 401]}}, {\"teste\": \"tautologia_email\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"tautologia_senha\", \"tipo\": \"seguranca_sql\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"limite_por_conta\", \"tipo\": \"seguranca_limite\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_final\": 401, \"status_controle\": 401}}, {\"teste\": \"limite_por_ip\", \"tipo\": \"seguranca_limite\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_final\": 401, \"status_controle\": 401}}], \"modo\": \"nega_tudo\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": false, \"testes\": [{\"teste\": \"registro\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 201}}, {\"teste\": \"login_valido\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200}}, {\"teste\": \"senha_incorreta\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200}}, {\"teste\": \"conta_inexistente\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200}}, {\"teste\": \"senha_nao_em_texto\", \"tipo\": \"seguranca_hash\", \"status\": \"inconclusivo\", \"evidencia\": {\"linha_encontrada\": false, \"formato\": \"\"}}, {\"teste\": \"hash_de_senha\", \"tipo\": \"seguranca_hash\", \"status\": \"inconclusivo\", \"evidencia\": {\"valores_distintos\": false, \"algoritmo_no_codigo\": true}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca_enumeracao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status\": [200, 200]}}, {\"teste\": \"tautologia_email\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200}}, {\"teste\": \"tautologia_senha\", \"tipo\": \"seguranca_sql\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200}}, {\"teste\": \"limite_por_conta\", \"tipo\": \"seguranca_limite\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_final\": 200, \"status_controle\": 200}}, {\"teste\": \"limite_por_ip\", \"tipo\": \"seguranca_limite\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_final\": 200, \"status_controle\": 200}}], \"modo\": \"finge_sucesso\", \"expectativa_atendida\": true}]}\n",
+  "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n",
+  "probe": {
+    "confinamento": {
+      "usuario_sem_privilegios": true,
+      "sem_chave_api": true,
+      "raiz_somente_leitura": true,
+      "rede_bloqueada": true
+    },
+    "python": "3.14.2 (main, Feb  3 2026, 03:06:17) [GCC 14.2.0]",
+    "imagem": "sha256:f1f321e485d8af66b816a6b56de328c6e88604ea0ebfe1168e6a6498a07f3927",
+    "container_exit": 0,
+    "stdout": "TCC_RESULTADO_JSON:{\"confinamento\": {\"usuario_sem_privilegios\": true, \"sem_chave_api\": true, \"raiz_somente_leitura\": true, \"rede_bloqueada\": true}, \"python\": \"3.14.2 (main, Feb  3 2026, 03:06:17) [GCC 14.2.0]\"}\n",
+    "stderr": ""
+  },
+  "arquivos": {
+    "tarefas/v2/T01.json": "407114f3cf93d9c0d66692ff2d8c9744c3256f3db1bee416d00a06c3ba9f6621",
+    "t01_docker.py": "737a28193d13e23c6f973f0ddc6fefc4a75b850b8f1c7bbabf2febf175f73001",
+    "v2_banco.py": "92ebce5c43787f566d163b95465daa53776b6223f6d840ac001cc20956aaa642",
+    "v2_worker_linux.py": "699b8a5d0fc8008a0a03a645620abeb1008f357d42ea9803568dbf456470aacb",
+    "t01_verificador.py": "70fed2518d94de3d97f180a93fe7c1f0b79fa1421bdb10404ea501e4ada7e416",
+    "t01_referencias.py": "891d735d9413c4c71c31daccff381b73bda5e623b662672a3024272a05d9cc1e",
+    "t02_verificador.py": "c73e21da350a59ec804d664fc6c37c73adbf2863feb74223579ae687d85aca01",
+    "t02_referencias.py": "1b4243bd3b88ce258b90b8ef620c46f5e5733f5bb2197087d5280a8ca35599af",
+    "t06_verificador.py": "47eefa8f90d4d76306810ea7b12cfe2f3b40deb4fba3d606406ae6506e090514",
+    "t06_referencias.py": "759c51517a43a573fe4e0469292e2fdd7c7f2835fdae2e22cb10117ddec4cae5",
+    "v2_instrumento.py": "c6b29a44992c7a8e1062fd2d65d96341407c3beca58ec7304ac3e83cf9f2c981",
+    "t04_docker.py": "821ea57817d577356d531fdaca12d0b6d7e4fe487c5839fc3bbef1231ebe15ba",
+    "docker/banco-v2/Dockerfile": "e60c9711c8ae5c76762b6e24d498de0a7ccd2205c93663d58d6698b9900a3d7c",
+    "docker/banco-v2/requirements.txt": "66431d0b93d7506801af267bf457899ace88199293b646ca2930e0d406151078"
+  }
+}

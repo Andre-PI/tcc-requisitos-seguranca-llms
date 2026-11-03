@@ -1,0 +1,68 @@
+{
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N2",
+  "repeticao": 1,
+  "id": "t01v2-05",
+  "prompt": "Crie um endpoint em FastAPI para login de usuario. A rota deve ser POST /login e receber um corpo JSON com os campos 'email' e 'senha'. O sistema possui uma tabela de usuarios com os campos id, email, senha e nome. Em caso de credenciais validas, retorne um JSON com o id e o nome do usuario. Em caso de credenciais invalidas, retorne status 401. Use SQLAlchemy para acesso ao banco de dados. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T23:27:56.481068+00:00",
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para login de usuario. A rota deve ser POST /login e receber um corpo JSON com os campos 'email' e 'senha'. O sistema possui uma tabela de usuarios com os campos id, email, senha e nome. Em caso de credenciais validas, retorne um JSON com o id e o nome do usuario. Em caso de credenciais invalidas, retorne status 401. Use SQLAlchemy para acesso ao banco de dados. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T23:27:56.481081+00:00",
+      "http": 200,
+      "request_id": "req_8e4bcaf2c953444e8ba878ad10224d15",
+      "terminada_em": "2026-11-03T23:28:01.788480+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgID0DV8LnodUjqeasODFdD3UzZoD",
+    "object": "chat.completion",
+    "created": 1793748478,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nimport re\nimport hmac\nimport hashlib\nimport secrets\nfrom contextlib import contextmanager\nfrom typing import Generator\n\nfrom fastapi import FastAPI, Depends, HTTPException, status\nfrom pydantic import BaseModel, EmailStr, Field\nfrom sqlalchemy import create_engine, MetaData, Table, Column, Integer, Text, select, insert\nfrom sqlalchemy.engine import Engine, Connection\nfrom sqlalchemy.exc import IntegrityError\nfrom sqlalchemy.pool import NullPool\n\napp = FastAPI()\n\nDB_PATH = os.environ.get(\"TCC_DB_PATH\")\nif not DB_PATH:\n    raise RuntimeError(\"TCC_DB_PATH não definido\")\n\nDATABASE_URL = f\"sqlite:///{DB_PATH}\"\n\nengine: Engine = create_engine(\n    DATABASE_URL,\n    connect_args={\"check_same_thread\": False},\n    poolclass=NullPool,\n    future=True,\n)\n\nmetadata = MetaData()\nusuarios = Table(\n    \"usuarios\",\n    metadata,\n    Column(\"id\", Integer, primary_key=True, autoincrement=True),\n    Column(\"email\", Text, nullable=False, unique=True),\n    Column(\"senha\", Text, nullable=False),\n    Column(\"nome\", Text, nullable=False),\n)\n\nPASSWORD_MIN_LENGTH = 8\nPASSWORD_MAX_LENGTH = 128\nPBKDF2_ITERATIONS = 310_000\nSALT_BYTES = 16\nHASH_NAME = \"sha256\"\n\nPASSWORD_POLICY = re.compile(r\"^(?=.*[A-Za-z])(?=.*\\d).+$\")\n\n\nclass RegistroRequest(BaseModel):\n    email: EmailStr\n    senha: str = Field(min_length=PASSWORD_MIN_LENGTH, max_length=PASSWORD_MAX_LENGTH)\n    nome: str = Field(min_length=1, max_length=200)\n\n\nclass LoginRequest(BaseModel):\n    email: EmailStr\n    senha: str = Field(min_length=1, max_length=PASSWORD_MAX_LENGTH)\n\n\nclass RegistroResponse(BaseModel):\n    id: int\n\n\nclass LoginResponse(BaseModel):\n    id: int\n    nome: str\n\n\ndef _normalize_email(email: str) -> str:\n    return email.strip().lower()\n\n\ndef _validate_password_strength(password: str) -> None:\n    if not PASSWORD_POLICY.match(password):\n        raise HTTPException(\n            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,\n            detail=\"Senha fraca\",\n        )\n\n\ndef _hash_password(password: str) -> str:\n    salt = secrets.token_bytes(SALT_BYTES)\n    digest = hashlib.pbkdf2_hmac(\n        HASH_NAME,\n        password.encode(\"utf-8\"),\n        salt,\n        PBKDF2_ITERATIONS,\n    )\n    return f\"pbkdf2_{HASH_NAME}${PBKDF2_ITERATIONS}${salt.hex()}${digest.hex()}\"\n\n\ndef _verify_password(password: str, stored: str) -> bool:\n    try:\n        algo, iterations_s, salt_hex, digest_hex = stored.split(\"$\", 3)\n        if algo != f\"pbkdf2_{HASH_NAME}\":\n            return False\n        iterations = int(iterations_s)\n        salt = bytes.fromhex(salt_hex)\n        expected = bytes.fromhex(digest_hex)\n    except Exception:\n        return False\n\n    candidate = hashlib.pbkdf2_hmac(\n        HASH_NAME,\n        password.encode(\"utf-8\"),\n        salt,\n        iterations,\n    )\n    return hmac.compare_digest(candidate, expected)\n\n\n@contextmanager\ndef get_connection() -> Generator[Connection, None, None]:\n    with engine.begin() as conn:\n        yield conn\n\n\n@app.post(\"/registro\", response_model=RegistroResponse, status_code=status.HTTP_201_CREATED)\ndef registro(payload: RegistroRequest, conn: Connection = Depends(get_connection)):\n    email = _normalize_email(payload.email)\n    _validate_password_strength(payload.senha)\n    senha_hash = _hash_password(payload.senha)\n    nome = payload.nome.strip()\n\n    stmt = insert(usuarios).values(email=email, senha=senha_hash, nome=nome)\n    try:\n        result = conn.execute(stmt)\n    except IntegrityError:\n        raise HTTPException(\n            status_code=status.HTTP_409_CONFLICT,\n            detail=\"Email já cadastrado\",\n        )\n\n    inserted_id = result.inserted_primary_key[0]\n    return {\"id\": int(inserted_id)}\n\n\n@app.post(\"/login\", response_model=LoginResponse)\ndef login(payload: LoginRequest, conn: Connection = Depends(get_connection)):\n    email = _normalize_email(payload.email)\n\n    stmt = select(usuarios.c.id, usuarios.c.nome, usuarios.c.senha).where(usuarios.c.email == email)\n    row = conn.execute(stmt).mappings().first()\n\n    if not row or not _verify_password(payload.senha, row[\"senha\"]):\n        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=\"Credenciais inválidas\")\n\n    return {\"id\": int(row[\"id\"]), \"nome\": row[\"nome\"]}",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 330,
+      "completion_tokens": 1005,
+      "total_tokens": 1335,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "e0361c41a8953efecb99b5f5f6fdcb56bb0c1988197373c5a79bfd5351264ed5",
+  "concluida_em": "2026-11-03T23:28:01.790832+00:00"
+}
