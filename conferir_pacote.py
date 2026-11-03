@@ -187,6 +187,26 @@ if (t07/'resumo.json').exists():
         for point in row['evidencias'].values():assert lines[point['linha']-1].strip()==point['trecho']
     print('T07 exploratoria: 8 respostas em 8 chamadas; plano, fontes, imagem e evidencias da revisao conferidos.')
 
+t07v2=ROOT/'dados/t07-exploratoria-v2'
+if (t07v2/'resumo.json').exists():
+    plan=json.loads((t07v2/'plano.json').read_text(encoding='utf-8'))
+    assert len(plan['jobs'])==8
+    for name,sha in plan['fontes_sha256'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
+    calls=0;ids=set()
+    for job in plan['jobs']:
+        assert ' -- ' not in job['prompt'] or job['nivel']=='N3'
+        folder=t07v2/job['id'];g=json.loads((folder/'geracao.json').read_text(encoding='utf-8'))
+        assert plan['registrado_em']<=g['iniciado_em']<=g['concluida_em']
+        assert g['prompt']==job['prompt'] and g['payload']['messages']==[{'role':'user','content':job['prompt']}]
+        assert g['payload']['model']==job['modelo']
+        assert all(g['payload'][k]==v for k,v in plan['parametros'].items())
+        assert hashlib.sha256((folder/'amostra.py').read_bytes()).hexdigest()==g['codigo_sha256']
+        calls+=len(g['tentativas']);ids.add(g['resposta']['id'])
+        result=json.loads((folder/'avaliacao.json').read_text(encoding='utf-8'))
+        assert result['imagem']==plan['imagem']
+    assert calls==len(ids)==8
+    print('T07 exploratoria v2: 8 respostas em 8 chamadas; plano, fontes, imagem e prompts conferidos.')
+
 t08_report=ROOT/'docs/T08-validacao-linux.json'
 if t08_report.exists():
     report=json.loads(t08_report.read_text(encoding='utf-8'))

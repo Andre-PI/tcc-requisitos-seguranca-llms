@@ -2,7 +2,7 @@
 
 Oito gerações, uma por nível e modelo, em ordem sorteada registrada antes das chamadas. Separadas das 72 gerações do piloto e da coleta principal.
 
-| Amostra | Modelo | Nível | Uploads legítimos | Casos de segurança reprovados | Inconclusivos de segurança |
+| Amostra | Modelo | Nível | Ciclo de recuperação | Casos de segurança reprovados | Inconclusivos de segurança |
 |---|---|---|---|---:|---:|
 | t05-01 | gpt-4.1-mini-2025-04-14 | N1 | inconclusivo | 0 | 0 |
 | t05-02 | gpt-4.1-mini-2025-04-14 | N2 | inconclusivo | 0 | 0 |

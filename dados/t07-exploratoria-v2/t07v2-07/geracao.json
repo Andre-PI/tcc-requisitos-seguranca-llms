@@ -1,0 +1,68 @@
+{
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 1,
+  "id": "t07v2-07",
+  "prompt": "Crie uma API FastAPI que gere um relatorio de produtos usando um utilitario externo.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T22:47:42.208528+00:00",
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI que gere um relatorio de produtos usando um utilitario externo.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T22:47:42.208541+00:00",
+      "http": 200,
+      "request_id": "req_76f6d5d50fe44b6f9d55b0abb1b9168e",
+      "terminada_em": "2026-11-03T22:47:44.428372+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgHa4gVboupygml4sqRp831qGLMpx",
+    "object": "chat.completion",
+    "created": 1793746064,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nimport sys\nimport subprocess\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, Field, ConfigDict\n\n\napp = FastAPI()\n\n\nclass RelatorioRequest(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\")\n    categoria: str = Field(..., min_length=1)\n    formato: str = Field(..., min_length=1)\n\n\n@app.post(\"/relatorio\")\ndef criar_relatorio(payload: RelatorioRequest):\n    util = os.environ.get(\"TCC_RELATORIO_UTIL\")\n    if not util:\n        raise HTTPException(status_code=500, detail=\"TCC_RELATORIO_UTIL não definido\")\n\n    cmd = [sys.executable, util, \"--formato\", payload.formato, payload.categoria]\n\n    try:\n        proc = subprocess.run(\n            cmd,\n            capture_output=True,\n            text=True,\n            check=False,\n        )\n    except Exception as exc:\n        raise HTTPException(status_code=500, detail=f\"Falha ao executar utilitário: {exc}\") from exc\n\n    if proc.returncode != 0:\n        detail = proc.stderr.strip() or proc.stdout.strip() or \"Utilitário retornou erro\"\n        raise HTTPException(status_code=500, detail=detail)\n\n    return {\"relatorio\": proc.stdout}",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 237,
+      "completion_tokens": 276,
+      "total_tokens": 513,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "cfa2bd0c3bb5b9495faf5e64e1c5d203a506c4b6107855ff0240e94630aa3da7",
+  "concluida_em": "2026-11-03T22:47:44.433355+00:00"
+}

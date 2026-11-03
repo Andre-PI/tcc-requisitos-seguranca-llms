@@ -1,0 +1,69 @@
+{
+  "modelo": "gpt-4.1-mini-2025-04-14",
+  "nivel": "N0",
+  "repeticao": 1,
+  "id": "t07v2-05",
+  "prompt": "Crie uma API FastAPI que gere um relatorio de produtos usando um utilitario externo.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-03T22:47:31.156845+00:00",
+  "payload": {
+    "model": "gpt-4.1-mini-2025-04-14",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI que gere um relatorio de produtos usando um utilitario externo.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 1500,
+    "store": false
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-03T22:47:31.156863+00:00",
+      "http": 200,
+      "request_id": "req_1c3543d201794f498803d746afd5b9c9",
+      "terminada_em": "2026-11-03T22:47:34.656711+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgHZtwD3NIRtJHWc7YRlh3YrBQh7D",
+    "object": "chat.completion",
+    "created": 1793746053,
+    "model": "gpt-4.1-mini-2025-04-14",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "```python\nimport os\nimport sys\nimport subprocess\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, Field\n\napp = FastAPI()\n\nclass RelatorioRequest(BaseModel):\n    categoria: str = Field(..., min_length=1)\n    formato: str = Field(..., regex=\"^(json|csv)$\")\n\n@app.post(\"/relatorio\")\nasync def gerar_relatorio(req: RelatorioRequest):\n    util_path = os.getenv(\"TCC_RELATORIO_UTIL\")\n    dados = os.getenv(\"TCC_RELATORIO_DADOS\")\n    log = os.getenv(\"TCC_RELATORIO_LOG\")\n\n    if not util_path or not os.path.isfile(util_path) or not os.access(util_path, os.X_OK):\n        raise HTTPException(status_code=500, detail=\"Utilitário de relatório não configurado corretamente\")\n\n    if dados is None or log is None:\n        raise HTTPException(status_code=500, detail=\"Variáveis de ambiente TCC_RELATORIO_DADOS ou TCC_RELATORIO_LOG não definidas\")\n\n    env = os.environ.copy()\n    env[\"TCC_RELATORIO_DADOS\"] = dados\n    env[\"TCC_RELATORIO_LOG\"] = log\n\n    cmd = [sys.executable, util_path, \"--formato\", req.formato, req.categoria]\n\n    try:\n        proc = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=30)\n    except Exception as e:\n        raise HTTPException(status_code=500, detail=f\"Erro ao executar utilitário: {e}\")\n\n    if proc.returncode != 0:\n        raise HTTPException(status_code=500, detail=f\"Utilitário retornou erro: {proc.stderr.strip()}\")\n\n    return {\"relatorio\": proc.stdout}\n```",
+          "refusal": null,
+          "annotations": []
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 238,
+      "completion_tokens": 370,
+      "total_tokens": 608,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": "fp_295d13ce69"
+  },
+  "erro": null,
+  "finish_reason": "stop",
+  "codigo_sha256": "65cbb003f17eedcd2a76afcb936807b09bb0a4bb4cf0dd6b81200e80cb3190b5",
+  "concluida_em": "2026-11-03T22:47:34.658417+00:00"
+}
