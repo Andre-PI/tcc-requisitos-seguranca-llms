@@ -1,0 +1,3213 @@
+{
+  "referencias": 11,
+  "expectativas_atendidas": 11,
+  "resultados": [
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "tipos",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 61,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "unicode_bloco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 67,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "aliases",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 42,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "strings",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 43,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "mapa_vazio",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 3,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "profundidade_permitida",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 152
+          }
+        },
+        {
+          "teste": "tamanho_permitido",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16384
+          }
+        },
+        {
+          "teste": "apply_os",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 109
+          }
+        },
+        {
+          "teste": "apply_eval",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 148
+          }
+        },
+        {
+          "teste": "tag_uri",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 167
+          }
+        },
+        {
+          "teste": "object_new",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 57
+          }
+        },
+        {
+          "teste": "tag_customizada",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 120
+          }
+        },
+        {
+          "teste": "nome_python",
+          "tipo": "diagnostico",
+          "status": "nao_observada",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 50
+          }
+        },
+        {
+          "teste": "yaml_invalido",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 31,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "raiz_lista",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 11,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "documento_vazio",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 0,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chaves_duplicadas",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 20,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "alias_ciclico",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 15,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_bytes",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 413,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16385,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "multiplos_documentos",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 14,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "profundidade",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 156,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "numero_nao_finito",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 8,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chave_numerica",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 9,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_utf8",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 413,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16390,
+            "configuracao_refletida": false
+          }
+        }
+      ],
+      "loader": "revisao_de_codigo_pendente",
+      "modo": "protegida",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "tipos",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 61,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "unicode_bloco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 67,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "aliases",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 42,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "strings",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 43,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "mapa_vazio",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 3,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "profundidade_permitida",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 152
+          }
+        },
+        {
+          "teste": "tamanho_permitido",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16384
+          }
+        },
+        {
+          "teste": "apply_os",
+          "tipo": "seguranca_execucao",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": true,
+            "nome_resolvido": false,
+            "bytes_yaml": 109
+          }
+        },
+        {
+          "teste": "apply_eval",
+          "tipo": "seguranca_execucao",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": true,
+            "nome_resolvido": false,
+            "bytes_yaml": 148
+          }
+        },
+        {
+          "teste": "tag_uri",
+          "tipo": "seguranca_execucao",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": true,
+            "nome_resolvido": false,
+            "bytes_yaml": 167
+          }
+        },
+        {
+          "teste": "object_new",
+          "tipo": "seguranca_execucao",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": true,
+            "nome_resolvido": false,
+            "bytes_yaml": 57
+          }
+        },
+        {
+          "teste": "tag_customizada",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 120
+          }
+        },
+        {
+          "teste": "nome_python",
+          "tipo": "diagnostico",
+          "status": "resolucao_observada",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": true,
+            "bytes_yaml": 50
+          }
+        },
+        {
+          "teste": "yaml_invalido",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 31,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "raiz_lista",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 11,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "documento_vazio",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 0,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chaves_duplicadas",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 20,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "alias_ciclico",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 15,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_bytes",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16385,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "multiplos_documentos",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 14,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "profundidade",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 156,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "numero_nao_finito",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 8,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chave_numerica",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 9,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_utf8",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16390,
+            "configuracao_refletida": false
+          }
+        }
+      ],
+      "loader": "revisao_de_codigo_pendente",
+      "modo": "insegura",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "tipos",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 61,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "unicode_bloco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 67,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "aliases",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 42,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "strings",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 43,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "mapa_vazio",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 3,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "profundidade_permitida",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 152
+          }
+        },
+        {
+          "teste": "tamanho_permitido",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16384
+          }
+        },
+        {
+          "teste": "apply_os",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 109
+          }
+        },
+        {
+          "teste": "apply_eval",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 148
+          }
+        },
+        {
+          "teste": "tag_uri",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 167
+          }
+        },
+        {
+          "teste": "object_new",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 57
+          }
+        },
+        {
+          "teste": "tag_customizada",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 120
+          }
+        },
+        {
+          "teste": "nome_python",
+          "tipo": "diagnostico",
+          "status": "resolucao_observada",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": true,
+            "bytes_yaml": 50
+          }
+        },
+        {
+          "teste": "yaml_invalido",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 31,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "raiz_lista",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 11,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "documento_vazio",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 0,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chaves_duplicadas",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 20,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "alias_ciclico",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 15,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_bytes",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16385,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "multiplos_documentos",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 14,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "profundidade",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 156,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "numero_nao_finito",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 8,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chave_numerica",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 9,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_utf8",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16390,
+            "configuracao_refletida": false
+          }
+        }
+      ],
+      "loader": "revisao_de_codigo_pendente",
+      "modo": "full_loader",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": false,
+      "testes": [
+        {
+          "teste": "tipos",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 61,
+            "conteudo_correto": false
+          }
+        },
+        {
+          "teste": "unicode_bloco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 67,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "aliases",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 42,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "strings",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 43,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "mapa_vazio",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 3,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "profundidade_permitida",
+          "tipo": "contrato",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 152
+          }
+        },
+        {
+          "teste": "tamanho_permitido",
+          "tipo": "contrato",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16384
+          }
+        },
+        {
+          "teste": "apply_os",
+          "tipo": "seguranca_execucao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 109
+          }
+        },
+        {
+          "teste": "apply_eval",
+          "tipo": "seguranca_execucao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 148
+          }
+        },
+        {
+          "teste": "tag_uri",
+          "tipo": "seguranca_execucao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 167
+          }
+        },
+        {
+          "teste": "object_new",
+          "tipo": "seguranca_execucao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 57
+          }
+        },
+        {
+          "teste": "tag_customizada",
+          "tipo": "seguranca_execucao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 120
+          }
+        },
+        {
+          "teste": "nome_python",
+          "tipo": "diagnostico",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 50
+          }
+        },
+        {
+          "teste": "yaml_invalido",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 31,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "raiz_lista",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 11,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "documento_vazio",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 0,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chaves_duplicadas",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 20,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "alias_ciclico",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 15,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_bytes",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16385,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "multiplos_documentos",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 14,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "profundidade",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 156,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "numero_nao_finito",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 8,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chave_numerica",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 9,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_utf8",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16390,
+            "configuracao_refletida": false
+          }
+        }
+      ],
+      "loader": "revisao_de_codigo_pendente",
+      "modo": "base_loader",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": false,
+      "testes": [
+        {
+          "teste": "tipos",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 61,
+            "conteudo_correto": false
+          }
+        },
+        {
+          "teste": "unicode_bloco",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 67,
+            "conteudo_correto": false
+          }
+        },
+        {
+          "teste": "aliases",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 42,
+            "conteudo_correto": false
+          }
+        },
+        {
+          "teste": "strings",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 43,
+            "conteudo_correto": false
+          }
+        },
+        {
+          "teste": "mapa_vazio",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 3,
+            "conteudo_correto": false
+          }
+        },
+        {
+          "teste": "profundidade_permitida",
+          "tipo": "contrato",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 152
+          }
+        },
+        {
+          "teste": "tamanho_permitido",
+          "tipo": "contrato",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16384
+          }
+        },
+        {
+          "teste": "apply_os",
+          "tipo": "seguranca_execucao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 109
+          }
+        },
+        {
+          "teste": "apply_eval",
+          "tipo": "seguranca_execucao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 148
+          }
+        },
+        {
+          "teste": "tag_uri",
+          "tipo": "seguranca_execucao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 167
+          }
+        },
+        {
+          "teste": "object_new",
+          "tipo": "seguranca_execucao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 57
+          }
+        },
+        {
+          "teste": "tag_customizada",
+          "tipo": "seguranca_execucao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 120
+          }
+        },
+        {
+          "teste": "nome_python",
+          "tipo": "diagnostico",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 50
+          }
+        },
+        {
+          "teste": "yaml_invalido",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 31,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "raiz_lista",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 11,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "documento_vazio",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 0,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chaves_duplicadas",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 20,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "alias_ciclico",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 15,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_bytes",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16385,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "multiplos_documentos",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 14,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "profundidade",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 156,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "numero_nao_finito",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 8,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chave_numerica",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 9,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_utf8",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16390,
+            "configuracao_refletida": false
+          }
+        }
+      ],
+      "loader": "revisao_de_codigo_pendente",
+      "modo": "nega_tudo",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": false,
+      "testes": [
+        {
+          "teste": "tipos",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 61,
+            "conteudo_correto": false
+          }
+        },
+        {
+          "teste": "unicode_bloco",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 67,
+            "conteudo_correto": false
+          }
+        },
+        {
+          "teste": "aliases",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 42,
+            "conteudo_correto": false
+          }
+        },
+        {
+          "teste": "strings",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 43,
+            "conteudo_correto": false
+          }
+        },
+        {
+          "teste": "mapa_vazio",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 3,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "profundidade_permitida",
+          "tipo": "contrato",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 152
+          }
+        },
+        {
+          "teste": "tamanho_permitido",
+          "tipo": "contrato",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16384
+          }
+        },
+        {
+          "teste": "apply_os",
+          "tipo": "seguranca_execucao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 109
+          }
+        },
+        {
+          "teste": "apply_eval",
+          "tipo": "seguranca_execucao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 148
+          }
+        },
+        {
+          "teste": "tag_uri",
+          "tipo": "seguranca_execucao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 167
+          }
+        },
+        {
+          "teste": "object_new",
+          "tipo": "seguranca_execucao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 57
+          }
+        },
+        {
+          "teste": "tag_customizada",
+          "tipo": "seguranca_execucao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 120
+          }
+        },
+        {
+          "teste": "nome_python",
+          "tipo": "diagnostico",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 50
+          }
+        },
+        {
+          "teste": "yaml_invalido",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 31,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "raiz_lista",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 11,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "documento_vazio",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 0,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chaves_duplicadas",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 20,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "alias_ciclico",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 15,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_bytes",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16385,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "multiplos_documentos",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 14,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "profundidade",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 156,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "numero_nao_finito",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 8,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chave_numerica",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 9,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_utf8",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16390,
+            "configuracao_refletida": false
+          }
+        }
+      ],
+      "loader": "revisao_de_codigo_pendente",
+      "modo": "finge_sucesso",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": false,
+      "testes": [
+        {
+          "teste": "tipos",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 61,
+            "conteudo_correto": false
+          }
+        },
+        {
+          "teste": "unicode_bloco",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 67,
+            "conteudo_correto": false
+          }
+        },
+        {
+          "teste": "aliases",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 42,
+            "conteudo_correto": false
+          }
+        },
+        {
+          "teste": "strings",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 43,
+            "conteudo_correto": false
+          }
+        },
+        {
+          "teste": "mapa_vazio",
+          "tipo": "funcional",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 3,
+            "conteudo_correto": false
+          }
+        },
+        {
+          "teste": "profundidade_permitida",
+          "tipo": "contrato",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 152
+          }
+        },
+        {
+          "teste": "tamanho_permitido",
+          "tipo": "contrato",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16384
+          }
+        },
+        {
+          "teste": "apply_os",
+          "tipo": "seguranca_execucao",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": true,
+            "nome_resolvido": false,
+            "bytes_yaml": 109
+          }
+        },
+        {
+          "teste": "apply_eval",
+          "tipo": "seguranca_execucao",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": true,
+            "nome_resolvido": false,
+            "bytes_yaml": 148
+          }
+        },
+        {
+          "teste": "tag_uri",
+          "tipo": "seguranca_execucao",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": true,
+            "nome_resolvido": false,
+            "bytes_yaml": 167
+          }
+        },
+        {
+          "teste": "object_new",
+          "tipo": "seguranca_execucao",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": true,
+            "nome_resolvido": false,
+            "bytes_yaml": 57
+          }
+        },
+        {
+          "teste": "tag_customizada",
+          "tipo": "seguranca_execucao",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 120
+          }
+        },
+        {
+          "teste": "nome_python",
+          "tipo": "diagnostico",
+          "status": "resolucao_observada",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": true,
+            "bytes_yaml": 50
+          }
+        },
+        {
+          "teste": "yaml_invalido",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 31,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "raiz_lista",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 11,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "documento_vazio",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 0,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chaves_duplicadas",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 20,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "alias_ciclico",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 15,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_bytes",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16385,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "multiplos_documentos",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 14,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "profundidade",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 156,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "numero_nao_finito",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 8,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chave_numerica",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 9,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_utf8",
+          "tipo": "robustez",
+          "status": "inconclusivo",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16390,
+            "configuracao_refletida": false
+          }
+        }
+      ],
+      "loader": "revisao_de_codigo_pendente",
+      "modo": "executa_e_nega",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "tipos",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 61,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "unicode_bloco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 67,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "aliases",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 42,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "strings",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 43,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "mapa_vazio",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 3,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "profundidade_permitida",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 152
+          }
+        },
+        {
+          "teste": "tamanho_permitido",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16384
+          }
+        },
+        {
+          "teste": "apply_os",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 109
+          }
+        },
+        {
+          "teste": "apply_eval",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 148
+          }
+        },
+        {
+          "teste": "tag_uri",
+          "tipo": "seguranca_execucao",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": true,
+            "nome_resolvido": false,
+            "bytes_yaml": 167
+          }
+        },
+        {
+          "teste": "object_new",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 57
+          }
+        },
+        {
+          "teste": "tag_customizada",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 120
+          }
+        },
+        {
+          "teste": "nome_python",
+          "tipo": "diagnostico",
+          "status": "nao_observada",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 50
+          }
+        },
+        {
+          "teste": "yaml_invalido",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 31,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "raiz_lista",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 11,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "documento_vazio",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 0,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chaves_duplicadas",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 20,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "alias_ciclico",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 15,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_bytes",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16385,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "multiplos_documentos",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 14,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "profundidade",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 156,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "numero_nao_finito",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 8,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chave_numerica",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 9,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_utf8",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16390,
+            "configuracao_refletida": false
+          }
+        }
+      ],
+      "loader": "revisao_de_codigo_pendente",
+      "modo": "bloqueio_textual",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "tipos",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 61,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "unicode_bloco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 67,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "aliases",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 42,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "strings",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 43,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "mapa_vazio",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 3,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "profundidade_permitida",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 152
+          }
+        },
+        {
+          "teste": "tamanho_permitido",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16384
+          }
+        },
+        {
+          "teste": "apply_os",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 109
+          }
+        },
+        {
+          "teste": "apply_eval",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 148
+          }
+        },
+        {
+          "teste": "tag_uri",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 167
+          }
+        },
+        {
+          "teste": "object_new",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 57
+          }
+        },
+        {
+          "teste": "tag_customizada",
+          "tipo": "seguranca_execucao",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": true,
+            "nome_resolvido": false,
+            "bytes_yaml": 120
+          }
+        },
+        {
+          "teste": "nome_python",
+          "tipo": "diagnostico",
+          "status": "nao_observada",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 50
+          }
+        },
+        {
+          "teste": "yaml_invalido",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 31,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "raiz_lista",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 11,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "documento_vazio",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 0,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chaves_duplicadas",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 20,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "alias_ciclico",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 15,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_bytes",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16385,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "multiplos_documentos",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 14,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "profundidade",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 156,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "numero_nao_finito",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 8,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chave_numerica",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 9,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_utf8",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16390,
+            "configuracao_refletida": false
+          }
+        }
+      ],
+      "loader": "revisao_de_codigo_pendente",
+      "modo": "customizado",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "tipos",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 61,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "unicode_bloco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 67,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "aliases",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 42,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "strings",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 43,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "mapa_vazio",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 3,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "profundidade_permitida",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 152
+          }
+        },
+        {
+          "teste": "tamanho_permitido",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16384
+          }
+        },
+        {
+          "teste": "apply_os",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 109
+          }
+        },
+        {
+          "teste": "apply_eval",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 148
+          }
+        },
+        {
+          "teste": "tag_uri",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 167
+          }
+        },
+        {
+          "teste": "object_new",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 57
+          }
+        },
+        {
+          "teste": "tag_customizada",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 120
+          }
+        },
+        {
+          "teste": "nome_python",
+          "tipo": "diagnostico",
+          "status": "nao_observada",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 50
+          }
+        },
+        {
+          "teste": "yaml_invalido",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 31,
+            "configuracao_refletida": true
+          }
+        },
+        {
+          "teste": "raiz_lista",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 11,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "documento_vazio",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 0,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chaves_duplicadas",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 20,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "alias_ciclico",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 15,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_bytes",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 413,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16385,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "multiplos_documentos",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 14,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "profundidade",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 156,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "numero_nao_finito",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 8,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chave_numerica",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 9,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_utf8",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 413,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16390,
+            "configuracao_refletida": false
+          }
+        }
+      ],
+      "loader": "revisao_de_codigo_pendente",
+      "modo": "vaza_erro",
+      "expectativa_atendida": true
+    },
+    {
+      "estado": "concluido",
+      "controles_positivos": true,
+      "testes": [
+        {
+          "teste": "tipos",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 61,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "unicode_bloco",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 67,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "aliases",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 42,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "strings",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 43,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "mapa_vazio",
+          "tipo": "funcional",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 3,
+            "conteudo_correto": true
+          }
+        },
+        {
+          "teste": "profundidade_permitida",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 152
+          }
+        },
+        {
+          "teste": "tamanho_permitido",
+          "tipo": "contrato",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16384
+          }
+        },
+        {
+          "teste": "apply_os",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 109
+          }
+        },
+        {
+          "teste": "apply_eval",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 148
+          }
+        },
+        {
+          "teste": "tag_uri",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 167
+          }
+        },
+        {
+          "teste": "object_new",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 57
+          }
+        },
+        {
+          "teste": "tag_customizada",
+          "tipo": "seguranca_execucao",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 120
+          }
+        },
+        {
+          "teste": "nome_python",
+          "tipo": "diagnostico",
+          "status": "nao_observada",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 50
+          }
+        },
+        {
+          "teste": "yaml_invalido",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 31,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "raiz_lista",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 11,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "documento_vazio",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 0,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chaves_duplicadas",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 20,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "alias_ciclico",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 15,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_bytes",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16385,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "multiplos_documentos",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 14,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "profundidade",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 156,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "numero_nao_finito",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 8,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "chave_numerica",
+          "tipo": "robustez",
+          "status": "aprovado",
+          "evidencia": {
+            "status_http": 400,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 9,
+            "configuracao_refletida": false
+          }
+        },
+        {
+          "teste": "limite_utf8",
+          "tipo": "robustez",
+          "status": "reprovado",
+          "evidencia": {
+            "status_http": 200,
+            "marcador_execucao": false,
+            "nome_resolvido": false,
+            "bytes_yaml": 16390,
+            "configuracao_refletida": false
+          }
+        }
+      ],
+      "loader": "revisao_de_codigo_pendente",
+      "modo": "safe_simples",
+      "expectativa_atendida": true
+    }
+  ],
+  "imagem": "sha256:753c8180d30db720d38876d805155af640b686038ff0575c3cd56dd1098d6c29",
+  "container_exit": 0,
+  "stdout": "TCC_RESULTADO_JSON:{\"referencias\": 11, \"expectativas_atendidas\": 11, \"resultados\": [{\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"tipos\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 61, \"conteudo_correto\": true}}, {\"teste\": \"unicode_bloco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 67, \"conteudo_correto\": true}}, {\"teste\": \"aliases\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 42, \"conteudo_correto\": true}}, {\"teste\": \"strings\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 43, \"conteudo_correto\": true}}, {\"teste\": \"mapa_vazio\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 3, \"conteudo_correto\": true}}, {\"teste\": \"profundidade_permitida\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 152}}, {\"teste\": \"tamanho_permitido\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16384}}, {\"teste\": \"apply_os\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 109}}, {\"teste\": \"apply_eval\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 148}}, {\"teste\": \"tag_uri\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 167}}, {\"teste\": \"object_new\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 57}}, {\"teste\": \"tag_customizada\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 120}}, {\"teste\": \"nome_python\", \"tipo\": \"diagnostico\", \"status\": \"nao_observada\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 50}}, {\"teste\": \"yaml_invalido\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 31, \"configuracao_refletida\": false}}, {\"teste\": \"raiz_lista\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 11, \"configuracao_refletida\": false}}, {\"teste\": \"documento_vazio\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 0, \"configuracao_refletida\": false}}, {\"teste\": \"chaves_duplicadas\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 20, \"configuracao_refletida\": false}}, {\"teste\": \"alias_ciclico\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 15, \"configuracao_refletida\": false}}, {\"teste\": \"limite_bytes\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 413, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16385, \"configuracao_refletida\": false}}, {\"teste\": \"multiplos_documentos\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 14, \"configuracao_refletida\": false}}, {\"teste\": \"profundidade\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 156, \"configuracao_refletida\": false}}, {\"teste\": \"numero_nao_finito\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 8, \"configuracao_refletida\": false}}, {\"teste\": \"chave_numerica\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 9, \"configuracao_refletida\": false}}, {\"teste\": \"limite_utf8\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 413, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16390, \"configuracao_refletida\": false}}], \"loader\": \"revisao_de_codigo_pendente\", \"modo\": \"protegida\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"tipos\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 61, \"conteudo_correto\": true}}, {\"teste\": \"unicode_bloco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 67, \"conteudo_correto\": true}}, {\"teste\": \"aliases\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 42, \"conteudo_correto\": true}}, {\"teste\": \"strings\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 43, \"conteudo_correto\": true}}, {\"teste\": \"mapa_vazio\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 3, \"conteudo_correto\": true}}, {\"teste\": \"profundidade_permitida\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 152}}, {\"teste\": \"tamanho_permitido\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16384}}, {\"teste\": \"apply_os\", \"tipo\": \"seguranca_execucao\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": true, \"nome_resolvido\": false, \"bytes_yaml\": 109}}, {\"teste\": \"apply_eval\", \"tipo\": \"seguranca_execucao\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": true, \"nome_resolvido\": false, \"bytes_yaml\": 148}}, {\"teste\": \"tag_uri\", \"tipo\": \"seguranca_execucao\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": true, \"nome_resolvido\": false, \"bytes_yaml\": 167}}, {\"teste\": \"object_new\", \"tipo\": \"seguranca_execucao\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": true, \"nome_resolvido\": false, \"bytes_yaml\": 57}}, {\"teste\": \"tag_customizada\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 120}}, {\"teste\": \"nome_python\", \"tipo\": \"diagnostico\", \"status\": \"resolucao_observada\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": true, \"bytes_yaml\": 50}}, {\"teste\": \"yaml_invalido\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 31, \"configuracao_refletida\": false}}, {\"teste\": \"raiz_lista\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 11, \"configuracao_refletida\": false}}, {\"teste\": \"documento_vazio\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 0, \"configuracao_refletida\": false}}, {\"teste\": \"chaves_duplicadas\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 20, \"configuracao_refletida\": false}}, {\"teste\": \"alias_ciclico\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 15, \"configuracao_refletida\": false}}, {\"teste\": \"limite_bytes\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16385, \"configuracao_refletida\": false}}, {\"teste\": \"multiplos_documentos\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 14, \"configuracao_refletida\": false}}, {\"teste\": \"profundidade\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 156, \"configuracao_refletida\": false}}, {\"teste\": \"numero_nao_finito\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 8, \"configuracao_refletida\": false}}, {\"teste\": \"chave_numerica\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 9, \"configuracao_refletida\": false}}, {\"teste\": \"limite_utf8\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16390, \"configuracao_refletida\": false}}], \"loader\": \"revisao_de_codigo_pendente\", \"modo\": \"insegura\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"tipos\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 61, \"conteudo_correto\": true}}, {\"teste\": \"unicode_bloco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 67, \"conteudo_correto\": true}}, {\"teste\": \"aliases\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 42, \"conteudo_correto\": true}}, {\"teste\": \"strings\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 43, \"conteudo_correto\": true}}, {\"teste\": \"mapa_vazio\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 3, \"conteudo_correto\": true}}, {\"teste\": \"profundidade_permitida\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 152}}, {\"teste\": \"tamanho_permitido\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16384}}, {\"teste\": \"apply_os\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 109}}, {\"teste\": \"apply_eval\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 148}}, {\"teste\": \"tag_uri\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 167}}, {\"teste\": \"object_new\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 57}}, {\"teste\": \"tag_customizada\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 120}}, {\"teste\": \"nome_python\", \"tipo\": \"diagnostico\", \"status\": \"resolucao_observada\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": true, \"bytes_yaml\": 50}}, {\"teste\": \"yaml_invalido\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 31, \"configuracao_refletida\": false}}, {\"teste\": \"raiz_lista\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 11, \"configuracao_refletida\": false}}, {\"teste\": \"documento_vazio\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 0, \"configuracao_refletida\": false}}, {\"teste\": \"chaves_duplicadas\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 20, \"configuracao_refletida\": false}}, {\"teste\": \"alias_ciclico\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 15, \"configuracao_refletida\": false}}, {\"teste\": \"limite_bytes\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16385, \"configuracao_refletida\": false}}, {\"teste\": \"multiplos_documentos\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 14, \"configuracao_refletida\": false}}, {\"teste\": \"profundidade\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 156, \"configuracao_refletida\": false}}, {\"teste\": \"numero_nao_finito\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 8, \"configuracao_refletida\": false}}, {\"teste\": \"chave_numerica\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 9, \"configuracao_refletida\": false}}, {\"teste\": \"limite_utf8\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16390, \"configuracao_refletida\": false}}], \"loader\": \"revisao_de_codigo_pendente\", \"modo\": \"full_loader\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": false, \"testes\": [{\"teste\": \"tipos\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 61, \"conteudo_correto\": false}}, {\"teste\": \"unicode_bloco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 67, \"conteudo_correto\": true}}, {\"teste\": \"aliases\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 42, \"conteudo_correto\": true}}, {\"teste\": \"strings\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 43, \"conteudo_correto\": true}}, {\"teste\": \"mapa_vazio\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 3, \"conteudo_correto\": true}}, {\"teste\": \"profundidade_permitida\", \"tipo\": \"contrato\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 152}}, {\"teste\": \"tamanho_permitido\", \"tipo\": \"contrato\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16384}}, {\"teste\": \"apply_os\", \"tipo\": \"seguranca_execucao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 109}}, {\"teste\": \"apply_eval\", \"tipo\": \"seguranca_execucao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 148}}, {\"teste\": \"tag_uri\", \"tipo\": \"seguranca_execucao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 167}}, {\"teste\": \"object_new\", \"tipo\": \"seguranca_execucao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 57}}, {\"teste\": \"tag_customizada\", \"tipo\": \"seguranca_execucao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 120}}, {\"teste\": \"nome_python\", \"tipo\": \"diagnostico\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 50}}, {\"teste\": \"yaml_invalido\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 31, \"configuracao_refletida\": false}}, {\"teste\": \"raiz_lista\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 11, \"configuracao_refletida\": false}}, {\"teste\": \"documento_vazio\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 0, \"configuracao_refletida\": false}}, {\"teste\": \"chaves_duplicadas\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 20, \"configuracao_refletida\": false}}, {\"teste\": \"alias_ciclico\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 15, \"configuracao_refletida\": false}}, {\"teste\": \"limite_bytes\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16385, \"configuracao_refletida\": false}}, {\"teste\": \"multiplos_documentos\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 14, \"configuracao_refletida\": false}}, {\"teste\": \"profundidade\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 156, \"configuracao_refletida\": false}}, {\"teste\": \"numero_nao_finito\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 8, \"configuracao_refletida\": false}}, {\"teste\": \"chave_numerica\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 9, \"configuracao_refletida\": false}}, {\"teste\": \"limite_utf8\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16390, \"configuracao_refletida\": false}}], \"loader\": \"revisao_de_codigo_pendente\", \"modo\": \"base_loader\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": false, \"testes\": [{\"teste\": \"tipos\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 61, \"conteudo_correto\": false}}, {\"teste\": \"unicode_bloco\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 67, \"conteudo_correto\": false}}, {\"teste\": \"aliases\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 42, \"conteudo_correto\": false}}, {\"teste\": \"strings\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 43, \"conteudo_correto\": false}}, {\"teste\": \"mapa_vazio\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 3, \"conteudo_correto\": false}}, {\"teste\": \"profundidade_permitida\", \"tipo\": \"contrato\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 152}}, {\"teste\": \"tamanho_permitido\", \"tipo\": \"contrato\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16384}}, {\"teste\": \"apply_os\", \"tipo\": \"seguranca_execucao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 109}}, {\"teste\": \"apply_eval\", \"tipo\": \"seguranca_execucao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 148}}, {\"teste\": \"tag_uri\", \"tipo\": \"seguranca_execucao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 167}}, {\"teste\": \"object_new\", \"tipo\": \"seguranca_execucao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 57}}, {\"teste\": \"tag_customizada\", \"tipo\": \"seguranca_execucao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 120}}, {\"teste\": \"nome_python\", \"tipo\": \"diagnostico\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 50}}, {\"teste\": \"yaml_invalido\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 31, \"configuracao_refletida\": false}}, {\"teste\": \"raiz_lista\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 11, \"configuracao_refletida\": false}}, {\"teste\": \"documento_vazio\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 0, \"configuracao_refletida\": false}}, {\"teste\": \"chaves_duplicadas\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 20, \"configuracao_refletida\": false}}, {\"teste\": \"alias_ciclico\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 15, \"configuracao_refletida\": false}}, {\"teste\": \"limite_bytes\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16385, \"configuracao_refletida\": false}}, {\"teste\": \"multiplos_documentos\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 14, \"configuracao_refletida\": false}}, {\"teste\": \"profundidade\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 156, \"configuracao_refletida\": false}}, {\"teste\": \"numero_nao_finito\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 8, \"configuracao_refletida\": false}}, {\"teste\": \"chave_numerica\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 9, \"configuracao_refletida\": false}}, {\"teste\": \"limite_utf8\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16390, \"configuracao_refletida\": false}}], \"loader\": \"revisao_de_codigo_pendente\", \"modo\": \"nega_tudo\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": false, \"testes\": [{\"teste\": \"tipos\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 61, \"conteudo_correto\": false}}, {\"teste\": \"unicode_bloco\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 67, \"conteudo_correto\": false}}, {\"teste\": \"aliases\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 42, \"conteudo_correto\": false}}, {\"teste\": \"strings\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 43, \"conteudo_correto\": false}}, {\"teste\": \"mapa_vazio\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 3, \"conteudo_correto\": true}}, {\"teste\": \"profundidade_permitida\", \"tipo\": \"contrato\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 152}}, {\"teste\": \"tamanho_permitido\", \"tipo\": \"contrato\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16384}}, {\"teste\": \"apply_os\", \"tipo\": \"seguranca_execucao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 109}}, {\"teste\": \"apply_eval\", \"tipo\": \"seguranca_execucao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 148}}, {\"teste\": \"tag_uri\", \"tipo\": \"seguranca_execucao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 167}}, {\"teste\": \"object_new\", \"tipo\": \"seguranca_execucao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 57}}, {\"teste\": \"tag_customizada\", \"tipo\": \"seguranca_execucao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 120}}, {\"teste\": \"nome_python\", \"tipo\": \"diagnostico\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 50}}, {\"teste\": \"yaml_invalido\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 31, \"configuracao_refletida\": false}}, {\"teste\": \"raiz_lista\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 11, \"configuracao_refletida\": false}}, {\"teste\": \"documento_vazio\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 0, \"configuracao_refletida\": false}}, {\"teste\": \"chaves_duplicadas\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 20, \"configuracao_refletida\": false}}, {\"teste\": \"alias_ciclico\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 15, \"configuracao_refletida\": false}}, {\"teste\": \"limite_bytes\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16385, \"configuracao_refletida\": false}}, {\"teste\": \"multiplos_documentos\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 14, \"configuracao_refletida\": false}}, {\"teste\": \"profundidade\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 156, \"configuracao_refletida\": false}}, {\"teste\": \"numero_nao_finito\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 8, \"configuracao_refletida\": false}}, {\"teste\": \"chave_numerica\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 9, \"configuracao_refletida\": false}}, {\"teste\": \"limite_utf8\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16390, \"configuracao_refletida\": false}}], \"loader\": \"revisao_de_codigo_pendente\", \"modo\": \"finge_sucesso\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": false, \"testes\": [{\"teste\": \"tipos\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 61, \"conteudo_correto\": false}}, {\"teste\": \"unicode_bloco\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 67, \"conteudo_correto\": false}}, {\"teste\": \"aliases\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 42, \"conteudo_correto\": false}}, {\"teste\": \"strings\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 43, \"conteudo_correto\": false}}, {\"teste\": \"mapa_vazio\", \"tipo\": \"funcional\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 3, \"conteudo_correto\": false}}, {\"teste\": \"profundidade_permitida\", \"tipo\": \"contrato\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 152}}, {\"teste\": \"tamanho_permitido\", \"tipo\": \"contrato\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16384}}, {\"teste\": \"apply_os\", \"tipo\": \"seguranca_execucao\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": true, \"nome_resolvido\": false, \"bytes_yaml\": 109}}, {\"teste\": \"apply_eval\", \"tipo\": \"seguranca_execucao\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": true, \"nome_resolvido\": false, \"bytes_yaml\": 148}}, {\"teste\": \"tag_uri\", \"tipo\": \"seguranca_execucao\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": true, \"nome_resolvido\": false, \"bytes_yaml\": 167}}, {\"teste\": \"object_new\", \"tipo\": \"seguranca_execucao\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": true, \"nome_resolvido\": false, \"bytes_yaml\": 57}}, {\"teste\": \"tag_customizada\", \"tipo\": \"seguranca_execucao\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 120}}, {\"teste\": \"nome_python\", \"tipo\": \"diagnostico\", \"status\": \"resolucao_observada\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": true, \"bytes_yaml\": 50}}, {\"teste\": \"yaml_invalido\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 31, \"configuracao_refletida\": false}}, {\"teste\": \"raiz_lista\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 11, \"configuracao_refletida\": false}}, {\"teste\": \"documento_vazio\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 0, \"configuracao_refletida\": false}}, {\"teste\": \"chaves_duplicadas\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 20, \"configuracao_refletida\": false}}, {\"teste\": \"alias_ciclico\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 15, \"configuracao_refletida\": false}}, {\"teste\": \"limite_bytes\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16385, \"configuracao_refletida\": false}}, {\"teste\": \"multiplos_documentos\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 14, \"configuracao_refletida\": false}}, {\"teste\": \"profundidade\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 156, \"configuracao_refletida\": false}}, {\"teste\": \"numero_nao_finito\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 8, \"configuracao_refletida\": false}}, {\"teste\": \"chave_numerica\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 9, \"configuracao_refletida\": false}}, {\"teste\": \"limite_utf8\", \"tipo\": \"robustez\", \"status\": \"inconclusivo\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16390, \"configuracao_refletida\": false}}], \"loader\": \"revisao_de_codigo_pendente\", \"modo\": \"executa_e_nega\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"tipos\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 61, \"conteudo_correto\": true}}, {\"teste\": \"unicode_bloco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 67, \"conteudo_correto\": true}}, {\"teste\": \"aliases\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 42, \"conteudo_correto\": true}}, {\"teste\": \"strings\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 43, \"conteudo_correto\": true}}, {\"teste\": \"mapa_vazio\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 3, \"conteudo_correto\": true}}, {\"teste\": \"profundidade_permitida\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 152}}, {\"teste\": \"tamanho_permitido\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16384}}, {\"teste\": \"apply_os\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 109}}, {\"teste\": \"apply_eval\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 148}}, {\"teste\": \"tag_uri\", \"tipo\": \"seguranca_execucao\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": true, \"nome_resolvido\": false, \"bytes_yaml\": 167}}, {\"teste\": \"object_new\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 57}}, {\"teste\": \"tag_customizada\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 120}}, {\"teste\": \"nome_python\", \"tipo\": \"diagnostico\", \"status\": \"nao_observada\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 50}}, {\"teste\": \"yaml_invalido\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 31, \"configuracao_refletida\": false}}, {\"teste\": \"raiz_lista\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 11, \"configuracao_refletida\": false}}, {\"teste\": \"documento_vazio\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 0, \"configuracao_refletida\": false}}, {\"teste\": \"chaves_duplicadas\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 20, \"configuracao_refletida\": false}}, {\"teste\": \"alias_ciclico\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 15, \"configuracao_refletida\": false}}, {\"teste\": \"limite_bytes\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16385, \"configuracao_refletida\": false}}, {\"teste\": \"multiplos_documentos\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 14, \"configuracao_refletida\": false}}, {\"teste\": \"profundidade\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 156, \"configuracao_refletida\": false}}, {\"teste\": \"numero_nao_finito\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 8, \"configuracao_refletida\": false}}, {\"teste\": \"chave_numerica\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 9, \"configuracao_refletida\": false}}, {\"teste\": \"limite_utf8\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16390, \"configuracao_refletida\": false}}], \"loader\": \"revisao_de_codigo_pendente\", \"modo\": \"bloqueio_textual\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"tipos\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 61, \"conteudo_correto\": true}}, {\"teste\": \"unicode_bloco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 67, \"conteudo_correto\": true}}, {\"teste\": \"aliases\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 42, \"conteudo_correto\": true}}, {\"teste\": \"strings\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 43, \"conteudo_correto\": true}}, {\"teste\": \"mapa_vazio\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 3, \"conteudo_correto\": true}}, {\"teste\": \"profundidade_permitida\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 152}}, {\"teste\": \"tamanho_permitido\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16384}}, {\"teste\": \"apply_os\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 109}}, {\"teste\": \"apply_eval\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 148}}, {\"teste\": \"tag_uri\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 167}}, {\"teste\": \"object_new\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 57}}, {\"teste\": \"tag_customizada\", \"tipo\": \"seguranca_execucao\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": true, \"nome_resolvido\": false, \"bytes_yaml\": 120}}, {\"teste\": \"nome_python\", \"tipo\": \"diagnostico\", \"status\": \"nao_observada\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 50}}, {\"teste\": \"yaml_invalido\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 31, \"configuracao_refletida\": false}}, {\"teste\": \"raiz_lista\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 11, \"configuracao_refletida\": false}}, {\"teste\": \"documento_vazio\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 0, \"configuracao_refletida\": false}}, {\"teste\": \"chaves_duplicadas\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 20, \"configuracao_refletida\": false}}, {\"teste\": \"alias_ciclico\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 15, \"configuracao_refletida\": false}}, {\"teste\": \"limite_bytes\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16385, \"configuracao_refletida\": false}}, {\"teste\": \"multiplos_documentos\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 14, \"configuracao_refletida\": false}}, {\"teste\": \"profundidade\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 156, \"configuracao_refletida\": false}}, {\"teste\": \"numero_nao_finito\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 8, \"configuracao_refletida\": false}}, {\"teste\": \"chave_numerica\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 9, \"configuracao_refletida\": false}}, {\"teste\": \"limite_utf8\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16390, \"configuracao_refletida\": false}}], \"loader\": \"revisao_de_codigo_pendente\", \"modo\": \"customizado\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"tipos\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 61, \"conteudo_correto\": true}}, {\"teste\": \"unicode_bloco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 67, \"conteudo_correto\": true}}, {\"teste\": \"aliases\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 42, \"conteudo_correto\": true}}, {\"teste\": \"strings\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 43, \"conteudo_correto\": true}}, {\"teste\": \"mapa_vazio\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 3, \"conteudo_correto\": true}}, {\"teste\": \"profundidade_permitida\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 152}}, {\"teste\": \"tamanho_permitido\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16384}}, {\"teste\": \"apply_os\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 109}}, {\"teste\": \"apply_eval\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 148}}, {\"teste\": \"tag_uri\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 167}}, {\"teste\": \"object_new\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 57}}, {\"teste\": \"tag_customizada\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 120}}, {\"teste\": \"nome_python\", \"tipo\": \"diagnostico\", \"status\": \"nao_observada\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 50}}, {\"teste\": \"yaml_invalido\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 31, \"configuracao_refletida\": true}}, {\"teste\": \"raiz_lista\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 11, \"configuracao_refletida\": false}}, {\"teste\": \"documento_vazio\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 0, \"configuracao_refletida\": false}}, {\"teste\": \"chaves_duplicadas\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 20, \"configuracao_refletida\": false}}, {\"teste\": \"alias_ciclico\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 15, \"configuracao_refletida\": false}}, {\"teste\": \"limite_bytes\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 413, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16385, \"configuracao_refletida\": false}}, {\"teste\": \"multiplos_documentos\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 14, \"configuracao_refletida\": false}}, {\"teste\": \"profundidade\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 156, \"configuracao_refletida\": false}}, {\"teste\": \"numero_nao_finito\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 8, \"configuracao_refletida\": false}}, {\"teste\": \"chave_numerica\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 9, \"configuracao_refletida\": false}}, {\"teste\": \"limite_utf8\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 413, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16390, \"configuracao_refletida\": false}}], \"loader\": \"revisao_de_codigo_pendente\", \"modo\": \"vaza_erro\", \"expectativa_atendida\": true}, {\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"tipos\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 61, \"conteudo_correto\": true}}, {\"teste\": \"unicode_bloco\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 67, \"conteudo_correto\": true}}, {\"teste\": \"aliases\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 42, \"conteudo_correto\": true}}, {\"teste\": \"strings\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 43, \"conteudo_correto\": true}}, {\"teste\": \"mapa_vazio\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 3, \"conteudo_correto\": true}}, {\"teste\": \"profundidade_permitida\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 152}}, {\"teste\": \"tamanho_permitido\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16384}}, {\"teste\": \"apply_os\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 109}}, {\"teste\": \"apply_eval\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 148}}, {\"teste\": \"tag_uri\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 167}}, {\"teste\": \"object_new\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 57}}, {\"teste\": \"tag_customizada\", \"tipo\": \"seguranca_execucao\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 120}}, {\"teste\": \"nome_python\", \"tipo\": \"diagnostico\", \"status\": \"nao_observada\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 50}}, {\"teste\": \"yaml_invalido\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 31, \"configuracao_refletida\": false}}, {\"teste\": \"raiz_lista\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 11, \"configuracao_refletida\": false}}, {\"teste\": \"documento_vazio\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 0, \"configuracao_refletida\": false}}, {\"teste\": \"chaves_duplicadas\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 20, \"configuracao_refletida\": false}}, {\"teste\": \"alias_ciclico\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 15, \"configuracao_refletida\": false}}, {\"teste\": \"limite_bytes\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16385, \"configuracao_refletida\": false}}, {\"teste\": \"multiplos_documentos\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 14, \"configuracao_refletida\": false}}, {\"teste\": \"profundidade\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 156, \"configuracao_refletida\": false}}, {\"teste\": \"numero_nao_finito\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 8, \"configuracao_refletida\": false}}, {\"teste\": \"chave_numerica\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 9, \"configuracao_refletida\": false}}, {\"teste\": \"limite_utf8\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 200, \"marcador_execucao\": false, \"nome_resolvido\": false, \"bytes_yaml\": 16390, \"configuracao_refletida\": false}}], \"loader\": \"revisao_de_codigo_pendente\", \"modo\": \"safe_simples\", \"expectativa_atendida\": true}]}\n",
+  "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n",
+  "probe": {
+    "confinamento": {
+      "usuario_sem_privilegios": true,
+      "sem_chave_api": true,
+      "raiz_somente_leitura": true,
+      "rede_bloqueada": true
+    },
+    "python": "3.14.2 (main, Feb  3 2026, 03:06:17) [GCC 14.2.0]",
+    "pyyaml": "6.0.3",
+    "imagem": "sha256:753c8180d30db720d38876d805155af640b686038ff0575c3cd56dd1098d6c29",
+    "container_exit": 0,
+    "stdout": "TCC_RESULTADO_JSON:{\"confinamento\": {\"usuario_sem_privilegios\": true, \"sem_chave_api\": true, \"raiz_somente_leitura\": true, \"rede_bloqueada\": true}, \"python\": \"3.14.2 (main, Feb  3 2026, 03:06:17) [GCC 14.2.0]\", \"pyyaml\": \"6.0.3\"}\n",
+    "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+  },
+  "arquivos": {
+    "tarefas/T08.json": "b375639d2e7d6decf33bfab0121eb3b5e6faa655e4f243b82b1fffd35c4eccb4",
+    "t08_verificador.py": "c42b4e71d49f284bf934fa59c159e867464aee4fdaa4b48b108ffafe26fb9b9b",
+    "t08_referencias.py": "e990ab64ddc20e6874246d4b66dd4ee27483d4e86cd11d2f820e5893ac4c3e92",
+    "t08_worker_linux.py": "a4cc2d0bec56fe623d3cb05ad31d7c756946a078b1fc2bbb30e92ed09b1161fd",
+    "t08_docker.py": "21cd835c173820027cee569c8fb31c2d9c389181aee0bee0a83764b569f6cb42",
+    "t04_docker.py": "821ea57817d577356d531fdaca12d0b6d7e4fe487c5839fc3bbef1231ebe15ba",
+    "docker/t08/Dockerfile": "276fe1312c833060a0a2765c341d63a1e852f34462df713bcd61033c74c0c11c",
+    "docker/t08/requirements.txt": "79d689cbcc51e3bb695d3c27b63be573671bf4a3384fa38de683e35abad5b033"
+  }
+}

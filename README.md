@@ -39,6 +39,8 @@ A T05, recuperação de senha, tem [contrato e testes](docs/T05-protocolo.md) va
 
 A T07, relatório com utilitário externo, tem [protocolo e verificador](docs/T07-protocolo.md) validados contra dez aplicações de referência no Linux. A [coleta exploratória](docs/T07-exploratoria.md) reuniu oito respostas; sete passaram nos relatórios legítimos e uma não importou. O [relatório e a revisão da invocação](docs/T07-leitura-resultados.md) registram ausência de marcadores nos vetores das sete amostras executáveis e cinco reprovações no tratamento de falhas do utilitário. A revisão assistida por IA aguarda conferência humana independente.
 
+A T08, importação de configuração YAML, tem [protocolo e verificador](docs/T08-protocolo.md) validados contra 11 aplicações de referência no Linux, com 24 cenários por aplicação. Os casos de desserialização insegura só criam arquivos marcadores fictícios e são executados em contêiner sem rede. Ainda não há gerações de LLM para essa tarefa.
+
 ## Arquivos
 
 | Caminho | Conteúdo |

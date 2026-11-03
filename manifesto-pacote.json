@@ -18,8 +18,8 @@
     },
     {
       "caminho": "README.md",
-      "bytes": 6048,
-      "sha256": "f5fdeb938a6a6f6ac8f76118ea7aaf4e9c4f07ac3f306b7e3b025bba22de1f62"
+      "bytes": 6411,
+      "sha256": "24da26f108d2033371c402dd0cb2de8445f2dde8ea4162f615d5653e86c8217e"
     },
     {
       "caminho": "aceitacao_worker.py",
@@ -398,8 +398,8 @@
     },
     {
       "caminho": "conferir_pacote.py",
-      "bytes": 11561,
-      "sha256": "14b4ca49ef413aa3411f6c0978af6ca99f6481b3516cd45ea2670402d9375db4"
+      "bytes": 12246,
+      "sha256": "0d7d972aa0baa63dee5c9cbb5b2eb21316b0d97814e37745ccfbf6a64a7da804"
     },
     {
       "caminho": "dados/aceitacoes-mais-recentes.json",
@@ -1302,6 +1302,31 @@
       "sha256": "f36f181dcd9a1185cafeba9d907b96d76ccf6384a1d9513e64c28474de38f102"
     },
     {
+      "caminho": "docker/t08/Dockerfile",
+      "bytes": 453,
+      "sha256": "276fe1312c833060a0a2765c341d63a1e852f34462df713bcd61033c74c0c11c"
+    },
+    {
+      "caminho": "docker/t08/requirements.txt",
+      "bytes": 269,
+      "sha256": "79d689cbcc51e3bb695d3c27b63be573671bf4a3384fa38de683e35abad5b033"
+    },
+    {
+      "caminho": "docker/t08/t08_referencias.py",
+      "bytes": 3303,
+      "sha256": "e990ab64ddc20e6874246d4b66dd4ee27483d4e86cd11d2f820e5893ac4c3e92"
+    },
+    {
+      "caminho": "docker/t08/t08_verificador.py",
+      "bytes": 6246,
+      "sha256": "c42b4e71d49f284bf934fa59c159e867464aee4fdaa4b48b108ffafe26fb9b9b"
+    },
+    {
+      "caminho": "docker/t08/t08_worker_linux.py",
+      "bytes": 4035,
+      "sha256": "a4cc2d0bec56fe623d3cb05ad31d7c756946a078b1fc2bbb30e92ed09b1161fd"
+    },
+    {
       "caminho": "docs/T03-exploratoria.md",
       "bytes": 1165,
       "sha256": "59591d021fbac254381139109e94613ba64d90fbe6df5e6472a32719cfee4fad"
@@ -1415,6 +1440,16 @@
       "caminho": "docs/T07-validacao-linux.json",
       "bytes": 119706,
       "sha256": "ec21f40e0fa85cbf2b927ff49156fb07d1bf6906c7fb51b118f943ff8fd13279"
+    },
+    {
+      "caminho": "docs/T08-protocolo.md",
+      "bytes": 6058,
+      "sha256": "c0e8e54a37afef09de467fd89bb2996fb9d98cd9faa260eef044922969d5bd54"
+    },
+    {
+      "caminho": "docs/T08-validacao-linux.json",
+      "bytes": 151589,
+      "sha256": "e18a50b395d2325e651f1ac3bd57219ec59c6bc3a1b127151a0332d120dff93d"
     },
     {
       "caminho": "docs/aceitacao-por-caso.csv",
@@ -4457,6 +4492,26 @@
       "sha256": "f36f181dcd9a1185cafeba9d907b96d76ccf6384a1d9513e64c28474de38f102"
     },
     {
+      "caminho": "t08_docker.py",
+      "bytes": 2515,
+      "sha256": "21cd835c173820027cee569c8fb31c2d9c389181aee0bee0a83764b569f6cb42"
+    },
+    {
+      "caminho": "t08_referencias.py",
+      "bytes": 3303,
+      "sha256": "e990ab64ddc20e6874246d4b66dd4ee27483d4e86cd11d2f820e5893ac4c3e92"
+    },
+    {
+      "caminho": "t08_verificador.py",
+      "bytes": 6246,
+      "sha256": "c42b4e71d49f284bf934fa59c159e867464aee4fdaa4b48b108ffafe26fb9b9b"
+    },
+    {
+      "caminho": "t08_worker_linux.py",
+      "bytes": 4035,
+      "sha256": "a4cc2d0bec56fe623d3cb05ad31d7c756946a078b1fc2bbb30e92ed09b1161fd"
+    },
+    {
       "caminho": "tarefas/T03.json",
       "bytes": 2901,
       "sha256": "dd21ca4aa8ec687a98dc5d5e85b78859f31a6e5ade85884b5f63dd2b0ed145c4"
@@ -4475,6 +4530,11 @@
       "caminho": "tarefas/T07.json",
       "bytes": 2982,
       "sha256": "9401ad038f3dbd69df5bc53a0628e07a94fc8d9aff48aeba22d95dc73c3f14aa"
+    },
+    {
+      "caminho": "tarefas/T08.json",
+      "bytes": 2699,
+      "sha256": "b375639d2e7d6decf33bfab0121eb3b5e6faa655e4f243b82b1fffd35c4eccb4"
     },
     {
       "caminho": "tests/test_aceitacao.py",
@@ -4532,6 +4592,11 @@
       "sha256": "1eb9a7bd74f25065e27cc0d6dd3d5301c336ff36548219cb2fd65e3472865a39"
     },
     {
+      "caminho": "tests/test_t08.py",
+      "bytes": 1510,
+      "sha256": "c9398a765536911af4049e11eb2bd681b976156bfac41bb4707189863da777eb"
+    },
+    {
       "caminho": "validar_aceitacao.py",
       "bytes": 4122,
       "sha256": "88481b94af00787697b7f1bec55324f57e8635763c8a50e28c7748c02463cbab"
@@ -4552,5 +4617,6 @@
   "redacao_piloto": "Resultados-piloto-v01: quatro paginas, contagens extraidas dos registros; estudo exploratorio.",
   "ampliacao_T03": "9 referencias validadas, 18 casos por referencia; coleta exploratoria de 8 respostas em 8 chamadas, 6 aprovadas nos uploads legitimos, 1 reprovada e 1 sem importacao; fora do piloto e da coleta principal.",
   "ampliacao_T05": "8 respostas em 8 chamadas, 7697 tokens; ambiente original com 1 ciclo aprovado e 7 impedimentos; diagnostico v2 com dependencia e dominio: 7 ciclos aprovados e 1 impedimento; revisao de tokens assistida por IA, confer?ncia humana independente pendente.",
-  "ampliacao_T07": "8 respostas em 8 chamadas, 5725 tokens; 7 geracoes aprovadas nos relatorios legitimos e 1 impedimento de importacao; sem marcadores em 7 vetores de comandos e 1 de argumentos nas sete executaveis; 5 reprovacoes de robustez; revisao assistida por IA pendente de conferencia humana independente."
+  "ampliacao_T07": "8 respostas em 8 chamadas, 5725 tokens; 7 geracoes aprovadas nos relatorios legitimos e 1 impedimento de importacao; sem marcadores em 7 vetores de comandos e 1 de argumentos nas sete executaveis; 5 reprovacoes de robustez; revisao assistida por IA pendente de conferencia humana independente.",
+  "ampliacao_T08": "Instrumento validado em Linux: 11 referencias, 24 cenarios por referencia; 47 testes locais aprovados; sem geracoes de LLM."
 }

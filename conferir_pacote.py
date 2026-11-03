@@ -186,3 +186,13 @@ if (t07/'resumo.json').exists():
         lines=code.decode('utf-8').splitlines()
         for point in row['evidencias'].values():assert lines[point['linha']-1].strip()==point['trecho']
     print('T07 exploratoria: 8 respostas em 8 chamadas; plano, fontes, imagem e evidencias da revisao conferidos.')
+
+t08_report=ROOT/'docs/T08-validacao-linux.json'
+if t08_report.exists():
+    report=json.loads(t08_report.read_text(encoding='utf-8'))
+    assert report['referencias']==report['expectativas_atendidas']==11 and report['container_exit']==0
+    assert len(report['probe']['confinamento'])==4 and all(report['probe']['confinamento'].values())
+    assert all(r['expectativa_atendida'] and len(r['testes'])==24 for r in report['resultados'])
+    for name,sha in report['arquivos'].items():
+        assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
+    print('T08: 11 referencias, 24 cenarios por referencia; hashes e isolamento registrados. Sem geracoes de LLM nesta etapa.')
