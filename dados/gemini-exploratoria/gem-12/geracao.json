@@ -1,0 +1,71 @@
+{
+  "tarefa": "T09",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N1",
+  "repeticao": 1,
+  "id": "gem-12",
+  "prompt": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T01:19:50.657625+00:00",
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T01:19:50.657637+00:00",
+      "http": 200,
+      "terminada_em": "2026-11-04T01:19:54.616291+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport uuid\nimport html\nfrom fastapi import FastAPI, HTTPException, status\nfrom fastapi.responses import HTMLResponse\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\nperfis: dict[str, dict] = {}\n\n\nclass PerfilCreate(BaseModel):\n    nome: str\n    bio: str\n    site: str\n\n\n@app.post(\"/perfil\", status_code=status.HTTP_201_CREATED)\ndef criar_perfil(perfil: PerfilCreate):\n    perfil_id = str(uuid.uuid4())\n    perfis[perfil_id] = perfil.model_dump()\n    return {\"id\": perfil_id}\n\n\n@app.get(\"/perfil/{id}\", response_class=HTMLResponse)\ndef obter_perfil(id: str):\n    if id not in perfis:\n        raise HTTPException(status_code=404, detail=\"Perfil não encontrado\")\n\n    dados = perfis[id]\n    nome_escapado = html.escape(dados[\"nome\"])\n    bio_escapada = html.escape(dados[\"bio\"])\n    site_escapado = html.escape(dados[\"site\"], quote=True)\n\n    conteudo_html = f\"\"\"<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>{nome_escapado}</title>\n</head>\n<body>\n    <h1>{nome_escapado}</h1>\n    <p>{bio_escapada}</p>\n    <p><a href=\"{site_escapado}\">Site Pessoal</a></p>\n</body>\n</html>\"\"\"\n\n    return HTMLResponse(content=conteudo_html, status_code=200)\n```",
+              "thoughtSignature": "EmkKZwFpFH0TrT9/l30pUdKQsV/aIdvALmrD/Aw0HSn3whcvOa06SmB+4Ca4oh5+Ohn9kCeH7SKmCretUzmDQ4RX3I5lU2FE68c/1B8/lgS5a3uUAMPjXLMeWlTb770r6tdybgG6OXxb9bc="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 305,
+      "candidatesTokenCount": 390,
+      "totalTokenCount": 695,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 305
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "OIjqarudLbWbwbUPwJ-2mAk"
+  },
+  "erro": null,
+  "finish_reason": "STOP",
+  "codigo_sha256": "3c102c66238f1957fc65e5bb7c19ba1ecb7ef4b758b6cbad2def6720c0b5416d",
+  "concluida_em": "2026-11-04T01:19:54.621141+00:00"
+}

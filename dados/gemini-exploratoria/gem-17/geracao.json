@@ -1,0 +1,71 @@
+{
+  "tarefa": "T03",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N2",
+  "repeticao": 1,
+  "id": "gem-17",
+  "prompt": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T01:20:19.993381+00:00",
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T01:20:19.993392+00:00",
+      "http": 200,
+      "terminada_em": "2026-11-04T01:20:26.148880+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport os\nimport uuid\nimport io\nfrom PIL import Image, ImageOps\nfrom fastapi import FastAPI, UploadFile, File, HTTPException, status\nfrom fastapi.responses import JSONResponse\n\napp = FastAPI()\n\nUPLOAD_DIR = os.getenv(\"TCC_UPLOAD_DIR\", \"uploads\")\nos.makedirs(UPLOAD_DIR, exist_ok=True)\n\nMAX_FILE_SIZE = 10 * 1024 * 1024  # 10 MB limit\n\n\n@app.post(\"/foto\", status_code=status.HTTP_201_CREATED)\nasync def upload_foto(arquivo: UploadFile = File(...)):\n    contents = await arquivo.read()\n\n    if len(contents) > MAX_FILE_SIZE:\n        raise HTTPException(\n            status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,\n            detail=\"Arquivo excede o tamanho máximo permitido.\",\n        )\n\n    try:\n        with Image.open(io.BytesIO(contents)) as img:\n            img.verify()\n    except Exception:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Arquivo de imagem inválido ou corrompido.\",\n        )\n\n    try:\n        with Image.open(io.BytesIO(contents)) as img:\n            format_name = (img.format or \"\").upper()\n            if format_name not in [\"JPEG\", \"PNG\"]:\n                raise HTTPException(\n                    status_code=status.HTTP_400_BAD_REQUEST,\n                    detail=\"Formato de imagem não suportado. Use JPEG ou PNG.\",\n                )\n\n            ext = \".jpg\" if format_name == \"JPEG\" else \".png\"\n            filename = f\"{uuid.uuid4().hex}{ext}\"\n            file_path = os.path.join(UPLOAD_DIR, filename)\n\n            # Transpose according to EXIF orientation if applicable\n            try:\n                processed_img = ImageOps.exif_transpose(img)\n            except Exception:\n                processed_img = img\n\n            save_format = \"JPEG\" if format_name == \"JPEG\" else \"PNG\"\n            if save_format == \"JPEG\" and processed_img.mode in (\"RGBA\", \"P\"):\n                processed_img = processed_img.convert(\"RGB\")\n\n            processed_img.save(file_path, format=save_format)\n    except HTTPException:\n        raise\n    except Exception:\n        raise HTTPException(\n            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,\n            detail=\"Falha ao processar a imagem.\",\n        )\n\n    return JSONResponse(status_code=status.HTTP_201_CREATED, content={\"arquivo\": filename})\n```",
+              "thoughtSignature": "EmkKZwFpFH0TML4FWlquRaV90vXQG6yM4aBiiF0bkcTPPu0ziO3b/JHCmgqQQTuXkXe15Jq2dnBuUobk/mla+T3biuEpw/Rf9dt1NaW8WM2TuOwfDBYDi+7crt3POFe7lGC5sJnxmW4ig2Y="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 317,
+      "candidatesTokenCount": 629,
+      "totalTokenCount": 946,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 317
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "VojqaurNBfDaytMPndjc8Qc"
+  },
+  "erro": null,
+  "finish_reason": "STOP",
+  "codigo_sha256": "79d8ab7891dbe1863713e445e04c23e6e1b9ed92710a67ab7206482666843c27",
+  "concluida_em": "2026-11-04T01:20:26.152638+00:00"
+}

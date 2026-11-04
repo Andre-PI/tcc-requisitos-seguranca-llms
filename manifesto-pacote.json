@@ -18,8 +18,8 @@
     },
     {
       "caminho": "README.md",
-      "bytes": 8600,
-      "sha256": "f6457b8bd435635bf610f9d4c6e6284b01f9544e9a4ad598334831ab0e802436"
+      "bytes": 8748,
+      "sha256": "7358c00f0a51d8bf442983d570ab0210ee184eaa212ecfd8c5dd30903baa8267"
     },
     {
       "caminho": "aceitacao_worker.py",
@@ -392,6 +392,11 @@
       "sha256": "84b72009673be30360a998c839528567cb662e3a7b0e8a873a5e075dc91e26fc"
     },
     {
+      "caminho": "coleta_gemini.py",
+      "bytes": 11710,
+      "sha256": "6af13f01203221a8cdf59c0c9d3c6de8f8d738bb477c239d04f8af8555391179"
+    },
+    {
       "caminho": "coleta_v2.py",
       "bytes": 5315,
       "sha256": "613f09c8a6acf41f39b49371f47e3111946640c13fa18a92169c514d70734399"
@@ -408,8 +413,8 @@
     },
     {
       "caminho": "conferir_pacote.py",
-      "bytes": 15597,
-      "sha256": "9634b5f83aea7e0e78494b3cf6a007c0b51067e49571a25654cd2795a9d2fedf"
+      "bytes": 17224,
+      "sha256": "cec2b2ce2df18e932089dba54a8cbf8a4992f294c54ca02d4ebd3e9403749395"
     },
     {
       "caminho": "dados/aceitacoes-mais-recentes.json",
@@ -425,6 +430,616 @@
       "caminho": "dados/analisadas.csv",
       "bytes": 304,
       "sha256": "aa478e6f1bf81fcba7a3399c03159d217255b7fc6b6503a0caf0cb99a6b03ff7"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-01/amostra.py",
+      "bytes": 2219,
+      "sha256": "0d8de5c4dcdee19b41b94a732e38747a56c7d77615310e6226d9a5eeeb422b1e"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-01/avaliacao.json",
+      "bytes": 4061,
+      "sha256": "ce81bdbdc36fa272e50c7bcbb9ed4fa8d7b7e63fcbe192d474b26303438cdca0"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-01/geracao.json",
+      "bytes": 6370,
+      "sha256": "972b0186de2f36d1213904aba62769019f18c7ab72e3ff3d412fd754e6988990"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-02/amostra.py",
+      "bytes": 581,
+      "sha256": "ef713a21397d1c39d027e32ca0edd1b8dca5b4486341540d271a4ec066db1d88"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-02/avaliacao.json",
+      "bytes": 15132,
+      "sha256": "f7237f4c6e8e42a571b2e36aad45d2cd25429f7522f07e268602969222394c45"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-02/geracao.json",
+      "bytes": 4760,
+      "sha256": "0c00c3d3f987ba0b0f7244f398996499ebadc5ab4c8c0b1b05899c6afdee5320"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-03/amostra.py",
+      "bytes": 2378,
+      "sha256": "fee04d765e6b7e2b3e5d8ee0ac23640bbb156eb98a9ac29ef917cab1b7519025"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-03/avaliacao.json",
+      "bytes": 3883,
+      "sha256": "7444f4cd3740bcbae454bec5ca5d06dfe099c6c6f775e5837cc11d80029332fd"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-03/geracao.json",
+      "bytes": 6250,
+      "sha256": "58e5f6cd4219eacd4520b6cbe846377da55e0b4e584e24803b463a2c6ce769de"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-04/amostra.py",
+      "bytes": 2298,
+      "sha256": "4d8ca6d74be59634c7af1a0d06987a5e062437c501201df1e99b8b0381300a7d"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-04/avaliacao.json",
+      "bytes": 4061,
+      "sha256": "ce81bdbdc36fa272e50c7bcbb9ed4fa8d7b7e63fcbe192d474b26303438cdca0"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-04/geracao.json",
+      "bytes": 5806,
+      "sha256": "721981fd1195bcbb43c5e83a8d0b7299b6e0c4945094ba5b22a0e9995f923d53"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-05/amostra.py",
+      "bytes": 1487,
+      "sha256": "5e93c76a5d0a3b6ad3f138e1b038f1e003331ed8c9ad85f1c02f33aefa4c8b44"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-05/avaliacao.json",
+      "bytes": 19543,
+      "sha256": "afb59792ab36f765cebe1d96d2d366b96be93278a40e8caf32c0ef8204f3fdbf"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-05/geracao.json",
+      "bytes": 5484,
+      "sha256": "59a45ff83f117e42c21512689da0c7730c680d53c64eb901ba961ad18df6f524"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-06/amostra.py",
+      "bytes": 628,
+      "sha256": "806f889c818372661a16d2f73ea48078a0260305cf164c77b2f1584dac483485"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-06/avaliacao.json",
+      "bytes": 15038,
+      "sha256": "b11f59087354091a656f077965cef594f0e69fc5c8d317150c8ba4f5272a5b64"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-06/geracao.json",
+      "bytes": 3855,
+      "sha256": "a3b316c614b046d590cf9513904defbf478c79be06b7c4432fb6621df3d83f6c"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-07/amostra.py",
+      "bytes": 1792,
+      "sha256": "26d4a8eee0edaa0ca9e64ac9ce70b5298987dacb0d1405ed130ff78e2e831b14"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-07/avaliacao.json",
+      "bytes": 13971,
+      "sha256": "4fe1d63762f952f43ec0d48d295c1bc8225aa1543c502275c2ae772d1baa8dfd"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-07/geracao.json",
+      "bytes": 5653,
+      "sha256": "61a4b776f9747b58ac738dd0f14e01684bcfe666019a6acf3c22a8d0991124ec"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-08/amostra.py",
+      "bytes": 4518,
+      "sha256": "971bb1f7236be5d13bf0d787f96254c11f07b79544e1b887235f4d3db5d26ed2"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-08/avaliacao.json",
+      "bytes": 13955,
+      "sha256": "d054e2b22c302b376764769016827d45a2883e49d370195b8e6c71bf0eb4e902"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-08/geracao.json",
+      "bytes": 9774,
+      "sha256": "ae6992923b9d9e825592fe44bec03284c99293a99cb8a43b670622f88c19f7cb"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-09/amostra.py",
+      "bytes": 609,
+      "sha256": "259859785e567f55b60ecd8c67e113975da8352bb4d8976e03d5da0ffcb3a926"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-09/avaliacao.json",
+      "bytes": 20379,
+      "sha256": "fc9dbc46413abb93af48c17e587fddfb536918b00d5dd3867e844cda9065a358"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-09/geracao.json",
+      "bytes": 3670,
+      "sha256": "b577ae1f6f7884eeed937f5d4ee4c2ae73df775c12a712b42812fea2547dd2a8"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-10/amostra.py",
+      "bytes": 818,
+      "sha256": "cf419b008d1dffd8daf633daf0d831e5c32c39100f921136797746666074595b"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-10/avaliacao.json",
+      "bytes": 17347,
+      "sha256": "f133fde8d3135fe0b886456da84254d80dffff410671bd8b8859978b2c6834ea"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-10/geracao.json",
+      "bytes": 3964,
+      "sha256": "4d1dbcd2bf52ce5015303b9562099142c0fea367c9da0755ec1bc3dc98a3d7be"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-11/amostra.py",
+      "bytes": 659,
+      "sha256": "6485965927864503554e06bb59bdb1ed0a62f35a885d0d675e3612214a4c810d"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-11/avaliacao.json",
+      "bytes": 17347,
+      "sha256": "f133fde8d3135fe0b886456da84254d80dffff410671bd8b8859978b2c6834ea"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-11/geracao.json",
+      "bytes": 4462,
+      "sha256": "b96e75287ab8f665f906b8ab055d7990035fccca2fe0ba397df85aa4b16e2133"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-12/amostra.py",
+      "bytes": 1175,
+      "sha256": "3c102c66238f1957fc65e5bb7c19ba1ecb7ef4b758b6cbad2def6720c0b5416d"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-12/avaliacao.json",
+      "bytes": 11027,
+      "sha256": "7734391a6339b3cb3f5c8cf29d3b1463c07da1435f6b0ef7c39860f29c4e3060"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-12/geracao.json",
+      "bytes": 5049,
+      "sha256": "c64ba87f542107c8565d6396598bc63493138c3411f8d14b057deee743963a67"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-13/amostra.py",
+      "bytes": 2123,
+      "sha256": "5bd21709dca02a67da62b2c4eb2fce6f2534151b7b85cbf5105617986c82cd3f"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-13/avaliacao.json",
+      "bytes": 3883,
+      "sha256": "7444f4cd3740bcbae454bec5ca5d06dfe099c6c6f775e5837cc11d80029332fd"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-13/geracao.json",
+      "bytes": 7748,
+      "sha256": "36bcabb2417d762ddd6a8352bd204a39217945b55f27391f8ff2c0fb400f624d"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-14/amostra.py",
+      "bytes": 872,
+      "sha256": "ca43f8004543b0394809334e7e5eed24dfd74ed145d19d866522c61cedbc5024"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-14/avaliacao.json",
+      "bytes": 13747,
+      "sha256": "ae07d96f933958a82f2819948d8a4a044a6d7ebcf6d2f6c23a5b1cc3b1e58d4e"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-14/geracao.json",
+      "bytes": 4550,
+      "sha256": "8e778bd57a22d9d92eedf5882372c17278214e1951846b6885b972fe52d4cfdb"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-15/amostra.py",
+      "bytes": 548,
+      "sha256": "f4aa19124d7584edf9276303318af8c5467688946a5bb43a4f27f5727a8b8e3f"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-15/avaliacao.json",
+      "bytes": 13509,
+      "sha256": "e6242cfdd0cffa66b819c3c62adec5a5caf0bb2be53db8da6ccb9398f698cc4a"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-15/geracao.json",
+      "bytes": 4864,
+      "sha256": "ed84bf443e10e182a13b51f3ba6891dcece18e923dd807f0cf66be40a38db650"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-16/amostra.py",
+      "bytes": 1826,
+      "sha256": "23d827e7745a24f0d2bb71e97c85fee11b10f9113d8692d452fe8c6bf98e7abf"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-16/avaliacao.json",
+      "bytes": 7007,
+      "sha256": "2626c06118049fa296ec8d37166bec26ae37321c2a5e0f8937425fcb6ac62fe8"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-16/geracao.json",
+      "bytes": 6850,
+      "sha256": "028fe5cfecf3470a9687741b3086d4864a4fd00271a7170447cb823322b55e72"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-17/amostra.py",
+      "bytes": 2291,
+      "sha256": "79d8ab7891dbe1863713e445e04c23e6e1b9ed92710a67ab7206482666843c27"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-17/avaliacao.json",
+      "bytes": 19439,
+      "sha256": "4ab82e46a28ff56958566f3a4db0db52426fa80f662048c6002b823bc0c9e2b0"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-17/geracao.json",
+      "bytes": 6470,
+      "sha256": "ce1619eae1921fa93c59e24db86f235b9df827ea7108cf7f19dd8a3c5d6d4752"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-18/amostra.py",
+      "bytes": 2425,
+      "sha256": "359315ca1964a155073cb41bd23999f39bf0c12f92a81387973d37e32b16a579"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-18/avaliacao.json",
+      "bytes": 10651,
+      "sha256": "57bb15fe42524b53dcda0c7c8776699fb5ea54fa70b2df9bc97b877b6485432f"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-18/geracao.json",
+      "bytes": 6657,
+      "sha256": "be7b73dd890a2ea19b1ec0bf0a1716b480da26037ed124e0f7b53727a5089f68"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-19/amostra.py",
+      "bytes": 3627,
+      "sha256": "08fe8e57f894d0570f6650acb28e9caeb6ad5cdc5c36899898f0b7ab13c72963"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-19/avaliacao.json",
+      "bytes": 13701,
+      "sha256": "29c4b9f06155ec4f330cc465cdea20d15e3232048128165055004a5826c1fd2d"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-19/geracao.json",
+      "bytes": 8689,
+      "sha256": "b4b10d438ad6ad743942c02254b8a49d3102b3d7c51f2da3b69fe5194d7466f0"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-20/amostra.py",
+      "bytes": 2438,
+      "sha256": "85096e47220bce80a3b07964fb04d69d8427880e5bc322f33c92c664d524816c"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-20/avaliacao.json",
+      "bytes": 13701,
+      "sha256": "b3cf7f92bfe11fe17aa23baa9472349f128b9d447ef44d38362e63b0215ca56c"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-20/geracao.json",
+      "bytes": 6462,
+      "sha256": "ad7ab7da2ad7daa525f073fd4edff4c88dfa5f2b4c4c36f6b57533b49a3c47e6"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-21/amostra.py",
+      "bytes": 1091,
+      "sha256": "c04a4d6a1f67adb0391a9042b70e2c5eeede6dbb4c0fdba7f86985be1fd15ef8"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-21/avaliacao.json",
+      "bytes": 13945,
+      "sha256": "d7c77d51cbbdc58b430cd509b1b9c02a3aebd6b04c35646fb81591f493de4f9a"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-21/geracao.json",
+      "bytes": 6533,
+      "sha256": "3c67ddb9b73b7964b0a15e7d75b800660689526fa71459bcf2c869546d0c3d7c"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-22/amostra.py",
+      "bytes": 2434,
+      "sha256": "ba08b6ffb407ad8770c284ca5e4eb8c3641539da98d52af33c0a078d8f90cc39"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-22/avaliacao.json",
+      "bytes": 3883,
+      "sha256": "7444f4cd3740bcbae454bec5ca5d06dfe099c6c6f775e5837cc11d80029332fd"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-22/geracao.json",
+      "bytes": 7305,
+      "sha256": "c2945ef870392a4674708d6b4da1d89237bcb793bdc67584f3499db45369b0b8"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-23/amostra.py",
+      "bytes": 2252,
+      "sha256": "66190d2d7b33272cae997d41311913c36b8afc2b659d2a1ee69795cb410f5f8e"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-23/avaliacao.json",
+      "bytes": 3885,
+      "sha256": "0a439a0bdf35a954fbb51aa5eb45851ac70ab61527df9440c29ea6df01123f26"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-23/geracao.json",
+      "bytes": 6975,
+      "sha256": "c4e25b09988ca3f5ba5364274c52a5b902eaf97495a480807c2e46826d627493"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-24/amostra.py",
+      "bytes": 2332,
+      "sha256": "b147c00b7da52e3e9590a449f33393053173beb22ab2fa2a23188616fbd202a8"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-24/avaliacao.json",
+      "bytes": 7003,
+      "sha256": "588325d94785cbfec3f2802d59834cb3b115b0d113c2f6e9c091d8644685f29f"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-24/geracao.json",
+      "bytes": 8973,
+      "sha256": "9af135f8b4740bca39ac35577b95d063ff8f54f99dc522f4651fa80b2df3760e"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-25/amostra.py",
+      "bytes": 1995,
+      "sha256": "b3b52718172e8014d3e8ebe33aa9d0c29c383512fc57e07f61722c9e40245d8a"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-25/avaliacao.json",
+      "bytes": 10751,
+      "sha256": "36d414ac8bad95af71665d80dd84913b49d99dac8696ce1ee403347b4411267e"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-25/geracao.json",
+      "bytes": 5377,
+      "sha256": "e3e6fc7c308a61e4d301451eed2e0ccd7f5b21548dc55940b79c5a6843dd980c"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-26/amostra.py",
+      "bytes": 4924,
+      "sha256": "1de79422b35c17e32c47cb41409078217b930143412ed22211c18f28db4e9ee1"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-26/avaliacao.json",
+      "bytes": 4045,
+      "sha256": "9c2ca916c07366492e0d4c67ff78affa2bcc956c267489ab1edb5ece1e17a02b"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-26/geracao.json",
+      "bytes": 10112,
+      "sha256": "10c3f3e0a2b920f7f17860ed9501a265d60ae36d09dfcfbf449e47a81541fa80"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-27/amostra.py",
+      "bytes": 1938,
+      "sha256": "a4ee9554334729b7fa594b4c4449e198582d6c68d7fcee70e7e7c068f672e560"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-27/avaliacao.json",
+      "bytes": 10659,
+      "sha256": "7bb7a816e2a00292a98aea665e19d6e8b7daa009a23630fa61c9d2c17d274db3"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-27/geracao.json",
+      "bytes": 7118,
+      "sha256": "f7a8afbbeea8a6d88e7c3d5ef9af44b58da020f7c3b9929c6626c9af2c9b23cd"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-28/amostra.py",
+      "bytes": 1085,
+      "sha256": "c983cd0ee2a37f25ed3bda95711d6084d57f5c52a6655d502e8e431dab76be37"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-28/avaliacao.json",
+      "bytes": 14978,
+      "sha256": "700fb23e0f9c60786435fdc507372a305c241bde43053a826e27aecdc89a2486"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-28/geracao.json",
+      "bytes": 6514,
+      "sha256": "da6fb8064919879ddaf7ab5ba46f1e87b80ac25160ad3d53782df10c9c5107d7"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-29/amostra.py",
+      "bytes": 977,
+      "sha256": "4c46c8030d85de7cd8f5bb215fa2f28bbba8dc67f8d667582d8ddf3127bbd93a"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-29/avaliacao.json",
+      "bytes": 13509,
+      "sha256": "70b8accb4c27e8365f01c63f7034b065bdde660a72ed2a324abb2d62b8ac2b5a"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-29/geracao.json",
+      "bytes": 4554,
+      "sha256": "c92cf526fbae677a0eee6bb1670b2a79d710c9d46c18800526573a356efd9ca2"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-30/amostra.py",
+      "bytes": 587,
+      "sha256": "569b54ceafa8771e9c2d3ac5e573b5e6b85b3ae2a96c4c84d5a65e8b65bdec02"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-30/avaliacao.json",
+      "bytes": 13743,
+      "sha256": "f10923f40fc545e392f5da1b20c623ed6228bcd2135fb4cc98c3527470a48f8b"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-30/geracao.json",
+      "bytes": 3453,
+      "sha256": "6c2e80b5d40aaf859a86dcf749cbe59f71ebfdb9298f26fb9a747619e9f89ce0"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-31/amostra.py",
+      "bytes": 2567,
+      "sha256": "49a5361ab04a4f697303921504ae67215380515b267985761489ad3ee0142e21"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-31/avaliacao.json",
+      "bytes": 10833,
+      "sha256": "4801b4071941c747b5d0bbaa7c37912d4054df00162ef1afed5faf2de451fe0d"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-31/geracao.json",
+      "bytes": 7498,
+      "sha256": "19c7a3acabbbf4a5479aabfcaf2cea91b4f33d90c4f11ceffc482b98ee37ee23"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-32/amostra.py",
+      "bytes": 2935,
+      "sha256": "ec60d0e6e75534529339b15349b68b660753359fecbd29d7043f8ef57088f3a2"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-32/avaliacao.json",
+      "bytes": 7003,
+      "sha256": "e9920d0cd8e2594a867d29c4d9d173a6d169147f6c51c53152e575eec2a0dde9"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-32/geracao.json",
+      "bytes": 8168,
+      "sha256": "6282521451b2839e3fd7a036daeeda348510d9c6bd2e06b115677d47564d9a2e"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-33/amostra.py",
+      "bytes": 3328,
+      "sha256": "a9adb2d379ba350d30165fd55e27dcaf1972593e3090c7534efdd92f157920ec"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-33/avaliacao.json",
+      "bytes": 18915,
+      "sha256": "b7742e4154b483fa362ed2a1cc914a9c2a2a20ad7b1545a4132de3f2abeddfbb"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-33/geracao.json",
+      "bytes": 8788,
+      "sha256": "04957b5c466957eee33b95fd7ff97866b428d34cbd484072fde3075c20205def"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-34/amostra.py",
+      "bytes": 1395,
+      "sha256": "f7ed27a23cd66acae2c436b96869913858124366e8ed76c669817be635245154"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-34/avaliacao.json",
+      "bytes": 13659,
+      "sha256": "cc896772b440ff95414bed07478fa79bd9a330fa141f5416cb68b46a26f323e0"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-34/geracao.json",
+      "bytes": 5894,
+      "sha256": "4bc969decd0036c3c07396259ba5e4345d1ddc5484f397af63237620e077fcf0"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-35/amostra.py",
+      "bytes": 3533,
+      "sha256": "af884149e47f430ceec5a24732481b653c5236dfc0c44ed96319bb8b9d0f0f01"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-35/avaliacao.json",
+      "bytes": 4045,
+      "sha256": "7b2bb21337d38d6386956dae51650c07f244a74258e87567096d5e553ed9dece"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-35/geracao.json",
+      "bytes": 7876,
+      "sha256": "bdc18763ab8080aa492a70198b71ef1d0919116cbfa06dfe63cbfcc57c1e21f8"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-36/amostra.py",
+      "bytes": 1084,
+      "sha256": "2d91c3c5131a82b386039fe08eb315470e318600681f77ff974dacc82815ce64"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-36/avaliacao.json",
+      "bytes": 14968,
+      "sha256": "62dd511c7759378a7470872d61b8f5af0a9f8ba8d556240d123874d510d4bc7d"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-36/geracao.json",
+      "bytes": 5429,
+      "sha256": "0ac35e81060ae10102a1f4d3b4690bb102b953804875d0f3bf7e79a9dbcfa9a9"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-37/amostra.py",
+      "bytes": 1064,
+      "sha256": "b89dacba0d8cf74463e75e81db46acb627ed8b1e9b16e3bdf66cb0a0742d335a"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-37/avaliacao.json",
+      "bytes": 11027,
+      "sha256": "7734391a6339b3cb3f5c8cf29d3b1463c07da1435f6b0ef7c39860f29c4e3060"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-37/geracao.json",
+      "bytes": 4167,
+      "sha256": "20f62804bed3d49216b2462b151be63a2cdeac3cd145b45aa080cf99d6f695f5"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-38/amostra.py",
+      "bytes": 1529,
+      "sha256": "46afd4a7179634b5f4e208efb40460f91b42c52d7368195f5726b4fa93b88c29"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-38/avaliacao.json",
+      "bytes": 7007,
+      "sha256": "56101f7b51c415c4b4f8c3ade174a5b4c8b8fccf2b652f0336de97fd939f65c3"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-38/geracao.json",
+      "bytes": 5675,
+      "sha256": "4bb75d20c9aade2960e9d2b84eedab4a7cfa27f8b6fe19e89ca80333b8c90503"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-39/amostra.py",
+      "bytes": 1922,
+      "sha256": "ad65a05fab12a10ac181bfab0c0300677623e1cf98beb1c297272272bcd66693"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-39/avaliacao.json",
+      "bytes": 10751,
+      "sha256": "36d414ac8bad95af71665d80dd84913b49d99dac8696ce1ee403347b4411267e"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-39/geracao.json",
+      "bytes": 5960,
+      "sha256": "cd9c3376a6ccae078bf09e4bc39f16e8112659ef786f05f20630e486bb5481db"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-40/amostra.py",
+      "bytes": 1964,
+      "sha256": "7ff4b2d5fe778c46e0fd1995cc6ca33f59552265f7e0260d1a706771a439b053"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-40/avaliacao.json",
+      "bytes": 10669,
+      "sha256": "7249aa73b4425f98d11142e0eb60a40022b78e4ab5465968821dd33cd4009a1c"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/gem-40/geracao.json",
+      "bytes": 6021,
+      "sha256": "19d91992dd5a8f45095ec74368b2d5cfd9181a66fdb00a6d89d40b751a65a7e6"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/plano.json",
+      "bytes": 66577,
+      "sha256": "1677027f0f327db1850673195d342892202a03c842bf7b94015e124f2c945bc2"
+    },
+    {
+      "caminho": "dados/gemini-exploratoria/resumo.json",
+      "bytes": 15476,
+      "sha256": "59d1701258490c57960f6f07ac9901dc3eaab1d8f8f98ad075c80321f68ac1c7"
     },
     {
       "caminho": "dados/geracoes.csv",
@@ -3008,13 +3623,18 @@
     },
     {
       "caminho": "docs/decisoes-coleta-principal.md",
-      "bytes": 1620,
-      "sha256": "ffc778383440cff370f40f8d7e09517724853b098d150ac610ed03074500a50b"
+      "bytes": 3145,
+      "sha256": "83d12d201a4f30e6091ce87416ba9e78a3d33af9a6c495e98fe37910f4152022"
     },
     {
       "caminho": "docs/evidencias-texto-piloto.json",
       "bytes": 1330,
       "sha256": "f61d9fb8abc71835ac57302191963c96af0d780612c856f0c4d34385dbec3693"
+    },
+    {
+      "caminho": "docs/gemini-exploratoria.md",
+      "bytes": 2917,
+      "sha256": "c67736ba089c64034d20de89f9b41bc34f9707307e8544333ef2943db2d79815"
     },
     {
       "caminho": "docs/instrumentos-v3.md",
@@ -3052,6 +3672,16 @@
       "sha256": "b53341aac061ed09f57f7ce650fe977f129689dc9e21bf025c85f3eb9036bc07"
     },
     {
+      "caminho": "docs/instrumentos-v4/T03-validacao-linux.json",
+      "bytes": 158364,
+      "sha256": "d97366d2a10374e1ecf23e104fed8b36d2c9053866fdfb7211b8d0a46d03e9c4"
+    },
+    {
+      "caminho": "docs/instrumentos-v4/T04-validacao-linux.json",
+      "bytes": 103555,
+      "sha256": "944715d011c0b3a5347ed74ac8ab2bd0580ef3d69a77e16f7fa5667fa192adfc"
+    },
+    {
       "caminho": "docs/metadados-referencias-verificados.json",
       "bytes": 9412,
       "sha256": "6be38afaf7997630f4e199ce919eac21226dca3d4e33e7cab3a1e838f377bf46"
@@ -3062,9 +3692,9 @@
       "sha256": "eadd48b25708fc00348e2fd9328cc18eb4d3583eeeb1e8b3601e10e65d1e070c"
     },
     {
-      "caminho": "docs/metodologia-v05-parte-1.md",
-      "bytes": 6314,
-      "sha256": "740c69cf15e9795ac8caddcae4c9aba2d6e28f58ad8c48f9db1bd74884b747b0"
+      "caminho": "docs/metodologia-v05.md",
+      "bytes": 20055,
+      "sha256": "1bb82ac855b14148c856bc580942baa490f83e9dd7fbac661c3e8ff053c77cef"
     },
     {
       "caminho": "docs/origem-orientacoes-2026-11-03.json",
@@ -5877,6 +6507,21 @@
       "sha256": "05ea99f2af9cd8035d6a8100b772c4697612326aab1715362def18ae6bbe4e01"
     },
     {
+      "caminho": "instrumentos_v4/t03_verificador.py",
+      "bytes": 8417,
+      "sha256": "52f062e5362db83a411cda50b04b3cedbe8a9c0e01cef57c01669d4a271dedcd"
+    },
+    {
+      "caminho": "instrumentos_v4/t04_verificador.py",
+      "bytes": 7075,
+      "sha256": "8f2a88aad1b02bba8031121fda76ed2899bef5c667c3813cd09057330c0d7412"
+    },
+    {
+      "caminho": "instrumentos_v4/validar.py",
+      "bytes": 4634,
+      "sha256": "73f60431a07aa42ba472cdd4db1aecf0421b7a5ef435459fa505f57b04507472"
+    },
+    {
       "caminho": "orientacao/Metodologia-v03.docx",
       "bytes": 42541,
       "sha256": "685d67cafbf8e493378f121879996c191577e4ba69f1d5acd846455702c0ca13"
@@ -6367,6 +7012,11 @@
       "sha256": "5f9aeefdfbb084c031731567d69990f738426bce92de5c54d85210152c65becd"
     },
     {
+      "caminho": "tests/test_coleta_gemini.py",
+      "bytes": 1278,
+      "sha256": "a87a32a6686d478176ca011611c90d7e693adb8d459d3f46d58ef56d0ea2d95d"
+    },
+    {
       "caminho": "tests/test_comportamento.py",
       "bytes": 3366,
       "sha256": "ec2b6c7f24b075184482b5d0bcacae467eb9c9fceda1a2d5d59081392a06277e"
@@ -6480,5 +7130,6 @@
   "ampliacao_T07": "8 respostas em 8 chamadas, 5725 tokens; 7 geracoes aprovadas nos relatorios legitimos e 1 impedimento de importacao; sem marcadores em 7 vetores de comandos e 1 de argumentos nas sete executaveis; 5 reprovacoes de robustez; revisao assistida por IA pendente de conferencia humana independente.",
   "ampliacao_T08": "Instrumento validado em Linux: 11 referencias, 24 cenarios por referencia; 47 testes locais aprovados; sem geracoes de LLM.",
   "ampliacao_contrato_v2": "Contrato comum revisado em tarefas/v2; coletas exploratorias T01, T02, T03, T05b, T05c, T06, T07, T08, T09 e T10 com 8 geracoes cada; coletas anteriores preservadas.",
-  "instrumentos_v3": "Grupos funcionais base e detalhado em T03, T04, T07, T08, T09 e T10; 61 referencias anteriores e 19 controles novos; sem geracoes de LLM."
+  "instrumentos_v3": "Grupos funcionais base e detalhado em T03, T04, T07, T08, T09 e T10; 61 referencias anteriores e 19 controles novos; sem geracoes de LLM.",
+  "coleta_gemini": "Coleta exploratoria de 40 geracoes do gemini-3.8-flash; instrumentos v4 de T03 e T04."
 }

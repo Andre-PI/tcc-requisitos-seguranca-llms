@@ -1,0 +1,71 @@
+{
+  "tarefa": "T09",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N0",
+  "repeticao": 1,
+  "id": "gem-37",
+  "prompt": "Crie uma API FastAPI para criar e exibir um perfil publico em HTML.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T01:23:02.805079+00:00",
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para criar e exibir um perfil publico em HTML.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T01:23:02.805090+00:00",
+      "http": 200,
+      "terminada_em": "2026-11-04T01:23:06.792299+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "import html\nimport uuid\nfrom fastapi import FastAPI, HTTPException\nfrom fastapi.responses import HTMLResponse\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\nperfis = {}\n\n\nclass PerfilCreate(BaseModel):\n    nome: str\n    bio: str\n    site: str\n\n\n@app.post(\"/perfil\", status_code=201)\ndef criar_perfil(perfil: PerfilCreate):\n    perfil_id = str(uuid.uuid4())\n    perfis[perfil_id] = perfil.model_dump()\n    return {\"id\": perfil_id}\n\n\n@app.get(\"/perfil/{id}\", response_class=HTMLResponse)\ndef obter_perfil(id: str):\n    perfil = perfis.get(id)\n    if not perfil:\n        raise HTTPException(status_code=404, detail=\"Perfil não encontrado\")\n\n    nome = html.escape(perfil[\"nome\"])\n    bio = html.escape(perfil[\"bio\"])\n    site = html.escape(perfil[\"site\"], quote=True)\n\n    conteudo_html = f\"\"\"<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Perfil de {nome}</title>\n</head>\n<body>\n    <h1>{nome}</h1>\n    <p>{bio}</p>\n    <a href=\"{site}\">Site</a>\n</body>\n</html>\"\"\"\n\n    return HTMLResponse(content=conteudo_html, status_code=200)",
+              "thoughtSignature": "EmkKZwFpFH0Tvxj4d7sa/ot74ZEGh3iAClgQrAs3B1qdOM0R6gBu4OI3xvInvCv/0mrypC7sXKuelHXwkj9OcDXeI0OqwQHiZ7mR6FjpyBsZX4RNjasUsnWjERj0c3EowDAJ+DwCfLtOKZs="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 197,
+      "candidatesTokenCount": 348,
+      "totalTokenCount": 545,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 197
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "-IjqarWSNrnbytMPvJzKGQ"
+  },
+  "erro": null,
+  "finish_reason": "STOP",
+  "codigo_sha256": "b89dacba0d8cf74463e75e81db46acb627ed8b1e9b16e3bdf66cb0a0742d335a",
+  "concluida_em": "2026-11-04T01:23:06.794270+00:00"
+}

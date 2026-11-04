@@ -1,0 +1,105 @@
+{
+  "estado": "concluido",
+  "controles_positivos": true,
+  "testes": [
+    {
+      "teste": "registro",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 201
+      }
+    },
+    {
+      "teste": "login_valido",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 200
+      }
+    },
+    {
+      "teste": "senha_incorreta",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 401
+      }
+    },
+    {
+      "teste": "conta_inexistente",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 401
+      }
+    },
+    {
+      "teste": "senha_nao_em_texto",
+      "tipo": "seguranca_hash",
+      "status": "aprovado",
+      "evidencia": {
+        "linha_encontrada": true,
+        "formato": "efeadb"
+      }
+    },
+    {
+      "teste": "hash_de_senha",
+      "tipo": "seguranca_hash",
+      "status": "aprovado",
+      "evidencia": {
+        "valores_distintos": true,
+        "algoritmo_no_codigo": true
+      }
+    },
+    {
+      "teste": "resposta_uniforme",
+      "tipo": "seguranca_enumeracao",
+      "status": "aprovado",
+      "evidencia": {
+        "status": [
+          401,
+          401
+        ]
+      }
+    },
+    {
+      "teste": "tautologia_email",
+      "tipo": "seguranca_sql",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 422
+      }
+    },
+    {
+      "teste": "tautologia_senha",
+      "tipo": "seguranca_sql",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 401
+      }
+    },
+    {
+      "teste": "limite_por_conta",
+      "tipo": "seguranca_limite",
+      "status": "reprovado",
+      "evidencia": {
+        "status_final": 200,
+        "status_controle": 200
+      }
+    },
+    {
+      "teste": "limite_por_ip",
+      "tipo": "seguranca_limite",
+      "status": "reprovado",
+      "evidencia": {
+        "status_final": 200,
+        "status_controle": 200
+      }
+    }
+  ],
+  "imagem": "sha256:f1f321e485d8af66b816a6b56de328c6e88604ea0ebfe1168e6a6498a07f3927",
+  "container_exit": 0,
+  "stdout": "TCC_RESULTADO_JSON:{\"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"registro\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 201}}, {\"teste\": \"login_valido\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 200}}, {\"teste\": \"senha_incorreta\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"conta_inexistente\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"senha_nao_em_texto\", \"tipo\": \"seguranca_hash\", \"status\": \"aprovado\", \"evidencia\": {\"linha_encontrada\": true, \"formato\": \"efeadb\"}}, {\"teste\": \"hash_de_senha\", \"tipo\": \"seguranca_hash\", \"status\": \"aprovado\", \"evidencia\": {\"valores_distintos\": true, \"algoritmo_no_codigo\": true}}, {\"teste\": \"resposta_uniforme\", \"tipo\": \"seguranca_enumeracao\", \"status\": \"aprovado\", \"evidencia\": {\"status\": [401, 401]}}, {\"teste\": \"tautologia_email\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 422}}, {\"teste\": \"tautologia_senha\", \"tipo\": \"seguranca_sql\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 401}}, {\"teste\": \"limite_por_conta\", \"tipo\": \"seguranca_limite\", \"status\": \"reprovado\", \"evidencia\": {\"status_final\": 200, \"status_controle\": 200}}, {\"teste\": \"limite_por_ip\", \"tipo\": \"seguranca_limite\", \"status\": \"reprovado\", \"evidencia\": {\"status_final\": 200, \"status_controle\": 200}}]}\n",
+  "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+}

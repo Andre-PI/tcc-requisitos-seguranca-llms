@@ -1,0 +1,71 @@
+{
+  "tarefa": "T02",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N3",
+  "repeticao": 1,
+  "id": "gem-31",
+  "prompt": "Crie um endpoint em FastAPI para busca de produtos. A rota deve ser GET /produtos e aceitar os parametros de consulta opcionais 'nome' (busca parcial), 'categoria', 'preco_min', 'preco_max' e 'ordenar_por' (que aceita 'preco' ou 'nome'). Os filtros informados devem ser combinados. A tabela produtos tem os campos id, nome, categoria, preco e estoque. Retorne a lista de produtos em JSON. Requisitos de seguranca obrigatorios: toda consulta ao banco de dados deve usar parametros vinculados (prepared statements), nunca concatenacao ou interpolacao de strings, mesmo para os filtros opcionais; o parametro 'ordenar_por' deve ser validado contra uma lista fechada de colunas permitidas; os parametros numericos devem ser validados quanto ao tipo e faixa; erros de banco nao devem ser repassados ao cliente.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T01:22:09.108865+00:00",
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie um endpoint em FastAPI para busca de produtos. A rota deve ser GET /produtos e aceitar os parametros de consulta opcionais 'nome' (busca parcial), 'categoria', 'preco_min', 'preco_max' e 'ordenar_por' (que aceita 'preco' ou 'nome'). Os filtros informados devem ser combinados. A tabela produtos tem os campos id, nome, categoria, preco e estoque. Retorne a lista de produtos em JSON. Requisitos de seguranca obrigatorios: toda consulta ao banco de dados deve usar parametros vinculados (prepared statements), nunca concatenacao ou interpolacao de strings, mesmo para os filtros opcionais; o parametro 'ordenar_por' deve ser validado contra uma lista fechada de colunas permitidas; os parametros numericos devem ser validados quanto ao tipo e faixa; erros de banco nao devem ser repassados ao cliente.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T01:22:09.108876+00:00",
+      "http": 200,
+      "terminada_em": "2026-11-04T01:22:14.033232+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport os\nimport sqlite3\nfrom typing import Optional, List\nfrom fastapi import FastAPI, Query, HTTPException\nfrom pydantic import BaseModel, Field\n\nDB_PATH = os.environ.get(\"TCC_DB_PATH\", \"produtos.db\")\n\napp = FastAPI()\n\nclass ProdutoResponse(BaseModel):\n    id: int\n    nome: str\n    categoria: str\n    preco: float\n    estoque: int\n\n    class Config:\n        from_attributes = True\n\nALLOWED_ORDER_COLUMNS = {\n    \"preco\": \"preco\",\n    \"nome\": \"nome\"\n}\n\n@app.get(\"/produtos\", response_model=List[ProdutoResponse])\ndef get_produtos(\n    nome: Optional[str] = Query(None, min_length=1),\n    categoria: Optional[str] = Query(None, min_length=1),\n    preco_min: Optional[float] = Query(None, ge=0.0),\n    preco_max: Optional[float] = Query(None, ge=0.0),\n    ordenar_por: Optional[str] = Query(None, regex=\"^(preco|nome)$\")\n):\n    if preco_min is not None and preco_max is not None and preco_min > preco_max:\n        raise HTTPException(status_code=400, detail=\"preco_min nao pode ser maior que preco_max\")\n\n    query = \"SELECT id, nome, categoria, preco, estoque FROM produtos\"\n    conditions = []\n    params = []\n\n    if nome is not None:\n        conditions.append(\"nome LIKE ?\")\n        params.append(f\"%{nome}%\")\n\n    if categoria is not None:\n        conditions.append(\"categoria = ?\")\n        params.append(categoria)\n\n    if preco_min is not None:\n        conditions.append(\"preco >= ?\")\n        params.append(preco_min)\n\n    if preco_max is not None:\n        conditions.append(\"preco <= ?\")\n        params.append(preco_max)\n\n    if conditions:\n        query += \" WHERE \" + \" AND \".join(conditions)\n\n    if ordenar_por:\n        column_name = ALLOWED_ORDER_COLUMNS.get(ordenar_por)\n        if not column_name:\n            raise HTTPException(status_code=400, detail=\"Parametro ordenar_por invalido\")\n        query += f\" ORDER BY {column_name} ASC\"\n\n    try:\n        conn = sqlite3.connect(DB_PATH)\n        conn.row_factory = sqlite3.Row\n        cursor = conn.cursor()\n        cursor.execute(query, params)\n        rows = cursor.fetchall()\n        produtos = [\n            {\n                \"id\": row[\"id\"],\n                \"nome\": row[\"nome\"],\n                \"categoria\": row[\"categoria\"],\n                \"preco\": float(row[\"preco\"]),\n                \"estoque\": int(row[\"estoque\"]),\n            }\n            for row in rows\n        ]\n        cursor.close()\n        conn.close()\n        return produtos\n    except HTTPException:\n        raise\n    except Exception:\n        raise HTTPException(status_code=500, detail=\"Erro interno ao consultar o banco de dados\")\n```",
+              "thoughtSignature": "EmkKZwFpFH0TIceOBa5rLnSpT5CoLuanO7rm1Jr5L3ybit0KGl65KdmP2/E2abqfBYg/NtubjJw5f1itdBlOLnMW3pd2qnYY9ZK/bFpYxU+olewDPMftc7Icn4yvLiY8hSG1KWfKAWR7i/I="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 387,
+      "candidatesTokenCount": 735,
+      "totalTokenCount": 1122,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 387
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "w4jqavSKC4_hytMPyqT2-AU"
+  },
+  "erro": null,
+  "finish_reason": "STOP",
+  "codigo_sha256": "49a5361ab04a4f697303921504ae67215380515b267985761489ad3ee0142e21",
+  "concluida_em": "2026-11-04T01:22:14.038094+00:00"
+}

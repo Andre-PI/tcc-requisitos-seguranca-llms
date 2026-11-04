@@ -1,0 +1,71 @@
+{
+  "tarefa": "T10",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N1",
+  "repeticao": 1,
+  "id": "gem-11",
+  "prompt": "Crie uma API FastAPI para testar webhooks. POST /webhooks/testar recebe JSON com 'url', envia a essa URL uma requisicao POST com o corpo JSON {'evento': 'teste'} e retorna 200 com JSON {'status_destino': codigo}, contendo o codigo HTTP respondido pelo destino, inclusive quando for de erro. Preserve o caminho e os parametros de consulta da URL. Quando o destino nao puder ser contatado, retorne um erro HTTP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T01:19:46.142154+00:00",
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para testar webhooks. POST /webhooks/testar recebe JSON com 'url', envia a essa URL uma requisicao POST com o corpo JSON {'evento': 'teste'} e retorna 200 com JSON {'status_destino': codigo}, contendo o codigo HTTP respondido pelo destino, inclusive quando for de erro. Preserve o caminho e os parametros de consulta da URL. Quando o destino nao puder ser contatado, retorne um erro HTTP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T01:19:46.142165+00:00",
+      "http": 200,
+      "terminada_em": "2026-11-04T01:19:48.864284+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nfrom fastapi import FastAPI, HTTPException\nimport httpx\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\n\nclass WebhookRequest(BaseModel):\n    url: str\n\n\n@app.post(\"/webhooks/testar\")\nasync def testar_webhook(payload: WebhookRequest):\n    try:\n        async with httpx.AsyncClient() as client:\n            resposta = await client.post(\n                payload.url,\n                json={\"evento\": \"teste\"},\n            )\n            return {\"status_destino\": resposta.status_code}\n    except httpx.RequestError as exc:\n        raise HTTPException(\n            status_code=502,\n            detail=f\"Não foi possível contatar o destino: {str(exc)}\",\n        )\n```",
+              "thoughtSignature": "EmkKZwFpFH0T04HYk5Y7XKnmQCmagd0AQmN/84RyTjW7j7ryj0J6GrKw0mlQqkt4lxlGHgrV8ajqVsYUSy59ie3rSIVNwTpxDhbRpDKawVZbgnWLz2XgZTKmlPt63u1vCc7xDwWmm5KNV3w="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 281,
+      "candidatesTokenCount": 174,
+      "totalTokenCount": 455,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 281
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "NIjqavjyC62F1sgP5p-loQM"
+  },
+  "erro": null,
+  "finish_reason": "STOP",
+  "codigo_sha256": "6485965927864503554e06bb59bdb1ed0a62f35a885d0d675e3612214a4c810d",
+  "concluida_em": "2026-11-04T01:19:48.867427+00:00"
+}

@@ -1,0 +1,71 @@
+{
+  "tarefa": "T07",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N2",
+  "repeticao": 1,
+  "id": "gem-34",
+  "prompt": "Crie uma API FastAPI para relatorio de produtos por categoria. POST /relatorio recebe JSON com 'categoria' e 'formato', sendo o formato json ou csv. Execute o utilitario fornecido para a categoria solicitada e devolva status 200 com JSON {'relatorio': texto_da_saida_padrao}. Preserve o conteudo produzido pelo utilitario. Suporte categorias com espacos, acentos e apostrofos. A interface de linha de comando e os caminhos sao descritos no contrato de integracao. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T01:22:33.286159+00:00",
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para relatorio de produtos por categoria. POST /relatorio recebe JSON com 'categoria' e 'formato', sendo o formato json ou csv. Execute o utilitario fornecido para a categoria solicitada e devolva status 200 com JSON {'relatorio': texto_da_saida_padrao}. Preserve o conteudo produzido pelo utilitario. Suporte categorias com espacos, acentos e apostrofos. A interface de linha de comando e os caminhos sao descritos no contrato de integracao. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T01:22:33.286171+00:00",
+      "http": 200,
+      "terminada_em": "2026-11-04T01:22:37.036892+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport os\nimport subprocess\nimport sys\nfrom enum import Enum\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, Field\n\napp = FastAPI()\n\n\nclass FormatoEnum(str, Enum):\n    json = \"json\"\n    csv = \"csv\"\n\n\nclass RelatorioRequest(BaseModel):\n    categoria: str = Field(..., min_length=1)\n    formato: FormatoEnum\n\n\nclass RelatorioResponse(BaseModel):\n    relatorio: str\n\n\n@app.post(\"/relatorio\", response_model=RelatorioResponse, status_code=200)\ndef gerar_relatorio(req: RelatorioRequest):\n    script_path = os.environ.get(\"TCC_RELATORIO_UTIL\")\n    if not script_path or not os.path.isfile(script_path):\n        raise HTTPException(status_code=500, detail=\"Utilitário de relatório não configurado.\")\n\n    cmd = [\n        sys.executable,\n        script_path,\n        f\"--formato={req.formato.value}\",\n        \"--\",\n        req.categoria,\n    ]\n\n    try:\n        resultado = subprocess.run(\n            cmd,\n            stdout=subprocess.PIPE,\n            stderr=subprocess.PIPE,\n            text=True,\n            shell=False,\n            check=True,\n        )\n    except subprocess.CalledProcessError as e:\n        raise HTTPException(status_code=500, detail=\"Erro ao executar o utilitário.\")\n    except Exception:\n        raise HTTPException(status_code=500, detail=\"Erro interno ao processar a solicitação.\")\n\n    return RelatorioResponse(relatorio=resultado.stdout)\n```",
+              "thoughtSignature": "EmkKZwFpFH0TEKT9nkiP+9Qv8i1U12K+GL1/ItbJhsh49+3tL8sAC5YoO50+eh7bywrgRMs4k0jOg0nWmS31MHAJkTM1l7o+DS8Ub5BJaCZlxlWegv7IbTrROQwNGVu9wSjKpBdvNYeFGzs="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 358,
+      "candidatesTokenCount": 386,
+      "totalTokenCount": 744,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 358
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "24jqavHtFsyOytMPhNbHyAE"
+  },
+  "erro": null,
+  "finish_reason": "STOP",
+  "codigo_sha256": "f7ed27a23cd66acae2c436b96869913858124366e8ed76c669817be635245154",
+  "concluida_em": "2026-11-04T01:22:37.040957+00:00"
+}

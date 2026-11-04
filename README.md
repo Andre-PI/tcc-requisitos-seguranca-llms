@@ -51,7 +51,7 @@ As tarefas do piloto (T01, T02 e T06) foram refeitas no mesmo formato, com banco
 
 Todas essas coletas têm uma geração por condição e servem para validar o procedimento, não para comparar níveis ou modelos. As decisões já tomadas para a coleta principal estão em [decisões](docs/decisoes-coleta-principal.md).
 
-Os [instrumentos v3](docs/instrumentos-v3.md) de T03, T04, T07, T08, T09 e T10 separam os testes funcionais em base e detalhado, para que um requisito pedido só a partir de N1 não bloqueie a avaliação de segurança de N0. Eles ainda não foram usados em coleta. A revisão da metodologia está em andamento: [parte 1](docs/metodologia-v05-parte-1.md).
+Os [instrumentos v3](docs/instrumentos-v3.md) de T03, T04, T07, T08, T09 e T10 separam os testes funcionais em base e detalhado, para que um requisito pedido só a partir de N1 não bloqueie a avaliação de segurança de N0. A [coleta exploratória do Gemini](docs/gemini-exploratoria.md) usou esses instrumentos e revelou um defeito na classificação de T04, corrigido nos [instrumentos v4](docs/instrumentos-v4/) de T03 e T04. A [revisão da metodologia](docs/metodologia-v05.md) está em andamento.
 
 ## Arquivos
 

@@ -244,3 +244,28 @@ if (ROOT/'instrumentos_v3/conferir.py').exists():
     import importlib.util
     spec=importlib.util.spec_from_file_location('conferir_v3',ROOT/'instrumentos_v3/conferir.py')
     modulo=importlib.util.module_from_spec(spec);spec.loader.exec_module(modulo);modulo.conferir()
+
+gemini=ROOT/'dados/gemini-exploratoria'
+if (gemini/'resumo.json').exists():
+    plan=json.loads((gemini/'plano.json').read_text(encoding='utf-8'))
+    assert len(plan['jobs'])==40
+    for name,sha in plan['fontes_sha256'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
+    calls=0;ids=set()
+    for job in plan['jobs']:
+        folder=gemini/job['id'];g=json.loads((folder/'geracao.json').read_text(encoding='utf-8'))
+        assert plan['registrado_em']<=g['iniciado_em']<=g['concluida_em']
+        assert g['prompt']==job['prompt'] and g['payload']['contents'][0]['parts'][0]['text']==job['prompt']
+        assert g['payload']['generationConfig']==plan['parametros']
+        assert g['resposta']['modelVersion']==job['modelo']
+        if g.get('codigo_sha256'):assert hashlib.sha256((folder/'amostra.py').read_bytes()).hexdigest()==g['codigo_sha256']
+        calls+=len(g['tentativas']);ids.add(g['resposta']['responseId'])
+    assert calls==len(ids)==40
+    print('Gemini exploratoria: 40 respostas em 40 chamadas; plano, fontes e versoes conferidos.')
+
+for tarefa in ('T03','T04'):
+    arquivo=ROOT/f'docs/instrumentos-v4/{tarefa}-validacao-linux.json'
+    if arquivo.exists():
+        report=json.loads(arquivo.read_text(encoding='utf-8'))
+        for name,sha in report['arquivos'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
+        for grupo in (report['referencias'],report['regressao']):assert grupo['referencias']==grupo['expectativas_atendidas']==len(grupo['resultados'])
+        print(f'Instrumento v4 {tarefa}: referencias, controles e hashes conferidos.')

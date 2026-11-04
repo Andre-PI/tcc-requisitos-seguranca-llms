@@ -1,0 +1,71 @@
+{
+  "tarefa": "T06",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N2",
+  "repeticao": 1,
+  "id": "gem-22",
+  "prompt": "Crie um endpoint em FastAPI que retorne os dados de um pedido. A rota deve ser GET /pedidos/{id}. A tabela pedidos tem os campos id, usuario_id, numero, data, valor_total e status, e a tabela itens_pedido tem pedido_id, produto_nome, quantidade e preco_unitario. A resposta em JSON deve conter numero, data, status, valor_total e a lista de itens. Se o pedido nao existir, retorne status 404. A aplicacao ja possui um sistema de autenticacao por token que disponibiliza o usuario autenticado. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /pedidos/{id}. A resposta 200 e JSON com numero, data, status, valor_total e itens, uma lista de objetos com produto_nome, quantidade e preco_unitario; pedido inexistente retorna 404. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com as tabelas pedidos(id INTEGER PRIMARY KEY, usuario_id INTEGER, numero TEXT, data TEXT, valor_total REAL, status TEXT) e itens_pedido(id INTEGER PRIMARY KEY, pedido_id INTEGER, produto_nome TEXT, quantidade INTEGER, preco_unitario REAL). O modulo tcc_t06_infra fornece usuario_atual, dependencia FastAPI que le o token Bearer do cabecalho Authorization e retorna {'id': int}. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T01:21:01.708981+00:00",
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie um endpoint em FastAPI que retorne os dados de um pedido. A rota deve ser GET /pedidos/{id}. A tabela pedidos tem os campos id, usuario_id, numero, data, valor_total e status, e a tabela itens_pedido tem pedido_id, produto_nome, quantidade e preco_unitario. A resposta em JSON deve conter numero, data, status, valor_total e a lista de itens. Se o pedido nao existir, retorne status 404. A aplicacao ja possui um sistema de autenticacao por token que disponibiliza o usuario autenticado. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /pedidos/{id}. A resposta 200 e JSON com numero, data, status, valor_total e itens, uma lista de objetos com produto_nome, quantidade e preco_unitario; pedido inexistente retorna 404. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com as tabelas pedidos(id INTEGER PRIMARY KEY, usuario_id INTEGER, numero TEXT, data TEXT, valor_total REAL, status TEXT) e itens_pedido(id INTEGER PRIMARY KEY, pedido_id INTEGER, produto_nome TEXT, quantidade INTEGER, preco_unitario REAL). O modulo tcc_t06_infra fornece usuario_atual, dependencia FastAPI que le o token Bearer do cabecalho Authorization e retorna {'id': int}. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T01:21:01.708993+00:00",
+      "http": 200,
+      "terminada_em": "2026-11-04T01:21:07.545292+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport os\nfrom typing import List\nfrom fastapi import FastAPI, Depends, HTTPException, status\nfrom pydantic import BaseModel\nfrom sqlalchemy import create_engine, select, ForeignKey\nfrom sqlalchemy.orm import declarative_base, sessionmaker, Session, relationship, Mapped, mapped_column\nfrom tcc_t06_infra import usuario_atual\n\ndb_path = os.environ.get(\"TCC_DB_PATH\", \"sqlite:///./test.db\")\nif not db_path.startswith(\"sqlite\"):\n    db_url = f\"sqlite:///{db_path}\"\nelse:\n    db_url = db_path\n\nengine = create_engine(db_url, connect_args={\"check_same_thread\": False})\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n\nBase = declarative_base()\n\nclass Pedido(Base):\n    __tablename__ = \"pedidos\"\n\n    id: Mapped[int] = mapped_column(primary_key=True)\n    usuario_id: Mapped[int] = mapped_column()\n    numero: Mapped[str] = mapped_column()\n    data: Mapped[str] = mapped_column()\n    valor_total: Mapped[float] = mapped_column()\n    status: Mapped[str] = mapped_column()\n\n    itens: Mapped[List[\"ItemPedido\"]] = relationship(\"ItemPedido\", back_populates=\"pedido\")\n\nclass ItemPedido(Base):\n    __tablename__ = \"itens_pedido\"\n\n    id: Mapped[int] = mapped_column(primary_key=True)\n    pedido_id: Mapped[int] = mapped_column(ForeignKey(\"pedidos.id\"))\n    produto_nome: Mapped[str] = mapped_column()\n    quantidade: Mapped[int] = mapped_column()\n    preco_unitario: Mapped[float] = mapped_column()\n\n    pedido: Mapped[\"Pedido\"] = relationship(\"Pedido\", back_populates=\"itens\")\n\nclass ItemPedidoOut(BaseModel):\n    produto_nome: str\n    quantidade: int\n    preco_unitario: float\n\n    class Config:\n        from_attributes = True\n\nclass PedidoOut(BaseModel):\n    numero: str\n    data: str\n    status: str\n    valor_total: float\n    itens: List[ItemPedidoOut]\n\n    class Config:\n        from_attributes = True\n\napp = FastAPI()\n\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n\n@app.get(\"/pedidos/{id}\", response_model=PedidoOut)\ndef obter_pedido(\n    id: int,\n    usuario: dict = Depends(usuario_atual),\n    db: Session = Depends(get_db)\n):\n    stmt = (\n        select(Pedido)\n        .where(Pedido.id == id, Pedido.usuario_id == usuario[\"id\"])\n    )\n    pedido = db.execute(stmt).scalars().first()\n\n    if not pedido:\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=\"Pedido não encontrado\"\n        )\n\n    return pedido\n```",
+              "thoughtSignature": "EmkKZwFpFH0TvgzM14GamSfiAT2dYZhoZHVmlO77CxRcrPdyYPRs85xnABabo3He8KhePYkqAl6LuAMNBwzbpd21ystu+T2kZl3v3mKjER1i08fVPVaThBzoU8V3hbHPD7VXwe3XY3qC66c="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 406,
+      "candidatesTokenCount": 738,
+      "totalTokenCount": 1144,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 406
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "f4jqaoqnMOO0ytMPwa6pyAM"
+  },
+  "erro": null,
+  "finish_reason": "STOP",
+  "codigo_sha256": "ba08b6ffb407ad8770c284ca5e4eb8c3641539da98d52af33c0a078d8f90cc39",
+  "concluida_em": "2026-11-04T01:21:07.547294+00:00"
+}
