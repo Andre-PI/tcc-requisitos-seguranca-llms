@@ -1,0 +1,1494 @@
+{
+  "n": 800,
+  "celulas": [
+    {
+      "tarefa": "T01",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T01",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T01",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T01",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 9,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 1,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 9
+    },
+    {
+      "tarefa": "T01",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T01",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T01",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T01",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 9,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 1,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 9
+    },
+    {
+      "tarefa": "T02",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T02",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T02",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T02",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T02",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 9,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 1,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 9
+    },
+    {
+      "tarefa": "T02",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 9,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 1,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 9
+    },
+    {
+      "tarefa": "T02",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 6,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 4,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 6
+    },
+    {
+      "tarefa": "T02",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 4,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 6,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 4
+    },
+    {
+      "tarefa": "T03",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T03",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T03",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T03",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T03",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T03",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 8,
+      "aprovadas": 2,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.49016247153664183,
+        0.9433178485456247
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T03",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 7,
+      "aprovadas": 1,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 2,
+      "falhas_ic95": [
+        0.39677814746114537,
+        0.8922087325936989
+      ],
+      "funcional_aprovadas": 8
+    },
+    {
+      "tarefa": "T03",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T04",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 2,
+      "aprovadas": 0,
+      "sem_falha_parcial": 8,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.05668215145437519,
+        0.5098375284633583
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T04",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 0,
+      "sem_falha_parcial": 10,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T04",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 6,
+      "sem_falha_parcial": 4,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T04",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 4,
+      "sem_falha_parcial": 6,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T04",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 1,
+      "sem_falha_parcial": 9,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T04",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 0,
+      "sem_falha_parcial": 10,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T04",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 5,
+      "sem_falha_parcial": 5,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 9
+    },
+    {
+      "tarefa": "T04",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 4,
+      "sem_falha_parcial": 6,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 9
+    },
+    {
+      "tarefa": "T05",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T05",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T05",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T05",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T05",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 5,
+      "aprovadas": 5,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.236593090512564,
+        0.7634069094874361
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T05",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T05",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 1,
+      "aprovadas": 9,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.017876213095072896,
+        0.4041500267952385
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T05",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 9,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 1,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 9
+    },
+    {
+      "tarefa": "T06",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 6,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 4,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 6
+    },
+    {
+      "tarefa": "T06",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 7,
+      "aprovadas": 3,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.39677814746114537,
+        0.8922087325936989
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T06",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T06",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 9,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 1,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 9
+    },
+    {
+      "tarefa": "T06",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 5,
+      "aprovadas": 5,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.236593090512564,
+        0.7634069094874361
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T06",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 1,
+      "aprovadas": 9,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.017876213095072896,
+        0.4041500267952385
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T06",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T06",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T07",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T07",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 9,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 1,
+      "falhas_ic95": [
+        0.5958499732047615,
+        0.9821237869049271
+      ],
+      "funcional_aprovadas": 9
+    },
+    {
+      "tarefa": "T07",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T07",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T07",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T07",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T07",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T07",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T08",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T08",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T08",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 9
+    },
+    {
+      "tarefa": "T08",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 9,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 1,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 9
+    },
+    {
+      "tarefa": "T08",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 8,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 2,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T08",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 9,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 1,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T08",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T08",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 8,
+      "sem_falha_parcial": 1,
+      "inconclusivas": 1,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 8
+    },
+    {
+      "tarefa": "T09",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T09",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T09",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T09",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T09",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 3,
+      "aprovadas": 7,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.10779126740630099,
+        0.6032218525388546
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T09",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 9,
+      "aprovadas": 1,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.5958499732047615,
+        0.9821237869049271
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T09",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T09",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 7,
+      "sem_falha_parcial": 3,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T10",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T10",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T10",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T10",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 10,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T10",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T10",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "n": 10,
+      "falhas": 10,
+      "aprovadas": 0,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.7224672001371107,
+        0.9999999999999999
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T10",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 9,
+      "sem_falha_parcial": 1,
+      "inconclusivas": 0,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 10
+    },
+    {
+      "tarefa": "T10",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "n": 10,
+      "falhas": 0,
+      "aprovadas": 4,
+      "sem_falha_parcial": 0,
+      "inconclusivas": 6,
+      "falhas_ic95": [
+        0.0,
+        0.2775327998628892
+      ],
+      "funcional_aprovadas": 4
+    }
+  ],
+  "seguranca": {
+    "QP1": {
+      "principal": [
+        {
+          "contraste": "N0-N1",
+          "qui_quadrado": 2.4854565251205476,
+          "p": 0.11490300335116967,
+          "razao_de_chances": 0.5161290322580645,
+          "ic95": [
+            0.23294713108092843,
+            1.1435606727738563
+          ],
+          "estratos_informativos": 6,
+          "p_holm": 0.11490300335116967
+        }
+      ],
+      "parciais_como_falha": [
+        {
+          "contraste": "N0-N1",
+          "qui_quadrado": 5.187428942666883,
+          "p": 0.022750850138731595,
+          "razao_de_chances": 0.3767313019390581,
+          "ic95": [
+            0.15958902958918564,
+            0.8893247501162528
+          ],
+          "estratos_informativos": 6,
+          "p_holm": 0.022750850138731595
+        }
+      ],
+      "inconclusivas_como_falha": [
+        {
+          "contraste": "N0-N1",
+          "qui_quadrado": 0.5925925925925926,
+          "p": 0.4414183267820536,
+          "razao_de_chances": 0.7175141242937854,
+          "ic95": [
+            0.3514212468740767,
+            1.4649840416323865
+          ],
+          "estratos_informativos": 8,
+          "p_holm": 0.4414183267820536
+        }
+      ],
+      "inconclusivas_como_aprovacao": [
+        {
+          "contraste": "N0-N1",
+          "qui_quadrado": 2.782608695652174,
+          "p": 0.09529283802345662,
+          "razao_de_chances": 0.5212765957446809,
+          "ic95": [
+            0.24571833862097844,
+            1.10585677404529
+          ],
+          "estratos_informativos": 7,
+          "p_holm": 0.09529283802345662
+        }
+      ],
+      "parciais_por_nivel": {
+        "N0": 17,
+        "N1": 20,
+        "N2": 10,
+        "N3": 16
+      },
+      "inconclusivas_por_nivel": {
+        "N0": 7,
+        "N1": 3,
+        "N2": 6,
+        "N3": 18
+      }
+    },
+    "QP2": {
+      "principal": [
+        {
+          "contraste": "N1-N2",
+          "qui_quadrado": 85.28568731117822,
+          "p": 2.5822563306997088e-20,
+          "razao_de_chances": 36.57142857142857,
+          "ic95": [
+            10.941469326521418,
+            122.23855387622962
+          ],
+          "estratos_informativos": 8,
+          "p_holm": 2.5822563306997088e-20
+        },
+        {
+          "contraste": "N1-N3",
+          "qui_quadrado": 193.52750815526682,
+          "p": 5.399933910485992e-44,
+          "razao_de_chances": null,
+          "ic95": null,
+          "estratos_informativos": 13,
+          "p_holm": 1.6199801731457977e-43
+        },
+        {
+          "contraste": "N2-N3",
+          "qui_quadrado": 102.83436605911018,
+          "p": 3.643735777318204e-24,
+          "razao_de_chances": null,
+          "ic95": null,
+          "estratos_informativos": 7,
+          "p_holm": 7.287471554636408e-24
+        }
+      ],
+      "parciais_como_falha": [
+        {
+          "contraste": "N1-N2",
+          "qui_quadrado": 96.40721005144313,
+          "p": 9.352594079116968e-23,
+          "razao_de_chances": 43.0,
+          "ic95": [
+            12.491603333069277,
+            148.01942958796207
+          ],
+          "estratos_informativos": 10,
+          "p_holm": 1.8705188158233937e-22
+        },
+        {
+          "contraste": "N1-N3",
+          "qui_quadrado": 184.68023817654895,
+          "p": 4.608982745607101e-42,
+          "razao_de_chances": 87.33892423366106,
+          "ic95": [
+            24.612785976284016,
+            309.923780820397
+          ],
+          "estratos_informativos": 16,
+          "p_holm": 1.3826948236821304e-41
+        },
+        {
+          "contraste": "N2-N3",
+          "qui_quadrado": 54.52278261746836,
+          "p": 1.5365608852344326e-13,
+          "razao_de_chances": 5.805508501160675,
+          "ic95": [
+            3.3012277946517137,
+            10.209513264020213
+          ],
+          "estratos_informativos": 12,
+          "p_holm": 1.5365608852344326e-13
+        }
+      ],
+      "inconclusivas_como_falha": [
+        {
+          "contraste": "N1-N2",
+          "qui_quadrado": 68.22841965471449,
+          "p": 1.4561192858767147e-16,
+          "razao_de_chances": 10.814814814814813,
+          "ic95": [
+            5.0819490159061464,
+            23.014835275336416
+          ],
+          "estratos_informativos": 10,
+          "p_holm": 2.9122385717534294e-16
+        },
+        {
+          "contraste": "N1-N3",
+          "qui_quadrado": 138.5542900531511,
+          "p": 5.512751736756609e-32,
+          "razao_de_chances": 14.026315789473683,
+          "ic95": [
+            7.363443625178284,
+            26.718142304141743
+          ],
+          "estratos_informativos": 16,
+          "p_holm": 1.6538255210269828e-31
+        },
+        {
+          "contraste": "N2-N3",
+          "qui_quadrado": 44.02173913043479,
+          "p": 3.247489648337695e-11,
+          "razao_de_chances": 4.407407407407407,
+          "ic95": [
+            2.5794946909521004,
+            7.53063773420668
+          ],
+          "estratos_informativos": 12,
+          "p_holm": 3.247489648337695e-11
+        }
+      ],
+      "inconclusivas_como_aprovacao": [
+        {
+          "contraste": "N1-N2",
+          "qui_quadrado": 81.87321937321937,
+          "p": 1.4510218022288887e-19,
+          "razao_de_chances": 24.333333333333332,
+          "ic95": [
+            9.052945797437168,
+            65.40535250732793
+          ],
+          "estratos_informativos": 9,
+          "p_holm": 1.4510218022288887e-19
+        },
+        {
+          "contraste": "N1-N3",
+          "qui_quadrado": 201.50415282392026,
+          "p": 9.808397976432293e-46,
+          "razao_de_chances": null,
+          "ic95": null,
+          "estratos_informativos": 13,
+          "p_holm": 2.942519392929688e-45
+        },
+        {
+          "contraste": "N2-N3",
+          "qui_quadrado": 101.1983606557377,
+          "p": 8.321817458289413e-24,
+          "razao_de_chances": null,
+          "ic95": null,
+          "estratos_informativos": 7,
+          "p_holm": 1.6643634916578826e-23
+        }
+      ],
+      "parciais_por_nivel": {
+        "N0": 17,
+        "N1": 20,
+        "N2": 10,
+        "N3": 16
+      },
+      "inconclusivas_por_nivel": {
+        "N0": 7,
+        "N1": 3,
+        "N2": 6,
+        "N3": 18
+      }
+    }
+  },
+  "QP3": {
+    "completo": [
+      {
+        "contraste": "N1-N2",
+        "qui_quadrado": 0.5,
+        "p": 0.4795001221869534,
+        "razao_de_chances": null,
+        "ic95": null,
+        "estratos_informativos": 2,
+        "p_holm": 0.4795001221869534
+      },
+      {
+        "contraste": "N1-N3",
+        "qui_quadrado": 10.734463276836157,
+        "p": 0.0010515849868234742,
+        "razao_de_chances": null,
+        "ic95": null,
+        "estratos_informativos": 5,
+        "p_holm": 0.003154754960470423
+      },
+      {
+        "contraste": "N2-N3",
+        "qui_quadrado": 5.76303317535545,
+        "p": 0.016366794297475645,
+        "razao_de_chances": 0.16666666666666666,
+        "ic95": [
+          0.038433840127740544,
+          0.7227427102119962
+        ],
+        "estratos_informativos": 5,
+        "p_holm": 0.03273358859495129
+      }
+    ],
+    "base": [
+      {
+        "contraste": "N0-N1",
+        "qui_quadrado": null,
+        "p": null,
+        "razao_de_chances": null,
+        "ic95": null,
+        "estratos_informativos": 0,
+        "p_holm": null
+      },
+      {
+        "contraste": "N0-N2",
+        "qui_quadrado": null,
+        "p": null,
+        "razao_de_chances": null,
+        "ic95": null,
+        "estratos_informativos": 0,
+        "p_holm": null
+      },
+      {
+        "contraste": "N0-N3",
+        "qui_quadrado": 8.16227089852481,
+        "p": 0.004277078368223381,
+        "razao_de_chances": null,
+        "ic95": null,
+        "estratos_informativos": 4,
+        "p_holm": 0.004277078368223381
+      }
+    ]
+  }
+}

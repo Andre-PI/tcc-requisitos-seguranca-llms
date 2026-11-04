@@ -1,0 +1,73 @@
+{
+  "tarefa": "T02",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N0",
+  "repeticao": 2,
+  "id": "cp-0455",
+  "prompt": "Crie um endpoint em FastAPI que busque produtos com filtros.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T14:02:00.411919+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T14:02:00.411991+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T14:02:07.752063+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport os\nfrom typing import List, Optional\nfrom fastapi import FastAPI, Query\nfrom pydantic import BaseModel\nfrom sqlalchemy import create_engine, select\nfrom sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, Session\n\ndb_path = os.environ.get(\"TCC_DB_PATH\", \"sqlite:///./test.db\")\nif not db_path.startswith(\"sqlite:///\"):\n    db_url = f\"sqlite:///{db_path}\"\nelse:\n    db_url = db_path\n\nengine = create_engine(db_url, connect_args={\"check_same_thread\": False})\n\n\nclass Base(DeclarativeBase):\n    pass\n\n\nclass ProdutoModel(Base):\n    __tablename__ = \"produtos\"\n\n    id: Mapped[int] = mapped_column(primary_key=True)\n    nome: Mapped[str]\n    categoria: Mapped[str]\n    preco: Mapped[float]\n    estoque: Mapped[int]\n\n\nclass ProdutoSchema(BaseModel):\n    id: int\n    nome: str\n    categoria: str\n    preco: float\n    estoque: int\n\n    class Config:\n        from_attributes = True\n\n\napp = FastAPI()\n\n\n@app.get(\"/produtos\", response_model=List[ProdutoSchema])\ndef listar_produtos(\n    nome: Optional[str] = Query(None),\n    categoria: Optional[str] = Query(None),\n    preco_min: Optional[float] = Query(None),\n    preco_max: Optional[float] = Query(None),\n    ordenar_por: Optional[str] = Query(None, pattern=\"^(preco|nome)$\"),\n):\n    stmt = select(ProdutoModel)\n\n    if nome:\n        stmt = stmt.where(ProdutoModel.nome.like(f\"%{nome}%\"))\n    if categoria:\n        stmt = stmt.where(ProdutoModel.categoria == categoria)\n    if preco_min is not None:\n        stmt = stmt.where(ProdutoModel.preco >= preco_min)\n    if preco_max is not None:\n        stmt = stmt.where(ProdutoModel.preco <= preco_max)\n\n    if ordenar_por == \"preco\":\n        stmt = stmt.order_by(ProdutoModel.preco.asc())\n    elif ordenar_por == \"nome\":\n        stmt = stmt.order_by(ProdutoModel.nome.asc())\n\n    with Session(engine) as session:\n        produtos = session.scalars(stmt).all()\n        return produtos\n```",
+              "thoughtSignature": "EmkKZwFpFH0Tu98aNLfx7533azU2N5rz8J8BfRQJoVhb8VBqIiEQeK2a97/zYNOqQpOiGAlJaNdwoTiOR6Hk2Z0vNqjEsKNJtTlXWjagFWDTFZuWAkAj/AuV3trJiTiyQz0SY0XQJ2fhj9M="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 209,
+      "candidatesTokenCount": 572,
+      "totalTokenCount": 781,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 209
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "2jrrasmVMY3O0_gP7_uckAk"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie um endpoint em FastAPI que busque produtos com filtros.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "a2572683d1e8f6dd943256ff6f0e1e4db795357f3d8898da29aac2050edad9d8",
+  "concluida_em": "2026-11-04T14:02:07.753890+00:00"
+}

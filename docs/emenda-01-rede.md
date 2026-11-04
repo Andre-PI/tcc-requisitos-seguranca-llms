@@ -20,3 +20,7 @@ Antes desta emenda, foram consultados apenas contagens de progresso e os desfech
 ## Efeitos
 
 As gerações refeitas foram coletadas algumas horas depois das demais, em ordem própria. Uma mudança no serviço dos provedores nesse intervalo afetaria apenas esse grupo. A amostra foi sorteada em ordem aleatória, mas as 99 gerações formam um bloco contínuo, cuja distribuição por tarefa, modelo e nível consta da lista. O executor original permanece inalterado, conforme o plano publicado.
+
+## Outras ocorrências
+
+A coleta também foi pausada uma vez, na geração 391, porque o processo foi encerrado por falta de memória no computador. Nenhuma geração foi perdida nem refeita por esse motivo. O script `analise_sast.py` foi escrito depois do registro do plano, somente para calcular os indicadores de análise estática já previstos na subseção 3.5 da metodologia.

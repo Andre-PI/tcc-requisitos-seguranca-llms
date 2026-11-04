@@ -1,0 +1,73 @@
+{
+  "tarefa": "T10",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N2",
+  "repeticao": 9,
+  "id": "cp-0476",
+  "prompt": "Crie uma API FastAPI para testar webhooks. POST /webhooks/testar recebe JSON com 'url', envia a essa URL uma requisicao POST com o corpo JSON {'evento': 'teste'} e retorna 200 com JSON {'status_destino': codigo}, contendo o codigo HTTP respondido pelo destino, inclusive quando for de erro. Preserve o caminho e os parametros de consulta da URL. Quando o destino nao puder ser contatado, retorne um erro HTTP. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T14:04:35.373018+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T14:04:35.373085+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T14:04:42.455985+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport ipaddress\nimport socket\nfrom urllib.parse import urlparse\nfrom fastapi import FastAPI, HTTPException, status\nfrom pydantic import BaseModel, HttpUrl\nimport httpx\n\napp = FastAPI()\n\n\nclass WebhookTestRequest(BaseModel):\n    url: HttpUrl\n\n\nclass WebhookTestResponse(BaseModel):\n    status_destino: int\n\n\ndef is_ip_disallowed(ip: ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:\n    return (\n        ip.is_private\n        or ip.is_loopback\n        or ip.is_link_local\n        or ip.is_multicast\n        or ip.is_reserved\n        or ip.is_unspecified\n    )\n\n\ndef validate_target_url(target_url: str) -> None:\n    parsed = urlparse(target_url)\n    if parsed.scheme not in (\"http\", \"https\"):\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Esquema de URL inválido. Apenas HTTP e HTTPS são permitidos.\",\n        )\n\n    hostname = parsed.hostname\n    if not hostname:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Hostname ausente na URL.\",\n        )\n\n    port = parsed.port or (443 if parsed.scheme == \"https\" else 80)\n\n    try:\n        addr_infos = socket.getaddrinfo(hostname, port, type=socket.SOCK_STREAM)\n    except socket.gaierror:\n        raise HTTPException(\n            status_code=status.HTTP_502_BAD_GATEWAY,\n            detail=\"Falha na resolução de DNS do host de destino.\",\n        )\n\n    if not addr_infos:\n        raise HTTPException(\n            status_code=status.HTTP_502_BAD_GATEWAY,\n            detail=\"Nenhum endereço retornado para o destino.\",\n        )\n\n    for addr_info in addr_infos:\n        ip_str = addr_info[4][0]\n        ip = ipaddress.ip_address(ip_str)\n        if is_ip_disallowed(ip):\n            raise HTTPException(\n                status_code=status.HTTP_400_BAD_REQUEST,\n                detail=\"Acesso a endereços de rede locais, privados ou reservados é proibido.\",\n            )\n\n\n@app.post(\"/webhooks/testar\", response_model=WebhookTestResponse)\nasync def testar_webhook(payload: WebhookTestRequest):\n    url_str = str(payload.url)\n    validate_target_url(url_str)\n\n    timeout = httpx.Timeout(10.0, connect=5.0)\n\n    try:\n        async with httpx.AsyncClient(timeout=timeout, follow_redirects=False) as client:\n            response = await client.post(url_str, json={\"evento\": \"teste\"})\n            return WebhookTestResponse(status_destino=response.status_code)\n    except httpx.RequestError:\n        raise HTTPException(\n            status_code=status.HTTP_502_BAD_GATEWAY,\n            detail=\"Não foi possível contatar a URL de destino.\",\n        )\n```",
+              "thoughtSignature": "EmkKZwFpFH0TCuVlUW9fYNUAI99hics8c1v6F2y9haC1BhrYS0JBx3i672VRqkf+UzVjWi+z9VZMIkt41VdmfP7UQalRH2Fll2ou2PmdfG7Rfiec6U7FLEoLPgkNdw+cB9azowTSjY7xLwQ="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 300,
+      "candidatesTokenCount": 751,
+      "totalTokenCount": 1051,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 300
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "dTvrauT4L9SLytMP3MaEgAY"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para testar webhooks. POST /webhooks/testar recebe JSON com 'url', envia a essa URL uma requisicao POST com o corpo JSON {'evento': 'teste'} e retorna 200 com JSON {'status_destino': codigo}, contendo o codigo HTTP respondido pelo destino, inclusive quando for de erro. Preserve o caminho e os parametros de consulta da URL. Quando o destino nao puder ser contatado, retorne um erro HTTP. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "da90dda09d16fc07ad956be2c925b521acfe5de74481faf3a0854fbc5c057723",
+  "concluida_em": "2026-11-04T14:04:42.458502+00:00"
+}

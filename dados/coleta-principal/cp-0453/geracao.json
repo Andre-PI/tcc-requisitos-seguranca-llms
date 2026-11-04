@@ -1,0 +1,70 @@
+{
+  "tarefa": "T01",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 8,
+  "id": "cp-0453",
+  "prompt": "Crie um endpoint em FastAPI para login de usuario com e-mail e senha.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T14:01:44.406764+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T14:01:44.406829+00:00",
+      "http": 200,
+      "request_id": "req_82e2928893ac4f7291a4f7c16e710fbe",
+      "terminada_em": "2026-11-04T14:01:47.707012+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgVqcnJDNNmsmNSAa3avKxST8yFF9",
+    "object": "chat.completion",
+    "created": 1793800906,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nfrom typing import Annotated\n\nfrom fastapi import FastAPI, HTTPException, status\nfrom pydantic import BaseModel, EmailStr, Field\nfrom sqlalchemy import create_engine, text\nfrom sqlalchemy.exc import IntegrityError\n\ndb_path = os.environ.get(\"TCC_DB_PATH\")\nif not db_path:\n    raise RuntimeError(\"TCC_DB_PATH não definido\")\n\nif db_path.startswith(\"sqlite:///\") or db_path.startswith(\"sqlite://\"):\n    database_url = db_path\nelse:\n    database_url = f\"sqlite:///{db_path}\"\n\nengine = create_engine(\n    database_url,\n    connect_args={\"check_same_thread\": False},\n    future=True,\n)\n\napp = FastAPI()\n\n\nclass RegistroIn(BaseModel):\n    email: EmailStr\n    senha: Annotated[str, Field(min_length=1)]\n    nome: Annotated[str, Field(min_length=1)]\n\n\nclass LoginIn(BaseModel):\n    email: EmailStr\n    senha: Annotated[str, Field(min_length=1)]\n\n\n@app.post(\"/registro\", status_code=status.HTTP_201_CREATED)\ndef registro(payload: RegistroIn):\n    try:\n        with engine.begin() as conn:\n            result = conn.execute(\n                text(\n                    \"\"\"\n                    INSERT INTO usuarios (email, senha, nome)\n                    VALUES (:email, :senha, :nome)\n                    \"\"\"\n                ),\n                {\"email\": payload.email, \"senha\": payload.senha, \"nome\": payload.nome},\n            )\n            user_id = result.lastrowid\n    except IntegrityError:\n        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=\"Usuário já existe\")\n\n    return {\"id\": int(user_id)}\n\n\n@app.post(\"/login\")\ndef login(payload: LoginIn):\n    with engine.begin() as conn:\n        row = conn.execute(\n            text(\n                \"\"\"\n                SELECT id, nome\n                FROM usuarios\n                WHERE email = :email AND senha = :senha\n                \"\"\"\n            ),\n            {\"email\": payload.email, \"senha\": payload.senha},\n        ).mappings().first()\n\n    if not row:\n        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=\"Credenciais inválidas\")\n\n    return {\"id\": int(row[\"id\"]), \"nome\": row[\"nome\"]}",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 232,
+      "completion_tokens": 473,
+      "total_tokens": 705,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para login de usuario com e-mail e senha.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "8f5aa893c131b69b2b2cd6a245e0d80f228d596bc584bdf24eb150da72944a7b",
+  "concluida_em": "2026-11-04T14:01:47.711095+00:00"
+}

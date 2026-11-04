@@ -1,0 +1,70 @@
+{
+  "tarefa": "T03",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N2",
+  "repeticao": 8,
+  "id": "cp-0491",
+  "prompt": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T14:06:21.254870+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T14:06:21.255088+00:00",
+      "http": 200,
+      "request_id": "req_bc73013dfa5c41188af269aa1a14e91c",
+      "terminada_em": "2026-11-04T14:06:26.935029+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgVv5kR6HQ5mC6xvmaQqQWZsAETGD",
+    "object": "chat.completion",
+    "created": 1793801183,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nimport re\nimport uuid\nfrom pathlib import Path\nfrom typing import Annotated\n\nfrom fastapi import FastAPI, File, HTTPException, UploadFile, status\nfrom fastapi.responses import JSONResponse\nfrom PIL import Image, UnidentifiedImageError\n\napp = FastAPI()\n\nUPLOAD_DIR_ENV = \"TCC_UPLOAD_DIR\"\nMAX_UPLOAD_BYTES = 10 * 1024 * 1024  # 10 MiB\nALLOWED_FORMATS = {\"PNG\": \".png\", \"JPEG\": \".jpg\", \"JPG\": \".jpg\"}\n\n\ndef _get_upload_dir() -> Path:\n    raw = os.environ.get(UPLOAD_DIR_ENV)\n    if not raw:\n        raise RuntimeError(f\"Variável de ambiente {UPLOAD_DIR_ENV} não definida\")\n    path = Path(raw).expanduser()\n    if not path.exists():\n        raise RuntimeError(f\"Diretório de upload inexistente: {path}\")\n    if not path.is_dir():\n        raise RuntimeError(f\"Caminho de upload não é diretório: {path}\")\n    return path.resolve()\n\n\ndef _sanitize_original_name(name: str) -> str:\n    name = Path(name).name\n    name = name.replace(\"\\x00\", \"\")\n    name = re.sub(r\"[\\x00-\\x1f\\x7f]\", \"\", name)\n    return name.strip() or \"arquivo\"\n\n\ndef _validate_and_detect_image(data: bytes) -> tuple[str, str]:\n    try:\n        with Image.open(__import__(\"io\").BytesIO(data)) as img:\n            img.load()\n            fmt = (img.format or \"\").upper()\n            if fmt not in ALLOWED_FORMATS:\n                raise HTTPException(\n                    status_code=status.HTTP_400_BAD_REQUEST,\n                    detail=\"Formato de imagem inválido. Use PNG ou JPEG.\",\n                )\n            if fmt == \"JPEG\" and img.mode not in {\"RGB\", \"L\", \"CMYK\", \"YCbCr\", \"RGBA\", \"LA\", \"P\"}:\n                raise HTTPException(\n                    status_code=status.HTTP_400_BAD_REQUEST,\n                    detail=\"Imagem JPEG inválida.\",\n                )\n            ext = ALLOWED_FORMATS[fmt]\n            return fmt, ext\n    except UnidentifiedImageError:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Arquivo enviado não é uma imagem válida.\",\n        )\n    except OSError:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Arquivo de imagem corrompido ou inválido.\",\n        )\n\n\n@app.post(\"/foto\", status_code=status.HTTP_201_CREATED)\nasync def upload_foto(arquivo: Annotated[UploadFile, File(...)]) -> JSONResponse:\n    if not arquivo:\n        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=\"Arquivo ausente.\")\n\n    content_type = (arquivo.content_type or \"\").lower()\n    if content_type not in {\"image/png\", \"image/jpeg\", \"image/jpg\"}:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Content-Type inválido. Use image/png ou image/jpeg.\",\n        )\n\n    raw = await arquivo.read(MAX_UPLOAD_BYTES + 1)\n    if len(raw) > MAX_UPLOAD_BYTES:\n        raise HTTPException(\n            status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,\n            detail=\"Arquivo excede o tamanho máximo permitido.\",\n        )\n\n    _, ext = _validate_and_detect_image(raw)\n\n    upload_dir = _get_upload_dir()\n    original = _sanitize_original_name(arquivo.filename or \"arquivo\")\n    stem = Path(original).stem or \"arquivo\"\n    stem = re.sub(r\"[\\\\/]+\", \"_\", stem).strip() or \"arquivo\"\n\n    unique_name = f\"{stem}_{uuid.uuid4().hex}{ext}\"\n    destination = upload_dir / unique_name\n\n    try:\n        with open(destination, \"xb\") as f:\n            f.write(raw)\n            f.flush()\n            os.fsync(f.fileno())\n    except FileExistsError:\n        raise HTTPException(\n            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,\n            detail=\"Falha ao salvar o arquivo.\",\n        )\n    except OSError:\n        raise HTTPException(\n            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,\n            detail=\"Falha ao salvar o arquivo.\",\n        )\n\n    return JSONResponse(status_code=status.HTTP_201_CREATED, content={\"arquivo\": unique_name})",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 300,
+      "completion_tokens": 906,
+      "total_tokens": 1206,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "c4b6b339fef2a888d776eac563fbabe9f117596bf62d5d0e26fa7e60b63c1f7d",
+  "concluida_em": "2026-11-04T14:06:26.940484+00:00"
+}

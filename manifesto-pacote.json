@@ -37,6 +37,11 @@
       "sha256": "7609de41e3b28d943b1584dd65a285312d46af5ef6367ce422c8fd015259bfcd"
     },
     {
+      "caminho": "analise_sast.py",
+      "bytes": 2507,
+      "sha256": "688b9ffae035064d352f4210c467629ac632683506ac2d68f1c1a8feba85a916"
+    },
+    {
       "caminho": "codigos/g1.py",
       "bytes": 1013,
       "sha256": "3b3b3c96a5dc64f62ac25d5298b15cf2bc072073076135539bcb143b1cfc887c"
@@ -440,6 +445,11 @@
       "caminho": "dados/analisadas.csv",
       "bytes": 304,
       "sha256": "aa478e6f1bf81fcba7a3399c03159d217255b7fc6b6503a0caf0cb99a6b03ff7"
+    },
+    {
+      "caminho": "dados/coleta-principal/analise.json",
+      "bytes": 33394,
+      "sha256": "9069e17197e9ef1afd5058a33fe2f5375e63b3b0f8b47885a4a2425d57110a11"
     },
     {
       "caminho": "dados/coleta-principal/cp-0001/amostra.py",
@@ -6952,6 +6962,1491 @@
       "sha256": "14af2ebe326d1e9bc3a7756d0531aca7059d4f63882d30d046fb29d3fbbf715e"
     },
     {
+      "caminho": "dados/coleta-principal/cp-0435/amostra.py",
+      "bytes": 2218,
+      "sha256": "2c0d1a9059054000a05a4e1205d99601a9de3aff2b4554b9313beb59124d5185"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0435/avaliacao.json",
+      "bytes": 3883,
+      "sha256": "7444f4cd3740bcbae454bec5ca5d06dfe099c6c6f775e5837cc11d80029332fd"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0435/geracao.json",
+      "bytes": 7011,
+      "sha256": "d584abf518cc8fd5703282ae3fae229ef066805622d3b798332fafd2f99d1b5f"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0436/amostra.py",
+      "bytes": 1952,
+      "sha256": "25cdd83a70945cad1d2d4b19bfc27552da134512b94c810f7f439657d8d18842"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0436/avaliacao.json",
+      "bytes": 3883,
+      "sha256": "7444f4cd3740bcbae454bec5ca5d06dfe099c6c6f775e5837cc11d80029332fd"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0436/geracao.json",
+      "bytes": 6753,
+      "sha256": "8abfcbdf356e3764e723603ee54efd9ed7ffef5f893267d21295e7af3f0c4ead"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0437/amostra.py",
+      "bytes": 2745,
+      "sha256": "6d2f0c6a3131b33e836abe12d53fcd8b917d340f26470185e77d19b37296381a"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0437/avaliacao.json",
+      "bytes": 10649,
+      "sha256": "a88fe9d38c66c7c4caf71b1d5ecceedb26af57afdb4fc026482eb3577a3c2d74"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0437/geracao.json",
+      "bytes": 8030,
+      "sha256": "e6206eac4cbcba8fe0d46026a04c422f249aa8ce0bebb7bfbd0c1f407c56668a"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0438/amostra.py",
+      "bytes": 5001,
+      "sha256": "e8aa200b794c1a7d1da7eaab25e8d239ad07269dec16cfb9f551deffbc1df89a"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0438/avaliacao.json",
+      "bytes": 4045,
+      "sha256": "c6c80b5b202d0b08590563d13caeb815eec3a684636d11b60a18bdd4cdd7f033"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0438/geracao.json",
+      "bytes": 10304,
+      "sha256": "08ef66fa1ec8b1825cbbc0392448080363e16dc3eaf6140a9f1a1a03335d7e84"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0439/amostra.py",
+      "bytes": 1675,
+      "sha256": "d0b78af7f007bf5aabe1b1669a2bcf4396f12a6feef36db103c46a554be02072"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0439/avaliacao.json",
+      "bytes": 7343,
+      "sha256": "c4c759665b0b5ae89acfbf072a9915c5202fd969b87274f657f6fef924160358"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0439/geracao.json",
+      "bytes": 5895,
+      "sha256": "dd11c6fc0a9a53a2d9917bdcdfce47665031e3ea5a9dee86a6c3870e8ed54a80"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0440/amostra.py",
+      "bytes": 2538,
+      "sha256": "7583588c1156286e3ed01ae53a79b1108555aefd48a32c24d43694a16a37a2b0"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0440/avaliacao.json",
+      "bytes": 10649,
+      "sha256": "a88fe9d38c66c7c4caf71b1d5ecceedb26af57afdb4fc026482eb3577a3c2d74"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0440/geracao.json",
+      "bytes": 7823,
+      "sha256": "297cf590283817d5c46ab4207b8b656133247cee326ea1d9c265e9c125160f35"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0441/amostra.py",
+      "bytes": 2241,
+      "sha256": "0c8918f1e4174664c6143adb5f6be0724e43c798b9d5a3d5b361ec28f53cb105"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0441/avaliacao.json",
+      "bytes": 4061,
+      "sha256": "45f91d7c403bf3ac8b00790c3f39f22126364336f22b37f5748d4e9477bb629e"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0441/geracao.json",
+      "bytes": 5841,
+      "sha256": "3a1fe6736b0a49231b3b13c84b791bfefbc7444da74222965c88e2a1f1d5779e"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0442/amostra.py",
+      "bytes": 3241,
+      "sha256": "213b0de5d0535954ef5d8f4e758b9e95a83f0dba2a6e4e4d9b9d67adc6d5e44d"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0442/avaliacao.json",
+      "bytes": 4043,
+      "sha256": "964513222ae9f2cb1e79c953fa8d4b76f5ee0d66ece68dca4595a15c21158745"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0442/geracao.json",
+      "bytes": 7639,
+      "sha256": "1b08f03ed38288cb0118900a49bcfe6b1cc48b1753ba83bef9935b0dc8fceea5"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0443/amostra.py",
+      "bytes": 2019,
+      "sha256": "61a0d7551d1770bb82980e578a78a3a093f812910ca6ef337e7cc6ab283bca3c"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0443/avaliacao.json",
+      "bytes": 10751,
+      "sha256": "36d414ac8bad95af71665d80dd84913b49d99dac8696ce1ee403347b4411267e"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0443/geracao.json",
+      "bytes": 5485,
+      "sha256": "ff4eb3532c2b0c2e3a223a8c4c3f21e58a1525f866c440b36514863d223ebebf"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0444/amostra.py",
+      "bytes": 1140,
+      "sha256": "6f9be85ed481e23465b2f314cc8726223433446d90559342866d169dbf15282b"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0444/avaliacao.json",
+      "bytes": 12572,
+      "sha256": "ba83d23c1257848afc1fa384a08f54eb1a91f5084e3a69eb60593f1c26597704"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0444/geracao.json",
+      "bytes": 6636,
+      "sha256": "2ad706ebe86fc581b315be579253c7da9f0e8efba1befd9d239d8c98dbfa5d05"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0445/amostra.py",
+      "bytes": 1272,
+      "sha256": "00dc45eeb10ef8eb5f5b32fa7fa298ed3df8fb4328c2c735c4928626f7b66bb5"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0445/avaliacao.json",
+      "bytes": 10657,
+      "sha256": "46eac132309d2005a147f57dfc3eee161f22fb2ec98490214a4b9d6e18fd7c00"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0445/geracao.json",
+      "bytes": 5219,
+      "sha256": "c0476a4222c4fa442a366fb8ebd66ef16c9dec420b4cefb433ddffe9a74678b6"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0446/amostra.py",
+      "bytes": 2204,
+      "sha256": "84a1f0ec4dab2cd8b6ef2e220170574a960c70a453313c93412b272946bbdee6"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0446/avaliacao.json",
+      "bytes": 3883,
+      "sha256": "7444f4cd3740bcbae454bec5ca5d06dfe099c6c6f775e5837cc11d80029332fd"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0446/geracao.json",
+      "bytes": 7902,
+      "sha256": "fc516737f0cbb95becd9150604676e408e0a270c5eba05aad0f48eabc9daab2e"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0447/amostra.py",
+      "bytes": 594,
+      "sha256": "04d5590a5bc100a783175238ec0f1b3853b1775af827b06483519ed46d792efa"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0447/avaliacao.json",
+      "bytes": 12550,
+      "sha256": "03c17fcdef17b79fa0d20ce2678b1c15169b0352f42868c40b62921ed9bfdf5a"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0447/geracao.json",
+      "bytes": 4982,
+      "sha256": "a0754822d21eb15320bc008bb15718519e45f3ca2d6efcd564745fbbf2101d69"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0448/amostra.py",
+      "bytes": 957,
+      "sha256": "8fb51bcb682322a15ef86fa4e4d594d4679cfea92ae56330899089f89d6a6a1a"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0448/avaliacao.json",
+      "bytes": 12569,
+      "sha256": "2c00e9440fd29c8591c4387216a478c0a9a2079bf909ce2a8ef05c2b4fa6412f"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0448/geracao.json",
+      "bytes": 6448,
+      "sha256": "6ca529197f72f8097169eb6e02619ba3ff0a000741f2b7f7dd30f6ecb5c5fa15"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0449/amostra.py",
+      "bytes": 1614,
+      "sha256": "ee6a8eb46796063e1effdae2404e6f5daa5119b131867082f5084ef548e3e474"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0449/avaliacao.json",
+      "bytes": 12573,
+      "sha256": "e36d236a9419c3ae7393ff410d01eff4731a25af380d908eb2cf934302b71a4d"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0449/geracao.json",
+      "bytes": 6066,
+      "sha256": "7fce7fd9bbefc28fa6a8b1d6a3e330094c6c72b709f3f97c10f040f0900f5271"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0450/amostra.py",
+      "bytes": 2977,
+      "sha256": "6f35f3647db7fd38c235b3bfdd6f67c5ce3e9247654fb8588a2b70dd7e216571"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0450/avaliacao.json",
+      "bytes": 12400,
+      "sha256": "e39cd6b0efdcb0295ae3d1f490d7070d825649e3be04a500f7050e4ee90a3d34"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0450/geracao.json",
+      "bytes": 8058,
+      "sha256": "c3e4110dd1d29af65f6c6e0957e7bca9ccde3c4800c611fcf2dabca9043b6aeb"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0451/amostra.py",
+      "bytes": 3058,
+      "sha256": "841a9fb893898eb628d8afccccc81494a5894039b9c5dd0e9baae647392c8862"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0451/avaliacao.json",
+      "bytes": 769,
+      "sha256": "e6c64c44184b8cf90ea2eb82c5c2a2f9fb97e8d00b0a8484d02e9ccc2be1beff"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0451/geracao.json",
+      "bytes": 8055,
+      "sha256": "9c8f181f6d9ec5c20d846d14c413f231c6e0c12444c8069d6e176cdf852fd7e9"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0452/amostra.py",
+      "bytes": 604,
+      "sha256": "63442ed6196b8fa701ea0209146cf159c3285314e7f5aa85657f30810c956e9d"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0452/avaliacao.json",
+      "bytes": 12220,
+      "sha256": "bc21484a649050db803789df08fe216e4ba57e85694c43851c6ee76ea24957f6"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0452/geracao.json",
+      "bytes": 3539,
+      "sha256": "ba819073d4a0e5ef81426cc3fe0667ae3557dc4fcf6b1de62dde4747c07af678"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0453/amostra.py",
+      "bytes": 2092,
+      "sha256": "8f5aa893c131b69b2b2cd6a245e0d80f228d596bc584bdf24eb150da72944a7b"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0453/avaliacao.json",
+      "bytes": 4061,
+      "sha256": "45f91d7c403bf3ac8b00790c3f39f22126364336f22b37f5748d4e9477bb629e"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0453/geracao.json",
+      "bytes": 5692,
+      "sha256": "3b07703cf29867e2a153c0da12e254bffc5162de4e06c8fe2cf5ba62d5f2672a"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0454/amostra.py",
+      "bytes": 5616,
+      "sha256": "17cad5b374177a578870c9c10b11182b6d6dfd05d758bea2356c248dff79b2be"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0454/avaliacao.json",
+      "bytes": 4045,
+      "sha256": "9c2ca916c07366492e0d4c67ff78affa2bcc956c267489ab1edb5ece1e17a02b"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0454/geracao.json",
+      "bytes": 10935,
+      "sha256": "ab31eb6a13cc619e51019bd976a701e6a0bcb4dd237bd834bcf64801dc25c196"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0455/amostra.py",
+      "bytes": 1887,
+      "sha256": "a2572683d1e8f6dd943256ff6f0e1e4db795357f3d8898da29aac2050edad9d8"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0455/avaliacao.json",
+      "bytes": 10751,
+      "sha256": "36d414ac8bad95af71665d80dd84913b49d99dac8696ce1ee403347b4411267e"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0455/geracao.json",
+      "bytes": 5341,
+      "sha256": "10224336990e45b71ad5cf9d1a416b9dea93669806753fca65a0d7d955df6c94"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0456/amostra.py",
+      "bytes": 1530,
+      "sha256": "0c88afad7e8b7fe5b12215fb3e7d502c3c183051f199d4817b48185fbe9cf621"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0456/avaliacao.json",
+      "bytes": 7347,
+      "sha256": "6d06665fa3f6b9ec4178c59411fb5774313fe37f1c8eee5ad5cca566b828b01a"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0456/geracao.json",
+      "bytes": 6613,
+      "sha256": "390800f4cf064647d7242efbe0864879b0b2569cd345581036404622e1c8d39a"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0457/amostra.py",
+      "bytes": 2676,
+      "sha256": "814e6f2a17d116c22dd8feb54dc4add0e9e57da65a75afd0fd9aea695ae045a6"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0457/avaliacao.json",
+      "bytes": 12400,
+      "sha256": "e39cd6b0efdcb0295ae3d1f490d7070d825649e3be04a500f7050e4ee90a3d34"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0457/geracao.json",
+      "bytes": 6782,
+      "sha256": "8634a4d6f03194a49d1f45fdb9687ebaae27de9c489e6b1d365191e1c458002d"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0458/amostra.py",
+      "bytes": 1321,
+      "sha256": "551f3343b5b0ccdcbd8d131ccec741b9299687da16e25de190751a6b66814839"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0458/avaliacao.json",
+      "bytes": 10880,
+      "sha256": "449c65688f8517c7168492930c569a397353054c542cdafd33bb3b646d7cd024"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0458/geracao.json",
+      "bytes": 5277,
+      "sha256": "c5a7fc287f7b407a6b36e4278e6518692ecbb6e9e231237b866311e4ea9ba3ea"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0459/amostra.py",
+      "bytes": 3313,
+      "sha256": "0268c15fd6626b24ce40c134d8c34451efbe19a0e6f27b2b9a3f359d57377d0b"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0459/avaliacao.json",
+      "bytes": 14992,
+      "sha256": "97cdc0b9ed188e0121da1126bd02999440a2241d4c216cb045fab125463e83c4"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0459/geracao.json",
+      "bytes": 8835,
+      "sha256": "4cfda20285189a3d9e834851156f3248d3b7319b0dd4e6921860fb3145341170"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0460/amostra.py",
+      "bytes": 2608,
+      "sha256": "6e41987ff56d223de3ca7fe3f75db2fda7aea50b9546176effb00f0c35556ec2"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0460/avaliacao.json",
+      "bytes": 7341,
+      "sha256": "053f699e0f2cfe89cbfcd2e0e68224e864c7beacbe2af4859ec2c3089cb3e222"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0460/geracao.json",
+      "bytes": 7890,
+      "sha256": "228e5c871c8e3c3f9247ef2e3917b0e5b450b715ac525ab179c22be427bd6fe1"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0461/amostra.py",
+      "bytes": 1065,
+      "sha256": "87e681ad6b9d9a43d537d89f0496bd80106847299f295c4ebdd7708fbf4d9752"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0461/avaliacao.json",
+      "bytes": 12855,
+      "sha256": "0c075c07d1eb8e7cada093f7c8464bb1ad5b216dd610638ab5ba6851098b8b2d"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0461/geracao.json",
+      "bytes": 6575,
+      "sha256": "0327d3cff0e2c71105c8afce144c6c27eb50f7eec913547fe3caeb7660fe5201"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0462/amostra.py",
+      "bytes": 2615,
+      "sha256": "04b1a4385cd8e58f580f035721f8313c9181c85bca75b22b5e9a9260befd6311"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0462/avaliacao.json",
+      "bytes": 10651,
+      "sha256": "57bb15fe42524b53dcda0c7c8776699fb5ea54fa70b2df9bc97b877b6485432f"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0462/geracao.json",
+      "bytes": 7609,
+      "sha256": "ffc9f767edaa5ffcfa37b195e798d29fefb24a423a6fe83da22392b8a0eb2580"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0463/amostra.py",
+      "bytes": 2260,
+      "sha256": "9b2bff5e4444ae41d3287bff8eacdca04f58189ccdca12ff94d5ac983933cff9"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0463/avaliacao.json",
+      "bytes": 611,
+      "sha256": "d45c497df82eb1e42de575746910eceebbbff9783ac2de5efdacb2fdfedfc34a"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0463/geracao.json",
+      "bytes": 6206,
+      "sha256": "c004c100fec2eedc43b705009ec17b4d479d411e09fb2fed64f7250c2d197089"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0464/amostra.py",
+      "bytes": 1337,
+      "sha256": "979f22f7f2b33cd2f8f12feb838683b515faac50b57873912b3cf6ecdac9cac3"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0464/avaliacao.json",
+      "bytes": 12543,
+      "sha256": "753c7d1d03c112e3c9b4e4d731dfcae75ad622f05ef15548a3a779cfcb69e793"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0464/geracao.json",
+      "bytes": 5897,
+      "sha256": "ec48598dc926cf12cf35bdfda429ff1f4bfcc5bd39d8b598537d98592026af26"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0465/amostra.py",
+      "bytes": 640,
+      "sha256": "5f6ea2f4af999ae2547a6164f7cb2e8c9162e417749d5178234dff1c92cd15ef"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0465/avaliacao.json",
+      "bytes": 12220,
+      "sha256": "bc21484a649050db803789df08fe216e4ba57e85694c43851c6ee76ea24957f6"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0465/geracao.json",
+      "bytes": 3560,
+      "sha256": "21f71a509d415995ff3eb1cb1b300b6399588026ecf2b46e77d53dc1f2ac22f8"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0466/amostra.py",
+      "bytes": 2446,
+      "sha256": "272f2d789f7e3557b8b1df901df65f2a4b40418db2e08a5dfa868a0fc39d65b2"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0466/avaliacao.json",
+      "bytes": 10664,
+      "sha256": "7f63e3b03bc75821a54a4947ae6d668119866b89b85814b97a5af8f7c8245c1c"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0466/geracao.json",
+      "bytes": 7702,
+      "sha256": "08348b541ae0631b0fc7c695eca4b18dd3a4f490454b46f22b5b195a43392869"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0467/amostra.py",
+      "bytes": 5433,
+      "sha256": "437a789cc821c59a8586630a48b5095c24afb42f8a15c61b7cd74b75ff925a13"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0467/avaliacao.json",
+      "bytes": 7339,
+      "sha256": "267ca2344bec231fec29d48267416345f8d6f18fcc9f8e6f1923103852349e91"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0467/geracao.json",
+      "bytes": 10800,
+      "sha256": "0ccaedabe6e03106c03f2ccbe56e5390eba96eff3de13a9655978867f71a4e6f"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0468/amostra.py",
+      "bytes": 841,
+      "sha256": "354b889bb10efc3aee801159b9e437a53b2860ba57a7bd43d315598a6d44daad"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0468/avaliacao.json",
+      "bytes": 14779,
+      "sha256": "683a99226ee381355495df00d28b4f32088a83dcba6caf2aec1b1639e4bd9657"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0468/geracao.json",
+      "bytes": 4051,
+      "sha256": "81a20f4b9ec14bb768f5b4435191152afe67550d947a84dcc181119f61c5c5ea"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0469/amostra.py",
+      "bytes": 736,
+      "sha256": "d111364d58bbd78106c2d31d12bd716a3f6eb62f34c1977d587c60ca4a999b2b"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0469/avaliacao.json",
+      "bytes": 12220,
+      "sha256": "d2a36c2abcb84d073d2c4dfbde22d28868ef5e15f181d7d2d7c629a724f303e7"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0469/geracao.json",
+      "bytes": 3680,
+      "sha256": "a9bb7d7a8a5c667a266c139bce06d8077dc256df2a16a9d1bcf4c9e657c95ccb"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0470/amostra.py",
+      "bytes": 2405,
+      "sha256": "0ff9a8f63cd187b2b182cfe8cd30b0f1d20ea4930f1c14b674f4e915974f7100"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0470/avaliacao.json",
+      "bytes": 7339,
+      "sha256": "02ed8e0c3f7795eefff953782648b8d1fd0e306b7c084a85b6ca5a2c775d0aa5"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0470/geracao.json",
+      "bytes": 9114,
+      "sha256": "7387ec63ffe4d7a7471a66667ec4ca3e9aa0e99d81864f9c57f89f30c046630d"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0471/amostra.py",
+      "bytes": 2893,
+      "sha256": "7d09a848005f089ed3be5a05d180938b843e820cd8cf7929e15f98392e49575b"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0471/avaliacao.json",
+      "bytes": 7339,
+      "sha256": "41cc2315f6a69fde648c6af2910ea50c4023e1d94b5b5ce85e0be1fb929ca37d"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0471/geracao.json",
+      "bytes": 8182,
+      "sha256": "ff8a4700f405a154787fb0967ba7489b4887bbdfb8cfc48bb13c752f6fa668b9"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0472/amostra.py",
+      "bytes": 2473,
+      "sha256": "067988f9cea02bac40d78b168e69d42cb0963185ef13893dd6f196e48e8ae07f"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0472/avaliacao.json",
+      "bytes": 7341,
+      "sha256": "f5e4fd8a8efb15f5fae3e51d5f0ec41eef22bb650f624de395e7172a6edfce80"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0472/geracao.json",
+      "bytes": 7735,
+      "sha256": "f99e369c96d68dacb07659a50561bfad84c6955fa3f52eb19bfb8d358949ba20"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0473/amostra.py",
+      "bytes": 3672,
+      "sha256": "01b7d53363aeb061af58650c1551be67d95ceebbc1bc2880d39b6e9b1005326a"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0473/avaliacao.json",
+      "bytes": 10651,
+      "sha256": "57bb15fe42524b53dcda0c7c8776699fb5ea54fa70b2df9bc97b877b6485432f"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0473/geracao.json",
+      "bytes": 8018,
+      "sha256": "894d684313e9675da77227d925c7f9b4526b0fd14c6d5bd747df8f11da5acfe5"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0474/amostra.py",
+      "bytes": 5328,
+      "sha256": "c72c699d2ae8c801a8314e9f149d6ad7fcac91ec2373aabe4d6629cdf552fd57"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0474/avaliacao.json",
+      "bytes": 4045,
+      "sha256": "c6c80b5b202d0b08590563d13caeb815eec3a684636d11b60a18bdd4cdd7f033"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0474/geracao.json",
+      "bytes": 10632,
+      "sha256": "2b88827878fb23747201f848a1c8a2b17d281ba43ae06642cb88266e0cfbbc59"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0475/amostra.py",
+      "bytes": 1792,
+      "sha256": "9b9b3e4fc921889f964b7758032d6af9eaeb01cc96115aa4513fad11520c8340"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0475/avaliacao.json",
+      "bytes": 10654,
+      "sha256": "7ecde2f4e876d761ae8c6beac1dc5b67172d55eca7b67eb0141bd060016442e4"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0475/geracao.json",
+      "bytes": 5902,
+      "sha256": "7d98e5c73360d7e0512a4f603a3ef33a3b9bee736a17d259c77fc17045f7749a"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0476/amostra.py",
+      "bytes": 2619,
+      "sha256": "da90dda09d16fc07ad956be2c925b521acfe5de74481faf3a0854fbc5c057723"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0476/avaliacao.json",
+      "bytes": 12400,
+      "sha256": "e39cd6b0efdcb0295ae3d1f490d7070d825649e3be04a500f7050e4ee90a3d34"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0476/geracao.json",
+      "bytes": 6715,
+      "sha256": "ca0b321815dea3f1974c37c1e0bbec2d3d3b6cd76f8b6dbc7197afab3666cd6c"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0477/amostra.py",
+      "bytes": 3340,
+      "sha256": "5a3c00bc700ad3ba0c91e1c1a34d11ec964a33ed45c91c0b0e1be3244075be92"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0477/avaliacao.json",
+      "bytes": 769,
+      "sha256": "e6c64c44184b8cf90ea2eb82c5c2a2f9fb97e8d00b0a8484d02e9ccc2be1beff"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0477/geracao.json",
+      "bytes": 7680,
+      "sha256": "472380b6e2b96b9a051484da38e77d8d581d0da4689eb312dbba9b809261a4f3"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0478/amostra.py",
+      "bytes": 1758,
+      "sha256": "9b8c3af6b35fac22d3181f10c4888bf682f29d681bd8afea2f5ff61432264d34"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0478/avaliacao.json",
+      "bytes": 7343,
+      "sha256": "9f4d471cbf6bb80cb523327c829e7a812e8dc2ad88b6ee77690601f7c983e3b3"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0478/geracao.json",
+      "bytes": 6852,
+      "sha256": "400c7e6d1b20ecf611e88112cc0c741916ce858c9db691e925f5fabaf6eb6f2b"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0479/amostra.py",
+      "bytes": 2096,
+      "sha256": "5656cf587e1efc636e58a2338753fa45ec5d4e945c37ebe04a1f7ac078f61022"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0479/avaliacao.json",
+      "bytes": 12543,
+      "sha256": "d7662b2dee08061a2cbc90b775a71f16a57ba7a6bea4c8944baaa2518a03ea86"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0479/geracao.json",
+      "bytes": 6709,
+      "sha256": "c8a0691a29a76a058355d46fef8c667eca310864831cb7de4386b6cdc7418f4c"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0480/amostra.py",
+      "bytes": 1900,
+      "sha256": "34d531474d21e83dffeffddc4c3d7218984a5fb7b725dd0978d7cde66d5c86cd"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0480/avaliacao.json",
+      "bytes": 10649,
+      "sha256": "a88fe9d38c66c7c4caf71b1d5ecceedb26af57afdb4fc026482eb3577a3c2d74"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0480/geracao.json",
+      "bytes": 7144,
+      "sha256": "6df15bc0cffdfe82c8ca4c0ede5f7d87b757e8acc6307d31a9ae1ec4fe7413c7"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0481/amostra.py",
+      "bytes": 3423,
+      "sha256": "3b085bead052caafadbc98adade454222a9e6128bef9d36946970e68ea223c6e"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0481/avaliacao.json",
+      "bytes": 12400,
+      "sha256": "e39cd6b0efdcb0295ae3d1f490d7070d825649e3be04a500f7050e4ee90a3d34"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0481/geracao.json",
+      "bytes": 7560,
+      "sha256": "f0fa0092dffcd4c9721c8c226027eaba288583c6bc2ca79e4c97bc2e5692aa45"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0482/amostra.py",
+      "bytes": 3136,
+      "sha256": "8be885e5ce5b79138025613468fe78668acc361e58ae3fdfee7d025eeb794172"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0482/avaliacao.json",
+      "bytes": 11128,
+      "sha256": "f57da4af86b408608e44e737cdec2d13d135d64b7d9c82753a921dd93f932210"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0482/geracao.json",
+      "bytes": 8220,
+      "sha256": "4cc99e8ee562527b9fe71462c1bf999ac6ede447c64a5afa5dc2b42b4a57cb12"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0483/amostra.py",
+      "bytes": 2714,
+      "sha256": "772084228fe447deefeb73ce1b78fd1f6c5dcf06b575831dd9923acb7fe034a4"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0483/avaliacao.json",
+      "bytes": 10651,
+      "sha256": "57bb15fe42524b53dcda0c7c8776699fb5ea54fa70b2df9bc97b877b6485432f"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0483/geracao.json",
+      "bytes": 7709,
+      "sha256": "f9ff86e0422db6e3880dc507ecb361b23c0710380b9ceb5679d993e2f0077d0e"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0484/amostra.py",
+      "bytes": 893,
+      "sha256": "6e6afd0ad101ffc7a2c3293d93d9050e9dba1ad6ee2236e40324c1addd34b3fa"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0484/avaliacao.json",
+      "bytes": 12572,
+      "sha256": "bffe9e9f075731b734e633cb3d2579133e1e7450ded9262c786efc0268703340"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0484/geracao.json",
+      "bytes": 5163,
+      "sha256": "3ab628b647e346165c6cc401712b5146e463e7ab9ccec3040ed5b9f8c3e231a4"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0485/amostra.py",
+      "bytes": 693,
+      "sha256": "cb29deb4990690a606987c4b81435483cc91e506a6a9165bc19a814c36eb49cc"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0485/avaliacao.json",
+      "bytes": 12578,
+      "sha256": "66c64cac7710666ac716ff9ac88224f7030f33a849857457d18538f779150638"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0485/geracao.json",
+      "bytes": 3995,
+      "sha256": "ff59542b1f4def0449f129da297a25c55c8b18a720eae95fef9b2fd9d7b0dbe3"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0486/amostra.py",
+      "bytes": 3389,
+      "sha256": "3dae021e428556589b5c1a581641f02ca863240cb40de417acb555216b5e6bef"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0486/avaliacao.json",
+      "bytes": 14992,
+      "sha256": "c88fbd46729197c702f182a99f012b3d3a020d809595c7d23988e0213101808c"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0486/geracao.json",
+      "bytes": 8918,
+      "sha256": "e9a5e97e63c3b479828442e89d8d4a87c75f6485b469a33642f475f836bcb60c"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0487/amostra.py",
+      "bytes": 1470,
+      "sha256": "cf848fc3bde9b17181b9e69d7c0c1138ad4f3543870250c17a49342b280b7369"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0487/avaliacao.json",
+      "bytes": 12543,
+      "sha256": "3a018890e4e3218bffee1238f04623de60252846c1cb312b392f1010265c87ca"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0487/geracao.json",
+      "bytes": 6044,
+      "sha256": "494407bdf5cd2efed70a8f0478813b88ba8c948dd9a4118d45b8aa273507109a"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0488/amostra.py",
+      "bytes": 1668,
+      "sha256": "86c6e67b967f1059a54db13c10057f67023b4d49776d3229df64301a280baf24"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0488/avaliacao.json",
+      "bytes": 12569,
+      "sha256": "e4e538ca6c6f3cb428b546fce0633c3ceb3950b4e847cfd68dc21e4c4c7b243f"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0488/geracao.json",
+      "bytes": 7196,
+      "sha256": "d774353332aedd05076b78e249553f94ffd46f2f4fc9e1bf3b2af7cc1a8819e6"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0489/amostra.py",
+      "bytes": 775,
+      "sha256": "808410c234ca49ee308200e2d58b97825c71139e5e097eb06c55d0b843be4748"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0489/avaliacao.json",
+      "bytes": 14783,
+      "sha256": "ba5bc2d84a8ef6d3a10b3fbf9f298df1174a57c00e87b3fde3c7add0b061d62b"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0489/geracao.json",
+      "bytes": 3984,
+      "sha256": "f0fcbab96a5bd26fbb1fe665a7fc2fce9f58fcff0ccb5d3dd89e4e8f526f5872"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0490/amostra.py",
+      "bytes": 1634,
+      "sha256": "f2f4ca9bae41a88993e90fd79be652f216a786cb544c98a5266f1e7b7af2d206"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0490/avaliacao.json",
+      "bytes": 7343,
+      "sha256": "db9cab6794447e4ee767c63b9748a342002de956431bca57bb0b7c78076defaf"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0490/geracao.json",
+      "bytes": 6724,
+      "sha256": "45fb5d88130bd50c2b293c45cfb697e83e32adc3d05821d2c41904a436143cc6"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0491/amostra.py",
+      "bytes": 3925,
+      "sha256": "c4b6b339fef2a888d776eac563fbabe9f117596bf62d5d0e26fa7e60b63c1f7d"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0491/avaliacao.json",
+      "bytes": 15295,
+      "sha256": "822c24abbec0f9c3a9ada48bef29b77a7ebfde59a1623a9a5ea3c5c97a41e540"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0491/geracao.json",
+      "bytes": 8276,
+      "sha256": "01a41190722fce778540bafdfea7e05a3d38d2e4f76f077b0dbcae7b6b21e48c"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0492/amostra.py",
+      "bytes": 2174,
+      "sha256": "9efb620b51972a5e8f37b61ebf0150180f13c9e9704fcecf2bce55471bcb97d4"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0492/avaliacao.json",
+      "bytes": 3885,
+      "sha256": "0a439a0bdf35a954fbb51aa5eb45851ac70ab61527df9440c29ea6df01123f26"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0492/geracao.json",
+      "bytes": 6959,
+      "sha256": "6a93bfbc32c47939c2773b5143b3fc5ee00e9c7dda825472cef26c47628e7c31"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0493/amostra.py",
+      "bytes": 2081,
+      "sha256": "a1ab19037bfcedb1386fc67ad277a4137d43210fa1b851ed69bd15122db6e9dd"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0493/avaliacao.json",
+      "bytes": 10751,
+      "sha256": "36d414ac8bad95af71665d80dd84913b49d99dac8696ce1ee403347b4411267e"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0493/geracao.json",
+      "bytes": 6197,
+      "sha256": "90d5766d1df6e9ca255f6a07374c3f072c0daadb7c708ba9bbbda5039e325b33"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0494/amostra.py",
+      "bytes": 5623,
+      "sha256": "460077970c75786b11de134c31709ef22d0b367a9d054e8d83f3d3562a5eecbc"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0494/avaliacao.json",
+      "bytes": 4045,
+      "sha256": "c6c80b5b202d0b08590563d13caeb815eec3a684636d11b60a18bdd4cdd7f033"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0494/geracao.json",
+      "bytes": 10908,
+      "sha256": "28821b5f04785a1aa986e3262f5942f4c30d3f4bf0f4ddb65ac67d32bf512dfa"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0495/amostra.py",
+      "bytes": 1660,
+      "sha256": "1e24dd88f50e4428ceea82c9f776fe3dc7a65e62b7287aac14506e5bceba1e05"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0495/avaliacao.json",
+      "bytes": 12543,
+      "sha256": "8545207f4f785b4546be29d6b0705ab29142f332460f33204bf4bdc66ec84199"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0495/geracao.json",
+      "bytes": 6240,
+      "sha256": "d0d07e08dcea9d4e57bc1be517319b75bd8107bcc9bca5b0a9220be19a5e414d"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0496/amostra.py",
+      "bytes": 2058,
+      "sha256": "07b0c66083c0571994b01d6df88ba2804103d1997d3d36bca618d40af35dfe34"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0496/avaliacao.json",
+      "bytes": 15244,
+      "sha256": "eb50287ae89c691cbc7c9bd8b7cf9522e9d4082f9c113981d658868457d8ca80"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0496/geracao.json",
+      "bytes": 6298,
+      "sha256": "0ad9e5cd7593e82dc0e5637217a5f8d5d412d65a728074f5bb97eeddfb50b7e5"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0497/amostra.py",
+      "bytes": 2418,
+      "sha256": "b58a341152e58f9825c10323089dbeef66f19f2e75f54903b9bd11c3c66353b2"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0497/avaliacao.json",
+      "bytes": 3883,
+      "sha256": "7444f4cd3740bcbae454bec5ca5d06dfe099c6c6f775e5837cc11d80029332fd"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0497/geracao.json",
+      "bytes": 6365,
+      "sha256": "bae032b64d02885941b12b6d353dfdfc1d271fbc007e80fd6830749e6b2f62a2"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0498/amostra.py",
+      "bytes": 2586,
+      "sha256": "626ee56316b5d91a852024f5fff126f8fa0fa50dc6556d17fe7937dc0bb924c6"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0498/avaliacao.json",
+      "bytes": 15244,
+      "sha256": "109a13c8c375b9d0eb5855ab6c0f17b801b376d0e2fef9d4b41cf7bb097438f2"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0498/geracao.json",
+      "bytes": 6847,
+      "sha256": "79caea3db1c625a006cae8fb1e8edf779d8d76b77c397681684a30d61d94871b"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0499/amostra.py",
+      "bytes": 2195,
+      "sha256": "d98d793dd71b50f9aa3a5c2142b523327ff52e2db26f740f35a769f6203af49f"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0499/avaliacao.json",
+      "bytes": 3883,
+      "sha256": "7444f4cd3740bcbae454bec5ca5d06dfe099c6c6f775e5837cc11d80029332fd"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0499/geracao.json",
+      "bytes": 7898,
+      "sha256": "a32c7249b40d10fde89fb796df83dd756a0a82d8b4c9d4463c1cf93246d44e35"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0500/amostra.py",
+      "bytes": 842,
+      "sha256": "15f9f31efd83744f0545f4b088f087fcca423115bd5fb0db79250d9548c1126d"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0500/avaliacao.json",
+      "bytes": 12572,
+      "sha256": "2de8d6e51decaacb1356ac0463472f83ae2f995841217a528afbbfaa3e60cd3a"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0500/geracao.json",
+      "bytes": 4154,
+      "sha256": "d42d1077834dd1055170475c3f53785ac7d8a77cfc1162a8d1f5462a6f3d2e5b"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0501/amostra.py",
+      "bytes": 1420,
+      "sha256": "df9e7c6514387b96bc489ff42cedba6826331bc7fc798c837a3a9f16f2f2c6d9"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0501/avaliacao.json",
+      "bytes": 12543,
+      "sha256": "937c4b14b8dbd17e6e515eb7d5051aaea32511f93ee26d7d4ad20f7c6c6ce8e3"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0501/geracao.json",
+      "bytes": 5990,
+      "sha256": "a3856087a3400dc6752ce2356098eba66e7aa11494256d6a6ce1eeca5d65aa33"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0502/amostra.py",
+      "bytes": 658,
+      "sha256": "f5c50af74fa7f1215101150cc17cdab1523c6edc74abd31ca63d95228078bff8"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0502/avaliacao.json",
+      "bytes": 773,
+      "sha256": "eb4cd355ed630c993c8dd7048a8b3386a0c45b0549649ffe6d93ea430097b0a4"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0502/geracao.json",
+      "bytes": 5054,
+      "sha256": "9ef02bf550e510450cc5a24e3bb1599828045de356ec9c26f2db1df72e1a64cc"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0503/amostra.py",
+      "bytes": 1836,
+      "sha256": "887644c2185a56b2a0b2cb3fb34785a309239859500f6faa086dfc65dc64e613"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0503/avaliacao.json",
+      "bytes": 7347,
+      "sha256": "98c0378baaaee74df9355f0069befed4caea2c366c75e9ddc1b88c9458b74195"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0503/geracao.json",
+      "bytes": 6928,
+      "sha256": "11c9526e08f8ace00e5403f09e79b7a3d26502335ba87cd285a9880cc9560649"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0504/amostra.py",
+      "bytes": 5822,
+      "sha256": "f9a2693ae85402a5f8b794e4dd4ccbffbc109dc6b55d8668e96a578b3a69f76b"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0504/avaliacao.json",
+      "bytes": 4045,
+      "sha256": "9c2ca916c07366492e0d4c67ff78affa2bcc956c267489ab1edb5ece1e17a02b"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0504/geracao.json",
+      "bytes": 11152,
+      "sha256": "bf4aff01e85247c7e5596ae03fb5b357aecde0a8d232923dd0efbbbaa4960b7c"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0505/amostra.py",
+      "bytes": 1649,
+      "sha256": "115c1611135c4019ce463ae08eb0e185a5bd5203e34dadefcf09ea40b5f783bc"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0505/avaliacao.json",
+      "bytes": 12631,
+      "sha256": "698a2edd95b957b3f951ae92edb162dded8db1a2e81787cfc14cfdc7c35caf15"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0505/geracao.json",
+      "bytes": 5568,
+      "sha256": "f04f1eda409f96f4853346dbb6fd8a858a6ef363798d5f5df3b386ecf52a7977"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0506/amostra.py",
+      "bytes": 1001,
+      "sha256": "8f09680bbf95f8528163bc5ebe900d65407da901a9b77f3a81817b669422407f"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0506/avaliacao.json",
+      "bytes": 12572,
+      "sha256": "ba83d23c1257848afc1fa384a08f54eb1a91f5084e3a69eb60593f1c26597704"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0506/geracao.json",
+      "bytes": 5273,
+      "sha256": "00fd7b4fcac8dc2c16212bc14ab962386685ca6d1a941d5463127c9635f0720f"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0507/amostra.py",
+      "bytes": 956,
+      "sha256": "354d6272eb27823a6ca5d5a53f806a7b2961aad63e4d73bab2f54e5a5df23685"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0507/avaliacao.json",
+      "bytes": 12251,
+      "sha256": "ae56723e0438501ecfb7cc5acacba5d45e5e35e6a05c2cccd9244443563835be"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0507/geracao.json",
+      "bytes": 4708,
+      "sha256": "ce373aee6909b789269e054b47a7386fb464f8a14cc2e9ccdab26493b77507be"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0508/amostra.py",
+      "bytes": 1294,
+      "sha256": "293a4eb155dae8446b94ded48275aa1c748b93a427db7e57383f7602b2bca063"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0508/avaliacao.json",
+      "bytes": 10880,
+      "sha256": "449c65688f8517c7168492930c569a397353054c542cdafd33bb3b646d7cd024"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0508/geracao.json",
+      "bytes": 5242,
+      "sha256": "f5e7d305e4dc40ba2e26a05fa2228a432d5b3d363935ac0f6f5c4cd5c659ea52"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0509/amostra.py",
+      "bytes": 1794,
+      "sha256": "4922e399a42d88dffcf1a19715349fcd01b3aa92e45afd71bc9c14c974aeba00"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0509/avaliacao.json",
+      "bytes": 12543,
+      "sha256": "72877d3667ac4f5caf8f5efb83e2549f10294ff6eb7f6d1387c8d4b814efdba3"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0509/geracao.json",
+      "bytes": 6383,
+      "sha256": "7c112d82a12e397c3d23e4856480d1d08101fbd44c8dd4501eb9ce2abc4ed99a"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0510/amostra.py",
+      "bytes": 4170,
+      "sha256": "c3e60e074d82cca951fb8840d25f486f5f4777619cc312d2115e43ec8ac9320f"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0510/avaliacao.json",
+      "bytes": 4039,
+      "sha256": "ae936dd2625584536b614d8d35191d5bf4c84adcdd5703c9483d722b9d013d77"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0510/geracao.json",
+      "bytes": 9435,
+      "sha256": "d280ed6a8c3c1783b41e8327324eb5f4ee461bb0bb441e0141b1882d67746b13"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0511/amostra.py",
+      "bytes": 2364,
+      "sha256": "ec2b6531e6d01d40291e18f45e074ff17def21bd442ea48e556d6a68056aba01"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0511/avaliacao.json",
+      "bytes": 10651,
+      "sha256": "57bb15fe42524b53dcda0c7c8776699fb5ea54fa70b2df9bc97b877b6485432f"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0511/geracao.json",
+      "bytes": 6646,
+      "sha256": "295f8241f1e1b89d8f78844d472cc9a25ae71baf7765ec5b341cf7498814f08e"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0512/amostra.py",
+      "bytes": 2188,
+      "sha256": "7e926c7254c25d47caebd6c15b5e8205933c5083460dfe49b20658e1eb2e1318"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0512/avaliacao.json",
+      "bytes": 15244,
+      "sha256": "f11ad330a6a84c3431c5b0488f935478570cc535e2e2ea18abea031985e55b34"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0512/geracao.json",
+      "bytes": 6436,
+      "sha256": "5f3bc36febbee9ea8b38de08daa9621d571f44d8329cc4b764da2fb4037ea20e"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0513/amostra.py",
+      "bytes": 736,
+      "sha256": "c637b125457948c55324327850e8d1b86ca188e3740e37bf9bf47f30726b16b7"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0513/avaliacao.json",
+      "bytes": 15866,
+      "sha256": "684f1a757293ad680e7446190683d484a1538d4fff6505e532252320b559c516"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0513/geracao.json",
+      "bytes": 3852,
+      "sha256": "607400576846507c631a4c2b826130079ed21bddea3e3b4f3b2d8e9095482e02"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0514/amostra.py",
+      "bytes": 3375,
+      "sha256": "162544e1b8b9634b581a6032a5839c9ff4aa0594a274fa19fd4109d187cc0aaa"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0514/avaliacao.json",
+      "bytes": 12400,
+      "sha256": "7b1f77cd820b33fda7333707dc5e0a2fc5830c8032fc174368f6e791065fbcc5"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0514/geracao.json",
+      "bytes": 8496,
+      "sha256": "68a97cc4bc6cc6ece0437ff5e5c70e2dc614a16182ac72f5f8584c5dfcec9a65"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0515/amostra.py",
+      "bytes": 884,
+      "sha256": "bb76ec9a3344eebc2d832d20bd945d28494a3abed8704d1d5a2c4e9bf090ca67"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0515/avaliacao.json",
+      "bytes": 12543,
+      "sha256": "b43e4d56e0de3c72210235613666a8c653d4d165967a117a934da23167d4a24f"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0515/geracao.json",
+      "bytes": 5282,
+      "sha256": "106f2a2e8c98c5059a811fdee46eeb2aa77525b2fcb0eec9e5010de0dc4d8e38"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0516/amostra.py",
+      "bytes": 1079,
+      "sha256": "6e025190bc14692fe656cbb554d3a575dc3cfa7091bbcedb489002f045864af7"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0516/avaliacao.json",
+      "bytes": 10880,
+      "sha256": "449c65688f8517c7168492930c569a397353054c542cdafd33bb3b646d7cd024"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0516/geracao.json",
+      "bytes": 4268,
+      "sha256": "f8bf95d4f73ed60b20b9f3f702cd1c132695a6269ee969ec396f9f715320fea6"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0517/amostra.py",
+      "bytes": 4492,
+      "sha256": "e6248e6440d2725aef3527f2d60de46d7f627200133e72168ea28b7b810243e0"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0517/avaliacao.json",
+      "bytes": 16942,
+      "sha256": "0c058a06435ab6eec54925a3267a950469b737b06a33e0cebbeda3bfe66cb53b"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0517/geracao.json",
+      "bytes": 8860,
+      "sha256": "a6d443f71c8c981fb449e96fae67750be791015f4d7322fcd71906cdf02223d7"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0518/amostra.py",
+      "bytes": 1027,
+      "sha256": "8bc2301774e41d2f2df7500b250871a9ab49b336f3c27b2376d8a1a8fca28757"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0518/avaliacao.json",
+      "bytes": 14779,
+      "sha256": "683a99226ee381355495df00d28b4f32088a83dcba6caf2aec1b1639e4bd9657"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0518/geracao.json",
+      "bytes": 4911,
+      "sha256": "007bbe1fe3483ee85c1501b4f2a98f186fce47b9a067b1bb4c70a0b5f77d1753"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0519/amostra.py",
+      "bytes": 1456,
+      "sha256": "63737f085f242d8ab94be129ab97b20b6ef82db3249567ae0481cb8069526117"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0519/avaliacao.json",
+      "bytes": 12569,
+      "sha256": "a26efcf01929eac8ee71de11fbe46a0426340f7252ef3ab5f9d4d4326969f1b1"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0519/geracao.json",
+      "bytes": 5898,
+      "sha256": "a5c7e13c018b6d2aba29dc1977e8a77762041348647187c7edfdcf99b11e4651"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0520/amostra.py",
+      "bytes": 1804,
+      "sha256": "56918213578f1fe140016b257ff6c80e22e2e0c7ed53812dc96034f0512a13d6"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0520/avaliacao.json",
+      "bytes": 15843,
+      "sha256": "d42ed20997a6716e2c45150bf2ff56a3df50dd4ce2489e4b29913e46419fbee2"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0520/geracao.json",
+      "bytes": 4986,
+      "sha256": "48d3a5a22f7ce4de7dee2b8a1bd7dcb34584ec3da2ca6a87981a8bf47619307f"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0521/amostra.py",
+      "bytes": 2103,
+      "sha256": "d7e4f8485dc7a4f98e9952a84e433840e529cf5c38615a6b36ed46ec72180d2d"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0521/avaliacao.json",
+      "bytes": 7339,
+      "sha256": "37a533e7ad76fe059896d64e412ee75a0f5bca6f14d3ae14e8d3a6df601a4e86"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0521/geracao.json",
+      "bytes": 8803,
+      "sha256": "9ea58f121603cafd26e3622e99f54cb438b31e788ade877e72de3811da90e7df"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0522/amostra.py",
+      "bytes": 5125,
+      "sha256": "2329779d6a9d3a8310841a6afb01d6eb7ef4c6920849ef1604646e164c92fcf7"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0522/avaliacao.json",
+      "bytes": 4047,
+      "sha256": "ba699b4e019ca5e932804ba7085c0dbd91a0f610858617058c0b83e0e95e3141"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0522/geracao.json",
+      "bytes": 10382,
+      "sha256": "5001c92417460a668249d3f188c53b62c85aece6b9f625016858baa1fd37a540"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0523/amostra.py",
+      "bytes": 1883,
+      "sha256": "474b6466401b5f2044f3b4c173321478e579f211a98e6d7009717ca155865430"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0523/avaliacao.json",
+      "bytes": 769,
+      "sha256": "e6c64c44184b8cf90ea2eb82c5c2a2f9fb97e8d00b0a8484d02e9ccc2be1beff"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0523/geracao.json",
+      "bytes": 5325,
+      "sha256": "39bb3aea663dfdfc9375d9b6171112e3539335d122a5f06a6f33675eeff57905"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0524/amostra.py",
+      "bytes": 2130,
+      "sha256": "e4522b612557e76da836fa40fc87455a414c202e3fdf3f040749dbbbb2dbc7d1"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0524/avaliacao.json",
+      "bytes": 7347,
+      "sha256": "0235664de4dce1a5835f551a3b8d25b919a30a58a17d3fa509f5c67165fa2da4"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0524/geracao.json",
+      "bytes": 6377,
+      "sha256": "f8b829c990d2df60a89d2c46840343ccbd2da33a08684311c1a8c20050cdf771"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0525/amostra.py",
+      "bytes": 1285,
+      "sha256": "e5937f8106a5d5fbebeb43cf442ca4525335a8af5018d1ca4b54212d46402bec"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0525/avaliacao.json",
+      "bytes": 12572,
+      "sha256": "e9341f7376e5d9ac3cc374158dd2b78128caa4a2d887996d81f69647a0fe984e"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0525/geracao.json",
+      "bytes": 5718,
+      "sha256": "5e86fc520f2d36b647a7eb70c82049649b24dbc33aba725f1ce7588480c935a2"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0526/amostra.py",
+      "bytes": 933,
+      "sha256": "5ff23e1d103c7be4c85d2bd4a6481b6e02f46d2f26b2c5294c999dc6f7c1665b"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0526/avaliacao.json",
+      "bytes": 12572,
+      "sha256": "e9341f7376e5d9ac3cc374158dd2b78128caa4a2d887996d81f69647a0fe984e"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0526/geracao.json",
+      "bytes": 5206,
+      "sha256": "febb59476a11ef4507dca442b6c494f8d9d94b31c4f64d32e6990880616ad3d6"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0527/amostra.py",
+      "bytes": 1645,
+      "sha256": "f0c96b5182d2fdadd209cf1286ab0f52467c201f6bad6266814ff55ce82b576c"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0527/avaliacao.json",
+      "bytes": 7343,
+      "sha256": "54f3799df29e1d4f2706a55821a532de7e77d14dbc815aff8b005cd2f0441bd8"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0527/geracao.json",
+      "bytes": 5862,
+      "sha256": "39a3bf8a70d0889cb1c75ce7418750411cb88c23671164ac7b4a1d7460c2fbaf"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0528/amostra.py",
+      "bytes": 5218,
+      "sha256": "ad6f96768cc3f81eb11b5621b22962ec1f15368395312c5e86d4e8ba03f16715"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0528/avaliacao.json",
+      "bytes": 12285,
+      "sha256": "06f2a27134316d358a6b410ae834881322f8fd1d94dc0597f2eb378f6e997f7d"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0528/geracao.json",
+      "bytes": 10576,
+      "sha256": "0536b17307f63eeb513941eefb39832ab121aeb2ebca20dcf6aaa2cea780a122"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0529/amostra.py",
+      "bytes": 2176,
+      "sha256": "9f85ccc8a24e841e00b0f76fda6e3c68f87da6428d7d9e79ae4d175cfd00225d"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0529/avaliacao.json",
+      "bytes": 10751,
+      "sha256": "36d414ac8bad95af71665d80dd84913b49d99dac8696ce1ee403347b4411267e"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0529/geracao.json",
+      "bytes": 6294,
+      "sha256": "98c7df0b512d1f95eec9fd90b2bd34c40cddc49d0f386fd98b6729ee1c63ef54"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0530/amostra.py",
+      "bytes": 2911,
+      "sha256": "bdfb43c24f3837d3fe33a4be623d02deb678dfc2bc334dd47acfba9bc86428bc"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0530/avaliacao.json",
+      "bytes": 10651,
+      "sha256": "57bb15fe42524b53dcda0c7c8776699fb5ea54fa70b2df9bc97b877b6485432f"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0530/geracao.json",
+      "bytes": 7907,
+      "sha256": "a55405b64c95f6ea32c1dc16cec65b332fc8564def44dfe8a56c3a808c1901f4"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0531/amostra.py",
+      "bytes": 2274,
+      "sha256": "da27dc1fb10c6f771162c5485536bc1a7a680f1f672fa2dbd5741e4578b026a1"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0531/avaliacao.json",
+      "bytes": 4061,
+      "sha256": "ce81bdbdc36fa272e50c7bcbb9ed4fa8d7b7e63fcbe192d474b26303438cdca0"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0531/geracao.json",
+      "bytes": 6501,
+      "sha256": "3458c73696eec0ba2f580cb3c9fa36ae1ef64b3bdee006786a9ca719103f7b5a"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0532/amostra.py",
+      "bytes": 1271,
+      "sha256": "442a82dc750dcd97068e8a88d210dc8ef7326296dd0fb7e06e650f6116859eea"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0532/avaliacao.json",
+      "bytes": 12543,
+      "sha256": "23d4fff403863f108f945c6823f301c557ffe47a1270e60c9c83e2eadb7571cd"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0532/geracao.json",
+      "bytes": 4931,
+      "sha256": "5fec0814c28cda9e24b9fde28f47a919654d06c965d033bbfc672ba5fa3a73c3"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0533/amostra.py",
+      "bytes": 2390,
+      "sha256": "73deaffb04f96fc33ea0bbebc5d601b0d7bead1d453270cb391a9766387be40e"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0533/avaliacao.json",
+      "bytes": 4061,
+      "sha256": "45f91d7c403bf3ac8b00790c3f39f22126364336f22b37f5748d4e9477bb629e"
+    },
+    {
+      "caminho": "dados/coleta-principal/cp-0533/geracao.json",
+      "bytes": 6613,
+      "sha256": "04dfb5e16785ed736c477109963e67b80dc2ad4d1ef1fcd8e5ca8c3c348e1758"
+    },
+    {
       "caminho": "dados/coleta-principal/cp-0534/amostra.py",
       "bytes": 1621,
       "sha256": "99b127b38b3b37a7c2db58748b35f4e7cbc5212635a7ab4e4948e41299274986"
@@ -11957,6 +13452,21 @@
       "sha256": "3a232eab4a0c98b3c2dffb651da92ecff5f215f3a6b4f437f981436b15d72262"
     },
     {
+      "caminho": "dados/coleta-principal/sast/bandit.json",
+      "bytes": 432969,
+      "sha256": "448bf1e45d3ce286e4890ba165b74c1e4a287e6444e1ada99226c952523b8b20"
+    },
+    {
+      "caminho": "dados/coleta-principal/sast/resumo.json",
+      "bytes": 2522,
+      "sha256": "7eca52b0d040c3506f4fbd88abaaf79bd68cf587dbf47342c81eab2bdbed9183"
+    },
+    {
+      "caminho": "dados/coleta-principal/sast/semgrep.json",
+      "bytes": 183573,
+      "sha256": "a82cd9e0536de530885f81de57c0f9f1be7f251524e59ece2b24b69b73700623"
+    },
+    {
       "caminho": "dados/gemini-exploratoria/gem-01/amostra.py",
       "bytes": 2219,
       "sha256": "0d8de5c4dcdee19b41b94a732e38747a56c7d77615310e6226d9a5eeeb422b1e"
@@ -15153,8 +16663,8 @@
     },
     {
       "caminho": "docs/emenda-01-rede.md",
-      "bytes": 1889,
-      "sha256": "7a9a0a7ba1ead9e81179a70757aaffbfbddeea249ed29af91d18d18083598695"
+      "bytes": 2273,
+      "sha256": "1051a73a68b44ca3f8bdb7c40ed25b6517d4fa24a65ecbab949b57b280a4ba0b"
     },
     {
       "caminho": "docs/evidencias-texto-piloto.json",
@@ -18117,6 +19627,11 @@
       "sha256": "9a77216344d386faecf3b75c3e125e91970b7677deae44832c538e01da122362"
     },
     {
+      "caminho": "preparar_revisao.py",
+      "bytes": 4364,
+      "sha256": "5f1bfe8243fbe98fb02cb00fd7f305afe87cc5ae8ce0e2a2d0279cfa8428a61d"
+    },
+    {
       "caminho": "recuperar_rede.py",
       "bytes": 3572,
       "sha256": "bd20aa22719174250bb05f217a72a53f79b80ace21799b6679cb4b761f2c43be"
@@ -18697,5 +20212,5 @@
   "ampliacao_contrato_v2": "Contrato comum revisado em tarefas/v2; coletas exploratorias T01, T02, T03, T05b, T05c, T06, T07, T08, T09 e T10 com 8 geracoes cada; coletas anteriores preservadas.",
   "instrumentos_v3": "Grupos funcionais base e detalhado em T03, T04, T07, T08, T09 e T10; 61 referencias anteriores e 19 controles novos; sem geracoes de LLM.",
   "coleta_gemini": "Coleta exploratoria de 40 geracoes do gemini-3.8-flash; instrumentos v4 de T03 e T04.",
-  "coleta_principal": "Plano registrado; 701 geracoes concluidas e emenda 01 registrada; 99 a refazer."
+  "coleta_principal": "800 geracoes concluidas, com a emenda 01; analise estatica e estatistica registradas; revisao manual pendente."
 }
