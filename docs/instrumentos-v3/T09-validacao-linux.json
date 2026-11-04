@@ -1,0 +1,4179 @@
+{
+  "versao": "grupos-funcionais-3",
+  "tarefa": "T09",
+  "imagem": "sha256:cbb38ce23b85b855e4656b3e61e6868e9446f8d6f7954358e53a69c52c4456a0",
+  "imagem_base": "sha256:236b71335a61228981c3b5e5a7681103dc71c32a590cd0a13c625d5a5e40152c",
+  "dockerfile": "FROM tcc-t09:base-grupos-v3\nCOPY t09_verificador.py grupos_funcionais.py regressao_linux.py /runner/\n",
+  "probe": {
+    "confinamento": {
+      "usuario_sem_privilegios": true,
+      "sem_chave_api": true,
+      "raiz_somente_leitura": true,
+      "rede_bloqueada": true
+    },
+    "python": "3.14.2 (main, Feb  3 2026, 03:06:17) [GCC 14.2.0]",
+    "container_exit": 0,
+    "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+  },
+  "referencias": {
+    "referencias": 12,
+    "expectativas_atendidas": 12,
+    "resultados": [
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 4,
+            "aprovados": 4,
+            "status": "aprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "simples",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "acentos",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "aspas",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "e_comercial",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfis_separados",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_pagina": 200
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfil_inexistente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 404
+            }
+          },
+          {
+            "teste": "texto_literal",
+            "tipo": "preservacao",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_script",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_script",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_svg_onload",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_img_onerror",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_fecha_contexto",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_iframe",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_atributo",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_javascript",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_maiusculo",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_tabulacao",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_data",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "limite_nome",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "limite_bio",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "limite_site",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "csp",
+            "tipo": "diagnostico",
+            "status": "bloqueia_inline",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nosniff",
+            "tipo": "diagnostico",
+            "status": "presente",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          }
+        ],
+        "modo": "protegida",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 4,
+            "aprovados": 4,
+            "status": "aprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "simples",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "acentos",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "aspas",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "e_comercial",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfis_separados",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_pagina": 200
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfil_inexistente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 404
+            }
+          },
+          {
+            "teste": "texto_literal",
+            "tipo": "preservacao",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_script",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_script",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_svg_onload",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_img_onerror",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_fecha_contexto",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_iframe",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_atributo",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_javascript",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_maiusculo",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_tabulacao",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_data",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "limite_nome",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "limite_bio",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "limite_site",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "csp",
+            "tipo": "diagnostico",
+            "status": "ausente_ou_permissiva",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nosniff",
+            "tipo": "diagnostico",
+            "status": "ausente",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          }
+        ],
+        "modo": "jinja_autoescape",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 4,
+            "aprovados": 4,
+            "status": "aprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "simples",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "acentos",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "aspas",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "e_comercial",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfis_separados",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_pagina": 200
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfil_inexistente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 404
+            }
+          },
+          {
+            "teste": "texto_literal",
+            "tipo": "preservacao",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_script",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "script"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_script",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "script"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_svg_onload",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "evento:onload"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_img_onerror",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "evento:onerror"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_fecha_contexto",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "script"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_iframe",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "srcdoc"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_atributo",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "evento:onmouseover"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_javascript",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_maiusculo",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_tabulacao",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_data",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "limite_nome",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "limite_bio",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "limite_site",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "csp",
+            "tipo": "diagnostico",
+            "status": "ausente_ou_permissiva",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nosniff",
+            "tipo": "diagnostico",
+            "status": "ausente",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          }
+        ],
+        "modo": "sem_escape",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 4,
+            "aprovados": 4,
+            "status": "aprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "simples",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "acentos",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "aspas",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "e_comercial",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfis_separados",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_pagina": 200
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfil_inexistente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 404
+            }
+          },
+          {
+            "teste": "texto_literal",
+            "tipo": "preservacao",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_script",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "script"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_script",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "script"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_svg_onload",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "evento:onload"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_img_onerror",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "evento:onerror"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_fecha_contexto",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "script"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_iframe",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "srcdoc"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_atributo",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "evento:onmouseover"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_javascript",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_maiusculo",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_tabulacao",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_data",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "limite_nome",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "limite_bio",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "limite_site",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "csp",
+            "tipo": "diagnostico",
+            "status": "ausente_ou_permissiva",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nosniff",
+            "tipo": "diagnostico",
+            "status": "ausente",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          }
+        ],
+        "modo": "jinja_sem_autoescape",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 4,
+            "aprovados": 4,
+            "status": "aprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "simples",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "acentos",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "aspas",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "e_comercial",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfis_separados",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_pagina": 200
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfil_inexistente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 404
+            }
+          },
+          {
+            "teste": "texto_literal",
+            "tipo": "preservacao",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_script",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_script",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_svg_onload",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "evento:onload"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_img_onerror",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "evento:onerror"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_fecha_contexto",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_iframe",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "srcdoc"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_atributo",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "evento:onmouseover"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_javascript",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_maiusculo",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_tabulacao",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_data",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "limite_nome",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "limite_bio",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "limite_site",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "csp",
+            "tipo": "diagnostico",
+            "status": "ausente_ou_permissiva",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nosniff",
+            "tipo": "diagnostico",
+            "status": "ausente",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          }
+        ],
+        "modo": "filtro_script",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 4,
+            "aprovados": 4,
+            "status": "aprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "simples",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "acentos",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "aspas",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "e_comercial",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfis_separados",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_pagina": 200
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfil_inexistente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 404
+            }
+          },
+          {
+            "teste": "texto_literal",
+            "tipo": "preservacao",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_script",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_script",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_svg_onload",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_img_onerror",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_fecha_contexto",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_iframe",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_atributo",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "evento:onmouseover"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_javascript",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_maiusculo",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_tabulacao",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_data",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "limite_nome",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "limite_bio",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "limite_site",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "csp",
+            "tipo": "diagnostico",
+            "status": "ausente_ou_permissiva",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nosniff",
+            "tipo": "diagnostico",
+            "status": "ausente",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          }
+        ],
+        "modo": "escape_sem_aspas",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 4,
+            "aprovados": 4,
+            "status": "aprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "simples",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "acentos",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "aspas",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "e_comercial",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfis_separados",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_pagina": 200
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfil_inexistente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 404
+            }
+          },
+          {
+            "teste": "texto_literal",
+            "tipo": "preservacao",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_script",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_script",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_svg_onload",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_img_onerror",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_fecha_contexto",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_iframe",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_atributo",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_javascript",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_maiusculo",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_tabulacao",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_data",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "limite_nome",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "limite_bio",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "limite_site",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "csp",
+            "tipo": "diagnostico",
+            "status": "ausente_ou_permissiva",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nosniff",
+            "tipo": "diagnostico",
+            "status": "ausente",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          }
+        ],
+        "modo": "escape_sem_esquema",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 4,
+            "aprovados": 4,
+            "status": "aprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "simples",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "acentos",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "aspas",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "e_comercial",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfis_separados",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_pagina": 200
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfil_inexistente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 404
+            }
+          },
+          {
+            "teste": "texto_literal",
+            "tipo": "preservacao",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_script",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_script",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_svg_onload",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_img_onerror",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_fecha_contexto",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_iframe",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_atributo",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_javascript",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_maiusculo",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_tabulacao",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_data",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "limite_nome",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "limite_bio",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "limite_site",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "csp",
+            "tipo": "diagnostico",
+            "status": "ausente_ou_permissiva",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nosniff",
+            "tipo": "diagnostico",
+            "status": "ausente",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          }
+        ],
+        "modo": "esquema_ingenuo",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 4,
+            "aprovados": 4,
+            "status": "aprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "simples",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "acentos",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "aspas",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "e_comercial",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfis_separados",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_pagina": 200
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfil_inexistente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 404
+            }
+          },
+          {
+            "teste": "texto_literal",
+            "tipo": "preservacao",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_script",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_script",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "script"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_svg_onload",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_img_onerror",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "script"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_fecha_contexto",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "script"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_iframe",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "script"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_atributo",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_javascript",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_maiusculo",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_tabulacao",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_data",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "limite_nome",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "limite_bio",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "limite_site",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "csp",
+            "tipo": "diagnostico",
+            "status": "ausente_ou_permissiva",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nosniff",
+            "tipo": "diagnostico",
+            "status": "ausente",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          }
+        ],
+        "modo": "json_em_script",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 4,
+            "aprovados": 4,
+            "status": "aprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "simples",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "acentos",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "aspas",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "e_comercial",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfis_separados",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_pagina": 200
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfil_inexistente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 404
+            }
+          },
+          {
+            "teste": "texto_literal",
+            "tipo": "preservacao",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_script",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_script",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_svg_onload",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_img_onerror",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_fecha_contexto",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_iframe",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_atributo",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_javascript",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_maiusculo",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_tabulacao",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_data",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "limite_nome",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "limite_bio",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "limite_site",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "csp",
+            "tipo": "diagnostico",
+            "status": "ausente_ou_permissiva",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nosniff",
+            "tipo": "diagnostico",
+            "status": "ausente",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          }
+        ],
+        "modo": "remove_tags",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 0,
+            "status": "reprovado"
+          },
+          "detalhado": {
+            "casos": 4,
+            "aprovados": 0,
+            "status": "reprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": false,
+        "testes": [
+          {
+            "teste": "simples",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": [],
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "acentos",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": [],
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "aspas",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": [],
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "e_comercial",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": [],
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfis_separados",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_pagina": null
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfil_inexistente",
+            "tipo": "contrato",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 404
+            }
+          },
+          {
+            "teste": "texto_literal",
+            "tipo": "preservacao",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "nome_script",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "bio_script",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "nome_svg_onload",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "bio_img_onerror",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "bio_fecha_contexto",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "bio_iframe",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_atributo",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_javascript",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_maiusculo",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_tabulacao",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_data",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "limite_nome",
+            "tipo": "robustez",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 400
+            }
+          },
+          {
+            "teste": "limite_bio",
+            "tipo": "robustez",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 400
+            }
+          },
+          {
+            "teste": "limite_site",
+            "tipo": "robustez",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 400
+            }
+          },
+          {
+            "teste": "csp",
+            "tipo": "diagnostico",
+            "status": "ausente_ou_permissiva",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "nosniff",
+            "tipo": "diagnostico",
+            "status": "ausente",
+            "evidencia": {
+              "status_criacao": 400,
+              "status_pagina": null,
+              "perigos": []
+            }
+          }
+        ],
+        "modo": "nega_tudo",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 0,
+            "status": "reprovado"
+          },
+          "detalhado": {
+            "casos": 4,
+            "aprovados": 0,
+            "status": "reprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": false,
+        "testes": [
+          {
+            "teste": "simples",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "acentos",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "aspas",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "e_comercial",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfis_separados",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_pagina": 200
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfil_inexistente",
+            "tipo": "contrato",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200
+            }
+          },
+          {
+            "teste": "texto_literal",
+            "tipo": "preservacao",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_script",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_script",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_svg_onload",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_img_onerror",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_fecha_contexto",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_iframe",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_atributo",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_javascript",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_maiusculo",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_tabulacao",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_data",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "limite_nome",
+            "tipo": "robustez",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "limite_bio",
+            "tipo": "robustez",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "limite_site",
+            "tipo": "robustez",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "csp",
+            "tipo": "diagnostico",
+            "status": "ausente_ou_permissiva",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nosniff",
+            "tipo": "diagnostico",
+            "status": "ausente",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          }
+        ],
+        "modo": "finge_sucesso",
+        "expectativa_atendida": true
+      }
+    ],
+    "container_exit": 0,
+    "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+  },
+  "regressao": {
+    "referencias": 3,
+    "expectativas_atendidas": 3,
+    "resultados": [
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 4,
+            "aprovados": 1,
+            "status": "reprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "simples",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "acentos",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": [],
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "aspas",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": [],
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "e_comercial",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": [],
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfis_separados",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_pagina": 200
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfil_inexistente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 404
+            }
+          },
+          {
+            "teste": "texto_literal",
+            "tipo": "preservacao",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_script",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_script",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_svg_onload",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_img_onerror",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_fecha_contexto",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_iframe",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_atributo",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_javascript",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_maiusculo",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_tabulacao",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_data",
+            "tipo": "seguranca_xss",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "limite_nome",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "limite_bio",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "limite_site",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "csp",
+            "tipo": "diagnostico",
+            "status": "bloqueia_inline",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nosniff",
+            "tipo": "diagnostico",
+            "status": "presente",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          }
+        ],
+        "modo": "falha_detalhada_protegida",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 4,
+            "aprovados": 1,
+            "status": "reprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "simples",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true,
+              "conteudo_correto": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "acentos",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": [],
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "aspas",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": [],
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "e_comercial",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": [],
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfis_separados",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_pagina": 200
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfil_inexistente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 404
+            }
+          },
+          {
+            "teste": "texto_literal",
+            "tipo": "preservacao",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_script",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "script"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_script",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "script"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "nome_svg_onload",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "evento:onload"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_img_onerror",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "evento:onerror"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_fecha_contexto",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "script"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "bio_iframe",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "srcdoc"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_atributo",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "evento:onmouseover"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_javascript",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_maiusculo",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_tabulacao",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "site_data",
+            "tipo": "seguranca_xss",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [
+                "esquema:href"
+              ],
+              "html": true
+            }
+          },
+          {
+            "teste": "limite_nome",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "limite_bio",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "limite_site",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201
+            }
+          },
+          {
+            "teste": "csp",
+            "tipo": "diagnostico",
+            "status": "ausente_ou_permissiva",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          },
+          {
+            "teste": "nosniff",
+            "tipo": "diagnostico",
+            "status": "ausente",
+            "evidencia": {
+              "status_criacao": 201,
+              "status_pagina": 200,
+              "perigos": [],
+              "html": true
+            }
+          }
+        ],
+        "modo": "falha_detalhada_vulneravel",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 0,
+            "status": "reprovado"
+          },
+          "detalhado": {
+            "casos": 4,
+            "aprovados": 0,
+            "status": "reprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": false,
+        "testes": [
+          {
+            "teste": "simples",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": [],
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "acentos",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": [],
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "aspas",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": [],
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "e_comercial",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": [],
+              "conteudo_correto": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfis_separados",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_pagina": null
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "perfil_inexistente",
+            "tipo": "contrato",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "texto_literal",
+            "tipo": "preservacao",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "nome_script",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "bio_script",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "nome_svg_onload",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "bio_img_onerror",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "bio_fecha_contexto",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "bio_iframe",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_atributo",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_javascript",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_maiusculo",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_tabulacao",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "site_data",
+            "tipo": "seguranca_xss",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "limite_nome",
+            "tipo": "robustez",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "limite_bio",
+            "tipo": "robustez",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "limite_site",
+            "tipo": "robustez",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "csp",
+            "tipo": "diagnostico",
+            "status": "ausente_ou_permissiva",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          },
+          {
+            "teste": "nosniff",
+            "tipo": "diagnostico",
+            "status": "ausente",
+            "evidencia": {
+              "status_criacao": 422,
+              "status_pagina": null,
+              "perigos": []
+            }
+          }
+        ],
+        "modo": "falha_base",
+        "expectativa_atendida": true
+      }
+    ],
+    "container_exit": 0,
+    "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+  },
+  "arquivos": {
+    "instrumentos_v3/t09_verificador.py": "bfd9b4332bd9c4d53b32cc9034411c5304ad78f1b843cfd099f9696b8ee4c13d",
+    "instrumentos_v3/grupos_funcionais.py": "5f4816faaef43051dad64bc364feb154bd8c9f43200e74bbcb0c43bfc464ac2b",
+    "instrumentos_v3/regressao_linux.py": "1cc1d1cbcc4b3b9cdf3010f036f0f209a7ac0f35fc678ff27bef21cbb638a0fc",
+    "instrumentos_v3/validar.py": "05ea99f2af9cd8035d6a8100b772c4697612326aab1715362def18ae6bbe4e01",
+    "t09_referencias.py": "2e7c7d42c7dead4d9ebe1548ca60eec8d5396ee272e2c118f64f8e72bc8e0a96",
+    "t09_worker_linux.py": "be8d6e0e42e1329debb4a5ea1a61fba06d61db213950a8b13d0e8d45c89f6034",
+    "docs/T09-validacao-linux.json": "457f35f241588e1a8b1d85d5b950c3a9f56fffca335e31e34f0e8b5352ab714c",
+    "tarefas/v2/T09.json": "931e626a23bde8560f5ad31ed24966bcd89b3f699acde2f5244041b99473937f",
+    "t04_docker.py": "821ea57817d577356d531fdaca12d0b6d7e4fe487c5839fc3bbef1231ebe15ba"
+  }
+}

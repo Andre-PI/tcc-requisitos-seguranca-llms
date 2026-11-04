@@ -13,13 +13,13 @@
     },
     {
       "caminho": ".gitignore",
-      "bytes": 119,
-      "sha256": "64fb5c6efb4720a715ab18d3240c78eb9cb7408a233f16743e04954a7a9c7002"
+      "bytes": 150,
+      "sha256": "1d6c7fce6f5dd8f97cef8bb307d6a71e81c7bd876006d017f18ce0f9e54cb0fd"
     },
     {
       "caminho": "README.md",
-      "bytes": 8243,
-      "sha256": "0f36e17a3a99563bf1b37b98970215b27a5ce15198f71bc67220eee50b26fd52"
+      "bytes": 8600,
+      "sha256": "f6457b8bd435635bf610f9d4c6e6284b01f9544e9a4ad598334831ab0e802436"
     },
     {
       "caminho": "aceitacao_worker.py",
@@ -408,8 +408,8 @@
     },
     {
       "caminho": "conferir_pacote.py",
-      "bytes": 15323,
-      "sha256": "fff0069b1d7e5d445d1fa87b9a666fde97a181bcbd7a7d0306d6869ee74ccf9b"
+      "bytes": 15597,
+      "sha256": "9634b5f83aea7e0e78494b3cf6a007c0b51067e49571a25654cd2795a9d2fedf"
     },
     {
       "caminho": "dados/aceitacoes-mais-recentes.json",
@@ -3017,6 +3017,41 @@
       "sha256": "f61d9fb8abc71835ac57302191963c96af0d780612c856f0c4d34385dbec3693"
     },
     {
+      "caminho": "docs/instrumentos-v3.md",
+      "bytes": 4400,
+      "sha256": "d1785a2ec25b68b8065d06c705e20b420ef91fe6382dd2d5db0250c4521b98bf"
+    },
+    {
+      "caminho": "docs/instrumentos-v3/T03-validacao-linux.json",
+      "bytes": 161943,
+      "sha256": "834ccd56f83f227e4bf2a96746708212c76debe49bb2a915a5281357fe2b0d57"
+    },
+    {
+      "caminho": "docs/instrumentos-v3/T04-validacao-linux.json",
+      "bytes": 105063,
+      "sha256": "cd0e4ea2858e69d86df655a032874bc15679ffe7bba41a79ae0e33b82924f794"
+    },
+    {
+      "caminho": "docs/instrumentos-v3/T07-validacao-linux.json",
+      "bytes": 115561,
+      "sha256": "c7e4d2de4918e78c18de5d7bf15c8373a1d72c3afe611c4bf36c3532d0a93eca"
+    },
+    {
+      "caminho": "docs/instrumentos-v3/T08-validacao-linux.json",
+      "bytes": 137497,
+      "sha256": "3edf9177027fb8e5afdef5ade19a44f0b6688988e0e04c33064607b918784c14"
+    },
+    {
+      "caminho": "docs/instrumentos-v3/T09-validacao-linux.json",
+      "bytes": 120143,
+      "sha256": "dcdddde2808d997905d966ce9a177d5232ac65357194c02f387b1ef47296fe37"
+    },
+    {
+      "caminho": "docs/instrumentos-v3/T10-validacao-linux.json",
+      "bytes": 160411,
+      "sha256": "b53341aac061ed09f57f7ce650fe977f129689dc9e21bf025c85f3eb9036bc07"
+    },
+    {
       "caminho": "docs/metadados-referencias-verificados.json",
       "bytes": 9412,
       "sha256": "6be38afaf7997630f4e199ce919eac21226dca3d4e33e7cab3a1e838f377bf46"
@@ -3025,6 +3060,11 @@
       "caminho": "docs/metodologia-v04.md",
       "bytes": 14112,
       "sha256": "eadd48b25708fc00348e2fd9328cc18eb4d3583eeeb1e8b3601e10e65d1e070c"
+    },
+    {
+      "caminho": "docs/metodologia-v05-parte-1.md",
+      "bytes": 6314,
+      "sha256": "740c69cf15e9795ac8caddcae4c9aba2d6e28f58ad8c48f9db1bd74884b747b0"
     },
     {
       "caminho": "docs/origem-orientacoes-2026-11-03.json",
@@ -5787,6 +5827,56 @@
       "sha256": "13f3aaea8eca23871f264182e95de9de875a22c1a5657674656119e72a89115b"
     },
     {
+      "caminho": "instrumentos_v3/conferir.py",
+      "bytes": 1371,
+      "sha256": "456dca2381e1acc6f228405c5613af8a484b2140b6f4b58a260cba8915269988"
+    },
+    {
+      "caminho": "instrumentos_v3/grupos_funcionais.py",
+      "bytes": 1996,
+      "sha256": "5f4816faaef43051dad64bc364feb154bd8c9f43200e74bbcb0c43bfc464ac2b"
+    },
+    {
+      "caminho": "instrumentos_v3/regressao_linux.py",
+      "bytes": 6698,
+      "sha256": "1cc1d1cbcc4b3b9cdf3010f036f0f209a7ac0f35fc678ff27bef21cbb638a0fc"
+    },
+    {
+      "caminho": "instrumentos_v3/t03_verificador.py",
+      "bytes": 8409,
+      "sha256": "8814b577b1aa2a5415731319015cc76df3afa7922f2891110f5a610d791c4987"
+    },
+    {
+      "caminho": "instrumentos_v3/t04_verificador.py",
+      "bytes": 7070,
+      "sha256": "0a15364fc54147ebac07196d81c82e001768149f989223c3cf66a2019b5c1005"
+    },
+    {
+      "caminho": "instrumentos_v3/t07_verificador.py",
+      "bytes": 5734,
+      "sha256": "226ebccb301e28a3d1d784686b7cd2ee0f901a18ebf78fe2e89340ccb33a466d"
+    },
+    {
+      "caminho": "instrumentos_v3/t08_verificador.py",
+      "bytes": 6366,
+      "sha256": "d9acc382912afd5db5c160afd7047c5fdb49c16e3b3a9a98ab8fc2efea0990c4"
+    },
+    {
+      "caminho": "instrumentos_v3/t09_verificador.py",
+      "bytes": 7886,
+      "sha256": "bfd9b4332bd9c4d53b32cc9034411c5304ad78f1b843cfd099f9696b8ee4c13d"
+    },
+    {
+      "caminho": "instrumentos_v3/t10_verificador.py",
+      "bytes": 9492,
+      "sha256": "2dfe36864cf56864d33daaf7bf57b0ae2fa38d9115733d878252fbf61b6fe809"
+    },
+    {
+      "caminho": "instrumentos_v3/validar.py",
+      "bytes": 5187,
+      "sha256": "05ea99f2af9cd8035d6a8100b772c4697612326aab1715362def18ae6bbe4e01"
+    },
+    {
       "caminho": "orientacao/Metodologia-v03.docx",
       "bytes": 42541,
       "sha256": "685d67cafbf8e493378f121879996c191577e4ba69f1d5acd846455702c0ca13"
@@ -6287,6 +6377,11 @@
       "sha256": "89975032702da3825e06856872e96b0a32434ada2d84ed8368debb7b9c570e5b"
     },
     {
+      "caminho": "tests/test_instrumentos_v3.py",
+      "bytes": 2586,
+      "sha256": "11aae0d3472057c858a7fcc6aa53137ab9f38e9bbd89c3761ded2bd7edd6cd65"
+    },
+    {
       "caminho": "tests/test_t03_coleta.py",
       "bytes": 1420,
       "sha256": "3bc7f3ae8c623e00881318954b9f1e98c825c53ea322075ad4a9c7275f1cb44e"
@@ -6384,5 +6479,6 @@
   "ampliacao_T05": "8 respostas em 8 chamadas, 7697 tokens; ambiente original com 1 ciclo aprovado e 7 impedimentos; diagnostico v2 com dependencia e dominio: 7 ciclos aprovados e 1 impedimento; revisao de tokens assistida por IA, confer?ncia humana independente pendente.",
   "ampliacao_T07": "8 respostas em 8 chamadas, 5725 tokens; 7 geracoes aprovadas nos relatorios legitimos e 1 impedimento de importacao; sem marcadores em 7 vetores de comandos e 1 de argumentos nas sete executaveis; 5 reprovacoes de robustez; revisao assistida por IA pendente de conferencia humana independente.",
   "ampliacao_T08": "Instrumento validado em Linux: 11 referencias, 24 cenarios por referencia; 47 testes locais aprovados; sem geracoes de LLM.",
-  "ampliacao_contrato_v2": "Contrato comum revisado em tarefas/v2; coletas exploratorias T01, T02, T03, T05b, T05c, T06, T07, T08, T09 e T10 com 8 geracoes cada; coletas anteriores preservadas."
+  "ampliacao_contrato_v2": "Contrato comum revisado em tarefas/v2; coletas exploratorias T01, T02, T03, T05b, T05c, T06, T07, T08, T09 e T10 com 8 geracoes cada; coletas anteriores preservadas.",
+  "instrumentos_v3": "Grupos funcionais base e detalhado em T03, T04, T07, T08, T09 e T10; 61 referencias anteriores e 19 controles novos; sem geracoes de LLM."
 }

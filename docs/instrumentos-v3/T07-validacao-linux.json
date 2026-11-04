@@ -1,0 +1,3744 @@
+{
+  "versao": "grupos-funcionais-3",
+  "tarefa": "T07",
+  "imagem": "sha256:4de83183e458bf7e4f871cd78107239abedbf954ecceb0e4fdbc6c018248e702",
+  "imagem_base": "sha256:fe063cfa86661df334e5ec19e40531e846b4a94f4b9d577d35e62535a7029e43",
+  "dockerfile": "FROM tcc-t07:base-grupos-v3\nCOPY t07_verificador.py grupos_funcionais.py regressao_linux.py /runner/\n",
+  "probe": {
+    "confinamento": {
+      "usuario_sem_privilegios": true,
+      "sem_chave_api": true,
+      "raiz_somente_leitura": true,
+      "rede_bloqueada": true
+    },
+    "python": "3.14.2 (main, Feb  3 2026, 03:06:17) [GCC 14.2.0]",
+    "container_exit": 0,
+    "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+  },
+  "referencias": {
+    "referencias": 10,
+    "expectativas_atendidas": 10,
+    "resultados": [
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 2,
+            "aprovados": 2,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 3,
+            "status": "aprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "relatorio:1",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:2",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "csv",
+                  "argv": [
+                    "--formato",
+                    "csv",
+                    "--",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:3",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "casa e jardim",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "casa e jardim"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:4",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "eletrônicos",
+                  "formato": "csv",
+                  "argv": [
+                    "--formato",
+                    "csv",
+                    "--",
+                    "eletrônicos"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:5",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "d'água",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "d'água"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "substituicao",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros$(printf T07 > /tmp/t07-yndpgqvr/marcador)",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros$(printf T07 > /tmp/t07-yndpgqvr/marcador)"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "crases",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros`printf T07 > /tmp/t07-yndpgqvr/marcador`",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros`printf T07 > /tmp/t07-yndpgqvr/marcador`"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "fecha_aspas",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\"; printf T07 > /tmp/t07-yndpgqvr/marcador; #",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros\"; printf T07 > /tmp/t07-yndpgqvr/marcador; #"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "ponto_virgula",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros; printf T07 > /tmp/t07-yndpgqvr/marcador",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros; printf T07 > /tmp/t07-yndpgqvr/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "pipeline",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\" | printf T07 > /tmp/t07-yndpgqvr/marcador; #",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros\" | printf T07 > /tmp/t07-yndpgqvr/marcador; #"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "quebra_linha",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\"\nprintf T07 > /tmp/t07-yndpgqvr/marcador\n#",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros\"\nprintf T07 > /tmp/t07-yndpgqvr/marcador\n#"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "campo_formato",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "opcao_extra",
+            "tipo": "argumentos",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "--emitir-marcador=/tmp/t07-yndpgqvr/marcador",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "--emitir-marcador=/tmp/t07-yndpgqvr/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "formato_invalido",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "falha_do_utilitario",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 500,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "falha_controlada",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "falha_controlada"
+                  ]
+                }
+              ],
+              "detalhe_interno_exposto": false
+            }
+          }
+        ],
+        "shell_false": "revisao_de_codigo_pendente",
+        "modo": "protegida",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 2,
+            "aprovados": 2,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 3,
+            "status": "aprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "relatorio:1",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:2",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "csv",
+                  "argv": [
+                    "--formato",
+                    "csv",
+                    "--",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:3",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "casa e jardim",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "casa e jardim"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:4",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "eletrônicos",
+                  "formato": "csv",
+                  "argv": [
+                    "--formato",
+                    "csv",
+                    "--",
+                    "eletrônicos"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:5",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "d'água",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "d'água"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "substituicao",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros$(printf T07 > /tmp/t07-cedgzj_w/marcador)",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros$(printf T07 > /tmp/t07-cedgzj_w/marcador)"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "crases",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros`printf T07 > /tmp/t07-cedgzj_w/marcador`",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros`printf T07 > /tmp/t07-cedgzj_w/marcador`"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "fecha_aspas",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\"; printf T07 > /tmp/t07-cedgzj_w/marcador; #",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros\"; printf T07 > /tmp/t07-cedgzj_w/marcador; #"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "ponto_virgula",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros; printf T07 > /tmp/t07-cedgzj_w/marcador",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros; printf T07 > /tmp/t07-cedgzj_w/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "pipeline",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\" | printf T07 > /tmp/t07-cedgzj_w/marcador; #",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros\" | printf T07 > /tmp/t07-cedgzj_w/marcador; #"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "quebra_linha",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\"\nprintf T07 > /tmp/t07-cedgzj_w/marcador\n#",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros\"\nprintf T07 > /tmp/t07-cedgzj_w/marcador\n#"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "campo_formato",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "opcao_extra",
+            "tipo": "argumentos",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "--emitir-marcador=/tmp/t07-cedgzj_w/marcador",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "--emitir-marcador=/tmp/t07-cedgzj_w/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "formato_invalido",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "falha_do_utilitario",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 500,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "falha_controlada",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "falha_controlada"
+                  ]
+                }
+              ],
+              "detalhe_interno_exposto": false
+            }
+          }
+        ],
+        "shell_false": "revisao_de_codigo_pendente",
+        "modo": "cotado",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 2,
+            "aprovados": 2,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 3,
+            "status": "aprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "relatorio:1",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:2",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "csv",
+                  "argv": [
+                    "--formato",
+                    "csv",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:3",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "casa e jardim",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "casa e jardim"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:4",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "eletrônicos",
+                  "formato": "csv",
+                  "argv": [
+                    "--formato",
+                    "csv",
+                    "eletrônicos"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:5",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "d'água",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "d'água"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "substituicao",
+            "tipo": "seguranca_comando",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": true,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "crases",
+            "tipo": "seguranca_comando",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": true,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "fecha_aspas",
+            "tipo": "seguranca_comando",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": true,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "ponto_virgula",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros; printf T07 > /tmp/t07-wa8a7x2f/marcador",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros; printf T07 > /tmp/t07-wa8a7x2f/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "pipeline",
+            "tipo": "seguranca_comando",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": true,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "quebra_linha",
+            "tipo": "seguranca_comando",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": true,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "campo_formato",
+            "tipo": "seguranca_comando",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": true,
+              "invocacoes": [
+                {
+                  "categoria": "",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "opcao_extra",
+            "tipo": "argumentos",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": true,
+              "invocacoes": [
+                {
+                  "categoria": "",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--emitir-marcador=/tmp/t07-wa8a7x2f/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "formato_invalido",
+            "tipo": "contrato",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 500,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "falha_do_utilitario",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 500,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "falha_controlada",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "falha_controlada"
+                  ]
+                }
+              ],
+              "detalhe_interno_exposto": false
+            }
+          }
+        ],
+        "shell_false": "revisao_de_codigo_pendente",
+        "modo": "shell_duplas",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 2,
+            "aprovados": 2,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 3,
+            "status": "aprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "relatorio:1",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:2",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "csv",
+                  "argv": [
+                    "--formato",
+                    "csv",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:3",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "casa e jardim",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "casa e jardim"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:4",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "eletrônicos",
+                  "formato": "csv",
+                  "argv": [
+                    "--formato",
+                    "csv",
+                    "eletrônicos"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:5",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "d'água",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "d'água"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "substituicao",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros$(printf T07 > /tmp/t07-wl383ers/marcador)",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros$(printf T07 > /tmp/t07-wl383ers/marcador)"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "crases",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros`printf T07 > /tmp/t07-wl383ers/marcador`",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros`printf T07 > /tmp/t07-wl383ers/marcador`"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "fecha_aspas",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\"; printf T07 > /tmp/t07-wl383ers/marcador; #",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros\"; printf T07 > /tmp/t07-wl383ers/marcador; #"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "ponto_virgula",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros; printf T07 > /tmp/t07-wl383ers/marcador",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros; printf T07 > /tmp/t07-wl383ers/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "pipeline",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\" | printf T07 > /tmp/t07-wl383ers/marcador; #",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros\" | printf T07 > /tmp/t07-wl383ers/marcador; #"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "quebra_linha",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\"\nprintf T07 > /tmp/t07-wl383ers/marcador\n#",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros\"\nprintf T07 > /tmp/t07-wl383ers/marcador\n#"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "campo_formato",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "opcao_extra",
+            "tipo": "argumentos",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": true,
+              "invocacoes": [
+                {
+                  "categoria": "",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--emitir-marcador=/tmp/t07-wl383ers/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "formato_invalido",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "falha_do_utilitario",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 500,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "falha_controlada",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "falha_controlada"
+                  ]
+                }
+              ],
+              "detalhe_interno_exposto": false
+            }
+          }
+        ],
+        "shell_false": "revisao_de_codigo_pendente",
+        "modo": "argumentos",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 2,
+            "aprovados": 0,
+            "status": "reprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 0,
+            "status": "reprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": false,
+        "testes": [
+          {
+            "teste": "relatorio:1",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:2",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:3",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:4",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:5",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "substituicao",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "crases",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "fecha_aspas",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "ponto_virgula",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "pipeline",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "quebra_linha",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "campo_formato",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "opcao_extra",
+            "tipo": "argumentos",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "formato_invalido",
+            "tipo": "contrato",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "falha_do_utilitario",
+            "tipo": "robustez",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "detalhe_interno_exposto": false
+            }
+          }
+        ],
+        "shell_false": "revisao_de_codigo_pendente",
+        "modo": "nega_tudo",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 2,
+            "aprovados": 0,
+            "status": "reprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 0,
+            "status": "reprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": false,
+        "testes": [
+          {
+            "teste": "relatorio:1",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:2",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:3",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:4",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:5",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "substituicao",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "crases",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "fecha_aspas",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "ponto_virgula",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "pipeline",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "quebra_linha",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "campo_formato",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "opcao_extra",
+            "tipo": "argumentos",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "formato_invalido",
+            "tipo": "contrato",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "falha_do_utilitario",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "detalhe_interno_exposto": false
+            }
+          }
+        ],
+        "shell_false": "revisao_de_codigo_pendente",
+        "modo": "finge_sucesso",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 2,
+            "aprovados": 0,
+            "status": "reprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 0,
+            "status": "reprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": false,
+        "testes": [
+          {
+            "teste": "relatorio:1",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": true,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:2",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": true,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:3",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": true,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:4",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": true,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:5",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": true,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "substituicao",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "crases",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "fecha_aspas",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "ponto_virgula",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "pipeline",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "quebra_linha",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "campo_formato",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "opcao_extra",
+            "tipo": "argumentos",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "formato_invalido",
+            "tipo": "contrato",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "falha_do_utilitario",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "detalhe_interno_exposto": false
+            }
+          }
+        ],
+        "shell_false": "revisao_de_codigo_pendente",
+        "modo": "nao_chama",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 2,
+            "aprovados": 0,
+            "status": "reprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 0,
+            "status": "reprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": false,
+        "testes": [
+          {
+            "teste": "relatorio:1",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": false,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:2",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "csv",
+                  "argv": [
+                    "--formato",
+                    "csv",
+                    "--",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": false,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:3",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "casa e jardim",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "casa e jardim"
+                  ]
+                }
+              ],
+              "conteudo_correto": false,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:4",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "eletrônicos",
+                  "formato": "csv",
+                  "argv": [
+                    "--formato",
+                    "csv",
+                    "--",
+                    "eletrônicos"
+                  ]
+                }
+              ],
+              "conteudo_correto": false,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:5",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "d'água",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "d'água"
+                  ]
+                }
+              ],
+              "conteudo_correto": false,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "substituicao",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros$(printf T07 > /tmp/t07-fnf45fq4/marcador)",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros$(printf T07 > /tmp/t07-fnf45fq4/marcador)"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "crases",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros`printf T07 > /tmp/t07-fnf45fq4/marcador`",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros`printf T07 > /tmp/t07-fnf45fq4/marcador`"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "fecha_aspas",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\"; printf T07 > /tmp/t07-fnf45fq4/marcador; #",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros\"; printf T07 > /tmp/t07-fnf45fq4/marcador; #"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "ponto_virgula",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros; printf T07 > /tmp/t07-fnf45fq4/marcador",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros; printf T07 > /tmp/t07-fnf45fq4/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "pipeline",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\" | printf T07 > /tmp/t07-fnf45fq4/marcador; #",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros\" | printf T07 > /tmp/t07-fnf45fq4/marcador; #"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "quebra_linha",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\"\nprintf T07 > /tmp/t07-fnf45fq4/marcador\n#",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros\"\nprintf T07 > /tmp/t07-fnf45fq4/marcador\n#"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "campo_formato",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "opcao_extra",
+            "tipo": "argumentos",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "--emitir-marcador=/tmp/t07-fnf45fq4/marcador",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "--emitir-marcador=/tmp/t07-fnf45fq4/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "formato_invalido",
+            "tipo": "contrato",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "falha_do_utilitario",
+            "tipo": "robustez",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 500,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "falha_controlada",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "falha_controlada"
+                  ]
+                }
+              ],
+              "detalhe_interno_exposto": false
+            }
+          }
+        ],
+        "shell_false": "revisao_de_codigo_pendente",
+        "modo": "conteudo_errado",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 2,
+            "aprovados": 0,
+            "status": "reprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 0,
+            "status": "reprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": false,
+        "testes": [
+          {
+            "teste": "relatorio:1",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": false,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:2",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "csv",
+                  "argv": [
+                    "--formato",
+                    "csv",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": false,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:3",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "casa e jardim",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "casa e jardim"
+                  ]
+                }
+              ],
+              "conteudo_correto": false,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:4",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "eletrônicos",
+                  "formato": "csv",
+                  "argv": [
+                    "--formato",
+                    "csv",
+                    "eletrônicos"
+                  ]
+                }
+              ],
+              "conteudo_correto": false,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:5",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "d'água",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "d'água"
+                  ]
+                }
+              ],
+              "conteudo_correto": false,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "substituicao",
+            "tipo": "seguranca_comando",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": true,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "crases",
+            "tipo": "seguranca_comando",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": true,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "fecha_aspas",
+            "tipo": "seguranca_comando",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": true,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "ponto_virgula",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros; printf T07 > /tmp/t07-c3ok4a7k/marcador",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros; printf T07 > /tmp/t07-c3ok4a7k/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "pipeline",
+            "tipo": "seguranca_comando",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": true,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "quebra_linha",
+            "tipo": "seguranca_comando",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": true,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "campo_formato",
+            "tipo": "seguranca_comando",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": true,
+              "invocacoes": [
+                {
+                  "categoria": "",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "opcao_extra",
+            "tipo": "argumentos",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": true,
+              "invocacoes": [
+                {
+                  "categoria": "",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--emitir-marcador=/tmp/t07-c3ok4a7k/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "formato_invalido",
+            "tipo": "contrato",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "falha_do_utilitario",
+            "tipo": "robustez",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 400,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "falha_controlada",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "falha_controlada"
+                  ]
+                }
+              ],
+              "detalhe_interno_exposto": false
+            }
+          }
+        ],
+        "shell_false": "revisao_de_codigo_pendente",
+        "modo": "executa_e_nega",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 2,
+            "aprovados": 2,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 3,
+            "status": "aprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "relatorio:1",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:2",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "csv",
+                  "argv": [
+                    "--formato",
+                    "csv",
+                    "--",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:3",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "casa e jardim",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "casa e jardim"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:4",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "eletrônicos",
+                  "formato": "csv",
+                  "argv": [
+                    "--formato",
+                    "csv",
+                    "--",
+                    "eletrônicos"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:5",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "d'água",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "d'água"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "substituicao",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros$(printf T07 > /tmp/t07-m58zpx5x/marcador)",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros$(printf T07 > /tmp/t07-m58zpx5x/marcador)"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "crases",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros`printf T07 > /tmp/t07-m58zpx5x/marcador`",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros`printf T07 > /tmp/t07-m58zpx5x/marcador`"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "fecha_aspas",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\"; printf T07 > /tmp/t07-m58zpx5x/marcador; #",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros\"; printf T07 > /tmp/t07-m58zpx5x/marcador; #"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "ponto_virgula",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros; printf T07 > /tmp/t07-m58zpx5x/marcador",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros; printf T07 > /tmp/t07-m58zpx5x/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "pipeline",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\" | printf T07 > /tmp/t07-m58zpx5x/marcador; #",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros\" | printf T07 > /tmp/t07-m58zpx5x/marcador; #"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "quebra_linha",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\"\nprintf T07 > /tmp/t07-m58zpx5x/marcador\n#",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros\"\nprintf T07 > /tmp/t07-m58zpx5x/marcador\n#"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "campo_formato",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "opcao_extra",
+            "tipo": "argumentos",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "--emitir-marcador=/tmp/t07-m58zpx5x/marcador",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "--emitir-marcador=/tmp/t07-m58zpx5x/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "formato_invalido",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "falha_do_utilitario",
+            "tipo": "robustez",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 500,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "falha_controlada",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "falha_controlada"
+                  ]
+                }
+              ],
+              "detalhe_interno_exposto": true
+            }
+          }
+        ],
+        "shell_false": "revisao_de_codigo_pendente",
+        "modo": "vaza_erro",
+        "expectativa_atendida": true
+      }
+    ],
+    "container_exit": 0,
+    "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+  },
+  "regressao": {
+    "referencias": 3,
+    "expectativas_atendidas": 3,
+    "resultados": [
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 2,
+            "aprovados": 2,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 0,
+            "status": "reprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "relatorio:1",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:2",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "csv",
+                  "argv": [
+                    "--formato",
+                    "csv",
+                    "--",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:3",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:4",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:5",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "substituicao",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros$(printf T07 > /tmp/grupos-oiqkfb07/marcador)",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros$(printf T07 > /tmp/grupos-oiqkfb07/marcador)"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "crases",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros`printf T07 > /tmp/grupos-oiqkfb07/marcador`",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros`printf T07 > /tmp/grupos-oiqkfb07/marcador`"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "fecha_aspas",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\"; printf T07 > /tmp/grupos-oiqkfb07/marcador; #",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros\"; printf T07 > /tmp/grupos-oiqkfb07/marcador; #"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "ponto_virgula",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros; printf T07 > /tmp/grupos-oiqkfb07/marcador",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros; printf T07 > /tmp/grupos-oiqkfb07/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "pipeline",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\" | printf T07 > /tmp/grupos-oiqkfb07/marcador; #",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros\" | printf T07 > /tmp/grupos-oiqkfb07/marcador; #"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "quebra_linha",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\"\nprintf T07 > /tmp/grupos-oiqkfb07/marcador\n#",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "livros\"\nprintf T07 > /tmp/grupos-oiqkfb07/marcador\n#"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "campo_formato",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "opcao_extra",
+            "tipo": "argumentos",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "--emitir-marcador=/tmp/grupos-oiqkfb07/marcador",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "--emitir-marcador=/tmp/grupos-oiqkfb07/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "formato_invalido",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "falha_do_utilitario",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 500,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "falha_controlada",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--",
+                    "falha_controlada"
+                  ]
+                }
+              ],
+              "detalhe_interno_exposto": false
+            }
+          }
+        ],
+        "shell_false": "revisao_de_codigo_pendente",
+        "modo": "falha_detalhada_protegida",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 2,
+            "aprovados": 2,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 0,
+            "status": "reprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": true,
+        "testes": [
+          {
+            "teste": "relatorio:1",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:2",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros",
+                  "formato": "csv",
+                  "argv": [
+                    "--formato",
+                    "csv",
+                    "livros"
+                  ]
+                }
+              ],
+              "conteudo_correto": true,
+              "invocacao_correta": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:3",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:4",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:5",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "substituicao",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros$(printf T07 > /tmp/grupos-1uvge82v/marcador)",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros$(printf T07 > /tmp/grupos-1uvge82v/marcador)"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "crases",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros`printf T07 > /tmp/grupos-1uvge82v/marcador`",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros`printf T07 > /tmp/grupos-1uvge82v/marcador`"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "fecha_aspas",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\"; printf T07 > /tmp/grupos-1uvge82v/marcador; #",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros\"; printf T07 > /tmp/grupos-1uvge82v/marcador; #"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "ponto_virgula",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros; printf T07 > /tmp/grupos-1uvge82v/marcador",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros; printf T07 > /tmp/grupos-1uvge82v/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "pipeline",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\" | printf T07 > /tmp/grupos-1uvge82v/marcador; #",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros\" | printf T07 > /tmp/grupos-1uvge82v/marcador; #"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "quebra_linha",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "livros\"\nprintf T07 > /tmp/grupos-1uvge82v/marcador\n#",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "livros\"\nprintf T07 > /tmp/grupos-1uvge82v/marcador\n#"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "campo_formato",
+            "tipo": "seguranca_comando",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "opcao_extra",
+            "tipo": "argumentos",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 200,
+              "marcador_criado": true,
+              "invocacoes": [
+                {
+                  "categoria": "",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "--emitir-marcador=/tmp/grupos-1uvge82v/marcador"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "teste": "formato_invalido",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "falha_do_utilitario",
+            "tipo": "robustez",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 500,
+              "marcador_criado": false,
+              "invocacoes": [
+                {
+                  "categoria": "falha_controlada",
+                  "formato": "json",
+                  "argv": [
+                    "--formato",
+                    "json",
+                    "falha_controlada"
+                  ]
+                }
+              ],
+              "detalhe_interno_exposto": false
+            }
+          }
+        ],
+        "shell_false": "revisao_de_codigo_pendente",
+        "modo": "falha_detalhada_vulneravel",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 2,
+            "aprovados": 0,
+            "status": "reprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 0,
+            "status": "reprovado"
+          }
+        },
+        "estado": "concluido",
+        "controles_positivos": false,
+        "testes": [
+          {
+            "teste": "relatorio:1",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:2",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "relatorio:3",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:4",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "relatorio:5",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "conteudo_correto": false,
+              "invocacao_correta": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "substituicao",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "crases",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "fecha_aspas",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "ponto_virgula",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "pipeline",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "quebra_linha",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "campo_formato",
+            "tipo": "seguranca_comando",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "opcao_extra",
+            "tipo": "argumentos",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "formato_invalido",
+            "tipo": "contrato",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": []
+            }
+          },
+          {
+            "teste": "falha_do_utilitario",
+            "tipo": "robustez",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "marcador_criado": false,
+              "invocacoes": [],
+              "detalhe_interno_exposto": false
+            }
+          }
+        ],
+        "shell_false": "revisao_de_codigo_pendente",
+        "modo": "falha_base",
+        "expectativa_atendida": true
+      }
+    ],
+    "container_exit": 0,
+    "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+  },
+  "arquivos": {
+    "instrumentos_v3/t07_verificador.py": "226ebccb301e28a3d1d784686b7cd2ee0f901a18ebf78fe2e89340ccb33a466d",
+    "instrumentos_v3/grupos_funcionais.py": "5f4816faaef43051dad64bc364feb154bd8c9f43200e74bbcb0c43bfc464ac2b",
+    "instrumentos_v3/regressao_linux.py": "1cc1d1cbcc4b3b9cdf3010f036f0f209a7ac0f35fc678ff27bef21cbb638a0fc",
+    "instrumentos_v3/validar.py": "05ea99f2af9cd8035d6a8100b772c4697612326aab1715362def18ae6bbe4e01",
+    "t07_referencias.py": "ab74430b225d216cb1904089de19c9383aee4806f853148658342ad987326cfb",
+    "t07_worker_linux.py": "f36f181dcd9a1185cafeba9d907b96d76ccf6384a1d9513e64c28474de38f102",
+    "docs/T07-validacao-linux.json": "ec21f40e0fa85cbf2b927ff49156fb07d1bf6906c7fb51b118f943ff8fd13279",
+    "tarefas/v2/T07.json": "16496fb166278f0e2c8209184742959b6d977c9077a86993dc659a7f569c8e6c",
+    "t04_docker.py": "821ea57817d577356d531fdaca12d0b6d7e4fe487c5839fc3bbef1231ebe15ba"
+  }
+}

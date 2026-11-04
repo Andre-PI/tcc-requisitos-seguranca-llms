@@ -239,3 +239,8 @@ if t08_report.exists():
     for name,sha in report['arquivos'].items():
         assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
     print('T08: 11 referencias, 24 cenarios por referencia; hashes e isolamento registrados.')
+
+if (ROOT/'instrumentos_v3/conferir.py').exists():
+    import importlib.util
+    spec=importlib.util.spec_from_file_location('conferir_v3',ROOT/'instrumentos_v3/conferir.py')
+    modulo=importlib.util.module_from_spec(spec);spec.loader.exec_module(modulo);modulo.conferir()
