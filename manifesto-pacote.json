@@ -13,8 +13,8 @@
     },
     {
       "caminho": ".gitignore",
-      "bytes": 150,
-      "sha256": "1d6c7fce6f5dd8f97cef8bb307d6a71e81c7bd876006d017f18ce0f9e54cb0fd"
+      "bytes": 164,
+      "sha256": "8ff0f58aee01d4ced10e396e2fb9f76864cc5b928f4f6eba6637d0054e0d78a4"
     },
     {
       "caminho": "README.md",
@@ -30,6 +30,11 @@
       "caminho": "analisar.py",
       "bytes": 10628,
       "sha256": "38bc2790cf72c088a01b464c254f735a7a983bacb18603ff8ea2fdb76fa77ee0"
+    },
+    {
+      "caminho": "analise_principal.py",
+      "bytes": 8246,
+      "sha256": "7609de41e3b28d943b1584dd65a285312d46af5ef6367ce422c8fd015259bfcd"
     },
     {
       "caminho": "codigos/g1.py",
@@ -397,6 +402,11 @@
       "sha256": "6af13f01203221a8cdf59c0c9d3c6de8f8d738bb477c239d04f8af8555391179"
     },
     {
+      "caminho": "coleta_principal.py",
+      "bytes": 15873,
+      "sha256": "7dac4119a49635e2b6225e8ef917c91d9c0de3d141cda395d6d408415a7be88d"
+    },
+    {
       "caminho": "coleta_v2.py",
       "bytes": 5315,
       "sha256": "613f09c8a6acf41f39b49371f47e3111946640c13fa18a92169c514d70734399"
@@ -413,8 +423,8 @@
     },
     {
       "caminho": "conferir_pacote.py",
-      "bytes": 17224,
-      "sha256": "cec2b2ce2df18e932089dba54a8cbf8a4992f294c54ca02d4ebd3e9403749395"
+      "bytes": 18129,
+      "sha256": "82ea99698e3212f871641f0ccf3c36cdab0bd2075cf8680402054a3a20602e3c"
     },
     {
       "caminho": "dados/aceitacoes-mais-recentes.json",
@@ -430,6 +440,11 @@
       "caminho": "dados/analisadas.csv",
       "bytes": 304,
       "sha256": "aa478e6f1bf81fcba7a3399c03159d217255b7fc6b6503a0caf0cb99a6b03ff7"
+    },
+    {
+      "caminho": "dados/coleta-principal/plano.json",
+      "bytes": 1165562,
+      "sha256": "3a232eab4a0c98b3c2dffb651da92ecff5f215f3a6b4f437f981436b15d72262"
     },
     {
       "caminho": "dados/gemini-exploratoria/gem-01/amostra.py",
@@ -3682,6 +3697,11 @@
       "sha256": "944715d011c0b3a5347ed74ac8ab2bd0580ef3d69a77e16f7fa5667fa192adfc"
     },
     {
+      "caminho": "docs/instrumentos-v4/T05-validacao-linux.json",
+      "bytes": 56480,
+      "sha256": "7323c0d76018e671ba8341d7208d78b4efb20ee713bfc8ab48f2ce747ea3ee20"
+    },
+    {
       "caminho": "docs/metadados-referencias-verificados.json",
       "bytes": 9412,
       "sha256": "6be38afaf7997630f4e199ce919eac21226dca3d4e33e7cab3a1e838f377bf46"
@@ -3693,13 +3713,18 @@
     },
     {
       "caminho": "docs/metodologia-v05.md",
-      "bytes": 20055,
-      "sha256": "1bb82ac855b14148c856bc580942baa490f83e9dd7fbac661c3e8ff053c77cef"
+      "bytes": 20505,
+      "sha256": "6bce1a25f0793a09a6c7ce21c977dd9d755546a82066cea950ea933a2e1980d3"
     },
     {
       "caminho": "docs/origem-orientacoes-2026-11-03.json",
       "bytes": 245,
       "sha256": "1df60c04d0187ea9e4ec76ce84703e6c1d115b9b4a172009272f846c5023da1a"
+    },
+    {
+      "caminho": "docs/plano-coleta-principal.md",
+      "bytes": 3120,
+      "sha256": "e107d1287aaf1873380666a0d18ca2c537e1f30b5eed8ef98c5da91996c4087f"
     },
     {
       "caminho": "docs/protocolo-comportamental.md",
@@ -6517,9 +6542,19 @@
       "sha256": "8f2a88aad1b02bba8031121fda76ed2899bef5c667c3813cd09057330c0d7412"
     },
     {
+      "caminho": "instrumentos_v4/t05_verificador.py",
+      "bytes": 7056,
+      "sha256": "89d8e662547aa6103ed3f5470b895765f935b447845f746d426784b59b81c998"
+    },
+    {
       "caminho": "instrumentos_v4/validar.py",
       "bytes": 4634,
       "sha256": "73f60431a07aa42ba472cdd4db1aecf0421b7a5ef435459fa505f57b04507472"
+    },
+    {
+      "caminho": "instrumentos_v4/validar_t05.py",
+      "bytes": 4215,
+      "sha256": "7c7bcb36d342f6cdd6a5ca80b3f552376ead33c6ef4a477e8447c18b10907249"
     },
     {
       "caminho": "orientacao/Metodologia-v03.docx",
@@ -7017,6 +7052,11 @@
       "sha256": "a87a32a6686d478176ca011611c90d7e693adb8d459d3f46d58ef56d0ea2d95d"
     },
     {
+      "caminho": "tests/test_coleta_principal.py",
+      "bytes": 6072,
+      "sha256": "a146a216475042b68f53133dd6819bc9280993789efd3a0001deea9c88697874"
+    },
+    {
       "caminho": "tests/test_comportamento.py",
       "bytes": 3366,
       "sha256": "ec2b6c7f24b075184482b5d0bcacae467eb9c9fceda1a2d5d59081392a06277e"
@@ -7131,5 +7171,6 @@
   "ampliacao_T08": "Instrumento validado em Linux: 11 referencias, 24 cenarios por referencia; 47 testes locais aprovados; sem geracoes de LLM.",
   "ampliacao_contrato_v2": "Contrato comum revisado em tarefas/v2; coletas exploratorias T01, T02, T03, T05b, T05c, T06, T07, T08, T09 e T10 com 8 geracoes cada; coletas anteriores preservadas.",
   "instrumentos_v3": "Grupos funcionais base e detalhado em T03, T04, T07, T08, T09 e T10; 61 referencias anteriores e 19 controles novos; sem geracoes de LLM.",
-  "coleta_gemini": "Coleta exploratoria de 40 geracoes do gemini-3.8-flash; instrumentos v4 de T03 e T04."
+  "coleta_gemini": "Coleta exploratoria de 40 geracoes do gemini-3.8-flash; instrumentos v4 de T03 e T04.",
+  "coleta_principal": "Plano registrado antes da primeira chamada; 800 geracoes previstas."
 }

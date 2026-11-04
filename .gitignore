@@ -12,3 +12,4 @@ backups/
 tmp/
 *.tmp
 docs/notas-metodologia-v05.md
+regras-sast/

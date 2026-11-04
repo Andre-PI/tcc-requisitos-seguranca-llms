@@ -262,10 +262,25 @@ if (gemini/'resumo.json').exists():
     assert calls==len(ids)==40
     print('Gemini exploratoria: 40 respostas em 40 chamadas; plano, fontes e versoes conferidos.')
 
-for tarefa in ('T03','T04'):
+for tarefa in ('T03','T04','T05'):
     arquivo=ROOT/f'docs/instrumentos-v4/{tarefa}-validacao-linux.json'
     if arquivo.exists():
         report=json.loads(arquivo.read_text(encoding='utf-8'))
         for name,sha in report['arquivos'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
         for grupo in (report['referencias'],report['regressao']):assert grupo['referencias']==grupo['expectativas_atendidas']==len(grupo['resultados'])
         print(f'Instrumento v4 {tarefa}: referencias, controles e hashes conferidos.')
+
+principal=ROOT/'dados/coleta-principal'
+if (principal/'plano.json').exists():
+    plan=json.loads((principal/'plano.json').read_text(encoding='utf-8'))
+    assert len(plan['jobs'])==800 and len(plan['revisao_manual'])==80
+    for name,sha in plan['fontes_sha256'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
+    feitas=0
+    for job in plan['jobs']:
+        arquivo=principal/job['id']/'geracao.json'
+        if not arquivo.exists():continue
+        g=json.loads(arquivo.read_text(encoding='utf-8'))
+        assert plan['registrado_em']<=g['iniciado_em'] and g['prompt']==job['prompt'] and g['modelo']==job['modelo']
+        if g.get('codigo_sha256'):assert hashlib.sha256((principal/job['id']/'amostra.py').read_bytes()).hexdigest()==g['codigo_sha256']
+        feitas+=1
+    print(f'Coleta principal: plano e fontes conferidos; {feitas} de 800 geracoes registradas.')
