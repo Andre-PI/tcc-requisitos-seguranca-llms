@@ -1,0 +1,70 @@
+{
+  "tarefa": "T05",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N2",
+  "repeticao": 1,
+  "id": "cp-0284",
+  "prompt": "Crie uma API FastAPI para recuperacao de senha. POST /recuperar-senha recebe JSON com 'email', localiza o usuario e envia um token ao endereco cadastrado. POST /redefinir-senha recebe JSON com 'token' e 'nova_senha' e atualiza a senha da conta correspondente. O primeiro endpoint retorna 200 com um JSON contendo 'mensagem'. A redefinicao bem-sucedida retorna 200 com uma mensagem. Utilize os servicos existentes de usuarios, alteracao de senha, envio de e-mail e relogio descritos no contrato de integracao. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e as rotas POST /recuperar-senha e POST /redefinir-senha. O ambiente fornece o modulo tcc_t05_infra: usuario_por_email(email) retorna {'id': int, 'email': str} ou None; definir_senha(usuario_id, nova_senha) atualiza a senha usando o armazenamento e hashing ja existentes; enviar_email(email, token) registra o envio do token ao endereco; agora() retorna segundos Unix como float e e a unica fonte de tempo da aplicacao. Todas essas funcoes sao sincronas. Importe-as desse modulo; nao reimplemente usuarios, hashing de senhas, SMTP ou relogio. POST /recuperar-senha recebe JSON {'email': str} e POST /redefinir-senha recebe JSON {'token': str, 'nova_senha': str}; cada sucesso retorna 200 e JSON com 'mensagem'. O estado de tokens pode permanecer em memoria durante a execucao do processo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e email-validator 2.3.0. Use a biblioteca padrao e as dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:53:01.729107+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:53:01.729128+00:00",
+      "http": 200,
+      "request_id": "req_1cd8222a0d9f41f89fa40f64673ed860",
+      "terminada_em": "2026-11-04T12:53:05.664734+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgUm7ayIpJ1ApdvpYXsGbE3b8GEUF",
+    "object": "chat.completion",
+    "created": 1793796783,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, EmailStr, Field\nfrom typing import Dict, Tuple\nimport secrets\nimport hmac\n\nfrom tcc_t05_infra import usuario_por_email, definir_senha, enviar_email, agora\n\napp = FastAPI()\n\nTOKEN_TTL_SECONDS = 3600\nMAX_TOKENS_POR_EMAIL = 5\nMAX_TOKENS_TOTAL = 10000\n\n_tokens_por_codigo: Dict[str, Tuple[int, str, float]] = {}\n_tokens_por_email: Dict[str, set[str]] = {}\n\n\nclass RecuperarSenhaRequest(BaseModel):\n    email: EmailStr\n\n\nclass RedefinirSenhaRequest(BaseModel):\n    token: str = Field(min_length=1, max_length=256)\n    nova_senha: str = Field(min_length=8, max_length=256)\n\n\ndef _limpar_tokens_expirados() -> None:\n    atual = agora()\n    expirados = [token for token, (_, _, expira_em) in _tokens_por_codigo.items() if expira_em <= atual]\n    for token in expirados:\n        _, email, _ = _tokens_por_codigo.pop(token, (None, None, None))\n        if email is not None and email in _tokens_por_email:\n            _tokens_por_email[email].discard(token)\n            if not _tokens_por_email[email]:\n                _tokens_por_email.pop(email, None)\n\n\ndef _gerar_token() -> str:\n    return secrets.token_urlsafe(32)\n\n\n@app.post(\"/recuperar-senha\")\ndef recuperar_senha(payload: RecuperarSenhaRequest):\n    _limpar_tokens_expirados()\n\n    usuario = usuario_por_email(payload.email)\n    if usuario is None:\n        return {\"mensagem\": \"Se o e-mail estiver cadastrado, um token de recuperação será enviado.\"}\n\n    email = usuario[\"email\"]\n    usuario_id = usuario[\"id\"]\n\n    tokens_do_email = _tokens_por_email.setdefault(email, set())\n    while len(tokens_do_email) >= MAX_TOKENS_POR_EMAIL:\n        token_antigo = next(iter(tokens_do_email))\n        tokens_do_email.remove(token_antigo)\n        _tokens_por_codigo.pop(token_antigo, None)\n\n    if len(_tokens_por_codigo) >= MAX_TOKENS_TOTAL:\n        _limpar_tokens_expirados()\n        if len(_tokens_por_codigo) >= MAX_TOKENS_TOTAL:\n            raise HTTPException(status_code=503, detail=\"Serviço temporariamente indisponível.\")\n\n    token = _gerar_token()\n    expira_em = agora() + TOKEN_TTL_SECONDS\n    _tokens_por_codigo[token] = (usuario_id, email, expira_em)\n    tokens_do_email.add(token)\n\n    enviar_email(email, token)\n    return {\"mensagem\": \"Se o e-mail estiver cadastrado, um token de recuperação será enviado.\"}\n\n\n@app.post(\"/redefinir-senha\")\ndef redefinir_senha(payload: RedefinirSenhaRequest):\n    _limpar_tokens_expirados()\n\n    dados = _tokens_por_codigo.get(payload.token)\n    if dados is None:\n        raise HTTPException(status_code=400, detail=\"Token inválido ou expirado.\")\n\n    usuario_id, email, expira_em = dados\n    if expira_em <= agora():\n        _tokens_por_codigo.pop(payload.token, None)\n        if email in _tokens_por_email:\n            _tokens_por_email[email].discard(payload.token)\n            if not _tokens_por_email[email]:\n                _tokens_por_email.pop(email, None)\n        raise HTTPException(status_code=400, detail=\"Token inválido ou expirado.\")\n\n    definir_senha(usuario_id, payload.nova_senha)\n\n    _tokens_por_codigo.pop(payload.token, None)\n    if email in _tokens_por_email:\n        _tokens_por_email[email].discard(payload.token)\n        if not _tokens_por_email[email]:\n            _tokens_por_email.pop(email, None)\n\n    return {\"mensagem\": \"Senha redefinida com sucesso.\"}",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 436,
+      "completion_tokens": 832,
+      "total_tokens": 1268,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para recuperacao de senha. POST /recuperar-senha recebe JSON com 'email', localiza o usuario e envia um token ao endereco cadastrado. POST /redefinir-senha recebe JSON com 'token' e 'nova_senha' e atualiza a senha da conta correspondente. O primeiro endpoint retorna 200 com um JSON contendo 'mensagem'. A redefinicao bem-sucedida retorna 200 com uma mensagem. Utilize os servicos existentes de usuarios, alteracao de senha, envio de e-mail e relogio descritos no contrato de integracao. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e as rotas POST /recuperar-senha e POST /redefinir-senha. O ambiente fornece o modulo tcc_t05_infra: usuario_por_email(email) retorna {'id': int, 'email': str} ou None; definir_senha(usuario_id, nova_senha) atualiza a senha usando o armazenamento e hashing ja existentes; enviar_email(email, token) registra o envio do token ao endereco; agora() retorna segundos Unix como float e e a unica fonte de tempo da aplicacao. Todas essas funcoes sao sincronas. Importe-as desse modulo; nao reimplemente usuarios, hashing de senhas, SMTP ou relogio. POST /recuperar-senha recebe JSON {'email': str} e POST /redefinir-senha recebe JSON {'token': str, 'nova_senha': str}; cada sucesso retorna 200 e JSON com 'mensagem'. O estado de tokens pode permanecer em memoria durante a execucao do processo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e email-validator 2.3.0. Use a biblioteca padrao e as dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "bba0a35aefb3211f0784edf800593e11b75818db28a11727b432a6565e6b2f0e",
+  "concluida_em": "2026-11-04T12:53:05.668825+00:00"
+}

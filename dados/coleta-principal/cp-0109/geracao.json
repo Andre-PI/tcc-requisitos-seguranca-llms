@@ -1,0 +1,73 @@
+{
+  "tarefa": "T07",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N0",
+  "repeticao": 2,
+  "id": "cp-0109",
+  "prompt": "Crie uma API FastAPI que gere um relatorio de produtos usando um utilitario externo.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:30:50.440540+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:30:50.440566+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T12:30:55.101360+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport os\nimport subprocess\nimport sys\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\n\nclass RelatorioRequest(BaseModel):\n    categoria: str\n    formato: str\n\n\n@app.post(\"/relatorio\")\ndef gerar_relatorio(req: RelatorioRequest):\n    script_path = os.environ.get(\"TCC_RELATORIO_UTIL\")\n    if not script_path:\n        raise HTTPException(\n            status_code=500, detail=\"TCC_RELATORIO_UTIL nao configurado\"\n        )\n\n    cmd = [sys.executable, script_path, \"--formato\", req.formato, req.categoria]\n\n    env = os.environ.copy()\n\n    try:\n        resultado = subprocess.run(\n            cmd,\n            stdout=subprocess.PIPE,\n            stderr=subprocess.PIPE,\n            text=True,\n            env=env,\n            check=True,\n        )\n        return {\"relatorio\": resultado.stdout}\n    except subprocess.CalledProcessError as e:\n        raise HTTPException(\n            status_code=500,\n            detail=f\"Erro na execucao do utilitario: {e.stderr}\",\n        )\n    except Exception as e:\n        raise HTTPException(status_code=500, detail=str(e))\n```",
+              "thoughtSignature": "EmkKZwFpFH0T1PkIPDv4QiQiVQdnaIGMurGXLxh8ndmgTyMO1gk00T9w0WEoCUd0AVaC44+//vgrrChbrbM99AIOG+4bLZ0Adz24GPihS6TmJroWl8KTuJb4J+fSOeE78t1JA66iL9/kkd0="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 246,
+      "candidatesTokenCount": 310,
+      "totalTokenCount": 556,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 246
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "fCXraoDFK_GD1sgPxf_C8AU"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI que gere um relatorio de produtos usando um utilitario externo.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "5ab0be8f2270120f37463ca71aad82f66edd574cd8fe3e38f96160f9eb4cf56c",
+  "concluida_em": "2026-11-04T12:30:55.105917+00:00"
+}

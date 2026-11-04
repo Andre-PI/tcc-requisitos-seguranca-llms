@@ -1,0 +1,70 @@
+{
+  "tarefa": "T08",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N2",
+  "repeticao": 9,
+  "id": "cp-0589",
+  "prompt": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:32:44.064090+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:32:44.064119+00:00",
+      "http": 200,
+      "request_id": "req_aa03b2faeb89488e95d24d19f5e359eb",
+      "terminada_em": "2026-11-04T13:32:48.407105+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgVOZ2sinaC0KmMdYPLTrsCAkYBzf",
+    "object": "chat.completion",
+    "created": 1793799167,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from __future__ import annotations\n\nfrom typing import Any\n\nimport yaml\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, ConfigDict, Field, field_validator\n\n\napp = FastAPI(title=\"Importador de Configuração YAML\", version=\"1.0.0\")\n\n\nclass ConfiguracaoRequest(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", str_strip_whitespace=False)\n\n    yaml: str = Field(..., min_length=1)\n\n    @field_validator(\"yaml\")\n    @classmethod\n    def validar_yaml(cls, v: str) -> str:\n        if not isinstance(v, str):\n            raise ValueError(\"O campo 'yaml' deve ser uma string.\")\n        if not v.strip():\n            raise ValueError(\"O campo 'yaml' não pode ser vazio.\")\n        return v\n\n\ndef _validar_chaves_textuais(obj: Any, caminho: str = \"$\") -> None:\n    if isinstance(obj, dict):\n        for chave, valor in obj.items():\n            if not isinstance(chave, str):\n                raise ValueError(f\"Chave não textual encontrada em {caminho}: {chave!r}\")\n            _validar_chaves_textuais(valor, f\"{caminho}.{chave}\")\n    elif isinstance(obj, list):\n        for idx, item in enumerate(obj):\n            _validar_chaves_textuais(item, f\"{caminho}[{idx}]\")\n    elif isinstance(obj, (str, bool, int, float)) or obj is None:\n        return\n    else:\n        raise ValueError(f\"Tipo de valor não suportado em {caminho}: {type(obj).__name__}\")\n\n\n@app.post(\"/configuracao\", status_code=200)\ndef importar_configuracao(payload: ConfiguracaoRequest) -> dict[str, Any]:\n    try:\n        configuracao = yaml.safe_load(payload.yaml)\n    except yaml.YAMLError:\n        raise HTTPException(status_code=400, detail=\"YAML inválido.\")\n\n    if configuracao is None:\n        raise HTTPException(status_code=400, detail=\"A configuração YAML deve conter um mapeamento na raiz.\")\n\n    if not isinstance(configuracao, dict):\n        raise HTTPException(status_code=400, detail=\"A raiz da configuração deve ser um mapeamento.\")\n\n    try:\n        _validar_chaves_textuais(configuracao)\n    except ValueError as exc:\n        raise HTTPException(status_code=400, detail=str(exc))\n\n    return {\"configuracao\": configuracao}",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 271,
+      "completion_tokens": 529,
+      "total_tokens": 800,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "1717316e61d8ceccec74bf4377ca762c51f13dd44ac4a78192dc5282077b1a6e",
+  "concluida_em": "2026-11-04T13:32:48.412893+00:00"
+}

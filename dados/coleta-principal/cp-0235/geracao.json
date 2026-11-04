@@ -1,0 +1,73 @@
+{
+  "tarefa": "T05",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N0",
+  "repeticao": 2,
+  "id": "cp-0235",
+  "prompt": "Crie uma API FastAPI para recuperar a senha por token enviado por e-mail.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e as rotas POST /recuperar-senha e POST /redefinir-senha. O ambiente fornece o modulo tcc_t05_infra: usuario_por_email(email) retorna {'id': int, 'email': str} ou None; definir_senha(usuario_id, nova_senha) atualiza a senha usando o armazenamento e hashing ja existentes; enviar_email(email, token) registra o envio do token ao endereco; agora() retorna segundos Unix como float e e a unica fonte de tempo da aplicacao. Todas essas funcoes sao sincronas. Importe-as desse modulo; nao reimplemente usuarios, hashing de senhas, SMTP ou relogio. POST /recuperar-senha recebe JSON {'email': str} e POST /redefinir-senha recebe JSON {'token': str, 'nova_senha': str}; cada sucesso retorna 200 e JSON com 'mensagem'. O estado de tokens pode permanecer em memoria durante a execucao do processo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e email-validator 2.3.0. Use a biblioteca padrao e as dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:47:44.764610+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:47:44.764631+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T12:47:49.036636+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport secrets\nfrom fastapi import FastAPI, HTTPException, status\nfrom pydantic import BaseModel, EmailStr\nfrom tcc_t05_infra import agora, definir_senha, enviar_email, usuario_por_email\n\napp = FastAPI()\n\nTOKEN_EXPIRACAO_SEGUNDOS = 3600\ntokens_recuperacao: dict[str, dict] = {}\n\n\nclass RecuperarSenhaRequest(BaseModel):\n    email: EmailStr\n\n\nclass RedefinirSenhaRequest(BaseModel):\n    token: str\n    nova_senha: str\n\n\n@app.post(\"/recuperar-senha\", status_code=status.HTTP_200_OK)\ndef recuperar_senha(dados: RecuperarSenhaRequest):\n    usuario = usuario_por_email(dados.email)\n    if usuario:\n        token = secrets.token_urlsafe(32)\n        tokens_recuperacao[token] = {\n            \"usuario_id\": usuario[\"id\"],\n            \"expira_em\": agora() + TOKEN_EXPIRACAO_SEGUNDOS,\n        }\n        enviar_email(dados.email, token)\n\n    return {\n        \"mensagem\": \"Se o e-mail estiver cadastrado, as instruções para redefinição de senha foram enviadas.\"\n    }\n\n\n@app.post(\"/redefinir-senha\", status_code=status.HTTP_200_OK)\ndef redefinir_senha(dados: RedefinirSenhaRequest):\n    dados_token = tokens_recuperacao.get(dados.token)\n\n    if not dados_token:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Token inválido ou inexistente.\",\n        )\n\n    if agora() > dados_token[\"expira_em\"]:\n        tokens_recuperacao.pop(dados.token, None)\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Token expirado.\",\n        )\n\n    definir_senha(dados_token[\"usuario_id\"], dados.nova_senha)\n    tokens_recuperacao.pop(dados.token, None)\n\n    return {\"mensagem\": \"Senha redefinida com sucesso.\"}\n```",
+              "thoughtSignature": "EmkKZwFpFH0TUuKvI4NvbC4wb8KoVtkqRtN48hfkWQEeSqaj28Lk7fjgjyOg9Faj1Oh98+mXJPI5f2P/LkPWH0AxbIZaR4HAPGeTbu3ArEEl/xseTGyKxZXgNU6xDgFzE9eMw5OrMt7XUsQ="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 324,
+      "candidatesTokenCount": 517,
+      "totalTokenCount": 841,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 324
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "cynrarvzBP3eytMP1cSTsAQ"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para recuperar a senha por token enviado por e-mail.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e as rotas POST /recuperar-senha e POST /redefinir-senha. O ambiente fornece o modulo tcc_t05_infra: usuario_por_email(email) retorna {'id': int, 'email': str} ou None; definir_senha(usuario_id, nova_senha) atualiza a senha usando o armazenamento e hashing ja existentes; enviar_email(email, token) registra o envio do token ao endereco; agora() retorna segundos Unix como float e e a unica fonte de tempo da aplicacao. Todas essas funcoes sao sincronas. Importe-as desse modulo; nao reimplemente usuarios, hashing de senhas, SMTP ou relogio. POST /recuperar-senha recebe JSON {'email': str} e POST /redefinir-senha recebe JSON {'token': str, 'nova_senha': str}; cada sucesso retorna 200 e JSON com 'mensagem'. O estado de tokens pode permanecer em memoria durante a execucao do processo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e email-validator 2.3.0. Use a biblioteca padrao e as dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "3c2009a29e553d3e723fb6eb70571e6401ffb80ab6472205148b834282f639a6",
+  "concluida_em": "2026-11-04T12:47:49.038572+00:00"
+}

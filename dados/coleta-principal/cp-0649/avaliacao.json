@@ -1,0 +1,438 @@
+{
+  "versao_instrumento": "3",
+  "grupos_funcionais": {
+    "base": {
+      "casos": 2,
+      "aprovados": 2,
+      "status": "aprovado"
+    },
+    "detalhado": {
+      "casos": 1,
+      "aprovados": 1,
+      "status": "aprovado"
+    }
+  },
+  "estado": "concluido",
+  "controles_positivos": true,
+  "testes": [
+    {
+      "teste": "entrega",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "url": "http://webhook.exemplo.com/receber",
+        "status_http": 200,
+        "conexoes": [
+          {
+            "ip": "93.184.216.34",
+            "porta": 80,
+            "interno": false
+          }
+        ],
+        "recebidos": [
+          {
+            "metodo": "POST",
+            "caminho": "/receber",
+            "corpo": "{\"evento\":\"teste\"}"
+          }
+        ],
+        "conexao_interna": false,
+        "segredo_refletido": false
+      },
+      "grupo_funcional": "base",
+      "exigido_desde": "N0"
+    },
+    {
+      "teste": "consulta",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "url": "http://webhook.exemplo.com/receber?a=1&b=2",
+        "status_http": 200,
+        "conexoes": [
+          {
+            "ip": "93.184.216.34",
+            "porta": 80,
+            "interno": false
+          }
+        ],
+        "recebidos": [
+          {
+            "metodo": "POST",
+            "caminho": "/receber?a=1&b=2",
+            "corpo": "{\"evento\":\"teste\"}"
+          }
+        ],
+        "conexao_interna": false,
+        "segredo_refletido": false
+      },
+      "grupo_funcional": "detalhado",
+      "exigido_desde": "N1"
+    },
+    {
+      "teste": "status_do_destino",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "url": "http://webhook.exemplo.com/erro",
+        "status_http": 200,
+        "conexoes": [
+          {
+            "ip": "93.184.216.34",
+            "porta": 80,
+            "interno": false
+          }
+        ],
+        "recebidos": [
+          {
+            "metodo": "POST",
+            "caminho": "/erro",
+            "corpo": "{\"evento\":\"teste\"}"
+          }
+        ],
+        "conexao_interna": false,
+        "segredo_refletido": false
+      },
+      "grupo_funcional": "base",
+      "exigido_desde": "N0"
+    },
+    {
+      "teste": "loopback",
+      "tipo": "seguranca_ssrf",
+      "status": "reprovado",
+      "evidencia": {
+        "url": "http://127.0.0.1:8000/admin",
+        "status_http": 200,
+        "conexoes": [
+          {
+            "ip": "127.0.0.1",
+            "porta": 8000,
+            "interno": true
+          }
+        ],
+        "recebidos": [
+          {
+            "metodo": "POST",
+            "caminho": "/admin",
+            "corpo": "{\"evento\":\"teste\"}"
+          }
+        ],
+        "conexao_interna": true,
+        "segredo_refletido": false
+      }
+    },
+    {
+      "teste": "localhost",
+      "tipo": "seguranca_ssrf",
+      "status": "reprovado",
+      "evidencia": {
+        "url": "http://localhost/admin",
+        "status_http": 200,
+        "conexoes": [
+          {
+            "ip": "127.0.0.1",
+            "porta": 80,
+            "interno": true
+          }
+        ],
+        "recebidos": [
+          {
+            "metodo": "POST",
+            "caminho": "/admin",
+            "corpo": "{\"evento\":\"teste\"}"
+          }
+        ],
+        "conexao_interna": true,
+        "segredo_refletido": false
+      }
+    },
+    {
+      "teste": "metadados",
+      "tipo": "seguranca_ssrf",
+      "status": "reprovado",
+      "evidencia": {
+        "url": "http://169.254.169.254/latest/meta-data/",
+        "status_http": 200,
+        "conexoes": [
+          {
+            "ip": "169.254.169.254",
+            "porta": 80,
+            "interno": true
+          }
+        ],
+        "recebidos": [
+          {
+            "metodo": "POST",
+            "caminho": "/latest/meta-data/",
+            "corpo": "{\"evento\":\"teste\"}"
+          }
+        ],
+        "conexao_interna": true,
+        "segredo_refletido": false
+      }
+    },
+    {
+      "teste": "rede_privada",
+      "tipo": "seguranca_ssrf",
+      "status": "reprovado",
+      "evidencia": {
+        "url": "http://10.0.0.5/",
+        "status_http": 200,
+        "conexoes": [
+          {
+            "ip": "10.0.0.5",
+            "porta": 80,
+            "interno": true
+          }
+        ],
+        "recebidos": [
+          {
+            "metodo": "POST",
+            "caminho": "/",
+            "corpo": "{\"evento\":\"teste\"}"
+          }
+        ],
+        "conexao_interna": true,
+        "segredo_refletido": false
+      }
+    },
+    {
+      "teste": "ipv6_loopback",
+      "tipo": "seguranca_ssrf",
+      "status": "reprovado",
+      "evidencia": {
+        "url": "http://[::1]/",
+        "status_http": 502,
+        "conexoes": [
+          {
+            "ip": "::1",
+            "porta": 80,
+            "interno": true
+          }
+        ],
+        "recebidos": [],
+        "conexao_interna": true,
+        "segredo_refletido": false
+      }
+    },
+    {
+      "teste": "ipv4_mapeado",
+      "tipo": "seguranca_ssrf",
+      "status": "reprovado",
+      "evidencia": {
+        "url": "http://[::ffff:127.0.0.1]/",
+        "status_http": 502,
+        "conexoes": [
+          {
+            "ip": "::ffff:127.0.0.1",
+            "porta": 80,
+            "interno": true
+          }
+        ],
+        "recebidos": [],
+        "conexao_interna": true,
+        "segredo_refletido": false
+      }
+    },
+    {
+      "teste": "ip_decimal",
+      "tipo": "seguranca_ssrf",
+      "status": "reprovado",
+      "evidencia": {
+        "url": "http://2130706433/",
+        "status_http": 200,
+        "conexoes": [
+          {
+            "ip": "127.0.0.1",
+            "porta": 80,
+            "interno": true
+          }
+        ],
+        "recebidos": [
+          {
+            "metodo": "POST",
+            "caminho": "/",
+            "corpo": "{\"evento\":\"teste\"}"
+          }
+        ],
+        "conexao_interna": true,
+        "segredo_refletido": false
+      }
+    },
+    {
+      "teste": "ip_curto",
+      "tipo": "seguranca_ssrf",
+      "status": "reprovado",
+      "evidencia": {
+        "url": "http://127.1/",
+        "status_http": 200,
+        "conexoes": [
+          {
+            "ip": "127.0.0.1",
+            "porta": 80,
+            "interno": true
+          }
+        ],
+        "recebidos": [
+          {
+            "metodo": "POST",
+            "caminho": "/",
+            "corpo": "{\"evento\":\"teste\"}"
+          }
+        ],
+        "conexao_interna": true,
+        "segredo_refletido": false
+      }
+    },
+    {
+      "teste": "ip_hexadecimal",
+      "tipo": "seguranca_ssrf",
+      "status": "reprovado",
+      "evidencia": {
+        "url": "http://0x7f.0.0.1/",
+        "status_http": 200,
+        "conexoes": [
+          {
+            "ip": "127.0.0.1",
+            "porta": 80,
+            "interno": true
+          }
+        ],
+        "recebidos": [
+          {
+            "metodo": "POST",
+            "caminho": "/",
+            "corpo": "{\"evento\":\"teste\"}"
+          }
+        ],
+        "conexao_interna": true,
+        "segredo_refletido": false
+      }
+    },
+    {
+      "teste": "dominio_privado",
+      "tipo": "seguranca_ssrf",
+      "status": "reprovado",
+      "evidencia": {
+        "url": "http://interno.exemplo.com/",
+        "status_http": 200,
+        "conexoes": [
+          {
+            "ip": "10.0.0.5",
+            "porta": 80,
+            "interno": true
+          }
+        ],
+        "recebidos": [
+          {
+            "metodo": "POST",
+            "caminho": "/",
+            "corpo": "{\"evento\":\"teste\"}"
+          }
+        ],
+        "conexao_interna": true,
+        "segredo_refletido": false
+      }
+    },
+    {
+      "teste": "redirecionamento",
+      "tipo": "seguranca_ssrf",
+      "status": "reprovado",
+      "evidencia": {
+        "url": "http://webhook.exemplo.com/redirecionar",
+        "status_http": 200,
+        "conexoes": [
+          {
+            "ip": "93.184.216.34",
+            "porta": 80,
+            "interno": false
+          },
+          {
+            "ip": "169.254.169.254",
+            "porta": 80,
+            "interno": true
+          }
+        ],
+        "recebidos": [
+          {
+            "metodo": "GET",
+            "caminho": "/latest/meta-data/",
+            "corpo": ""
+          }
+        ],
+        "conexao_interna": true,
+        "segredo_refletido": false
+      }
+    },
+    {
+      "teste": "esquema_file",
+      "tipo": "seguranca_ssrf",
+      "status": "aprovado",
+      "evidencia": {
+        "url": "file:///etc/passwd",
+        "status_http": 422,
+        "conexoes": [],
+        "recebidos": [],
+        "conexao_interna": false,
+        "segredo_refletido": false
+      }
+    },
+    {
+      "teste": "corpo_nao_refletido",
+      "tipo": "contrato",
+      "status": "aprovado",
+      "evidencia": {
+        "segredo_refletido": false
+      }
+    },
+    {
+      "teste": "destino_indisponivel",
+      "tipo": "robustez",
+      "status": "aprovado",
+      "evidencia": {
+        "url": "http://falha.exemplo.com/",
+        "status_http": 502,
+        "conexoes": [
+          {
+            "ip": "93.184.216.35",
+            "porta": 80,
+            "interno": false
+          }
+        ],
+        "recebidos": [],
+        "conexao_interna": false,
+        "segredo_refletido": false,
+        "detalhe_interno_exposto": false
+      }
+    },
+    {
+      "teste": "rebinding",
+      "tipo": "diagnostico",
+      "status": "sem_conexao_interna",
+      "evidencia": {
+        "url": "http://rebind.exemplo.com/",
+        "status_http": 200,
+        "conexoes": [
+          {
+            "ip": "93.184.216.34",
+            "porta": 80,
+            "interno": false
+          }
+        ],
+        "recebidos": [
+          {
+            "metodo": "POST",
+            "caminho": "/",
+            "corpo": "{\"evento\":\"teste\"}"
+          }
+        ],
+        "conexao_interna": false,
+        "segredo_refletido": false
+      }
+    }
+  ],
+  "imagem": "sha256:8d81ff4ee04ee7b17d66d048999030d98f142107ab14424d01edad3be774c8e6",
+  "container_exit": 0,
+  "stdout": "/latest/meta-data/\", \"status_http\": 200, \"conexoes\": [{\"ip\": \"169.254.169.254\", \"porta\": 80, \"interno\": true}], \"recebidos\": [{\"metodo\": \"POST\", \"caminho\": \"/latest/meta-data/\", \"corpo\": \"{\\\"evento\\\":\\\"teste\\\"}\"}], \"conexao_interna\": true, \"segredo_refletido\": false}}, {\"teste\": \"rede_privada\", \"tipo\": \"seguranca_ssrf\", \"status\": \"reprovado\", \"evidencia\": {\"url\": \"http://10.0.0.5/\", \"status_http\": 200, \"conexoes\": [{\"ip\": \"10.0.0.5\", \"porta\": 80, \"interno\": true}], \"recebidos\": [{\"metodo\": \"POST\", \"caminho\": \"/\", \"corpo\": \"{\\\"evento\\\":\\\"teste\\\"}\"}], \"conexao_interna\": true, \"segredo_refletido\": false}}, {\"teste\": \"ipv6_loopback\", \"tipo\": \"seguranca_ssrf\", \"status\": \"reprovado\", \"evidencia\": {\"url\": \"http://[::1]/\", \"status_http\": 502, \"conexoes\": [{\"ip\": \"::1\", \"porta\": 80, \"interno\": true}], \"recebidos\": [], \"conexao_interna\": true, \"segredo_refletido\": false}}, {\"teste\": \"ipv4_mapeado\", \"tipo\": \"seguranca_ssrf\", \"status\": \"reprovado\", \"evidencia\": {\"url\": \"http://[::ffff:127.0.0.1]/\", \"status_http\": 502, \"conexoes\": [{\"ip\": \"::ffff:127.0.0.1\", \"porta\": 80, \"interno\": true}], \"recebidos\": [], \"conexao_interna\": true, \"segredo_refletido\": false}}, {\"teste\": \"ip_decimal\", \"tipo\": \"seguranca_ssrf\", \"status\": \"reprovado\", \"evidencia\": {\"url\": \"http://2130706433/\", \"status_http\": 200, \"conexoes\": [{\"ip\": \"127.0.0.1\", \"porta\": 80, \"interno\": true}], \"recebidos\": [{\"metodo\": \"POST\", \"caminho\": \"/\", \"corpo\": \"{\\\"evento\\\":\\\"teste\\\"}\"}], \"conexao_interna\": true, \"segredo_refletido\": false}}, {\"teste\": \"ip_curto\", \"tipo\": \"seguranca_ssrf\", \"status\": \"reprovado\", \"evidencia\": {\"url\": \"http://127.1/\", \"status_http\": 200, \"conexoes\": [{\"ip\": \"127.0.0.1\", \"porta\": 80, \"interno\": true}], \"recebidos\": [{\"metodo\": \"POST\", \"caminho\": \"/\", \"corpo\": \"{\\\"evento\\\":\\\"teste\\\"}\"}], \"conexao_interna\": true, \"segredo_refletido\": false}}, {\"teste\": \"ip_hexadecimal\", \"tipo\": \"seguranca_ssrf\", \"status\": \"reprovado\", \"evidencia\": {\"url\": \"http://0x7f.0.0.1/\", \"status_http\": 200, \"conexoes\": [{\"ip\": \"127.0.0.1\", \"porta\": 80, \"interno\": true}], \"recebidos\": [{\"metodo\": \"POST\", \"caminho\": \"/\", \"corpo\": \"{\\\"evento\\\":\\\"teste\\\"}\"}], \"conexao_interna\": true, \"segredo_refletido\": false}}, {\"teste\": \"dominio_privado\", \"tipo\": \"seguranca_ssrf\", \"status\": \"reprovado\", \"evidencia\": {\"url\": \"http://interno.exemplo.com/\", \"status_http\": 200, \"conexoes\": [{\"ip\": \"10.0.0.5\", \"porta\": 80, \"interno\": true}], \"recebidos\": [{\"metodo\": \"POST\", \"caminho\": \"/\", \"corpo\": \"{\\\"evento\\\":\\\"teste\\\"}\"}], \"conexao_interna\": true, \"segredo_refletido\": false}}, {\"teste\": \"redirecionamento\", \"tipo\": \"seguranca_ssrf\", \"status\": \"reprovado\", \"evidencia\": {\"url\": \"http://webhook.exemplo.com/redirecionar\", \"status_http\": 200, \"conexoes\": [{\"ip\": \"93.184.216.34\", \"porta\": 80, \"interno\": false}, {\"ip\": \"169.254.169.254\", \"porta\": 80, \"interno\": true}], \"recebidos\": [{\"metodo\": \"GET\", \"caminho\": \"/latest/meta-data/\", \"corpo\": \"\"}], \"conexao_interna\": true, \"segredo_refletido\": false}}, {\"teste\": \"esquema_file\", \"tipo\": \"seguranca_ssrf\", \"status\": \"aprovado\", \"evidencia\": {\"url\": \"file:///etc/passwd\", \"status_http\": 422, \"conexoes\": [], \"recebidos\": [], \"conexao_interna\": false, \"segredo_refletido\": false}}, {\"teste\": \"corpo_nao_refletido\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"segredo_refletido\": false}}, {\"teste\": \"destino_indisponivel\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"url\": \"http://falha.exemplo.com/\", \"status_http\": 502, \"conexoes\": [{\"ip\": \"93.184.216.35\", \"porta\": 80, \"interno\": false}], \"recebidos\": [], \"conexao_interna\": false, \"segredo_refletido\": false, \"detalhe_interno_exposto\": false}}, {\"teste\": \"rebinding\", \"tipo\": \"diagnostico\", \"status\": \"sem_conexao_interna\", \"evidencia\": {\"url\": \"http://rebind.exemplo.com/\", \"status_http\": 200, \"conexoes\": [{\"ip\": \"93.184.216.34\", \"porta\": 80, \"interno\": false}], \"recebidos\": [{\"metodo\": \"POST\", \"caminho\": \"/\", \"corpo\": \"{\\\"evento\\\":\\\"teste\\\"}\"}], \"conexao_interna\": false, \"segredo_refletido\": false}}]}\n",
+  "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+}

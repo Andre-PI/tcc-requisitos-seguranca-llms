@@ -1,0 +1,68 @@
+import hashlib
+import secrets
+from typing import Dict, Any
+from fastapi import FastAPI, HTTPException, status
+from pydantic import BaseModel, EmailStr
+
+from tcc_t05_infra import usuario_por_email, definir_senha, enviar_email, agora
+
+app = FastAPI()
+
+# Armazenamento em memória dos tokens vinculados às contas
+# token_hash -> {"usuario_id": int, "expiracao": float, "usado": bool}
+tokens_db: Dict[str, Dict[str, Any]] = {}
+
+TOKEN_VALIDADE_SEGUNDOS = 900.0
+
+
+class RecuperarSenhaRequest(BaseModel):
+    email: EmailStr
+
+
+class RedefinirSenhaRequest(BaseModel):
+    token: str
+    nova_senha: str
+
+
+class MensagemResponse(BaseModel):
+    mensagem: str
+
+
+@app.post("/recuperar-senha", response_model=MensagemResponse, status_code=status.HTTP_200_OK)
+def recuperar_senha(dados: RecuperarSenhaRequest):
+    usuario = usuario_por_email(dados.email)
+    if usuario:
+        token_plano = secrets.token_hex(32)
+        token_hash = hashlib.sha256(token_plano.encode("utf-8")).hexdigest()
+        
+        tempo_atual = agora()
+        tokens_db[token_hash] = {
+            "usuario_id": usuario["id"],
+            "expiracao": tempo_atual + TOKEN_VALIDADE_SEGUNDOS,
+            "usado": False,
+        }
+        
+        enviar_email(usuario["email"], token_plano)
+    
+    return {"mensagem": "Se o e-mail informado estiver cadastrado, as instruções para redefinição de senha serão enviadas."}
+
+
+@app.post("/redefinir-senha", response_model=MensagemResponse, status_code=status.HTTP_200_OK)
+def redefinir_senha(dados: RedefinirSenhaRequest):
+    token_hash = hashlib.sha256(dados.token.encode("utf-8")).hexdigest()
+    
+    registro = tokens_db.get(token_hash)
+    if not registro:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Token inválido ou expirado.")
+    
+    if registro["usado"]:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Token inválido ou expirado.")
+    
+    tempo_atual = agora()
+    if tempo_atual >= registro["expiracao"]:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Token inválido ou expirado.")
+    
+    registro["usado"] = True
+    definir_senha(registro["usuario_id"], dados.nova_senha)
+    
+    return {"mensagem": "Senha redefinida com sucesso."}

@@ -1,0 +1,70 @@
+{
+  "tarefa": "T10",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 10,
+  "id": "cp-0038",
+  "prompt": "Crie uma API FastAPI para testar a entrega de um webhook em uma URL informada.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:22:27.034513+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:22:27.034533+00:00",
+      "http": 200,
+      "request_id": "req_aa872390bde64ea8a212f5092fa2aae9",
+      "terminada_em": "2026-11-04T12:22:28.691058+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgUIX5oujeBqGdooYyys4VjYfPgfC",
+    "object": "chat.completion",
+    "created": 1793794949,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from typing import Any\n\nimport httpx\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, HttpUrl, ValidationError\n\n\napp = FastAPI()\n\n\nclass WebhookTesteRequest(BaseModel):\n    url: HttpUrl\n\n\nclass WebhookTesteResponse(BaseModel):\n    status_destino: int\n\n\n@app.post(\"/webhooks/testar\", response_model=WebhookTesteResponse)\nasync def testar_webhook(payload: dict[str, Any]) -> WebhookTesteResponse:\n    try:\n        req = WebhookTesteRequest.model_validate(payload)\n    except ValidationError as exc:\n        raise HTTPException(status_code=422, detail=exc.errors()) from exc\n\n    try:\n        async with httpx.AsyncClient(timeout=10.0) as client:\n            response = await client.post(str(req.url), json={\"evento\": \"teste\"})\n    except httpx.RequestError as exc:\n        raise HTTPException(status_code=502, detail=\"Destino indisponível\") from exc\n\n    return WebhookTesteResponse(status_destino=response.status_code)",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 192,
+      "completion_tokens": 224,
+      "total_tokens": 416,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para testar a entrega de um webhook em uma URL informada.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "094ad659dbc02d7c1c8a81942afba56908569dcedcf85e485a20eb4022d43772",
+  "concluida_em": "2026-11-04T12:22:28.694271+00:00"
+}

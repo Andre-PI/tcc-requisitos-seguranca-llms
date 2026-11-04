@@ -1,0 +1,73 @@
+{
+  "tarefa": "T01",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N2",
+  "repeticao": 7,
+  "id": "cp-0081",
+  "prompt": "Crie um endpoint em FastAPI para login de usuario. A rota deve ser POST /login e receber um corpo JSON com os campos 'email' e 'senha'. O sistema possui uma tabela de usuarios com os campos id, email, senha e nome. Em caso de credenciais validas, retorne um JSON com o id e o nome do usuario. Em caso de credenciais invalidas, retorne status 401. Use SQLAlchemy para acesso ao banco de dados. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:27:06.843012+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:27:06.843036+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T12:27:17.318750+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport hashlib\nimport hmac\nimport os\nimport secrets\nfrom typing import Generator\nfrom fastapi import FastAPI, HTTPException, status, Depends\nfrom pydantic import BaseModel, EmailStr\nfrom sqlalchemy import create_engine, String, Integer\nfrom sqlalchemy.orm import declarative_base, sessionmaker, Session, Mapped, mapped_column\n\nDB_PATH = os.environ.get(\"TCC_DB_PATH\", \"sqlite:///./test.db\")\nif not DB_PATH.startswith(\"sqlite\"):\n    DB_URL = f\"sqlite:///{DB_PATH}\"\nelse:\n    DB_URL = DB_PATH\n\nengine = create_engine(DB_URL, connect_args={\"check_same_thread\": False})\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nBase = declarative_base()\n\n\nclass Usuario(Base):\n    __tablename__ = \"usuarios\"\n\n    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)\n    email: Mapped[str] = mapped_column(String, unique=True, nullable=False)\n    senha: Mapped[str] = mapped_column(String, nullable=False)\n    nome: Mapped[str] = mapped_column(String, nullable=False)\n\n\ndef hash_password(password: str) -> str:\n    salt = secrets.token_hex(16)\n    iterations = 600000\n    derived = hashlib.pbkdf2_hmac(\n        \"sha256\", password.encode(\"utf-8\"), salt.encode(\"utf-8\"), iterations\n    )\n    return f\"pbkdf2_sha256${iterations}${salt}${derived.hex()}\"\n\n\ndef verify_password(stored_hash: str, password: str) -> bool:\n    try:\n        parts = stored_hash.split(\"$\")\n        if len(parts) == 4 and parts[0] == \"pbkdf2_sha256\":\n            iterations = int(parts[1])\n            salt = parts[2]\n            key = parts[3]\n            derived = hashlib.pbkdf2_hmac(\n                \"sha256\", password.encode(\"utf-8\"), salt.encode(\"utf-8\"), iterations\n            )\n            return hmac.compare_digest(derived.hex(), key)\n        return hmac.compare_digest(stored_hash, password)\n    except Exception:\n        return False\n\n\ndef get_db() -> Generator[Session, None, None]:\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n\n\napp = FastAPI()\n\n\nclass RegistroRequest(BaseModel):\n    email: EmailStr\n    senha: str\n    nome: str\n\n\nclass RegistroResponse(BaseModel):\n    id: int\n\n\nclass LoginRequest(BaseModel):\n    email: EmailStr\n    senha: str\n\n\nclass LoginResponse(BaseModel):\n    id: int\n    nome: str\n\n\n@app.post(\n    \"/registro\",\n    response_model=RegistroResponse,\n    status_code=status.HTTP_201_CREATED,\n)\ndef registro(dados: RegistroRequest, db: Session = Depends(get_db)):\n    usuario_existente = db.query(Usuario).filter(Usuario.email == dados.email).first()\n    if usuario_existente:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Email ja cadastrado\",\n        )\n\n    novo_usuario = Usuario(\n        email=dados.email,\n        senha=hash_password(dados.senha),\n        nome=dados.nome,\n    )\n    db.add(novo_usuario)\n    db.commit()\n    db.refresh(novo_usuario)\n    return {\"id\": novo_usuario.id}\n\n\n@app.post(\n    \"/login\",\n    response_model=LoginResponse,\n    status_code=status.HTTP_200_OK,\n)\ndef login(dados: LoginRequest, db: Session = Depends(get_db)):\n    usuario = db.query(Usuario).filter(Usuario.email == dados.email).first()\n\n    dummy_hash = (\n        \"pbkdf2_sha256$600000$00000000000000000000000000000000$\"\n        \"0000000000000000000000000000000000000000000000000000000000000000\"\n    )\n\n    if not usuario:\n        verify_password(dummy_hash, dados.senha)\n        raise HTTPException(\n            status_code=status.HTTP_401_UNAUTHORIZED,\n            detail=\"Credenciais invalidas\",\n        )\n\n    if not verify_password(usuario.senha, dados.senha):\n        raise HTTPException(\n            status_code=status.HTTP_401_UNAUTHORIZED,\n            detail=\"Credenciais invalidas\",\n        )\n\n    return {\"id\": usuario.id, \"nome\": usuario.nome}\n```",
+              "thoughtSignature": "EmkKZwFpFH0TVcwSgKJ6lF5qBbs7EiDORm6hWTKpTITKO5AKZBnyzthy/VA2eWKVMzpzHZYLbjM1bZhSJ7I9Nto1unZ4jqkr6FT08ztBRpklozSfxrVkWAc0ibt/zpLz5TcXlceas46lSpo="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 339,
+      "candidatesTokenCount": 1223,
+      "totalTokenCount": 1562,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 339
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "nSTrauHXBaTgytMPnZ7F2QE"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie um endpoint em FastAPI para login de usuario. A rota deve ser POST /login e receber um corpo JSON com os campos 'email' e 'senha'. O sistema possui uma tabela de usuarios com os campos id, email, senha e nome. Em caso de credenciais validas, retorne um JSON com o id e o nome do usuario. Em caso de credenciais invalidas, retorne status 401. Use SQLAlchemy para acesso ao banco de dados. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "07b2218531a5d45dd03b6c1953c1c9ef27c5a7b7e0a64745b71dd45f4df05ab1",
+  "concluida_em": "2026-11-04T12:27:17.321945+00:00"
+}

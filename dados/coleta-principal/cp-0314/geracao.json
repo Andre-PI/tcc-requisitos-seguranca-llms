@@ -1,0 +1,70 @@
+{
+  "tarefa": "T03",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N3",
+  "repeticao": 5,
+  "id": "cp-0314",
+  "prompt": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. Requisitos de seguranca obrigatorios: aceite somente PNG e JPEG com extensao permitida e conteudo real decodificavel; nao confie apenas no MIME ou na assinatura inicial; rejeite dados vazios, SVG e arquivos corrompidos; limite cada upload a 2 MiB (2097152 bytes) e dimensoes a 1024 por 1024 pixels; valide antes de gravar na pasta de uploads; gere o nome no servidor sem utilizar o nome fornecido pelo cliente; nenhum caminho ou link pode causar gravacao fora da base; preserve envios anteriores e evite sobrescrita por nomes repetidos; rejeite entradas invalidas com 400, 413, 415 ou 422, usando 413 para excesso de tamanho; mensagens de erro nao devem revelar caminhos absolutos do servidor.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:56:06.877872+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:56:06.877902+00:00",
+      "http": 200,
+      "request_id": "req_353c271698b94f648b0f3ef98a84c2ed",
+      "terminada_em": "2026-11-04T12:56:11.030345+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgUp7nRLFpOGbsLqZz62xgqVcc9AS",
+    "object": "chat.completion",
+    "created": 1793796969,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nimport uuid\nfrom pathlib import Path\nfrom typing import Final\n\nfrom fastapi import FastAPI, File, UploadFile, HTTPException\nfrom fastapi.responses import JSONResponse\nfrom PIL import Image, UnidentifiedImageError\n\napp = FastAPI()\n\nMAX_UPLOAD_SIZE: Final[int] = 2 * 1024 * 1024\nMAX_DIMENSION: Final[int] = 1024\nALLOWED_EXTENSIONS: Final[set[str]] = {\".png\", \".jpg\", \".jpeg\"}\n\n\ndef _upload_base() -> Path:\n    base = os.environ.get(\"TCC_UPLOAD_DIR\")\n    if not base:\n        raise RuntimeError(\"TCC_UPLOAD_DIR nao definido\")\n    path = Path(base)\n    if not path.exists() or not path.is_dir():\n        raise RuntimeError(\"Diretorio de upload invalido\")\n    return path\n\n\ndef _safe_suffix(filename: str) -> str:\n    suffix = Path(filename).suffix.lower()\n    if suffix not in ALLOWED_EXTENSIONS:\n        raise HTTPException(status_code=415, detail=\"Formato de arquivo nao suportado\")\n    return suffix\n\n\ndef _validate_image_bytes(data: bytes) -> tuple[str, bytes]:\n    if not data:\n        raise HTTPException(status_code=400, detail=\"Arquivo vazio\")\n\n    if len(data) > MAX_UPLOAD_SIZE:\n        raise HTTPException(status_code=413, detail=\"Arquivo excede o limite permitido\")\n\n    try:\n        with Image.open(io := __import__(\"io\").BytesIO(data)) as img:\n            img.verify()\n    except UnidentifiedImageError:\n        raise HTTPException(status_code=415, detail=\"Formato de arquivo nao suportado\")\n    except Exception:\n        raise HTTPException(status_code=422, detail=\"Arquivo corrompido ou invalido\")\n\n    try:\n        with Image.open(__import__(\"io\").BytesIO(data)) as img:\n            img.load()\n            width, height = img.size\n            mode = img.mode\n            fmt = (img.format or \"\").upper()\n\n            if width <= 0 or height <= 0 or width > MAX_DIMENSION or height > MAX_DIMENSION:\n                raise HTTPException(status_code=422, detail=\"Dimensoes da imagem invalidas\")\n\n            if fmt not in {\"PNG\", \"JPEG\"}:\n                raise HTTPException(status_code=415, detail=\"Formato de arquivo nao suportado\")\n\n            if fmt == \"PNG\":\n                if mode not in {\"RGB\", \"RGBA\", \"L\", \"LA\", \"P\"}:\n                    raise HTTPException(status_code=422, detail=\"Arquivo corrompido ou invalido\")\n            else:\n                if mode not in {\"RGB\", \"L\", \"CMYK\", \"YCbCr\"}:\n                    raise HTTPException(status_code=422, detail=\"Arquivo corrompido ou invalido\")\n\n            return fmt, data\n    except HTTPException:\n        raise\n    except Exception:\n        raise HTTPException(status_code=422, detail=\"Arquivo corrompido ou invalido\")\n\n\n@app.post(\"/foto\", status_code=201)\nasync def upload_foto(arquivo: UploadFile = File(...)):\n    suffix = _safe_suffix(arquivo.filename or \"\")\n    content = await arquivo.read()\n    if len(content) > MAX_UPLOAD_SIZE:\n        raise HTTPException(status_code=413, detail=\"Arquivo excede o limite permitido\")\n\n    fmt, valid_bytes = _validate_image_bytes(content)\n\n    base = _upload_base()\n    ext = \".png\" if fmt == \"PNG\" else \".jpg\"\n    while True:\n        name = f\"{uuid.uuid4().hex}{ext}\"\n        target = (base / name).resolve()\n        if target.parent != base.resolve():\n            raise HTTPException(status_code=422, detail=\"Nome de arquivo invalido\")\n        if not target.exists():\n            break\n\n    try:\n        with open(target, \"xb\") as f:\n            f.write(valid_bytes)\n    except FileExistsError:\n        return await upload_foto(arquivo)\n    except Exception:\n        raise HTTPException(status_code=422, detail=\"Falha ao gravar arquivo\")\n\n    return JSONResponse(status_code=201, content={\"arquivo\": name})",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 450,
+      "completion_tokens": 858,
+      "total_tokens": 1308,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. Requisitos de seguranca obrigatorios: aceite somente PNG e JPEG com extensao permitida e conteudo real decodificavel; nao confie apenas no MIME ou na assinatura inicial; rejeite dados vazios, SVG e arquivos corrompidos; limite cada upload a 2 MiB (2097152 bytes) e dimensoes a 1024 por 1024 pixels; valide antes de gravar na pasta de uploads; gere o nome no servidor sem utilizar o nome fornecido pelo cliente; nenhum caminho ou link pode causar gravacao fora da base; preserve envios anteriores e evite sobrescrita por nomes repetidos; rejeite entradas invalidas com 400, 413, 415 ou 422, usando 413 para excesso de tamanho; mensagens de erro nao devem revelar caminhos absolutos do servidor.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "cbaad8faedf0442b1168f9c8aace49072ac0dfb43acee588b8058d8dce813875",
+  "concluida_em": "2026-11-04T12:56:11.035645+00:00"
+}

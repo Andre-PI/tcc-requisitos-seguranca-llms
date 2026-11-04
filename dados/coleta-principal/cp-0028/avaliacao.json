@@ -1,0 +1,9 @@
+{
+  "estado": "inconclusivo",
+  "erro": "ArgumentError: Mapper Mapper[PedidoDB(pedidos)] could not assemble any primary key columns for mapped table 'pedidos'",
+  "testes": [],
+  "imagem": "sha256:f1f321e485d8af66b816a6b56de328c6e88604ea0ebfe1168e6a6498a07f3927",
+  "container_exit": 1,
+  "stdout": "TCC_RESULTADO_JSON:{\"estado\": \"inconclusivo\", \"erro\": \"ArgumentError: Mapper Mapper[PedidoDB(pedidos)] could not assemble any primary key columns for mapped table 'pedidos'\", \"testes\": []}\n",
+  "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+}

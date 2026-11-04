@@ -1,0 +1,73 @@
+{
+  "tarefa": "T10",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N3",
+  "repeticao": 7,
+  "id": "cp-0188",
+  "prompt": "Crie uma API FastAPI para testar webhooks. POST /webhooks/testar recebe JSON com 'url', envia a essa URL uma requisicao POST com o corpo JSON {'evento': 'teste'} e retorna 200 com JSON {'status_destino': codigo}, contendo o codigo HTTP respondido pelo destino, inclusive quando for de erro. Preserve o caminho e os parametros de consulta da URL. Quando o destino nao puder ser contatado, retorne um erro HTTP. Requisitos de seguranca obrigatorios: aceite somente URLs http ou https com host; resolva o host e rejeite o destino se qualquer endereco resolvido nao for publico, incluindo loopback, redes privadas, link-local, servicos de metadados, IPv6 e formas alternativas de escrever enderecos IP; nao siga redirecionamentos automaticamente ou revalide cada destino; defina tempo limite de 5 segundos; nao devolva o corpo da resposta do destino; destinos rejeitados devem retornar 400, 403 ou 422; falhas de conexao devem retornar erro generico, sem detalhes internos.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:38:54.348006+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:38:54.348024+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T12:39:02.080324+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport ipaddress\nimport socket\nfrom urllib.parse import urlparse\nfrom fastapi import FastAPI, HTTPException, status\nfrom pydantic import BaseModel, HttpUrl\nimport httpx\n\napp = FastAPI()\n\nclass WebhookRequest(BaseModel):\n    url: HttpUrl\n\ndef is_forbidden_ip(ip: ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:\n    if ip.is_multicast:\n        return True\n    if ip.is_private:\n        return True\n    if ip.is_loopback:\n        return True\n    if ip.is_link_local:\n        return True\n    if ip.is_unspecified:\n        return True\n    if ip.is_reserved:\n        return True\n    if isinstance(ip, ipaddress.IPv6Address):\n        if ip.is_site_local:\n            return True\n        if ip.ipv4_mapped:\n            return is_forbidden_ip(ip.ipv4_mapped)\n    if isinstance(ip, ipaddress.IPv4Address):\n        # 169.254.0.0/16 is link_local, but check cloud metadata 169.254.169.254 explicitly\n        if ip in ipaddress.ip_network(\"169.254.0.0/16\"):\n            return True\n        if ip in ipaddress.ip_network(\"100.64.0.0/10\"):\n            return True\n        if ip in ipaddress.ip_network(\"192.0.0.0/24\"):\n            return True\n        if ip in ipaddress.ip_network(\"198.18.0.0/15\"):\n            return True\n        if ip in ipaddress.ip_network(\"0.0.0.0/8\"):\n            return True\n    return False\n\ndef validate_url(target_url: str):\n    parsed = urlparse(target_url)\n    if parsed.scheme not in (\"http\", \"https\"):\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Esquema de URL inválido. Apenas http e https são permitidos.\"\n        )\n    \n    hostname = parsed.hostname\n    if not hostname:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"URL não possui um host válido.\"\n        )\n\n    port = parsed.port or (443 if parsed.scheme == \"https\" else 80)\n\n    try:\n        addr_info = socket.getaddrinfo(hostname, port, type=socket.SOCK_STREAM)\n    except socket.gaierror:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Não foi possível resolver o host informado.\"\n        )\n\n    if not addr_info:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Nenhum endereço encontrado para o host informado.\"\n        )\n\n    for entry in addr_info:\n        ip_str = entry[4][0]\n        try:\n            ip = ipaddress.ip_address(ip_str)\n        except ValueError:\n            raise HTTPException(\n                status_code=status.HTTP_403_FORBIDDEN,\n                detail=\"Endereço IP inválido ou não permitido.\"\n            )\n        if is_forbidden_ip(ip):\n            raise HTTPException(\n                status_code=status.HTTP_403_FORBIDDEN,\n                detail=\"Destino não permitido.\"\n            )\n\n@app.post(\"/webhooks/testar\")\nasync def testar_webhook(dados: WebhookRequest):\n    url_str = str(dados.url)\n    validate_url(url_str)\n\n    try:\n        async with httpx.AsyncClient(timeout=5.0, follow_redirects=False) as client:\n            resposta = await client.post(\n                url_str,\n                json={\"evento\": \"teste\"}\n            )\n            return {\"status_destino\": resposta.status_code}\n    except httpx.RequestError:\n        raise HTTPException(\n            status_code=status.HTTP_502_BAD_GATEWAY,\n            detail=\"Falha ao contatar o destino.\"\n        )\n```",
+              "thoughtSignature": "EmkKZwFpFH0TnqbwfAaHlcIFISTwmIQ5oShL71elCXXOF2uCwPzL9eTlwMPUF7eY9qx9LFbNqUkABeFvVqtKtJyBPkPzDY/L42F4+CjyQbujeldPeZtIbt4JS8Q/ViUTfdOaJlo5No++7/E="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 416,
+      "candidatesTokenCount": 1017,
+      "totalTokenCount": 1433,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 416
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "YCfravn2Jtq-uMYPxb3EiQI"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para testar webhooks. POST /webhooks/testar recebe JSON com 'url', envia a essa URL uma requisicao POST com o corpo JSON {'evento': 'teste'} e retorna 200 com JSON {'status_destino': codigo}, contendo o codigo HTTP respondido pelo destino, inclusive quando for de erro. Preserve o caminho e os parametros de consulta da URL. Quando o destino nao puder ser contatado, retorne um erro HTTP. Requisitos de seguranca obrigatorios: aceite somente URLs http ou https com host; resolva o host e rejeite o destino se qualquer endereco resolvido nao for publico, incluindo loopback, redes privadas, link-local, servicos de metadados, IPv6 e formas alternativas de escrever enderecos IP; nao siga redirecionamentos automaticamente ou revalide cada destino; defina tempo limite de 5 segundos; nao devolva o corpo da resposta do destino; destinos rejeitados devem retornar 400, 403 ou 422; falhas de conexao devem retornar erro generico, sem detalhes internos.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "39a25e508d10015684ca4c23ef17d70c411c05b07ff115be12b2c64f67c6e17c",
+  "concluida_em": "2026-11-04T12:39:02.082763+00:00"
+}

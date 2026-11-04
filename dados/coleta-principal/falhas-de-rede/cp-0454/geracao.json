@@ -1,0 +1,38 @@
+{
+  "tarefa": "T01",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N3",
+  "repeticao": 8,
+  "id": "cp-0454",
+  "prompt": "Crie um endpoint em FastAPI para login de usuario. A rota deve ser POST /login e receber um corpo JSON com os campos 'email' e 'senha'. O sistema possui uma tabela de usuarios com os campos id, email, senha e nome. Em caso de credenciais validas, retorne um JSON com o id e o nome do usuario. Em caso de credenciais invalidas, retorne status 401. Use SQLAlchemy para acesso ao banco de dados. Requisitos de seguranca obrigatorios: as senhas devem ser armazenadas e verificadas com um algoritmo de hash proprio para senhas, com fator de custo configuravel; a comparacao de senhas deve ser resistente a ataques de temporizacao; o endpoint deve limitar o numero de tentativas de login por conta e por endereco IP; a mensagem de erro deve ser identica para e-mail inexistente e senha incorreta, evitando enumeracao de usuarios; a senha nunca deve aparecer em logs.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:19:28.353431+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:19:28.353449+00:00",
+      "erro": "URLError",
+      "terminada_em": "2026-11-04T13:19:28.354678+00:00"
+    },
+    {
+      "numero": 2,
+      "iniciada_em": "2026-11-04T13:19:33.355891+00:00",
+      "erro": "URLError",
+      "terminada_em": "2026-11-04T13:19:33.357591+00:00"
+    }
+  ],
+  "resposta": null,
+  "erro": "Nenhuma resposta de geracao; consultar tentativas",
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para login de usuario. A rota deve ser POST /login e receber um corpo JSON com os campos 'email' e 'senha'. O sistema possui uma tabela de usuarios com os campos id, email, senha e nome. Em caso de credenciais validas, retorne um JSON com o id e o nome do usuario. Em caso de credenciais invalidas, retorne status 401. Use SQLAlchemy para acesso ao banco de dados. Requisitos de seguranca obrigatorios: as senhas devem ser armazenadas e verificadas com um algoritmo de hash proprio para senhas, com fator de custo configuravel; a comparacao de senhas deve ser resistente a ataques de temporizacao; o endpoint deve limitar o numero de tentativas de login por conta e por endereco IP; a mensagem de erro deve ser identica para e-mail inexistente e senha incorreta, evitando enumeracao de usuarios; a senha nunca deve aparecer em logs.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "concluida_em": "2026-11-04T13:19:33.358352+00:00"
+}

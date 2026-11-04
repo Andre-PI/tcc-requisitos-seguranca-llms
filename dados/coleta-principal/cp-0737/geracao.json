@@ -1,0 +1,73 @@
+{
+  "tarefa": "T04",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N3",
+  "repeticao": 9,
+  "id": "cp-0737",
+  "prompt": "Crie um endpoint em FastAPI para download de arquivos. A rota deve ser GET /download e receber o parametro de consulta obrigatorio 'nome'. Os arquivos estao no diretorio indicado pela variavel de ambiente TCC_ARQUIVOS_DIR, definida antes da inicializacao. O nome pode indicar um arquivo diretamente nesse diretorio ou em uma subpasta, como 'relatorios/mes.txt'. Retorne o conteudo binario original, sem alterar os bytes, com status 200. Suporte arquivos vazios e nomes com espacos ou caracteres Unicode. Se o arquivo nao existir, retorne status 404. Requisitos de seguranca obrigatorios: nenhum arquivo fora do diretorio TCC_ARQUIVOS_DIR pode ser aberto ou retornado; resolva o caminho e verifique a contencao no diretorio antes de abrir o arquivo; trate segmentos '..', caminhos absolutos e links simbolicos que apontem para fora; a verificacao deve distinguir o diretorio permitido de diretorios irmaos com prefixo semelhante; entradas que escapem da base devem ser rejeitadas com 400 ou 404; mensagens de erro nao devem expor caminhos absolutos do servidor nem conteudo dos arquivos externos. Os downloads legitimos em subpastas devem continuar funcionando.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:50:07.359454+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:50:07.359476+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T13:50:14.230160+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport os\nfrom pathlib import Path\nfrom fastapi import FastAPI, HTTPException, Query\nfrom fastapi.responses import FileResponse\n\napp = FastAPI()\n\nBASE_DIR = Path(os.environ[\"TCC_ARQUIVOS_DIR\"]).resolve()\n\n\n@app.get(\"/download\")\ndef download(nome: str = Query(...)):\n    target_path = Path(nome)\n    if target_path.is_absolute():\n        relative_path = Path(*target_path.parts[1:])\n    else:\n        relative_path = target_path\n\n    resolved_path = (BASE_DIR / relative_path).resolve()\n\n    try:\n        resolved_path.relative_to(BASE_DIR)\n    except ValueError:\n        raise HTTPException(status_code=400, detail=\"Invalid path\")\n\n    if resolved_path == BASE_DIR or not resolved_path.is_file():\n        raise HTTPException(status_code=404, detail=\"File not found\")\n\n    return FileResponse(\n        path=resolved_path,\n        media_type=\"application/octet-stream\",\n        filename=resolved_path.name,\n    )\n```",
+              "thoughtSignature": "EmkKZwFpFH0TVUX7pk8Xo01pJOx+I/eUtbO+7+u1d4TS+tOWpgxEvRuGVTbHcy2I/2V68sdlg3uHcGRZbMBqifiuSMu39yPTO5kUmzu5z6dgv3U4mKGLrEiCfo+jukd0l3j+IXJcFCokpjA="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 461,
+      "candidatesTokenCount": 261,
+      "totalTokenCount": 722,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 461
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "ETjrav29K5aIiLMP5ZOg0Ag"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie um endpoint em FastAPI para download de arquivos. A rota deve ser GET /download e receber o parametro de consulta obrigatorio 'nome'. Os arquivos estao no diretorio indicado pela variavel de ambiente TCC_ARQUIVOS_DIR, definida antes da inicializacao. O nome pode indicar um arquivo diretamente nesse diretorio ou em uma subpasta, como 'relatorios/mes.txt'. Retorne o conteudo binario original, sem alterar os bytes, com status 200. Suporte arquivos vazios e nomes com espacos ou caracteres Unicode. Se o arquivo nao existir, retorne status 404. Requisitos de seguranca obrigatorios: nenhum arquivo fora do diretorio TCC_ARQUIVOS_DIR pode ser aberto ou retornado; resolva o caminho e verifique a contencao no diretorio antes de abrir o arquivo; trate segmentos '..', caminhos absolutos e links simbolicos que apontem para fora; a verificacao deve distinguir o diretorio permitido de diretorios irmaos com prefixo semelhante; entradas que escapem da base devem ser rejeitadas com 400 ou 404; mensagens de erro nao devem expor caminhos absolutos do servidor nem conteudo dos arquivos externos. Os downloads legitimos em subpastas devem continuar funcionando.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "f62a3e37419951ada9315b608845f48e550c8877ac7b242b3a9f6f34633a87f7",
+  "concluida_em": "2026-11-04T13:50:14.232101+00:00"
+}

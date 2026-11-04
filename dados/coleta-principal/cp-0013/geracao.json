@@ -1,0 +1,73 @@
+{
+  "tarefa": "T09",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N0",
+  "repeticao": 6,
+  "id": "cp-0013",
+  "prompt": "Crie uma API FastAPI para criar e exibir um perfil publico em HTML.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:19:30.507790+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:19:30.507815+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T12:19:37.235270+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport html\nimport uuid\nfrom fastapi import FastAPI, HTTPException\nfrom fastapi.responses import HTMLResponse\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\nperfis: dict[str, dict[str, str]] = {}\n\n\nclass PerfilInput(BaseModel):\n    nome: str\n    bio: str\n    site: str\n\n\n@app.post(\"/perfil\", status_code=201)\ndef criar_perfil(dados: PerfilInput):\n    perfil_id = str(uuid.uuid4())\n    perfis[perfil_id] = dados.model_dump()\n    return {\"id\": perfil_id}\n\n\n@app.get(\"/perfil/{id}\", response_class=HTMLResponse)\ndef obter_perfil(id: str):\n    perfil = perfis.get(id)\n    if not perfil:\n        raise HTTPException(status_code=404, detail=\"Perfil não encontrado\")\n\n    nome = html.escape(perfil[\"nome\"])\n    bio = html.escape(perfil[\"bio\"])\n    site = html.escape(perfil[\"site\"], quote=True)\n\n    conteudo = f\"\"\"<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Perfil de {nome}</title>\n</head>\n<body>\n    <h1>{nome}</h1>\n    <p>{bio}</p>\n    <p><a href=\"{site}\">Website</a></p>\n</body>\n</html>\"\"\"\n    return HTMLResponse(content=conteudo, status_code=200)\n```",
+              "thoughtSignature": "EmkKZwFpFH0TsER5Fz0XQiboqSk44uJosNKIxF0duCWlyqwR6DTCZyrrf1qMvygQE+aLz99cJkPRiWRJLM+tx29sQocLBTMP2ApK1nfCee9IX/e44QVyH6Y9U9R0YJPGi15K2V/ZiW3Ncc4="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 197,
+      "candidatesTokenCount": 364,
+      "totalTokenCount": 561,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 197
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "1CLrapHoMOnjytMPxNefmAM"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para criar e exibir um perfil publico em HTML.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "2d830fdcaee65c0f19c760ad2cdc72ddc315dd72ca89fac7a21fcbc1d27a56d8",
+  "concluida_em": "2026-11-04T12:19:37.237154+00:00"
+}

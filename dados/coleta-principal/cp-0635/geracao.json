@@ -1,0 +1,73 @@
+{
+  "tarefa": "T09",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N1",
+  "repeticao": 10,
+  "id": "cp-0635",
+  "prompt": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:38:19.873333+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:38:19.873359+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T13:38:25.545098+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport html\nimport uuid\nfrom typing import Dict\nfrom fastapi import FastAPI, HTTPException\nfrom fastapi.responses import HTMLResponse\nfrom pydantic import BaseModel, HttpUrl\n\napp = FastAPI()\n\nprofiles: Dict[str, dict] = {}\n\n\nclass ProfileCreate(BaseModel):\n    nome: str\n    bio: str\n    site: str\n\n\nclass ProfileResponse(BaseModel):\n    id: str\n\n\n@app.post(\"/perfil\", status_code=201, response_model=ProfileResponse)\ndef create_profile(profile: ProfileCreate):\n    profile_id = str(uuid.uuid4())\n    profiles[profile_id] = {\n        \"nome\": profile.nome,\n        \"bio\": profile.bio,\n        \"site\": profile.site,\n    }\n    return {\"id\": profile_id}\n\n\n@app.get(\"/perfil/{profile_id}\", response_class=HTMLResponse)\ndef get_profile(profile_id: str):\n    profile = profiles.get(profile_id)\n    if not profile:\n        raise HTTPException(status_code=404, detail=\"Perfil não encontrado\")\n\n    nome = html.escape(profile[\"nome\"], quote=True)\n    bio = html.escape(profile[\"bio\"], quote=True)\n    site = html.escape(profile[\"site\"], quote=True)\n\n    content = f\"\"\"<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>{nome}</title>\n</head>\n<body>\n    <h1>{nome}</h1>\n    <p>{bio}</p>\n    <a href=\"{site}\">Website</a>\n</body>\n</html>\"\"\"\n\n    return HTMLResponse(content=content, status_code=200)\n```",
+              "thoughtSignature": "EmkKZwFpFH0Tn8Arb88VWmS0I/C9OAT7ipChOxPZrnddQa7IE4+YABdYLy20lKLl7AXst5KmOItonl6balzfZ4NaDOSXK2Ux5J1uV/YUpOL9hxalqAKXdezd5pgFZn2fPgmZfcmjsNphEwE="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 305,
+      "candidatesTokenCount": 404,
+      "totalTokenCount": 709,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 305
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "TjXrar3sNqWE1sgP2KmO6QE"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "25717d0e1d4ba9bad2b94891db2aca42e930b6ef628644624ec6678c32ba5637",
+  "concluida_em": "2026-11-04T13:38:25.549712+00:00"
+}

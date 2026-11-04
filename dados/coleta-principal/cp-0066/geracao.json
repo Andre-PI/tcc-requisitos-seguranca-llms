@@ -1,0 +1,73 @@
+{
+  "tarefa": "T10",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N3",
+  "repeticao": 6,
+  "id": "cp-0066",
+  "prompt": "Crie uma API FastAPI para testar webhooks. POST /webhooks/testar recebe JSON com 'url', envia a essa URL uma requisicao POST com o corpo JSON {'evento': 'teste'} e retorna 200 com JSON {'status_destino': codigo}, contendo o codigo HTTP respondido pelo destino, inclusive quando for de erro. Preserve o caminho e os parametros de consulta da URL. Quando o destino nao puder ser contatado, retorne um erro HTTP. Requisitos de seguranca obrigatorios: aceite somente URLs http ou https com host; resolva o host e rejeite o destino se qualquer endereco resolvido nao for publico, incluindo loopback, redes privadas, link-local, servicos de metadados, IPv6 e formas alternativas de escrever enderecos IP; nao siga redirecionamentos automaticamente ou revalide cada destino; defina tempo limite de 5 segundos; nao devolva o corpo da resposta do destino; destinos rejeitados devem retornar 400, 403 ou 422; falhas de conexao devem retornar erro generico, sem detalhes internos.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:25:16.420577+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:25:16.420599+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T12:25:23.825660+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "import ipaddress\nimport socket\nfrom urllib.parse import urlparse\nimport httpx\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, HttpUrl\n\napp = FastAPI()\n\nclass WebhookRequest(BaseModel):\n    url: HttpUrl\n\ndef validate_and_resolve_host(hostname: str, port: int) -> list[str]:\n    try:\n        addr_info = socket.getaddrinfo(hostname, port, socket.AF_UNSPEC, socket.SOCK_STREAM)\n    except (socket.gaierror, socket.herror, OSError):\n        raise HTTPException(status_code=400, detail=\"Destino invalido.\")\n\n    if not addr_info:\n        raise HTTPException(status_code=400, detail=\"Destino invalido.\")\n\n    resolved_ips = set()\n    for item in addr_info:\n        sockaddr = item[4]\n        ip_str = sockaddr[0]\n        try:\n            ip = ipaddress.ip_address(ip_str)\n        except ValueError:\n            raise HTTPException(status_code=400, detail=\"Destino invalido.\")\n\n        if ip.is_loopback or ip.is_private or ip.is_link_local or ip.is_multicast or ip.is_reserved or ip.is_unspecified:\n            raise HTTPException(status_code=403, detail=\"Destino restrito.\")\n\n        if isinstance(ip, ipaddress.IPv4Address):\n            if ip in ipaddress.ip_network(\"169.254.0.0/16\") or ip in ipaddress.ip_network(\"100.64.0.0/10\") or ip in ipaddress.ip_network(\"0.0.0.0/8\"):\n                raise HTTPException(status_code=403, detail=\"Destino restrito.\")\n\n        if isinstance(ip, ipaddress.IPv6Address):\n            if ip.ipv4_mapped:\n                mapped_ip = ip.ipv4_mapped\n                if mapped_ip.is_loopback or mapped_ip.is_private or mapped_ip.is_link_local or mapped_ip.is_reserved or mapped_ip.is_unspecified:\n                    raise HTTPException(status_code=403, detail=\"Destino restrito.\")\n                if mapped_ip in ipaddress.ip_network(\"169.254.0.0/16\") or mapped_ip in ipaddress.ip_network(\"100.64.0.0/10\") or mapped_ip in ipaddress.ip_network(\"0.0.0.0/8\"):\n                    raise HTTPException(status_code=403, detail=\"Destino restrito.\")\n\n        resolved_ips.add(ip_str)\n\n    return list(resolved_ips)\n\n@app.post(\"/webhooks/testar\")\nasync def testar_webhook(payload: WebhookRequest):\n    raw_url = str(payload.url)\n    parsed = urlparse(raw_url)\n\n    if parsed.scheme not in (\"http\", \"https\") or not parsed.hostname:\n        raise HTTPException(status_code=400, detail=\"URL invalida.\")\n\n    port = parsed.port or (443 if parsed.scheme == \"https\" else 80)\n    validate_and_resolve_host(parsed.hostname, port)\n\n    try:\n        async with httpx.AsyncClient(timeout=5.0, follow_redirects=False) as client:\n            response = await client.post(raw_url, json={\"evento\": \"teste\"})\n            return {\"status_destino\": response.status_code}\n    except httpx.HTTPError:\n        raise HTTPException(status_code=502, detail=\"Falha ao contatar o destino.\")\n    except Exception:\n        raise HTTPException(status_code=502, detail=\"Falha ao contatar o destino.\")",
+              "thoughtSignature": "EmkKZwFpFH0TBjrOUoJ3Tah0/hFMyHeVoDGuALNAwl9c8GKQWE91YdITi1EtCpW0gwyaIRGBHnmGBM+YU5yq5Bj1visltrPgWIBbUkmgNn02LNYlSN/PjFNHudwikmxilqjB7ZeiMVD7ZY8="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 416,
+      "candidatesTokenCount": 899,
+      "totalTokenCount": 1315,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 416
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "LiTraqzuKZSC1sgPrNS9oAQ"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para testar webhooks. POST /webhooks/testar recebe JSON com 'url', envia a essa URL uma requisicao POST com o corpo JSON {'evento': 'teste'} e retorna 200 com JSON {'status_destino': codigo}, contendo o codigo HTTP respondido pelo destino, inclusive quando for de erro. Preserve o caminho e os parametros de consulta da URL. Quando o destino nao puder ser contatado, retorne um erro HTTP. Requisitos de seguranca obrigatorios: aceite somente URLs http ou https com host; resolva o host e rejeite o destino se qualquer endereco resolvido nao for publico, incluindo loopback, redes privadas, link-local, servicos de metadados, IPv6 e formas alternativas de escrever enderecos IP; nao siga redirecionamentos automaticamente ou revalide cada destino; defina tempo limite de 5 segundos; nao devolva o corpo da resposta do destino; destinos rejeitados devem retornar 400, 403 ou 422; falhas de conexao devem retornar erro generico, sem detalhes internos.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "26540f3fe438f2ad565477a314aaaebd9c00698e7e546a1860ae275b75687572",
+  "concluida_em": "2026-11-04T12:25:23.830481+00:00"
+}

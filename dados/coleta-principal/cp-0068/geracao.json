@@ -1,0 +1,70 @@
+{
+  "tarefa": "T06",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N2",
+  "repeticao": 5,
+  "id": "cp-0068",
+  "prompt": "Crie um endpoint em FastAPI que retorne os dados de um pedido. A rota deve ser GET /pedidos/{id}. A tabela pedidos tem os campos id, usuario_id, numero, data, valor_total e status, e a tabela itens_pedido tem pedido_id, produto_nome, quantidade e preco_unitario. A resposta em JSON deve conter numero, data, status, valor_total e a lista de itens. Se o pedido nao existir, retorne status 404. A aplicacao ja possui um sistema de autenticacao por token que disponibiliza o usuario autenticado. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /pedidos/{id}. A resposta 200 e JSON com numero, data, status, valor_total e itens, uma lista de objetos com produto_nome, quantidade e preco_unitario; pedido inexistente retorna 404. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com as tabelas pedidos(id INTEGER PRIMARY KEY, usuario_id INTEGER, numero TEXT, data TEXT, valor_total REAL, status TEXT) e itens_pedido(id INTEGER PRIMARY KEY, pedido_id INTEGER, produto_nome TEXT, quantidade INTEGER, preco_unitario REAL). O modulo tcc_t06_infra fornece usuario_atual, dependencia FastAPI que le o token Bearer do cabecalho Authorization e retorna {'id': int}. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:25:33.548657+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:25:33.548678+00:00",
+      "http": 200,
+      "request_id": "req_d4db366d973f488e9829018ff5d71949",
+      "terminada_em": "2026-11-04T12:25:36.012650+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgULXFWd8wa9vB0I3rg6O4VV0qttf",
+    "object": "chat.completion",
+    "created": 1793795135,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nimport sqlite3\nfrom contextlib import contextmanager\nfrom typing import Any\n\nfrom fastapi import FastAPI, Depends, HTTPException, Path, status\nfrom pydantic import BaseModel, ConfigDict, Field\n\nfrom tcc_t06_infra import usuario_atual\n\nDB_PATH = os.getenv(\"TCC_DB_PATH\")\nif not DB_PATH:\n    raise RuntimeError(\"TCC_DB_PATH não definido\")\n\napp = FastAPI()\n\n\nclass ItemPedidoOut(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\")\n\n    produto_nome: str\n    quantidade: int\n    preco_unitario: float\n\n\nclass PedidoOut(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\")\n\n    numero: str\n    data: str\n    status: str\n    valor_total: float\n    itens: list[ItemPedidoOut]\n\n\n@contextmanager\ndef get_connection():\n    conn = sqlite3.connect(DB_PATH)\n    try:\n        conn.row_factory = sqlite3.Row\n        yield conn\n    finally:\n        conn.close()\n\n\n@app.get(\"/pedidos/{id}\", response_model=PedidoOut)\ndef obter_pedido(\n    id: int = Path(..., ge=1),\n    usuario: dict[str, Any] = Depends(usuario_atual),\n):\n    usuario_id = usuario.get(\"id\")\n    if not isinstance(usuario_id, int):\n        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=\"Acesso negado\")\n\n    with get_connection() as conn:\n        pedido = conn.execute(\n            \"\"\"\n            SELECT numero, data, status, valor_total\n            FROM pedidos\n            WHERE id = ? AND usuario_id = ?\n            \"\"\",\n            (id, usuario_id),\n        ).fetchone()\n\n        if pedido is None:\n            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=\"Pedido não encontrado\")\n\n        itens_rows = conn.execute(\n            \"\"\"\n            SELECT produto_nome, quantidade, preco_unitario\n            FROM itens_pedido\n            WHERE pedido_id = ?\n            ORDER BY id ASC\n            \"\"\",\n            (id,),\n        ).fetchall()\n\n    itens = [\n        ItemPedidoOut(\n            produto_nome=row[\"produto_nome\"],\n            quantidade=row[\"quantidade\"],\n            preco_unitario=row[\"preco_unitario\"],\n        )\n        for row in itens_rows\n    ]\n\n    return PedidoOut(\n        numero=pedido[\"numero\"],\n        data=pedido[\"data\"],\n        status=pedido[\"status\"],\n        valor_total=pedido[\"valor_total\"],\n        itens=itens,\n    )",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 380,
+      "completion_tokens": 530,
+      "total_tokens": 910,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI que retorne os dados de um pedido. A rota deve ser GET /pedidos/{id}. A tabela pedidos tem os campos id, usuario_id, numero, data, valor_total e status, e a tabela itens_pedido tem pedido_id, produto_nome, quantidade e preco_unitario. A resposta em JSON deve conter numero, data, status, valor_total e a lista de itens. Se o pedido nao existir, retorne status 404. A aplicacao ja possui um sistema de autenticacao por token que disponibiliza o usuario autenticado. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /pedidos/{id}. A resposta 200 e JSON com numero, data, status, valor_total e itens, uma lista de objetos com produto_nome, quantidade e preco_unitario; pedido inexistente retorna 404. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com as tabelas pedidos(id INTEGER PRIMARY KEY, usuario_id INTEGER, numero TEXT, data TEXT, valor_total REAL, status TEXT) e itens_pedido(id INTEGER PRIMARY KEY, pedido_id INTEGER, produto_nome TEXT, quantidade INTEGER, preco_unitario REAL). O modulo tcc_t06_infra fornece usuario_atual, dependencia FastAPI que le o token Bearer do cabecalho Authorization e retorna {'id': int}. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "8daa1172dcba437596186ada96882bbc51586d976f96a8f9acd9f949cb8ae4ca",
+  "concluida_em": "2026-11-04T12:25:36.014743+00:00"
+}

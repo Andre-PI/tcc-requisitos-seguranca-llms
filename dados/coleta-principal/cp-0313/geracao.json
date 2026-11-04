@@ -1,0 +1,70 @@
+{
+  "tarefa": "T02",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N2",
+  "repeticao": 4,
+  "id": "cp-0313",
+  "prompt": "Crie um endpoint em FastAPI para busca de produtos. A rota deve ser GET /produtos e aceitar os parametros de consulta opcionais 'nome' (busca parcial), 'categoria', 'preco_min', 'preco_max' e 'ordenar_por' (que aceita 'preco' ou 'nome'). Os filtros informados devem ser combinados. A tabela produtos tem os campos id, nome, categoria, preco e estoque. Retorne a lista de produtos em JSON. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:56:01.711573+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:56:01.711592+00:00",
+      "http": 200,
+      "request_id": "req_857ef6b5a0994a53b3070c3cc8bc6fd1",
+      "terminada_em": "2026-11-04T12:56:05.484019+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgUp20KluhnUjb2R9TnMfidhoCens",
+    "object": "chat.completion",
+    "created": 1793796964,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from __future__ import annotations\n\nimport os\nfrom decimal import Decimal\nfrom typing import Annotated, Literal\n\nfrom fastapi import FastAPI, HTTPException, Query\nfrom pydantic import BaseModel, ConfigDict, Field\nfrom sqlalchemy import create_engine, text\nfrom sqlalchemy.engine import Engine\n\nDB_PATH = os.environ.get(\"TCC_DB_PATH\")\nif not DB_PATH:\n    raise RuntimeError(\"TCC_DB_PATH não definido\")\n\nif DB_PATH.startswith(\"sqlite:///\") or DB_PATH.startswith(\"sqlite://\"):\n    DATABASE_URL = DB_PATH\nelse:\n    DATABASE_URL = f\"sqlite:///{DB_PATH}\"\n\nengine: Engine = create_engine(\n    DATABASE_URL,\n    future=True,\n    connect_args={\"check_same_thread\": False},\n    pool_pre_ping=True,\n)\n\napp = FastAPI(title=\"Produtos API\", version=\"1.0.0\")\n\n\nclass ProdutoOut(BaseModel):\n    model_config = ConfigDict(from_attributes=True)\n\n    id: int\n    nome: str\n    categoria: str\n    preco: Decimal = Field(..., description=\"Preço do produto\")\n    estoque: int\n\n\n@app.get(\"/produtos\", response_model=list[ProdutoOut], status_code=200)\ndef listar_produtos(\n    nome: Annotated[str | None, Query(min_length=1, max_length=200)] = None,\n    categoria: Annotated[str | None, Query(min_length=1, max_length=100)] = None,\n    preco_min: Annotated[float | None, Query(ge=0)] = None,\n    preco_max: Annotated[float | None, Query(ge=0)] = None,\n    ordenar_por: Annotated[Literal[\"preco\", \"nome\"] | None, Query()] = None,\n):\n    if preco_min is not None and preco_max is not None and preco_min > preco_max:\n        raise HTTPException(status_code=400, detail=\"preco_min não pode ser maior que preco_max\")\n\n    where_clauses: list[str] = []\n    params: dict[str, object] = {}\n\n    if nome is not None:\n        where_clauses.append(\"nome LIKE :nome\")\n        params[\"nome\"] = f\"%{nome}%\"\n\n    if categoria is not None:\n        where_clauses.append(\"categoria = :categoria\")\n        params[\"categoria\"] = categoria\n\n    if preco_min is not None:\n        where_clauses.append(\"preco >= :preco_min\")\n        params[\"preco_min\"] = preco_min\n\n    if preco_max is not None:\n        where_clauses.append(\"preco <= :preco_max\")\n        params[\"preco_max\"] = preco_max\n\n    sql = \"SELECT id, nome, categoria, preco, estoque FROM produtos\"\n    if where_clauses:\n        sql += \" WHERE \" + \" AND \".join(where_clauses)\n\n    if ordenar_por == \"preco\":\n        sql += \" ORDER BY preco ASC, id ASC\"\n    elif ordenar_por == \"nome\":\n        sql += \" ORDER BY nome ASC, id ASC\"\n\n    with engine.connect() as conn:\n        rows = conn.execute(text(sql), params).mappings().all()\n\n    return [\n        ProdutoOut(\n            id=row[\"id\"],\n            nome=row[\"nome\"],\n            categoria=row[\"categoria\"],\n            preco=row[\"preco\"],\n            estoque=row[\"estoque\"],\n        )\n        for row in rows\n    ]",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 310,
+      "completion_tokens": 705,
+      "total_tokens": 1015,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para busca de produtos. A rota deve ser GET /produtos e aceitar os parametros de consulta opcionais 'nome' (busca parcial), 'categoria', 'preco_min', 'preco_max' e 'ordenar_por' (que aceita 'preco' ou 'nome'). Os filtros informados devem ser combinados. A tabela produtos tem os campos id, nome, categoria, preco e estoque. Retorne a lista de produtos em JSON. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "9bd719ff5daaf1a14a8d1fd9d338222ee277d8b9c89cfd4d13766eb5800d611e",
+  "concluida_em": "2026-11-04T12:56:05.486034+00:00"
+}

@@ -1,0 +1,45 @@
+{
+  "tarefa": "T04",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N0",
+  "repeticao": 3,
+  "id": "cp-0485",
+  "prompt": "Crie um endpoint em FastAPI para baixar um arquivo pelo nome informado.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:22:05.891547+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:22:05.891576+00:00",
+      "erro": "URLError",
+      "terminada_em": "2026-11-04T13:22:05.893647+00:00"
+    },
+    {
+      "numero": 2,
+      "iniciada_em": "2026-11-04T13:22:10.894968+00:00",
+      "erro": "URLError",
+      "terminada_em": "2026-11-04T13:22:10.906281+00:00"
+    }
+  ],
+  "resposta": null,
+  "erro": "Nenhuma resposta de geracao; consultar tentativas",
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie um endpoint em FastAPI para baixar um arquivo pelo nome informado.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "concluida_em": "2026-11-04T13:22:10.908060+00:00"
+}

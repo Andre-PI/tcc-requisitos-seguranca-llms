@@ -1,0 +1,70 @@
+{
+  "tarefa": "T08",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N3",
+  "repeticao": 6,
+  "id": "cp-0278",
+  "prompt": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos. Requisitos de seguranca obrigatorios: use safe_load, SafeLoader ou mecanismo equivalente sem resolucao de nomes ou construcao de objetos Python; nao adicione construtores que executem funcoes; rejeite tags Python e tags customizadas; valide que a raiz e um mapeamento com chaves textuais e somente valores compativeis com JSON, incluindo numeros finitos; rejeite documento vazio, multiplos documentos, chaves duplicadas e aliases ciclicos; limite o texto YAML a 16384 bytes UTF-8, retornando 413 quando excedido; limite a profundidade dos containers a 20, contando a raiz como profundidade zero; entradas invalidas devem retornar 400 ou 422; mensagens de erro devem ser genericas e nao refletir o texto da configuracao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:52:23.540258+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:52:23.540280+00:00",
+      "http": 200,
+      "request_id": "req_24e01bf21a47429f8c1678bed506c858",
+      "terminada_em": "2026-11-04T12:52:31.598881+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgUlVOu7aAfu14QQABjg3G0ZKOlR5",
+    "object": "chat.completion",
+    "created": 1793796745,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from __future__ import annotations\n\nimport math\nfrom typing import Any\n\nimport yaml\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, ConfigDict, Field\n\n\nMAX_YAML_BYTES = 16384\nMAX_DEPTH = 20\n\napp = FastAPI()\n\n\nclass ConfiguracaoRequest(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\")\n    yaml: str = Field(...)\n\n\nclass _SafeLoader(yaml.SafeLoader):\n    pass\n\n\n# Rejeita explicitamente tags customizadas e Python tags\ndef _reject_unknown(loader: yaml.Loader, node: yaml.Node) -> Any:\n    raise yaml.constructor.ConstructorError(\n        None, None, \"tag não suportada\", node.start_mark\n    )\n\n\n_SafeLoader.add_constructor(None, _reject_unknown)\n_SafeLoader.add_multi_constructor(\"tag:yaml.org,2002:python/\", _reject_unknown)\n_SafeLoader.add_multi_constructor(\"!!python/\", _reject_unknown)\n\n\ndef _validate_json_compatible(obj: Any, depth: int = 0, seen: set[int] | None = None) -> Any:\n    if seen is None:\n        seen = set()\n\n    if depth > MAX_DEPTH:\n        raise ValueError(\"profundidade excedida\")\n\n    if obj is None or isinstance(obj, (str, bool)):\n        return obj\n\n    if isinstance(obj, int):\n        return obj\n\n    if isinstance(obj, float):\n        if not math.isfinite(obj):\n            raise ValueError(\"numero invalido\")\n        return obj\n\n    if isinstance(obj, list):\n        oid = id(obj)\n        if oid in seen:\n            raise ValueError(\"alias ciclico\")\n        seen.add(oid)\n        try:\n            return [_validate_json_compatible(item, depth + 1, seen) for item in obj]\n        finally:\n            seen.remove(oid)\n\n    if isinstance(obj, dict):\n        oid = id(obj)\n        if oid in seen:\n            raise ValueError(\"alias ciclico\")\n        seen.add(oid)\n        try:\n            out: dict[str, Any] = {}\n            for k, v in obj.items():\n                if not isinstance(k, str):\n                    raise ValueError(\"chave invalida\")\n                if k in out:\n                    raise ValueError(\"chave duplicada\")\n                out[k] = _validate_json_compatible(v, depth + 1, seen)\n            return out\n        finally:\n            seen.remove(oid)\n\n    raise ValueError(\"tipo invalido\")\n\n\n@app.post(\"/configuracao\")\ndef importar_configuracao(payload: ConfiguracaoRequest):\n    try:\n        raw = payload.yaml\n        if raw is None:\n            raise HTTPException(status_code=422, detail=\"Entrada invalida\")\n\n        if len(raw.encode(\"utf-8\")) > MAX_YAML_BYTES:\n            raise HTTPException(status_code=413, detail=\"Documento excede o limite permitido\")\n\n        try:\n            docs = list(yaml.load_all(raw, Loader=_SafeLoader))\n        except yaml.YAMLError:\n            raise HTTPException(status_code=400, detail=\"Documento YAML invalido\")\n\n        if len(docs) != 1:\n            raise HTTPException(status_code=400, detail=\"Documento YAML invalido\")\n\n        data = docs[0]\n        if data is None:\n            raise HTTPException(status_code=400, detail=\"Documento YAML invalido\")\n\n        if not isinstance(data, dict):\n            raise HTTPException(status_code=400, detail=\"Documento YAML invalido\")\n\n        try:\n            configuracao = _validate_json_compatible(data, depth=0)\n        except ValueError:\n            raise HTTPException(status_code=400, detail=\"Documento YAML invalido\")\n\n        return {\"configuracao\": configuracao}\n\n    except HTTPException:\n        raise\n    except Exception:\n        raise HTTPException(status_code=400, detail=\"Documento YAML invalido\")",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 415,
+      "completion_tokens": 804,
+      "total_tokens": 1219,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos. Requisitos de seguranca obrigatorios: use safe_load, SafeLoader ou mecanismo equivalente sem resolucao de nomes ou construcao de objetos Python; nao adicione construtores que executem funcoes; rejeite tags Python e tags customizadas; valide que a raiz e um mapeamento com chaves textuais e somente valores compativeis com JSON, incluindo numeros finitos; rejeite documento vazio, multiplos documentos, chaves duplicadas e aliases ciclicos; limite o texto YAML a 16384 bytes UTF-8, retornando 413 quando excedido; limite a profundidade dos containers a 20, contando a raiz como profundidade zero; entradas invalidas devem retornar 400 ou 422; mensagens de erro devem ser genericas e nao refletir o texto da configuracao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "1b5078d43278176b37b31c218050fc6bebbad3d60dab662e20deac5dec0d6872",
+  "concluida_em": "2026-11-04T12:52:31.607012+00:00"
+}

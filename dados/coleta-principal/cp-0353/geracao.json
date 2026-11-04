@@ -1,0 +1,73 @@
+{
+  "tarefa": "T03",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N2",
+  "repeticao": 8,
+  "id": "cp-0353",
+  "prompt": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:59:51.716291+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:59:51.716309+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T12:59:58.295229+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport os\nimport uuid\nimport io\nfrom fastapi import FastAPI, File, UploadFile, HTTPException, status\nfrom fastapi.responses import JSONResponse\nfrom PIL import Image, UnidentifiedImageError\n\napp = FastAPI()\n\nUPLOAD_DIR = os.environ.get(\"TCC_UPLOAD_DIR\", \".\")\nos.makedirs(UPLOAD_DIR, exist_ok=True)\n\nMAX_FILE_SIZE = 10 * 1024 * 1024  # 10 MB limit\n\n\n@app.post(\"/foto\", status_code=status.HTTP_201_CREATED)\nasync def upload_foto(arquivo: UploadFile = File(...)):\n    contents = await arquivo.read()\n\n    if len(contents) == 0:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Arquivo vazio\",\n        )\n\n    if len(contents) > MAX_FILE_SIZE:\n        raise HTTPException(\n            status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,\n            detail=\"Arquivo excede o tamanho maximo permitido\",\n        )\n\n    try:\n        image = Image.open(io.BytesIO(contents))\n        img_format = image.format\n        image.verify()\n    except (UnidentifiedImageError, Exception):\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Formato de imagem invalido ou corrompido\",\n        )\n\n    if img_format not in (\"JPEG\", \"PNG\"):\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Apenas formatos JPEG e PNG sao suportados\",\n        )\n\n    ext = \".jpg\" if img_format == \"JPEG\" else \".png\"\n    safe_filename = f\"{uuid.uuid4().hex}{ext}\"\n    destination_path = os.path.join(UPLOAD_DIR, safe_filename)\n\n    real_upload_dir = os.path.realpath(UPLOAD_DIR)\n    real_destination = os.path.realpath(destination_path)\n    if not (\n        real_destination == real_upload_dir\n        or real_destination.startswith(real_upload_dir + os.sep)\n    ):\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Caminho de arquivo invalido\",\n        )\n\n    with open(destination_path, \"wb\") as f:\n        f.write(contents)\n\n    return JSONResponse(\n        status_code=status.HTTP_201_CREATED,\n        content={\"arquivo\": safe_filename},\n    )\n```",
+              "thoughtSignature": "EmkKZwFpFH0TuFUCChFTq6hIfgNGQ8npd8mO7xo919z+uO870wL1UsO7o3FS4K5lTnx5vfwLhCCMKSjM2w3DBN/l5/+gpTqumH7NOFvVWOUwuSdZZSipsJopssBuKm1ih/2HfNfAUtQc264="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 317,
+      "candidatesTokenCount": 625,
+      "totalTokenCount": 942,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 317
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "SizravPjAaCNytMPq53SOQ"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "b508b5eca877c51a271f9f4218d15d17e028cd7992373c2be39920a7e9667297",
+  "concluida_em": "2026-11-04T12:59:58.298283+00:00"
+}

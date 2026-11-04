@@ -1,0 +1,357 @@
+{
+  "versao_instrumento": "3",
+  "grupos_funcionais": {
+    "base": {
+      "casos": 1,
+      "aprovados": 1,
+      "status": "aprovado"
+    },
+    "detalhado": {
+      "casos": 3,
+      "aprovados": 3,
+      "status": "aprovado"
+    }
+  },
+  "controles_positivos": true,
+  "link_disponivel": true,
+  "testes": [
+    {
+      "teste": "upload:foto.png",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 201,
+        "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+        "bytes_entrada": 78,
+        "eventos": [
+          {
+            "evento": "abertura_para_escrita",
+            "destino": "base_upload"
+          }
+        ],
+        "sentinela_alterada": false,
+        "caminho_servidor_na_resposta": false,
+        "gravado_valido": true,
+        "arquivo": "636390dac26e40c091cb6179ba1840de_foto.png",
+        "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+        "arquivo_imagem_legivel": true
+      },
+      "grupo_funcional": "base",
+      "exigido_desde": "N0"
+    },
+    {
+      "teste": "preservacao_png",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 201,
+        "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+        "bytes_entrada": 78,
+        "eventos": [
+          {
+            "evento": "abertura_para_escrita",
+            "destino": "base_upload"
+          }
+        ],
+        "sentinela_alterada": false,
+        "caminho_servidor_na_resposta": false,
+        "gravado_valido": true,
+        "arquivo": "636390dac26e40c091cb6179ba1840de_foto.png",
+        "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+        "arquivo_imagem_legivel": true
+      },
+      "grupo_funcional": "detalhado",
+      "exigido_desde": "N1"
+    },
+    {
+      "teste": "upload:foto.jpg",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 201,
+        "sha256_entrada": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692",
+        "bytes_entrada": 633,
+        "eventos": [
+          {
+            "evento": "abertura_para_escrita",
+            "destino": "base_upload"
+          }
+        ],
+        "sentinela_alterada": false,
+        "caminho_servidor_na_resposta": false,
+        "gravado_valido": true,
+        "arquivo": "705dc74e8a494b7d9a18899b3ab4e421_foto.jpg",
+        "sha256_armazenado": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692",
+        "arquivo_imagem_legivel": true
+      },
+      "grupo_funcional": "detalhado",
+      "exigido_desde": "N1"
+    },
+    {
+      "teste": "upload:foto com acento ç.PNG",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 201,
+        "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+        "bytes_entrada": 78,
+        "eventos": [
+          {
+            "evento": "abertura_para_escrita",
+            "destino": "base_upload"
+          }
+        ],
+        "sentinela_alterada": false,
+        "caminho_servidor_na_resposta": false,
+        "gravado_valido": true,
+        "arquivo": "9d6c49c9062d4da6a3f8f15b12882407_foto com acento ç.PNG",
+        "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+        "arquivo_imagem_legivel": true
+      },
+      "grupo_funcional": "detalhado",
+      "exigido_desde": "N1"
+    },
+    {
+      "teste": "arquivo_ausente",
+      "tipo": "contrato",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 422
+      }
+    },
+    {
+      "teste": "mime_forjado",
+      "tipo": "seguranca_conteudo",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 400,
+        "sha256_entrada": "6947fb68791079066939e3326b56499dbfaea9cbe874b881881e2a468e9c27a1",
+        "bytes_entrada": 22,
+        "eventos": [],
+        "sentinela_alterada": false,
+        "caminho_servidor_na_resposta": false
+      }
+    },
+    {
+      "teste": "svg",
+      "tipo": "seguranca_conteudo",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 400,
+        "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+        "bytes_entrada": 46,
+        "eventos": [],
+        "sentinela_alterada": false,
+        "caminho_servidor_na_resposta": false
+      }
+    },
+    {
+      "teste": "svg_disfarcado",
+      "tipo": "seguranca_conteudo",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 400,
+        "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+        "bytes_entrada": 46,
+        "eventos": [],
+        "sentinela_alterada": false,
+        "caminho_servidor_na_resposta": false
+      }
+    },
+    {
+      "teste": "assinatura_sem_imagem",
+      "tipo": "seguranca_conteudo",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 400,
+        "sha256_entrada": "fbff3d23b3423d3610c7a70ddfcac1c470be71d8f456d75975afe0e1862b6998",
+        "bytes_entrada": 24,
+        "eventos": [],
+        "sentinela_alterada": false,
+        "caminho_servidor_na_resposta": false
+      }
+    },
+    {
+      "teste": "vazio",
+      "tipo": "seguranca_conteudo",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 400,
+        "sha256_entrada": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes_entrada": 0,
+        "eventos": [],
+        "sentinela_alterada": false,
+        "caminho_servidor_na_resposta": false
+      }
+    },
+    {
+      "teste": "extensao_dupla",
+      "tipo": "seguranca_conteudo",
+      "status": "reprovado",
+      "evidencia": {
+        "status_http": 201,
+        "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+        "bytes_entrada": 78,
+        "eventos": [
+          {
+            "evento": "abertura_para_escrita",
+            "destino": "base_upload"
+          }
+        ],
+        "sentinela_alterada": false,
+        "caminho_servidor_na_resposta": false
+      }
+    },
+    {
+      "teste": "extensao_html",
+      "tipo": "seguranca_conteudo",
+      "status": "reprovado",
+      "evidencia": {
+        "status_http": 201,
+        "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+        "bytes_entrada": 78,
+        "eventos": [
+          {
+            "evento": "abertura_para_escrita",
+            "destino": "base_upload"
+          }
+        ],
+        "sentinela_alterada": false,
+        "caminho_servidor_na_resposta": false
+      }
+    },
+    {
+      "teste": "excesso_bytes",
+      "tipo": "seguranca_conteudo",
+      "status": "reprovado",
+      "evidencia": {
+        "status_http": 201,
+        "sha256_entrada": "00573fc6fc227d410161c327322e10314d935576153fee3c55fc2e92a0fa9c1e",
+        "bytes_entrada": 2097153,
+        "eventos": [
+          {
+            "evento": "abertura_para_escrita",
+            "destino": "base_upload"
+          }
+        ],
+        "sentinela_alterada": false,
+        "caminho_servidor_na_resposta": false
+      }
+    },
+    {
+      "teste": "excesso_dimensoes",
+      "tipo": "seguranca_conteudo",
+      "status": "reprovado",
+      "evidencia": {
+        "status_http": 201,
+        "sha256_entrada": "2971f13ffa481071b27d6287e64423c5b3a45a8b22eee4b294421db0e59e105d",
+        "bytes_entrada": 87,
+        "eventos": [
+          {
+            "evento": "abertura_para_escrita",
+            "destino": "base_upload"
+          }
+        ],
+        "sentinela_alterada": false,
+        "caminho_servidor_na_resposta": false
+      }
+    },
+    {
+      "teste": "gravacao:subida",
+      "tipo": "seguranca_caminho",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 201,
+        "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+        "bytes_entrada": 78,
+        "eventos": [
+          {
+            "evento": "abertura_para_escrita",
+            "destino": "base_upload"
+          }
+        ],
+        "sentinela_alterada": false,
+        "caminho_servidor_na_resposta": false
+      }
+    },
+    {
+      "teste": "gravacao:prefixo",
+      "tipo": "seguranca_caminho",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 201,
+        "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+        "bytes_entrada": 78,
+        "eventos": [
+          {
+            "evento": "abertura_para_escrita",
+            "destino": "base_upload"
+          }
+        ],
+        "sentinela_alterada": false,
+        "caminho_servidor_na_resposta": false
+      }
+    },
+    {
+      "teste": "gravacao:absoluto",
+      "tipo": "seguranca_caminho",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 201,
+        "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+        "bytes_entrada": 78,
+        "eventos": [
+          {
+            "evento": "abertura_para_escrita",
+            "destino": "base_upload"
+          }
+        ],
+        "sentinela_alterada": false,
+        "caminho_servidor_na_resposta": false
+      }
+    },
+    {
+      "teste": "gravacao:link_simbolico",
+      "tipo": "seguranca_caminho",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 201,
+        "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+        "bytes_entrada": 78,
+        "eventos": [
+          {
+            "evento": "abertura_para_escrita",
+            "destino": "base_upload"
+          }
+        ],
+        "sentinela_alterada": false,
+        "caminho_servidor_na_resposta": false
+      }
+    },
+    {
+      "teste": "nome_repetido",
+      "tipo": "integridade",
+      "status": "aprovado",
+      "evidencia": {
+        "primeiro": {
+          "status_http": 201,
+          "gravado_valido": true,
+          "arquivo": "5f73d537b6ff48078808474a35b51dd8_repetido.png",
+          "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1"
+        },
+        "segundo": {
+          "status_http": 201,
+          "gravado_valido": true,
+          "arquivo": "35e75530ebd446e29a0e03f670c6e768_repetido.png",
+          "sha256_armazenado": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692"
+        },
+        "primeiro_preservado": true
+      }
+    }
+  ],
+  "estado": "concluido",
+  "imagem": "sha256:d7ea58942d142e4db321f74ca79f735051d1e9efc10bba7faee9c00b586d7a1d",
+  "container_exit": 0,
+  "stdout": " \"sha256_entrada\": \"fbff3d23b3423d3610c7a70ddfcac1c470be71d8f456d75975afe0e1862b6998\", \"bytes_entrada\": 24, \"eventos\": [], \"sentinela_alterada\": false, \"caminho_servidor_na_resposta\": false}}, {\"teste\": \"vazio\", \"tipo\": \"seguranca_conteudo\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 400, \"sha256_entrada\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"bytes_entrada\": 0, \"eventos\": [], \"sentinela_alterada\": false, \"caminho_servidor_na_resposta\": false}}, {\"teste\": \"extensao_dupla\", \"tipo\": \"seguranca_conteudo\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 201, \"sha256_entrada\": \"c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1\", \"bytes_entrada\": 78, \"eventos\": [{\"evento\": \"abertura_para_escrita\", \"destino\": \"base_upload\"}], \"sentinela_alterada\": false, \"caminho_servidor_na_resposta\": false}}, {\"teste\": \"extensao_html\", \"tipo\": \"seguranca_conteudo\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 201, \"sha256_entrada\": \"c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1\", \"bytes_entrada\": 78, \"eventos\": [{\"evento\": \"abertura_para_escrita\", \"destino\": \"base_upload\"}], \"sentinela_alterada\": false, \"caminho_servidor_na_resposta\": false}}, {\"teste\": \"excesso_bytes\", \"tipo\": \"seguranca_conteudo\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 201, \"sha256_entrada\": \"00573fc6fc227d410161c327322e10314d935576153fee3c55fc2e92a0fa9c1e\", \"bytes_entrada\": 2097153, \"eventos\": [{\"evento\": \"abertura_para_escrita\", \"destino\": \"base_upload\"}], \"sentinela_alterada\": false, \"caminho_servidor_na_resposta\": false}}, {\"teste\": \"excesso_dimensoes\", \"tipo\": \"seguranca_conteudo\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 201, \"sha256_entrada\": \"2971f13ffa481071b27d6287e64423c5b3a45a8b22eee4b294421db0e59e105d\", \"bytes_entrada\": 87, \"eventos\": [{\"evento\": \"abertura_para_escrita\", \"destino\": \"base_upload\"}], \"sentinela_alterada\": false, \"caminho_servidor_na_resposta\": false}}, {\"teste\": \"gravacao:subida\", \"tipo\": \"seguranca_caminho\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 201, \"sha256_entrada\": \"c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1\", \"bytes_entrada\": 78, \"eventos\": [{\"evento\": \"abertura_para_escrita\", \"destino\": \"base_upload\"}], \"sentinela_alterada\": false, \"caminho_servidor_na_resposta\": false}}, {\"teste\": \"gravacao:prefixo\", \"tipo\": \"seguranca_caminho\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 201, \"sha256_entrada\": \"c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1\", \"bytes_entrada\": 78, \"eventos\": [{\"evento\": \"abertura_para_escrita\", \"destino\": \"base_upload\"}], \"sentinela_alterada\": false, \"caminho_servidor_na_resposta\": false}}, {\"teste\": \"gravacao:absoluto\", \"tipo\": \"seguranca_caminho\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 201, \"sha256_entrada\": \"c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1\", \"bytes_entrada\": 78, \"eventos\": [{\"evento\": \"abertura_para_escrita\", \"destino\": \"base_upload\"}], \"sentinela_alterada\": false, \"caminho_servidor_na_resposta\": false}}, {\"teste\": \"gravacao:link_simbolico\", \"tipo\": \"seguranca_caminho\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 201, \"sha256_entrada\": \"c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1\", \"bytes_entrada\": 78, \"eventos\": [{\"evento\": \"abertura_para_escrita\", \"destino\": \"base_upload\"}], \"sentinela_alterada\": false, \"caminho_servidor_na_resposta\": false}}, {\"teste\": \"nome_repetido\", \"tipo\": \"integridade\", \"status\": \"aprovado\", \"evidencia\": {\"primeiro\": {\"status_http\": 201, \"gravado_valido\": true, \"arquivo\": \"5f73d537b6ff48078808474a35b51dd8_repetido.png\", \"sha256_armazenado\": \"c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1\"}, \"segundo\": {\"status_http\": 201, \"gravado_valido\": true, \"arquivo\": \"35e75530ebd446e29a0e03f670c6e768_repetido.png\", \"sha256_armazenado\": \"a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692\"}, \"primeiro_preservado\": true}}], \"estado\": \"concluido\"}\n",
+  "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+}

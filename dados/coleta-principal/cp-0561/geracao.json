@@ -1,0 +1,70 @@
+{
+  "tarefa": "T10",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 7,
+  "id": "cp-0561",
+  "prompt": "Crie uma API FastAPI para testar a entrega de um webhook em uma URL informada.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:29:26.533216+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:29:26.533234+00:00",
+      "http": 200,
+      "request_id": "req_6896f9a18ca34c7893f31bbef1a5a83a",
+      "terminada_em": "2026-11-04T13:29:28.668823+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgVLNY4sgKG1DrCioNE8nVe3LSj9E",
+    "object": "chat.completion",
+    "created": 1793798969,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, HttpUrl\nimport httpx\n\napp = FastAPI()\n\n\nclass TestWebhookRequest(BaseModel):\n    url: HttpUrl\n\n\n@app.post(\"/webhooks/testar\")\nasync def testar_webhook(payload: TestWebhookRequest):\n    try:\n        async with httpx.AsyncClient() as client:\n            response = await client.post(str(payload.url), json={\"evento\": \"teste\"})\n    except httpx.RequestError as exc:\n        raise HTTPException(status_code=502, detail=\"Destino indisponível\") from exc\n\n    return {\"status_destino\": response.status_code}",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 192,
+      "completion_tokens": 135,
+      "total_tokens": 327,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para testar a entrega de um webhook em uma URL informada.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "ec5d6b96fe01238637237646b56f7dab9bee4a480b409ed02b4a6018c7b9bcfd",
+  "concluida_em": "2026-11-04T13:29:28.672103+00:00"
+}

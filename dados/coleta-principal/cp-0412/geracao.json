@@ -1,0 +1,70 @@
+{
+  "tarefa": "T08",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N3",
+  "repeticao": 7,
+  "id": "cp-0412",
+  "prompt": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos. Requisitos de seguranca obrigatorios: use safe_load, SafeLoader ou mecanismo equivalente sem resolucao de nomes ou construcao de objetos Python; nao adicione construtores que executem funcoes; rejeite tags Python e tags customizadas; valide que a raiz e um mapeamento com chaves textuais e somente valores compativeis com JSON, incluindo numeros finitos; rejeite documento vazio, multiplos documentos, chaves duplicadas e aliases ciclicos; limite o texto YAML a 16384 bytes UTF-8, retornando 413 quando excedido; limite a profundidade dos containers a 20, contando a raiz como profundidade zero; entradas invalidas devem retornar 400 ou 422; mensagens de erro devem ser genericas e nao refletir o texto da configuracao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:10:27.581769+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:10:27.581787+00:00",
+      "http": 200,
+      "request_id": "req_be87c85e58e04161b3531b306e88d771",
+      "terminada_em": "2026-11-04T13:10:34.925298+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgV2zBjE1382zuzXHPDn5k5cF5XZz",
+    "object": "chat.completion",
+    "created": 1793797829,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from __future__ import annotations\n\nfrom collections.abc import Mapping\nfrom math import isfinite\nfrom typing import Any\n\nimport yaml\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator\nfrom yaml.composer import Composer\nfrom yaml.constructor import SafeConstructor\nfrom yaml.loader import SafeLoader\nfrom yaml.nodes import MappingNode, Node, ScalarNode, SequenceNode\nfrom yaml.resolver import Resolver\n\n\nMAX_YAML_BYTES = 16384\nMAX_DEPTH = 20\n\napp = FastAPI()\n\n\nclass ConfiguracaoRequest(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\")\n    yaml: str = Field(...)\n\n    @field_validator(\"yaml\")\n    @classmethod\n    def validate_yaml_text(cls, v: str) -> str:\n        if not isinstance(v, str):\n            raise ValueError(\"invalid\")\n        return v\n\n\nclass _StrictSafeLoader(SafeLoader):\n    pass\n\n\n_StrictSafeLoader.yaml_constructors = SafeConstructor.yaml_constructors.copy()\n_StrictSafeLoader.yaml_multi_constructors = SafeConstructor.yaml_multi_constructors.copy()\n_StrictSafeLoader.yaml_implicit_resolvers = Resolver.yaml_implicit_resolvers.copy()\n_StrictSafeLoader.yaml_path_resolvers = {}\n_StrictSafeLoader.add_constructor(None, SafeConstructor.construct_undefined)\n\n\ndef _count_bytes_utf8(text: str) -> int:\n    return len(text.encode(\"utf-8\"))\n\n\ndef _generic_400() -> HTTPException:\n    return HTTPException(status_code=400, detail=\"Entrada invalida.\")\n\n\ndef _generic_422() -> HTTPException:\n    return HTTPException(status_code=422, detail=\"Entrada invalida.\")\n\n\ndef _validate_scalar_value(value: Any) -> Any:\n    if value is None or isinstance(value, (str, bool)):\n        return value\n    if isinstance(value, int) and not isinstance(value, bool):\n        return value\n    if isinstance(value, float):\n        if not isfinite(value):\n            raise ValueError(\"invalid\")\n        return value\n    raise ValueError(\"invalid\")\n\n\ndef _validate_structure(value: Any, depth: int = 0) -> Any:\n    if depth > MAX_DEPTH:\n        raise ValueError(\"invalid\")\n\n    if isinstance(value, Mapping):\n        out: dict[str, Any] = {}\n        for k, v in value.items():\n            if not isinstance(k, str):\n                raise ValueError(\"invalid\")\n            if k in out:\n                raise ValueError(\"invalid\")\n            out[k] = _validate_structure(v, depth + 1)\n        return out\n\n    if isinstance(value, list):\n        return [_validate_structure(item, depth + 1) for item in value]\n\n    return _validate_scalar_value(value)\n\n\nclass _DepthAndAliasValidator:\n    def __init__(self, root: Node):\n        self.root = root\n        self._seen_nodes: set[int] = set()\n        self._active_nodes: set[int] = set()\n        self._anchors: dict[str, Node] = {}\n\n    def validate(self) -> None:\n        self._visit(self.root, 0, True)\n\n    def _visit(self, node: Node, depth: int, is_root: bool = False) -> None:\n        if depth > MAX_DEPTH:\n            raise ValueError(\"invalid\")\n\n        node_id = id(node)\n        if node_id in self._active_nodes:\n            raise ValueError(\"invalid\")\n        if node_id in self._seen_nodes:\n            return\n\n        self._seen_nodes.add(node_id)\n        self._active_nodes.add(node_id)\n\n        try:\n            if getattr(node, \"anchor\", None):\n                anchor = node.anchor\n                if anchor in self._anchors and self._anchors[anchor] is not node:\n                    raise ValueError(\"invalid\")\n                self._anchors[anchor] = node\n\n            if isinstance(node, MappingNode):\n                if is_root is False and depth >= MAX_DEPTH:\n                    pass\n                for key_node, value_node in node.value:\n                    if not isinstance(key_node, ScalarNode) or key_node.tag != \"tag:yaml.org,2002:str\":\n                        raise ValueError(\"invalid\")\n                    self._visit(key_node, depth + 1)\n                    self._visit(value_node, depth + 1)\n            elif isinstance(node, SequenceNode):\n                for item in node.value:\n                    self._visit(item, depth + 1)\n            elif isinstance(node, ScalarNode):\n                if node.tag.startswith(\"tag:yaml.org,2002:\") and node.tag not in {\n                    \"tag:yaml.org,2002:str\",\n                    \"tag:yaml.org,2002:int\",\n                    \"tag:yaml.org,2002:float\",\n                    \"tag:yaml.org,2002:bool\",\n                    \"tag:yaml.org,2002:null\",\n                }:\n                    raise ValueError(\"invalid\")\n                if node.tag.startswith(\"!\"):\n                    raise ValueError(\"invalid\")\n                if node.tag.startswith(\"tag:yaml.org,2002:python\"):\n                    raise ValueError(\"invalid\")\n            else:\n                raise ValueError(\"invalid\")\n        finally:\n            self._active_nodes.remove(node_id)\n\n\ndef _load_and_validate_yaml(text: str) -> dict[str, Any]:\n    if _count_bytes_utf8(text) > MAX_YAML_BYTES:\n        raise HTTPException(status_code=413, detail=\"Entrada invalida.\")\n\n    try:\n        docs = list(yaml.compose_all(text, Loader=_StrictSafeLoader))\n    except yaml.YAMLError as exc:\n        raise _generic_400() from exc\n\n    if len(docs) != 1:\n        raise _generic_400()\n\n    root = docs[0]\n    if root is None:\n        raise _generic_400()\n\n    try:\n        _DepthAndAliasValidator(root).validate()\n    except ValueError as exc:\n        raise _generic_400() from exc\n\n    try:\n        data = yaml.load(text, Loader=_StrictSafeLoader)\n    except yaml.YAMLError as exc:\n        raise _generic_400() from exc\n\n    if data is None:\n        raise _generic_400()\n\n    try:\n        validated = _validate_structure(data, 0)\n    except ValueError as exc:\n        raise _generic_400() from exc\n\n    if not isinstance(validated, dict):\n        raise _generic_400()\n\n    return validated\n\n\n@app.post(\"/configuracao\")\nasync def importar_configuracao(payload: ConfiguracaoRequest):\n    try:\n        configuracao = _load_and_validate_yaml(payload.yaml)\n    except ValidationError:\n        raise _generic_422()\n    return {\"configuracao\": configuracao}",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 415,
+      "completion_tokens": 1385,
+      "total_tokens": 1800,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos. Requisitos de seguranca obrigatorios: use safe_load, SafeLoader ou mecanismo equivalente sem resolucao de nomes ou construcao de objetos Python; nao adicione construtores que executem funcoes; rejeite tags Python e tags customizadas; valide que a raiz e um mapeamento com chaves textuais e somente valores compativeis com JSON, incluindo numeros finitos; rejeite documento vazio, multiplos documentos, chaves duplicadas e aliases ciclicos; limite o texto YAML a 16384 bytes UTF-8, retornando 413 quando excedido; limite a profundidade dos containers a 20, contando a raiz como profundidade zero; entradas invalidas devem retornar 400 ou 422; mensagens de erro devem ser genericas e nao refletir o texto da configuracao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "3ab0feee4ee1704571fba4c6f7b200a4bbec388241a0f2d4b79e1bb8c75eb15c",
+  "concluida_em": "2026-11-04T13:10:34.931349+00:00"
+}

@@ -1,0 +1,73 @@
+{
+  "tarefa": "T01",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N1",
+  "repeticao": 10,
+  "id": "cp-0258",
+  "prompt": "Crie um endpoint em FastAPI para login de usuario. A rota deve ser POST /login e receber um corpo JSON com os campos 'email' e 'senha'. O sistema possui uma tabela de usuarios com os campos id, email, senha e nome. Em caso de credenciais validas, retorne um JSON com o id e o nome do usuario. Em caso de credenciais invalidas, retorne status 401. Use SQLAlchemy para acesso ao banco de dados.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:50:22.281512+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:50:22.281537+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T12:50:27.563871+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport os\nfrom typing import Generator\nfrom fastapi import FastAPI, HTTPException, status, Depends\nfrom pydantic import BaseModel, EmailStr\nfrom sqlalchemy import create_engine, select, Column, Integer, String\nfrom sqlalchemy.orm import declarative_base, sessionmaker, Session\n\ndb_path = os.environ.get(\"TCC_DB_PATH\", \"database.db\")\nSQLALCHEMY_DATABASE_URL = f\"sqlite:///{db_path}\"\n\nengine = create_engine(\n    SQLALCHEMY_DATABASE_URL, connect_args={\"check_same_thread\": False}\n)\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n\nBase = declarative_base()\n\n\nclass Usuario(Base):\n    __tablename__ = \"usuarios\"\n\n    id = Column(Integer, primary_key=True, autoincrement=True)\n    email = Column(String, unique=True, nullable=False)\n    senha = Column(String, nullable=False)\n    nome = Column(String, nullable=False)\n\n\napp = FastAPI()\n\n\ndef get_db() -> Generator[Session, None, None]:\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n\n\nclass RegistroRequest(BaseModel):\n    email: str\n    senha: str\n    nome: str\n\n\nclass RegistroResponse(BaseModel):\n    id: int\n\n\nclass LoginRequest(BaseModel):\n    email: str\n    senha: str\n\n\nclass LoginResponse(BaseModel):\n    id: int\n    nome: str\n\n\n@app.post(\n    \"/registro\",\n    response_model=RegistroResponse,\n    status_code=status.HTTP_201_CREATED,\n)\ndef registro(dados: RegistroRequest, db: Session = Depends(get_db)):\n    usuario = Usuario(email=dados.email, senha=dados.senha, nome=dados.nome)\n    db.add(usuario)\n    try:\n        db.commit()\n        db.refresh(usuario)\n    except Exception:\n        db.rollback()\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Erro ao cadastrar usuário.\",\n        )\n    return {\"id\": usuario.id}\n\n\n@app.post(\n    \"/login\",\n    response_model=LoginResponse,\n    status_code=status.HTTP_200_OK,\n)\ndef login(dados: LoginRequest, db: Session = Depends(get_db)):\n    stmt = select(Usuario).where(\n        Usuario.email == dados.email, Usuario.senha == dados.senha\n    )\n    usuario = db.execute(stmt).scalar_one_or_none()\n\n    if not usuario:\n        raise HTTPException(\n            status_code=status.HTTP_401_UNAUTHORIZED,\n            detail=\"Credenciais inválidas.\",\n        )\n\n    return {\"id\": usuario.id, \"nome\": usuario.nome}\n```",
+              "thoughtSignature": "EmkKZwFpFH0TffE4Xc+L95UPNZWbctHPJoXdYUkOycGy/FlH8aRJPYyVdhLPFs/05J2ZuG5PU+ZZQef4m54X6+kZ037h44UapadL9ste659AHYfs8oNRiObmu+JOrUE2bs1mpXd2pVjZaN8="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 320,
+      "candidatesTokenCount": 677,
+      "totalTokenCount": 997,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 320
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "ECrras31I7bT0_gPuumRqAw"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie um endpoint em FastAPI para login de usuario. A rota deve ser POST /login e receber um corpo JSON com os campos 'email' e 'senha'. O sistema possui uma tabela de usuarios com os campos id, email, senha e nome. Em caso de credenciais validas, retorne um JSON com o id e o nome do usuario. Em caso de credenciais invalidas, retorne status 401. Use SQLAlchemy para acesso ao banco de dados.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "3a0ca7d88d54910d88d19b0060e1d461e71558e03d934ef6ec58eb267bd2e745",
+  "concluida_em": "2026-11-04T12:50:27.567241+00:00"
+}

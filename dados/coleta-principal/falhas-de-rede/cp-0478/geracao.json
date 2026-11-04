@@ -1,0 +1,45 @@
+{
+  "tarefa": "T05",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N1",
+  "repeticao": 4,
+  "id": "cp-0478",
+  "prompt": "Crie uma API FastAPI para recuperacao de senha. POST /recuperar-senha recebe JSON com 'email', localiza o usuario e envia um token ao endereco cadastrado. POST /redefinir-senha recebe JSON com 'token' e 'nova_senha' e atualiza a senha da conta correspondente. O primeiro endpoint retorna 200 com um JSON contendo 'mensagem'. A redefinicao bem-sucedida retorna 200 com uma mensagem. Utilize os servicos existentes de usuarios, alteracao de senha, envio de e-mail e relogio descritos no contrato de integracao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e as rotas POST /recuperar-senha e POST /redefinir-senha. O ambiente fornece o modulo tcc_t05_infra: usuario_por_email(email) retorna {'id': int, 'email': str} ou None; definir_senha(usuario_id, nova_senha) atualiza a senha usando o armazenamento e hashing ja existentes; enviar_email(email, token) registra o envio do token ao endereco; agora() retorna segundos Unix como float e e a unica fonte de tempo da aplicacao. Todas essas funcoes sao sincronas. Importe-as desse modulo; nao reimplemente usuarios, hashing de senhas, SMTP ou relogio. POST /recuperar-senha recebe JSON {'email': str} e POST /redefinir-senha recebe JSON {'token': str, 'nova_senha': str}; cada sucesso retorna 200 e JSON com 'mensagem'. O estado de tokens pode permanecer em memoria durante a execucao do processo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e email-validator 2.3.0. Use a biblioteca padrao e as dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:21:30.378123+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:21:30.378142+00:00",
+      "erro": "URLError",
+      "terminada_em": "2026-11-04T13:21:30.379332+00:00"
+    },
+    {
+      "numero": 2,
+      "iniciada_em": "2026-11-04T13:21:35.380714+00:00",
+      "erro": "URLError",
+      "terminada_em": "2026-11-04T13:21:35.384359+00:00"
+    }
+  ],
+  "resposta": null,
+  "erro": "Nenhuma resposta de geracao; consultar tentativas",
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para recuperacao de senha. POST /recuperar-senha recebe JSON com 'email', localiza o usuario e envia um token ao endereco cadastrado. POST /redefinir-senha recebe JSON com 'token' e 'nova_senha' e atualiza a senha da conta correspondente. O primeiro endpoint retorna 200 com um JSON contendo 'mensagem'. A redefinicao bem-sucedida retorna 200 com uma mensagem. Utilize os servicos existentes de usuarios, alteracao de senha, envio de e-mail e relogio descritos no contrato de integracao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e as rotas POST /recuperar-senha e POST /redefinir-senha. O ambiente fornece o modulo tcc_t05_infra: usuario_por_email(email) retorna {'id': int, 'email': str} ou None; definir_senha(usuario_id, nova_senha) atualiza a senha usando o armazenamento e hashing ja existentes; enviar_email(email, token) registra o envio do token ao endereco; agora() retorna segundos Unix como float e e a unica fonte de tempo da aplicacao. Todas essas funcoes sao sincronas. Importe-as desse modulo; nao reimplemente usuarios, hashing de senhas, SMTP ou relogio. POST /recuperar-senha recebe JSON {'email': str} e POST /redefinir-senha recebe JSON {'token': str, 'nova_senha': str}; cada sucesso retorna 200 e JSON com 'mensagem'. O estado de tokens pode permanecer em memoria durante a execucao do processo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e email-validator 2.3.0. Use a biblioteca padrao e as dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "concluida_em": "2026-11-04T13:21:35.388020+00:00"
+}

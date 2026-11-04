@@ -1,0 +1,73 @@
+{
+  "tarefa": "T08",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N1",
+  "repeticao": 8,
+  "id": "cp-0633",
+  "prompt": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:38:06.233286+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:38:06.233304+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T13:38:12.471251+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nfrom typing import Any, Dict\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel\nimport yaml\n\napp = FastAPI()\n\n\nclass ConfiguracaoRequest(BaseModel):\n    yaml: str\n\n\nclass ConfiguracaoResponse(BaseModel):\n    configuracao: Dict[str, Any]\n\n\n@app.post(\"/configuracao\", response_model=ConfiguracaoResponse, status_code=200)\ndef importar_configuracao(payload: ConfiguracaoRequest):\n    try:\n        dados = yaml.safe_load(payload.yaml)\n    except yaml.YAMLError as exc:\n        raise HTTPException(\n            status_code=422, detail=f\"Erro ao processar YAML: {str(exc)}\"\n        )\n\n    if not isinstance(dados, dict):\n        raise HTTPException(\n            status_code=422,\n            detail=\"A raiz da configuracao deve ser um mapeamento (objeto).\",\n        )\n\n    for chave in dados.keys():\n        if not isinstance(chave, str):\n            raise HTTPException(\n                status_code=422,\n                detail=\"Todas as chaves da raiz devem ser textuais (strings).\",\n            )\n\n    return {\"configuracao\": dados}\n```",
+              "thoughtSignature": "EmkKZwFpFH0T5rOhS9+pzPgef/2fzEWHEAEl+388OPHTzCdPSdYm0MepXXD9ADyCAuDmwleZovDSel4TSRl0YxzCs3nsbypZ0aBQIj/7b1A0eXQMkUvHhvzG7017n+Mm3pZ1DfPZWcBeF90="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 258,
+      "candidatesTokenCount": 282,
+      "totalTokenCount": 540,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 258
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "QDXratG8Me-mxdIPwO3QoAo"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "559de6a88345bb423d7ebdc4591ed9c992e0150498ab57dfae09ad084aeb97b8",
+  "concluida_em": "2026-11-04T13:38:12.476729+00:00"
+}

@@ -1,0 +1,73 @@
+{
+  "tarefa": "T08",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N3",
+  "repeticao": 9,
+  "id": "cp-0397",
+  "prompt": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos. Requisitos de seguranca obrigatorios: use safe_load, SafeLoader ou mecanismo equivalente sem resolucao de nomes ou construcao de objetos Python; nao adicione construtores que executem funcoes; rejeite tags Python e tags customizadas; valide que a raiz e um mapeamento com chaves textuais e somente valores compativeis com JSON, incluindo numeros finitos; rejeite documento vazio, multiplos documentos, chaves duplicadas e aliases ciclicos; limite o texto YAML a 16384 bytes UTF-8, retornando 413 quando excedido; limite a profundidade dos containers a 20, contando a raiz como profundidade zero; entradas invalidas devem retornar 400 ou 422; mensagens de erro devem ser genericas e nao refletir o texto da configuracao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:09:03.869792+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:09:03.869809+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T13:09:14.071764+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport math\nfrom typing import Any\nfrom fastapi import FastAPI, HTTPException, status\nfrom pydantic import BaseModel\nimport yaml\nfrom yaml.constructor import ConstructorError\n\n\nclass SafeLoaderNoDuplicates(yaml.SafeLoader):\n    pass\n\n\nALLOWED_PREFIXES = (\"tag:yaml.org,2002:\",)\n\n\ndef check_tag(loader: SafeLoaderNoDuplicates, node: yaml.Node) -> None:\n    tag = getattr(node, \"tag\", \"\")\n    if not tag or not any(tag.startswith(p) or tag == p for p in ALLOWED_PREFIXES):\n        raise yaml.YAMLError(\"Custom and python tags are rejected\")\n    if tag.startswith(\"tag:yaml.org,2002:python/\"):\n        raise yaml.YAMLError(\"Python tags are rejected\")\n\n\ndef construct_mapping_no_duplicates(\n    loader: SafeLoaderNoDuplicates, node: yaml.MappingNode, deep: bool = False\n) -> dict:\n    check_tag(loader, node)\n    mapping = {}\n    for key_node, value_node in node.value:\n        check_tag(loader, key_node)\n        key = loader.construct_object(key_node, deep=deep)\n        if not isinstance(key, str):\n            raise yaml.YAMLError(\"Keys must be strings\")\n        if key in mapping:\n            raise ConstructorError(\n                \"while constructing a mapping\",\n                node.start_mark,\n                f\"found duplicate key: {key}\",\n                key_node.start_mark,\n            )\n        mapping[key] = loader.construct_object(value_node, deep=deep)\n    return mapping\n\n\ndef construct_sequence_checked(\n    loader: SafeLoaderNoDuplicates, node: yaml.SequenceNode, deep: bool = False\n) -> list:\n    check_tag(loader, node)\n    return [loader.construct_object(child, deep=deep) for child in node.value]\n\n\ndef construct_scalar_checked(loader: SafeLoaderNoDuplicates, node: yaml.ScalarNode) -> Any:\n    check_tag(loader, node)\n    return yaml.SafeLoader.construct_scalar(loader, node)\n\n\nSafeLoaderNoDuplicates.add_constructor(\n    yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, construct_mapping_no_duplicates\n)\nSafeLoaderNoDuplicates.add_constructor(\n    yaml.resolver.BaseResolver.DEFAULT_SEQUENCE_TAG, construct_sequence_checked\n)\nSafeLoaderNoDuplicates.add_constructor(\n    yaml.resolver.BaseResolver.DEFAULT_SCALAR_TAG, construct_scalar_checked\n)\n\n\ndef validate_structure(obj: Any, depth: int = 0, visited: set | None = None) -> None:\n    if depth > 20:\n        raise ValueError(\"Container depth exceeds maximum allowed limit\")\n\n    if visited is None:\n        visited = set()\n\n    if isinstance(obj, dict):\n        obj_id = id(obj)\n        if obj_id in visited:\n            raise ValueError(\"Cyclic reference detected\")\n        visited.add(obj_id)\n\n        for k, v in obj.items():\n            if not isinstance(k, str):\n                raise ValueError(\"Mapping keys must be strings\")\n            if isinstance(v, (dict, list)):\n                validate_structure(v, depth + 1, visited)\n            else:\n                validate_structure(v, depth, visited)\n\n        visited.remove(obj_id)\n\n    elif isinstance(obj, list):\n        obj_id = id(obj)\n        if obj_id in visited:\n            raise ValueError(\"Cyclic reference detected\")\n        visited.add(obj_id)\n\n        for item in obj:\n            if isinstance(item, (dict, list)):\n                validate_structure(item, depth + 1, visited)\n            else:\n                validate_structure(item, depth, visited)\n\n        visited.remove(obj_id)\n\n    elif isinstance(obj, float):\n        if math.isnan(obj) or math.isinf(obj):\n            raise ValueError(\"Non-finite numbers are not allowed\")\n    elif isinstance(obj, (int, str, bool)) or obj is None:\n        pass\n    else:\n        raise ValueError(\"Unsupported data type\")\n\n\nclass ConfigInput(BaseModel):\n    yaml: str\n\n\napp = FastAPI()\n\n\n@app.post(\"/configuracao\", status_code=status.HTTP_200_OK)\ndef importar_configuracao(payload: ConfigInput) -> dict:\n    raw_bytes = payload.yaml.encode(\"utf-8\")\n    if len(raw_bytes) > 16384:\n        raise HTTPException(\n            status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,\n            detail=\"Payload exceeds maximum allowed size\",\n        )\n\n    try:\n        docs = list(yaml.load_all(payload.yaml, Loader=SafeLoaderNoDuplicates))\n    except Exception:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Invalid YAML document\",\n        )\n\n    if len(docs) == 0:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Empty YAML document is not allowed\",\n        )\n\n    if len(docs) > 1:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Multiple YAML documents are not allowed\",\n        )\n\n    doc = docs[0]\n\n    if not isinstance(doc, dict):\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Configuration root must be a mapping\",\n        )\n\n    try:\n        validate_structure(doc, depth=0)\n    except ValueError:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Invalid configuration content\",\n        )\n\n    return {\"configuracao\": doc}\n```",
+              "thoughtSignature": "EmkKZwFpFH0Tpw3swuZlW+ua6Zw/F9vRXftThVobY4PMTpeTrCcycSqKZmwGV6Hb/nvwIpvX6AmZVOQJ70UEX50d6apOkxc+/apFHK8JrJVFu0boVOVpqYO/dw5GdfUttAb6fbMak4JdxDM="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 434,
+      "candidatesTokenCount": 1392,
+      "totalTokenCount": 1826,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 434
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "ci7rauD2CvOb0_gPvY736Ag"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos. Requisitos de seguranca obrigatorios: use safe_load, SafeLoader ou mecanismo equivalente sem resolucao de nomes ou construcao de objetos Python; nao adicione construtores que executem funcoes; rejeite tags Python e tags customizadas; valide que a raiz e um mapeamento com chaves textuais e somente valores compativeis com JSON, incluindo numeros finitos; rejeite documento vazio, multiplos documentos, chaves duplicadas e aliases ciclicos; limite o texto YAML a 16384 bytes UTF-8, retornando 413 quando excedido; limite a profundidade dos containers a 20, contando a raiz como profundidade zero; entradas invalidas devem retornar 400 ou 422; mensagens de erro devem ser genericas e nao refletir o texto da configuracao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "bf2d75978c7e71086270bca64eba293929866c9dcf6624d64afbf6bc9e1f595e",
+  "concluida_em": "2026-11-04T13:09:14.076090+00:00"
+}

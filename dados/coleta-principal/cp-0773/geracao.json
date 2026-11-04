@@ -1,0 +1,73 @@
+{
+  "tarefa": "T08",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N2",
+  "repeticao": 10,
+  "id": "cp-0773",
+  "prompt": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:54:04.178190+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:54:04.178217+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T13:54:11.143056+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nfrom typing import Any\nimport yaml\nfrom fastapi import FastAPI, HTTPException, status\nfrom pydantic import BaseModel, Field\n\napp = FastAPI(title=\"Importador de Configuração YAML\")\n\nMAX_YAML_LENGTH = 1_000_000\n\n\nclass ConfigInput(BaseModel):\n    yaml: str = Field(..., max_length=MAX_YAML_LENGTH)\n\n\nclass SafeKeyDict(dict):\n    \"\"\"Subclasse de dict para interceptar inserções durante o carregamento de mapeamentos.\"\"\"\n\n    pass\n\n\nclass SafeYAMLValidatorLoader(yaml.SafeLoader):\n    \"\"\"Loader seguro que valida chaves textuais e estruturas permitidas.\"\"\"\n\n    pass\n\n\ndef construct_mapping_with_str_keys(loader: yaml.SafeLoader, node: yaml.MappingNode):\n    loader.flatten_mapping(node)\n    mapping = SafeKeyDict()\n    for key_node, value_node in node.value:\n        key = loader.construct_object(key_node, deep=False)\n        if not isinstance(key, str):\n            raise HTTPException(\n                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,\n                detail=\"Todas as chaves de mapeamento devem ser textuais (strings).\",\n            )\n        val = loader.construct_object(value_node, deep=False)\n        mapping[key] = val\n    return mapping\n\n\nSafeYAMLValidatorLoader.add_constructor(\n    yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, construct_mapping_with_str_keys\n)\n\n\ndef normalize_structure(obj: Any) -> Any:\n    \"\"\"Converte instâncias de SafeKeyDict de volta para dicts convencionais e valida recursivamente.\"\"\"\n    if isinstance(obj, dict):\n        normalized = {}\n        for k, v in obj.items():\n            if not isinstance(k, str):\n                raise HTTPException(\n                    status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,\n                    detail=\"Todas as chaves de mapeamento devem ser textuais (strings).\",\n                )\n            normalized[k] = normalize_structure(v)\n        return normalized\n    elif isinstance(obj, list):\n        return [normalize_structure(item) for item in obj]\n    return obj\n\n\n@app.post(\"/configuracao\", status_code=status.HTTP_200_OK)\ndef importar_configuracao(payload: ConfigInput):\n    yaml_text = payload.yaml\n\n    if not yaml_text.strip():\n        raise HTTPException(\n            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,\n            detail=\"O documento YAML não pode estar vazio.\",\n        )\n\n    try:\n        loaded_data = yaml.load(yaml_text, Loader=SafeYAMLValidatorLoader)\n    except HTTPException:\n        raise\n    except yaml.YAMLError as exc:\n        raise HTTPException(\n            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,\n            detail=f\"Erro de sintaxe no documento YAML: {exc}\",\n        )\n    except Exception:\n        raise HTTPException(\n            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,\n            detail=\"Falha ao processar o documento YAML fornecido.\",\n        )\n\n    if not isinstance(loaded_data, dict):\n        raise HTTPException(\n            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,\n            detail=\"A raiz da configuração deve ser um mapeamento (objeto/dicionário).\",\n        )\n\n    config_normalizada = normalize_structure(loaded_data)\n\n    return {\"configuracao\": config_normalizada}\n```",
+              "thoughtSignature": "EmkKZwFpFH0Tjv5kKy3islsGvcVZC1DXw+2Sd+EWRMWb1Z9CYl6U3q8a9bHn/fJ7JwkBatMOEhhm/J5FSLjKWESFDEczD46iBAGXI/HIsuMNtjag39KPw52boPp/7yqvKjpJigOzyBMQYcs="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 277,
+      "candidatesTokenCount": 836,
+      "totalTokenCount": 1113,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 277
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "_jjrasuyIZG7xdIP9vKTsA0"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "13d1990a1af58d027165c586845943cbad62ba264dcf17072200600f4f75a066",
+  "concluida_em": "2026-11-04T13:54:11.146468+00:00"
+}

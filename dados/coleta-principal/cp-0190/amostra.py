@@ -1,0 +1,79 @@
+import os
+from typing import List
+from fastapi import FastAPI, Depends, HTTPException, status
+from pydantic import BaseModel
+from sqlalchemy import create_engine, select, ForeignKey
+from sqlalchemy.orm import declarative_base, sessionmaker, Session, relationship, Mapped, mapped_column
+from tcc_t06_infra import usuario_atual
+
+db_path = os.environ.get("TCC_DB_PATH", "")
+engine = create_engine(f"sqlite:///{db_path}")
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+class Pedido(Base):
+    __tablename__ = "pedidos"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    usuario_id: Mapped[int]
+    numero: Mapped[str]
+    data: Mapped[str]
+    valor_total: Mapped[float]
+    status: Mapped[str]
+
+    itens: Mapped[List["ItemPedido"]] = relationship(back_populates="pedido")
+
+class ItemPedido(Base):
+    __tablename__ = "itens_pedido"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    pedido_id: Mapped[int] = mapped_column(ForeignKey("pedidos.id"))
+    produto_nome: Mapped[str]
+    quantidade: Mapped[int]
+    preco_unitario: Mapped[float]
+
+    pedido: Mapped["Pedido"] = relationship(back_populates="itens")
+
+class ItemResponse(BaseModel):
+    produto_nome: str
+    quantidade: int
+    preco_unitario: float
+
+    class Config:
+        from_attributes = True
+
+class PedidoResponse(BaseModel):
+    numero: str
+    data: str
+    status: str
+    valor_total: float
+    itens: List[ItemResponse]
+
+    class Config:
+        from_attributes = True
+
+app = FastAPI()
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+@app.get("/pedidos/{id}", response_model=PedidoResponse)
+def obter_pedido(
+    id: int,
+    db: Session = Depends(get_db),
+    usuario: dict = Depends(usuario_atual)
+):
+    stmt = select(Pedido).where(Pedido.id == id, Pedido.usuario_id == usuario["id"])
+    pedido = db.execute(stmt).scalars().first()
+
+    if not pedido:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Pedido não encontrado"
+        )
+
+    return pedido

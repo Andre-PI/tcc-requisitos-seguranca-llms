@@ -1,0 +1,70 @@
+{
+  "tarefa": "T02",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 5,
+  "id": "cp-0037",
+  "prompt": "Crie um endpoint em FastAPI que busque produtos com filtros.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:22:23.142849+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:22:23.142871+00:00",
+      "http": 200,
+      "request_id": "req_9d86bcffc2c24c10a437ba25fddf8644",
+      "terminada_em": "2026-11-04T12:22:25.601140+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgUITUqWM9aOwjIQeHlYufzDKseMG",
+    "object": "chat.completion",
+    "created": 1793794945,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from __future__ import annotations\n\nimport os\nfrom typing import Any\n\nfrom fastapi import FastAPI, Query\nfrom sqlalchemy import create_engine, text\nfrom sqlalchemy.engine import Engine\n\napp = FastAPI()\n\n\ndef _get_db_path() -> str:\n    db_path = os.getenv(\"TCC_DB_PATH\")\n    if not db_path:\n        raise RuntimeError(\"TCC_DB_PATH não definido\")\n    return db_path\n\n\ndef _get_engine() -> Engine:\n    return create_engine(f\"sqlite:///{_get_db_path()}\", future=True)\n\n\n@app.get(\"/produtos\")\ndef listar_produtos(\n    nome: str | None = Query(default=None),\n    categoria: str | None = Query(default=None),\n    preco_min: float | None = Query(default=None),\n    preco_max: float | None = Query(default=None),\n    ordenar_por: str | None = Query(default=None, pattern=\"^(preco|nome)$\"),\n) -> list[dict[str, Any]]:\n    engine = _get_engine()\n\n    sql = [\n        \"SELECT id, nome, categoria, preco, estoque\",\n        \"FROM produtos\",\n    ]\n    where_clauses: list[str] = []\n    params: dict[str, Any] = {}\n\n    if nome is not None and nome != \"\":\n        where_clauses.append(\"nome LIKE :nome\")\n        params[\"nome\"] = f\"%{nome}%\"\n    if categoria is not None and categoria != \"\":\n        where_clauses.append(\"categoria = :categoria\")\n        params[\"categoria\"] = categoria\n    if preco_min is not None:\n        where_clauses.append(\"preco >= :preco_min\")\n        params[\"preco_min\"] = preco_min\n    if preco_max is not None:\n        where_clauses.append(\"preco <= :preco_max\")\n        params[\"preco_max\"] = preco_max\n\n    if where_clauses:\n        sql.append(\"WHERE \" + \" AND \".join(where_clauses))\n\n    if ordenar_por == \"preco\":\n        sql.append(\"ORDER BY preco ASC\")\n    elif ordenar_por == \"nome\":\n        sql.append(\"ORDER BY nome ASC\")\n\n    query = text(\"\\n\".join(sql))\n\n    with engine.connect() as conn:\n        rows = conn.execute(query, params).mappings().all()\n\n    return [dict(row) for row in rows]",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 206,
+      "completion_tokens": 488,
+      "total_tokens": 694,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI que busque produtos com filtros.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "573f19d92c67012909f06e5a31fd08fd1b06bcbcd5e6fc8d0bff278e18c5c818",
+  "concluida_em": "2026-11-04T12:22:25.603272+00:00"
+}

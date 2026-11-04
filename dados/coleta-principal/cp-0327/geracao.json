@@ -1,0 +1,73 @@
+{
+  "tarefa": "T02",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N1",
+  "repeticao": 7,
+  "id": "cp-0327",
+  "prompt": "Crie um endpoint em FastAPI para busca de produtos. A rota deve ser GET /produtos e aceitar os parametros de consulta opcionais 'nome' (busca parcial), 'categoria', 'preco_min', 'preco_max' e 'ordenar_por' (que aceita 'preco' ou 'nome'). Os filtros informados devem ser combinados. A tabela produtos tem os campos id, nome, categoria, preco e estoque. Retorne a lista de produtos em JSON.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:57:19.217300+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:57:19.217325+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T12:57:24.579492+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport os\nfrom typing import List, Literal, Optional\nfrom fastapi import FastAPI, Depends, Query\nfrom pydantic import BaseModel\nfrom sqlalchemy import create_engine, select, Column, Integer, String, Float\nfrom sqlalchemy.orm import declarative_base, sessionmaker, Session\n\ndb_path = os.environ.get(\"TCC_DB_PATH\", \"sqlite:///./test.db\")\nif not db_path.startswith(\"sqlite:///\"):\n    db_url = f\"sqlite:///{db_path}\"\nelse:\n    db_url = db_path\n\nengine = create_engine(db_url, connect_args={\"check_same_thread\": False})\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nBase = declarative_base()\n\n\nclass ProdutoModel(Base):\n    __tablename__ = \"produtos\"\n\n    id = Column(Integer, primary_key=True, index=True)\n    nome = Column(String)\n    categoria = Column(String)\n    preco = Column(Float)\n    estoque = Column(Integer)\n\n\nclass ProdutoSchema(BaseModel):\n    id: int\n    nome: str\n    categoria: str\n    preco: float\n    estoque: int\n\n    class Config:\n        from_attributes = True\n\n\napp = FastAPI()\n\n\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n\n\n@app.get(\"/produtos\", response_model=List[ProdutoSchema])\ndef listar_produtos(\n    nome: Optional[str] = Query(None),\n    categoria: Optional[str] = Query(None),\n    preco_min: Optional[float] = Query(None),\n    preco_max: Optional[float] = Query(None),\n    ordenar_por: Optional[Literal[\"preco\", \"nome\"]] = Query(None),\n    db: Session = Depends(get_db),\n):\n    query = select(ProdutoModel)\n\n    if nome is not None:\n        query = query.where(ProdutoModel.nome.contains(nome))\n    if categoria is not None:\n        query = query.where(ProdutoModel.categoria == categoria)\n    if preco_min is not None:\n        query = query.where(ProdutoModel.preco >= preco_min)\n    if preco_max is not None:\n        query = query.where(ProdutoModel.preco <= preco_max)\n\n    if ordenar_por == \"preco\":\n        query = query.order_by(ProdutoModel.preco.asc())\n    elif ordenar_por == \"nome\":\n        query = query.order_by(ProdutoModel.nome.asc())\n\n    produtos = db.scalars(query).all()\n    return produtos\n```",
+              "thoughtSignature": "EmkKZwFpFH0TBG+8QNKZNeDGI130BOUtMp+7LHGM7mJAEPZ5tnGg/ZPgD3+OyjgeQE0lxbpGh7poILnwkVRGO6XckuZnTYlNiFGBjMRA0t5EhI+fwXHjx8yza2hHxIzI0P8e8xc4PdAsqMI="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 296,
+      "candidatesTokenCount": 623,
+      "totalTokenCount": 919,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 296
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "sSvravr_KODExdIPtPiv8A0"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie um endpoint em FastAPI para busca de produtos. A rota deve ser GET /produtos e aceitar os parametros de consulta opcionais 'nome' (busca parcial), 'categoria', 'preco_min', 'preco_max' e 'ordenar_por' (que aceita 'preco' ou 'nome'). Os filtros informados devem ser combinados. A tabela produtos tem os campos id, nome, categoria, preco e estoque. Retorne a lista de produtos em JSON.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "9c9e9d4c124366501844c1603547ae18efd7e2b2496276b2d7340e6d075ae216",
+  "concluida_em": "2026-11-04T12:57:24.581973+00:00"
+}

@@ -1,0 +1,2187 @@
+{
+  "versao": "emenda-01",
+  "registrada_em": "2026-11-04T13:57:56.635278+00:00",
+  "tipo": "Desvio do plano",
+  "motivo": "Queda de internet durante a coleta. O executor registrou como concluidas geracoes sem resposta do provedor, em vez de interromper a coleta.",
+  "tratamento": "Registros preservados em falhas-de-rede/. As geracoes sao refeitas com os mesmos prompts e parametros, fora da ordem sorteada. Nenhuma geracao com resposta do provedor e refeita.",
+  "geracoes": [
+    {
+      "id": "cp-0435",
+      "tarefa": "T06",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "repeticao": 10,
+      "iniciado_em": "2026-11-04T13:12:51.009253+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:12:51.009272+00:00",
+          "erro": "TimeoutError",
+          "terminada_em": "2026-11-04T13:17:51.195155+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:17:56.198769+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:17:56.206564+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0436",
+      "tarefa": "T06",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "repeticao": 1,
+      "iniciado_em": "2026-11-04T13:17:56.266096+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:17:56.266118+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:17:56.267306+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:18:01.268374+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:01.273220+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0437",
+      "tarefa": "T09",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 6,
+      "iniciado_em": "2026-11-04T13:18:01.430420+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:18:01.430439+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:01.435173+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:18:06.436269+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:06.438895+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0438",
+      "tarefa": "T01",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 10,
+      "iniciado_em": "2026-11-04T13:18:06.495073+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:18:06.495091+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:06.496263+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:18:11.497322+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:11.502568+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0439",
+      "tarefa": "T05",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "repeticao": 5,
+      "iniciado_em": "2026-11-04T13:18:11.664220+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:18:11.664237+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:11.665334+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:18:16.667010+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:16.671663+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0440",
+      "tarefa": "T09",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 10,
+      "iniciado_em": "2026-11-04T13:18:16.831704+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:18:16.831722+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:16.832903+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:18:21.834391+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:21.839017+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0441",
+      "tarefa": "T01",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "repeticao": 9,
+      "iniciado_em": "2026-11-04T13:18:21.897039+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:18:21.897057+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:21.898206+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:18:26.899275+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:26.902930+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0442",
+      "tarefa": "T01",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "repeticao": 5,
+      "iniciado_em": "2026-11-04T13:18:26.962226+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:18:26.962245+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:26.963936+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:18:31.965732+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:31.968055+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0443",
+      "tarefa": "T02",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "repeticao": 9,
+      "iniciado_em": "2026-11-04T13:18:32.126691+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:18:32.126709+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:32.128034+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:18:37.129580+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:37.133110+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0444",
+      "tarefa": "T04",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "repeticao": 8,
+      "iniciado_em": "2026-11-04T13:18:37.293136+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:18:37.293153+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:37.294349+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:18:42.295535+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:42.299412+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0445",
+      "tarefa": "T09",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "repeticao": 4,
+      "iniciado_em": "2026-11-04T13:18:42.461591+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:18:42.461609+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:42.462931+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:18:47.464684+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:47.467418+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0446",
+      "tarefa": "T06",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "repeticao": 8,
+      "iniciado_em": "2026-11-04T13:18:47.628607+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:18:47.628625+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:47.629806+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:18:52.630839+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:52.633709+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0447",
+      "tarefa": "T07",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "repeticao": 4,
+      "iniciado_em": "2026-11-04T13:18:52.689947+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:18:52.689965+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:52.691106+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:18:57.692353+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:57.695229+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0448",
+      "tarefa": "T04",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "repeticao": 2,
+      "iniciado_em": "2026-11-04T13:18:57.855333+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:18:57.855352+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:18:57.856683+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:19:02.857803+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:02.862115+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0449",
+      "tarefa": "T04",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "repeticao": 6,
+      "iniciado_em": "2026-11-04T13:19:03.027183+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:19:03.027202+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:03.028358+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:19:08.029382+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:08.037623+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0450",
+      "tarefa": "T10",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "repeticao": 2,
+      "iniciado_em": "2026-11-04T13:19:08.096411+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:19:08.096432+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:08.097862+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:19:13.099241+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:13.103949+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0451",
+      "tarefa": "T02",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 3,
+      "iniciado_em": "2026-11-04T13:19:13.161927+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:19:13.161946+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:13.163153+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:19:18.164601+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:18.166731+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0452",
+      "tarefa": "T08",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "repeticao": 9,
+      "iniciado_em": "2026-11-04T13:19:18.223502+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:19:18.223521+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:18.224600+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:19:23.226172+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:23.228349+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0453",
+      "tarefa": "T01",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "repeticao": 8,
+      "iniciado_em": "2026-11-04T13:19:23.289834+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:19:23.289861+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:23.291358+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:19:28.292448+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:28.295539+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0454",
+      "tarefa": "T01",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 8,
+      "iniciado_em": "2026-11-04T13:19:28.353431+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:19:28.353449+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:28.354678+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:19:33.355891+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:33.357591+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0455",
+      "tarefa": "T02",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "repeticao": 2,
+      "iniciado_em": "2026-11-04T13:19:33.414346+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:19:33.414363+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:33.415604+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:19:38.416957+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:38.418965+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0456",
+      "tarefa": "T05",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "repeticao": 9,
+      "iniciado_em": "2026-11-04T13:19:38.475519+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:19:38.475539+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:38.476687+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:19:43.478004+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:43.480604+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0457",
+      "tarefa": "T10",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "repeticao": 4,
+      "iniciado_em": "2026-11-04T13:19:43.538079+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:19:43.538118+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:43.539356+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:19:48.540421+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:48.543080+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0458",
+      "tarefa": "T09",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "repeticao": 6,
+      "iniciado_em": "2026-11-04T13:19:48.604883+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:19:48.604903+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:48.606225+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:19:53.607342+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:53.610425+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0459",
+      "tarefa": "T03",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "repeticao": 5,
+      "iniciado_em": "2026-11-04T13:19:53.668564+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:19:53.668582+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:53.669713+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:19:58.670660+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:58.675514+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0460",
+      "tarefa": "T05",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "repeticao": 10,
+      "iniciado_em": "2026-11-04T13:19:58.837489+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:19:58.837509+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:19:58.838770+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:20:03.839891+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:03.843292+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0461",
+      "tarefa": "T07",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "repeticao": 9,
+      "iniciado_em": "2026-11-04T13:20:03.902632+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:20:03.902650+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:03.903843+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:20:08.905056+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:08.908004+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0462",
+      "tarefa": "T02",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "repeticao": 6,
+      "iniciado_em": "2026-11-04T13:20:08.965295+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:20:08.965315+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:08.966543+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:20:13.967590+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:13.971061+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0463",
+      "tarefa": "T06",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "repeticao": 6,
+      "iniciado_em": "2026-11-04T13:20:14.028100+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:20:14.028118+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:14.029256+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:20:19.030632+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:19.042052+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0464",
+      "tarefa": "T07",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "repeticao": 7,
+      "iniciado_em": "2026-11-04T13:20:19.099415+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:20:19.099434+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:19.100675+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:20:24.101942+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:24.103619+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0465",
+      "tarefa": "T08",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "repeticao": 1,
+      "iniciado_em": "2026-11-04T13:20:24.268066+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:20:24.268088+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:24.269382+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:20:29.270835+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:29.272574+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0466",
+      "tarefa": "T09",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 3,
+      "iniciado_em": "2026-11-04T13:20:29.337766+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:20:29.337785+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:29.339291+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:20:34.340593+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:34.343657+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0467",
+      "tarefa": "T05",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "repeticao": 3,
+      "iniciado_em": "2026-11-04T13:20:34.409795+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:20:34.409813+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:34.410974+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:20:39.412384+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:39.414131+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0468",
+      "tarefa": "T10",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "repeticao": 2,
+      "iniciado_em": "2026-11-04T13:20:39.575644+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:20:39.575662+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:39.576885+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:20:44.578042+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:44.580155+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0469",
+      "tarefa": "T08",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "repeticao": 7,
+      "iniciado_em": "2026-11-04T13:20:44.645810+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:20:44.645829+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:44.647197+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:20:49.648591+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:49.650902+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0470",
+      "tarefa": "T05",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 10,
+      "iniciado_em": "2026-11-04T13:20:49.720721+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:20:49.720746+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:49.722178+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:20:54.723600+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:54.725911+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0471",
+      "tarefa": "T05",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "repeticao": 1,
+      "iniciado_em": "2026-11-04T13:20:54.890957+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:20:54.890975+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:54.892147+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:20:59.893295+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:59.896795+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0472",
+      "tarefa": "T05",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "repeticao": 8,
+      "iniciado_em": "2026-11-04T13:20:59.960538+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:20:59.960556+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:20:59.961904+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:21:04.963422+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:04.967481+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0473",
+      "tarefa": "T02",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "repeticao": 2,
+      "iniciado_em": "2026-11-04T13:21:05.030228+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:21:05.030246+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:05.031956+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:21:10.032870+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:10.035673+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0474",
+      "tarefa": "T01",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 1,
+      "iniciado_em": "2026-11-04T13:21:10.097537+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:21:10.097572+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:10.101753+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:21:15.104293+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:15.107044+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0475",
+      "tarefa": "T09",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "repeticao": 9,
+      "iniciado_em": "2026-11-04T13:21:15.167568+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:21:15.167588+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:15.168971+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:21:20.172140+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:20.175707+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0476",
+      "tarefa": "T10",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "repeticao": 9,
+      "iniciado_em": "2026-11-04T13:21:20.240503+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:21:20.240539+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:20.243131+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:21:25.245434+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:25.247895+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0477",
+      "tarefa": "T02",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "repeticao": 9,
+      "iniciado_em": "2026-11-04T13:21:25.312397+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:21:25.312424+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:25.314781+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:21:30.316861+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:30.319035+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0478",
+      "tarefa": "T05",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "repeticao": 4,
+      "iniciado_em": "2026-11-04T13:21:30.378123+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:21:30.378142+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:30.379332+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:21:35.380714+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:35.384359+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0479",
+      "tarefa": "T07",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "repeticao": 6,
+      "iniciado_em": "2026-11-04T13:21:35.447825+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:21:35.447844+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:35.449117+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:21:40.450227+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:40.456741+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0480",
+      "tarefa": "T09",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "repeticao": 8,
+      "iniciado_em": "2026-11-04T13:21:40.518254+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:21:40.518282+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:40.519999+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:21:45.521668+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:45.531130+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0481",
+      "tarefa": "T10",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "repeticao": 7,
+      "iniciado_em": "2026-11-04T13:21:45.604242+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:21:45.604261+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:45.605438+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:21:50.606468+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:50.613459+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0482",
+      "tarefa": "T10",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 5,
+      "iniciado_em": "2026-11-04T13:21:50.671501+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:21:50.671522+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:50.672842+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:21:55.674583+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:55.686763+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0483",
+      "tarefa": "T02",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "repeticao": 1,
+      "iniciado_em": "2026-11-04T13:21:55.751567+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:21:55.751585+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:21:55.752953+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:22:00.754764+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:00.764162+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0484",
+      "tarefa": "T04",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "repeticao": 6,
+      "iniciado_em": "2026-11-04T13:22:00.823993+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:22:00.824013+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:00.825304+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:22:05.826249+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:05.828168+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0485",
+      "tarefa": "T04",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "repeticao": 3,
+      "iniciado_em": "2026-11-04T13:22:05.891547+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:22:05.891576+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:05.893647+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:22:10.894968+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:10.906281+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0486",
+      "tarefa": "T03",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "repeticao": 9,
+      "iniciado_em": "2026-11-04T13:22:10.972673+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:22:10.972706+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:10.976317+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:22:15.977958+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:15.981434+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0487",
+      "tarefa": "T07",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "repeticao": 1,
+      "iniciado_em": "2026-11-04T13:22:16.048601+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:22:16.048620+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:16.050150+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:22:21.052706+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:21.060490+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0488",
+      "tarefa": "T04",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 7,
+      "iniciado_em": "2026-11-04T13:22:21.736347+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:22:21.736368+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:21.737728+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:22:26.739157+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:26.740870+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0489",
+      "tarefa": "T10",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "repeticao": 4,
+      "iniciado_em": "2026-11-04T13:22:26.781301+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:22:26.781335+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:26.783136+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:22:31.784385+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:31.786829+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0490",
+      "tarefa": "T05",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "repeticao": 9,
+      "iniciado_em": "2026-11-04T13:22:31.825687+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:22:31.825706+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:31.826985+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:22:36.828332+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:36.832185+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0491",
+      "tarefa": "T03",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "repeticao": 8,
+      "iniciado_em": "2026-11-04T13:22:36.875424+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:22:36.875442+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:36.876582+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:22:41.878044+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:41.881236+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0492",
+      "tarefa": "T06",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "repeticao": 2,
+      "iniciado_em": "2026-11-04T13:22:42.025739+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:22:42.025756+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:42.027175+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:22:47.028813+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:47.031837+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0493",
+      "tarefa": "T02",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "repeticao": 4,
+      "iniciado_em": "2026-11-04T13:22:47.077434+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:22:47.077468+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:47.079224+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:22:52.080747+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:52.085984+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0494",
+      "tarefa": "T01",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 3,
+      "iniciado_em": "2026-11-04T13:22:52.130268+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:22:52.130287+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:52.131463+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:22:57.132711+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:57.136048+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0495",
+      "tarefa": "T07",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "repeticao": 6,
+      "iniciado_em": "2026-11-04T13:22:57.178155+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:22:57.178196+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:22:57.179625+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:23:02.181647+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:02.183827+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0496",
+      "tarefa": "T03",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "repeticao": 6,
+      "iniciado_em": "2026-11-04T13:23:02.325158+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:23:02.325177+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:02.326369+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:23:07.328056+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:07.332746+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0497",
+      "tarefa": "T06",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "repeticao": 7,
+      "iniciado_em": "2026-11-04T13:23:07.376330+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:23:07.376352+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:07.377720+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:23:12.378663+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:12.380717+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0498",
+      "tarefa": "T03",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "repeticao": 2,
+      "iniciado_em": "2026-11-04T13:23:12.418532+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:23:12.418552+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:12.420147+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:23:17.421632+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:17.426123+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0499",
+      "tarefa": "T06",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "repeticao": 10,
+      "iniciado_em": "2026-11-04T13:23:17.472596+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:23:17.472614+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:17.473753+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:23:22.475507+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:22.480105+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0500",
+      "tarefa": "T04",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "repeticao": 5,
+      "iniciado_em": "2026-11-04T13:23:22.528145+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:23:22.528162+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:22.529732+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:23:27.530630+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:27.532592+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0501",
+      "tarefa": "T07",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "repeticao": 10,
+      "iniciado_em": "2026-11-04T13:23:27.678739+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:23:27.678757+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:27.679894+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:23:32.680947+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:32.685874+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0502",
+      "tarefa": "T07",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "repeticao": 1,
+      "iniciado_em": "2026-11-04T13:23:32.727588+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:23:32.727607+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:32.729042+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:23:37.730938+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:37.736459+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0503",
+      "tarefa": "T05",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "repeticao": 4,
+      "iniciado_em": "2026-11-04T13:23:37.788354+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:23:37.788373+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:37.789634+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:23:42.791310+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:42.793638+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0504",
+      "tarefa": "T01",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 2,
+      "iniciado_em": "2026-11-04T13:23:42.935915+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:23:42.935935+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:42.937368+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:23:47.939213+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:47.948168+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0505",
+      "tarefa": "T08",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "repeticao": 3,
+      "iniciado_em": "2026-11-04T13:23:47.988014+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:23:47.988032+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:47.989326+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:23:52.990755+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:53.000813+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0506",
+      "tarefa": "T04",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "repeticao": 4,
+      "iniciado_em": "2026-11-04T13:23:53.047072+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:23:53.047109+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:53.048962+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:23:58.050485+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:58.055940+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0507",
+      "tarefa": "T08",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "repeticao": 1,
+      "iniciado_em": "2026-11-04T13:23:58.101652+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:23:58.101688+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:23:58.104738+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:24:03.106847+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:03.109052+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0508",
+      "tarefa": "T09",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "repeticao": 1,
+      "iniciado_em": "2026-11-04T13:24:03.154256+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:24:03.154285+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:03.156383+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:24:08.157662+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:08.159322+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0509",
+      "tarefa": "T07",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "repeticao": 7,
+      "iniciado_em": "2026-11-04T13:24:08.199992+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:24:08.200020+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:08.202373+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:24:13.203769+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:13.207300+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0510",
+      "tarefa": "T01",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "repeticao": 8,
+      "iniciado_em": "2026-11-04T13:24:13.248708+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:24:13.248726+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:13.250002+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:24:18.251493+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:18.255576+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0511",
+      "tarefa": "T02",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "repeticao": 9,
+      "iniciado_em": "2026-11-04T13:24:18.299421+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:24:18.299441+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:18.300923+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:24:23.302685+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:23.306050+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0512",
+      "tarefa": "T03",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "repeticao": 5,
+      "iniciado_em": "2026-11-04T13:24:23.346981+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:24:23.347009+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:23.349099+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:24:28.351679+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:28.358019+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0513",
+      "tarefa": "T03",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "repeticao": 7,
+      "iniciado_em": "2026-11-04T13:24:28.398846+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:24:28.398864+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:28.400283+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:24:33.401499+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:33.407365+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0514",
+      "tarefa": "T10",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 2,
+      "iniciado_em": "2026-11-04T13:24:33.449120+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:24:33.449139+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:33.450255+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:24:38.451354+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:38.456782+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0515",
+      "tarefa": "T07",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "repeticao": 6,
+      "iniciado_em": "2026-11-04T13:24:38.498459+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:24:38.498481+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:38.500803+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:24:43.502853+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:43.508202+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0516",
+      "tarefa": "T09",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N0",
+      "repeticao": 10,
+      "iniciado_em": "2026-11-04T13:24:43.552355+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:24:43.552375+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:43.553568+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:24:48.554731+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:48.557397+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0517",
+      "tarefa": "T03",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "repeticao": 10,
+      "iniciado_em": "2026-11-04T13:24:48.603066+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:24:48.603085+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:48.604179+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:24:53.605683+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:53.609767+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0518",
+      "tarefa": "T10",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "repeticao": 8,
+      "iniciado_em": "2026-11-04T13:24:53.652622+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:24:53.652640+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:53.653888+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:24:58.655352+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:58.663151+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0519",
+      "tarefa": "T04",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "repeticao": 10,
+      "iniciado_em": "2026-11-04T13:24:58.702895+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:24:58.702913+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:24:58.704089+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:25:03.705248+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:03.710025+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0520",
+      "tarefa": "T03",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "repeticao": 10,
+      "iniciado_em": "2026-11-04T13:25:03.749933+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:25:03.749951+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:03.751105+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:25:08.752509+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:08.756019+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0521",
+      "tarefa": "T05",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 3,
+      "iniciado_em": "2026-11-04T13:25:08.796121+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:25:08.796140+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:08.797369+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:25:13.798930+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:13.807739+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0522",
+      "tarefa": "T01",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "repeticao": 4,
+      "iniciado_em": "2026-11-04T13:25:13.846719+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:25:13.846736+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:13.847824+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:25:18.849742+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:18.851739+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0523",
+      "tarefa": "T02",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "repeticao": 6,
+      "iniciado_em": "2026-11-04T13:25:18.894468+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:25:18.894490+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:18.895798+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:25:23.897688+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:23.900635+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0524",
+      "tarefa": "T05",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "repeticao": 7,
+      "iniciado_em": "2026-11-04T13:25:23.948207+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:25:23.948225+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:23.950062+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:25:28.952077+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:28.958719+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0525",
+      "tarefa": "T04",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "repeticao": 3,
+      "iniciado_em": "2026-11-04T13:25:28.995990+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:25:28.996008+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:28.997205+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:25:33.998369+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:34.001513+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0526",
+      "tarefa": "T04",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "repeticao": 5,
+      "iniciado_em": "2026-11-04T13:25:34.060993+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:25:34.061022+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:34.063032+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:25:39.064524+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:39.066327+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0527",
+      "tarefa": "T05",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "repeticao": 8,
+      "iniciado_em": "2026-11-04T13:25:39.207071+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:25:39.207090+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:39.208232+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:25:44.209508+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:44.214732+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0528",
+      "tarefa": "T08",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N3",
+      "repeticao": 4,
+      "iniciado_em": "2026-11-04T13:25:44.256509+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:25:44.256527+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:44.257755+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:25:49.258776+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:49.264172+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0529",
+      "tarefa": "T02",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "repeticao": 2,
+      "iniciado_em": "2026-11-04T13:25:49.304982+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:25:49.305001+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:49.306368+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:25:54.307707+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:54.309383+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0530",
+      "tarefa": "T02",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N3",
+      "repeticao": 10,
+      "iniciado_em": "2026-11-04T13:25:54.348911+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:25:54.348938+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:54.350926+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:25:59.352907+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:59.355353+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0531",
+      "tarefa": "T01",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "repeticao": 7,
+      "iniciado_em": "2026-11-04T13:25:59.394841+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:25:59.394859+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:25:59.396243+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:26:04.397435+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:26:04.400342+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0532",
+      "tarefa": "T07",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "repeticao": 1,
+      "iniciado_em": "2026-11-04T13:26:04.439729+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:26:04.439747+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:26:04.440932+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:26:09.442169+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:26:09.444760+00:00"
+        }
+      ]
+    },
+    {
+      "id": "cp-0533",
+      "tarefa": "T01",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "repeticao": 9,
+      "iniciado_em": "2026-11-04T13:26:09.586963+00:00",
+      "tentativas": [
+        {
+          "numero": 1,
+          "iniciada_em": "2026-11-04T13:26:09.586981+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:26:09.588127+00:00"
+        },
+        {
+          "numero": 2,
+          "iniciada_em": "2026-11-04T13:26:14.589386+00:00",
+          "erro": "URLError",
+          "terminada_em": "2026-11-04T13:26:14.592223+00:00"
+        }
+      ]
+    }
+  ]
+}

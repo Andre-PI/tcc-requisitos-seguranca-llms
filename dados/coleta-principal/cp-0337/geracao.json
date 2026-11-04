@@ -1,0 +1,73 @@
+{
+  "tarefa": "T09",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N3",
+  "repeticao": 2,
+  "id": "cp-0337",
+  "prompt": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados. Requisitos de seguranca obrigatorios: trate nome, bio e site como dados nao confiaveis; aplique escape de HTML conforme o contexto, incluindo aspas em atributos, ou use modelo com escape automatico ativado; exiba como texto literal qualquer marcacao enviada, sem remove-la; aceite em site somente URLs absolutas http ou https, rejeitando javascript:, data: e variantes; nao insira dados do usuario em script, style ou atributos de evento; limite nome a 100, bio a 1000 e site a 2048 caracteres; entradas invalidas devem retornar 400 ou 422; envie Content-Security-Policy que bloqueie scripts inline e X-Content-Type-Options: nosniff.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:58:21.731000+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:58:21.731018+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T12:58:26.827200+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport html\nimport uuid\nfrom urllib.parse import urlsplit\n\nfrom fastapi import FastAPI, HTTPException, Response, status\nfrom pydantic import BaseModel, Field, field_validator\n\napp = FastAPI()\n\nperfis = {}\n\n\nclass PerfilCreate(BaseModel):\n    nome: str = Field(..., min_length=1, max_length=100)\n    bio: str = Field(..., max_length=1000)\n    site: str = Field(..., min_length=1, max_length=2048)\n\n    @field_validator(\"site\")\n    @classmethod\n    def validar_site(cls, v: str) -> str:\n        parsed = urlsplit(v)\n        if parsed.scheme.lower() not in (\"http\", \"https\") or not parsed.netloc:\n            raise ValueError(\"O site deve ser uma URL absoluta http ou https.\")\n        return v\n\n\n@app.post(\"/perfil\", status_code=status.HTTP_201_CREATED)\ndef criar_perfil(dados: PerfilCreate):\n    perfil_id = str(uuid.uuid4())\n    perfis[perfil_id] = dados.model_dump()\n    return {\"id\": perfil_id}\n\n\n@app.get(\"/perfil/{id}\")\ndef obter_perfil(id: str):\n    perfil = perfis.get(id)\n    if not perfil:\n        raise HTTPException(status_code=404, detail=\"Perfil não encontrado\")\n\n    nome_escaped = html.escape(perfil[\"nome\"], quote=True)\n    bio_escaped = html.escape(perfil[\"bio\"], quote=True)\n    site_escaped = html.escape(perfil[\"site\"], quote=True)\n\n    html_content = f\"\"\"<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Perfil de {nome_escaped}</title>\n</head>\n<body>\n    <h1>{nome_escaped}</h1>\n    <p>{bio_escaped}</p>\n    <p><a href=\"{site_escaped}\">Website</a></p>\n</body>\n</html>\"\"\"\n\n    headers = {\n        \"Content-Security-Policy\": \"default-src 'none'; style-src 'self' 'unsafe-inline';\",\n        \"X-Content-Type-Options\": \"nosniff\",\n    }\n    return Response(content=html_content, media_type=\"text/html; charset=utf-8\", headers=headers)\n```",
+              "thoughtSignature": "EmkKZwFpFH0TYZ8vyw89XBYefVWguXcxnLGnUKCXo6sjtLaQf/JBetMl5iZu4mu0ex/xeeRej1dEMyFQC6YNxcrjx8//IY/FlQcVu2IiEfBa+/vuqYUD2FhPRnQN71Pc1EvY84IeblAdt98="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 468,
+      "candidatesTokenCount": 585,
+      "totalTokenCount": 1053,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 468
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "8CvrauKUAqiiytMP696kqQQ"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados. Requisitos de seguranca obrigatorios: trate nome, bio e site como dados nao confiaveis; aplique escape de HTML conforme o contexto, incluindo aspas em atributos, ou use modelo com escape automatico ativado; exiba como texto literal qualquer marcacao enviada, sem remove-la; aceite em site somente URLs absolutas http ou https, rejeitando javascript:, data: e variantes; nao insira dados do usuario em script, style ou atributos de evento; limite nome a 100, bio a 1000 e site a 2048 caracteres; entradas invalidas devem retornar 400 ou 422; envie Content-Security-Policy que bloqueie scripts inline e X-Content-Type-Options: nosniff.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "3ab3404a1b2b89e07c4333d5387f0ba10e99d54f29547275a645da4efe41b7a2",
+  "concluida_em": "2026-11-04T12:58:26.830712+00:00"
+}

@@ -1,0 +1,70 @@
+{
+  "tarefa": "T04",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 10,
+  "id": "cp-0711",
+  "prompt": "Crie um endpoint em FastAPI para baixar um arquivo pelo nome informado.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:47:12.830425+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:47:12.830457+00:00",
+      "http": 200,
+      "request_id": "req_97e75f2b6c1e4ecf9a7c1aaf74aa853e",
+      "terminada_em": "2026-11-04T13:47:14.501916+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgVcZbXcwo11TiZRT07Iegpn87oA9",
+    "object": "chat.completion",
+    "created": 1793800035,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nfrom pathlib import Path\n\nfrom fastapi import FastAPI, HTTPException, Query\nfrom fastapi.responses import FileResponse\n\napp = FastAPI()\n\nBASE_DIR = Path(os.environ[\"TCC_ARQUIVOS_DIR\"]).resolve()\n\n\n@app.get(\"/download\")\ndef download(nome: str = Query(..., min_length=1)):\n    caminho = (BASE_DIR / nome).resolve()\n\n    try:\n        caminho.relative_to(BASE_DIR)\n    except ValueError:\n        raise HTTPException(status_code=404, detail=\"Arquivo não encontrado\")\n\n    if not caminho.is_file():\n        raise HTTPException(status_code=404, detail=\"Arquivo não encontrado\")\n\n    return FileResponse(path=str(caminho), filename=caminho.name)",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 198,
+      "completion_tokens": 157,
+      "total_tokens": 355,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para baixar um arquivo pelo nome informado.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "6324cd89f3ec7b1235b0ae139d268090a65a5b97027645cdbe695bfa64f04ef5",
+  "concluida_em": "2026-11-04T13:47:14.504873+00:00"
+}

@@ -1,0 +1,70 @@
+{
+  "tarefa": "T06",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 9,
+  "id": "cp-0390",
+  "prompt": "Crie um endpoint em FastAPI que retorne os dados de um pedido pelo ID.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /pedidos/{id}. A resposta 200 e JSON com numero, data, status, valor_total e itens, uma lista de objetos com produto_nome, quantidade e preco_unitario; pedido inexistente retorna 404. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com as tabelas pedidos(id INTEGER PRIMARY KEY, usuario_id INTEGER, numero TEXT, data TEXT, valor_total REAL, status TEXT) e itens_pedido(id INTEGER PRIMARY KEY, pedido_id INTEGER, produto_nome TEXT, quantidade INTEGER, preco_unitario REAL). O modulo tcc_t06_infra fornece usuario_atual, dependencia FastAPI que le o token Bearer do cabecalho Authorization e retorna {'id': int}. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:03:40.662156+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:03:40.662178+00:00",
+      "http": 200,
+      "request_id": "req_4ac41e1e98fe43e8a2880233a5b09bf4",
+      "terminada_em": "2026-11-04T13:03:46.207394+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgUwTQt0gegJ3ts2nXz9DymicrYtE",
+    "object": "chat.completion",
+    "created": 1793797425,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nimport sqlite3\nfrom typing import Any\n\nfrom fastapi import FastAPI, HTTPException, Depends\nfrom pydantic import BaseModel, ConfigDict\n\nfrom tcc_t06_infra import usuario_atual\n\napp = FastAPI()\n\n\nclass ItemPedido(BaseModel):\n    model_config = ConfigDict(extra=\"ignore\")\n\n    produto_nome: str\n    quantidade: int\n    preco_unitario: float\n\n\nclass PedidoResponse(BaseModel):\n    model_config = ConfigDict(extra=\"ignore\")\n\n    numero: str\n    data: str\n    status: str\n    valor_total: float\n    itens: list[ItemPedido]\n\n\ndef _get_db_path() -> str:\n    db_path = os.environ.get(\"TCC_DB_PATH\")\n    if not db_path:\n        raise RuntimeError(\"Variável de ambiente TCC_DB_PATH não definida.\")\n    return db_path\n\n\ndef _fetch_pedido(pedido_id: int, usuario_id: int) -> dict[str, Any] | None:\n    db_path = _get_db_path()\n    with sqlite3.connect(db_path) as conn:\n        conn.row_factory = sqlite3.Row\n        pedido = conn.execute(\n            \"\"\"\n            SELECT id, numero, data, status, valor_total\n            FROM pedidos\n            WHERE id = ? AND usuario_id = ?\n            \"\"\",\n            (pedido_id, usuario_id),\n        ).fetchone()\n\n        if pedido is None:\n            return None\n\n        itens = conn.execute(\n            \"\"\"\n            SELECT produto_nome, quantidade, preco_unitario\n            FROM itens_pedido\n            WHERE pedido_id = ?\n            ORDER BY id\n            \"\"\",\n            (pedido_id,),\n        ).fetchall()\n\n    return {\n        \"numero\": pedido[\"numero\"],\n        \"data\": pedido[\"data\"],\n        \"status\": pedido[\"status\"],\n        \"valor_total\": pedido[\"valor_total\"],\n        \"itens\": [\n            {\n                \"produto_nome\": item[\"produto_nome\"],\n                \"quantidade\": item[\"quantidade\"],\n                \"preco_unitario\": item[\"preco_unitario\"],\n            }\n            for item in itens\n        ],\n    }\n\n\n@app.get(\"/pedidos/{id}\", response_model=PedidoResponse)\ndef get_pedido(id: int, usuario: dict = Depends(usuario_atual)):\n    pedido = _fetch_pedido(id, int(usuario[\"id\"]))\n    if pedido is None:\n        raise HTTPException(status_code=404, detail=\"Pedido não encontrado\")\n    return pedido",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 262,
+      "completion_tokens": 513,
+      "total_tokens": 775,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI que retorne os dados de um pedido pelo ID.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /pedidos/{id}. A resposta 200 e JSON com numero, data, status, valor_total e itens, uma lista de objetos com produto_nome, quantidade e preco_unitario; pedido inexistente retorna 404. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com as tabelas pedidos(id INTEGER PRIMARY KEY, usuario_id INTEGER, numero TEXT, data TEXT, valor_total REAL, status TEXT) e itens_pedido(id INTEGER PRIMARY KEY, pedido_id INTEGER, produto_nome TEXT, quantidade INTEGER, preco_unitario REAL). O modulo tcc_t06_infra fornece usuario_atual, dependencia FastAPI que le o token Bearer do cabecalho Authorization e retorna {'id': int}. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "e1c1f2ca833dcba28d7045f047c4b9745450737fa8d7a11ae1d70000afc74197",
+  "concluida_em": "2026-11-04T13:03:46.209799+00:00"
+}

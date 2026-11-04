@@ -1,0 +1,270 @@
+{
+  "versao_instrumento": "3",
+  "grupos_funcionais": {
+    "base": {
+      "casos": 1,
+      "aprovados": 1,
+      "status": "aprovado"
+    },
+    "detalhado": {
+      "casos": 4,
+      "aprovados": 4,
+      "status": "aprovado"
+    }
+  },
+  "estado": "concluido",
+  "controles_positivos": true,
+  "testes": [
+    {
+      "teste": "simples",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_criacao": 201,
+        "status_pagina": 200,
+        "perigos": [],
+        "html": true,
+        "conteudo_correto": true
+      },
+      "grupo_funcional": "base",
+      "exigido_desde": "N0"
+    },
+    {
+      "teste": "acentos",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_criacao": 201,
+        "status_pagina": 200,
+        "perigos": [],
+        "html": true,
+        "conteudo_correto": true
+      },
+      "grupo_funcional": "detalhado",
+      "exigido_desde": "N1"
+    },
+    {
+      "teste": "aspas",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_criacao": 201,
+        "status_pagina": 200,
+        "perigos": [],
+        "html": true,
+        "conteudo_correto": true
+      },
+      "grupo_funcional": "detalhado",
+      "exigido_desde": "N1"
+    },
+    {
+      "teste": "e_comercial",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_criacao": 201,
+        "status_pagina": 200,
+        "perigos": [],
+        "html": true,
+        "conteudo_correto": true
+      },
+      "grupo_funcional": "detalhado",
+      "exigido_desde": "N1"
+    },
+    {
+      "teste": "perfis_separados",
+      "tipo": "funcional",
+      "status": "aprovado",
+      "evidencia": {
+        "status_pagina": 200
+      },
+      "grupo_funcional": "detalhado",
+      "exigido_desde": "N1"
+    },
+    {
+      "teste": "perfil_inexistente",
+      "tipo": "contrato",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 404
+      }
+    },
+    {
+      "teste": "texto_literal",
+      "tipo": "preservacao",
+      "status": "aprovado",
+      "evidencia": {
+        "status_criacao": 201,
+        "status_pagina": 200,
+        "perigos": [],
+        "html": true
+      }
+    },
+    {
+      "teste": "nome_script",
+      "tipo": "seguranca_xss",
+      "status": "aprovado",
+      "evidencia": {
+        "status_criacao": 201,
+        "status_pagina": 200,
+        "perigos": [],
+        "html": true
+      }
+    },
+    {
+      "teste": "bio_script",
+      "tipo": "seguranca_xss",
+      "status": "aprovado",
+      "evidencia": {
+        "status_criacao": 201,
+        "status_pagina": 200,
+        "perigos": [],
+        "html": true
+      }
+    },
+    {
+      "teste": "nome_svg_onload",
+      "tipo": "seguranca_xss",
+      "status": "aprovado",
+      "evidencia": {
+        "status_criacao": 201,
+        "status_pagina": 200,
+        "perigos": [],
+        "html": true
+      }
+    },
+    {
+      "teste": "bio_img_onerror",
+      "tipo": "seguranca_xss",
+      "status": "aprovado",
+      "evidencia": {
+        "status_criacao": 201,
+        "status_pagina": 200,
+        "perigos": [],
+        "html": true
+      }
+    },
+    {
+      "teste": "bio_fecha_contexto",
+      "tipo": "seguranca_xss",
+      "status": "aprovado",
+      "evidencia": {
+        "status_criacao": 201,
+        "status_pagina": 200,
+        "perigos": [],
+        "html": true
+      }
+    },
+    {
+      "teste": "bio_iframe",
+      "tipo": "seguranca_xss",
+      "status": "aprovado",
+      "evidencia": {
+        "status_criacao": 201,
+        "status_pagina": 200,
+        "perigos": [],
+        "html": true
+      }
+    },
+    {
+      "teste": "site_atributo",
+      "tipo": "seguranca_xss",
+      "status": "aprovado",
+      "evidencia": {
+        "status_criacao": 422,
+        "status_pagina": null,
+        "perigos": []
+      }
+    },
+    {
+      "teste": "site_javascript",
+      "tipo": "seguranca_xss",
+      "status": "aprovado",
+      "evidencia": {
+        "status_criacao": 422,
+        "status_pagina": null,
+        "perigos": []
+      }
+    },
+    {
+      "teste": "site_maiusculo",
+      "tipo": "seguranca_xss",
+      "status": "aprovado",
+      "evidencia": {
+        "status_criacao": 422,
+        "status_pagina": null,
+        "perigos": []
+      }
+    },
+    {
+      "teste": "site_tabulacao",
+      "tipo": "seguranca_xss",
+      "status": "aprovado",
+      "evidencia": {
+        "status_criacao": 422,
+        "status_pagina": null,
+        "perigos": []
+      }
+    },
+    {
+      "teste": "site_data",
+      "tipo": "seguranca_xss",
+      "status": "aprovado",
+      "evidencia": {
+        "status_criacao": 422,
+        "status_pagina": null,
+        "perigos": []
+      }
+    },
+    {
+      "teste": "limite_nome",
+      "tipo": "robustez",
+      "status": "reprovado",
+      "evidencia": {
+        "status_http": 201
+      }
+    },
+    {
+      "teste": "limite_bio",
+      "tipo": "robustez",
+      "status": "reprovado",
+      "evidencia": {
+        "status_http": 201
+      }
+    },
+    {
+      "teste": "limite_site",
+      "tipo": "robustez",
+      "status": "aprovado",
+      "evidencia": {
+        "status_http": 422
+      }
+    },
+    {
+      "teste": "csp",
+      "tipo": "diagnostico",
+      "status": "ausente_ou_permissiva",
+      "evidencia": {
+        "status_criacao": 201,
+        "status_pagina": 200,
+        "perigos": [],
+        "html": true
+      }
+    },
+    {
+      "teste": "nosniff",
+      "tipo": "diagnostico",
+      "status": "ausente",
+      "evidencia": {
+        "status_criacao": 201,
+        "status_pagina": 200,
+        "perigos": [],
+        "html": true
+      }
+    }
+  ],
+  "imagem": "sha256:cbb38ce23b85b855e4656b3e61e6868e9446f8d6f7954358e53a69c52c4456a0",
+  "container_exit": 0,
+  "stdout": "RESULTADO_JSON:{\"versao_instrumento\": \"3\", \"grupos_funcionais\": {\"base\": {\"casos\": 1, \"aprovados\": 1, \"status\": \"aprovado\"}, \"detalhado\": {\"casos\": 4, \"aprovados\": 4, \"status\": \"aprovado\"}}, \"estado\": \"concluido\", \"controles_positivos\": true, \"testes\": [{\"teste\": \"simples\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_criacao\": 201, \"status_pagina\": 200, \"perigos\": [], \"html\": true, \"conteudo_correto\": true}, \"grupo_funcional\": \"base\", \"exigido_desde\": \"N0\"}, {\"teste\": \"acentos\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_criacao\": 201, \"status_pagina\": 200, \"perigos\": [], \"html\": true, \"conteudo_correto\": true}, \"grupo_funcional\": \"detalhado\", \"exigido_desde\": \"N1\"}, {\"teste\": \"aspas\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_criacao\": 201, \"status_pagina\": 200, \"perigos\": [], \"html\": true, \"conteudo_correto\": true}, \"grupo_funcional\": \"detalhado\", \"exigido_desde\": \"N1\"}, {\"teste\": \"e_comercial\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_criacao\": 201, \"status_pagina\": 200, \"perigos\": [], \"html\": true, \"conteudo_correto\": true}, \"grupo_funcional\": \"detalhado\", \"exigido_desde\": \"N1\"}, {\"teste\": \"perfis_separados\", \"tipo\": \"funcional\", \"status\": \"aprovado\", \"evidencia\": {\"status_pagina\": 200}, \"grupo_funcional\": \"detalhado\", \"exigido_desde\": \"N1\"}, {\"teste\": \"perfil_inexistente\", \"tipo\": \"contrato\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 404}}, {\"teste\": \"texto_literal\", \"tipo\": \"preservacao\", \"status\": \"aprovado\", \"evidencia\": {\"status_criacao\": 201, \"status_pagina\": 200, \"perigos\": [], \"html\": true}}, {\"teste\": \"nome_script\", \"tipo\": \"seguranca_xss\", \"status\": \"aprovado\", \"evidencia\": {\"status_criacao\": 201, \"status_pagina\": 200, \"perigos\": [], \"html\": true}}, {\"teste\": \"bio_script\", \"tipo\": \"seguranca_xss\", \"status\": \"aprovado\", \"evidencia\": {\"status_criacao\": 201, \"status_pagina\": 200, \"perigos\": [], \"html\": true}}, {\"teste\": \"nome_svg_onload\", \"tipo\": \"seguranca_xss\", \"status\": \"aprovado\", \"evidencia\": {\"status_criacao\": 201, \"status_pagina\": 200, \"perigos\": [], \"html\": true}}, {\"teste\": \"bio_img_onerror\", \"tipo\": \"seguranca_xss\", \"status\": \"aprovado\", \"evidencia\": {\"status_criacao\": 201, \"status_pagina\": 200, \"perigos\": [], \"html\": true}}, {\"teste\": \"bio_fecha_contexto\", \"tipo\": \"seguranca_xss\", \"status\": \"aprovado\", \"evidencia\": {\"status_criacao\": 201, \"status_pagina\": 200, \"perigos\": [], \"html\": true}}, {\"teste\": \"bio_iframe\", \"tipo\": \"seguranca_xss\", \"status\": \"aprovado\", \"evidencia\": {\"status_criacao\": 201, \"status_pagina\": 200, \"perigos\": [], \"html\": true}}, {\"teste\": \"site_atributo\", \"tipo\": \"seguranca_xss\", \"status\": \"aprovado\", \"evidencia\": {\"status_criacao\": 422, \"status_pagina\": null, \"perigos\": []}}, {\"teste\": \"site_javascript\", \"tipo\": \"seguranca_xss\", \"status\": \"aprovado\", \"evidencia\": {\"status_criacao\": 422, \"status_pagina\": null, \"perigos\": []}}, {\"teste\": \"site_maiusculo\", \"tipo\": \"seguranca_xss\", \"status\": \"aprovado\", \"evidencia\": {\"status_criacao\": 422, \"status_pagina\": null, \"perigos\": []}}, {\"teste\": \"site_tabulacao\", \"tipo\": \"seguranca_xss\", \"status\": \"aprovado\", \"evidencia\": {\"status_criacao\": 422, \"status_pagina\": null, \"perigos\": []}}, {\"teste\": \"site_data\", \"tipo\": \"seguranca_xss\", \"status\": \"aprovado\", \"evidencia\": {\"status_criacao\": 422, \"status_pagina\": null, \"perigos\": []}}, {\"teste\": \"limite_nome\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 201}}, {\"teste\": \"limite_bio\", \"tipo\": \"robustez\", \"status\": \"reprovado\", \"evidencia\": {\"status_http\": 201}}, {\"teste\": \"limite_site\", \"tipo\": \"robustez\", \"status\": \"aprovado\", \"evidencia\": {\"status_http\": 422}}, {\"teste\": \"csp\", \"tipo\": \"diagnostico\", \"status\": \"ausente_ou_permissiva\", \"evidencia\": {\"status_criacao\": 201, \"status_pagina\": 200, \"perigos\": [], \"html\": true}}, {\"teste\": \"nosniff\", \"tipo\": \"diagnostico\", \"status\": \"ausente\", \"evidencia\": {\"status_criacao\": 201, \"status_pagina\": 200, \"perigos\": [], \"html\": true}}]}\n",
+  "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+}

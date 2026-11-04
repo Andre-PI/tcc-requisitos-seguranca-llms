@@ -1,0 +1,73 @@
+{
+  "tarefa": "T08",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N1",
+  "repeticao": 9,
+  "id": "cp-0087",
+  "prompt": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:28:06.238371+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:28:06.238390+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T12:28:10.528683+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nfrom typing import Any, Dict\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel\nimport yaml\n\napp = FastAPI()\n\n\nclass ConfiguracaoRequest(BaseModel):\n    yaml: str\n\n\n@app.post(\"/configuracao\")\ndef importar_configuracao(payload: ConfiguracaoRequest) -> Dict[str, Any]:\n    try:\n        dados = yaml.safe_load(payload.yaml)\n    except yaml.YAMLError as exc:\n        raise HTTPException(status_code=400, detail=f\"YAML inválido: {exc}\")\n\n    if dados is None:\n        dados = {}\n\n    if not isinstance(dados, dict):\n        raise HTTPException(\n            status_code=400,\n            detail=\"A raiz da configuração deve ser um mapeamento (objeto).\",\n        )\n\n    return {\"configuracao\": dados}\n```",
+              "thoughtSignature": "EmkKZwFpFH0T4ZjmHYXskn3KY05yRzqqt7gjWuGz01i77JV2uy0MHACI4VF7TBItxBYV150uMTqfFEhoBpR6wHV4bzT/KMeQAFBq/Js1koYtOVz2jGvVSEWd2KE9VzeEifAOo+haIZUfh3o="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 258,
+      "candidatesTokenCount": 198,
+      "totalTokenCount": 456,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 258
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "2CTrapTdH9WRytMPzvyLuQM"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "160c32492609097be6115605a4e6b0caf3532f17e83b214fceeccb675057a958",
+  "concluida_em": "2026-11-04T12:28:10.530704+00:00"
+}

@@ -1,0 +1,70 @@
+{
+  "tarefa": "T08",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N2",
+  "repeticao": 7,
+  "id": "cp-0332",
+  "prompt": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:57:43.316082+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:57:43.316112+00:00",
+      "http": 200,
+      "request_id": "req_fa781cf80961457d948783d86667b703",
+      "terminada_em": "2026-11-04T12:57:46.445859+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgUqfqr4h4Ko3cH0NQYIcGXv6w2Je",
+    "object": "chat.completion",
+    "created": 1793797065,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from __future__ import annotations\n\nfrom typing import Any\n\nfrom fastapi import FastAPI, HTTPException, status\nfrom pydantic import BaseModel, ConfigDict, Field, field_validator\nimport yaml\n\n\napp = FastAPI(title=\"Importador de Configuração YAML\")\n\n\nclass ConfiguracaoRequest(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", str_strip_whitespace=False)\n\n    yaml: str = Field(..., min_length=1)\n\n    @field_validator(\"yaml\")\n    @classmethod\n    def validar_yaml_nao_vazio(cls, v: str) -> str:\n        if not v.strip():\n            raise ValueError(\"O campo 'yaml' não pode estar vazio.\")\n        return v\n\n\nclass _SafeLoader(yaml.SafeLoader):\n    pass\n\n\ndef _construct_mapping(loader: yaml.Loader, node: yaml.Node, deep: bool = False) -> dict[str, Any]:\n    if not isinstance(node, yaml.MappingNode):\n        raise yaml.constructor.ConstructorError(\n            None, None, \"Esperado um mapeamento YAML na raiz.\", node.start_mark\n        )\n\n    mapping: dict[str, Any] = {}\n    for key_node, value_node in node.value:\n        key = loader.construct_object(key_node, deep=deep)\n        if not isinstance(key, str):\n            raise yaml.constructor.ConstructorError(\n                \"while constructing a mapping\",\n                node.start_mark,\n                \"A raiz da configuração deve conter apenas chaves textuais.\",\n                key_node.start_mark,\n            )\n        value = loader.construct_object(value_node, deep=deep)\n        mapping[key] = value\n    return mapping\n\n\n_SafeLoader.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, _construct_mapping)\n\n\n@app.post(\"/configuracao\", status_code=status.HTTP_200_OK)\nasync def importar_configuracao(payload: ConfiguracaoRequest) -> dict[str, Any]:\n    try:\n        documento = yaml.load(payload.yaml, Loader=_SafeLoader)\n    except yaml.YAMLError as exc:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"YAML inválido.\",\n        ) from exc\n\n    if not isinstance(documento, dict):\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"A raiz da configuração deve ser um mapeamento com chaves textuais.\",\n        )\n\n    for chave in documento.keys():\n        if not isinstance(chave, str):\n            raise HTTPException(\n                status_code=status.HTTP_400_BAD_REQUEST,\n                detail=\"A raiz da configuração deve conter apenas chaves textuais.\",\n            )\n\n    return {\"configuracao\": documento}",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 271,
+      "completion_tokens": 550,
+      "total_tokens": 821,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "9c3539dcb85fa787e6553e013ab2e348ee6d667778f7049341917d9aa0caca8e",
+  "concluida_em": "2026-11-04T12:57:46.449119+00:00"
+}

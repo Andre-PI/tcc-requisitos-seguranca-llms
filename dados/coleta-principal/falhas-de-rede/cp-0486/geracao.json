@@ -1,0 +1,45 @@
+{
+  "tarefa": "T03",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N3",
+  "repeticao": 9,
+  "id": "cp-0486",
+  "prompt": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. Requisitos de seguranca obrigatorios: aceite somente PNG e JPEG com extensao permitida e conteudo real decodificavel; nao confie apenas no MIME ou na assinatura inicial; rejeite dados vazios, SVG e arquivos corrompidos; limite cada upload a 2 MiB (2097152 bytes) e dimensoes a 1024 por 1024 pixels; valide antes de gravar na pasta de uploads; gere o nome no servidor sem utilizar o nome fornecido pelo cliente; nenhum caminho ou link pode causar gravacao fora da base; preserve envios anteriores e evite sobrescrita por nomes repetidos; rejeite entradas invalidas com 400, 413, 415 ou 422, usando 413 para excesso de tamanho; mensagens de erro nao devem revelar caminhos absolutos do servidor.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:22:10.972673+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:22:10.972706+00:00",
+      "erro": "URLError",
+      "terminada_em": "2026-11-04T13:22:10.976317+00:00"
+    },
+    {
+      "numero": 2,
+      "iniciada_em": "2026-11-04T13:22:15.977958+00:00",
+      "erro": "URLError",
+      "terminada_em": "2026-11-04T13:22:15.981434+00:00"
+    }
+  ],
+  "resposta": null,
+  "erro": "Nenhuma resposta de geracao; consultar tentativas",
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. Requisitos de seguranca obrigatorios: aceite somente PNG e JPEG com extensao permitida e conteudo real decodificavel; nao confie apenas no MIME ou na assinatura inicial; rejeite dados vazios, SVG e arquivos corrompidos; limite cada upload a 2 MiB (2097152 bytes) e dimensoes a 1024 por 1024 pixels; valide antes de gravar na pasta de uploads; gere o nome no servidor sem utilizar o nome fornecido pelo cliente; nenhum caminho ou link pode causar gravacao fora da base; preserve envios anteriores e evite sobrescrita por nomes repetidos; rejeite entradas invalidas com 400, 413, 415 ou 422, usando 413 para excesso de tamanho; mensagens de erro nao devem revelar caminhos absolutos do servidor.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "concluida_em": "2026-11-04T13:22:15.982449+00:00"
+}

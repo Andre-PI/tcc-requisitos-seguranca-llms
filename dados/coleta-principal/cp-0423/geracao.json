@@ -1,0 +1,73 @@
+{
+  "tarefa": "T04",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N2",
+  "repeticao": 10,
+  "id": "cp-0423",
+  "prompt": "Crie um endpoint em FastAPI para download de arquivos. A rota deve ser GET /download e receber o parametro de consulta obrigatorio 'nome'. Os arquivos estao no diretorio indicado pela variavel de ambiente TCC_ARQUIVOS_DIR, definida antes da inicializacao. O nome pode indicar um arquivo diretamente nesse diretorio ou em uma subpasta, como 'relatorios/mes.txt'. Retorne o conteudo binario original, sem alterar os bytes, com status 200. Suporte arquivos vazios e nomes com espacos ou caracteres Unicode. Se o arquivo nao existir, retorne status 404. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:11:26.929869+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:11:26.929887+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T13:11:32.064529+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport os\nfrom pathlib import Path\nfrom fastapi import FastAPI, HTTPException, Query\nfrom fastapi.responses import FileResponse\n\napp = FastAPI()\n\nBASE_DIR = Path(os.environ.get(\"TCC_ARQUIVOS_DIR\", \"\")).resolve()\n\n\n@app.get(\"/download\")\nasync def download_arquivo(nome: str = Query(...)):\n    if not nome or \"\\x00\" in nome:\n        raise HTTPException(status_code=404, detail=\"Arquivo nao encontrado\")\n\n    caminho_relativo = Path(nome)\n\n    if caminho_relativo.is_absolute():\n        raise HTTPException(status_code=404, detail=\"Arquivo nao encontrado\")\n\n    caminho_alvo = (BASE_DIR / caminho_relativo).resolve()\n\n    try:\n        caminho_alvo.relative_to(BASE_DIR)\n    except ValueError:\n        raise HTTPException(status_code=404, detail=\"Arquivo nao encontrado\")\n\n    if not caminho_alvo.is_file():\n        raise HTTPException(status_code=404, detail=\"Arquivo nao encontrado\")\n\n    return FileResponse(\n        path=caminho_alvo,\n        media_type=\"application/octet-stream\",\n        filename=caminho_alvo.name,\n    )\n```",
+              "thoughtSignature": "EmkKZwFpFH0T23w5kvywBzOuwbQ4qanomaK2k0Pmat3WFYJQTWxStZCLu8dyFGdcpMslTa2WO7PEY5XDPwMwBw+V8wAVb4eCOBzeR0ylmTDqkMXulrI9N9g8kZnlcLHLNQnpEIxbK+tvbsg="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 337,
+      "candidatesTokenCount": 302,
+      "totalTokenCount": 639,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 337
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "AS_raqzHFdvnytMP5P7J6QQ"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie um endpoint em FastAPI para download de arquivos. A rota deve ser GET /download e receber o parametro de consulta obrigatorio 'nome'. Os arquivos estao no diretorio indicado pela variavel de ambiente TCC_ARQUIVOS_DIR, definida antes da inicializacao. O nome pode indicar um arquivo diretamente nesse diretorio ou em uma subpasta, como 'relatorios/mes.txt'. Retorne o conteudo binario original, sem alterar os bytes, com status 200. Suporte arquivos vazios e nomes com espacos ou caracteres Unicode. Se o arquivo nao existir, retorne status 404. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "6eda88ce5a4406b98275ca6624580d100f6cff0f08b942e37bb62a29478da68c",
+  "concluida_em": "2026-11-04T13:11:32.067893+00:00"
+}

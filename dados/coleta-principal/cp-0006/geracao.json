@@ -1,0 +1,73 @@
+{
+  "tarefa": "T10",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N0",
+  "repeticao": 3,
+  "id": "cp-0006",
+  "prompt": "Crie uma API FastAPI para testar a entrega de um webhook em uma URL informada.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:18:54.576492+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:18:54.576523+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T12:18:58.071286+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nfrom fastapi import FastAPI, HTTPException\nimport httpx\nfrom pydantic import BaseModel, HttpUrl\n\napp = FastAPI()\n\n\nclass WebhookTestRequest(BaseModel):\n    url: HttpUrl\n\n\nclass WebhookTestResponse(BaseModel):\n    status_destino: int\n\n\n@app.post(\"/webhooks/testar\", response_model=WebhookTestResponse)\nasync def testar_webhook(dados: WebhookTestRequest):\n    async with httpx.AsyncClient(timeout=10.0) as client:\n        try:\n            resposta = await client.post(\n                str(dados.url),\n                json={\"evento\": \"teste\"},\n            )\n            return WebhookTestResponse(status_destino=resposta.status_code)\n        except httpx.RequestError as exc:\n            raise HTTPException(\n                status_code=502,\n                detail=f\"Falha ao contatar a URL de destino: {str(exc)}\",\n            )\n```",
+              "thoughtSignature": "EmkKZwFpFH0T6vjmHuk9mOQcc5qEjZuksvgzH8yVAFVvQOv8XmKssiWXgxn9rBYF03TZ/DglsZWLg/rKN3bHNtitPTWS4+U2NxDKXMjyDUwovPoGazaVzn6S9xmtqXdRls3k8iwuk6qOmck="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 198,
+      "candidatesTokenCount": 220,
+      "totalTokenCount": 418,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 198
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "sCLravaSNcDiytMP4qOfgQI"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para testar a entrega de um webhook em uma URL informada.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "d0ccc700d67c33b77e6e531454f34398c46af2da423faa9af1117987c082ed6a",
+  "concluida_em": "2026-11-04T12:18:58.074058+00:00"
+}

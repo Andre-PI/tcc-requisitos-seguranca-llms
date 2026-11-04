@@ -1,0 +1,70 @@
+{
+  "tarefa": "T08",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N1",
+  "repeticao": 10,
+  "id": "cp-0039",
+  "prompt": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:22:30.559427+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:22:30.559452+00:00",
+      "http": 200,
+      "request_id": "req_848ac52d878d42eea68836f7d5587903",
+      "terminada_em": "2026-11-04T12:22:32.549347+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgUIahbf8kPE1cXZOIif6fwpt20Yh",
+    "object": "chat.completion",
+    "created": 1793794952,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, ConfigDict, Field\nimport yaml\nfrom yaml.loader import SafeLoader\n\n\nclass ConfiguracaoEntrada(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\")\n    yaml: str = Field(..., description=\"Documento YAML como texto\")\n\n\napp = FastAPI()\n\n\ndef _validar_raiz(objeto):\n    if not isinstance(objeto, dict):\n        raise ValueError(\"A raiz da configuração deve ser um mapeamento YAML.\")\n    for chave in objeto.keys():\n        if not isinstance(chave, str):\n            raise ValueError(\"Todas as chaves da raiz devem ser textuais.\")\n\n\n@app.post(\"/configuracao\")\nasync def importar_configuracao(entrada: ConfiguracaoEntrada):\n    try:\n        objeto = yaml.load(entrada.yaml, Loader=SafeLoader)\n    except yaml.YAMLError as exc:\n        raise HTTPException(status_code=400, detail=f\"YAML inválido: {exc}\") from exc\n\n    if objeto is None:\n        objeto = {}\n\n    try:\n        _validar_raiz(objeto)\n    except ValueError as exc:\n        raise HTTPException(status_code=400, detail=str(exc)) from exc\n\n    return {\"configuracao\": objeto}",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 253,
+      "completion_tokens": 273,
+      "total_tokens": 526,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "44e0f440e1322845ce8ef2eb9615a5d9cb728ce99b4140ad183c202754ce5372",
+  "concluida_em": "2026-11-04T12:22:32.551981+00:00"
+}

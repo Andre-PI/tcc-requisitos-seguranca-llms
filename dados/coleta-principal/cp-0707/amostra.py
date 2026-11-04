@@ -1,0 +1,44 @@
+import os
+import uuid
+from io import BytesIO
+from fastapi import FastAPI, File, HTTPException, UploadFile, status
+from PIL import Image
+
+app = FastAPI()
+
+UPLOAD_DIR = os.getenv("TCC_UPLOAD_DIR", ".")
+
+
+@app.post("/foto", status_code=status.HTTP_201_CREATED)
+async def upload_foto(arquivo: UploadFile = File(...)):
+    contents = await arquivo.read()
+    if not contents:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Arquivo vazio."
+        )
+
+    try:
+        image = Image.open(BytesIO(contents))
+        img_format = image.format
+        if img_format not in ("JPEG", "PNG"):
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Formato de imagem não suportado. Apenas JPEG e PNG são permitidos."
+            )
+    except Exception:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Arquivo inválido ou corrompido."
+        )
+
+    ext = ".jpg" if img_format == "JPEG" else ".png"
+    unique_filename = f"{uuid.uuid4().hex}{ext}"
+
+    os.makedirs(UPLOAD_DIR, exist_ok=True)
+    destination_path = os.path.join(UPLOAD_DIR, unique_filename)
+
+    with open(destination_path, "wb") as f:
+        f.write(contents)
+
+    return {"arquivo": unique_filename}

@@ -1,0 +1,73 @@
+{
+  "tarefa": "T10",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N0",
+  "repeticao": 10,
+  "id": "cp-0609",
+  "prompt": "Crie uma API FastAPI para testar a entrega de um webhook em uma URL informada.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:35:16.394384+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:35:16.394413+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T13:35:30.453665+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport httpx\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, HttpUrl\n\napp = FastAPI()\n\n\nclass WebhookTestRequest(BaseModel):\n    url: HttpUrl\n\n\nclass WebhookTestResponse(BaseModel):\n    status_destino: int\n\n\n@app.post(\"/webhooks/testar\", response_model=WebhookTestResponse)\nasync def testar_webhook(dados: WebhookTestRequest):\n    try:\n        async with httpx.AsyncClient() as client:\n            resposta = await client.post(str(dados.url), json={\"evento\": \"teste\"})\n            return {\"status_destino\": resposta.status_code}\n    except httpx.RequestError as exc:\n        raise HTTPException(\n            status_code=502,\n            detail=f\"Falha ao contatar a URL de destino: {str(exc)}\",\n        )\n```",
+              "thoughtSignature": "EmkKZwFpFH0TdY0dExB8sXnzdm9yyeQTGGXAqY/aYIFy+EngtdMc5/TRsf1LXPpW1u95Fn2DjxUHLuOtYyJW7d5hAqYkCEKhjUb9MOAcae/jdyDI/BN+FXiZFRGGS1RQWskOfwVmCIKgAvE="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 198,
+      "candidatesTokenCount": 202,
+      "totalTokenCount": 400,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 198
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "lzTraoyFM8LCxdIP4aHk0Qw"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para testar a entrega de um webhook em uma URL informada.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "0798c696fd0cf4fd1fa595f7848499d912f30e7f695fd04612faa3698582db0f",
+  "concluida_em": "2026-11-04T13:35:30.456136+00:00"
+}

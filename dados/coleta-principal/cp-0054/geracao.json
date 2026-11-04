@@ -1,0 +1,70 @@
+{
+  "tarefa": "T09",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N2",
+  "repeticao": 2,
+  "id": "cp-0054",
+  "prompt": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:24:08.929768+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:24:08.929791+00:00",
+      "http": 200,
+      "request_id": "req_ce3d15df369149bb94005e04edfe4aee",
+      "terminada_em": "2026-11-04T12:24:11.765994+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgUKBfVdeEniyQGMmzA5xHv6rVQUI",
+    "object": "chat.completion",
+    "created": 1793795051,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from __future__ import annotations\n\nfrom html import escape\nfrom typing import Dict\nfrom uuid import uuid4\nfrom urllib.parse import urlparse\n\nfrom fastapi import FastAPI, HTTPException, Response, status\nfrom pydantic import BaseModel, ConfigDict, Field, HttpUrl, ValidationError, field_validator\n\napp = FastAPI(title=\"Perfil Público\")\n\n_profiles: Dict[str, \"Profile\"] = {}\n\n\nclass ProfileCreate(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\", str_strip_whitespace=True)\n\n    nome: str = Field(min_length=1, max_length=200)\n    bio: str = Field(min_length=1, max_length=2000)\n    site: HttpUrl\n\n    @field_validator(\"nome\", \"bio\")\n    @classmethod\n    def validate_text(cls, v: str) -> str:\n        if not v.strip():\n            raise ValueError(\"must not be empty\")\n        return v\n\n    @field_validator(\"site\")\n    @classmethod\n    def validate_site_scheme(cls, v: HttpUrl) -> HttpUrl:\n        if v.scheme not in {\"http\", \"https\"}:\n            raise ValueError(\"invalid URL scheme\")\n        return v\n\n\nclass Profile(BaseModel):\n    model_config = ConfigDict(extra=\"forbid\")\n\n    id: str\n    nome: str\n    bio: str\n    site: str\n\n\n@app.post(\"/perfil\", status_code=status.HTTP_201_CREATED)\ndef create_profile(payload: ProfileCreate):\n    profile_id = uuid4().hex\n    profile = Profile(id=profile_id, nome=payload.nome, bio=payload.bio, site=str(payload.site))\n    _profiles[profile_id] = profile\n    return {\"id\": profile_id}\n\n\n@app.get(\"/perfil/{id}\", response_class=Response)\ndef get_profile(id: str):\n    profile = _profiles.get(id)\n    if profile is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=\"Perfil não encontrado\")\n\n    safe_name = escape(profile.nome, quote=False)\n    safe_bio = escape(profile.bio, quote=False)\n    safe_site_text = escape(profile.site, quote=True)\n\n    html = (\n        \"<!doctype html>\"\n        \"<html lang='pt-BR'>\"\n        \"<head>\"\n        \"<meta charset='utf-8'>\"\n        \"<meta name='viewport' content='width=device-width, initial-scale=1'>\"\n        \"<title>Perfil Público</title>\"\n        \"</head>\"\n        \"<body>\"\n        f\"<h1>{safe_name}</h1>\"\n        f\"<p>{safe_bio}</p>\"\n        f\"<p><a href='{safe_site_text}' rel='noopener noreferrer nofollow' target='_blank'>Site pessoal</a></p>\"\n        \"</body>\"\n        \"</html>\"\n    )\n    return Response(content=html, media_type=\"text/html; charset=utf-8\")",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 305,
+      "completion_tokens": 603,
+      "total_tokens": 908,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para perfil publico. POST /perfil recebe JSON com 'nome', 'bio' e 'site', a URL do site pessoal, e retorna 201 com o identificador do perfil. GET /perfil/{id} retorna 200 e uma pagina HTML que mostra o nome, a bio e um link para o site, ou 404 quando o perfil nao existe. Suporte acentos, apostrofos, aspas e o caractere & nos textos exibidos, e URLs com parametros de consulta. Cada perfil deve manter seus proprios dados. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "68352ae591d4d76e0a3651d4b998969e8abe7c36a1f19858dd5d8310aba65a98",
+  "concluida_em": "2026-11-04T12:24:11.768522+00:00"
+}

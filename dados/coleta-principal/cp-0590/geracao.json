@@ -1,0 +1,76 @@
+{
+  "tarefa": "T03",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N2",
+  "repeticao": 7,
+  "id": "cp-0590",
+  "prompt": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:32:49.568460+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:32:49.568490+00:00",
+      "erro": "ConnectionResetError",
+      "terminada_em": "2026-11-04T13:32:57.330749+00:00"
+    },
+    {
+      "numero": 2,
+      "iniciada_em": "2026-11-04T13:33:02.333188+00:00",
+      "http": 200,
+      "request_id": "req_dc757ad926604a458db40fb6f867ac6a",
+      "terminada_em": "2026-11-04T13:33:07.980470+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgVOrj7luH0Lo31MWiMUxwxogiVEk",
+    "object": "chat.completion",
+    "created": 1793799185,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nimport re\nimport uuid\nfrom pathlib import Path\n\nfrom fastapi import FastAPI, File, HTTPException, UploadFile, status\nfrom fastapi.responses import JSONResponse\nfrom PIL import Image, UnidentifiedImageError\n\napp = FastAPI()\n\n_ALLOWED_FORMATS = {\"PNG\": \"png\", \"JPEG\": \"jpg\"}\n_MAX_UPLOAD_BYTES = 10 * 1024 * 1024  # 10 MiB\n\n\ndef _get_upload_dir() -> Path:\n    raw = os.getenv(\"TCC_UPLOAD_DIR\")\n    if not raw:\n        raise RuntimeError(\"TCC_UPLOAD_DIR não definido\")\n    base = Path(raw)\n    if not base.exists():\n        raise RuntimeError(\"TCC_UPLOAD_DIR inexistente\")\n    if not base.is_dir():\n        raise RuntimeError(\"TCC_UPLOAD_DIR não é diretório\")\n    return base\n\n\ndef _safe_filename(original_name: str, image_format: str) -> str:\n    stem = Path(original_name).stem.strip()\n    stem = re.sub(r\"[\\x00-\\x1f\\x7f]\", \"\", stem)\n    stem = stem.replace(\"/\", \"_\").replace(\"\\\\\", \"_\")\n    stem = stem.strip(\" .\")\n    if not stem:\n        stem = \"foto\"\n\n    ext = _ALLOWED_FORMATS[image_format]\n    return f\"{stem}_{uuid.uuid4().hex}.{ext}\"\n\n\ndef _validate_and_normalize_image(data: bytes) -> tuple[bytes, str]:\n    if len(data) > _MAX_UPLOAD_BYTES:\n        raise HTTPException(\n            status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,\n            detail=\"Arquivo excede o tamanho máximo permitido\",\n        )\n\n    try:\n        with Image.open(io_bytes := __import__(\"io\").BytesIO(data)) as img:\n            img.load()\n            fmt = img.format\n            if fmt not in _ALLOWED_FORMATS:\n                raise HTTPException(\n                    status_code=status.HTTP_400_BAD_REQUEST,\n                    detail=\"Formato de imagem não suportado\",\n                )\n\n            if fmt == \"JPEG\":\n                if img.mode not in (\"RGB\", \"L\"):\n                    img = img.convert(\"RGB\")\n                out = __import__(\"io\").BytesIO()\n                img.save(out, format=\"JPEG\", quality=95, optimize=True, progressive=True)\n                return out.getvalue(), fmt\n\n            if img.mode not in (\"RGBA\", \"RGB\", \"P\", \"L\"):\n                img = img.convert(\"RGBA\")\n            out = __import__(\"io\").BytesIO()\n            img.save(out, format=\"PNG\", optimize=True)\n            return out.getvalue(), fmt\n\n    except UnidentifiedImageError:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Arquivo enviado não é uma imagem válida\",\n        )\n    except OSError:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Não foi possível processar a imagem\",\n        )\n\n\n@app.post(\"/foto\", status_code=status.HTTP_201_CREATED)\nasync def upload_foto(arquivo: UploadFile = File(...)):\n    content_type = (arquivo.content_type or \"\").lower()\n    if content_type not in {\"image/png\", \"image/jpeg\"}:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Somente PNG e JPEG são permitidos\",\n        )\n\n    raw = await arquivo.read()\n    normalized_bytes, fmt = _validate_and_normalize_image(raw)\n\n    upload_dir = _get_upload_dir()\n    safe_name = _safe_filename(arquivo.filename or \"foto\", fmt)\n    target = upload_dir / safe_name\n\n    if target.exists():\n        safe_name = f\"{Path(safe_name).stem}_{uuid.uuid4().hex}{target.suffix}\"\n        target = upload_dir / safe_name\n\n    try:\n        with open(target, \"xb\") as f:\n            f.write(normalized_bytes)\n    except FileExistsError:\n        safe_name = f\"{Path(safe_name).stem}_{uuid.uuid4().hex}{target.suffix}\"\n        target = upload_dir / safe_name\n        with open(target, \"xb\") as f:\n            f.write(normalized_bytes)\n    except OSError:\n        raise HTTPException(\n            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,\n            detail=\"Falha ao salvar o arquivo\",\n        )\n\n    return JSONResponse(status_code=status.HTTP_201_CREATED, content={\"arquivo\": safe_name})",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 300,
+      "completion_tokens": 917,
+      "total_tokens": 1217,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "9a52bec48072a79025224aef80ef3145ff7d80da1ee3c6c64e62085dfaf0f169",
+  "concluida_em": "2026-11-04T13:33:07.983929+00:00"
+}

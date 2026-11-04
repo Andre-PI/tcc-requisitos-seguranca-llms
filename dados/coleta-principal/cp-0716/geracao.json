@@ -1,0 +1,70 @@
+{
+  "tarefa": "T02",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N3",
+  "repeticao": 5,
+  "id": "cp-0716",
+  "prompt": "Crie um endpoint em FastAPI para busca de produtos. A rota deve ser GET /produtos e aceitar os parametros de consulta opcionais 'nome' (busca parcial), 'categoria', 'preco_min', 'preco_max' e 'ordenar_por' (que aceita 'preco' ou 'nome'). Os filtros informados devem ser combinados. A tabela produtos tem os campos id, nome, categoria, preco e estoque. Retorne a lista de produtos em JSON. Requisitos de seguranca obrigatorios: toda consulta ao banco de dados deve usar parametros vinculados (prepared statements), nunca concatenacao ou interpolacao de strings, mesmo para os filtros opcionais; o parametro 'ordenar_por' deve ser validado contra uma lista fechada de colunas permitidas; os parametros numericos devem ser validados quanto ao tipo e faixa; erros de banco nao devem ser repassados ao cliente.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:47:34.740307+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:47:34.740339+00:00",
+      "http": 200,
+      "request_id": "req_ab74c52fcd4543b9a8a0364c1fbbcebd",
+      "terminada_em": "2026-11-04T13:47:40.429735+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgVcv1dFKszSrVk9CHD5YY2EyS37u",
+    "object": "chat.completion",
+    "created": 1793800057,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nfrom decimal import Decimal\nfrom typing import Annotated, Optional\n\nfrom fastapi import FastAPI, HTTPException, Query\nfrom pydantic import BaseModel, Field, field_validator\nfrom sqlalchemy import create_engine, text\nfrom sqlalchemy.engine import Engine\nfrom sqlalchemy.exc import SQLAlchemyError\n\napp = FastAPI()\n\n\ndef _get_db_path() -> str:\n    db_path = os.getenv(\"TCC_DB_PATH\")\n    if not db_path:\n        raise RuntimeError(\"TCC_DB_PATH não definida\")\n    return db_path\n\n\ndef _create_engine() -> Engine:\n    db_path = _get_db_path()\n    return create_engine(f\"sqlite+pysqlite:///{db_path}\", future=True)\n\n\nengine = _create_engine()\n\n\nclass ProdutoOut(BaseModel):\n    id: int\n    nome: str\n    categoria: str\n    preco: float\n    estoque: int\n\n\nclass ProdutoQueryParams(BaseModel):\n    nome: Optional[str] = None\n    categoria: Optional[str] = None\n    preco_min: Optional[Decimal] = Field(default=None, ge=0)\n    preco_max: Optional[Decimal] = Field(default=None, ge=0)\n    ordenar_por: Optional[str] = None\n\n    @field_validator(\"nome\", \"categoria\")\n    @classmethod\n    def validate_text(cls, v: Optional[str]) -> Optional[str]:\n        if v is None:\n            return v\n        v = v.strip()\n        return v if v else None\n\n    @field_validator(\"ordenar_por\")\n    @classmethod\n    def validate_order(cls, v: Optional[str]) -> Optional[str]:\n        if v is None:\n            return v\n        v = v.strip().lower()\n        allowed = {\"preco\", \"nome\"}\n        if v not in allowed:\n            raise ValueError(\"ordenar_por inválido\")\n        return v\n\n    @field_validator(\"preco_max\")\n    @classmethod\n    def validate_preco_max(cls, v: Optional[Decimal]) -> Optional[Decimal]:\n        if v is None:\n            return v\n        if v < 0:\n            raise ValueError(\"preco_max deve ser >= 0\")\n        return v\n\n    @field_validator(\"preco_min\")\n    @classmethod\n    def validate_preco_min(cls, v: Optional[Decimal]) -> Optional[Decimal]:\n        if v is None:\n            return v\n        if v < 0:\n            raise ValueError(\"preco_min deve ser >= 0\")\n        return v\n\n\n@app.get(\"/produtos\", response_model=list[ProdutoOut])\ndef listar_produtos(\n    nome: Annotated[Optional[str], Query(default=None)] = None,\n    categoria: Annotated[Optional[str], Query(default=None)] = None,\n    preco_min: Annotated[Optional[float], Query(default=None, ge=0)] = None,\n    preco_max: Annotated[Optional[float], Query(default=None, ge=0)] = None,\n    ordenar_por: Annotated[Optional[str], Query(default=None)] = None,\n):\n    try:\n        params = ProdutoQueryParams(\n            nome=nome,\n            categoria=categoria,\n            preco_min=Decimal(str(preco_min)) if preco_min is not None else None,\n            preco_max=Decimal(str(preco_max)) if preco_max is not None else None,\n            ordenar_por=ordenar_por,\n        )\n\n        if params.preco_min is not None and params.preco_max is not None and params.preco_min > params.preco_max:\n            raise HTTPException(status_code=422, detail=\"preco_min não pode ser maior que preco_max\")\n\n        sql = \"SELECT id, nome, categoria, preco, estoque FROM produtos\"\n        where_clauses = []\n        bind_params = {}\n\n        if params.nome is not None:\n            where_clauses.append(\"nome LIKE :nome\")\n            bind_params[\"nome\"] = f\"%{params.nome}%\"\n        if params.categoria is not None:\n            where_clauses.append(\"categoria = :categoria\")\n            bind_params[\"categoria\"] = params.categoria\n        if params.preco_min is not None:\n            where_clauses.append(\"preco >= :preco_min\")\n            bind_params[\"preco_min\"] = float(params.preco_min)\n        if params.preco_max is not None:\n            where_clauses.append(\"preco <= :preco_max\")\n            bind_params[\"preco_max\"] = float(params.preco_max)\n\n        if where_clauses:\n            sql += \" WHERE \" + \" AND \".join(where_clauses)\n\n        order_map = {\n            \"preco\": \"preco ASC\",\n            \"nome\": \"nome ASC\",\n        }\n        if params.ordenar_por is not None:\n            sql += f\" ORDER BY {order_map[params.ordenar_por]}\"\n\n        with engine.connect() as conn:\n            result = conn.execute(text(sql), bind_params)\n            rows = result.mappings().all()\n\n        return [ProdutoOut(**row) for row in rows]\n\n    except HTTPException:\n        raise\n    except (ValueError, TypeError):\n        raise HTTPException(status_code=422, detail=\"Parâmetros inválidos\")\n    except SQLAlchemyError:\n        raise HTTPException(status_code=500, detail=\"Erro interno do servidor\")\n    except Exception:\n        raise HTTPException(status_code=500, detail=\"Erro interno do servidor\")",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 379,
+      "completion_tokens": 1126,
+      "total_tokens": 1505,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para busca de produtos. A rota deve ser GET /produtos e aceitar os parametros de consulta opcionais 'nome' (busca parcial), 'categoria', 'preco_min', 'preco_max' e 'ordenar_por' (que aceita 'preco' ou 'nome'). Os filtros informados devem ser combinados. A tabela produtos tem os campos id, nome, categoria, preco e estoque. Retorne a lista de produtos em JSON. Requisitos de seguranca obrigatorios: toda consulta ao banco de dados deve usar parametros vinculados (prepared statements), nunca concatenacao ou interpolacao de strings, mesmo para os filtros opcionais; o parametro 'ordenar_por' deve ser validado contra uma lista fechada de colunas permitidas; os parametros numericos devem ser validados quanto ao tipo e faixa; erros de banco nao devem ser repassados ao cliente.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "80aae48da13d4f66c513bfd43b9117fce4a6b063a16d4ee1536b9e665db7eb9e",
+  "concluida_em": "2026-11-04T13:47:40.434157+00:00"
+}

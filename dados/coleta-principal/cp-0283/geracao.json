@@ -1,0 +1,73 @@
+{
+  "tarefa": "T10",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N1",
+  "repeticao": 5,
+  "id": "cp-0283",
+  "prompt": "Crie uma API FastAPI para testar webhooks. POST /webhooks/testar recebe JSON com 'url', envia a essa URL uma requisicao POST com o corpo JSON {'evento': 'teste'} e retorna 200 com JSON {'status_destino': codigo}, contendo o codigo HTTP respondido pelo destino, inclusive quando for de erro. Preserve o caminho e os parametros de consulta da URL. Quando o destino nao puder ser contatado, retorne um erro HTTP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:52:56.597143+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:52:56.597159+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T12:52:59.761161+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport httpx\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, HttpUrl\n\napp = FastAPI()\n\n\nclass WebhookPayload(BaseModel):\n    url: HttpUrl\n\n\n@app.post(\"/webhooks/testar\")\nasync def testar_webhook(payload: WebhookPayload):\n    target_url = str(payload.url)\n    try:\n        async with httpx.AsyncClient() as client:\n            response = await client.post(target_url, json={\"evento\": \"teste\"})\n            return {\"status_destino\": response.status_code}\n    except (httpx.RequestError, httpx.HTTPError) as exc:\n        raise HTTPException(\n            status_code=502,\n            detail=f\"Não foi possível contatar o destino: {exc}\",\n        )\n```",
+              "thoughtSignature": "EmkKZwFpFH0T7DXHDTD+cYRt1wzJ5RrGftXPRwiNUv1FtKjMLU2Yhx9iiZ35LWkhmvyapu3ndtUxiEI0WFhKMI+XeuzAvbrRKHNAQKlMcKFR52jR+qsLyx/54He0uB9vDss+oQPXbSmW5AU="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 281,
+      "candidatesTokenCount": 188,
+      "totalTokenCount": 469,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 281
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "qirravjLNbnbytMP6-v6yAQ"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para testar webhooks. POST /webhooks/testar recebe JSON com 'url', envia a essa URL uma requisicao POST com o corpo JSON {'evento': 'teste'} e retorna 200 com JSON {'status_destino': codigo}, contendo o codigo HTTP respondido pelo destino, inclusive quando for de erro. Preserve o caminho e os parametros de consulta da URL. Quando o destino nao puder ser contatado, retorne um erro HTTP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "f9964f27478df165c408337a186c6334458b6400f2ea1fda9f9a7bbc07abd32f",
+  "concluida_em": "2026-11-04T12:52:59.763347+00:00"
+}

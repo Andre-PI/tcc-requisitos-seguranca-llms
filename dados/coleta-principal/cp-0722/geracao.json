@@ -1,0 +1,70 @@
+{
+  "tarefa": "T01",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N1",
+  "repeticao": 9,
+  "id": "cp-0722",
+  "prompt": "Crie um endpoint em FastAPI para login de usuario. A rota deve ser POST /login e receber um corpo JSON com os campos 'email' e 'senha'. O sistema possui uma tabela de usuarios com os campos id, email, senha e nome. Em caso de credenciais validas, retorne um JSON com o id e o nome do usuario. Em caso de credenciais invalidas, retorne status 401. Use SQLAlchemy para acesso ao banco de dados.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:48:15.776106+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:48:15.776147+00:00",
+      "http": 200,
+      "request_id": "req_8c45bda7f2fb40c7b2e69e096ea2d1e7",
+      "terminada_em": "2026-11-04T13:48:18.850057+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgVdaMoyHCX0oMw6WQA8vi2QArcSF",
+    "object": "chat.completion",
+    "created": 1793800098,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nfrom typing import Generator\n\nfrom fastapi import FastAPI, HTTPException, Depends, status\nfrom pydantic import BaseModel, EmailStr\nfrom sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, select\nfrom sqlalchemy.engine import Engine, Connection\nfrom sqlalchemy.exc import IntegrityError\n\ndb_path = os.environ.get(\"TCC_DB_PATH\")\nif not db_path:\n    raise RuntimeError(\"TCC_DB_PATH não definido\")\n\nengine: Engine = create_engine(f\"sqlite:///{db_path}\", future=True)\nmetadata = MetaData()\n\nusuarios = Table(\n    \"usuarios\",\n    metadata,\n    Column(\"id\", Integer, primary_key=True, autoincrement=True),\n    Column(\"email\", String, nullable=False, unique=True),\n    Column(\"senha\", String, nullable=False),\n    Column(\"nome\", String, nullable=False),\n)\n\napp = FastAPI()\n\n\ndef get_connection() -> Generator[Connection, None, None]:\n    with engine.begin() as conn:\n        yield conn\n\n\nclass RegistroIn(BaseModel):\n    email: EmailStr\n    senha: str\n    nome: str\n\n\nclass LoginIn(BaseModel):\n    email: EmailStr\n    senha: str\n\n\n@app.post(\"/registro\", status_code=status.HTTP_201_CREATED)\ndef registro(payload: RegistroIn, conn: Connection = Depends(get_connection)):\n    stmt = usuarios.insert().values(\n        email=payload.email,\n        senha=payload.senha,\n        nome=payload.nome,\n    )\n    try:\n        result = conn.execute(stmt)\n        user_id = result.inserted_primary_key[0]\n    except IntegrityError:\n        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=\"email já cadastrado\")\n    return {\"id\": user_id}\n\n\n@app.post(\"/login\")\ndef login(payload: LoginIn, conn: Connection = Depends(get_connection)):\n    stmt = select(usuarios.c.id, usuarios.c.nome).where(\n        usuarios.c.email == payload.email,\n        usuarios.c.senha == payload.senha,\n    )\n    result = conn.execute(stmt).mappings().first()\n    if not result:\n        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=\"credenciais inválidas\")\n    return {\"id\": result[\"id\"], \"nome\": result[\"nome\"]}",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 312,
+      "completion_tokens": 472,
+      "total_tokens": 784,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para login de usuario. A rota deve ser POST /login e receber um corpo JSON com os campos 'email' e 'senha'. O sistema possui uma tabela de usuarios com os campos id, email, senha e nome. Em caso de credenciais validas, retorne um JSON com o id e o nome do usuario. Em caso de credenciais invalidas, retorne status 401. Use SQLAlchemy para acesso ao banco de dados.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "70123e449d9cae9b7f15b5615ec726d49ba315bfea88fc7207670332a66d5b3a",
+  "concluida_em": "2026-11-04T13:48:18.852199+00:00"
+}

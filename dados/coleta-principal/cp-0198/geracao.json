@@ -1,0 +1,70 @@
+{
+  "tarefa": "T04",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 6,
+  "id": "cp-0198",
+  "prompt": "Crie um endpoint em FastAPI para baixar um arquivo pelo nome informado.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:39:54.550562+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:39:54.550588+00:00",
+      "http": 200,
+      "request_id": "req_5cb50ea1d94540f09e29d7934d851d4a",
+      "terminada_em": "2026-11-04T12:39:56.521173+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgUZQX5ADVKQ2q9nmzYZDSEW86nHZ",
+    "object": "chat.completion",
+    "created": 1793795996,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nfrom pathlib import Path\n\nfrom fastapi import FastAPI, HTTPException\nfrom fastapi.responses import FileResponse\n\napp = FastAPI()\n\nBASE_DIR = os.environ.get(\"TCC_ARQUIVOS_DIR\")\nif not BASE_DIR:\n    raise RuntimeError(\"TCC_ARQUIVOS_DIR não definida\")\n\nBASE_PATH = Path(BASE_DIR).resolve()\n\n\n@app.get(\"/download\")\ndef download(nome: str):\n    requested = Path(nome)\n\n    if requested.is_absolute() or any(part == \"..\" for part in requested.parts):\n        raise HTTPException(status_code=400, detail=\"Nome de arquivo inválido\")\n\n    file_path = (BASE_PATH / requested).resolve()\n\n    try:\n        file_path.relative_to(BASE_PATH)\n    except ValueError:\n        raise HTTPException(status_code=400, detail=\"Nome de arquivo inválido\")\n\n    if not file_path.is_file():\n        raise HTTPException(status_code=404, detail=\"Arquivo não encontrado\")\n\n    return FileResponse(\n        path=str(file_path),\n        filename=requested.name,\n        media_type=\"application/octet-stream\",\n    )",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 198,
+      "completion_tokens": 225,
+      "total_tokens": 423,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para baixar um arquivo pelo nome informado.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "f981c0d7a34d0a996c9a1c7402c1781fd31a2c18a214e30b30e33459db0d8725",
+  "concluida_em": "2026-11-04T12:39:56.527940+00:00"
+}

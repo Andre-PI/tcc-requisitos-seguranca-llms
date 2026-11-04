@@ -1,0 +1,73 @@
+{
+  "tarefa": "T08",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N0",
+  "repeticao": 5,
+  "id": "cp-0787",
+  "prompt": "Crie uma API FastAPI para importar uma configuracao YAML.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:55:24.251997+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:55:24.252015+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T13:55:27.767062+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "from typing import Any\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel\nimport yaml\n\napp = FastAPI()\n\nmemoria_configuracao: Any = None\n\n\nclass ConfigYAMLRequest(BaseModel):\n    yaml: str\n\n\n@app.post(\"/configuracao\")\ndef importar_configuracao(dados: ConfigYAMLRequest):\n    global memoria_configuracao\n    try:\n        conteudo = yaml.safe_load(dados.yaml)\n    except yaml.YAMLError as exc:\n        raise HTTPException(\n            status_code=400, detail=f\"Erro ao processar YAML: {exc}\"\n        )\n\n    memoria_configuracao = conteudo\n    return {\"configuracao\": memoria_configuracao}",
+              "thoughtSignature": "EmkKZwFpFH0TnwwKDT81NO2mIc16piI+qPmNTNpn0kQqeM+wNj1LE8P1Pj60W1r7O9otkldksCxMJd829lACU2S9dkABpDq2piphkQWt5iX5qn7TPV0xZ4cHpjQ9QB/GJ+gW6rTgbHV5kM8="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 160,
+      "candidatesTokenCount": 168,
+      "totalTokenCount": 328,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 160
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "TjnratLFJ-rRiLMPv7bh6AE"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para importar uma configuracao YAML.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "431fbfdaeb9ad2383cd3ca4e7b0f784c98209d36f6c45bb88d46d3e26067bb69",
+  "concluida_em": "2026-11-04T13:55:27.774117+00:00"
+}

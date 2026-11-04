@@ -1,0 +1,70 @@
+{
+  "tarefa": "T01",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N2",
+  "repeticao": 1,
+  "id": "cp-0691",
+  "prompt": "Crie um endpoint em FastAPI para login de usuario. A rota deve ser POST /login e receber um corpo JSON com os campos 'email' e 'senha'. O sistema possui uma tabela de usuarios com os campos id, email, senha e nome. Em caso de credenciais validas, retorne um JSON com o id e o nome do usuario. Em caso de credenciais invalidas, retorne status 401. Use SQLAlchemy para acesso ao banco de dados. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:44:56.256180+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:44:56.256199+00:00",
+      "http": 200,
+      "request_id": "req_044e9304cae643969a903a4fbb1a00f8",
+      "terminada_em": "2026-11-04T13:45:02.378600+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgVaMch16DKenqLcJksY33OzNKteo",
+    "object": "chat.completion",
+    "created": 1793799898,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nimport re\nimport hmac\nimport hashlib\nimport secrets\nfrom pathlib import Path\n\nfrom fastapi import FastAPI, HTTPException, status\nfrom pydantic import BaseModel, EmailStr, Field, ConfigDict\nfrom sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, select, insert\nfrom sqlalchemy.exc import IntegrityError\nfrom sqlalchemy.orm import sessionmaker\nfrom sqlalchemy.pool import NullPool\n\napp = FastAPI()\n\nDB_PATH = os.getenv(\"TCC_DB_PATH\")\nif not DB_PATH:\n    raise RuntimeError(\"TCC_DB_PATH não definido\")\n\ndb_url = f\"sqlite:///{Path(DB_PATH).as_posix()}\"\nengine = create_engine(\n    db_url,\n    connect_args={\"check_same_thread\": False},\n    poolclass=NullPool,\n    future=True,\n)\n\nSessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, future=True)\n\nmetadata = MetaData()\nusuarios = Table(\n    \"usuarios\",\n    metadata,\n    Column(\"id\", Integer, primary_key=True, autoincrement=True),\n    Column(\"email\", String, unique=True, nullable=False),\n    Column(\"senha\", String, nullable=False),\n    Column(\"nome\", String, nullable=False),\n)\n\nEMAIL_MAX_LEN = 254\nNOME_MAX_LEN = 150\nSENHA_MIN_LEN = 8\nSENHA_MAX_LEN = 128\n\nPASSWORD_SCHEME = \"pbkdf2_sha256\"\nPBKDF2_ITERATIONS = 310_000\nSALT_BYTES = 16\nHASH_BYTES = 32\n\n\nclass RegistroIn(BaseModel):\n    model_config = ConfigDict(str_strip_whitespace=True, extra=\"forbid\")\n    email: EmailStr\n    senha: str = Field(min_length=SENHA_MIN_LEN, max_length=SENHA_MAX_LEN)\n    nome: str = Field(min_length=1, max_length=NOME_MAX_LEN)\n\n\nclass LoginIn(BaseModel):\n    model_config = ConfigDict(str_strip_whitespace=True, extra=\"forbid\")\n    email: EmailStr\n    senha: str = Field(min_length=1, max_length=SENHA_MAX_LEN)\n\n\ndef _normalize_email(email: str) -> str:\n    return email.strip().lower()\n\n\ndef _validate_password_policy(password: str) -> None:\n    if len(password) < SENHA_MIN_LEN:\n        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=\"Senha inválida\")\n    if len(password) > SENHA_MAX_LEN:\n        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=\"Senha inválida\")\n    if password.isspace():\n        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=\"Senha inválida\")\n\n\ndef _hash_password(password: str) -> str:\n    salt = secrets.token_bytes(SALT_BYTES)\n    dk = hashlib.pbkdf2_hmac(\n        \"sha256\",\n        password.encode(\"utf-8\"),\n        salt,\n        PBKDF2_ITERATIONS,\n        dklen=HASH_BYTES,\n    )\n    return f\"{PASSWORD_SCHEME}${PBKDF2_ITERATIONS}${salt.hex()}${dk.hex()}\"\n\n\ndef _verify_password(password: str, stored: str) -> bool:\n    try:\n        scheme, iterations_s, salt_hex, hash_hex = stored.split(\"$\", 3)\n        if scheme != PASSWORD_SCHEME:\n            return False\n        iterations = int(iterations_s)\n        salt = bytes.fromhex(salt_hex)\n        expected = bytes.fromhex(hash_hex)\n    except Exception:\n        return False\n\n    candidate = hashlib.pbkdf2_hmac(\n        \"sha256\",\n        password.encode(\"utf-8\"),\n        salt,\n        iterations,\n        dklen=len(expected),\n    )\n    return hmac.compare_digest(candidate, expected)\n\n\ndef _get_user_by_email(db, email: str):\n    stmt = select(\n        usuarios.c.id,\n        usuarios.c.email,\n        usuarios.c.senha,\n        usuarios.c.nome,\n    ).where(usuarios.c.email == email)\n    return db.execute(stmt).mappings().first()\n\n\n@app.post(\"/registro\", status_code=status.HTTP_201_CREATED)\ndef registro(payload: RegistroIn):\n    email = _normalize_email(payload.email)\n    _validate_password_policy(payload.senha)\n    nome = payload.nome.strip()\n\n    if not nome:\n        raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail=\"Nome inválido\")\n\n    senha_hash = _hash_password(payload.senha)\n\n    with SessionLocal() as db:\n        try:\n            result = db.execute(\n                insert(usuarios).values(email=email, senha=senha_hash, nome=nome)\n            )\n            db.commit()\n            return {\"id\": int(result.inserted_primary_key[0])}\n        except IntegrityError:\n            db.rollback()\n            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=\"Usuário já existe\")\n\n\n@app.post(\"/login\")\ndef login(payload: LoginIn):\n    email = _normalize_email(payload.email)\n\n    with SessionLocal() as db:\n        user = _get_user_by_email(db, email)\n\n        if not user or not _verify_password(payload.senha, user[\"senha\"]):\n            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=\"Credenciais inválidas\")\n\n        return {\"id\": int(user[\"id\"]), \"nome\": user[\"nome\"]}",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 330,
+      "completion_tokens": 1121,
+      "total_tokens": 1451,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para login de usuario. A rota deve ser POST /login e receber um corpo JSON com os campos 'email' e 'senha'. O sistema possui uma tabela de usuarios com os campos id, email, senha e nome. Em caso de credenciais validas, retorne um JSON com o id e o nome do usuario. Em caso de credenciais invalidas, retorne status 401. Use SQLAlchemy para acesso ao banco de dados. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "ccbde76a06ecd0fa3477b6093c4f201bc233a99b38f74b5df2b9d0863584374d",
+  "concluida_em": "2026-11-04T13:45:02.382227+00:00"
+}

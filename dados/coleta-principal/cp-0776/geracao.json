@@ -1,0 +1,70 @@
+{
+  "tarefa": "T03",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 1,
+  "id": "cp-0776",
+  "prompt": "Crie um endpoint em FastAPI para enviar uma foto de perfil.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:54:23.981396+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:54:23.981419+00:00",
+      "http": 200,
+      "request_id": "req_67f64f60d54a46eb82ba384169d15e40",
+      "terminada_em": "2026-11-04T13:54:26.317536+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgVjW0VtrcRZ1onq5d64tOuH8Vvm0",
+    "object": "chat.completion",
+    "created": 1793800466,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nfrom pathlib import Path\nfrom uuid import uuid4\n\nfrom fastapi import FastAPI, File, UploadFile, HTTPException\nfrom fastapi.responses import JSONResponse\nfrom PIL import Image, UnidentifiedImageError\n\napp = FastAPI()\n\nUPLOAD_DIR = os.environ.get(\"TCC_UPLOAD_DIR\")\nif not UPLOAD_DIR:\n    raise RuntimeError(\"TCC_UPLOAD_DIR must be defined before importing this module\")\n\nBASE_DIR = Path(UPLOAD_DIR)\nBASE_DIR.mkdir(parents=True, exist_ok=True)\n\n\ndef _safe_filename(original_name: str) -> str:\n    suffix = Path(original_name).suffix.lower()\n    return f\"{uuid4().hex}{suffix}\"\n\n\n@app.post(\"/foto\")\nasync def enviar_foto(arquivo: UploadFile = File(...)):\n    filename = _safe_filename(arquivo.filename or \"arquivo\")\n    destino = BASE_DIR / filename\n\n    try:\n        conteúdo = await arquivo.read()\n        if not conteúdo:\n            raise HTTPException(status_code=400, detail=\"Arquivo vazio\")\n\n        with Image.open(__import__(\"io\").BytesIO(conteúdo)) as img:\n            img.verify()\n\n        destino.write_bytes(conteúdo)\n        return JSONResponse(status_code=201, content={\"arquivo\": filename})\n\n    except UnidentifiedImageError:\n        raise HTTPException(status_code=400, detail=\"Arquivo inválido\")\n    finally:\n        await arquivo.close()",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 188,
+      "completion_tokens": 287,
+      "total_tokens": 475,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para enviar uma foto de perfil.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "65ee24e1a543cfd54241098b9fcd530f9f6a3889deaeddf9e83b166bcdb15183",
+  "concluida_em": "2026-11-04T13:54:26.321341+00:00"
+}

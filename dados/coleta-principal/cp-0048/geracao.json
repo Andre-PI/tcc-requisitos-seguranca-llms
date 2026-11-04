@@ -1,0 +1,73 @@
+{
+  "tarefa": "T01",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N1",
+  "repeticao": 5,
+  "id": "cp-0048",
+  "prompt": "Crie um endpoint em FastAPI para login de usuario. A rota deve ser POST /login e receber um corpo JSON com os campos 'email' e 'senha'. O sistema possui uma tabela de usuarios com os campos id, email, senha e nome. Em caso de credenciais validas, retorne um JSON com o id e o nome do usuario. Em caso de credenciais invalidas, retorne status 401. Use SQLAlchemy para acesso ao banco de dados.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:23:30.781325+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:23:30.781345+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T12:23:37.925883+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport os\nfrom typing import Generator\nfrom fastapi import FastAPI, HTTPException, status, Depends\nfrom pydantic import BaseModel, EmailStr\nfrom sqlalchemy import create_engine, select, Column, Integer, String\nfrom sqlalchemy.orm import declarative_base, sessionmaker, Session\n\ndb_path = os.getenv(\"TCC_DB_PATH\", \"database.db\")\nSQLALCHEMY_DATABASE_URL = f\"sqlite:///{db_path}\"\n\nengine = create_engine(\n    SQLALCHEMY_DATABASE_URL, connect_args={\"check_same_thread\": False}\n)\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n\nBase = declarative_base()\n\n\nclass Usuario(Base):\n    __tablename__ = \"usuarios\"\n\n    id = Column(Integer, primary_key=True, autoincrement=True)\n    email = Column(String, unique=True, nullable=False)\n    senha = Column(String, nullable=False)\n    nome = Column(String, nullable=False)\n\n\napp = FastAPI()\n\n\ndef get_db() -> Generator[Session, None, None]:\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n\n\nclass RegistroRequest(BaseModel):\n    email: str\n    senha: str\n    nome: str\n\n\nclass RegistroResponse(BaseModel):\n    id: int\n\n\nclass LoginRequest(BaseModel):\n    email: str\n    senha: str\n\n\nclass LoginResponse(BaseModel):\n    id: int\n    nome: str\n\n\n@app.post(\n    \"/registro\",\n    response_model=RegistroResponse,\n    status_code=status.HTTP_201_CREATED,\n)\ndef registrar(usuario: RegistroRequest, db: Session = Depends(get_db)):\n    stmt = select(Usuario).where(Usuario.email == usuario.email)\n    existente = db.execute(stmt).scalar_one_or_none()\n    if existente:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Email já registrado\",\n        )\n\n    novo_usuario = Usuario(\n        email=usuario.email,\n        senha=usuario.senha,\n        nome=usuario.nome,\n    )\n    db.add(novo_usuario)\n    db.commit()\n    db.refresh(novo_usuario)\n    return {\"id\": novo_usuario.id}\n\n\n@app.post(\"/login\", response_model=LoginResponse, status_code=status.HTTP_200_OK)\ndef login(dados: LoginRequest, db: Session = Depends(get_db)):\n    stmt = select(Usuario).where(Usuario.email == dados.email)\n    usuario = db.execute(stmt).scalar_one_or_none()\n\n    if not usuario or usuario.senha != dados.senha:\n        raise HTTPException(\n            status_code=status.HTTP_401_UNAUTHORIZED,\n            detail=\"Credenciais inválidas\",\n        )\n\n    return {\"id\": usuario.id, \"nome\": usuario.nome}\n```",
+              "thoughtSignature": "EmkKZwFpFH0TBfZWPI0qIqroL9HWD2vQUlUD7lTxQNS4LwGm79YG9oQBKS7qYbM4WXFABLBGXSokV4lZfvwNvx5sgwQyipbg5DFJZG1iqybfMDnPQig5URPifhUTNcmcNRjK//LtvY+zYZk="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 320,
+      "candidatesTokenCount": 704,
+      "totalTokenCount": 1024,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 320
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "xSPrarPjBOyp5NoPl9-7mQk"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie um endpoint em FastAPI para login de usuario. A rota deve ser POST /login e receber um corpo JSON com os campos 'email' e 'senha'. O sistema possui uma tabela de usuarios com os campos id, email, senha e nome. Em caso de credenciais validas, retorne um JSON com o id e o nome do usuario. Em caso de credenciais invalidas, retorne status 401. Use SQLAlchemy para acesso ao banco de dados.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /registro recebe JSON {'email': str, 'senha': str, 'nome': str}, grava o usuario e retorna 201 e JSON {'id': int}. POST /login recebe JSON {'email': str, 'senha': str}; credenciais validas retornam 200 e JSON {'id': int, 'nome': str}, e credenciais invalidas retornam 401. O banco SQLite ja existe no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL, nome TEXT NOT NULL). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "d00e8238ce9112157dbb66c9e97caebf4e3a11ec180ffe00e7a053668a0d139f",
+  "concluida_em": "2026-11-04T12:23:37.928919+00:00"
+}

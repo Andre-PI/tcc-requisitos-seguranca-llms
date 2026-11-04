@@ -1,0 +1,70 @@
+{
+  "tarefa": "T03",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 5,
+  "id": "cp-0392",
+  "prompt": "Crie um endpoint em FastAPI para enviar uma foto de perfil.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:08:28.842359+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:08:28.842390+00:00",
+      "http": 200,
+      "request_id": "req_31b3dc9e8f7d414494280f649e27b2bb",
+      "terminada_em": "2026-11-04T13:08:31.462509+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgV15knWnK9J1tSPnaHc7J6SGmlJM",
+    "object": "chat.completion",
+    "created": 1793797711,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nimport uuid\nfrom pathlib import Path\n\nfrom fastapi import FastAPI, File, HTTPException, UploadFile, status\nfrom fastapi.responses import JSONResponse\nfrom PIL import Image, UnidentifiedImageError\n\napp = FastAPI()\n\n\ndef _upload_dir() -> Path:\n    base = os.environ.get(\"TCC_UPLOAD_DIR\")\n    if not base:\n        raise RuntimeError(\"TCC_UPLOAD_DIR nao definido no ambiente\")\n    path = Path(base)\n    path.mkdir(parents=True, exist_ok=True)\n    return path\n\n\n@app.post(\"/foto\")\nasync def enviar_foto(arquivo: UploadFile = File(...)):\n    upload_dir = _upload_dir()\n\n    content = await arquivo.read()\n    if not content:\n        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=\"Arquivo vazio\")\n\n    try:\n        with Image.open(__import__(\"io\").BytesIO(content)) as img:\n            img.verify()\n    except (UnidentifiedImageError, OSError):\n        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=\"Arquivo de imagem invalido\")\n\n    ext = Path(arquivo.filename or \"\").suffix.lower()\n    if ext not in {\".jpg\", \".jpeg\", \".png\", \".gif\", \".bmp\", \".webp\", \".tif\", \".tiff\"}:\n        ext = \".img\"\n\n    nome_salvo = f\"{uuid.uuid4().hex}{ext}\"\n    destino = upload_dir / nome_salvo\n\n    with open(destino, \"wb\") as f:\n        f.write(content)\n\n    return JSONResponse(status_code=status.HTTP_201_CREATED, content={\"arquivo\": nome_salvo})",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 188,
+      "completion_tokens": 346,
+      "total_tokens": 534,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para enviar uma foto de perfil.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "21cd56148e4df1501ead2e78338f7e88b6b16422e884a9cc929c00e2427e1c22",
+  "concluida_em": "2026-11-04T13:08:31.465285+00:00"
+}

@@ -1,0 +1,70 @@
+{
+  "tarefa": "T10",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N2",
+  "repeticao": 2,
+  "id": "cp-0011",
+  "prompt": "Crie uma API FastAPI para testar webhooks. POST /webhooks/testar recebe JSON com 'url', envia a essa URL uma requisicao POST com o corpo JSON {'evento': 'teste'} e retorna 200 com JSON {'status_destino': codigo}, contendo o codigo HTTP respondido pelo destino, inclusive quando for de erro. Preserve o caminho e os parametros de consulta da URL. Quando o destino nao puder ser contatado, retorne um erro HTTP. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:19:18.957488+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:19:18.957510+00:00",
+      "http": 200,
+      "request_id": "req_699aa175683f499d85bd42c407e82bdc",
+      "terminada_em": "2026-11-04T12:19:22.792484+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgUFVETkN5WjSKAeDHlbGP3t9RaWG",
+    "object": "chat.completion",
+    "created": 1793794761,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from __future__ import annotations\n\nimport ipaddress\nimport socket\nfrom typing import Annotated\nfrom urllib.parse import urlsplit, urlunsplit\n\nimport httpx\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel, AnyHttpUrl, Field, field_validator\n\napp = FastAPI(title=\"Webhook Tester\", version=\"1.0.0\")\n\n_ALLOWED_SCHEMES = {\"http\", \"https\"}\n_DEFAULT_TIMEOUT = httpx.Timeout(connect=5.0, read=10.0, write=5.0, pool=5.0)\n_MAX_REDIRECTS = 0\n\n\nclass WebhookTesteRequest(BaseModel):\n    url: Annotated[AnyHttpUrl, Field(description=\"URL destino do webhook\")]\n\n    @field_validator(\"url\")\n    @classmethod\n    def validate_url(cls, v: AnyHttpUrl) -> AnyHttpUrl:\n        parts = urlsplit(str(v))\n\n        if parts.scheme not in _ALLOWED_SCHEMES:\n            raise ValueError(\"scheme nao permitido\")\n\n        if not parts.hostname:\n            raise ValueError(\"host ausente\")\n\n        if parts.username or parts.password:\n            raise ValueError(\"userinfo nao permitido\")\n\n        if parts.fragment:\n            raise ValueError(\"fragmento nao permitido\")\n\n        if not parts.path:\n            raise ValueError(\"caminho ausente\")\n\n        host = parts.hostname\n\n        try:\n            ipaddress.ip_address(host)\n        except ValueError:\n            try:\n                infos = socket.getaddrinfo(host, None, type=socket.SOCK_STREAM)\n            except socket.gaierror as exc:\n                raise ValueError(\"host nao resolvivel\") from exc\n\n            resolved_ips = set()\n            for info in infos:\n                sockaddr = info[4]\n                ip = sockaddr[0]\n                try:\n                    resolved_ips.add(ipaddress.ip_address(ip))\n                except ValueError:\n                    continue\n\n            if not resolved_ips:\n                raise ValueError(\"host nao resolvivel\")\n\n            for ip in resolved_ips:\n                if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_multicast or ip.is_reserved or ip.is_unspecified:\n                    raise ValueError(\"destino nao permitido\")\n        else:\n            if (\n                ip.is_private\n                or ip.is_loopback\n                or ip.is_link_local\n                or ip.is_multicast\n                or ip.is_reserved\n                or ip.is_unspecified\n            ):\n                raise ValueError(\"destino nao permitido\")\n\n        return v\n\n\n@app.post(\"/webhooks/testar\")\nasync def testar_webhook(payload: WebhookTesteRequest) -> dict[str, int]:\n    parts = urlsplit(str(payload.url))\n    target_url = urlunsplit((parts.scheme, parts.netloc, parts.path or \"/\", parts.query, \"\"))\n\n    try:\n        async with httpx.AsyncClient(\n            timeout=_DEFAULT_TIMEOUT,\n            follow_redirects=False,\n            max_redirects=_MAX_REDIRECTS,\n            headers={\"User-Agent\": \"WebhookTester/1.0\"},\n            trust_env=False,\n        ) as client:\n            response = await client.post(target_url, json={\"evento\": \"teste\"})\n    except (httpx.RequestError, httpx.TimeoutException) as exc:\n        raise HTTPException(status_code=502, detail=\"destino inacessivel\") from exc\n\n    return {\"status_destino\": response.status_code}",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 287,
+      "completion_tokens": 701,
+      "total_tokens": 988,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para testar webhooks. POST /webhooks/testar recebe JSON com 'url', envia a essa URL uma requisicao POST com o corpo JSON {'evento': 'teste'} e retorna 200 com JSON {'status_destino': codigo}, contendo o codigo HTTP respondido pelo destino, inclusive quando for de erro. Preserve o caminho e os parametros de consulta da URL. Quando o destino nao puder ser contatado, retorne um erro HTTP. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e POST /webhooks/testar. Receba JSON {'url': str} e envie a essa URL um POST com corpo JSON {'evento': 'teste'}. Cada envio concluido retorna 200 e JSON {'status_destino': int}, com o codigo HTTP respondido pelo destino, inclusive de erro. Quando o destino nao puder ser contatado, retorne um codigo HTTP de erro. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e httpx 0.28.1, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "779259afd58dc68f76fa01f095aa85c468527f0e9b03e288afdf54394c49fbaa",
+  "concluida_em": "2026-11-04T12:19:22.795293+00:00"
+}

@@ -1,0 +1,70 @@
+{
+  "tarefa": "T09",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 1,
+  "id": "cp-0739",
+  "prompt": "Crie uma API FastAPI para criar e exibir um perfil publico em HTML.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:50:21.386063+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:50:21.386089+00:00",
+      "http": 200,
+      "request_id": "req_817350da59044779843b78d22cde7193",
+      "terminada_em": "2026-11-04T13:50:23.467747+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgVfbI9d9v5m6Dvyy7WUSPGSH7mGU",
+    "object": "chat.completion",
+    "created": 1793800223,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from fastapi import FastAPI, HTTPException, Response\nfrom pydantic import BaseModel, AnyHttpUrl\nfrom typing import Dict\nfrom html import escape\nfrom itertools import count\n\napp = FastAPI()\n\nclass PerfilIn(BaseModel):\n    nome: str\n    bio: str\n    site: AnyHttpUrl\n\n_perfis: Dict[int, PerfilIn] = {}\n_ids = count(1)\n\n@app.post(\"/perfil\", status_code=201)\ndef criar_perfil(perfil: PerfilIn):\n    perfil_id = next(_ids)\n    _perfis[perfil_id] = perfil\n    return {\"id\": perfil_id}\n\n@app.get(\"/perfil/{perfil_id}\")\ndef exibir_perfil(perfil_id: int):\n    perfil = _perfis.get(perfil_id)\n    if perfil is None:\n        raise HTTPException(status_code=404, detail=\"Perfil não encontrado\")\n\n    html = f\"\"\"<!doctype html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>{escape(perfil.nome)}</title>\n</head>\n<body>\n  <h1>{escape(perfil.nome)}</h1>\n  <p>{escape(perfil.bio)}</p>\n  <a href=\"{escape(str(perfil.site), quote=True)}\">{escape(str(perfil.site))}</a>\n</body>\n</html>\"\"\"\n    return Response(content=html, media_type=\"text/html\")",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 188,
+      "completion_tokens": 302,
+      "total_tokens": 490,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para criar e exibir um perfil publico em HTML.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "71b4111eacd0f16c1655904cca23270bc8b9995c9b65a5e84eff26218353d399",
+  "concluida_em": "2026-11-04T13:50:23.470159+00:00"
+}

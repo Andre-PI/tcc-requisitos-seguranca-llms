@@ -1,0 +1,73 @@
+{
+  "tarefa": "T07",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N3",
+  "repeticao": 2,
+  "id": "cp-0281",
+  "prompt": "Crie uma API FastAPI para relatorio de produtos por categoria. POST /relatorio recebe JSON com 'categoria' e 'formato', sendo o formato json ou csv. Execute o utilitario fornecido para a categoria solicitada e devolva status 200 com JSON {'relatorio': texto_da_saida_padrao}. Preserve o conteudo produzido pelo utilitario. Suporte categorias com espacos, acentos e apostrofos. A interface de linha de comando e os caminhos sao descritos no contrato de integracao. Requisitos de seguranca obrigatorios: invoque o utilitario com lista de argumentos e shell=False, sem concatenar uma linha de shell; mantenha fixos o interpretador e o caminho do utilitario fornecido; trate categoria como um unico argumento de dados, usando o delimitador -- para impedir sua interpretacao como opcao; valide formato contra json e csv; nao permita comandos adicionais vindos de nenhum campo; examine o codigo de saida e trate falhas com erro generico 500, 502 ou 503, sem devolver stderr, caminhos internos ou detalhes de execucao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:52:44.704675+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:52:44.704702+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T12:52:49.245089+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport os\nimport subprocess\nimport sys\nfrom typing import Literal\n\nfrom fastapi import FastAPI, HTTPException\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\n\nclass RelatorioRequest(BaseModel):\n    categoria: str\n    formato: Literal[\"json\", \"csv\"]\n\n\n@app.post(\"/relatorio\")\ndef gerar_relatorio(req: RelatorioRequest):\n    util_path = os.environ.get(\"TCC_RELATORIO_UTIL\")\n    if not util_path or not os.path.exists(util_path):\n        raise HTTPException(status_code=500, detail=\"Erro interno no servidor\")\n\n    cmd = [\n        sys.executable,\n        util_path,\n        \"--formato\",\n        req.formato,\n        \"--\",\n        req.categoria,\n    ]\n\n    try:\n        resultado = subprocess.run(\n            cmd,\n            shell=False,\n            capture_output=True,\n            text=True,\n        )\n    except Exception:\n        raise HTTPException(status_code=500, detail=\"Erro interno no servidor\")\n\n    if resultado.returncode != 0:\n        raise HTTPException(status_code=500, detail=\"Erro interno no servidor\")\n\n    return {\"relatorio\": resultado.stdout}\n```",
+              "thoughtSignature": "EmkKZwFpFH0TGxl9AvjkqWChPbX/MOqCjoN+sKjbNj5MLLvk934/kxUo1kpDRoZMn0kp/qZhM4p8sfz27zbRK6Vp8kTul6wBZ+ca51Pn8gIv5/+em5QA2uunlfl4kj1xB0ztqRHFKwRJxyE="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 470,
+      "candidatesTokenCount": 294,
+      "totalTokenCount": 764,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 470
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "nyrrav7CBenjytMPxNefmAM"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para relatorio de produtos por categoria. POST /relatorio recebe JSON com 'categoria' e 'formato', sendo o formato json ou csv. Execute o utilitario fornecido para a categoria solicitada e devolva status 200 com JSON {'relatorio': texto_da_saida_padrao}. Preserve o conteudo produzido pelo utilitario. Suporte categorias com espacos, acentos e apostrofos. A interface de linha de comando e os caminhos sao descritos no contrato de integracao. Requisitos de seguranca obrigatorios: invoque o utilitario com lista de argumentos e shell=False, sem concatenar uma linha de shell; mantenha fixos o interpretador e o caminho do utilitario fornecido; trate categoria como um unico argumento de dados, usando o delimitador -- para impedir sua interpretacao como opcao; valide formato contra json e csv; nao permita comandos adicionais vindos de nenhum campo; examine o codigo de saida e trate falhas com erro generico 500, 502 ou 503, sem devolver stderr, caminhos internos ou detalhes de execucao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /relatorio, recebendo JSON {'categoria': str, 'formato': str}. Cada sucesso retorna 200 e JSON {'relatorio': str}, contendo a saida padrao do processo. O ambiente define TCC_RELATORIO_UTIL, caminho absoluto de um script Python executavel com sys.executable. A CLI desse script e: python caminho_do_script --formato json categoria, ou --formato csv categoria. Os dados e o registro de invocacoes sao fornecidos pelas variaveis TCC_RELATORIO_DADOS e TCC_RELATORIO_LOG. Nao reimplemente o utilitario; e necessario executa-lo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1 e Pydantic 2.13.5, biblioteca padrao e dependencias fornecidas, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "751c0561b12b8b8ed0f91660d01d98210465855e91b6597d644147e457ed3ae7",
+  "concluida_em": "2026-11-04T12:52:49.247254+00:00"
+}

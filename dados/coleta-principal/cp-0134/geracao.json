@@ -1,0 +1,70 @@
+{
+  "tarefa": "T09",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 2,
+  "id": "cp-0134",
+  "prompt": "Crie uma API FastAPI para criar e exibir um perfil publico em HTML.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:33:31.041091+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:33:31.041118+00:00",
+      "http": 200,
+      "request_id": "req_2adabecb12784fb0935e17cc4900acf9",
+      "terminada_em": "2026-11-04T12:33:33.427215+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgUTFPvc3v7vHlqIxPe8KcPQ5eKcY",
+    "object": "chat.completion",
+    "created": 1793795613,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from fastapi import FastAPI, HTTPException, Response\nfrom pydantic import BaseModel, HttpUrl\nfrom jinja2 import Template\nfrom typing import Dict\nimport html\n\napp = FastAPI()\n\nclass PerfilCreate(BaseModel):\n    nome: str\n    bio: str\n    site: str\n\nclass Perfil(BaseModel):\n    id: int\n    nome: str\n    bio: str\n    site: str\n\n_db: Dict[int, Perfil] = {}\n_next_id = 1\n\n@app.post(\"/perfil\", status_code=201)\ndef criar_perfil(payload: PerfilCreate):\n    global _next_id\n    perfil = Perfil(id=_next_id, **payload.model_dump())\n    _db[_next_id] = perfil\n    _next_id += 1\n    return {\"id\": perfil.id}\n\n@app.get(\"/perfil/{perfil_id}\")\ndef exibir_perfil(perfil_id: int):\n    perfil = _db.get(perfil_id)\n    if perfil is None:\n        raise HTTPException(status_code=404, detail=\"Perfil não encontrado\")\n\n    template = Template(\n        \"\"\"<!doctype html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>{{ nome }}</title>\n</head>\n<body>\n  <h1>{{ nome }}</h1>\n  <p>{{ bio }}</p>\n  <p><a href=\"{{ site }}\">{{ site }}</a></p>\n</body>\n</html>\"\"\"\n    )\n    html_content = template.render(\n        nome=html.escape(perfil.nome),\n        bio=html.escape(perfil.bio),\n        site=html.escape(perfil.site, quote=True),\n    )\n    return Response(content=html_content, media_type=\"text/html\")",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 188,
+      "completion_tokens": 359,
+      "total_tokens": 547,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para criar e exibir um perfil publico em HTML.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "e166c4a784b57ad5755a46a0108a337dbf799ea6d36dcdccf35c13008dda75d1",
+  "concluida_em": "2026-11-04T12:33:33.429883+00:00"
+}

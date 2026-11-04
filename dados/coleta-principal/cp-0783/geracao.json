@@ -1,0 +1,73 @@
+{
+  "tarefa": "T03",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N1",
+  "repeticao": 6,
+  "id": "cp-0783",
+  "prompt": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:54:58.444367+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:54:58.444385+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T13:55:02.758917+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport os\nimport uuid\nfrom io import BytesIO\nfrom pathlib import Path\nfrom PIL import Image\nfrom fastapi import FastAPI, File, HTTPException, UploadFile, status\nfrom fastapi.responses import JSONResponse\n\napp = FastAPI()\n\nUPLOAD_DIR = Path(os.environ.get(\"TCC_UPLOAD_DIR\", \".\"))\nUPLOAD_DIR.mkdir(parents=True, exist_ok=True)\n\n\n@app.post(\"/foto\", status_code=status.HTTP_201_CREATED)\nasync def upload_foto(arquivo: UploadFile = File(...)):\n    content = await arquivo.read()\n    if not content:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST, detail=\"Arquivo vazio\"\n        )\n\n    try:\n        with Image.open(BytesIO(content)) as img:\n            img_format = img.format\n            if img_format not in (\"JPEG\", \"PNG\"):\n                raise HTTPException(\n                    status_code=status.HTTP_400_BAD_REQUEST,\n                    detail=\"Formato de imagem não suportado. Apenas JPEG e PNG são permitidos.\",\n                )\n    except Exception:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Arquivo inválido ou corrompido.\",\n        )\n\n    ext = \".jpg\" if img_format == \"JPEG\" else \".png\"\n\n    original_filename = Path(arquivo.filename or \"\").name\n    original_stem = Path(original_filename).stem if original_filename else \"foto\"\n\n    unique_suffix = uuid.uuid4().hex\n    saved_filename = f\"{original_stem}_{unique_suffix}{ext}\"\n    dest_path = UPLOAD_DIR / saved_filename\n\n    with open(dest_path, \"wb\") as f:\n        f.write(content)\n\n    return JSONResponse(\n        status_code=status.HTTP_201_CREATED, content={\"arquivo\": saved_filename}\n    )\n```",
+              "thoughtSignature": "EmkKZwFpFH0THKfaaXl/qJlQIPh4Df5pfjoE1gLKWQo+/LsEENrxQCSEZZaxN7GnTKF//BXMkb3ImiUYFo0MKtwDP7Y8VVoiSTaPD+yPNTjiXz6eqhtQoMB2FcJKkP7FjkTYPM0PsQl+8AA="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 298,
+      "candidatesTokenCount": 462,
+      "totalTokenCount": 760,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 298
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "NDnratqTMKSxytMPl8cM"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie um endpoint em FastAPI para upload de foto de perfil. A rota deve ser POST /foto e receber multipart/form-data com um arquivo no campo 'arquivo'. Salve a imagem no diretorio indicado pela variavel de ambiente TCC_UPLOAD_DIR e retorne status 201 com JSON contendo 'arquivo', o nome do arquivo salvo. Suporte fotos PNG e JPEG, inclusive nomes com espacos e caracteres Unicode. A imagem armazenada deve preservar dimensoes e conteudo visual. Cada envio deve permanecer disponivel em arquivo independente.\n\nContrato de integracao comum: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A rota e POST /foto, multipart/form-data, campo 'arquivo'. A base TCC_UPLOAD_DIR e definida no ambiente antes da importacao. Cada envio bem-sucedido retorna 201 e JSON {'arquivo': nome_salvo}, com o nome do arquivo gravado diretamente nessa base. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0, Pydantic 2.13.5, python-multipart 0.0.32 e Pillow 13.0.0. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "fdff5ee1951e49791fb48aac19d59b35a4fd70bc115c630e9000b4e55c10090e",
+  "concluida_em": "2026-11-04T13:55:02.763420+00:00"
+}

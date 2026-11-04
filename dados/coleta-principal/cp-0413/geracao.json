@@ -1,0 +1,70 @@
+{
+  "tarefa": "T09",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N0",
+  "repeticao": 10,
+  "id": "cp-0413",
+  "prompt": "Crie uma API FastAPI para criar e exibir um perfil publico em HTML.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:10:36.036176+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:10:36.036193+00:00",
+      "http": 200,
+      "request_id": "req_a58bdc1c29f74af391403d400739e97c",
+      "terminada_em": "2026-11-04T13:10:38.996740+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgV38FjZWbcX227PKpCJ8ZLPOgynb",
+    "object": "chat.completion",
+    "created": 1793797838,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "from fastapi import FastAPI, HTTPException, Response, status\nfrom pydantic import BaseModel, AnyUrl\nfrom jinja2 import Template\nfrom typing import Dict\nfrom itertools import count\n\napp = FastAPI()\n\nclass PerfilIn(BaseModel):\n    nome: str\n    bio: str\n    site: AnyUrl\n\nclass PerfilOut(BaseModel):\n    id: int\n\n_perfis: Dict[int, PerfilIn] = {}\n_next_id = count(1)\n\n@app.post(\"/perfil\", status_code=status.HTTP_201_CREATED, response_model=PerfilOut)\ndef criar_perfil(payload: PerfilIn):\n    perfil_id = next(_next_id)\n    _perfis[perfil_id] = payload\n    return {\"id\": perfil_id}\n\n@app.get(\"/perfil/{perfil_id}\", response_class=Response)\ndef exibir_perfil(perfil_id: int):\n    perfil = _perfis.get(perfil_id)\n    if perfil is None:\n        raise HTTPException(status_code=404, detail=\"Perfil não encontrado\")\n\n    template = Template(\n        \"\"\"\n<!doctype html>\n<html lang=\"pt-br\">\n  <head>\n    <meta charset=\"utf-8\">\n    <title>Perfil Público</title>\n  </head>\n  <body>\n    <h1>{{ nome }}</h1>\n    <p>{{ bio }}</p>\n    <a href=\"{{ site }}\">{{ site }}</a>\n  </body>\n</html>\n\"\"\"\n    )\n    html = template.render(nome=perfil.nome, bio=perfil.bio, site=str(perfil.site))\n    return Response(content=html, media_type=\"text/html\")",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 188,
+      "completion_tokens": 333,
+      "total_tokens": 521,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie uma API FastAPI para criar e exibir um perfil publico em HTML.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app. POST /perfil recebe JSON {'nome': str, 'bio': str, 'site': str}; cada criacao bem-sucedida retorna 201 e JSON {'id': identificador}. GET /perfil/{id} retorna 200 com content-type text/html, exibindo nome e bio como texto e site no atributo href de um link. O estado pode permanecer em memoria. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e Jinja2 3.1.6, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "9478f79d330d6418f30d504892b2776ce5a3c9175778867739255d66f48d175f",
+  "concluida_em": "2026-11-04T13:10:38.998638+00:00"
+}

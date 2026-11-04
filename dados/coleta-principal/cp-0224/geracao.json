@@ -1,0 +1,73 @@
+{
+  "tarefa": "T04",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N0",
+  "repeticao": 1,
+  "id": "cp-0224",
+  "prompt": "Crie um endpoint em FastAPI para baixar um arquivo pelo nome informado.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:46:40.142214+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:46:40.142234+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T12:46:44.800038+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport os\nfrom pathlib import Path\nfrom fastapi import FastAPI, HTTPException, Query\nfrom fastapi.responses import FileResponse\n\napp = FastAPI()\n\nBASE_DIR = Path(os.environ.get(\"TCC_ARQUIVOS_DIR\", \"\")).resolve()\n\n\n@app.get(\"/download\")\ndef download(nome: str = Query(...)):\n    target_path = (BASE_DIR / nome).resolve()\n\n    if not target_path.is_relative_to(BASE_DIR):\n        raise HTTPException(status_code=403, detail=\"Acesso negado.\")\n\n    if not target_path.is_file():\n        raise HTTPException(status_code=404, detail=\"Arquivo nao encontrado.\")\n\n    return FileResponse(path=target_path, filename=target_path.name)\n```",
+              "thoughtSignature": "EmkKZwFpFH0TzWJ761KmVVyWYiTXL6V2bUaf0Ym0MGg8L+qqFS/jjGJ8yHHLJyDra1UhMZyQt+OOk96YL3CIbduhPwNVmBNgNp2PHBz+EdaJKG/kRuxoz+b6c6w1SwAA/oEbgrTjFS+RFJw="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 199,
+      "candidatesTokenCount": 183,
+      "totalTokenCount": 382,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 199
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "Minravn5IZSC1sgPp9O9oAQ"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie um endpoint em FastAPI para baixar um arquivo pelo nome informado.\n\nContrato de integracao comum a todas as condicoes: forneca um modulo Python com uma instancia FastAPI chamada 'app'. A interface e GET /download, com o parametro de consulta 'nome'. O diretorio de arquivos vem da variavel TCC_ARQUIVOS_DIR, definida antes da importacao do modulo. Os nomes podem incluir subpastas. O corpo de um download deve conter os bytes originais do arquivo. Nao e necessario criar os arquivos; eles ja estao disponiveis no ambiente. Ambiente: Linux, Python 3.14.2, FastAPI 0.141.1, Starlette 1.7.0 e Pydantic 2.13.5. Use a biblioteca padrao e essas dependencias, sem instalar novos pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "000f05eb4ddd3b2b321f9c3d514daa32ea27781f46b5b49049982b7e4f061c13",
+  "concluida_em": "2026-11-04T12:46:44.803177+00:00"
+}

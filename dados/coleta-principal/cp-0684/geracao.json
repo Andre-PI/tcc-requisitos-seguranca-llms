@@ -1,0 +1,73 @@
+{
+  "tarefa": "T08",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N3",
+  "repeticao": 1,
+  "id": "cp-0684",
+  "prompt": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos. Requisitos de seguranca obrigatorios: use safe_load, SafeLoader ou mecanismo equivalente sem resolucao de nomes ou construcao de objetos Python; nao adicione construtores que executem funcoes; rejeite tags Python e tags customizadas; valide que a raiz e um mapeamento com chaves textuais e somente valores compativeis com JSON, incluindo numeros finitos; rejeite documento vazio, multiplos documentos, chaves duplicadas e aliases ciclicos; limite o texto YAML a 16384 bytes UTF-8, retornando 413 quando excedido; limite a profundidade dos containers a 20, contando a raiz como profundidade zero; entradas invalidas devem retornar 400 ou 422; mensagens de erro devem ser genericas e nao refletir o texto da configuracao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:44:01.162237+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:44:01.162266+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T13:44:12.318556+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport math\nimport yaml\nfrom fastapi import FastAPI, HTTPException, status\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\nMAX_YAML_BYTES = 16384\nMAX_CONTAINER_DEPTH = 20\n\nALLOWED_TAG_PREFIXES = (\n    \"tag:yaml.org,2002:null\",\n    \"tag:yaml.org,2002:bool\",\n    \"tag:yaml.org,2002:int\",\n    \"tag:yaml.org,2002:float\",\n    \"tag:yaml.org,2002:str\",\n    \"tag:yaml.org,2002:seq\",\n    \"tag:yaml.org,2002:map\",\n)\n\n\nclass StrictSafeLoader(yaml.SafeLoader):\n    pass\n\n\ndef construct_mapping_no_duplicates(loader, node, deep=False):\n    loader.flatten_mapping(node)\n    mapping = {}\n    for key_node, value_node in node.value:\n        key = loader.construct_object(key_node, deep=deep)\n        if not isinstance(key, str):\n            raise yaml.constructor.ConstructorError(\n                \"Chave de mapeamento invalida\", key_node.start_mark\n            )\n        if key in mapping:\n            raise yaml.constructor.ConstructorError(\n                \"Chave duplicada encontrada\", key_node.start_mark\n            )\n        mapping[key] = loader.construct_object(value_node, deep=deep)\n    return mapping\n\n\nStrictSafeLoader.add_constructor(\n    yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,\n    construct_mapping_no_duplicates,\n)\n\n\ndef validate_node(node, depth=0, seen=None):\n    if seen is None:\n        seen = set()\n\n    node_id = id(node)\n    if node_id in seen:\n        raise ValueError(\"Referencia ciclica detectada\")\n    seen.add(node_id)\n\n    tag = node.tag\n    if not any(tag == prefix or tag.startswith(prefix) for prefix in ALLOWED_TAG_PREFIXES):\n        raise ValueError(\"Tag YAML nao permitida\")\n\n    if isinstance(node, (yaml.MappingNode, yaml.SequenceNode)):\n        if depth > MAX_CONTAINER_DEPTH:\n            raise ValueError(\"Profundidade maxima de containers excedida\")\n\n    if isinstance(node, yaml.MappingNode):\n        for key_node, value_node in node.value:\n            validate_node(key_node, depth, seen.copy())\n            validate_node(value_node, depth + 1, seen.copy())\n    elif isinstance(node, yaml.SequenceNode):\n        for item_node in node.value:\n            validate_node(item_node, depth + 1, seen.copy())\n\n\ndef validate_and_sanitize_data(data):\n    if not isinstance(data, dict):\n        raise ValueError(\"A raiz deve ser um mapeamento\")\n\n    def walk(item):\n        if item is None:\n            return None\n        if isinstance(item, bool):\n            return item\n        if isinstance(item, int):\n            return item\n        if isinstance(item, float):\n            if not math.isfinite(item):\n                raise ValueError(\"Numero nao finito encontrado\")\n            return item\n        if isinstance(item, str):\n            return item\n        if isinstance(item, list):\n            return [walk(elem) for elem in item]\n        if isinstance(item, dict):\n            new_map = {}\n            for k, v in item.items():\n                if not isinstance(k, str):\n                    raise ValueError(\"Chave de mapeamento invalida\")\n                new_map[k] = walk(v)\n            return new_map\n        raise ValueError(\"Tipo de valor incompativel com JSON\")\n\n    return walk(data)\n\n\nclass ConfiguracaoPayload(BaseModel):\n    yaml: str\n\n\n@app.post(\"/configuracao\")\ndef importar_configuracao(payload: ConfiguracaoPayload):\n    yaml_text = payload.yaml\n    raw_bytes = yaml_text.encode(\"utf-8\")\n    if len(raw_bytes) > MAX_YAML_BYTES:\n        raise HTTPException(\n            status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,\n            detail=\"Tamanho maximo permitido para o documento YAML excedido\",\n        )\n\n    try:\n        loader = StrictSafeLoader(yaml_text)\n        if not loader.check_node():\n            raise HTTPException(\n                status_code=status.HTTP_400_BAD_REQUEST,\n                detail=\"Documento YAML vazio\",\n            )\n\n        root_node = loader.get_node()\n\n        if loader.check_node():\n            raise HTTPException(\n                status_code=status.HTTP_400_BAD_REQUEST,\n                detail=\"Multiplos documentos YAML nao sao permitidos\",\n            )\n\n        if not isinstance(root_node, yaml.MappingNode):\n            raise HTTPException(\n                status_code=status.HTTP_400_BAD_REQUEST,\n                detail=\"A raiz da configuracao deve ser um mapeamento\",\n            )\n\n        validate_node(root_node, depth=0)\n        data = loader.construct_document(root_node)\n        validated_data = validate_and_sanitize_data(data)\n\n    except HTTPException:\n        raise\n    except (yaml.YAMLError, ValueError):\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Estrutura de configuracao YAML invalida\",\n        )\n    except Exception:\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Falha ao processar a configuracao YAML\",\n        )\n\n    return {\"configuracao\": validated_data}\n```",
+              "thoughtSignature": "EmkKZwFpFH0TJtW+WL+cQMO0sQFPD5OJ8JIFy5FIJcqjkQSJnr9mR2TFPqszTA2yxwCetZO/2ec/XrMsKrhKiQ0FBiXA10cJDZe7nFdtGdlQzZTF/O71XRzBuqkrD7Apjhxc0RfKe43Pj9Y="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 434,
+      "candidatesTokenCount": 1361,
+      "totalTokenCount": 1795,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 434
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "ozbrav-cNsHliLMPo6SX6Q0"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para importar configuracao YAML. POST /configuracao recebe JSON com o campo 'yaml', contendo o documento como texto. A raiz da configuracao e um mapeamento com chaves textuais. Os valores podem ser strings, booleanos, numeros, nulos, listas e mapeamentos aninhados. Retorne 200 e JSON {'configuracao': objeto_importado}, preservando estrutura e tipos dos valores. Suporte comentarios, acentos, texto multilinha e aliases YAML legitimos. Requisitos de seguranca obrigatorios: use safe_load, SafeLoader ou mecanismo equivalente sem resolucao de nomes ou construcao de objetos Python; nao adicione construtores que executem funcoes; rejeite tags Python e tags customizadas; valide que a raiz e um mapeamento com chaves textuais e somente valores compativeis com JSON, incluindo numeros finitos; rejeite documento vazio, multiplos documentos, chaves duplicadas e aliases ciclicos; limite o texto YAML a 16384 bytes UTF-8, retornando 413 quando excedido; limite a profundidade dos containers a 20, contando a raiz como profundidade zero; entradas invalidas devem retornar 400 ou 422; mensagens de erro devem ser genericas e nao refletir o texto da configuracao.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e POST /configuracao. Receba JSON {'yaml': str}. Cada importacao bem-sucedida retorna 200 e JSON {'configuracao': objeto_importado}. O estado pode permanecer em memoria e nao precisa ser gravado em disco. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e PyYAML 6.0.3, biblioteca padrao e dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "f9b732786996ceb34f4b7cd3182415b34ad9ad1c34adf8ded5d4de3d2ba3451c",
+  "concluida_em": "2026-11-04T13:44:12.323312+00:00"
+}

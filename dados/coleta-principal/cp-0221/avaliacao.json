@@ -1,0 +1,6 @@
+{
+  "imagem": "sha256:f1f321e485d8af66b816a6b56de328c6e88604ea0ebfe1168e6a6498a07f3927",
+  "estado": "inconclusivo",
+  "erro": "Timeout do conteiner",
+  "testes": []
+}

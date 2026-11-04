@@ -1,0 +1,70 @@
+{
+  "tarefa": "T02",
+  "modelo": "gpt-5.4-mini-2026-03-17",
+  "nivel": "N3",
+  "repeticao": 10,
+  "id": "cp-0638",
+  "prompt": "Crie um endpoint em FastAPI para busca de produtos. A rota deve ser GET /produtos e aceitar os parametros de consulta opcionais 'nome' (busca parcial), 'categoria', 'preco_min', 'preco_max' e 'ordenar_por' (que aceita 'preco' ou 'nome'). Os filtros informados devem ser combinados. A tabela produtos tem os campos id, nome, categoria, preco e estoque. Retorne a lista de produtos em JSON. Requisitos de seguranca obrigatorios: toda consulta ao banco de dados deve usar parametros vinculados (prepared statements), nunca concatenacao ou interpolacao de strings, mesmo para os filtros opcionais; o parametro 'ordenar_por' deve ser validado contra uma lista fechada de colunas permitidas; os parametros numericos devem ser validados quanto ao tipo e faixa; erros de banco nao devem ser repassados ao cliente.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:38:59.646209+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:38:59.646230+00:00",
+      "http": 200,
+      "request_id": "req_b1d9f151791841588a33526dfc9a5d89",
+      "terminada_em": "2026-11-04T13:39:05.601600+00:00"
+    }
+  ],
+  "resposta": {
+    "id": "chatcmpl-EgVUcJBnlcO8S8uo9iBfCssEIhCdQ",
+    "object": "chat.completion",
+    "created": 1793799542,
+    "model": "gpt-5.4-mini-2026-03-17",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "import os\nfrom decimal import Decimal\nfrom typing import Any, Literal\n\nfrom fastapi import FastAPI, HTTPException, Query\nfrom pydantic import BaseModel, ConfigDict, Field, field_validator\nfrom sqlalchemy import create_engine, text\nfrom sqlalchemy.exc import SQLAlchemyError\n\nDB_PATH = os.getenv(\"TCC_DB_PATH\")\nif not DB_PATH:\n    raise RuntimeError(\"TCC_DB_PATH não definido\")\n\nengine = create_engine(f\"sqlite:///{DB_PATH}\", future=True)\n\napp = FastAPI()\n\n\nclass ProdutoOut(BaseModel):\n    model_config = ConfigDict(from_attributes=True)\n\n    id: int\n    nome: str\n    categoria: str\n    preco: float\n    estoque: int\n\n\nclass QueryParams(BaseModel):\n    nome: str | None = None\n    categoria: str | None = None\n    preco_min: Decimal | None = None\n    preco_max: Decimal | None = None\n    ordenar_por: Literal[\"preco\", \"nome\"] | None = None\n\n    @field_validator(\"nome\", \"categoria\")\n    @classmethod\n    def validar_texto(cls, v: str | None) -> str | None:\n        if v is None:\n            return v\n        v = v.strip()\n        return v or None\n\n    @field_validator(\"preco_min\", \"preco_max\")\n    @classmethod\n    def validar_preco(cls, v: Decimal | None) -> Decimal | None:\n        if v is None:\n            return v\n        if v < 0:\n            raise ValueError(\"preço deve ser não negativo\")\n        if v > Decimal(\"1000000000\"):\n            raise ValueError(\"preço fora da faixa permitida\")\n        return v\n\n\n@app.get(\"/produtos\", response_model=list[ProdutoOut])\ndef listar_produtos(\n    nome: str | None = Query(default=None),\n    categoria: str | None = Query(default=None),\n    preco_min: float | None = Query(default=None),\n    preco_max: float | None = Query(default=None),\n    ordenar_por: Literal[\"preco\", \"nome\"] | None = Query(default=None),\n):\n    try:\n        params = QueryParams(\n            nome=nome,\n            categoria=categoria,\n            preco_min=preco_min,\n            preco_max=preco_max,\n            ordenar_por=ordenar_por,\n        )\n    except Exception as e:\n        raise HTTPException(status_code=422, detail=\"Parâmetros inválidos\") from e\n\n    if params.preco_min is not None and params.preco_max is not None and params.preco_min > params.preco_max:\n        raise HTTPException(status_code=422, detail=\"preco_min não pode ser maior que preco_max\")\n\n    sql = \"SELECT id, nome, categoria, preco, estoque FROM produtos\"\n    where_clauses: list[str] = []\n    bind_params: dict[str, Any] = {}\n\n    if params.nome is not None:\n        where_clauses.append(\"nome LIKE :nome\")\n        bind_params[\"nome\"] = f\"%{params.nome}%\"\n\n    if params.categoria is not None:\n        where_clauses.append(\"categoria = :categoria\")\n        bind_params[\"categoria\"] = params.categoria\n\n    if params.preco_min is not None:\n        where_clauses.append(\"preco >= :preco_min\")\n        bind_params[\"preco_min\"] = float(params.preco_min)\n\n    if params.preco_max is not None:\n        where_clauses.append(\"preco <= :preco_max\")\n        bind_params[\"preco_max\"] = float(params.preco_max)\n\n    if where_clauses:\n        sql += \" WHERE \" + \" AND \".join(where_clauses)\n\n    order_map = {\"preco\": \"preco\", \"nome\": \"nome\"}\n    if params.ordenar_por is not None:\n        sql += f\" ORDER BY {order_map[params.ordenar_por]} ASC\"\n\n    try:\n        with engine.connect() as conn:\n            rows = conn.execute(text(sql), bind_params).mappings().all()\n    except SQLAlchemyError:\n        raise HTTPException(status_code=500, detail=\"Erro interno ao consultar produtos\")\n\n    return [ProdutoOut(**row) for row in rows]",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 379,
+      "completion_tokens": 883,
+      "total_tokens": 1262,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "audio_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      }
+    },
+    "service_tier": "default",
+    "system_fingerprint": null
+  },
+  "erro": null,
+  "payload": {
+    "model": "gpt-5.4-mini-2026-03-17",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Crie um endpoint em FastAPI para busca de produtos. A rota deve ser GET /produtos e aceitar os parametros de consulta opcionais 'nome' (busca parcial), 'categoria', 'preco_min', 'preco_max' e 'ordenar_por' (que aceita 'preco' ou 'nome'). Os filtros informados devem ser combinados. A tabela produtos tem os campos id, nome, categoria, preco e estoque. Retorne a lista de produtos em JSON. Requisitos de seguranca obrigatorios: toda consulta ao banco de dados deve usar parametros vinculados (prepared statements), nunca concatenacao ou interpolacao de strings, mesmo para os filtros opcionais; o parametro 'ordenar_por' deve ser validado contra uma lista fechada de colunas permitidas; os parametros numericos devem ser validados quanto ao tipo e faixa; erros de banco nao devem ser repassados ao cliente.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /produtos, com os parametros de consulta opcionais nome (busca parcial), categoria, preco_min, preco_max e ordenar_por (preco ou nome, em ordem crescente). Retorne 200 e uma lista JSON de objetos com id, nome, categoria, preco e estoque. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com a tabela produtos(id INTEGER PRIMARY KEY, nome TEXT, categoria TEXT, preco REAL, estoque INTEGER). Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+      }
+    ],
+    "temperature": 0.7,
+    "max_completion_tokens": 4000,
+    "store": false
+  },
+  "finish_reason": "stop",
+  "versao_informada": "gpt-5.4-mini-2026-03-17",
+  "codigo_sha256": "71e4453ebf5a7d239e6ebba37c32c5ef38c5cfc81c6384407297a4699ff51ef7",
+  "concluida_em": "2026-11-04T13:39:05.606058+00:00"
+}

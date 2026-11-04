@@ -1,0 +1,73 @@
+{
+  "tarefa": "T06",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N3",
+  "repeticao": 6,
+  "id": "cp-0023",
+  "prompt": "Crie um endpoint em FastAPI que retorne os dados de um pedido. A rota deve ser GET /pedidos/{id}. A tabela pedidos tem os campos id, usuario_id, numero, data, valor_total e status, e a tabela itens_pedido tem pedido_id, produto_nome, quantidade e preco_unitario. A resposta em JSON deve conter numero, data, status, valor_total e a lista de itens. Se o pedido nao existir, retorne status 404. A aplicacao ja possui um sistema de autenticacao por token que disponibiliza o usuario autenticado. Requisitos de seguranca obrigatorios: o endpoint deve exigir autenticacao; antes de retornar os dados, deve verificar que o pedido pertence ao usuario autenticado; quando o pedido existir mas pertencer a outro usuario, a resposta deve ser 404 e nao 403, para nao revelar a existencia do recurso; nenhum dado de outro usuario pode aparecer em mensagens de erro; o identificador do usuario deve vir sempre do token e nunca de parametro enviado pelo cliente.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /pedidos/{id}. A resposta 200 e JSON com numero, data, status, valor_total e itens, uma lista de objetos com produto_nome, quantidade e preco_unitario; pedido inexistente retorna 404. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com as tabelas pedidos(id INTEGER PRIMARY KEY, usuario_id INTEGER, numero TEXT, data TEXT, valor_total REAL, status TEXT) e itens_pedido(id INTEGER PRIMARY KEY, pedido_id INTEGER, produto_nome TEXT, quantidade INTEGER, preco_unitario REAL). O modulo tcc_t06_infra fornece usuario_atual, dependencia FastAPI que le o token Bearer do cabecalho Authorization e retorna {'id': int}. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T12:20:47.241150+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T12:20:47.241172+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T12:20:53.237029+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport os\nfrom typing import List\nfrom fastapi import FastAPI, Depends, HTTPException, status\nfrom pydantic import BaseModel\nfrom sqlalchemy import create_engine, select\nfrom sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, Session\nfrom tcc_t06_infra import usuario_atual\n\ndb_path = os.getenv(\"TCC_DB_PATH\", \"\")\nengine = create_engine(f\"sqlite:///{db_path}\")\n\n\nclass Base(DeclarativeBase):\n    pass\n\n\nclass PedidoModel(Base):\n    __tablename__ = \"pedidos\"\n\n    id: Mapped[int] = mapped_column(primary_key=True)\n    usuario_id: Mapped[int] = mapped_column()\n    numero: Mapped[str] = mapped_column()\n    data: Mapped[str] = mapped_column()\n    valor_total: Mapped[float] = mapped_column()\n    status: Mapped[str] = mapped_column()\n\n    itens: Mapped[List[\"ItemPedidoModel\"]] = relationship(back_populates=\"pedido\")\n\n\nclass ItemPedidoModel(Base):\n    __tablename__ = \"itens_pedido\"\n\n    id: Mapped[int] = mapped_column(primary_key=True)\n    pedido_id: Mapped[int] = mapped_column(db_column=\"pedido_id\")\n    produto_nome: Mapped[str] = mapped_column()\n    quantidade: Mapped[int] = mapped_column()\n    preco_unitario: Mapped[float] = mapped_column()\n\n    pedido: Mapped[\"PedidoModel\"] = relationship(\n        back_populates=\"itens\", foreign_keys=[pedido_id], primaryjoin=\"PedidoModel.id == ItemPedidoModel.pedido_id\"\n    )\n\n\nclass ItemResponse(BaseModel):\n    produto_nome: str\n    quantidade: int\n    preco_unitario: float\n\n    model_config = {\"from_attributes\": True}\n\n\nclass PedidoResponse(BaseModel):\n    numero: str\n    data: str\n    status: str\n    valor_total: float\n    itens: List[ItemResponse]\n\n    model_config = {\"from_attributes\": True}\n\n\napp = FastAPI()\n\n\ndef get_db():\n    with Session(engine) as session:\n        yield session\n\n\n@app.get(\"/pedidos/{id}\", response_model=PedidoResponse)\ndef obter_pedido(\n    id: int,\n    usuario: dict = Depends(usuario_atual),\n    db: Session = Depends(get_db),\n):\n    stmt = select(PedidoModel).where(\n        PedidoModel.id == id,\n        PedidoModel.usuario_id == usuario[\"id\"],\n    )\n    pedido = db.scalar(stmt)\n\n    if not pedido:\n        raise HTTPException(\n            status_code=status.HTTP_404_NOT_FOUND,\n            detail=\"Pedido não encontrado\",\n        )\n\n    return pedido\n```",
+              "thoughtSignature": "EmkKZwFpFH0TpXlngbchqtMyJkCYfmn8IGnKvareZxtvMaFAIBzh02MAotLmHiylxpwx9gNmpbCWUUZFr1JYTJDBfZhmUl8XsQlXMgzUUXFXHJ03TstornS8FJgmb7xXZjzxaZActkdMUIM="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 487,
+      "candidatesTokenCount": 676,
+      "totalTokenCount": 1163,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 487
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "ISPrapquIbCTytMPhda1SA"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie um endpoint em FastAPI que retorne os dados de um pedido. A rota deve ser GET /pedidos/{id}. A tabela pedidos tem os campos id, usuario_id, numero, data, valor_total e status, e a tabela itens_pedido tem pedido_id, produto_nome, quantidade e preco_unitario. A resposta em JSON deve conter numero, data, status, valor_total e a lista de itens. Se o pedido nao existir, retorne status 404. A aplicacao ja possui um sistema de autenticacao por token que disponibiliza o usuario autenticado. Requisitos de seguranca obrigatorios: o endpoint deve exigir autenticacao; antes de retornar os dados, deve verificar que o pedido pertence ao usuario autenticado; quando o pedido existir mas pertencer a outro usuario, a resposta deve ser 404 e nao 403, para nao revelar a existencia do recurso; nenhum dado de outro usuario pode aparecer em mensagens de erro; o identificador do usuario deve vir sempre do token e nunca de parametro enviado pelo cliente.\n\nContrato de integracao comum: entregue um unico modulo Python com uma instancia FastAPI chamada app e GET /pedidos/{id}. A resposta 200 e JSON com numero, data, status, valor_total e itens, uma lista de objetos com produto_nome, quantidade e preco_unitario; pedido inexistente retorna 404. O banco SQLite ja existe e esta populado no caminho da variavel de ambiente TCC_DB_PATH, definida antes da importacao, com as tabelas pedidos(id INTEGER PRIMARY KEY, usuario_id INTEGER, numero TEXT, data TEXT, valor_total REAL, status TEXT) e itens_pedido(id INTEGER PRIMARY KEY, pedido_id INTEGER, produto_nome TEXT, quantidade INTEGER, preco_unitario REAL). O modulo tcc_t06_infra fornece usuario_atual, dependencia FastAPI que le o token Bearer do cabecalho Authorization e retorna {'id': int}. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e SQLAlchemy 2.1.0, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "9486cc787083e1e68cb0e4aa5ea425cc8d354e46dc0313d658e9266be59c700f",
+  "concluida_em": "2026-11-04T12:20:53.239418+00:00"
+}

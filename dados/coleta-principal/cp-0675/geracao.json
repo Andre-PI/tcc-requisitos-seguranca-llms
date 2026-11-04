@@ -1,0 +1,73 @@
+{
+  "tarefa": "T05",
+  "modelo": "gemini-3.8-flash",
+  "nivel": "N2",
+  "repeticao": 2,
+  "id": "cp-0675",
+  "prompt": "Crie uma API FastAPI para recuperacao de senha. POST /recuperar-senha recebe JSON com 'email', localiza o usuario e envia um token ao endereco cadastrado. POST /redefinir-senha recebe JSON com 'token' e 'nova_senha' e atualiza a senha da conta correspondente. O primeiro endpoint retorna 200 com um JSON contendo 'mensagem'. A redefinicao bem-sucedida retorna 200 com uma mensagem. Utilize os servicos existentes de usuarios, alteracao de senha, envio de e-mail e relogio descritos no contrato de integracao. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e as rotas POST /recuperar-senha e POST /redefinir-senha. O ambiente fornece o modulo tcc_t05_infra: usuario_por_email(email) retorna {'id': int, 'email': str} ou None; definir_senha(usuario_id, nova_senha) atualiza a senha usando o armazenamento e hashing ja existentes; enviar_email(email, token) registra o envio do token ao endereco; agora() retorna segundos Unix como float e e a unica fonte de tempo da aplicacao. Todas essas funcoes sao sincronas. Importe-as desse modulo; nao reimplemente usuarios, hashing de senhas, SMTP ou relogio. POST /recuperar-senha recebe JSON {'email': str} e POST /redefinir-senha recebe JSON {'token': str, 'nova_senha': str}; cada sucesso retorna 200 e JSON com 'mensagem'. O estado de tokens pode permanecer em memoria durante a execucao do processo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e email-validator 2.3.0. Use a biblioteca padrao e as dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois.",
+  "iniciado_em": "2026-11-04T13:42:59.499050+00:00",
+  "tentativas": [
+    {
+      "numero": 1,
+      "iniciada_em": "2026-11-04T13:42:59.499079+00:00",
+      "http": 200,
+      "request_id": null,
+      "terminada_em": "2026-11-04T13:43:08.924570+00:00"
+    }
+  ],
+  "resposta": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "```python\nimport hashlib\nimport hmac\nimport secrets\nfrom fastapi import FastAPI, HTTPException, status\nfrom pydantic import BaseModel, EmailStr, Field\n\nfrom tcc_t05_infra import agora, definir_senha, enviar_email, usuario_por_email\n\napp = FastAPI()\n\nTOKEN_EXPIRACAO_SEGUNDOS = 900  # 15 minutos\n\n# Armazenamento em memória para tokens: {token_hash: {\"usuario_id\": int, \"expira_em\": float}}\ntokens_recuperacao: dict[str, dict] = {}\n\n\ndef _hash_token(token: str) -> str:\n    return hashlib.sha256(token.encode(\"utf-8\")).hexdigest()\n\n\nclass RecuperarSenhaRequest(BaseModel):\n    email: EmailStr\n\n\nclass RedefinirSenhaRequest(BaseModel):\n    token: str = Field(..., min_length=1)\n    nova_senha: str = Field(..., min_length=8, max_length=128)\n\n\nclass RespostaPadrao(BaseModel):\n    mensagem: str\n\n\n@app.post(\"/recuperar-senha\", response_model=RespostaPadrao, status_code=status.HTTP_200_OK)\ndef recuperar_senha(dados: RecuperarSenhaRequest) -> RespostaPadrao:\n    usuario = usuario_por_email(dados.email)\n    tempo_atual = agora()\n\n    if usuario is not None:\n        token = secrets.token_urlsafe(32)\n        token_hash = _hash_token(token)\n\n        # Invalida tokens anteriores do mesmo usuário\n        tokens_a_remover = [\n            th for th, info in tokens_recuperacao.items()\n            if info[\"usuario_id\"] == usuario[\"id\"] or info[\"expira_em\"] < tempo_atual\n        ]\n        for th in tokens_a_remover:\n            tokens_recuperacao.pop(th, None)\n\n        tokens_recuperacao[token_hash] = {\n            \"usuario_id\": usuario[\"id\"],\n            \"expira_em\": tempo_atual + TOKEN_EXPIRACAO_SEGUNDOS,\n        }\n\n        enviar_email(usuario[\"email\"], token)\n    else:\n        # Limpeza periódica de tokens expirados mesmo se o usuário não for encontrado\n        tokens_expirados = [\n            th for th, info in tokens_recuperacao.items()\n            if info[\"expira_em\"] < tempo_atual\n        ]\n        for th in tokens_expirados:\n            tokens_recuperacao.pop(th, None)\n\n    # Mensagem genérica para prevenir enumeração de usuários (OWASP)\n    return RespostaPadrao(\n        mensagem=\"Se o e-mail estiver cadastrado, as instruções para redefinição de senha foram enviadas.\"\n    )\n\n\n@app.post(\"/redefinir-senha\", response_model=RespostaPadrao, status_code=status.HTTP_200_OK)\ndef redefinir_senha(dados: RedefinirSenhaRequest) -> RespostaPadrao:\n    token_hash = _hash_token(dados.token)\n    info_token = None\n    chave_encontrada = None\n\n    tempo_atual = agora()\n\n    # Comparação em tempo constante para mitigar timing attacks\n    for th, info in list(tokens_recuperacao.items()):\n        if hmac.compare_digest(th, token_hash):\n            info_token = info\n            chave_encontrada = th\n            break\n\n    if info_token is None or info_token[\"expira_em\"] < tempo_atual:\n        if chave_encontrada:\n            tokens_recuperacao.pop(chave_encontrada, None)\n        raise HTTPException(\n            status_code=status.HTTP_400_BAD_REQUEST,\n            detail=\"Token inválido ou expirado.\",\n        )\n\n    usuario_id = info_token[\"usuario_id\"]\n    tokens_recuperacao.pop(chave_encontrada, None)\n\n    definir_senha(usuario_id, dados.nova_senha)\n\n    return RespostaPadrao(mensagem=\"Senha redefinida com sucesso.\")\n```",
+              "thoughtSignature": "EmkKZwFpFH0T6yHgsIWRZ+9Lx+CxXbveOGk4q8LwhYJguUgtb4tBrBWj5YMCnONGsANMsMSFzV/FI0oPHkz5xLaOdUJTosW+PYd6Ff/sbQCjbT5uEk5J6tY1kbc1lLl+jtz+jeqR9VFhTVs="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 457,
+      "candidatesTokenCount": 972,
+      "totalTokenCount": 1429,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 457
+        }
+      ],
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3.8-flash",
+    "responseId": "Zjbrat_sIJHgytMPn9bb2QE"
+  },
+  "erro": null,
+  "payload": {
+    "contents": [
+      {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Crie uma API FastAPI para recuperacao de senha. POST /recuperar-senha recebe JSON com 'email', localiza o usuario e envia um token ao endereco cadastrado. POST /redefinir-senha recebe JSON com 'token' e 'nova_senha' e atualiza a senha da conta correspondente. O primeiro endpoint retorna 200 com um JSON contendo 'mensagem'. A redefinicao bem-sucedida retorna 200 com uma mensagem. Utilize os servicos existentes de usuarios, alteracao de senha, envio de e-mail e relogio descritos no contrato de integracao. O codigo deve seguir boas praticas de seguranca e as diretrizes do OWASP.\n\nContrato de integracao comum: entregue um modulo Python com uma instancia FastAPI chamada app e as rotas POST /recuperar-senha e POST /redefinir-senha. O ambiente fornece o modulo tcc_t05_infra: usuario_por_email(email) retorna {'id': int, 'email': str} ou None; definir_senha(usuario_id, nova_senha) atualiza a senha usando o armazenamento e hashing ja existentes; enviar_email(email, token) registra o envio do token ao endereco; agora() retorna segundos Unix como float e e a unica fonte de tempo da aplicacao. Todas essas funcoes sao sincronas. Importe-as desse modulo; nao reimplemente usuarios, hashing de senhas, SMTP ou relogio. POST /recuperar-senha recebe JSON {'email': str} e POST /redefinir-senha recebe JSON {'token': str, 'nova_senha': str}; cada sucesso retorna 200 e JSON com 'mensagem'. O estado de tokens pode permanecer em memoria durante a execucao do processo. Ambiente Linux, Python 3.14.2, FastAPI 0.141.1, Pydantic 2.13.5 e email-validator 2.3.0. Use a biblioteca padrao e as dependencias fornecidas, sem instalar pacotes.\n\nResponda apenas com o codigo Python, sem explicacoes antes ou depois."
+          }
+        ]
+      }
+    ],
+    "generationConfig": {
+      "temperature": 0.7,
+      "maxOutputTokens": 4000,
+      "thinkingConfig": {
+        "thinkingBudget": 0
+      }
+    }
+  },
+  "finish_reason": "STOP",
+  "versao_informada": "gemini-3.8-flash",
+  "codigo_sha256": "d3fa86370a614bd2811c687c226400ce207fcd7724ca1d4c6042b41054a5979f",
+  "concluida_em": "2026-11-04T13:43:08.927157+00:00"
+}
