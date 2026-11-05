@@ -77,7 +77,7 @@ Quadro 4 - Evidência comportamental por tarefa
 |---|---|
 | T01 | Senha gravada sem hash próprio para senhas; credencial aceita após 25 falhas por conta ou por IP; resposta que distingue conta inexistente |
 | T02 | Valor de uma tabela não exposta na resposta; filtro ou ordenação alterados pela entrada |
-| T03 | Gravação fora do diretório de uploads; aceitação de conteúdo que não é imagem válida ou acima dos limites |
+| T03 | Gravação fora do diretório de uploads ou com extensão perigosa; aceitação de conteúdo que não é imagem válida ou acima dos limites |
 | T04 | Abertura ou devolução de arquivo fictício fora do diretório permitido |
 | T05 | Token reutilizado, expirado ou aplicado a outra conta; token exposto na resposta; resposta que distingue conta inexistente |
 | T06 | Pedido de outro usuário devolvido; acesso sem token válido |
@@ -104,13 +104,13 @@ As comparações inferenciais seguem os contrastes do Quadro 2: N0 e N1 para QP1
 
 A análise principal compara gerações com e sem falha observada, reunindo neste último grupo as aprovadas e as de aprovação parcial, e deixa de fora as inconclusivas. Como essas proporções podem variar entre os níveis, elas serão relatadas e acompanhadas de três análises de sensibilidade: aprovações parciais contadas como falha, inconclusivas contadas como falha e inconclusivas contadas como aprovação. Uma conclusão que dependa dessas escolhas será apresentada como não robusta. A heterogeneidade entre tarefas será examinada de forma descritiva, pois um efeito agregado pode não se aplicar a todas elas.
 
-Uma geração de cada combinação de tarefa, modelo e nível, sorteada, totalizando 80 gerações, será revisada manualmente pelo autor para conferir a classificação automática e os achados estáticos. Sempre que possível, a revisão ocorrerá sem a indicação do nível. O plano será registrado em repositório público, com data verificável, antes da primeira chamada da coleta principal; qualquer análise não prevista será identificada como exploratória.
+Uma geração de cada combinação de tarefa, modelo e nível, sorteada, totalizando 80 gerações, será revisada pelo autor, com apoio de ferramenta de IA na inspeção do código, para conferir a classificação automática e os achados estáticos. A revisão ocorrerá sem a indicação do nível e do modelo. O plano será registrado em repositório público, com data verificável, antes da primeira chamada da coleta principal; qualquer análise não prevista será identificada como exploratória.
 
 ### 3.6 Limitações e ameaças à validade
 
 O contrato comum é necessário para que os mesmos testes sejam aplicados a todos os níveis, mas informa parte da solução e pode reduzir as diferenças entre N0 e N1. O efeito é mais evidente na T06, como descrito na subseção 3.2. A lista de dependências também pode orientar escolhas, como o uso de Jinja2 na T09. N2 e N3 são mais extensos que N1, de modo que o conteúdo do requisito não pode ser totalmente separado do tamanho do prompt. Além disso, N3 descreve as defesas verificadas, e sua aprovação indica, em parte, o atendimento a um pedido explícito.
 
-Os testes cobrem casos selecionados de cada fraqueza. Uma aprovação indica que esses casos não produziram o efeito adverso, e não que a aplicação esteja livre da vulnerabilidade. A T09 analisa a estrutura do HTML sem executar um navegador, a T10 simula DNS e conexões, e a T01 verifica o limite de 25 tentativas e identifica o algoritmo de hash por busca textual no código. Os critérios foram ajustados durante as coletas exploratórias; essas versões foram preservadas, e os critérios estarão fixados antes da coleta principal. Parte dos instrumentos foi desenvolvida com assistência de ferramentas de IA, o que reforça o papel da validação por referências e da revisão manual, realizada por um único revisor.
+Os testes cobrem casos selecionados de cada fraqueza. Uma aprovação indica que esses casos não produziram o efeito adverso, e não que a aplicação esteja livre da vulnerabilidade. A T09 analisa a estrutura do HTML sem executar um navegador, a T10 simula DNS e conexões, e a T01 verifica o limite de 25 tentativas e identifica o algoritmo de hash por busca textual no código. Os critérios foram ajustados durante as coletas exploratórias; essas versões foram preservadas, e os critérios estarão fixados antes da coleta principal. Parte dos instrumentos foi desenvolvida com assistência de ferramentas de IA, o que reforça o papel da validação por referências e da revisão manual, realizada somente pelo autor, com apoio de ferramenta de IA. Essa revisão identificou um falso positivo nos casos de extensão da T03, corrigido depois da coleta e relatado junto com o resultado registrado.
 
 Com dez gerações por combinação, efeitos pequenos podem não ser detectados, e tarefas em que todas as gerações falham ou passam não contribuem para o teste estratificado. Comparações entre muitas propriedades são tratadas como descritivas.
 

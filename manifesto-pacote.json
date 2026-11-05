@@ -18,8 +18,8 @@
     },
     {
       "caminho": "README.md",
-      "bytes": 8748,
-      "sha256": "7358c00f0a51d8bf442983d570ab0210ee184eaa212ecfd8c5dd30903baa8267"
+      "bytes": 9193,
+      "sha256": "3720bd6e3d5916c4046953130b6a20d21e20fa8798b6151048db8967fa8173c4"
     },
     {
       "caminho": "aceitacao_worker.py",
@@ -30,6 +30,11 @@
       "caminho": "analisar.py",
       "bytes": 10628,
       "sha256": "38bc2790cf72c088a01b464c254f735a7a983bacb18603ff8ea2fdb76fa77ee0"
+    },
+    {
+      "caminho": "analise_emenda02.py",
+      "bytes": 1069,
+      "sha256": "dd88f85bd4632312a79b6f163f1090a07b7ab80dce2293fdda638696249f262a"
     },
     {
       "caminho": "analise_principal.py",
@@ -428,8 +433,8 @@
     },
     {
       "caminho": "conferir_pacote.py",
-      "bytes": 18129,
-      "sha256": "82ea99698e3212f871641f0ccf3c36cdab0bd2075cf8680402054a3a20602e3c"
+      "bytes": 18896,
+      "sha256": "ec128add12b016c654dbf6a99ed8e244113cf2964ae7070b072fa390096d37dd"
     },
     {
       "caminho": "dados/aceitacoes-mais-recentes.json",
@@ -445,6 +450,11 @@
       "caminho": "dados/analisadas.csv",
       "bytes": 304,
       "sha256": "aa478e6f1bf81fcba7a3399c03159d217255b7fc6b6503a0caf0cb99a6b03ff7"
+    },
+    {
+      "caminho": "dados/coleta-principal/analise-emenda-02.json",
+      "bytes": 33364,
+      "sha256": "4adc243b88a1ab3b7b1cc244c1325c716efd3dfb7c215ec36610d4eb0446361d"
     },
     {
       "caminho": "dados/coleta-principal/analise.json",
@@ -13452,6 +13462,416 @@
       "sha256": "3a232eab4a0c98b3c2dffb651da92ecff5f215f3a6b4f437f981436b15d72262"
     },
     {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0004.json",
+      "bytes": 10719,
+      "sha256": "fe08d0c9e19331eb708d11dc70783ba280d73e27b75da2a0c47e1aaf04559658"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0015.json",
+      "bytes": 10785,
+      "sha256": "f05c5df095d3681f80319aadec38fae847b22ad37cf1daec2f59d25dde0a9c9f"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0024.json",
+      "bytes": 10798,
+      "sha256": "4387da4968f93185ec4d79c2fc30ad91477711dd93a11e714723182cbff3e018"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0031.json",
+      "bytes": 10115,
+      "sha256": "56cca8b9dd03203971e083073cad1b2c31bb082f4b648f0b153b9e956a269ad0"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0050.json",
+      "bytes": 10115,
+      "sha256": "05f9b7907e5797eb5f76e502bfe2287969d034ad7670deb969e57bb181f02891"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0078.json",
+      "bytes": 10115,
+      "sha256": "f1aadb3db550c3de84cc6914fc8f3bcfc70d9e04ff3e6d840eea67d515b9fd18"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0098.json",
+      "bytes": 11344,
+      "sha256": "2359d7400c0bac74369398db888970c8690692f1d36953d2ff921d313e008d5d"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0104.json",
+      "bytes": 10785,
+      "sha256": "ed8bbbb18ff4926fa746a4b174299f67cf3c2d4259f66bddd897c468f23346c0"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0106.json",
+      "bytes": 10115,
+      "sha256": "979ca05b4e2a66a7d5bf0f436080dcea759698fcdb9242fb078ba8b2e3d4c05c"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0111.json",
+      "bytes": 10403,
+      "sha256": "c105b8a4683f8720bd3579c4891bb87d18fac1d7cf659908ad1ab43309f2817c"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0112.json",
+      "bytes": 216,
+      "sha256": "7cdd2ce8db4139fe224f21b5152a8c3d41b2952fdd719ec1d9f82424b0cbb72a"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0114.json",
+      "bytes": 10719,
+      "sha256": "e95c1d484162409bb96234ee0928f8cc1665f044289988d3ef9d2e17ca5ef577"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0154.json",
+      "bytes": 11312,
+      "sha256": "752c4d9a7640f8570dca48ad16d772391086b3b9ae4d88d430b39f5940fab9ec"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0158.json",
+      "bytes": 9958,
+      "sha256": "eba277cd75b8ad3bab229e7c8fb174ee87fd1470111e8f5a7b611cd955bb8687"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0171.json",
+      "bytes": 10719,
+      "sha256": "8e4c63b2e1e76725b64d3c6d74232d3bc29396364841a804767fb0ee7cef964a"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0193.json",
+      "bytes": 10785,
+      "sha256": "cfbeb5c7d95756c62983db393c9c115523efe3e2ef612afdf5b6c4fb9c6fe5d0"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0205.json",
+      "bytes": 11312,
+      "sha256": "c71e3d04580171ab951868a439b94773e24e7ed5f275e491c40faf76725ebbdd"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0207.json",
+      "bytes": 10785,
+      "sha256": "b15283edfe70d5c7981c4e80dd39ac6f7964d8e5adf9e893e4dafbbd22547dd8"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0208.json",
+      "bytes": 10723,
+      "sha256": "4a48ffd02f26d8a95156f436ed6555ab58296c34328bfeafacb25f1ebff46a65"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0242.json",
+      "bytes": 10785,
+      "sha256": "9646e105b7c7a19656b3773837ba80f4f65fa87e71bafe030140e068079fb9aa"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0243.json",
+      "bytes": 10786,
+      "sha256": "0978bcb14c2eb75cff754868979e3f8650dd18669a019be9b649f2ff4aaf0ddc"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0253.json",
+      "bytes": 10789,
+      "sha256": "500f04ee9d30aeb9cf4a963e102f551db74716763714bf4b2324ccc01c2ea5ea"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0255.json",
+      "bytes": 10553,
+      "sha256": "2d6e074e06db084d10bcabdd0751040dacc866eb7364a98ac6c56c836d9df5ba"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0256.json",
+      "bytes": 11344,
+      "sha256": "a8e0a1b8de014de8d1876087df729db2db9283f22ac7ccf1c95fca047430469f"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0261.json",
+      "bytes": 10788,
+      "sha256": "cda5c0751c544ed9152a3f3a506ea61d39fc95e9d55de5e0405aedfd11c8f8b1"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0276.json",
+      "bytes": 9958,
+      "sha256": "c0ffa8a53f94ac604ff6761935b12e81cb29c430396c0a45c5bec1efbd5edbaf"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0282.json",
+      "bytes": 10788,
+      "sha256": "cdf21e356d2c7c2f24c885a92f6b799a4a26bf4735a8b15f103e42883ed916be"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0314.json",
+      "bytes": 10115,
+      "sha256": "d282430e38243436c983ba25eed2f58768f0ef4bcf5b13eb55041825a9d083e4"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0319.json",
+      "bytes": 10719,
+      "sha256": "2f44c3c789ea8c87d1a444720e5cb89d9ddef769ce3526de9e84a598268028ba"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0326.json",
+      "bytes": 10115,
+      "sha256": "e31f632efb05a20cca5c4ae073a6697d6bafaf814b4cc619b8de1f8c64c41cbc"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0335.json",
+      "bytes": 10719,
+      "sha256": "5cfacaf975214cf6fc4829aff03a1a4a8c173b0f47e891f758af9cd68d5255dd"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0340.json",
+      "bytes": 10719,
+      "sha256": "fdbc698c3e464f233e27a93d746c9c1b62e58b9dd9716da9ddb0b15c20c7d967"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0344.json",
+      "bytes": 10719,
+      "sha256": "34ea23c38bb2e9ad172f9d73c4370c9f982996d533e7667e12f59171d135968e"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0347.json",
+      "bytes": 10115,
+      "sha256": "af0402c71c300a9ca969f02c9a1ed9fbfb3e36ea93decb02da87de3661b05a12"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0353.json",
+      "bytes": 10719,
+      "sha256": "eacfeb35f4a7aa2375f44577a5ae176d10a73909e6b100a0c24e939fb62a6bfa"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0355.json",
+      "bytes": 10786,
+      "sha256": "bbd5e45ab4d8b2bbccd9957fac7dfc8a4b270c02558fbe8bc88ad67a2794e44f"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0356.json",
+      "bytes": 10351,
+      "sha256": "3634f4cce9a69da8c61333946d7feb098d64ceb10109b12def73f821322e994d"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0358.json",
+      "bytes": 10719,
+      "sha256": "ea262edb4e7a530275f328455a6ff0b06ba0c4d1ec105d1afe423e66a525eff1"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0369.json",
+      "bytes": 10115,
+      "sha256": "6947af2d9669c8de53688a2515f53c9cecbbeb867b8c41a6445c0bdf8192e58a"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0374.json",
+      "bytes": 216,
+      "sha256": "7cdd2ce8db4139fe224f21b5152a8c3d41b2952fdd719ec1d9f82424b0cbb72a"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0375.json",
+      "bytes": 9958,
+      "sha256": "058e3d141923bf0bc22ef8906ac8e9d1be5be2b2bb0a81b61f6122ba0fb471ae"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0392.json",
+      "bytes": 10721,
+      "sha256": "be9681313d836cb952efadc7c0490ea9170b0c9308d4640920ffbc950a831bb1"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0393.json",
+      "bytes": 10115,
+      "sha256": "a8dee882b494fdd77ea069e2776b9eb82643f4e57ef0a7c26834bfa8b9bb41a8"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0459.json",
+      "bytes": 10115,
+      "sha256": "3bd70ff7c587113bf560dce9155ea3d9f6dc3bd7d7986fa0fe7a934d4f6b2f3c"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0486.json",
+      "bytes": 10115,
+      "sha256": "4a81a28be81da72f85fe8aab158812916667c89da03bd27b567ff42d5c7b3e00"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0491.json",
+      "bytes": 10785,
+      "sha256": "9f7ca1915bc298167602e8103ab2a340913413dfbef57dc8ab29d9237c64f92d"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0496.json",
+      "bytes": 10719,
+      "sha256": "1acc1131d80473a8bb59c73ac2c9f66b753fcc3c8f2b46a6decd34e99df680a7"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0498.json",
+      "bytes": 10719,
+      "sha256": "2c707c94d8c3f2f60531a99c96cc4494db343c640c6082467dc3fc2e13935051"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0512.json",
+      "bytes": 10719,
+      "sha256": "1b871b5f1197e44f3e4b22cbfb9a1f8847578c39253655c786a37a0a37560539"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0513.json",
+      "bytes": 11344,
+      "sha256": "753a64d6dea30a2690e0426b441c8476a5ca4ba2e2e43d5cedcdb76c6ea3a6bd"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0517.json",
+      "bytes": 12267,
+      "sha256": "0fe6a5ca10bc95743967a5f5e31336b783d6dcdb85d001378a5c5659a31200cd"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0520.json",
+      "bytes": 11312,
+      "sha256": "13054ea31cff3e455f8de2fbddb97b6bd8fa60026e838cd4344bc1ed9ac5d119"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0543.json",
+      "bytes": 10115,
+      "sha256": "48cde3da1c7ec25024326a13c64a6b0fb5bcf6f711468e6e188a8dd5a45fb03e"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0554.json",
+      "bytes": 10823,
+      "sha256": "757329d5d024dcfc2f1311033d385a540475d400ed397ac48d2662f85c302f54"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0581.json",
+      "bytes": 11312,
+      "sha256": "c19ce0efb6ca72db9b424e2f7d74326c567556abc8f8c459a5e6555ff19d5deb"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0590.json",
+      "bytes": 10785,
+      "sha256": "42c874afe697953c8cc11edcf5a373212977960ceca2e004bf2dd82fc4bac8a0"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0623.json",
+      "bytes": 10836,
+      "sha256": "8e35d5672032fa650e85d65224d5153a092d3fa5b90274c14a4265dac3348344"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0634.json",
+      "bytes": 9958,
+      "sha256": "00889310748999f9d6eacdfefa8929f0d7aa49087b5be9bb8482905f544785ff"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0639.json",
+      "bytes": 11344,
+      "sha256": "05a01aae794c667491d7a330bfbbdf61bc66deb2f57eb25380106be6449aad28"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0642.json",
+      "bytes": 10403,
+      "sha256": "acf8bf795e347d383d6c817122bea23a7c4c3f7a7f1c754c60e74c2e4c12e55b"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0660.json",
+      "bytes": 11312,
+      "sha256": "70d31c7081aa30a8f66ac450ead0be840a2ad64062b399783d679ede98fb6ee0"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0671.json",
+      "bytes": 10719,
+      "sha256": "79ad5655a6ba2a2c7412cd4d821455418dadb0d5110602041652024b377a070d"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0696.json",
+      "bytes": 10115,
+      "sha256": "4565f38e2c2add3a90dde8436615943820fedd5b5bacb2f08661359295e3d7af"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0697.json",
+      "bytes": 10719,
+      "sha256": "41031f26c5cf67c51bf59ae34763d0a9462e3fc436f59d1589f16218cf8765a3"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0703.json",
+      "bytes": 11344,
+      "sha256": "02cb569b826c44f2aac3295ba48654a784eff1ad1b88ccfba05c0a2776525362"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0707.json",
+      "bytes": 10719,
+      "sha256": "c87e96f8e7c796e3b3bac3fc25219e22d33c366b033b2bbb4dc3fc2598dfea84"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0708.json",
+      "bytes": 9958,
+      "sha256": "483389d4a16383ed4244262cc36422d7885ca8dd20f8f0e1e5b4ecde01e565e6"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0714.json",
+      "bytes": 10818,
+      "sha256": "d80ef1c18b6f49a5b4148fb2acbf2a108b0dcd06c32081cb23b57acae6ed8b0d"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0715.json",
+      "bytes": 11312,
+      "sha256": "7c2967e63d924ae2f3892eec0f2cfe8985ceb96b87a783cfeeffcbf59df2cc96"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0723.json",
+      "bytes": 10785,
+      "sha256": "14ad20183e7c9bc5e92f8e5b3e98221ae159cdb4bcb0ca1ee6c7e2fc15b73dd1"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0732.json",
+      "bytes": 10784,
+      "sha256": "ed1c141423f5cd311e2557d674e99c47a26861dcaab7117025f7fa73a84d7cc7"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0750.json",
+      "bytes": 11312,
+      "sha256": "4545ac546549634878f3a6efbbc4aeb2c06a7dcd461179ff430295ee17e0debe"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0751.json",
+      "bytes": 10789,
+      "sha256": "26f953b90eae4755abfaf35e605bee491cae9110d4e5de58396c1575c2aabcb7"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0762.json",
+      "bytes": 10115,
+      "sha256": "4d632e84b1446cd6d6a4e31a50bfcf05dfeaf49f0bba374317a0ea6a42703b25"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0776.json",
+      "bytes": 10726,
+      "sha256": "bfa76175174750dd2c676c5ae96a23363479dcf1053b20ef3956c042fe43e552"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0783.json",
+      "bytes": 10785,
+      "sha256": "4efe0a1e8123587e7645d8d0fbbf1d9b15d639789704d3c9928c2784c51441b8"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0785.json",
+      "bytes": 10798,
+      "sha256": "237dd257148e921c20182ac11b0a519186e00f79d37dbf03c2a29d8f214159ae"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0786.json",
+      "bytes": 10722,
+      "sha256": "ed64db7ab942fa8386bbd6b9c5cf056633bba2d7007994a109928bfaf34d9d7c"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0789.json",
+      "bytes": 10523,
+      "sha256": "27759d01b72afa8d95a7caed622a165ab7c32730214a8251fc239c973bf6704c"
+    },
+    {
+      "caminho": "dados/coleta-principal/reavaliacao-t03-v5/cp-0800.json",
+      "bytes": 10115,
+      "sha256": "1851450f95d85862a708105c571d1ab1c87f0f1198e7a84fdc4201ac401335df"
+    },
+    {
+      "caminho": "dados/coleta-principal/revisao-manual/chave.json",
+      "bytes": 7803,
+      "sha256": "fd0ed4089d5ec843da3f260340ab02f02ed6fedc4aa440f9cbcec49e6d10e39f"
+    },
+    {
+      "caminho": "dados/coleta-principal/revisao-manual/planilha.csv",
+      "bytes": 12630,
+      "sha256": "745d44b53c48123d958fac2cdcf43a24364cb71f40f2ec674d02d524ce4f8fc4"
+    },
+    {
       "caminho": "dados/coleta-principal/sast/bandit.json",
       "bytes": 432969,
       "sha256": "448bf1e45d3ce286e4890ba165b74c1e4a287e6444e1ada99226c952523b8b20"
@@ -16667,6 +17087,11 @@
       "sha256": "1051a73a68b44ca3f8bdb7c40ed25b6517d4fa24a65ecbab949b57b280a4ba0b"
     },
     {
+      "caminho": "docs/emenda-02-t03.md",
+      "bytes": 2008,
+      "sha256": "939d5c50ff24c7ee5944de6a83557feb2578239dcfc2d11388a887de4bfbf9a4"
+    },
+    {
       "caminho": "docs/evidencias-texto-piloto.json",
       "bytes": 1330,
       "sha256": "f61d9fb8abc71835ac57302191963c96af0d780612c856f0c4d34385dbec3693"
@@ -16727,6 +17152,11 @@
       "sha256": "7323c0d76018e671ba8341d7208d78b4efb20ee713bfc8ab48f2ce747ea3ee20"
     },
     {
+      "caminho": "docs/instrumentos-v5/T03-validacao-linux.json",
+      "bytes": 163450,
+      "sha256": "34451ccbf06af9d29fe2beb9a460ab94e81e5a0d322c170e3ec874a0ac3378ed"
+    },
+    {
       "caminho": "docs/metadados-referencias-verificados.json",
       "bytes": 9412,
       "sha256": "6be38afaf7997630f4e199ce919eac21226dca3d4e33e7cab3a1e838f377bf46"
@@ -16738,8 +17168,8 @@
     },
     {
       "caminho": "docs/metodologia-v05.md",
-      "bytes": 20505,
-      "sha256": "6bce1a25f0793a09a6c7ce21c977dd9d755546a82066cea950ea933a2e1980d3"
+      "bytes": 20741,
+      "sha256": "2daf1355f8f6ea10443f98b3357a7e79d283fc5b4768d5e9a357ee17537c2e9a"
     },
     {
       "caminho": "docs/origem-orientacoes-2026-11-03.json",
@@ -19582,6 +20012,31 @@
       "sha256": "7c7bcb36d342f6cdd6a5ca80b3f552376ead33c6ef4a477e8447c18b10907249"
     },
     {
+      "caminho": "instrumentos_v5/controles/grava_php.py",
+      "bytes": 681,
+      "sha256": "34a0e6fd2a3484e36b632132e6961c594f7736c32bff58e6bd073fc2209634b0"
+    },
+    {
+      "caminho": "instrumentos_v5/controles/grava_uuid.py",
+      "bytes": 821,
+      "sha256": "b2de3815dccd51a2d747897550009cc2f2ffd476371a46a21c6ca47903121da5"
+    },
+    {
+      "caminho": "instrumentos_v5/controles/rejeita.py",
+      "bytes": 789,
+      "sha256": "f08016134ab69cb7ba68e6e307432434abffb83bd19ed339d8bfe80fc40fef57"
+    },
+    {
+      "caminho": "instrumentos_v5/t03_verificador.py",
+      "bytes": 9048,
+      "sha256": "b9d194b86a8c0427f32d68e48a65e5230c0dbce730b8b889e6be6c3ee4dedf88"
+    },
+    {
+      "caminho": "instrumentos_v5/validar_t03.py",
+      "bytes": 4991,
+      "sha256": "3d4a2eb6911213aa17db6890e3006ce3814f5a11e58f7c532400f478c8ac6444"
+    },
+    {
       "caminho": "orientacao/Metodologia-v03.docx",
       "bytes": 42541,
       "sha256": "685d67cafbf8e493378f121879996c191577e4ba69f1d5acd846455702c0ca13"
@@ -20102,6 +20557,11 @@
       "sha256": "89975032702da3825e06856872e96b0a32434ada2d84ed8368debb7b9c570e5b"
     },
     {
+      "caminho": "tests/test_emenda02.py",
+      "bytes": 1213,
+      "sha256": "d80ec00f8abdce5f3cb6ea92f9f3ec43b217d3b00067563731efd475c25e81b5"
+    },
+    {
       "caminho": "tests/test_instrumentos_v3.py",
       "bytes": 2586,
       "sha256": "11aae0d3472057c858a7fcc6aa53137ab9f38e9bbd89c3761ded2bd7edd6cd65"
@@ -20212,5 +20672,5 @@
   "ampliacao_contrato_v2": "Contrato comum revisado em tarefas/v2; coletas exploratorias T01, T02, T03, T05b, T05c, T06, T07, T08, T09 e T10 com 8 geracoes cada; coletas anteriores preservadas.",
   "instrumentos_v3": "Grupos funcionais base e detalhado em T03, T04, T07, T08, T09 e T10; 61 referencias anteriores e 19 controles novos; sem geracoes de LLM.",
   "coleta_gemini": "Coleta exploratoria de 40 geracoes do gemini-3.8-flash; instrumentos v4 de T03 e T04.",
-  "coleta_principal": "800 geracoes concluidas, com a emenda 01; analise estatica e estatistica registradas; revisao manual pendente."
+  "coleta_principal": "800 geracoes concluidas; emendas 01 e 02 registradas; revisao de 80 geracoes concluida."
 }

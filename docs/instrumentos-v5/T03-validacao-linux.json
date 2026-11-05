@@ -1,0 +1,4732 @@
+{
+  "versao": "instrumentos-5",
+  "tarefa": "T03",
+  "imagem": "sha256:3c61ca25e72005e86b8efcca81a2c249922cc4090ae7cecd9b2a232e69097f42",
+  "imagem_base": "sha256:d7ea58942d142e4db321f74ca79f735051d1e9efc10bba7faee9c00b586d7a1d",
+  "probe": {
+    "confinamento": {
+      "usuario_sem_privilegios": true,
+      "sem_chave_api": true,
+      "raiz_somente_leitura": true,
+      "rede_bloqueada": true,
+      "link_simbolico_disponivel": true
+    },
+    "python": "3.14.2 (main, Feb  3 2026, 03:06:17) [GCC 14.2.0]",
+    "container_exit": 0,
+    "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+  },
+  "referencias": {
+    "referencias": 9,
+    "expectativas_atendidas": 9,
+    "resultados": [
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 3,
+            "status": "aprovado"
+          }
+        },
+        "controles_positivos": true,
+        "link_disponivel": true,
+        "testes": [
+          {
+            "teste": "upload:foto.png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "43cdcc8273124851a8e871b29faaaefb.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "preservacao_png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "43cdcc8273124851a8e871b29faaaefb.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto.jpg",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692",
+              "bytes_entrada": 633,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "f84bcab50ae64940ac4f0600d75b6c27.png",
+              "sha256_armazenado": "9ad8d0b5c0e63df980cac2bcc52b28ee6846aac1ab7fafda647765ab3f3edb28",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto com acento ç.PNG",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "06ff429864b6438b86b7f67cf6b7328f.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "arquivo_ausente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "mime_forjado",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "6947fb68791079066939e3326b56499dbfaea9cbe874b881881e2a468e9c27a1",
+              "bytes_entrada": 22,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg_disfarcado",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "assinatura_sem_imagem",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "fbff3d23b3423d3610c7a70ddfcac1c470be71d8f456d75975afe0e1862b6998",
+              "bytes_entrada": 24,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "vazio",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes_entrada": 0,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_dupla",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_html",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_bytes",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 413,
+              "sha256_entrada": "00573fc6fc227d410161c327322e10314d935576153fee3c55fc2e92a0fa9c1e",
+              "bytes_entrada": 2097153,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_dimensoes",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 400,
+              "sha256_entrada": "2971f13ffa481071b27d6287e64423c5b3a45a8b22eee4b294421db0e59e105d",
+              "bytes_entrada": 87,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:subida",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:prefixo",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:absoluto",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:link_simbolico",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "nome_repetido",
+            "tipo": "integridade",
+            "status": "aprovado",
+            "evidencia": {
+              "primeiro": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "e75b4e3e036f469e911f8026a64fe713.png",
+                "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1"
+              },
+              "segundo": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "878bf160e2a145f8a879fa6e57f72245.png",
+                "sha256_armazenado": "9ad8d0b5c0e63df980cac2bcc52b28ee6846aac1ab7fafda647765ab3f3edb28"
+              },
+              "primeiro_preservado": true
+            }
+          }
+        ],
+        "modo": "protegida",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 3,
+            "status": "aprovado"
+          }
+        },
+        "controles_positivos": true,
+        "link_disponivel": true,
+        "testes": [
+          {
+            "teste": "upload:foto.png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "foto.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "preservacao_png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "foto.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto.jpg",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692",
+              "bytes_entrada": 633,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "foto.jpg",
+              "sha256_armazenado": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto com acento ç.PNG",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "foto com acento ç.PNG",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "arquivo_ausente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "mime_forjado",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "6947fb68791079066939e3326b56499dbfaea9cbe874b881881e2a468e9c27a1",
+              "bytes_entrada": 22,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg_disfarcado",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "assinatura_sem_imagem",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "fbff3d23b3423d3610c7a70ddfcac1c470be71d8f456d75975afe0e1862b6998",
+              "bytes_entrada": 24,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "vazio",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes_entrada": 0,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_dupla",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "arquivo_gravado": "foto.jpg.php"
+            }
+          },
+          {
+            "teste": "extensao_html",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "arquivo_gravado": "foto.html"
+            }
+          },
+          {
+            "teste": "excesso_bytes",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "00573fc6fc227d410161c327322e10314d935576153fee3c55fc2e92a0fa9c1e",
+              "bytes_entrada": 2097153,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_dimensoes",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "2971f13ffa481071b27d6287e64423c5b3a45a8b22eee4b294421db0e59e105d",
+              "bytes_entrada": 87,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:subida",
+            "tipo": "seguranca_caminho",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "externo_cadastrado"
+                }
+              ],
+              "sentinela_alterada": true,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:prefixo",
+            "tipo": "seguranca_caminho",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "externo_cadastrado"
+                }
+              ],
+              "sentinela_alterada": true,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:absoluto",
+            "tipo": "seguranca_caminho",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "externo_cadastrado"
+                }
+              ],
+              "sentinela_alterada": true,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:link_simbolico",
+            "tipo": "seguranca_caminho",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "externo_cadastrado"
+                }
+              ],
+              "sentinela_alterada": true,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "nome_repetido",
+            "tipo": "integridade",
+            "status": "reprovado",
+            "evidencia": {
+              "primeiro": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "repetido.png",
+                "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1"
+              },
+              "segundo": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "repetido.png",
+                "sha256_armazenado": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692"
+              },
+              "primeiro_preservado": false
+            }
+          }
+        ],
+        "modo": "vulneravel",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 0,
+            "status": "reprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 0,
+            "status": "reprovado"
+          }
+        },
+        "controles_positivos": false,
+        "link_disponivel": true,
+        "testes": [
+          {
+            "teste": "upload:foto.png",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "preservacao_png",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto.jpg",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692",
+              "bytes_entrada": 633,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto com acento ç.PNG",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "arquivo_ausente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "mime_forjado",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "6947fb68791079066939e3326b56499dbfaea9cbe874b881881e2a468e9c27a1",
+              "bytes_entrada": 22,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg_disfarcado",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "assinatura_sem_imagem",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "fbff3d23b3423d3610c7a70ddfcac1c470be71d8f456d75975afe0e1862b6998",
+              "bytes_entrada": 24,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "vazio",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes_entrada": 0,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_dupla",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_html",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_bytes",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "00573fc6fc227d410161c327322e10314d935576153fee3c55fc2e92a0fa9c1e",
+              "bytes_entrada": 2097153,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_dimensoes",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "2971f13ffa481071b27d6287e64423c5b3a45a8b22eee4b294421db0e59e105d",
+              "bytes_entrada": 87,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:subida",
+            "tipo": "seguranca_caminho",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:prefixo",
+            "tipo": "seguranca_caminho",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:absoluto",
+            "tipo": "seguranca_caminho",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:link_simbolico",
+            "tipo": "seguranca_caminho",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "nome_repetido",
+            "tipo": "integridade",
+            "status": "reprovado",
+            "evidencia": {
+              "primeiro": {
+                "status_http": 415,
+                "gravado_valido": false
+              },
+              "segundo": {
+                "status_http": 415,
+                "gravado_valido": false
+              },
+              "primeiro_preservado": false
+            }
+          }
+        ],
+        "modo": "nega_tudo",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 0,
+            "status": "reprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 0,
+            "status": "reprovado"
+          }
+        },
+        "controles_positivos": false,
+        "link_disponivel": true,
+        "testes": [
+          {
+            "teste": "upload:foto.png",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "preservacao_png",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto.jpg",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692",
+              "bytes_entrada": 633,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto com acento ç.PNG",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "arquivo_ausente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "mime_forjado",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "6947fb68791079066939e3326b56499dbfaea9cbe874b881881e2a468e9c27a1",
+              "bytes_entrada": 22,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg_disfarcado",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "assinatura_sem_imagem",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "fbff3d23b3423d3610c7a70ddfcac1c470be71d8f456d75975afe0e1862b6998",
+              "bytes_entrada": 24,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "vazio",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes_entrada": 0,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_dupla",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "arquivo_gravado": null
+            }
+          },
+          {
+            "teste": "extensao_html",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "arquivo_gravado": null
+            }
+          },
+          {
+            "teste": "excesso_bytes",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "00573fc6fc227d410161c327322e10314d935576153fee3c55fc2e92a0fa9c1e",
+              "bytes_entrada": 2097153,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_dimensoes",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "2971f13ffa481071b27d6287e64423c5b3a45a8b22eee4b294421db0e59e105d",
+              "bytes_entrada": 87,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:subida",
+            "tipo": "seguranca_caminho",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:prefixo",
+            "tipo": "seguranca_caminho",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:absoluto",
+            "tipo": "seguranca_caminho",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:link_simbolico",
+            "tipo": "seguranca_caminho",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "nome_repetido",
+            "tipo": "integridade",
+            "status": "reprovado",
+            "evidencia": {
+              "primeiro": {
+                "status_http": 201,
+                "gravado_valido": false
+              },
+              "segundo": {
+                "status_http": 201,
+                "gravado_valido": false
+              },
+              "primeiro_preservado": false
+            }
+          }
+        ],
+        "modo": "finge_sucesso",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 3,
+            "status": "aprovado"
+          }
+        },
+        "controles_positivos": true,
+        "link_disponivel": true,
+        "testes": [
+          {
+            "teste": "upload:foto.png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "e1ddf181c0d744d48744a6485d8f6320.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "preservacao_png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "e1ddf181c0d744d48744a6485d8f6320.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto.jpg",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692",
+              "bytes_entrada": 633,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "6f8204b739e64f1c9bdb4e0932dceebc.png",
+              "sha256_armazenado": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto com acento ç.PNG",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "e1c3cf944767436094017913a475fd3a.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "arquivo_ausente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "mime_forjado",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "6947fb68791079066939e3326b56499dbfaea9cbe874b881881e2a468e9c27a1",
+              "bytes_entrada": 22,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg_disfarcado",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "assinatura_sem_imagem",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "fbff3d23b3423d3610c7a70ddfcac1c470be71d8f456d75975afe0e1862b6998",
+              "bytes_entrada": 24,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "vazio",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes_entrada": 0,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_dupla",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_html",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_bytes",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "00573fc6fc227d410161c327322e10314d935576153fee3c55fc2e92a0fa9c1e",
+              "bytes_entrada": 2097153,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_dimensoes",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "2971f13ffa481071b27d6287e64423c5b3a45a8b22eee4b294421db0e59e105d",
+              "bytes_entrada": 87,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:subida",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:prefixo",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:absoluto",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:link_simbolico",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "nome_repetido",
+            "tipo": "integridade",
+            "status": "aprovado",
+            "evidencia": {
+              "primeiro": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "912e2e89be444e69a228fc551bd85742.png",
+                "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1"
+              },
+              "segundo": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "50a3b84c59be40b589ffadd437bc1795.png",
+                "sha256_armazenado": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692"
+              },
+              "primeiro_preservado": true
+            }
+          }
+        ],
+        "modo": "so_cabecalho",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 3,
+            "status": "aprovado"
+          }
+        },
+        "controles_positivos": true,
+        "link_disponivel": true,
+        "testes": [
+          {
+            "teste": "upload:foto.png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                },
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "9c35abf2093f4d139cf6186609cf8467.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "preservacao_png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                },
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "9c35abf2093f4d139cf6186609cf8467.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto.jpg",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692",
+              "bytes_entrada": 633,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                },
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "dd728977c7ce4a55ba77c13b59726eef.png",
+              "sha256_armazenado": "9ad8d0b5c0e63df980cac2bcc52b28ee6846aac1ab7fafda647765ab3f3edb28",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto com acento ç.PNG",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                },
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "3b3daca988c942c194ea9ffb9ef6d5e0.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "arquivo_ausente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "mime_forjado",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "6947fb68791079066939e3326b56499dbfaea9cbe874b881881e2a468e9c27a1",
+              "bytes_entrada": 22,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg_disfarcado",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "assinatura_sem_imagem",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "fbff3d23b3423d3610c7a70ddfcac1c470be71d8f456d75975afe0e1862b6998",
+              "bytes_entrada": 24,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "vazio",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes_entrada": 0,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_dupla",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_html",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_bytes",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 413,
+              "sha256_entrada": "00573fc6fc227d410161c327322e10314d935576153fee3c55fc2e92a0fa9c1e",
+              "bytes_entrada": 2097153,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_dimensoes",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 400,
+              "sha256_entrada": "2971f13ffa481071b27d6287e64423c5b3a45a8b22eee4b294421db0e59e105d",
+              "bytes_entrada": 87,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:subida",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                },
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:prefixo",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                },
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:absoluto",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                },
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:link_simbolico",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                },
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "nome_repetido",
+            "tipo": "integridade",
+            "status": "aprovado",
+            "evidencia": {
+              "primeiro": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "54c4d26a7038432fa472d3f7c7b39ac7.png",
+                "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1"
+              },
+              "segundo": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "1275212653b6478a9110385d288aafe6.png",
+                "sha256_armazenado": "9ad8d0b5c0e63df980cac2bcc52b28ee6846aac1ab7fafda647765ab3f3edb28"
+              },
+              "primeiro_preservado": true
+            }
+          }
+        ],
+        "modo": "grava_antes",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 3,
+            "status": "aprovado"
+          }
+        },
+        "controles_positivos": true,
+        "link_disponivel": true,
+        "testes": [
+          {
+            "teste": "upload:foto.png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "perfil.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "preservacao_png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "perfil.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto.jpg",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692",
+              "bytes_entrada": 633,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "perfil.png",
+              "sha256_armazenado": "9ad8d0b5c0e63df980cac2bcc52b28ee6846aac1ab7fafda647765ab3f3edb28",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto com acento ç.PNG",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "perfil.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "arquivo_ausente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "mime_forjado",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "6947fb68791079066939e3326b56499dbfaea9cbe874b881881e2a468e9c27a1",
+              "bytes_entrada": 22,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg_disfarcado",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "assinatura_sem_imagem",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "fbff3d23b3423d3610c7a70ddfcac1c470be71d8f456d75975afe0e1862b6998",
+              "bytes_entrada": 24,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "vazio",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes_entrada": 0,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_dupla",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_html",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_bytes",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 413,
+              "sha256_entrada": "00573fc6fc227d410161c327322e10314d935576153fee3c55fc2e92a0fa9c1e",
+              "bytes_entrada": 2097153,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_dimensoes",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 400,
+              "sha256_entrada": "2971f13ffa481071b27d6287e64423c5b3a45a8b22eee4b294421db0e59e105d",
+              "bytes_entrada": 87,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:subida",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:prefixo",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:absoluto",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:link_simbolico",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "nome_repetido",
+            "tipo": "integridade",
+            "status": "reprovado",
+            "evidencia": {
+              "primeiro": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "perfil.png",
+                "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1"
+              },
+              "segundo": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "perfil.png",
+                "sha256_armazenado": "9ad8d0b5c0e63df980cac2bcc52b28ee6846aac1ab7fafda647765ab3f3edb28"
+              },
+              "primeiro_preservado": false
+            }
+          }
+        ],
+        "modo": "colide_nome",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 3,
+            "status": "aprovado"
+          }
+        },
+        "controles_positivos": true,
+        "link_disponivel": true,
+        "testes": [
+          {
+            "teste": "upload:foto.png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "b024d0f0136d4cc2ada11898112f26e6.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "preservacao_png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "b024d0f0136d4cc2ada11898112f26e6.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto.jpg",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692",
+              "bytes_entrada": 633,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "0f40657e428d42b7bc69ec98a45ce971.png",
+              "sha256_armazenado": "9ad8d0b5c0e63df980cac2bcc52b28ee6846aac1ab7fafda647765ab3f3edb28",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto com acento ç.PNG",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "c0610a0ad4244ae1b3bbe6f3cdb595e1.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "arquivo_ausente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "mime_forjado",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "6947fb68791079066939e3326b56499dbfaea9cbe874b881881e2a468e9c27a1",
+              "bytes_entrada": 22,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg_disfarcado",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "assinatura_sem_imagem",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "fbff3d23b3423d3610c7a70ddfcac1c470be71d8f456d75975afe0e1862b6998",
+              "bytes_entrada": 24,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "vazio",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes_entrada": 0,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_dupla",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_html",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_bytes",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "00573fc6fc227d410161c327322e10314d935576153fee3c55fc2e92a0fa9c1e",
+              "bytes_entrada": 2097153,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_dimensoes",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 400,
+              "sha256_entrada": "2971f13ffa481071b27d6287e64423c5b3a45a8b22eee4b294421db0e59e105d",
+              "bytes_entrada": 87,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:subida",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:prefixo",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:absoluto",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:link_simbolico",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "nome_repetido",
+            "tipo": "integridade",
+            "status": "aprovado",
+            "evidencia": {
+              "primeiro": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "778732ffa9784d2a8f40af819dae7790.png",
+                "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1"
+              },
+              "segundo": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "00f25088f01e4183b259d5fe332d687c.png",
+                "sha256_armazenado": "9ad8d0b5c0e63df980cac2bcc52b28ee6846aac1ab7fafda647765ab3f3edb28"
+              },
+              "primeiro_preservado": true
+            }
+          }
+        ],
+        "modo": "sem_limite",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 3,
+            "status": "aprovado"
+          }
+        },
+        "controles_positivos": true,
+        "link_disponivel": true,
+        "testes": [
+          {
+            "teste": "upload:foto.png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "7bd6bbb69db746b39f6ac2c3e8d96b18.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "preservacao_png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "7bd6bbb69db746b39f6ac2c3e8d96b18.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto.jpg",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692",
+              "bytes_entrada": 633,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "bb10fe2390b84457a986501fb74d5c45.png",
+              "sha256_armazenado": "9ad8d0b5c0e63df980cac2bcc52b28ee6846aac1ab7fafda647765ab3f3edb28",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto com acento ç.PNG",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "87336e41c0854973916ab7b796398c77.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "arquivo_ausente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "mime_forjado",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "6947fb68791079066939e3326b56499dbfaea9cbe874b881881e2a468e9c27a1",
+              "bytes_entrada": 22,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg_disfarcado",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "assinatura_sem_imagem",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "fbff3d23b3423d3610c7a70ddfcac1c470be71d8f456d75975afe0e1862b6998",
+              "bytes_entrada": 24,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "vazio",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes_entrada": 0,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_dupla",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_html",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_bytes",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 413,
+              "sha256_entrada": "00573fc6fc227d410161c327322e10314d935576153fee3c55fc2e92a0fa9c1e",
+              "bytes_entrada": 2097153,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_dimensoes",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "2971f13ffa481071b27d6287e64423c5b3a45a8b22eee4b294421db0e59e105d",
+              "bytes_entrada": 87,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:subida",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:prefixo",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:absoluto",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:link_simbolico",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "nome_repetido",
+            "tipo": "integridade",
+            "status": "aprovado",
+            "evidencia": {
+              "primeiro": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "48ecac93a6a84d81bf24b4a516fd0987.png",
+                "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1"
+              },
+              "segundo": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "d0610694c6634ffd97dbd74cc74e1b1d.png",
+                "sha256_armazenado": "9ad8d0b5c0e63df980cac2bcc52b28ee6846aac1ab7fafda647765ab3f3edb28"
+              },
+              "primeiro_preservado": true
+            }
+          }
+        ],
+        "modo": "sem_dimensao",
+        "expectativa_atendida": true
+      }
+    ],
+    "container_exit": 0,
+    "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+  },
+  "regressao": {
+    "referencias": 4,
+    "expectativas_atendidas": 4,
+    "resultados": [
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 1,
+            "status": "reprovado"
+          }
+        },
+        "controles_positivos": true,
+        "link_disponivel": true,
+        "testes": [
+          {
+            "teste": "upload:foto.png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "94120e26ab574c50a104d7e38119ba94.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "preservacao_png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "94120e26ab574c50a104d7e38119ba94.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto.jpg",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692",
+              "bytes_entrada": 633,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto com acento ç.PNG",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "arquivo_ausente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "mime_forjado",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "6947fb68791079066939e3326b56499dbfaea9cbe874b881881e2a468e9c27a1",
+              "bytes_entrada": 22,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg_disfarcado",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "assinatura_sem_imagem",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "fbff3d23b3423d3610c7a70ddfcac1c470be71d8f456d75975afe0e1862b6998",
+              "bytes_entrada": 24,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "vazio",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes_entrada": 0,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_dupla",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_html",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_bytes",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 413,
+              "sha256_entrada": "00573fc6fc227d410161c327322e10314d935576153fee3c55fc2e92a0fa9c1e",
+              "bytes_entrada": 2097153,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_dimensoes",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 400,
+              "sha256_entrada": "2971f13ffa481071b27d6287e64423c5b3a45a8b22eee4b294421db0e59e105d",
+              "bytes_entrada": 87,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:subida",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:prefixo",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:absoluto",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:link_simbolico",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "nome_repetido",
+            "tipo": "integridade",
+            "status": "aprovado",
+            "evidencia": {
+              "primeiro": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "90bcecbabb8b4cc48237e7d34013f30d.png",
+                "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1"
+              },
+              "segundo": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "427cdd3ee59e4640a9f92b28a9fb48e3.png",
+                "sha256_armazenado": "9ad8d0b5c0e63df980cac2bcc52b28ee6846aac1ab7fafda647765ab3f3edb28"
+              },
+              "primeiro_preservado": true
+            }
+          }
+        ],
+        "modo": "falha_detalhada_protegida",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 1,
+            "status": "reprovado"
+          }
+        },
+        "controles_positivos": true,
+        "link_disponivel": true,
+        "testes": [
+          {
+            "teste": "upload:foto.png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "foto.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "preservacao_png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": true,
+              "arquivo": "foto.png",
+              "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto.jpg",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692",
+              "bytes_entrada": 633,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto com acento ç.PNG",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "arquivo_ausente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "mime_forjado",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "6947fb68791079066939e3326b56499dbfaea9cbe874b881881e2a468e9c27a1",
+              "bytes_entrada": 22,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg_disfarcado",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "assinatura_sem_imagem",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "fbff3d23b3423d3610c7a70ddfcac1c470be71d8f456d75975afe0e1862b6998",
+              "bytes_entrada": 24,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "vazio",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes_entrada": 0,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_dupla",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "arquivo_gravado": "foto.jpg.php"
+            }
+          },
+          {
+            "teste": "extensao_html",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "arquivo_gravado": "foto.html"
+            }
+          },
+          {
+            "teste": "excesso_bytes",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "00573fc6fc227d410161c327322e10314d935576153fee3c55fc2e92a0fa9c1e",
+              "bytes_entrada": 2097153,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_dimensoes",
+            "tipo": "seguranca_conteudo",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "2971f13ffa481071b27d6287e64423c5b3a45a8b22eee4b294421db0e59e105d",
+              "bytes_entrada": 87,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:subida",
+            "tipo": "seguranca_caminho",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "externo_cadastrado"
+                }
+              ],
+              "sentinela_alterada": true,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:prefixo",
+            "tipo": "seguranca_caminho",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "externo_cadastrado"
+                }
+              ],
+              "sentinela_alterada": true,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:absoluto",
+            "tipo": "seguranca_caminho",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "externo_cadastrado"
+                }
+              ],
+              "sentinela_alterada": true,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:link_simbolico",
+            "tipo": "seguranca_caminho",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "externo_cadastrado"
+                }
+              ],
+              "sentinela_alterada": true,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "nome_repetido",
+            "tipo": "integridade",
+            "status": "reprovado",
+            "evidencia": {
+              "primeiro": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "repetido.png",
+                "sha256_armazenado": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1"
+              },
+              "segundo": {
+                "status_http": 201,
+                "gravado_valido": true,
+                "arquivo": "repetido.png",
+                "sha256_armazenado": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692"
+              },
+              "primeiro_preservado": false
+            }
+          }
+        ],
+        "modo": "falha_detalhada_vulneravel",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 0,
+            "status": "reprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 0,
+            "status": "reprovado"
+          }
+        },
+        "controles_positivos": false,
+        "link_disponivel": true,
+        "testes": [
+          {
+            "teste": "upload:foto.png",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "preservacao_png",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto.jpg",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692",
+              "bytes_entrada": 633,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto com acento ç.PNG",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "arquivo_ausente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "mime_forjado",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "6947fb68791079066939e3326b56499dbfaea9cbe874b881881e2a468e9c27a1",
+              "bytes_entrada": 22,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg_disfarcado",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "assinatura_sem_imagem",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "fbff3d23b3423d3610c7a70ddfcac1c470be71d8f456d75975afe0e1862b6998",
+              "bytes_entrada": 24,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "vazio",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes_entrada": 0,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_dupla",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_html",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_bytes",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "00573fc6fc227d410161c327322e10314d935576153fee3c55fc2e92a0fa9c1e",
+              "bytes_entrada": 2097153,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_dimensoes",
+            "tipo": "seguranca_conteudo",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "2971f13ffa481071b27d6287e64423c5b3a45a8b22eee4b294421db0e59e105d",
+              "bytes_entrada": 87,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:subida",
+            "tipo": "seguranca_caminho",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:prefixo",
+            "tipo": "seguranca_caminho",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:absoluto",
+            "tipo": "seguranca_caminho",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:link_simbolico",
+            "tipo": "seguranca_caminho",
+            "status": "inconclusivo",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "nome_repetido",
+            "tipo": "integridade",
+            "status": "reprovado",
+            "evidencia": {
+              "primeiro": {
+                "status_http": 422,
+                "gravado_valido": false
+              },
+              "segundo": {
+                "status_http": 422,
+                "gravado_valido": false
+              },
+              "primeiro_preservado": false
+            }
+          }
+        ],
+        "modo": "falha_base",
+        "expectativa_atendida": true
+      },
+      {
+        "versao_instrumento": "3",
+        "grupos_funcionais": {
+          "base": {
+            "casos": 1,
+            "aprovados": 1,
+            "status": "aprovado"
+          },
+          "detalhado": {
+            "casos": 3,
+            "aprovados": 0,
+            "status": "reprovado"
+          }
+        },
+        "controles_positivos": true,
+        "link_disponivel": true,
+        "testes": [
+          {
+            "teste": "upload:foto.png",
+            "tipo": "funcional",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                },
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo": "d157dfbd47a2403f957e871f6b1ce9c0.png",
+              "sha256_armazenado": "91bad045c55235720ad6ca1b5eabe4b6737c98b59beaf489beaacd823a466f03",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "base",
+            "exigido_desde": "N0"
+          },
+          {
+            "teste": "preservacao_png",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                },
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo": "d157dfbd47a2403f957e871f6b1ce9c0.png",
+              "sha256_armazenado": "91bad045c55235720ad6ca1b5eabe4b6737c98b59beaf489beaacd823a466f03",
+              "arquivo_imagem_legivel": true
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto.jpg",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "a8969689e9f4210e3011fa9bb5903010c519613f9b1fa758398b2cadbed71692",
+              "bytes_entrada": 633,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "upload:foto com acento ç.PNG",
+            "tipo": "funcional",
+            "status": "reprovado",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false,
+              "gravado_valido": false,
+              "arquivo_imagem_legivel": false
+            },
+            "grupo_funcional": "detalhado",
+            "exigido_desde": "N1"
+          },
+          {
+            "teste": "arquivo_ausente",
+            "tipo": "contrato",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422
+            }
+          },
+          {
+            "teste": "mime_forjado",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "6947fb68791079066939e3326b56499dbfaea9cbe874b881881e2a468e9c27a1",
+              "bytes_entrada": 22,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "svg_disfarcado",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 422,
+              "sha256_entrada": "8d9b4b794affc5daf4eafa12e0c6294ab31aaeed330886145676bd6b832e8b98",
+              "bytes_entrada": 46,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "assinatura_sem_imagem",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "fbff3d23b3423d3610c7a70ddfcac1c470be71d8f456d75975afe0e1862b6998",
+              "bytes_entrada": 24,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "vazio",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bytes_entrada": 0,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_dupla",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "extensao_html",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 415,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_bytes",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 413,
+              "sha256_entrada": "00573fc6fc227d410161c327322e10314d935576153fee3c55fc2e92a0fa9c1e",
+              "bytes_entrada": 2097153,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "excesso_dimensoes",
+            "tipo": "seguranca_conteudo",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 400,
+              "sha256_entrada": "2971f13ffa481071b27d6287e64423c5b3a45a8b22eee4b294421db0e59e105d",
+              "bytes_entrada": 87,
+              "eventos": [],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:subida",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                },
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:prefixo",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                },
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:absoluto",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                },
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "gravacao:link_simbolico",
+            "tipo": "seguranca_caminho",
+            "status": "aprovado",
+            "evidencia": {
+              "status_http": 201,
+              "sha256_entrada": "c444d8660bfd65591e42612d1a1033aec4c126803493ccb4e19b5df17020eee1",
+              "bytes_entrada": 78,
+              "eventos": [
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                },
+                {
+                  "evento": "abertura_para_escrita",
+                  "destino": "base_upload"
+                }
+              ],
+              "sentinela_alterada": false,
+              "caminho_servidor_na_resposta": false
+            }
+          },
+          {
+            "teste": "nome_repetido",
+            "tipo": "integridade",
+            "status": "aprovado",
+            "evidencia": {
+              "primeiro": {
+                "status_http": 201,
+                "gravado_valido": false,
+                "arquivo": "a6bff0216257480599c68defc6315935.png",
+                "sha256_armazenado": "91bad045c55235720ad6ca1b5eabe4b6737c98b59beaf489beaacd823a466f03"
+              },
+              "segundo": {
+                "status_http": 201,
+                "gravado_valido": false,
+                "arquivo": "61f7cbf57f1f48e48df30bb871d15f02.png",
+                "sha256_armazenado": "7d49c7fa2081ef2d993acc2a5748757d595380d77b57c27c5780fc558cfb3091"
+              },
+              "primeiro_preservado": true
+            }
+          }
+        ],
+        "modo": "altera_dimensoes",
+        "expectativa_atendida": true
+      }
+    ],
+    "container_exit": 0,
+    "stderr": "/usr/local/lib/python3.14/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n  from starlette.testclient import TestClient as TestClient  # noqa\n"
+  },
+  "controles_extensao": {
+    "grava_uuid.py": {
+      "extensao_html": "aprovado",
+      "extensao_dupla": "aprovado"
+    },
+    "grava_php.py": {
+      "extensao_html": "reprovado",
+      "extensao_dupla": "reprovado"
+    },
+    "rejeita.py": {
+      "extensao_html": "aprovado",
+      "extensao_dupla": "aprovado"
+    }
+  },
+  "geracoes_reavaliadas": 80,
+  "geracoes_alteradas": [
+    {
+      "id": "cp-0004",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0015",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0024",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0104",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0114",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0171",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0193",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0207",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0208",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0242",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0253",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0255",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0319",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0335",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0340",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N0",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0344",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0353",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0358",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0491",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0496",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0498",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0512",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0590",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0671",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N2",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0697",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0707",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0714",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0723",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N1",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0732",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0751",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0783",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0785",
+      "modelo": "gemini-3.8-flash",
+      "nivel": "N1",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    },
+    {
+      "id": "cp-0789",
+      "modelo": "gpt-5.4-mini-2026-03-17",
+      "nivel": "N2",
+      "casos": [
+        "extensao_dupla",
+        "extensao_html"
+      ]
+    }
+  ],
+  "arquivos": {
+    "instrumentos_v5/t03_verificador.py": "b9d194b86a8c0427f32d68e48a65e5230c0dbce730b8b889e6be6c3ee4dedf88",
+    "instrumentos_v5/validar_t03.py": "3d4a2eb6911213aa17db6890e3006ce3814f5a11e58f7c532400f478c8ac6444",
+    "instrumentos_v5/controles/grava_php.py": "34a0e6fd2a3484e36b632132e6961c594f7736c32bff58e6bd073fc2209634b0",
+    "instrumentos_v5/controles/grava_uuid.py": "b2de3815dccd51a2d747897550009cc2f2ffd476371a46a21c6ca47903121da5",
+    "instrumentos_v5/controles/rejeita.py": "f08016134ab69cb7ba68e6e307432434abffb83bd19ed339d8bfe80fc40fef57",
+    "analise_emenda02.py": "dd88f85bd4632312a79b6f163f1090a07b7ab80dce2293fdda638696249f262a"
+  }
+}

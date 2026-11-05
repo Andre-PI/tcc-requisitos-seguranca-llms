@@ -1,0 +1,402 @@
+{
+  "R01": {
+    "id": "cp-0502",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N1"
+  },
+  "R02": {
+    "id": "cp-0019",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N1"
+  },
+  "R03": {
+    "id": "cp-0308",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N3"
+  },
+  "R04": {
+    "id": "cp-0409",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N1"
+  },
+  "R05": {
+    "id": "cp-0138",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N3"
+  },
+  "R06": {
+    "id": "cp-0519",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N2"
+  },
+  "R07": {
+    "id": "cp-0029",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N3"
+  },
+  "R08": {
+    "id": "cp-0335",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N1"
+  },
+  "R09": {
+    "id": "cp-0718",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N2"
+  },
+  "R10": {
+    "id": "cp-0568",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N2"
+  },
+  "R11": {
+    "id": "cp-0716",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N3"
+  },
+  "R12": {
+    "id": "cp-0232",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N2"
+  },
+  "R13": {
+    "id": "cp-0400",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N3"
+  },
+  "R14": {
+    "id": "cp-0046",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N0"
+  },
+  "R15": {
+    "id": "cp-0076",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N1"
+  },
+  "R16": {
+    "id": "cp-0130",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N0"
+  },
+  "R17": {
+    "id": "cp-0221",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N3"
+  },
+  "R18": {
+    "id": "cp-0183",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N0"
+  },
+  "R19": {
+    "id": "cp-0730",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N0"
+  },
+  "R20": {
+    "id": "cp-0141",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N1"
+  },
+  "R21": {
+    "id": "cp-0321",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N2"
+  },
+  "R22": {
+    "id": "cp-0674",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N1"
+  },
+  "R23": {
+    "id": "cp-0018",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N1"
+  },
+  "R24": {
+    "id": "cp-0328",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N1"
+  },
+  "R25": {
+    "id": "cp-0520",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N0"
+  },
+  "R26": {
+    "id": "cp-0737",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N3"
+  },
+  "R27": {
+    "id": "cp-0741",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N3"
+  },
+  "R28": {
+    "id": "cp-0708",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N3"
+  },
+  "R29": {
+    "id": "cp-0087",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N1"
+  },
+  "R30": {
+    "id": "cp-0169",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N3"
+  },
+  "R31": {
+    "id": "cp-0599",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N3"
+  },
+  "R32": {
+    "id": "cp-0636",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N2"
+  },
+  "R33": {
+    "id": "cp-0393",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N3"
+  },
+  "R34": {
+    "id": "cp-0354",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N3"
+  },
+  "R35": {
+    "id": "cp-0350",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N1"
+  },
+  "R36": {
+    "id": "cp-0041",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N2"
+  },
+  "R37": {
+    "id": "cp-0116",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N0"
+  },
+  "R38": {
+    "id": "cp-0580",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N0"
+  },
+  "R39": {
+    "id": "cp-0271",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N3"
+  },
+  "R40": {
+    "id": "cp-0648",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N2"
+  },
+  "R41": {
+    "id": "cp-0322",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N0"
+  },
+  "R42": {
+    "id": "cp-0410",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N0"
+  },
+  "R43": {
+    "id": "cp-0424",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N3"
+  },
+  "R44": {
+    "id": "cp-0123",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N2"
+  },
+  "R45": {
+    "id": "cp-0511",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N2"
+  },
+  "R46": {
+    "id": "cp-0048",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N1"
+  },
+  "R47": {
+    "id": "cp-0603",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N0"
+  },
+  "R48": {
+    "id": "cp-0715",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N0"
+  },
+  "R49": {
+    "id": "cp-0663",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N2"
+  },
+  "R50": {
+    "id": "cp-0317",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N1"
+  },
+  "R51": {
+    "id": "cp-0402",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N1"
+  },
+  "R52": {
+    "id": "cp-0279",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N2"
+  },
+  "R53": {
+    "id": "cp-0722",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N1"
+  },
+  "R54": {
+    "id": "cp-0064",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N0"
+  },
+  "R55": {
+    "id": "cp-0302",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N0"
+  },
+  "R56": {
+    "id": "cp-0022",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N1"
+  },
+  "R57": {
+    "id": "cp-0490",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N1"
+  },
+  "R58": {
+    "id": "cp-0670",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N0"
+  },
+  "R59": {
+    "id": "cp-0578",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N3"
+  },
+  "R60": {
+    "id": "cp-0212",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N1"
+  },
+  "R61": {
+    "id": "cp-0720",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N1"
+  },
+  "R62": {
+    "id": "cp-0608",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N2"
+  },
+  "R63": {
+    "id": "cp-0168",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N2"
+  },
+  "R64": {
+    "id": "cp-0242",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N1"
+  },
+  "R65": {
+    "id": "cp-0218",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N3"
+  },
+  "R66": {
+    "id": "cp-0297",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N2"
+  },
+  "R67": {
+    "id": "cp-0294",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N3"
+  },
+  "R68": {
+    "id": "cp-0325",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N3"
+  },
+  "R69": {
+    "id": "cp-0706",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N0"
+  },
+  "R70": {
+    "id": "cp-0057",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N2"
+  },
+  "R71": {
+    "id": "cp-0780",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N0"
+  },
+  "R72": {
+    "id": "cp-0341",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N2"
+  },
+  "R73": {
+    "id": "cp-0726",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N3"
+  },
+  "R74": {
+    "id": "cp-0083",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N0"
+  },
+  "R75": {
+    "id": "cp-0491",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N2"
+  },
+  "R76": {
+    "id": "cp-0235",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N0"
+  },
+  "R77": {
+    "id": "cp-0190",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N0"
+  },
+  "R78": {
+    "id": "cp-0114",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N2"
+  },
+  "R79": {
+    "id": "cp-0736",
+    "modelo": "gemini-3.8-flash",
+    "nivel": "N2"
+  },
+  "R80": {
+    "id": "cp-0775",
+    "modelo": "gpt-5.4-mini-2026-03-17",
+    "nivel": "N0"
+  }
+}

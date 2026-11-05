@@ -1,0 +1,7 @@
+{
+  "estado": "inconclusivo",
+  "erro": "ModuleNotFoundError: No module named 'imghdr'",
+  "testes": [],
+  "imagem": "sha256:3c61ca25e72005e86b8efcca81a2c249922cc4090ae7cecd9b2a232e69097f42",
+  "container_exit": 1
+}

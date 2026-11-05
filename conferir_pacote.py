@@ -284,3 +284,12 @@ if (principal/'plano.json').exists():
         if g.get('codigo_sha256'):assert hashlib.sha256((principal/job['id']/'amostra.py').read_bytes()).hexdigest()==g['codigo_sha256']
         feitas+=1
     print(f'Coleta principal: plano e fontes conferidos; {feitas} de 800 geracoes registradas.')
+
+arquivo=ROOT/'docs/instrumentos-v5/T03-validacao-linux.json'
+if arquivo.exists():
+    report=json.loads(arquivo.read_text(encoding='utf-8'))
+    for name,sha in report['arquivos'].items():assert hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==sha
+    for grupo in (report['referencias'],report['regressao']):assert grupo['referencias']==grupo['expectativas_atendidas']==len(grupo['resultados'])
+    jobs=[j for j in json.loads((ROOT/'dados/coleta-principal/plano.json').read_text(encoding='utf-8'))['jobs'] if j['tarefa']=='T03']
+    assert report['geracoes_reavaliadas']==len(jobs)==80 and all((ROOT/'dados/coleta-principal/reavaliacao-t03-v5'/f"{j['id']}.json").exists() for j in jobs)
+    print('Emenda 02: T03 v5, controles e 80 reavaliacoes conferidos.')

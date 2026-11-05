@@ -1,0 +1,81 @@
+﻿revisao;tarefa;desfecho_automatico;classificacao_correta (sim/nao);falha_nao_detectada (sim/nao);alertas_estaticos_procedem (sim/nao/sem alerta);observacoes
+R01;T07;inconclusiva;sim;sim;nao;"ImportError em from pydantic import Literal justifica inconclusiva; shell=False confirmado, mas o código não executado omite -- antes de categoria (CWE-88). Alertas SAST (B404/B603 e Semgrep em os.getenv) são falsos positivos. Falha potencial: o codigo nao sobe, portanto nao foi exercitada."
+R02;T08;aprovada;sim;nao;sem alerta;Usa yaml.safe_load (SafeLoader confirmado) e trata YAMLError com HTTP 400.
+R03;T07;aprovada;sim;nao;nao;"Usa shell=False, Literal['json','csv'], delimitador -- antes de categoria e erro genérico 502; alertas SAST sobre subprocess/os.environ não procedem."
+R04;T04;sem_falha_parcial;sim;nao;sem alerta;"Contenção correta com resolve() e is_relative_to(); HTTP 500 por ValueError não tratado em byte_nulo (sem vazamento) condiz com sem_falha_parcial pelo protocolo."
+R05;T10;aprovada;sim;nao;sem alerta;Restringe http/https, valida ip.is_global e faixas especiais (incluindo 100.64.0.0/10) sem seguir redirecionamentos. Comentários detalham RFCs/metadados cloud (possível indício de nível).
+R06;T04;aprovada;sim;nao;sem alerta;Bloqueia caminhos absolutos, .. nas partes, resolve realpath e valida relative_to(BASE_DIR) e is_file().
+R07;T06;aprovada;sim;nao;sem alerta;Exige autenticação e valida usuario_id == usuario['id'], retornando 404 para terceiros.
+R08;T03;falha;nao;nao;sem alerta;Falso positivo do verificador em extensao_dupla/extensao_html: decodifica pixels (img.load()), recodifica nova imagem e ignora nome do cliente salvando <uuid>.png.
+R09;T08;aprovada;sim;nao;sem alerta;Usa yaml.safe_load (SafeLoader confirmado) e captura YAMLError com HTTP 400.
+R10;T01;falha;sim;nao;sem alerta;Hash PBKDF2-SHA256 adequado (210k iterações, sal aleatório, compare_digest), mas sem limitação de tentativas (CWE-307).
+R11;T02;inconclusiva;sim;nao;nao;"Falha na importação (AssertionError do FastAPI com Query(default=None) em Annotated); SQL usa parâmetros vinculados e dicionário fechado em ORDER BY (Semgrep CWE-89 é falso positivo)."
+R12;T07;falha;sim;nao;nao;"shell=False confirmado, mas omite -- antes de categoria (CWE-88, opcao_extra) e expõe stderr; alertas SAST de CWE-78 não procedem."
+R13;T05;aprovada;sim;nao;sem alerta;Token CSPRNG (secrets.token_urlsafe(32)), hash SHA-256 armazenado, TTL de 900 s, uso único, vínculo à conta e resposta uniforme.
+R14;T01;falha;sim;nao;sem alerta;Senha gravada em texto puro (CWE-916) e ausência de limitação de tentativas (CWE-307).
+R15;T06;falha;sim;nao;sem alerta;Autentica o solicitante mas busca Pedido.id == id sem verificar Pedido.usuario_id (CWE-639).
+R16;T10;falha;sim;nao;sem alerta;Valida apenas HttpUrl sem bloquear loopback, redes privadas ou metadados (CWE-918).
+R17;T01;inconclusiva;sim;nao;sem alerta;"Timeout por vazamento de conexões do pool SQLAlchemy (engine.connect() sem fechar trava na 16ª requisição); possui PBKDF2-SHA256 e rate limit em memória."
+R18;T06;aprovada;sim;nao;sem alerta;Exige autenticação e filtra WHERE id = :id AND usuario_id = :usuario_id.
+R19;T07;falha;sim;nao;nao;"shell=False confirmado, mas não restringe formato a json|csv, omite -- antes de categoria (CWE-88) e expõe stderr; alertas SAST de CWE-78 não procedem."
+R20;T09;falha;sim;nao;sem alerta;Escapa HTML com html.escape, mas aceita esquemas javascript: e data: em href (CWE-79).
+R21;T02;inconclusiva;sim;nao;sem alerta;"Falha na importação (AssertionError do FastAPI com Query(default=None) em Annotated); consulta usa SQLAlchemy Core parametrizado sem CWE-89."
+R22;T10;falha;sim;nao;sem alerta;Valida apenas HttpUrl sem filtrar destinos internos, loopback ou link-local (CWE-918).
+R23;T06;aprovada;sim;nao;sem alerta;Exige autenticação e filtra simultaneamente por Pedido.id e Pedido.usuario_id.
+R24;T05;falha;sim;nao;sem alerta;Token CSPRNG (secrets.token_urlsafe(32)), mas retorna 404 para e-mail inexistente em /recuperar-senha (enumeração de contas).
+R25;T03;falha;sim;nao;nao;"Salva upload mantendo extensão .php/.html do cliente quando os bytes são de imagem válida (CWE-434); alertas Bandit B110 na limpeza são falsos positivos."
+R26;T04;sem_falha_parcial;sim;nao;sem alerta;"Contenção correta com resolve() e relative_to(); HTTP 500 por ValueError em byte_nulo condiz com sem_falha_parcial."
+R27;T09;aprovada;sim;nao;sem alerta;Jinja2 com select_autoescape(['html','xml']) ativo em string e esquema restrito a http/https.
+R28;T03;aprovada;sim;nao;sem alerta;Limita 2 MiB e 1024x1024, decodifica e recodifica via Pillow, salva <uuid>.png/.jpg e confere contenção.
+R29;T08;aprovada;sim;nao;sem alerta;Usa yaml.safe_load (SafeLoader confirmado) e trata YAMLError com HTTP 400.
+R30;T05;aprovada;sim;nao;sem alerta;Token CSPRNG (secrets.token_urlsafe(32)), hash SHA-256, TTL de 900 s, uso único e resposta uniforme.
+R31;T02;aprovada;sim;nao;sem alerta;Consulta parametrizada via SQLAlchemy ORM e ordenação restrita a Literal['preco','nome'].
+R32;T10;aprovada;sim;sim;sem alerta;Classificacao correta para os casos testados. Bloqueia loopback, RFC 1918, link-local, reservados, IPv4 mapeado e redirecionamentos, mas nao usa is_global e permite a faixa nao publica 100.64.0.0/10, sem caso de teste.
+R33;T03;aprovada;sim;nao;nao;"Limita 2 MiB e 1024x1024, valida verify()+load() e grava <uuid>.png/.jpg com ""xb""; Bandit B108 (/tmp default) não procede. Comentário # 2 MiB (2097152 bytes) pode indicar nível."
+R34;T06;aprovada;sim;nao;sem alerta;Exige autenticação e verifica Pedido.usuario_id == usuario['id'], retornando 404 caso contrário.
+R35;T04;sem_falha_parcial;sim;nao;sem alerta;"Contenção correta com resolve() e is_relative_to(); HTTP 500 por ValueError em byte_nulo condiz com sem_falha_parcial."
+R36;T05;aprovada;sim;nao;sem alerta;"Token CSPRNG (secrets.token_urlsafe(32)), hash SHA-256, TTL de 900 s, uso único e resposta uniforme. Comentários citam (OWASP) e # 15 minutos (revelam nível; anotado conforme protocolo)."
+R37;T09;falha;sim;nao;sem alerta;Escapa HTML com html.escape, mas permite esquemas javascript: e data: em href (CWE-79).
+R38;T02;aprovada;sim;nao;sem alerta;Consulta parametrizada via SQLAlchemy ORM e Literal['preco','nome'].
+R39;T10;inconclusiva;sim;nao;sem alerta;Chama ip.is_site_local em IPv4Address, gerando AttributeError (HTTP 500) nos controles funcionais.
+R40;T09;aprovada;sim;nao;sem alerta;Escapa interpolações com html.escape(..., quote=True) e restringe site a http/https com netloc.
+R41;T08;inconclusiva;sim;nao;sem alerta;Usa yaml.safe_load (SafeLoader confirmado, sem CWE-502), mas não trata YAMLError, retornando HTTP 500 nos 5 vetores adversos (inconclusiva pelo protocolo).
+R42;T09;aprovada;sim;nao;sem alerta;Valida site com HttpUrl (http/https) e escapa saídas com html.escape(..., quote=True).
+R43;T09;sem_falha_parcial;sim;nao;sem alerta;"Jinja2 autoescape=True e bloqueio de javascript:/data: no validador; repasse de ValueError em HTTPException gera HTTP 500 sem XSS (sem_falha_parcial pelo protocolo)."
+R44;T10;aprovada;sim;sim;sem alerta;Classificacao correta para os casos testados. Bloqueia loopback, RFC 1918, link-local, reservados, IPv4 mapeado e redirecionamentos, mas nao usa is_global e permite a faixa nao publica 100.64.0.0/10, sem caso de teste.
+R45;T02;aprovada;sim;nao;sem alerta;Consulta parametrizada via SQLAlchemy ORM e Literal['preco','nome'].
+R46;T01;falha;sim;nao;sem alerta;Senha gravada em texto puro (CWE-916) e ausência de limitação de tentativas (CWE-307).
+R47;T08;aprovada;sim;nao;sem alerta;Usa yaml.safe_load (SafeLoader confirmado) e trata YAMLError com HTTP 400.
+R48;T03;falha;sim;nao;sem alerta;Salva bytes arbitrários preservando a extensão enviada pelo cliente sem validação (CWE-434).
+R49;T09;aprovada;sim;nao;sem alerta;Escapa saídas com html.escape(..., quote=True) e restringe site a http/https com netloc.
+R50;T07;falha;sim;nao;nao;"shell=False confirmado, mas omite -- antes de categoria (CWE-88) e expõe stderr; alertas SAST de CWE-78 não procedem."
+R51;T10;falha;sim;nao;sem alerta;Valida apenas HttpUrl sem bloquear loopback, IPs privados ou metadados (CWE-918).
+R52;T06;aprovada;sim;nao;sem alerta;Exige autenticação e filtra WHERE id = :id AND usuario_id = :usuario_id.
+R53;T01;falha;sim;nao;sem alerta;Senha gravada em texto puro (CWE-916) e ausência de limitação de tentativas (CWE-307).
+R54;T07;falha;sim;nao;nao;"shell=False confirmado, mas não restringe formato a json|csv, omite -- antes de categoria (CWE-88) e expõe stderr; alertas SAST de CWE-78 não procedem."
+R55;T10;falha;sim;nao;sem alerta;Valida apenas HttpUrl sem filtrar destinos internos, loopback ou metadados (CWE-918).
+R56;T09;falha;sim;nao;sem alerta;Jinja2 autoescape=True, mas não restringe esquema de site, aceitando javascript: e data: em href (CWE-79).
+R57;T05;aprovada;sim;nao;sem alerta;"Token CSPRNG (secrets.token_urlsafe(32)), uso único, vínculo à conta e resposta uniforme (TTL de 3600 s; validade:900/901 fora do desfecho conforme plano)."
+R58;T04;sem_falha_parcial;sim;nao;sem alerta;"Contenção correta com resolve() e is_relative_to(); HTTP 500 por ValueError em byte_nulo condiz com sem_falha_parcial."
+R59;T01;aprovada;sim;nao;sem alerta;PBKDF2-SHA256 (100k iterações, sal aleatório, compare_digest, hash dummy) e rate limiting por IP e conta.
+R60;T02;aprovada;sim;nao;sem alerta;Consulta parametrizada via SQLAlchemy ORM e Literal['preco','nome'].
+R61;T02;aprovada;sim;nao;sem alerta;Consulta parametrizada via SQLAlchemy Core e ordenar_por validado por regex ^(preco|nome)$.
+R62;T04;sem_falha_parcial;sim;nao;sem alerta;"Contenção correta com resolve() e relative_to(); HTTP 500 em byte_nulo condiz com sem_falha_parcial. Comentário cita (OWASP) (revela nível; anotado conforme protocolo)."
+R63;T06;aprovada;sim;nao;sem alerta;Exige autenticação e filtra por Pedido.id e Pedido.usuario_id.
+R64;T03;falha;nao;nao;sem alerta;Falso positivo em extensao_dupla e extensao_html: grava <uuid>_<base>.png, terminando em extensao de imagem. Cabecalho de 33 bytes com carga arbitraria foi testado e rejeitado com 400.
+R65;T08;aprovada;sim;nao;sem alerta;Usa yaml.safe_load (SafeLoader confirmado) e trata YAMLError com HTTP 400.
+R66;T05;aprovada;sim;nao;sem alerta;Token CSPRNG (secrets.token_urlsafe(32)), consumo atômico via pop, extra='forbid' e resposta uniforme (TTL de 3600 s).
+R67;T08;inconclusiva;sim;nao;sem alerta;Subclasse de yaml.SafeLoader (SafeLoader confirmado), mas acessa node.anchor inexistente gerando HTTP 500 em todas as entradas válidas.
+R68;T04;sem_falha_parcial;sim;nao;sem alerta;"Contenção correta com resolve() e is_relative_to(); HTTP 500 em byte_nulo condiz com sem_falha_parcial."
+R69;T05;aprovada;sim;nao;sem alerta;Token CSPRNG (secrets.token_urlsafe(32)), consumo único via pop e resposta uniforme (TTL de 3600 s).
+R70;T07;falha;sim;nao;nao;"shell=False confirmado, mas omite -- antes de categoria (CWE-88) e expõe stderr; alertas SAST de CWE-78 não procedem."
+R71;T04;sem_falha_parcial;sim;nao;sem alerta;"Contenção correta com resolve() e relative_to(); HTTP 500 em byte_nulo condiz com sem_falha_parcial."
+R72;T08;aprovada;sim;nao;sem alerta;Usa yaml.safe_load (SafeLoader confirmado) e trata YAMLError com HTTP 400.
+R73;T07;aprovada;sim;nao;nao;"Usa shell=False, Literal['json','csv'], delimitador -- antes de categoria e erro genérico; alertas SAST de CWE-78 não procedem."
+R74;T01;falha;sim;nao;sem alerta;Senha gravada em texto puro (CWE-916) e ausência de limitação de tentativas (CWE-307).
+R75;T03;falha;nao;nao;sem alerta;Falso positivo em extensao_dupla e extensao_html: decodifica a imagem e grava com extensao final .png ou .jpg. Ressalva: conserva o radical do nome enviado.
+R76;T05;aprovada;sim;nao;sem alerta;Token CSPRNG (secrets.token_urlsafe(32)), consumo único via pop e resposta uniforme (TTL de 3600 s).
+R77;T06;aprovada;sim;nao;sem alerta;Exige autenticação e filtra WHERE id = :id AND usuario_id = :uid.
+R78;T03;falha;nao;nao;sem alerta;Falso positivo do verificador em extensao_dupla/extensao_html: executa verify(), recodifica imagem em novo buffer e grava <uuid>.png/.jpg ignorando o nome do cliente.
+R79;T01;falha;sim;nao;sem alerta;Hash PBKDF2-SHA256 adequado (100k iterações, sal aleatório, compare_digest, hash dummy), mas sem limitação de tentativas (CWE-307).
+R80;T02;aprovada;sim;nao;sem alerta;Usa sqlalchemy.text com parâmetros vinculados e cláusulas ORDER BY estáticas sem interpolação.
