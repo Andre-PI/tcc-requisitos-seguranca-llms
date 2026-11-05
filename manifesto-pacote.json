@@ -17168,8 +17168,8 @@
     },
     {
       "caminho": "docs/metodologia-v05.md",
-      "bytes": 20741,
-      "sha256": "2daf1355f8f6ea10443f98b3357a7e79d283fc5b4768d5e9a357ee17537c2e9a"
+      "bytes": 22224,
+      "sha256": "5f6398a551b6a9585aef6ae1883223af8c1b0ecaf4f1d444f6ce548b30c9d0cf"
     },
     {
       "caminho": "docs/origem-orientacoes-2026-11-03.json",
@@ -17230,6 +17230,11 @@
       "caminho": "docs/resultados-piloto-v01.md",
       "bytes": 8395,
       "sha256": "875f08e04db78763fdf14c5cd1c15d040f558ae79f354cebf2fcf70adc4a551b"
+    },
+    {
+      "caminho": "docs/resultados-v01.md",
+      "bytes": 19251,
+      "sha256": "b40895684cbf026cb0f567e74005610da31c1b62d90deab4eecf7e6bc69c7e55"
     },
     {
       "caminho": "docs/revisao-sete-casos.md",
@@ -20672,5 +20677,5 @@
   "ampliacao_contrato_v2": "Contrato comum revisado em tarefas/v2; coletas exploratorias T01, T02, T03, T05b, T05c, T06, T07, T08, T09 e T10 com 8 geracoes cada; coletas anteriores preservadas.",
   "instrumentos_v3": "Grupos funcionais base e detalhado em T03, T04, T07, T08, T09 e T10; 61 referencias anteriores e 19 controles novos; sem geracoes de LLM.",
   "coleta_gemini": "Coleta exploratoria de 40 geracoes do gemini-3.8-flash; instrumentos v4 de T03 e T04.",
-  "coleta_principal": "800 geracoes concluidas; emendas 01 e 02 registradas; revisao de 80 geracoes concluida."
+  "coleta_principal": "800 geracoes concluidas; emendas 01 e 02 registradas; revisao de 80 geracoes concluida; metodologia e resultados revisados."
 }
