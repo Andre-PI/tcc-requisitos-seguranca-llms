@@ -18,8 +18,8 @@
     },
     {
       "caminho": "README.md",
-      "bytes": 9193,
-      "sha256": "3720bd6e3d5916c4046953130b6a20d21e20fa8798b6151048db8967fa8173c4"
+      "bytes": 8812,
+      "sha256": "b6acd472034a2adb30c0d1f01b1b7cc2119ac1b985edea67c9af7352233651a7"
     },
     {
       "caminho": "aceitacao_worker.py",
@@ -20040,46 +20040,6 @@
       "caminho": "instrumentos_v5/validar_t03.py",
       "bytes": 4991,
       "sha256": "3d4a2eb6911213aa17db6890e3006ce3814f5a11e58f7c532400f478c8ac6444"
-    },
-    {
-      "caminho": "orientacao/Metodologia-v03.docx",
-      "bytes": 42541,
-      "sha256": "685d67cafbf8e493378f121879996c191577e4ba69f1d5acd846455702c0ca13"
-    },
-    {
-      "caminho": "orientacao/Metodologia-v03.pdf",
-      "bytes": 108593,
-      "sha256": "9bb522d5ca49d8941cacce984a2ad386620902cd7ea792204f207bf8c90d26b6"
-    },
-    {
-      "caminho": "orientacao/Metodologia-v04.docx",
-      "bytes": 42139,
-      "sha256": "9dacb01f1319e5e5d4fc97862c678cf8e4c088c486fb0a6045c1b13738f80468"
-    },
-    {
-      "caminho": "orientacao/Metodologia-v04.pdf",
-      "bytes": 107788,
-      "sha256": "5e934a7046323b82d5a195ae9cf66c2d2756666b326ac6c218f65c3c0f1adc25"
-    },
-    {
-      "caminho": "orientacao/Referencial-teorico-v04.docx",
-      "bytes": 43009,
-      "sha256": "7ecae4795bf9d13ca85dbdaa14f29f624934be5481cf4b021fe5e22441b24ffb"
-    },
-    {
-      "caminho": "orientacao/Referencial-teorico-v04.pdf",
-      "bytes": 109551,
-      "sha256": "01c8c5e6e1a90c0d4cc44a9f685e8a6f70bb35b3766bfd9d38e42e3518685b35"
-    },
-    {
-      "caminho": "orientacao/Resultados-piloto-v01.docx",
-      "bytes": 40240,
-      "sha256": "c9cf29c9e61e9185b3d5e112e896e83456c428599417b3fb68ae3f64d146c229"
-    },
-    {
-      "caminho": "orientacao/Resultados-piloto-v01.pdf",
-      "bytes": 102913,
-      "sha256": "2878c220502b8660b07e91ec6f8d63b16f6cd145efb470e68b5c5221f49e4e47"
     },
     {
       "caminho": "piloto.py",
